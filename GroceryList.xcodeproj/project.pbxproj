@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		F2E544E01A6CB55000CB52E5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E544DF1A6CB55000CB52E5 /* main.m */; };
 		F2E544E31A6CB55000CB52E5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E544E21A6CB55000CB52E5 /* AppDelegate.m */; };
-		F2E544E61A6CB55000CB52E5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E544E51A6CB55000CB52E5 /* ViewController.m */; };
 		F2E544E91A6CB55000CB52E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2E544E71A6CB55000CB52E5 /* Main.storyboard */; };
 		F2E544EB1A6CB55000CB52E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2E544EA1A6CB55000CB52E5 /* Images.xcassets */; };
 		F2E544EE1A6CB55100CB52E5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2E544EC1A6CB55100CB52E5 /* LaunchScreen.xib */; };
 		F2E544FA1A6CB55100CB52E5 /* GroceryListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E544F91A6CB55100CB52E5 /* GroceryListTests.m */; };
+		F2E545051A6CB5D400CB52E5 /* GLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E545041A6CB5D400CB52E5 /* GLTableViewCell.m */; };
+		F2E545081A6CB5F500CB52E5 /* GLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E545071A6CB5F500CB52E5 /* GLTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +33,16 @@
 		F2E544DF1A6CB55000CB52E5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F2E544E11A6CB55000CB52E5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F2E544E21A6CB55000CB52E5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F2E544E41A6CB55000CB52E5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F2E544E51A6CB55000CB52E5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		F2E544E81A6CB55000CB52E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F2E544EA1A6CB55000CB52E5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F2E544ED1A6CB55100CB52E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		F2E544F31A6CB55100CB52E5 /* GroceryListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GroceryListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E544F81A6CB55100CB52E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2E544F91A6CB55100CB52E5 /* GroceryListTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroceryListTests.m; sourceTree = "<group>"; };
+		F2E545031A6CB5D400CB52E5 /* GLTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTableViewCell.h; sourceTree = "<group>"; };
+		F2E545041A6CB5D400CB52E5 /* GLTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTableViewCell.m; sourceTree = "<group>"; };
+		F2E545061A6CB5F500CB52E5 /* GLTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTableViewController.h; sourceTree = "<group>"; };
+		F2E545071A6CB5F500CB52E5 /* GLTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,13 +84,10 @@
 		F2E544DC1A6CB55000CB52E5 /* GroceryList */ = {
 			isa = PBXGroup;
 			children = (
-				F2E544E11A6CB55000CB52E5 /* AppDelegate.h */,
-				F2E544E21A6CB55000CB52E5 /* AppDelegate.m */,
-				F2E544E41A6CB55000CB52E5 /* ViewController.h */,
-				F2E544E51A6CB55000CB52E5 /* ViewController.m */,
+				F2E5450A1A6CB60A00CB52E5 /* Controllers */,
+				F2E545091A6CB60100CB52E5 /* Views */,
 				F2E544E71A6CB55000CB52E5 /* Main.storyboard */,
 				F2E544EA1A6CB55000CB52E5 /* Images.xcassets */,
-				F2E544EC1A6CB55100CB52E5 /* LaunchScreen.xib */,
 				F2E544DD1A6CB55000CB52E5 /* Supporting Files */,
 			);
 			path = GroceryList;
@@ -96,6 +96,9 @@
 		F2E544DD1A6CB55000CB52E5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F2E544E11A6CB55000CB52E5 /* AppDelegate.h */,
+				F2E544E21A6CB55000CB52E5 /* AppDelegate.m */,
+				F2E544EC1A6CB55100CB52E5 /* LaunchScreen.xib */,
 				F2E544DE1A6CB55000CB52E5 /* Info.plist */,
 				F2E544DF1A6CB55000CB52E5 /* main.m */,
 			);
@@ -119,6 +122,24 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F2E545091A6CB60100CB52E5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F2E545031A6CB5D400CB52E5 /* GLTableViewCell.h */,
+				F2E545041A6CB5D400CB52E5 /* GLTableViewCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		F2E5450A1A6CB60A00CB52E5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F2E545061A6CB5F500CB52E5 /* GLTableViewController.h */,
+				F2E545071A6CB5F500CB52E5 /* GLTableViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -128,6 +149,8 @@
 			buildPhases = (
 				F2E544D61A6CB55000CB52E5 /* Sources */,
 				F2E544D71A6CB55000CB52E5 /* Frameworks */,
+				F2E5450B1A6CB8D500CB52E5 /* ShellScript */,
+				F2E5450C1A6CB91D00CB52E5 /* ShellScript */,
 				F2E544D81A6CB55000CB52E5 /* Resources */,
 			);
 			buildRules = (
@@ -163,6 +186,7 @@
 		F2E544D21A6CB55000CB52E5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = GL;
 				LastUpgradeCheck = 0610;
 				TargetAttributes = {
 					F2E544D91A6CB55000CB52E5 = {
@@ -213,13 +237,43 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		F2E5450B1A6CB8D500CB52E5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
+		F2E5450C1A6CB91D00CB52E5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "VERSIONNUM=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nNEWSUBVERSION=`echo $VERSIONNUM | awk -F \".\" '{print $3}'`\nNEWSUBVERSION=$(($NEWSUBVERSION + 1))\nNEWVERSIONSTRING=`echo $VERSIONNUM | awk -F \".\" '{print $1 \".\" $2 \".'$NEWSUBVERSION'\" }'`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleShortVersionString $NEWVERSIONSTRING\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F2E544D61A6CB55000CB52E5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2E544E61A6CB55000CB52E5 /* ViewController.m in Sources */,
+				F2E545081A6CB5F500CB52E5 /* GLTableViewController.m in Sources */,
 				F2E544E31A6CB55000CB52E5 /* AppDelegate.m in Sources */,
+				F2E545051A6CB5D400CB52E5 /* GLTableViewCell.m in Sources */,
 				F2E544E01A6CB55000CB52E5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,9 +396,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = "";
 				INFOPLIST_FILE = GroceryList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VERSIONING_SYSTEM = "";
 			};
 			name = Debug;
 		};
@@ -352,9 +408,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = "";
 				INFOPLIST_FILE = GroceryList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VERSIONING_SYSTEM = "";
 			};
 			name = Release;
 		};
