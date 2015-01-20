@@ -43,11 +43,19 @@
                             <outlet property="delegate" destination="nIw-Fu-zoA" id="N81-ZY-e6o"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Grocery List" id="WSj-bp-MT7"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Grocery List" id="WSj-bp-MT7">
+                        <barButtonItem key="rightBarButtonItem" title="+" id="ive-CY-NDV">
+                            <connections>
+                                <action selector="didTapAddGroceryBarButton:" destination="nIw-Fu-zoA" id="uoJ-kE-cHL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P1e-tI-89s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="422" y="518"/>
+            <point key="canvasLocation" x="573" y="518"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PBg-5v-P4t">
@@ -66,7 +74,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="daL-yC-3hG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-199" y="530"/>
+            <point key="canvasLocation" x="-88" y="518"/>
         </scene>
     </scenes>
 </document>

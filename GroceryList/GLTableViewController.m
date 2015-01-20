@@ -9,7 +9,11 @@
 #import "GLTableViewController.h"
 #import "GLTableViewCell.h"
 
+
 static NSString *reuseIdentifier = @"GLTableViewCell";
+
+@interface GLTableViewController()
+@end
 
 @implementation GLTableViewController
 
@@ -19,6 +23,17 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+- (IBAction)didTapAddGroceryBarButton:(id)sender {
+    ZBarReaderViewController *barcodeViewController = [ZBarReaderViewController new];
+    barcodeViewController.readerDelegate = self;
+    barcodeViewController.supportedOrientationsMask = ZBarOrientationMaskAll;
+
+    ZBarImageScanner *scanner = barcodeViewController.scanner;
+    [scanner setSymbology:ZBAR_I25 config:ZBAR_CFG_ENABLE to:0];
+    
+    barcodeViewController.navigationItem.title = @"Scan Barcode";
+    [self.navigationController pushViewController:barcodeViewController animated:YES];
 }
 
 #pragma mark - Table view data source

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZBarSDK.h"
 
-@interface GLTableViewController : UITableViewController
+@interface GLTableViewController : UITableViewController <ZBarReaderDelegate>
 
 @end
