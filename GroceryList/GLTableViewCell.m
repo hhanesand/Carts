@@ -11,13 +11,20 @@
 @implementation GLTableViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
+}
+
+- (void)layoutSubviews {
+    //self.label.text = @"SALAD";
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
+    if (selected) {
+        self.label.text = @"POO";
+    } else {
+        self.label.text = @"PHONE";
+    }
 }
 
 @end

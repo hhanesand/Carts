@@ -15,9 +15,6 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    //now that we have a custom cell we can use this
-    [self.tableView registerClass:[GLTableViewCell class] forCellReuseIdentifier:reuseIdentifier];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,19 +27,14 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
     return 1;
 }
 
-#warning Incomplete method implementation.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return 5;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    //use forIndexPath version here?
-    GLTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+    GLTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    if (cell == nil) {
-        cell = [[GLTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
-    }
+    cell.label.text = @"HEYTHERE";
     
     return cell;
 }

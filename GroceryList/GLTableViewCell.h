@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface GLTableViewCell : UITableViewCell
-
+@property (weak, nonatomic) IBOutlet UILabel *label;
 @end
