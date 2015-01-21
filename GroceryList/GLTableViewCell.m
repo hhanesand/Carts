@@ -14,17 +14,11 @@
 }
 
 - (void)layoutSubviews {
-    //self.label.text = @"SALAD";
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    if (selected) {
-        self.label.text = @"POO";
-    } else {
-        self.label.text = @"PHONE";
-    }
 }
 
 @end
