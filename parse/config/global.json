@@ -1,0 +1,11 @@
+{
+    "applications": {
+        "GroceryList": {
+            "applicationId": "LRHlZsMabq1sPNQ5UIu6PBS2jQ6VXLdGBCQREGmA", 
+            "masterKey": "DRvNOmno2RZXStV8ku7xX6NgJ4wkbgfutHkqXzUv"
+        }, 
+        "_default": {
+            "link": "GroceryList"
+        }
+    }
+}

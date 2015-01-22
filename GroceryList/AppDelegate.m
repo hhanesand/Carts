@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
+#import <ParseCrashReporting/ParseCrashReporting.h>
 
 @interface AppDelegate ()
 
@@ -18,7 +19,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [Parse enableLocalDatastore];
-    [Parse setApplicationId:@"vyu0N1l44ZTj4hrdDIt3F8mGaHwu5ABSBzJZzvLx" clientKey:@"4ERc8jQnfyX7JYuG7bCpADg8wbNtyVLCBzE5jmw8"];
+    [ParseCrashReporting enable];
+    [Parse setApplicationId:@"LRHlZsMabq1sPNQ5UIu6PBS2jQ6VXLdGBCQREGmA" clientKey:@"aQRJaky1ooiD2xu7feLPvZjuwBXLNq7oDYsFdicl"];
+    
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     return YES;
 }
