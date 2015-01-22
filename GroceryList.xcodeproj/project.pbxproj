@@ -443,7 +443,6 @@
 				F2E544D61A6CB55000CB52E5 /* Sources */,
 				F2E544D71A6CB55000CB52E5 /* Frameworks */,
 				F2E5450B1A6CB8D500CB52E5 /* ShellScript */,
-				F296DA101A709558001E9D29 /* ShellScript */,
 				F2E5450C1A6CB91D00CB52E5 /* ShellScript */,
 				F2E544D81A6CB55000CB52E5 /* Resources */,
 			);
@@ -537,19 +536,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		F296DA101A709558001E9D29 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export PATH=/usr/local/bin:$PATH\ncd /Users/Hakon_Hanesad/documents/development/grocerylist/parse\n\nparse symbols \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"";
-		};
 		F2E5450B1A6CB8D500CB52E5 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

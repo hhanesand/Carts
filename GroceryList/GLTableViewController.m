@@ -96,9 +96,7 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:[NSString stringWithFormat:self.barcodeURL, self.apiKey, data] parameters:nil success:^(AFHTTPRequestOperation *operation, id response) {
-        NSLog(@"JSON: %@", response);
-        NSLog(@"Type: %@", NSStringFromClass([response class]));
-        NSLog(@"Name: %@", response[@"name"]);
+        NSLog(@"Name from first database : %@", response[@"name"]);
         
         [self.barcodes addObject:response[@"name"]];
         [self.tableView reloadData];
@@ -112,11 +110,10 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
 
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        
         NSRange range = [string rangeOfString:@"Description" options:NSLiteralSearch];
         
         if (range.location == NSNotFound) {
-            NSLog(@"Description could not be found");
+            NSLog(@"The second database does not have this barcode");
             //the item does not exist in the second database we want to check
         } else {
             int start = range.location + range.length + 29;
@@ -124,7 +121,7 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
             NSRange range1 = [string rangeOfString:@"<" options:NSLiteralSearch range:NSMakeRange(start, 100)];
             int end = range1.location;
             
-            NSLog(@"Here is the name of the item hopefully : %@", [string substringWithRange:NSMakeRange(start, end - start)]);
+            NSLog(@"Name from second database : %@", [string substringWithRange:NSMakeRange(start, end - start)]);
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error %@", error);
@@ -141,17 +138,59 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
         NSRange range = [string rangeOfString:[NSString stringWithFormat:@"<td>%@</td>", data] options:NSLiteralSearch];
         
         if (range.location == NSNotFound) {
-            NSLog(@"First ele could not be found");
+            NSLog(@"The third database does not have this barcode.");
         } else {
-            NSRange range1 = [string rangeOfString:@"<" options:NSLiteralSearch range:NSMakeRange(range.location + range.length + 5, 100)];
+            long start = range.location + range.length;
+            NSRange range1 = [string rangeOfString:@"<td>" options:NSLiteralSearch range:NSMakeRange(start, 100)];
+            NSRange range2 = [string rangeOfString:@"</td>" options:NSLiteralSearch range:NSMakeRange(range1.location, 100)];
             
-            NSLog(@"Here is the name o: %@", [string substringWithRange:NSMakeRange(range.location + range.length + 5, range1.location - (range.location + range.length + 5))]);
+            NSLog(@"Name from thrid database : %@", [string substringWithRange:NSMakeRange(range1.location + range1.length, range2.location - (range1.location + range1.length))]);
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error %@", error);
     }];
     [operation2 start];
+    
+    NSURL *URL3 = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.compariola.com/?barcode=%@", data]];
+    NSURLRequest *request3 = [NSURLRequest requestWithURL:URL3];
+    AFHTTPRequestOperation *operation3 = [[AFHTTPRequestOperation alloc] initWithRequest:request3];
+    
+    [operation3 setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        
+        NSRange range = [string rangeOfString:@"<h1>" options:NSLiteralSearch];
+        
+        if (range.location == NSNotFound) {
+            NSLog(@"Database 4 does not have the barcode");
+        } else {
+            NSRange range1 = [string rangeOfString:@"</h1>" options:NSLiteralSearch range:NSMakeRange(range.location, 100)];
+            NSLog(@"Name of item from 4th database : %@", [string substringWithRange:NSMakeRange(range.length + range.location, range1.location - (range.length + range.location))]);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error %@", error);
+    }];
+    [operation3 start];
+    
+    NSURL *URL4 = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.hammerwall.com/upc/%@/", [data substringFromIndex:1]]];
+    NSURLRequest *request4 = [NSURLRequest requestWithURL:URL4];
+    AFHTTPRequestOperation *operation4 = [[AFHTTPRequestOperation alloc] initWithRequest:request4];
+    
+    [operation4 setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        
+        NSRange range = [string rangeOfString:@"Item: " options:NSLiteralSearch];
+        
+        if (range.location == NSNotFound) {
+            NSLog(@"The barcode does not exist in database 5");
+        } else {
+            NSRange range1 = [string rangeOfString:@"<br>" options:NSLiteralSearch range:NSMakeRange(range.location, 100)];
+            NSLog(@"Name of item from database 5 : %@", [string substringWithRange:NSMakeRange(range.length + range.location, range1.location - (range.length + range.location))]);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error %@", error);
+    }];
+    [operation4 start];
 }
 
 @end
