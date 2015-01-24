@@ -24,6 +24,8 @@
 		F22C8F421A6EE92D00139B9D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F22C8F411A6EE92D00139B9D /* SystemConfiguration.framework */; };
 		F22C8F441A6EE93600139B9D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F22C8F431A6EE93600139B9D /* libz.dylib */; };
 		F22C8F461A6EE94A00139B9D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F22C8F451A6EE94A00139B9D /* libsqlite3.dylib */; };
+		F22F2D791A72D1DB00C878EC /* GLBarcodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F2D781A72D1DB00C878EC /* GLBarcodeManager.m */; };
+		F22F2D7D1A72D6FD00C878EC /* GLBarcodeDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F2D7C1A72D6FD00C878EC /* GLBarcodeDatabase.m */; };
 		F296D9FF1A703F9E001E9D29 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F296D9DB1A703F9E001E9D29 /* AFHTTPRequestOperation.m */; };
 		F296DA001A703F9E001E9D29 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F296D9DD1A703F9E001E9D29 /* AFHTTPRequestOperationManager.m */; };
 		F296DA011A703F9E001E9D29 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F296D9DF1A703F9E001E9D29 /* AFHTTPSessionManager.m */; };
@@ -106,6 +108,10 @@
 		F22C8F411A6EE92D00139B9D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F22C8F431A6EE93600139B9D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		F22C8F451A6EE94A00139B9D /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		F22F2D781A72D1DB00C878EC /* GLBarcodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBarcodeManager.m; sourceTree = "<group>"; };
+		F22F2D7A1A72D1FA00C878EC /* GLBarcodeManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLBarcodeManager.h; sourceTree = "<group>"; };
+		F22F2D7B1A72D66600C878EC /* GLBarcodeDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLBarcodeDatabase.h; sourceTree = "<group>"; };
+		F22F2D7C1A72D6FD00C878EC /* GLBarcodeDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBarcodeDatabase.m; sourceTree = "<group>"; };
 		F296D9DA1A703F9E001E9D29 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		F296D9DB1A703F9E001E9D29 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		F296D9DC1A703F9E001E9D29 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -382,6 +388,10 @@
 				F2E544E71A6CB55000CB52E5 /* Main.storyboard */,
 				F2E544EA1A6CB55000CB52E5 /* Images.xcassets */,
 				F2E544DD1A6CB55000CB52E5 /* Supporting Files */,
+				F22F2D7A1A72D1FA00C878EC /* GLBarcodeManager.h */,
+				F22F2D781A72D1DB00C878EC /* GLBarcodeManager.m */,
+				F22F2D7B1A72D66600C878EC /* GLBarcodeDatabase.h */,
+				F22F2D7C1A72D6FD00C878EC /* GLBarcodeDatabase.m */,
 			);
 			path = GroceryList;
 			sourceTree = "<group>";
@@ -578,7 +588,9 @@
 				F2E544E31A6CB55000CB52E5 /* AppDelegate.m in Sources */,
 				F296DA001A703F9E001E9D29 /* AFHTTPRequestOperationManager.m in Sources */,
 				F296DA041A703F9E001E9D29 /* AFURLConnectionOperation.m in Sources */,
+				F22F2D791A72D1DB00C878EC /* GLBarcodeManager.m in Sources */,
 				F296DA0C1A703F9E001E9D29 /* UIImageView+AFNetworking.m in Sources */,
+				F22F2D7D1A72D6FD00C878EC /* GLBarcodeDatabase.m in Sources */,
 				F296D9FF1A703F9E001E9D29 /* AFHTTPRequestOperation.m in Sources */,
 				F296DA091A703F9E001E9D29 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				F2E545051A6CB5D400CB52E5 /* GLTableViewCell.m in Sources */,
@@ -721,6 +733,13 @@
 					"$(PROJECT_DIR)/ZBarSDK",
 				);
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-l\"Pods-ReactiveCocoa\"",
+					"$(OTHER_LDFLAGS)",
+					"-all_load",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VERSIONING_SYSTEM = "";
 			};
@@ -740,6 +759,13 @@
 					"$(PROJECT_DIR)/ZBarSDK",
 				);
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-l\"Pods-ReactiveCocoa\"",
+					"$(OTHER_LDFLAGS)",
+					"-all_load",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VERSIONING_SYSTEM = "";
 			};

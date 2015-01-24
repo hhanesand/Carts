@@ -6,8 +6,15 @@
 //
 //
 
-#ifndef GroceryList_GLBarcodeManager_h
-#define GroceryList_GLBarcodeManager_h
+#import <Foundation/Foundation.h>
+#import "GLBarcodeDatabase.h"
 
+@interface GLBarcodeManager : NSObject
 
-#endif
++ (GLBarcodeManager *)sharedManager;
+
+- (void)addBarcodeDatabaseWithURL:(NSString *)url withReturnType:(enum GLBarcodeDatabaseReturnType)returnType andSearchBlock:(NSRange (^)(NSString*string, NSString *barcode))searchBlock;
+
+- (NSMutableArray *)fetchNameOfItemWithBarcode:(NSString *)barcode;
+
+@end
