@@ -14,6 +14,7 @@
 @property (nonatomic) NSMutableArray *databases;
 @property (nonatomic) AFHTTPRequestOperationManager *manager;
 @property (nonatomic, weak) RACSubject *responseSignal;
+@property (nonatomic) int count;
 @end
 
 @implementation GLBarcodeManager
@@ -35,6 +36,7 @@
         self.databases = [NSMutableArray new];
         self.manager = [AFHTTPRequestOperationManager manager];
         self.responseSignal = responseSignal;
+        self.count = 5;
     }
     
     return self;
@@ -66,8 +68,10 @@
             [self.manager GET:[database getURLForDatabaseWithBarcode:modifiedBarcode] parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *response) {
                 //ugly hack for now - I need a way to get the key for the name from the user...
                 [self.responseSignal sendNext:response[@"name"]];
+                [self decrementCountAndCheckForCompletion];
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                 [self.responseSignal sendError:error];
+                [self decrementCountAndCheckForCompletion];
             }];
         } else {
             NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[database getURLForDatabaseWithBarcode:modifiedBarcode]]];
@@ -82,12 +86,23 @@
                 } else {
                     [self.responseSignal sendNext:[string substringWithRange:searchResult]];
                 }
+                
+                [self decrementCountAndCheckForCompletion];
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                 [self.responseSignal sendError:error];
+                [self decrementCountAndCheckForCompletion];
             }];
             
             [operation start];
         }
+    }
+}
+
+- (void)decrementCountAndCheckForCompletion {
+    self.count--;
+    
+    if (self.count == 0) {
+        [self.responseSignal sendCompleted];
     }
 }
 

@@ -22,6 +22,7 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
 @property (nonatomic) NSString *barcodeURL2;
 @property (nonatomic) GLBarcodeManager *manager;
 @property (nonatomic) RACSubject *receiveInternetResponseSignal;
+@property (nonatomic) NSMutableArray *tempNames;
 @end
 
 @implementation GLTableViewController
@@ -35,12 +36,17 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
     self.receiveInternetResponseSignal = [RACSubject subject];
     
     [self.receiveInternetResponseSignal subscribeNext:^(id x) {
-        NSLog(@"Type of x %@", NSStringFromClass([x class]));
         NSLog(@"%@", x);
+        [self.tempNames addObject:x];
     } error:^(NSError *error) {
         NSLog(@"Error fetching from database %@", error);
     } completed:^{
         NSLog(@"Completed fetching from database");
+        [self didGetNamesFromServers];
+    }];
+    
+    [self.receiveInternetResponseSignal subscribeCompleted:^{
+        NSLog(@"@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
     }];
     
     self.manager = [GLBarcodeManager sharedManagerWithSignal:self.receiveInternetResponseSignal];
@@ -165,6 +171,24 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
     NSLog(@"%@", [data description]);
     
     [self.manager fetchNameOfItemWithBarcode:data]; //returns values on signal receiveInternetResponseSignal
+}
+
+- (void)didGetNamesFromServers {
+    NSMutableOrderedSet *resultSet;
+    NSMutableArray *sets = [NSMutableArray new];
+    NSCharacterSet *charactersToSplitOn = [NSCharacterSet characterSetWithCharactersInString:@" ,"];
+    
+    for (NSString *name in self.tempNames) {
+        [sets addObject:[[NSOrderedSet alloc] initWithArray:[[name lowercaseString] componentsSeparatedByCharactersInSet:charactersToSplitOn]]];
+    }
+    
+    resultSet = sets[0];
+    
+    for (int i = 1; i < [sets count]; i++) {
+        [resultSet intersectOrderedSet:sets[i]];
+    }
+    
+    NSLog(@"Result %@", resultSet);
 }
 
 @end
