@@ -8,13 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import "GLBarcodeDatabase.h"
+#import "ReactiveCocoa/ReactiveCocoa.h"
 
 @interface GLBarcodeManager : NSObject
 
-+ (GLBarcodeManager *)sharedManager;
++ (GLBarcodeManager *)sharedManagerWithSignal:(RACSignal *)responseSignal;
+
+- (instancetype)initWithSignal:(RACSubject *)responseSignal;
 
 - (void)addBarcodeDatabaseWithURL:(NSString *)url withReturnType:(enum GLBarcodeDatabaseReturnType)returnType andSearchBlock:(NSRange (^)(NSString*string, NSString *barcode))searchBlock;
 
-- (NSMutableArray *)fetchNameOfItemWithBarcode:(NSString *)barcode;
+- (void)addBarcodeDatabaseWithURL:(NSString *)url withReturnType:(enum GLBarcodeDatabaseReturnType)returnType searchBlock:(NSRange (^)(NSString *, NSString *))searchBlock andBarcodeModifier:(NSString *(^)(NSString *))barcodeBlock;
+
+- (void)fetchNameOfItemWithBarcode:(NSString *)barcode;
 
 @end

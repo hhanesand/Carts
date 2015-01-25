@@ -13,26 +13,28 @@
 @interface GLBarcodeManager()
 @property (nonatomic) NSMutableArray *databases;
 @property (nonatomic) AFHTTPRequestOperationManager *manager;
+@property (nonatomic, weak) RACSubject *responseSignal;
 @end
 
 @implementation GLBarcodeManager
 
-+ (GLBarcodeManager *)sharedManager {
++ (GLBarcodeManager *)sharedManagerWithSignal:(RACSubject *)responseSignal {
     static GLBarcodeManager *sharedBarcodeManager = nil;
     
     @synchronized(self) {
         if (sharedBarcodeManager == nil) {
-            sharedBarcodeManager = [[GLBarcodeManager alloc] init];
+            sharedBarcodeManager = [[GLBarcodeManager alloc] initWithSignal:responseSignal];
         }
     }
     
     return sharedBarcodeManager;
 }
 
-- (instancetype)init {
+- (instancetype)initWithSignal:(RACSubject *)responseSignal {
     if (self = [super init]) {
         self.databases = [NSMutableArray new];
         self.manager = [AFHTTPRequestOperationManager manager];
+        self.responseSignal = responseSignal;
     }
     
     return self;
@@ -47,44 +49,46 @@
     [self addBarcodeDatabase:[[GLBarcodeDatabase alloc] initWithNameOfDatabase:url returnType:returnType andSearchBlock:searchBlock]];
 }
 
-- (NSMutableArray *)fetchNameOfItemWithBarcode:(NSString *)barcode {
+- (void)addBarcodeDatabaseWithURL:(NSString *)url withReturnType:(GLBarcodeDatabaseReturnType)returnType searchBlock:(NSRange (^)(NSString*string, NSString *barcode))searchBlock andBarcodeModifier:(NSString *(^)(NSString *))barcodeBlock {
+    
+    [self addBarcodeDatabase:[[GLBarcodeDatabase alloc] initWithNameOfDatabase:url returnType:returnType searchBlock:searchBlock andBarcodeModifier:barcodeBlock]];
+}
+
+- (void)fetchNameOfItemWithBarcode:(NSString *)barcode {
     if ([self.databases count] == 0) {
         NSLog(@"Error, there are no databases to fetch item names from.");
     }
     
-    NSMutableArray *names = [NSMutableArray new];
-    
     for (GLBarcodeDatabase *database in self.databases) {
+        NSString *modifiedBarcode = database.barcodeBlock(barcode);
+        
         if (database.returnType == GLBarcodeDatabaseJSON) {
-            [self.manager GET:[database getURLForDatabaseWithBarcode:barcode] parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *response) {
+            [self.manager GET:[database getURLForDatabaseWithBarcode:modifiedBarcode] parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *response) {
                 //ugly hack for now - I need a way to get the key for the name from the user...
-                [names addObject:response[@"name"]];
+                [self.responseSignal sendNext:response[@"name"]];
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                NSLog(@"Error fetching from JSON database : %@", error);
+                [self.responseSignal sendError:error];
             }];
         } else {
-            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[database getURLForDatabaseWithBarcode:barcode]]];
+            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[database getURLForDatabaseWithBarcode:modifiedBarcode]]];
             AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
             
             [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
                 NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-                NSRange searchResult = database.searchBlock(string, barcode);
+                NSRange searchResult = database.searchBlock(string, modifiedBarcode);
                 
                 if (searchResult.location == NSNotFound) {
-
+                    [self.responseSignal sendError:[NSError errorWithDomain:@"Not found" code:1 userInfo:nil]];
                 } else {
-                    [names addObject:[string substringWithRange:searchResult]];
-
+                    [self.responseSignal sendNext:[string substringWithRange:searchResult]];
                 }
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                NSLog(@"Error fetching from HTML database : %@", error);
+                [self.responseSignal sendError:error];
             }];
             
             [operation start];
         }
     }
-    
-    return names;
 }
 
 @end

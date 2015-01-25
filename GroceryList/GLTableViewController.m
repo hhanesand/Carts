@@ -21,6 +21,7 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
 @property (nonatomic) NSString *barcodeURL;
 @property (nonatomic) NSString *barcodeURL2;
 @property (nonatomic) GLBarcodeManager *manager;
+@property (nonatomic) RACSubject *receiveInternetResponseSignal;
 @end
 
 @implementation GLTableViewController
@@ -31,7 +32,18 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
     self.barcodes = [NSMutableArray new];
     self.barcodeURL2 = @"http://upcmachine.com/search/list?commit=Go%2521&country=2&query=%@";
     
-    self.manager = [GLBarcodeManager sharedManager];
+    self.receiveInternetResponseSignal = [RACSubject subject];
+    
+    [self.receiveInternetResponseSignal subscribeNext:^(id x) {
+        NSLog(@"Type of x %@", NSStringFromClass([x class]));
+        NSLog(@"%@", x);
+    } error:^(NSError *error) {
+        NSLog(@"Error fetching from database %@", error);
+    } completed:^{
+        NSLog(@"Completed fetching from database");
+    }];
+    
+    self.manager = [GLBarcodeManager sharedManagerWithSignal:self.receiveInternetResponseSignal];
     
     [self.manager addBarcodeDatabaseWithURL:@"http://www.outpan.com/api/get-product.php?apikey=4308c0742cfa452985e8cd4d569336aa&barcode=%@" withReturnType:GLBarcodeDatabaseJSON andSearchBlock:^NSRange(NSString *string, NSString *barcode) {return NSMakeRange(0, 0);}];
     
@@ -75,16 +87,19 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
         }
     }];
     
-    [self.manager addBarcodeDatabaseWithURL:@"http://www.hammerwall.com/upc/%@/" withReturnType:GLBarcodeDatabaseHTLM andSearchBlock:^NSRange(NSString *string, NSString *barcode) {
+    [self.manager addBarcodeDatabaseWithURL:@"http://www.hammerwall.com/upc/%@/" withReturnType:GLBarcodeDatabaseHTLM searchBlock:^NSRange(NSString *string, NSString *barcode) {
         NSRange range = [string rangeOfString:@"Item: " options:NSLiteralSearch];
         
         if (range.location == NSNotFound) {
-
+            
             return range;
         } else {
             NSRange range1 = [string rangeOfString:@"<br>" options:NSLiteralSearch range:NSMakeRange(range.location, 100)];
             return NSMakeRange(range.length + range.location, range1.location - (range.length + range.location));
         }
+
+    } andBarcodeModifier:^NSString *(NSString *barcode) {
+        return [barcode substringFromIndex:1];
     }];
 }
 
@@ -149,7 +164,7 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
 
     NSLog(@"%@", [data description]);
     
-    NSLog(@"Results %@", [self.manager fetchNameOfItemWithBarcode:data]);
+    [self.manager fetchNameOfItemWithBarcode:data]; //returns values on signal receiveInternetResponseSignal
 }
 
 @end

@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "ZBarSDK.h"
+#import "ReactiveCocoa/ReactiveCocoa.h"
 
 @interface GLTableViewController : UITableViewController <ZBarReaderDelegate>
+
+
 
 @end
