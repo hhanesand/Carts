@@ -21,7 +21,6 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
 @property (nonatomic) NSString *barcodeURL;
 @property (nonatomic) NSString *barcodeURL2;
 @property (nonatomic) GLBarcodeManager *manager;
-@property (nonatomic) RACSubject *receiveInternetResponseSignal;
 @property (nonatomic) NSMutableArray *tempNames;
 @end
 
@@ -32,25 +31,20 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
     
     self.barcodes = [NSMutableArray new];
     self.barcodeURL2 = @"http://upcmachine.com/search/list?commit=Go%2521&country=2&query=%@";
+    self.tempNames = [NSMutableArray new];
     
-    self.receiveInternetResponseSignal = [RACSubject subject];
+    self.manager = [[GLBarcodeManager alloc] init];
     
-    [self.receiveInternetResponseSignal subscribeNext:^(id x) {
-        NSLog(@"%@", x);
+    [self.manager.receiveInternetResponseSignal subscribeNext:^(id x) {
+        NSLog(@"Recieved name : %@", x);
         [self.tempNames addObject:x];
     } error:^(NSError *error) {
-        NSLog(@"Error fetching from database %@", error);
+        NSLog(@"Error during net request : %@", error);
     } completed:^{
-        NSLog(@"Completed fetching from database");
+        NSLog(@"Completed fetching names from the internet");
         [self didGetNamesFromServers];
     }];
-    
-    [self.receiveInternetResponseSignal subscribeCompleted:^{
-        NSLog(@"@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-    }];
-    
-    self.manager = [GLBarcodeManager sharedManagerWithSignal:self.receiveInternetResponseSignal];
-    
+
     [self.manager addBarcodeDatabaseWithURL:@"http://www.outpan.com/api/get-product.php?apikey=4308c0742cfa452985e8cd4d569336aa&barcode=%@" withReturnType:GLBarcodeDatabaseJSON andSearchBlock:^NSRange(NSString *string, NSString *barcode) {return NSMakeRange(0, 0);}];
     
     [self.manager addBarcodeDatabaseWithURL:@"http://upcdatabase.idb.s1.jcink.com/upc.php?act=lookup&upc=%@" withReturnType:GLBarcodeDatabaseHTLM andSearchBlock:^NSRange(NSString *string, NSString *barcode) {
@@ -119,6 +113,7 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
     barcodeViewController.supportedOrientationsMask = ZBarOrientationMaskAll;
 
     [barcodeViewController.scanner setSymbology:ZBAR_I25 config:ZBAR_CFG_ENABLE to:0];
+    barcodeViewController.showsCameraControls = NO;
     
     barcodeViewController.navigationItem.title = @"Scan Barcode";
     [self.navigationController pushViewController:barcodeViewController animated:YES];
@@ -159,6 +154,8 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [self.navigationController popViewControllerAnimated:YES];
+    
     id<NSFastEnumeration> results = [info objectForKey:ZBarReaderControllerResults];
     
     NSString *data;
@@ -178,8 +175,10 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
     NSMutableArray *sets = [NSMutableArray new];
     NSCharacterSet *charactersToSplitOn = [NSCharacterSet characterSetWithCharactersInString:@" ,"];
     
+    NSLog(@"Temp names : %@", self.tempNames);
+    
     for (NSString *name in self.tempNames) {
-        [sets addObject:[[NSOrderedSet alloc] initWithArray:[[name lowercaseString] componentsSeparatedByCharactersInSet:charactersToSplitOn]]];
+        [sets addObject:[[NSMutableOrderedSet alloc] initWithArray:[[name lowercaseString] componentsSeparatedByCharactersInSet:charactersToSplitOn]]];
     }
     
     resultSet = sets[0];
@@ -188,7 +187,15 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
         [resultSet intersectOrderedSet:sets[i]];
     }
     
-    NSLog(@"Result %@", resultSet);
+    NSArray *array = [resultSet array];
+    NSString *concat = @"";
+    
+    for (NSString *strings in array) {
+        concat = [concat stringByAppendingString:[NSString stringWithFormat:@"%@ ", strings]];
+    }
+    
+    [self.barcodes addObject:concat];
+    [self.tableView reloadData];
 }
 
 @end

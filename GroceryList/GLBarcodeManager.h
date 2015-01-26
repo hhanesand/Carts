@@ -12,9 +12,9 @@
 
 @interface GLBarcodeManager : NSObject
 
-+ (GLBarcodeManager *)sharedManagerWithSignal:(RACSignal *)responseSignal;
+@property (nonatomic) RACSubject *receiveInternetResponseSignal;
 
-- (instancetype)initWithSignal:(RACSubject *)responseSignal;
++ (GLBarcodeManager *)sharedManager;
 
 - (void)addBarcodeDatabaseWithURL:(NSString *)url withReturnType:(enum GLBarcodeDatabaseReturnType)returnType andSearchBlock:(NSRange (^)(NSString*string, NSString *barcode))searchBlock;
 

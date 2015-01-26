@@ -13,29 +13,28 @@
 @interface GLBarcodeManager()
 @property (nonatomic) NSMutableArray *databases;
 @property (nonatomic) AFHTTPRequestOperationManager *manager;
-@property (nonatomic, weak) RACSubject *responseSignal;
 @property (nonatomic) int count;
 @end
 
 @implementation GLBarcodeManager
 
-+ (GLBarcodeManager *)sharedManagerWithSignal:(RACSubject *)responseSignal {
-    static GLBarcodeManager *sharedBarcodeManager = nil;
-    
-    @synchronized(self) {
-        if (sharedBarcodeManager == nil) {
-            sharedBarcodeManager = [[GLBarcodeManager alloc] initWithSignal:responseSignal];
-        }
-    }
-    
-    return sharedBarcodeManager;
-}
+//+ (GLBarcodeManager *)sharedManager {
+//    static GLBarcodeManager *sharedBarcodeManager = nil;
+//    
+//    @synchronized(self) {
+//        if (sharedBarcodeManager == nil) {
+//            sharedBarcodeManager = [[GLBarcodeManager alloc] init];
+//        }
+//    }
+//    
+//    return sharedBarcodeManager;
+//}
 
-- (instancetype)initWithSignal:(RACSubject *)responseSignal {
+- (instancetype)init {
     if (self = [super init]) {
         self.databases = [NSMutableArray new];
         self.manager = [AFHTTPRequestOperationManager manager];
-        self.responseSignal = responseSignal;
+        self.receiveInternetResponseSignal = [RACSubject subject];
         self.count = 5;
     }
     
@@ -61,16 +60,19 @@
         NSLog(@"Error, there are no databases to fetch item names from.");
     }
     
+    NSLog(@"Fetching results");
+    
     for (GLBarcodeDatabase *database in self.databases) {
         NSString *modifiedBarcode = database.barcodeBlock(barcode);
         
         if (database.returnType == GLBarcodeDatabaseJSON) {
             [self.manager GET:[database getURLForDatabaseWithBarcode:modifiedBarcode] parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *response) {
                 //ugly hack for now - I need a way to get the key for the name from the user...
-                [self.responseSignal sendNext:response[@"name"]];
+                NSLog(@"%@", response[@"name"]);
+                [self.receiveInternetResponseSignal sendNext:response[@"name"]];
                 [self decrementCountAndCheckForCompletion];
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                [self.responseSignal sendError:error];
+                //[self.receiveInternetResponseSignal sendError:error];
                 [self decrementCountAndCheckForCompletion];
             }];
         } else {
@@ -82,14 +84,15 @@
                 NSRange searchResult = database.searchBlock(string, modifiedBarcode);
                 
                 if (searchResult.location == NSNotFound) {
-                    [self.responseSignal sendError:[NSError errorWithDomain:@"Not found" code:1 userInfo:nil]];
+                    //[self.receiveInternetResponseSignal sendError:[NSError errorWithDomain:@"Not found" code:1 userInfo:nil]];
                 } else {
-                    [self.responseSignal sendNext:[string substringWithRange:searchResult]];
+                    NSLog(@"%@", [string substringWithRange:searchResult]);
+                    [self.receiveInternetResponseSignal sendNext:[string substringWithRange:searchResult]];
                 }
-                
+            
                 [self decrementCountAndCheckForCompletion];
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                [self.responseSignal sendError:error];
+                //[self.receiveInternetResponseSignal sendError:error];
                 [self decrementCountAndCheckForCompletion];
             }];
             
@@ -102,7 +105,7 @@
     self.count--;
     
     if (self.count == 0) {
-        [self.responseSignal sendCompleted];
+        [self.receiveInternetResponseSignal sendCompleted];
     }
 }
 
