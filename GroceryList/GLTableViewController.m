@@ -170,32 +170,82 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
     [self.manager fetchNameOfItemWithBarcode:data]; //returns values on signal receiveInternetResponseSignal
 }
 
+- (IBAction)didPressTestButton:(id)sender {
+
+}
+
 - (void)didGetNamesFromServers {
-    NSMutableOrderedSet *resultSet;
-    NSMutableArray *sets = [NSMutableArray new];
-    NSCharacterSet *charactersToSplitOn = [NSCharacterSet characterSetWithCharactersInString:@" ,"];
+    NSMutableDictionary *wordDictionary = [[NSMutableDictionary alloc] init];
     
-    NSLog(@"Temp names : %@", self.tempNames);
-    
-    for (NSString *name in self.tempNames) {
-        [sets addObject:[[NSMutableOrderedSet alloc] initWithArray:[[name lowercaseString] componentsSeparatedByCharactersInSet:charactersToSplitOn]]];
+    for (NSString *nameOfScannedItem in self.tempNames) {
+        NSArray *scannedItemWords = [nameOfScannedItem componentsSeparatedByString:@" "];
+        
+        for (NSString *word in scannedItemWords) {
+            int numberOfOccurences = [[wordDictionary objectForKey:[word lowercaseString]] intValue];
+            
+            if (numberOfOccurences == 0) {
+                //this word has not been added to the dictionary yet...
+                NSArray *allKeys = [wordDictionary allKeys];
+                
+                for (NSString *string in allKeys) {
+                    //... but let's check if something similar already exists
+                    if ([self compareString:string toString:word] > 0.8f) {
+                        int newValue = [[wordDictionary objectForKey:string] intValue];
+                        [wordDictionary setObject:[NSNumber numberWithInt:++newValue] forKey:string];
+                        continue;
+                    }
+                }
+                
+                //nope, nothing like this word is in the dictionary, so we add a new entry
+                [wordDictionary setObject:[NSNumber numberWithInt:1] forKey:word];
+            } else {
+                //already exists, so we increment occurence
+                [wordDictionary setObject:[NSNumber numberWithInt:++numberOfOccurences] forKey:[word lowercaseString]];
+            }
+            
+        }
     }
     
-    resultSet = sets[0];
+    NSLog(@"Word dictionary %@", wordDictionary);
+    NSMutableArray *allKeys = [[wordDictionary allKeys] mutableCopy];
+    NSMutableArray *result = [NSMutableArray arrayWithCapacity:3];
     
-    for (int i = 1; i < [sets count]; i++) {
-        [resultSet intersectOrderedSet:sets[i]];
+    int high = 0;
+    NSInteger pos = 0;
+    
+    //find the 3 words with the highest occurence
+    for (int i = 0; i < 2; i++) {
+        for (NSString *key in allKeys) {
+            if ([[wordDictionary objectForKey:key] intValue] >= high) {
+                pos = [allKeys indexOfObject:key];
+                high = [[wordDictionary objectForKey:key] intValue];
+            }
+        }
+    
+        [result addObject:allKeys[pos]];
+        [allKeys removeObjectAtIndex:pos];
+        
+        high = 0;
+        pos = 0;
     }
     
-    NSArray *array = [resultSet array];
-    NSString *concat = @"";
+    NSLog(@"Result %@", result);
     
-    for (NSString *strings in array) {
-        concat = [concat stringByAppendingString:[NSString stringWithFormat:@"%@ ", strings]];
-    }
-    
-    [self.barcodes addObject:concat];
+    [self.barcodes addObject:[result componentsJoinedByString:@" "]];
     [self.tableView reloadData];
+}
+
+//returns the percentage of similar characters in a string : comparing "123" and "123" will return 1.0, while comparing "123$" and "1234" will return 0.75.
+- (int)compareString:(NSString *)a toString:(NSString *)b {
+    double similarCharacters = 0.0;
+    
+    for (int i = 0; i < MIN(a.length, b.length); i++) {
+        if ([a characterAtIndex:i] == [b characterAtIndex:i]) {
+            similarCharacters++;
+        }
+    }
+    
+    return similarCharacters / (double) MIN(a.length, b.length);
 }
 
 @end

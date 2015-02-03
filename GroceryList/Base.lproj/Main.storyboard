@@ -54,6 +54,11 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Grocery List" id="WSj-bp-MT7">
+                        <barButtonItem key="leftBarButtonItem" title="Test" id="m8X-Xf-eTH">
+                            <connections>
+                                <action selector="didPressTestButton:" destination="nIw-Fu-zoA" id="PCi-gv-X02"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="+" id="ive-CY-NDV">
                             <connections>
                                 <action selector="didTapAddGroceryBarButton:" destination="nIw-Fu-zoA" id="uoJ-kE-cHL"/>
