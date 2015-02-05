@@ -47,61 +47,18 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
         [self didGetNamesFromServers];
     }];
 
-    [self.manager addBarcodeDatabaseWithURL:@"http://www.outpan.com/api/get-product.php?apikey=4308c0742cfa452985e8cd4d569336aa&barcode=%@" withReturnType:GLBarcodeDatabaseJSON andSearchBlock:^NSRange(NSString *string, NSString *barcode) {return NSMakeRange(0, 0);}];
+    [self.manager addBarcodeDatabase:[[GLBarcodeDatabase alloc] initWithNameOfDatabase:@"http://www.outpan.com/api/get-product.php?apikey=4308c0742cfa452985e8cd4d569336aa&barcode=%@" withReturnType:GLBarcodeDatabaseJSON andPath:@"name"]];
     
-    [self.manager addBarcodeDatabaseWithURL:@"http://upcdatabase.idb.s1.jcink.com/upc.php?act=lookup&upc=%@" withReturnType:GLBarcodeDatabaseHTLM andSearchBlock:^NSRange(NSString *string, NSString *barcode) {
-        NSRange range = [string rangeOfString:@"Description" options:NSLiteralSearch];
-        
-        if (range.location == NSNotFound) {
-            return range;
-        } else {
-            long start = range.location + range.length + 29;
-            
-            NSRange range1 = [string rangeOfString:@"<" options:NSLiteralSearch range:NSMakeRange(start, 100)];
-            long end = range1.location;
-            
-            return GLMakeRange(start, end);
-        }
-    }];
+    [self.manager addBarcodeDatabase:[[GLBarcodeDatabase alloc] initWithNameOfDatabase:@"http://upcdatabase.idb.s1.jcink.com/upc.php?act=lookup&upc=%@" withReturnType:GLBarcodeDatabaseHTLM andPath:@"/html/body/center[1]/table/tbody/tr[4]/td[3]"]];
     
-    [self.manager addBarcodeDatabaseWithURL:@"http://upcmachine.com/search/list?commit=Go%2521&country=2&query=%@" withReturnType:GLBarcodeDatabaseHTLM andSearchBlock:^NSRange(NSString *string, NSString *barcode) {
-        NSRange range = [string rangeOfString:[NSString stringWithFormat:@"<td>%@</td>", barcode] options:NSLiteralSearch];
-        
-        if (range.location == NSNotFound) {
-            return range;
-        } else {
-            long start = range.location + range.length;
-            NSRange range1 = [string rangeOfString:@"<td>" options:NSLiteralSearch range:NSMakeRange(start, 100)];
-            NSRange range2 = [string rangeOfString:@"</td>" options:NSLiteralSearch range:NSMakeRange(range1.location, 100)];
-            
-            return GLMakeRange(range1.location + range1.length, range2.location);
-        }
-    }];
+    [self.manager addBarcodeDatabase:[[GLBarcodeDatabase alloc] initWithNameOfDatabase:@"http://upcmachine.com/search/list?commit=Go%2521&country=2&query=%@" withReturnType:GLBarcodeDatabaseHTLM andPath:@"//*[@id=\"main\"]/div[1]/table/tbody/tr[1]/td/table/tbody/tr[2]/td[2]"]];
     
-    [self.manager addBarcodeDatabaseWithURL:@"http://www.compariola.com/?barcode=%@" withReturnType:GLBarcodeDatabaseHTLM andSearchBlock:^NSRange(NSString *string, NSString *barcode) {
-        NSRange range = [string rangeOfString:@"<h1>" options:NSLiteralSearch];
-        
-        if (range.location == NSNotFound) {
-            return range;
-        } else {
-            NSRange range1 = [string rangeOfString:@"</h1>" options:NSLiteralSearch range:NSMakeRange(range.location, 100)];
-            return GLMakeRange(range.location + range.length, range1.location);
-        }
-    }];
+    [self.manager addBarcodeDatabase:[[GLBarcodeDatabase alloc] initWithNameOfDatabase:@"http://www.compariola.com/?barcode=%@" withReturnType:GLBarcodeDatabaseHTLM andPath:@"//*[@id=\"headerTxt\"]/h1"]];
     
-    [self.manager addBarcodeDatabaseWithURL:@"http://www.hammerwall.com/upc/%@/" withReturnType:GLBarcodeDatabaseHTLM searchBlock:^NSRange(NSString *string, NSString *barcode) {
-        NSRange range = [string rangeOfString:@"Item: " options:NSLiteralSearch];
-        
-        if (range.location == NSNotFound) {
-            
-            return range;
-        } else {
-            NSRange range1 = [string rangeOfString:@"<br>" options:NSLiteralSearch range:NSMakeRange(range.location, 100)];
-            return GLMakeRange(range.location + range.length, range1.location);
-        }
-    } andBarcodeModifier:^NSString *(NSString *barcode) {
-        return [barcode substringFromIndex:1];
-    }];
+    //looks like hammerwall is down?
+//    [self.manager addBarcodeDatabase:[[GLBarcodeDatabase alloc] initWithNameOfDatabase:@"http://www.hammerwall.com/upc/%@/" withReturnType:GLBarcodeDatabaseHTLM andPath:<#(NSString *)#> andBarcodeModifier:^NSString *(NSString *barcode) {
+//        return [barcode substringFromIndex:1];
+//    }];
 }
 
 - (void)didReceiveMemoryWarning {
