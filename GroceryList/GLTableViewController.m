@@ -15,6 +15,8 @@
 
 static NSString *reuseIdentifier = @"GLTableViewCell";
 
+#define GLMakeRange(a, b) NSMakeRange(a, b - (a))
+
 @interface GLTableViewController()
 @property (nonatomic) NSMutableArray *barcodes;
 @property (nonatomic) NSString *apiKey;
@@ -58,7 +60,7 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
             NSRange range1 = [string rangeOfString:@"<" options:NSLiteralSearch range:NSMakeRange(start, 100)];
             long end = range1.location;
             
-            return NSMakeRange(start, end - start);
+            return GLMakeRange(start, end);
         }
     }];
     
@@ -72,7 +74,7 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
             NSRange range1 = [string rangeOfString:@"<td>" options:NSLiteralSearch range:NSMakeRange(start, 100)];
             NSRange range2 = [string rangeOfString:@"</td>" options:NSLiteralSearch range:NSMakeRange(range1.location, 100)];
             
-            return NSMakeRange(range1.location + range1.length, range2.location - (range1.location + range1.length));
+            return GLMakeRange(range1.location + range1.length, range2.location);
         }
     }];
     
@@ -83,7 +85,7 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
             return range;
         } else {
             NSRange range1 = [string rangeOfString:@"</h1>" options:NSLiteralSearch range:NSMakeRange(range.location, 100)];
-            return NSMakeRange(range.length + range.location, range1.location - (range.length + range.location));
+            return GLMakeRange(range.location + range.length, range1.location);
         }
     }];
     
@@ -95,9 +97,8 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
             return range;
         } else {
             NSRange range1 = [string rangeOfString:@"<br>" options:NSLiteralSearch range:NSMakeRange(range.location, 100)];
-            return NSMakeRange(range.length + range.location, range1.location - (range.length + range.location));
+            return GLMakeRange(range.location + range.length, range1.location);
         }
-
     } andBarcodeModifier:^NSString *(NSString *barcode) {
         return [barcode substringFromIndex:1];
     }];
@@ -114,6 +115,7 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
 
     [barcodeViewController.scanner setSymbology:ZBAR_I25 config:ZBAR_CFG_ENABLE to:0];
     barcodeViewController.showsCameraControls = NO;
+    barcodeViewController.showsZBarControls = NO;
     
     barcodeViewController.navigationItem.title = @"Scan Barcode";
     [self.navigationController pushViewController:barcodeViewController animated:YES];
@@ -174,6 +176,7 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
 
 }
 
+//Called after database fetching complete. Adds the best name for the item it can find by analyzing the occurences of words in the strings.
 - (void)didGetNamesFromServers {
     NSMutableDictionary *wordDictionary = [[NSMutableDictionary alloc] init];
     
@@ -233,6 +236,12 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
     
     [self.barcodes addObject:[result componentsJoinedByString:@" "]];
     [self.tableView reloadData];
+    
+    [self fetchPicture:[result componentsJoinedByString:@" "]];
+}
+
+- (void)fetchPicture:(NSString *)string {
+
 }
 
 //returns the percentage of similar characters in a string : comparing "123" and "123" will return 1.0, while comparing "123$" and "1234" will return 0.75.

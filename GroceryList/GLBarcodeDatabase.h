@@ -6,12 +6,13 @@
 //
 //
 
-#import "GLBarcodeManager.h"
+#import <Foundation/Foundation.h>
+@class GLBarcodeManager;
 
-typedef enum GLBarcodeDatabaseReturnType {
+typedef NS_ENUM(NSInteger, GLBarcodeDatabaseReturnType) {
     GLBarcodeDatabaseJSON,
     GLBarcodeDatabaseHTLM
-} GLBarcodeDatabaseReturnType;
+};
 
 @interface GLBarcodeDatabase : NSObject
 
@@ -20,9 +21,8 @@ typedef enum GLBarcodeDatabaseReturnType {
 @property (nonatomic, copy) NSRange (^searchBlock)(NSString *,NSString *);
 @property (nonatomic, copy) NSString *(^barcodeBlock)(NSString *);
 
-- (instancetype)initWithNameOfDatabase:(NSString *)url returnType:(GLBarcodeDatabaseReturnType)returnType andSearchBlock:(NSRange (^)(NSString *string, NSString *barcode))searchBlock;
-
-- (instancetype)initWithNameOfDatabase:(NSString *)url returnType:(GLBarcodeDatabaseReturnType)returnType searchBlock:(NSRange (^)(NSString *string, NSString *barcode))searchBlock andBarcodeModifier:(NSString * (^)(NSString *barcode))barcodeBlock ;
+//if GLBarcodeDatabaseReturnT
+- (instancetype)initWithNameOfDatabase:(NSString *)url withReturnType:(GLBarcodeDatabaseReturnType)returnType andPath:(NSString *)path andBarcodeModifier:(NSString * (^)(NSString *barcode))barcodeBlock;
 
 - (NSString *)getURLForDatabaseWithBarcode:(NSString *)barcode;
 

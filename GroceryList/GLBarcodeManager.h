@@ -14,11 +14,11 @@
 
 @property (nonatomic) RACSubject *receiveInternetResponseSignal;
 
-+ (GLBarcodeManager *)sharedManager;
+- (void)addBarcodeDatabase:(GLBarcodeDatabase *)database;
 
-- (void)addBarcodeDatabaseWithURL:(NSString *)url withReturnType:(enum GLBarcodeDatabaseReturnType)returnType andSearchBlock:(NSRange (^)(NSString*string, NSString *barcode))searchBlock;
+- (void)addBarcodeDatabaseWithURL:(NSString *)url withReturnType:(GLBarcodeDatabaseReturnType)returnType andSearchBlock:(NSRange (^)(NSString*string, NSString *barcode))searchBlock;
 
-- (void)addBarcodeDatabaseWithURL:(NSString *)url withReturnType:(enum GLBarcodeDatabaseReturnType)returnType searchBlock:(NSRange (^)(NSString *, NSString *))searchBlock andBarcodeModifier:(NSString *(^)(NSString *))barcodeBlock;
+- (void)addBarcodeDatabaseWithURL:(NSString *)url withReturnType:(GLBarcodeDatabaseReturnType)returnType searchBlock:(NSRange (^)(NSString *, NSString *))searchBlock andBarcodeModifier:(NSString *(^)(NSString *))barcodeBlock;
 
 - (void)fetchNameOfItemWithBarcode:(NSString *)barcode;
 

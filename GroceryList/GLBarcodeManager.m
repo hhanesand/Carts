@@ -18,18 +18,6 @@
 
 @implementation GLBarcodeManager
 
-//+ (GLBarcodeManager *)sharedManager {
-//    static GLBarcodeManager *sharedBarcodeManager = nil;
-//    
-//    @synchronized(self) {
-//        if (sharedBarcodeManager == nil) {
-//            sharedBarcodeManager = [[GLBarcodeManager alloc] init];
-//        }
-//    }
-//    
-//    return sharedBarcodeManager;
-//}
-
 - (instancetype)init {
     if (self = [super init]) {
         self.databases = [NSMutableArray new];
