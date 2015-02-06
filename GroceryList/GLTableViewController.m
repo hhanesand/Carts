@@ -49,9 +49,9 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
 
     [self.manager addBarcodeDatabase:[[GLBarcodeDatabase alloc] initWithNameOfDatabase:@"http://www.outpan.com/api/get-product.php?apikey=4308c0742cfa452985e8cd4d569336aa&barcode=%@" withReturnType:GLBarcodeDatabaseJSON andPath:@"name"]];
     
-    [self.manager addBarcodeDatabase:[[GLBarcodeDatabase alloc] initWithNameOfDatabase:@"http://upcdatabase.idb.s1.jcink.com/upc.php?act=lookup&upc=%@" withReturnType:GLBarcodeDatabaseHTLM andPath:@"/html/body/center[1]/table/tbody/tr[4]/td[3]"]];
+    [self.manager addBarcodeDatabase:[[GLBarcodeDatabase alloc] initWithNameOfDatabase:@"http://upcdatabase.idb.s1.jcink.com/upc.php?act=lookup&upc=%@" withReturnType:GLBarcodeDatabaseHTLM andPath:@"html/body/center[1]/table/tbody/tr[4]/td[3]"]];
     
-    [self.manager addBarcodeDatabase:[[GLBarcodeDatabase alloc] initWithNameOfDatabase:@"http://upcmachine.com/search/list?commit=Go%2521&country=2&query=%@" withReturnType:GLBarcodeDatabaseHTLM andPath:@"//*[@id=\"main\"]/div[1]/table/tbody/tr[1]/td/table/tbody/tr[2]/td[2]"]];
+    [self.manager addBarcodeDatabase:[[GLBarcodeDatabase alloc] initWithNameOfDatabase:@"http://upcmachine.com/search/list?commit=Go%2521&country=2&query=%@" withReturnType:GLBarcodeDatabaseHTLM andPath:@"html/body/div[1]/div[3]/div[1]/table/tbody/tr[1]/td/table/tbody/tr[2]/td[2]"]];
     
     [self.manager addBarcodeDatabase:[[GLBarcodeDatabase alloc] initWithNameOfDatabase:@"http://www.compariola.com/?barcode=%@" withReturnType:GLBarcodeDatabaseHTLM andPath:@"//*[@id=\"headerTxt\"]/h1"]];
     
@@ -130,7 +130,7 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
 }
 
 - (IBAction)didPressTestButton:(id)sender {
-
+    [self.manager fetchNameOfItemWithBarcode:@"0012000001086"];
 }
 
 //Called after database fetching complete. Adds the best name for the item it can find by analyzing the occurences of words in the strings.
@@ -198,7 +198,7 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
 }
 
 - (void)fetchPicture:(NSString *)string {
-
+    
 }
 
 //returns the percentage of similar characters in a string : comparing "123" and "123" will return 1.0, while comparing "123$" and "1234" will return 0.75.

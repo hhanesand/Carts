@@ -9,7 +9,7 @@
 #import "GLBarcodeManager.h"
 #import "GLBarcodeDatabase.h"
 #import "AFNetworking.h"
-#import "TFHpple.h"
+#import "HTMLReader.h"
 
 @interface GLBarcodeManager()
 @property (nonatomic) NSMutableArray *databases;
@@ -48,11 +48,20 @@
         AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
         
         [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-
+            if (database.returnType == GLBarcodeDatabaseJSON) {
+                NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+                NSLog(@"Dict %@", dict);
+                [self.receiveInternetResponseSignal sendNext:dict[database.path]];
+                NSLog(@"Result %@", dict[database.path]);
+            } else {
+                HTMLDocument *doc = [HTMLDocument documentWithString:[[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]];
+                [doc firstNodeMatchingParsedSelector:<#(HTMLSelector *)#>]
+            }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 
         }];
         
+        [operation start];
 //        if (database.returnType == GLBarcodeDatabaseJSON) {
 //            [self.manager GET:[database getURLForDatabaseWithBarcode:modifiedBarcode] parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *response) {
 //                //ugly hack for now - I need a way to get the key for the name from the user...

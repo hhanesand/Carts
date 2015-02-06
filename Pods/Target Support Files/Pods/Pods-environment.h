@@ -6,6 +6,12 @@
 // project.
 
 
+// HTMLReader
+#define COCOAPODS_POD_AVAILABLE_HTMLReader
+#define COCOAPODS_VERSION_MAJOR_HTMLReader 0
+#define COCOAPODS_VERSION_MINOR_HTMLReader 6
+#define COCOAPODS_VERSION_PATCH_HTMLReader 1
+
 // ReactiveCocoa
 #define COCOAPODS_POD_AVAILABLE_ReactiveCocoa
 #define COCOAPODS_VERSION_MAJOR_ReactiveCocoa 2
@@ -29,10 +35,4 @@
 #define COCOAPODS_VERSION_MAJOR_ReactiveCocoa_no_arc 2
 #define COCOAPODS_VERSION_MINOR_ReactiveCocoa_no_arc 4
 #define COCOAPODS_VERSION_PATCH_ReactiveCocoa_no_arc 4
-
-// hpple
-#define COCOAPODS_POD_AVAILABLE_hpple
-#define COCOAPODS_VERSION_MAJOR_hpple 0
-#define COCOAPODS_VERSION_MINOR_hpple 2
-#define COCOAPODS_VERSION_PATCH_hpple 0
 

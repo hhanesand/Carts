@@ -1,5 +1,5 @@
 PODS:
-  - hpple (0.2.0)
+  - HTMLReader (0.6.1)
   - ReactiveCocoa (2.4.4):
     - ReactiveCocoa/UI (= 2.4.4)
   - ReactiveCocoa/Core (2.4.4):
@@ -9,11 +9,11 @@ PODS:
     - ReactiveCocoa/Core
 
 DEPENDENCIES:
-  - hpple (~> 0.2)
+  - HTMLReader
   - ReactiveCocoa (= 2.4.4)
 
 SPEC CHECKSUMS:
-  hpple: f4eb7c21a8db83ec264e5d614ec7509e10e5adec
+  HTMLReader: dbcd34d10785e73b3763ab4a534ffa65b669acbd
   ReactiveCocoa: 31119068e3dde866bd257cf74e1f06b4023bf387
 
 COCOAPODS: 0.36.0.beta.1
