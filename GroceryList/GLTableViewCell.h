@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface GLTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *label;
+
+- (void)setNameOfProduct:(NSString *)name;
+    
+- (void)setImageOfProduct:(UIImage *)image;
+
 @end

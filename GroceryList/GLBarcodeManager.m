@@ -8,13 +8,18 @@
 
 #import "GLBarcodeManager.h"
 #import "GLBarcodeDatabase.h"
+#import "GLBarcodeItem.h"
+#import "GLBingFetcher.h"
 #import "AFNetworking.h"
 #import "HTMLReader.h"
 
+
+
 @interface GLBarcodeManager()
 @property (nonatomic) NSMutableArray *databases;
+@property (nonatomic) NSMutableArray *barcodeItems;
+@property (nonatomic) GLBingFetcher *bingFetcher;
 @property (nonatomic) AFHTTPRequestOperationManager *manager;
-@property (nonatomic) int count;
 @end
 
 @implementation GLBarcodeManager
@@ -22,9 +27,9 @@
 - (instancetype)init {
     if (self = [super init]) {
         self.databases = [NSMutableArray new];
+        self.bingFetcher = [GLBingFetcher sharedFetcher];
         self.manager = [AFHTTPRequestOperationManager manager];
-        self.receiveInternetResponseSignal = [RACSubject subject];
-        self.count = 5;
+        self.barcodeItemSignal = [RACSubject subject];
     }
     
     return self;
@@ -39,71 +44,120 @@
         NSLog(@"Error, there are no databases to fetch item names from.");
     }
     
-    NSLog(@"Fetching results");
-    
     for (GLBarcodeDatabase *database in self.databases) {
         NSString *modifiedBarcode = database.barcodeBlock(barcode);
         
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[database getURLForDatabaseWithBarcode:modifiedBarcode]]];
         AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
         
+        NSMutableArray *recievedNames = [NSMutableArray new];
+        __block int count = 0;
+        
         [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
             if (database.returnType == GLBarcodeDatabaseJSON) {
                 NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
-                NSLog(@"Dict %@", dict);
-                [self.receiveInternetResponseSignal sendNext:dict[database.path]];
-                NSLog(@"Result %@", dict[database.path]);
+                [recievedNames addObject:dict[database.path]];
             } else {
                 HTMLDocument *doc = [HTMLDocument documentWithString:[[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]];
-                [doc firstNodeMatchingParsedSelector:<#(HTMLSelector *)#>]
+                NSString *htmlElementText = [doc firstNodeMatchingParsedSelector:[HTMLSelector selectorForString:database.path]].innerHTML;
+                [recievedNames addObject:htmlElementText];
+            }
+            
+            if (count == [self.databases count]) {
+                [self didFinishFetchingNames:recievedNames forBarcodeItemWithBarcode:barcode];
+            } else {
+                count++;
             }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-
+            NSLog(@"Error while fetching name from server. %@", error);
+            
+            if (count == [self.databases count]) {
+                [self didFinishFetchingNames:recievedNames forBarcodeItemWithBarcode:barcode];
+            } else {
+                count++;
+            }
         }];
         
         [operation start];
-//        if (database.returnType == GLBarcodeDatabaseJSON) {
-//            [self.manager GET:[database getURLForDatabaseWithBarcode:modifiedBarcode] parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *response) {
-//                //ugly hack for now - I need a way to get the key for the name from the user...
-//                NSLog(@"%@", response[@"name"]);
-//                [self.receiveInternetResponseSignal sendNext:response[@"name"]];
-//                [self decrementCountAndCheckForCompletion];
-//            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//                //[self.receiveInternetResponseSignal sendError:error];
-//                [self decrementCountAndCheckForCompletion];
-//            }];
-//        } else {
-//            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[database getURLForDatabaseWithBarcode:modifiedBarcode]]];
-//            AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-//            
-//            [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-//                NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-//                NSRange searchResult = database.searchBlock(string, modifiedBarcode);
-//                
-//                if (searchResult.location == NSNotFound) {
-//                    //[self.receiveInternetResponseSignal sendError:[NSError errorWithDomain:@"Not found" code:1 userInfo:nil]];
-//                } else {
-//                    NSLog(@"%@", [string substringWithRange:searchResult]);
-//                    [self.receiveInternetResponseSignal sendNext:[string substringWithRange:searchResult]];
-//                }
-//            
-//                [self decrementCountAndCheckForCompletion];
-//            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//                //[self.receiveInternetResponseSignal sendError:error];
-//                [self decrementCountAndCheckForCompletion];
-//            }];
-//            
-//            [operation start];
-        }
-    
+    }
 }
 
-- (void)decrementCountAndCheckForCompletion {
-    self.count--;
+- (void)didFinishFetchingNames:(NSMutableArray *)names forBarcodeItemWithBarcode:(NSString *)barcode {
+    NSString *itemName = [self optimalNameForBarcodeProductWithNameCollection:names];
+    GLBarcodeItem *barcodeItem = [[GLBarcodeItem alloc] initWithBarcode:barcode name:itemName];
+    [self.bingFetcher fetchImageFormBingForBarcodeItem:barcodeItem];
+    [self.barcodeItems addObject:barcodeItem];
+}
+
+- (NSString *)optimalNameForBarcodeProductWithNameCollection:(NSMutableArray *)names {
+    NSMutableDictionary *wordDictionary = [[NSMutableDictionary alloc] init];
     
-    if (self.count == 0) {
-        [self.receiveInternetResponseSignal sendCompleted];
+    for (NSString *nameOfScannedItem in names) {
+        NSArray *scannedItemWords = [nameOfScannedItem componentsSeparatedByString:@" "];
+        
+        for (NSString *word in scannedItemWords) {
+            int numberOfOccurences = [[wordDictionary objectForKey:[word lowercaseString]] intValue];
+            
+            if (numberOfOccurences == 0) {
+                //this word has not been added to the dictionary yet...
+                NSArray *allKeys = [wordDictionary allKeys];
+                
+                for (NSString *string in allKeys) {
+                    //... but let's check if something similar already exists
+                    if ([self compareString:string toString:word] > 0.8f) {
+                        int newValue = [[wordDictionary objectForKey:string] intValue];
+                        [wordDictionary setObject:[NSNumber numberWithInt:++newValue] forKey:[string lowercaseString]];
+                        continue;
+                    }
+                }
+                
+                //nope, nothing like this word is in the dictionary, so we add a new entry
+                [wordDictionary setObject:[NSNumber numberWithInt:1] forKey:[word lowercaseString]];
+            } else {
+                //already exists, so we increment occurence
+                [wordDictionary setObject:[NSNumber numberWithInt:++numberOfOccurences] forKey:[word lowercaseString]];
+            }
+            
+        }
     }
+    
+    NSMutableArray *allKeys = [[wordDictionary allKeys] mutableCopy];
+    NSMutableArray *result = [NSMutableArray arrayWithCapacity:3];
+    
+    int high = 0;
+    NSInteger pos = 0;
+    
+    //find the 3 words with the highest occurence
+    for (int i = 0; i < 3; i++) {
+        for (NSString *key in allKeys) {
+            if ([[wordDictionary objectForKey:key] intValue] >= high) {
+                pos = [allKeys indexOfObject:key];
+                high = [[wordDictionary objectForKey:key] intValue];
+            }
+        }
+        
+        [result addObject:allKeys[pos]];
+        [allKeys removeObjectAtIndex:pos];
+        
+        high = 0;
+        pos = 0;
+    }
+    
+    return [result componentsJoinedByString:@" "];
+}
+
+
+//returns the percentage of similar characters in a string : comparing "123" and "123" will return 1.0, while comparing "123$" and "1234" will return 0.75.
+- (int)compareString:(NSString *)a toString:(NSString *)b {
+    double similarCharacters = 0.0;
+    
+    for (int i = 0; i < MIN(a.length, b.length); i++) {
+        if ([a characterAtIndex:i] == [b characterAtIndex:i]) {
+            similarCharacters++;
+        }
+    }
+    
+    return similarCharacters / (double) MIN(a.length, b.length);
 }
 
 @end

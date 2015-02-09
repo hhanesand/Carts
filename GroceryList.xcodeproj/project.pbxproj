@@ -27,6 +27,7 @@
 		F22C8F461A6EE94A00139B9D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F22C8F451A6EE94A00139B9D /* libsqlite3.dylib */; };
 		F22F2D791A72D1DB00C878EC /* GLBarcodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F2D781A72D1DB00C878EC /* GLBarcodeManager.m */; };
 		F22F2D7D1A72D6FD00C878EC /* GLBarcodeDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F2D7C1A72D6FD00C878EC /* GLBarcodeDatabase.m */; };
+		F25E49111A86B141006E1252 /* GLBingFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F25E49101A86B141006E1252 /* GLBingFetcher.m */; };
 		F28586BA1A744A63003B91E1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586B91A744A63003B91E1 /* Social.framework */; };
 		F28586BC1A744A6B003B91E1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586BB1A744A6B003B91E1 /* Accounts.framework */; };
 		F28586BE1A744A75003B91E1 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586BD1A744A75003B91E1 /* AdSupport.framework */; };
@@ -56,12 +57,13 @@
 		F2B4D0DE1A6DF54500A98C7A /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0DD1A6DF54500A98C7A /* libiconv.dylib */; };
 		F2E544E01A6CB55000CB52E5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E544DF1A6CB55000CB52E5 /* main.m */; };
 		F2E544E31A6CB55000CB52E5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E544E21A6CB55000CB52E5 /* AppDelegate.m */; };
-		F2E544E91A6CB55000CB52E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2E544E71A6CB55000CB52E5 /* Main.storyboard */; };
 		F2E544EB1A6CB55000CB52E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2E544EA1A6CB55000CB52E5 /* Images.xcassets */; };
 		F2E544EE1A6CB55100CB52E5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2E544EC1A6CB55100CB52E5 /* LaunchScreen.xib */; };
 		F2E544FA1A6CB55100CB52E5 /* GroceryListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E544F91A6CB55100CB52E5 /* GroceryListTests.m */; };
 		F2E545051A6CB5D400CB52E5 /* GLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E545041A6CB5D400CB52E5 /* GLTableViewCell.m */; };
 		F2E545081A6CB5F500CB52E5 /* GLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E545071A6CB5F500CB52E5 /* GLTableViewController.m */; };
+		F2F948AF1A8881DE002C5177 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2F948AE1A8881DE002C5177 /* Main.storyboard */; };
+		F2F948B21A8947BD002C5177 /* GLBarcodeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F948B11A8947BD002C5177 /* GLBarcodeItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +122,8 @@
 		F22F2D7A1A72D1FA00C878EC /* GLBarcodeManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLBarcodeManager.h; sourceTree = "<group>"; };
 		F22F2D7B1A72D66600C878EC /* GLBarcodeDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLBarcodeDatabase.h; sourceTree = "<group>"; };
 		F22F2D7C1A72D6FD00C878EC /* GLBarcodeDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBarcodeDatabase.m; sourceTree = "<group>"; };
+		F25E49101A86B141006E1252 /* GLBingFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBingFetcher.m; sourceTree = "<group>"; };
+		F25E49121A86B150006E1252 /* GLBingFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLBingFetcher.h; sourceTree = "<group>"; };
 		F28586B91A744A63003B91E1 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		F28586BB1A744A6B003B91E1 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		F28586BD1A744A75003B91E1 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -171,7 +175,6 @@
 		F2E544DF1A6CB55000CB52E5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F2E544E11A6CB55000CB52E5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F2E544E21A6CB55000CB52E5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F2E544E81A6CB55000CB52E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F2E544EA1A6CB55000CB52E5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F2E544ED1A6CB55100CB52E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		F2E544F31A6CB55100CB52E5 /* GroceryListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GroceryListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,6 +184,9 @@
 		F2E545041A6CB5D400CB52E5 /* GLTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTableViewCell.m; sourceTree = "<group>"; };
 		F2E545061A6CB5F500CB52E5 /* GLTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTableViewController.h; sourceTree = "<group>"; };
 		F2E545071A6CB5F500CB52E5 /* GLTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTableViewController.m; sourceTree = "<group>"; };
+		F2F948AE1A8881DE002C5177 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
+		F2F948B11A8947BD002C5177 /* GLBarcodeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBarcodeItem.m; sourceTree = "<group>"; };
+		F2F948B31A8947C8002C5177 /* GLBarcodeItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLBarcodeItem.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -298,6 +304,26 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		F25E490B1A869E83006E1252 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		F25E490F1A86B126006E1252 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F22F2D7A1A72D1FA00C878EC /* GLBarcodeManager.h */,
+				F22F2D781A72D1DB00C878EC /* GLBarcodeManager.m */,
+				F22F2D7B1A72D66600C878EC /* GLBarcodeDatabase.h */,
+				F22F2D7C1A72D6FD00C878EC /* GLBarcodeDatabase.m */,
+				F25E49121A86B150006E1252 /* GLBingFetcher.h */,
+				F25E49101A86B141006E1252 /* GLBingFetcher.m */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
 		F296D9D91A703F9E001E9D29 /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
@@ -413,15 +439,13 @@
 		F2E544DC1A6CB55000CB52E5 /* GroceryList */ = {
 			isa = PBXGroup;
 			children = (
+				F2F948B01A8947A6002C5177 /* Model */,
+				F25E490B1A869E83006E1252 /* Categories */,
 				F2E5450A1A6CB60A00CB52E5 /* Controllers */,
 				F2E545091A6CB60100CB52E5 /* Views */,
-				F2E544E71A6CB55000CB52E5 /* Main.storyboard */,
 				F2E544EA1A6CB55000CB52E5 /* Images.xcassets */,
 				F2E544DD1A6CB55000CB52E5 /* Supporting Files */,
-				F22F2D7A1A72D1FA00C878EC /* GLBarcodeManager.h */,
-				F22F2D781A72D1DB00C878EC /* GLBarcodeManager.m */,
-				F22F2D7B1A72D66600C878EC /* GLBarcodeDatabase.h */,
-				F22F2D7C1A72D6FD00C878EC /* GLBarcodeDatabase.m */,
+				F25E490F1A86B126006E1252 /* Networking */,
 			);
 			path = GroceryList;
 			sourceTree = "<group>";
@@ -458,6 +482,7 @@
 		F2E545091A6CB60100CB52E5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F2F948AE1A8881DE002C5177 /* Main.storyboard */,
 				F2E545031A6CB5D400CB52E5 /* GLTableViewCell.h */,
 				F2E545041A6CB5D400CB52E5 /* GLTableViewCell.m */,
 			);
@@ -471,6 +496,15 @@
 				F2E545071A6CB5F500CB52E5 /* GLTableViewController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		F2F948B01A8947A6002C5177 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F2F948B11A8947BD002C5177 /* GLBarcodeItem.m */,
+				F2F948B31A8947C8002C5177 /* GLBarcodeItem.h */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -558,7 +592,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2E544E91A6CB55000CB52E5 /* Main.storyboard in Resources */,
+				F2F948AF1A8881DE002C5177 /* Main.storyboard in Resources */,
 				F22C8F2C1A6EE35E00139B9D /* zbar-help.html in Resources */,
 				F22C8F2E1A6EE35E00139B9D /* zbar-samples.png in Resources */,
 				F22C8F2D1A6EE35E00139B9D /* zbar-helpicons.png in Resources */,
@@ -649,12 +683,14 @@
 				F296DA031A703F9E001E9D29 /* AFSecurityPolicy.m in Sources */,
 				F2E544E31A6CB55000CB52E5 /* AppDelegate.m in Sources */,
 				F296DA001A703F9E001E9D29 /* AFHTTPRequestOperationManager.m in Sources */,
+				F2F948B21A8947BD002C5177 /* GLBarcodeItem.m in Sources */,
 				F296DA041A703F9E001E9D29 /* AFURLConnectionOperation.m in Sources */,
 				F22F2D791A72D1DB00C878EC /* GLBarcodeManager.m in Sources */,
 				F296DA0C1A703F9E001E9D29 /* UIImageView+AFNetworking.m in Sources */,
 				F22F2D7D1A72D6FD00C878EC /* GLBarcodeDatabase.m in Sources */,
 				F296D9FF1A703F9E001E9D29 /* AFHTTPRequestOperation.m in Sources */,
 				F296DA091A703F9E001E9D29 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				F25E49111A86B141006E1252 /* GLBingFetcher.m in Sources */,
 				F2E545051A6CB5D400CB52E5 /* GLTableViewCell.m in Sources */,
 				F296DA051A703F9E001E9D29 /* AFURLRequestSerialization.m in Sources */,
 				F296DA011A703F9E001E9D29 /* AFHTTPSessionManager.m in Sources */,
@@ -686,14 +722,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F2E544E71A6CB55000CB52E5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F2E544E81A6CB55000CB52E5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		F2E544EC1A6CB55100CB52E5 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
