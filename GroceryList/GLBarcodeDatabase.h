@@ -21,7 +21,7 @@ typedef NS_ENUM(NSInteger, GLBarcodeDatabaseReturnType) {
 @property (nonatomic, copy) NSString *(^barcodeBlock)(NSString *);
 @property (nonatomic) NSString *path;
 
-//if GLBarcodeDatabaseReturnType is HTML, the path should be an xpath, if it's JSON then it should be the name of the node
+//if GLBarcodeDatabaseReturnType is HTML, the path should be an CSS selector, if it's JSON then it should be the keypath of the node
 - (instancetype)initWithNameOfDatabase:(NSString *)url withReturnType:(GLBarcodeDatabaseReturnType)returnType andPath:(NSString *)path andBarcodeModifier:(NSString * (^)(NSString *barcode))barcodeBlock;
 
 - (instancetype)initWithNameOfDatabase:(NSString *)url withReturnType:(GLBarcodeDatabaseReturnType)returnType andPath:(NSString *)path;

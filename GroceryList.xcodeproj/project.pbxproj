@@ -187,6 +187,7 @@
 		F2F948AE1A8881DE002C5177 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
 		F2F948B11A8947BD002C5177 /* GLBarcodeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBarcodeItem.m; sourceTree = "<group>"; };
 		F2F948B31A8947C8002C5177 /* GLBarcodeItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLBarcodeItem.h; sourceTree = "<group>"; };
+		F2F948B81A8AA195002C5177 /* GLBarcodeItemDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLBarcodeItemDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -458,6 +459,7 @@
 				F2E544EC1A6CB55100CB52E5 /* LaunchScreen.xib */,
 				F2E544DE1A6CB55000CB52E5 /* Info.plist */,
 				F2E544DF1A6CB55000CB52E5 /* main.m */,
+				F2F948B81A8AA195002C5177 /* GLBarcodeItemDelegate.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";

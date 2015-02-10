@@ -21,12 +21,8 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
 #define ObserveArray(TARGET, KEYPATH) [self rac_valuesAndChangesForKeyPath:@keypath(TARGET, KEYPATH) options:NSKeyValueObservingOptionNew observer:nil]
 
 @interface GLTableViewController()
-@property (nonatomic) NSMutableArray *barcodes;
-@property (nonatomic) NSMutableArray *images;
-@property (nonatomic) NSMutableArray *names;
-
+@property (nonatomic) NSMutableArray *barcodeItems;
 @property (nonatomic) GLBarcodeManager *manager;
-@property (nonatomic) NSMutableArray *tempNames;
 @end
 
 @implementation GLTableViewController
@@ -34,20 +30,17 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.barcodes = [NSMutableArray new];
-    self.images = [NSMutableArray new];
-    self.names = [NSMutableArray new];
-    self.tempNames = [NSMutableArray new];
+    self.barcodeItems = [NSMutableArray new];
     
     self.manager = [[GLBarcodeManager alloc] init];
     
-    [self.manager.receiveInternetResponseSignal subscribeNext:^(id x) {
-        [self.tempNames addObject:x];
-    } error:^(NSError *error) {
-        NSLog(@"Error during net request : %@", error);
-    } completed:^{
-        [self didGetNamesFromServers];
+    [self.manager.barcodeItemSignal subscribeNext:^(id x) {
+        NSLog(@"Type of x %@ description of x %@", NSStringFromClass([x class]), x);
+        [self.barcodeItems addObject:x];
+        [self.tableView reloadData];
     }];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tableViewUpdated) name:self.manager.notification object:nil];
 
     [self.manager addBarcodeDatabase:[[GLBarcodeDatabase alloc] initWithNameOfDatabase:@"http://www.outpan.com/api/get-product.php?apikey=4308c0742cfa452985e8cd4d569336aa&barcode=%@" withReturnType:GLBarcodeDatabaseJSON andPath:@"name"]];
     
@@ -57,28 +50,12 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
     
     [self.manager addBarcodeDatabase:[[GLBarcodeDatabase alloc] initWithNameOfDatabase:@"http://www.compariola.com/?barcode=%@" withReturnType:GLBarcodeDatabaseHTLM andPath:@"#headerTxt>h1"]];
     
-    [self.names addObject:@"Test Item"];
-    [self.images addObject:[UIImage imageNamed:@"testImage"]];
-    [self.barcodes addObject:@"00000000"];
-    
-    [self.names addObject:@"Test Item2"];
-    [self.images addObject:[UIImage imageNamed:@"testImage"]];
-    [self.barcodes addObject:@"000000001"];
-    
-    NSLog(@"STarting parse synch");
-    
-    PFObject *barcodeItem = [PFObject objectWithClassName:@"BarcodeItem"];
-    barcodeItem[@"name"] = @"water bottle";
-    barcodeItem[@"barcode"] = [self.barcodes lastObject];
-    [barcodeItem save];
-    
-    NSLog(@"End parse synch");
-    
-    //[self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    [self.barcodeItems addObject:[[GLBarcodeItem alloc] initWithBarcode:@"12234352232" name:@"Sandals"]];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+- (void)tableViewUpdated {
+    NSLog(@"Updating table view %@", self.barcodeItems);
+    [self.tableView reloadData];
 }
 
 - (IBAction)didTapAddGroceryBarButton:(id)sender {
@@ -97,9 +74,7 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-    
-    if ([self.barcodes count] == 0) {
+    if ([self.barcodeItems count] == 0) {
         //notify the user that there are no saved items
         UILabel *noSavedBarcodesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds))];
         noSavedBarcodesLabel.text = @"You have not saved any barcodes.";
@@ -121,21 +96,14 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.barcodes count];
+    return [self.barcodeItems count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     GLTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-    [cell setNameOfProduct:self.barcodes[indexPath.row]];
     
-    if (indexPath.row < [self.images count]) {
-        [cell setImageOfProduct:self.images[indexPath.row]];
-    }
-    
-    cell.separatorInset = UIEdgeInsetsZero;
-    
-//    UIImageView *imageView = (UIImageView *)[cell viewWithTag:100];
-//    imageView.image = self.images[indexPath.row];
+    GLBarcodeItem *barcodeItem = self.barcodeItems[indexPath.row];
+    [cell setNameOfProduct:barcodeItem.name];
     
     return cell;
 }
@@ -157,14 +125,12 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
     [self.manager fetchNameOfItemWithBarcode:data]; //returns values on signal receiveInternetResponseSignal
 }
 
+- (void)didFinishLoadingImageForBarcodeItem:(GLBarcodeItem *)barcodeItem {
+    [self.tableView reloadData];
+}
+
 - (IBAction)didPressTestButton:(id)sender {
     [self.manager fetchNameOfItemWithBarcode:@"0012000001086"];
 }
-
-//Called after database fetching complete. Adds the best name for the item it can find by analyzing the occurences of words in the strings.
-
-
-
-
 
 @end

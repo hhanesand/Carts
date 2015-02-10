@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "ZBarSDK.h"
 #import "ReactiveCocoa/ReactiveCocoa.h"
+#import "GLBarcodeItemDelegate.h"
 
-@interface GLTableViewController : UITableViewController <ZBarReaderDelegate>
+@interface GLTableViewController : UITableViewController <ZBarReaderDelegate, GLBarcodeItemDelegate>
 
-
+- (void)didFinishLoadingImageForBarcodeItem:(GLBarcodeItem *)barcodeItem;
 
 @end

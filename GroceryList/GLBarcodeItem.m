@@ -14,7 +14,8 @@
     if (self = [super init]) {
         self.barcode = barcode;
         self.name = name;
-        self.url = url;
+        
+        [self fetchPictureWithURL:url];
     }
     
     return self;
@@ -24,8 +25,21 @@
     return [self initWithBarcode:barcode name:name andPictureURL:@""];
 }
 
-- (NSURL *)getURLForPicture {
-    return [NSURL URLWithString:self.url];
+- (void)fetchPictureWithURL:(NSString *)urlString {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSURL *url = [NSURL URLWithString:urlString];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.imageData = data;
+            [self.delegate didFinishLoadingImageForBarcodeItem:self];
+            NSLog(@"Image data loaded");
+        });
+    });
+}
+
+- (NSString *)description {
+    return [self.barcode stringByAppendingString:[@" | "  stringByAppendingString:self.name]];
 }
 
 @end

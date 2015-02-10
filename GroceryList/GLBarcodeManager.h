@@ -13,6 +13,7 @@
 @interface GLBarcodeManager : NSObject
 
 @property (nonatomic) RACSubject *barcodeItemSignal;
+@property (nonatomic) NSString *notification;
 
 - (void)addBarcodeDatabase:(GLBarcodeDatabase *)database;
 

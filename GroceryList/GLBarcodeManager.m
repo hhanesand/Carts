@@ -30,6 +30,7 @@
         self.bingFetcher = [GLBingFetcher sharedFetcher];
         self.manager = [AFHTTPRequestOperationManager manager];
         self.barcodeItemSignal = [RACSubject subject];
+        self.notification = @"barcodeItemUpdatedNotification";
     }
     
     return self;
@@ -51,7 +52,7 @@
         AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
         
         NSMutableArray *recievedNames = [NSMutableArray new];
-        __block int count = 0;
+        static int count = 0;
         
         [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
             if (database.returnType == GLBarcodeDatabaseJSON) {
@@ -62,19 +63,23 @@
                 NSString *htmlElementText = [doc firstNodeMatchingParsedSelector:[HTMLSelector selectorForString:database.path]].innerHTML;
                 [recievedNames addObject:htmlElementText];
             }
+
+            count = count + 1;
             
-            if (count == [self.databases count]) {
+            if (count >= [self.databases count]) {
                 [self didFinishFetchingNames:recievedNames forBarcodeItemWithBarcode:barcode];
             } else {
-                count++;
+
             }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Error while fetching name from server. %@", error);
+
+            count = count + 1;
             
-            if (count == [self.databases count]) {
+            if (count >= [self.databases count]) {
                 [self didFinishFetchingNames:recievedNames forBarcodeItemWithBarcode:barcode];
             } else {
-                count++;
+
             }
         }];
         
@@ -86,7 +91,7 @@
     NSString *itemName = [self optimalNameForBarcodeProductWithNameCollection:names];
     GLBarcodeItem *barcodeItem = [[GLBarcodeItem alloc] initWithBarcode:barcode name:itemName];
     [self.bingFetcher fetchImageFormBingForBarcodeItem:barcodeItem];
-    [self.barcodeItems addObject:barcodeItem];
+    [self.barcodeItemSignal sendNext:barcodeItem];
 }
 
 - (NSString *)optimalNameForBarcodeProductWithNameCollection:(NSMutableArray *)names {
