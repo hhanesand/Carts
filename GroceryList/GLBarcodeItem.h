@@ -17,7 +17,10 @@
 @property (nonatomic) NSString *name;
 @property (nonatomic) NSData *imageData;
 
++ (NSString *)notificationName;
+
 - (instancetype)initWithBarcode:(NSString *)barcode name:(NSString *)name;
-- (instancetype)initWithBarcode:(NSString *)barcode name:(NSString *)name andPictureURL:(NSString *)url;
+
+- (void)fetchPictureWithURL:(NSString *)urlString;
 
 @end

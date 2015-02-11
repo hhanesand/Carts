@@ -10,19 +10,19 @@
 
 @implementation GLBarcodeItem
 
-- (instancetype)initWithBarcode:(NSString *)barcode name:(NSString *)name andPictureURL:(NSString *)url {
-    if (self = [super init]) {
-        self.barcode = barcode;
-        self.name = name;
-        
-        [self fetchPictureWithURL:url];
-    }
-    
-    return self;
+static NSString *notificationName = @"barcodeItemUpdated";
+
++ (NSString *)notificationName {
+    return notificationName;
 }
 
 - (instancetype)initWithBarcode:(NSString *)barcode name:(NSString *)name {
-    return [self initWithBarcode:barcode name:name andPictureURL:@""];
+    if (self = [super init]) {
+        self.barcode = barcode;
+        self.name = name;
+    }
+    
+    return self;
 }
 
 - (void)fetchPictureWithURL:(NSString *)urlString {
@@ -32,8 +32,8 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             self.imageData = data;
-            [self.delegate didFinishLoadingImageForBarcodeItem:self];
-            NSLog(@"Image data loaded");
+            NSLog(@"Finished downloading picture sending notification");
+            [[NSNotificationCenter defaultCenter] postNotificationName:[GLBarcodeItem notificationName] object:nil];
         });
     });
 }

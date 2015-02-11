@@ -19,11 +19,6 @@
 }
 
 - (void)layoutSubviews {
-    for (UIView *subview in self.contentView.superview.subviews) {
-        if ([NSStringFromClass(subview.class) hasSuffix:@"SeparatorView"]) {
-            subview.hidden = NO;
-        }
-    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

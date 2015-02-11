@@ -51,7 +51,7 @@
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-        barcodeItem.url = [dict valueForKeyPath:self.thumbnailKeyPath];
+        [barcodeItem fetchPictureWithURL:[dict valueForKeyPath:self.thumbnailKeyPath][0]];
         NSLog(@"Completed bing fetch");
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Failure while fetching URL for barcodeItem with name %@, error is : %@", barcodeItem.name, error);

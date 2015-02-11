@@ -17,12 +17,10 @@
 
 static NSString *reuseIdentifier = @"GLTableViewCell";
 
-#define GLMakeRange(a, b) NSMakeRange(a, b - (a))
-#define ObserveArray(TARGET, KEYPATH) [self rac_valuesAndChangesForKeyPath:@keypath(TARGET, KEYPATH) options:NSKeyValueObservingOptionNew observer:nil]
-
 @interface GLTableViewController()
 @property (nonatomic) NSMutableArray *barcodeItems;
 @property (nonatomic) GLBarcodeManager *manager;
+@property (nonatomic) ScanditSDKBarcodePicker *scanner;
 @end
 
 @implementation GLTableViewController
@@ -35,22 +33,42 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
     self.manager = [[GLBarcodeManager alloc] init];
     
     [self.manager.barcodeItemSignal subscribeNext:^(id x) {
-        NSLog(@"Type of x %@ description of x %@", NSStringFromClass([x class]), x);
         [self.barcodeItems addObject:x];
         [self.tableView reloadData];
     }];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tableViewUpdated) name:self.manager.notification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tableViewUpdated) name:[GLBarcodeItem notificationName] object:nil];
 
-    [self.manager addBarcodeDatabase:[[GLBarcodeDatabase alloc] initWithNameOfDatabase:@"http://www.outpan.com/api/get-product.php?apikey=4308c0742cfa452985e8cd4d569336aa&barcode=%@" withReturnType:GLBarcodeDatabaseJSON andPath:@"name"]];
+    [self.manager addBarcodeDatabase:[[GLBarcodeDatabase alloc] initWithURLOfDatabase:@"http://www.outpan.com/api/get-product.php?apikey=4308c0742cfa452985e8cd4d569336aa&barcode=%@" withName:@"outpan.com" andPath:@"name"]];
     
-    [self.manager addBarcodeDatabase:[[GLBarcodeDatabase alloc] initWithNameOfDatabase:@"http://upcdatabase.idb.s1.jcink.com/upc.php?act=lookup&upc=%@" withReturnType:GLBarcodeDatabaseHTLM andPath:@"body > center:nth-child(1) > table > tbody > tr:nth-child(4) > td:nth-child(3)"]];
+    [self.manager addBarcodeDatabase:[[GLBarcodeDatabase alloc] initWithURLOfDatabase:@"http://api.upcdatabase.org/json/938a6e05f72b4e5b7531c35374a4457d/%@"  withName:@"upcdatabase.org" andPath:@"itemname"]];
     
-    [self.manager addBarcodeDatabase:[[GLBarcodeDatabase alloc] initWithNameOfDatabase:@"http://upcmachine.com/search/list?commit=Go%2521&country=2&query=%@" withReturnType:GLBarcodeDatabaseHTLM andPath:@"#main > div.right_side > table > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(2) > td:nth-child(2)"]];
+    [self.manager addBarcodeDatabase:[[GLBarcodeDatabase alloc] initWithURLOfDatabase:@"http://www.searchupc.com/handlers/upcsearch.ashx?request_type=3&access_token=C9D1021E-37EA-4C29-BAF0-EE92A5AB03BE&upc=%@" withName:@"searchupc.com"  andPath:@"0.productname"]];
+}
+
+- (IBAction)didTapAddGroceryBarButton:(id)sender {
+    self.scanner = [[ScanditSDKBarcodePicker alloc] initWithAppKey:@"0TyjNGRpheHk1t6Ho8s6z0KJ6wQyLHv7UXs1kmm1Kx4"];
+    self.scanner.overlayController.delegate = self;
+    [self.scanner startScanning];
+    //[self.navigationController presentViewController:scanner animated:YES completion:^{}];
+    [self.navigationController pushViewController:self.scanner animated:YES];
+}
+
+#pragma mark - SCANDIT implementation
+
+- (void)scanditSDKOverlayController:(ScanditSDKOverlayController *)overlayController didCancelWithStatus:(NSDictionary *)status {
+
+}
+
+- (void)scanditSDKOverlayController:(ScanditSDKOverlayController *)overlayController didManualSearch:(NSString *)text {
     
-    [self.manager addBarcodeDatabase:[[GLBarcodeDatabase alloc] initWithNameOfDatabase:@"http://www.compariola.com/?barcode=%@" withReturnType:GLBarcodeDatabaseHTLM andPath:@"#headerTxt>h1"]];
-    
-    [self.barcodeItems addObject:[[GLBarcodeItem alloc] initWithBarcode:@"12234352232" name:@"Sandals"]];
+}
+
+- (void)scanditSDKOverlayController:(ScanditSDKOverlayController *)overlayController didScanBarcode:(NSDictionary *)barcode {
+    NSLog(@"Barcode receieved %@", barcode);
+    [self.scanner stopScanning];
+    [self.manager fetchNameOfItemWithBarcode:barcode[@"barcode"]];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)tableViewUpdated {
@@ -58,18 +76,7 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
     [self.tableView reloadData];
 }
 
-- (IBAction)didTapAddGroceryBarButton:(id)sender {
-    ZBarReaderViewController *barcodeViewController = [ZBarReaderViewController new];
-    barcodeViewController.readerDelegate = self;
-    barcodeViewController.supportedOrientationsMask = ZBarOrientationMaskAll;
 
-    [barcodeViewController.scanner setSymbology:ZBAR_I25 config:ZBAR_CFG_ENABLE to:0];
-    barcodeViewController.showsCameraControls = NO;
-    barcodeViewController.showsZBarControls = NO;
-    
-    barcodeViewController.navigationItem.title = @"Scan Barcode";
-    [self.navigationController pushViewController:barcodeViewController animated:YES];
-}
 
 #pragma mark - Table view data source
 
@@ -85,7 +92,7 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
         [noSavedBarcodesLabel sizeToFit];
         
         self.tableView.backgroundView = noSavedBarcodesLabel;
-        //self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         
         return 0;
     } else {
@@ -104,26 +111,21 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
     
     GLBarcodeItem *barcodeItem = self.barcodeItems[indexPath.row];
     [cell setNameOfProduct:barcodeItem.name];
+    [cell setImageOfProduct:[UIImage imageWithData:barcodeItem.imageData]];
+    
+//    cell.rightUtilityButtons = [self rightButtons];
+//    cell.delegate = self;
     
     return cell;
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    [self.navigationController popViewControllerAnimated:YES];
-    
-    id<NSFastEnumeration> results = [info objectForKey:ZBarReaderControllerResults];
-    
-    NSString *data;
-    
-    for (ZBarSymbol *symbol in results)
-    {
-        data = [NSString stringWithFormat:@"%@", symbol.data];
-    }
-
-    NSLog(@"%@", [data description]);
-    
-    [self.manager fetchNameOfItemWithBarcode:data]; //returns values on signal receiveInternetResponseSignal
-}
+//- (NSArray *)rightButtons {
+//    NSMutableArray *rightButtons = [NSMutableArray new];
+//    
+//    [rightButtons sw_addUtilityButtonWithColor:[UIColor colorWithRed:0.7f green:0.75f blue:0.16f alpha:1] icon:[UIImage imageNamed:@"checkmark"]];
+//    
+//    return rightButtons;
+//}
 
 - (void)didFinishLoadingImageForBarcodeItem:(GLBarcodeItem *)barcodeItem {
     [self.tableView reloadData];

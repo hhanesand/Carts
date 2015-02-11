@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ZBarSDK.h"
 #import "ReactiveCocoa/ReactiveCocoa.h"
 #import "GLBarcodeItemDelegate.h"
+#import "SWTableViewCell.h"
+#import "ScanditSDKOverlayController.h"
 
-@interface GLTableViewController : UITableViewController <ZBarReaderDelegate, GLBarcodeItemDelegate>
+@interface GLTableViewController : UITableViewController <GLBarcodeItemDelegate, SWTableViewCellDelegate, ScanditSDKOverlayControllerDelegate>
 
 - (void)didFinishLoadingImageForBarcodeItem:(GLBarcodeItem *)barcodeItem;
 

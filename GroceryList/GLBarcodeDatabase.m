@@ -10,21 +10,14 @@
 
 @implementation GLBarcodeDatabase
 
-- (instancetype)initWithNameOfDatabase:(NSString *)url withReturnType:(GLBarcodeDatabaseReturnType)returnType andPath:(NSString *)path andBarcodeModifier:(NSString * (^)(NSString *barcode))barcodeBlock {
+- (instancetype)initWithURLOfDatabase:(NSString *)url withName:(NSString *)name andPath:(NSString *)path {
     if (self = [super init]) {
         self.url = url;
-        self.returnType = returnType;
+        self.name = name;
         self.path = path;
-        self.barcodeBlock = barcodeBlock;
     }
     
     return self;
-}
-
-- (instancetype)initWithNameOfDatabase:(NSString *)url withReturnType:(GLBarcodeDatabaseReturnType)returnType andPath:(NSString *)path {
-    return [self initWithNameOfDatabase:url withReturnType:returnType andPath:path andBarcodeModifier:^NSString *(NSString *barcode) {
-        return barcode;
-    }];
 }
 
 - (NSString *)getURLForDatabaseWithBarcode:(NSString *)barcode {

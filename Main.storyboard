@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14A329r" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="y0x-Qb-YC9">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--GroceryList-->
@@ -12,30 +13,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="15" maxY="0.0"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="xVU-0J-40t">
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GLTableViewCell" rowHeight="71" id="nlK-5j-ue7" customClass="GLTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="GLTableViewCell" rowHeight="71" id="nlK-5j-ue7" customClass="GLTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nlK-5j-ue7" id="kyN-Wg-MH6">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1nJ-JF-5nN">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1nJ-JF-5nN">
                                             <rect key="frame" x="8" y="8" width="59" height="55"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="55" id="Kbr-PC-69q"/>
+                                                <constraint firstAttribute="width" constant="59" id="fkp-e5-amE"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Product Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09D-j8-6cX">
-                                            <rect key="frame" x="75" y="11" width="443" height="21"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="21"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZE-kw-bHS">
                                             <rect key="frame" x="75" y="42" width="53" height="21"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09D-j8-6cX">
+                                            <rect key="frame" x="75" y="15" width="144" height="26"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="21"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="09D-j8-6cX" firstAttribute="leading" secondItem="1nJ-JF-5nN" secondAttribute="trailing" constant="8" id="S70-zH-bN5"/>
+                                        <constraint firstItem="1nJ-JF-5nN" firstAttribute="leading" secondItem="kyN-Wg-MH6" secondAttribute="leadingMargin" id="cT5-Da-yiN"/>
+                                        <constraint firstItem="1nJ-JF-5nN" firstAttribute="top" secondItem="kyN-Wg-MH6" secondAttribute="topMargin" id="iZT-dh-6M3"/>
+                                        <constraint firstItem="09D-j8-6cX" firstAttribute="top" secondItem="kyN-Wg-MH6" secondAttribute="topMargin" constant="7" id="vfn-hc-kxb"/>
+                                    </constraints>
                                 </tableViewCellContentView>
-                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="productImage" destination="1nJ-JF-5nN" id="iXx-av-lGg"/>
                                     <outlet property="productName" destination="09D-j8-6cX" id="ioS-SG-zrR"/>
@@ -53,7 +68,7 @@
                                 <action selector="didPressTestButton:" destination="r87-YY-bgT" id="x0g-pT-asJ"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="aLg-dB-Gmo">
+                        <barButtonItem key="rightBarButtonItem" image="video_camera-25" id="aLg-dB-Gmo">
                             <connections>
                                 <action selector="didTapAddGroceryBarButton:" destination="r87-YY-bgT" id="kiK-3l-6H0"/>
                             </connections>
@@ -62,7 +77,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QMF-ba-1W4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="923" y="354"/>
+            <point key="canvasLocation" x="923" y="352"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="v3J-X5-pkc">
@@ -81,4 +96,7 @@
             <point key="canvasLocation" x="257" y="361"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="video_camera-25" width="25" height="25"/>
+    </resources>
 </document>

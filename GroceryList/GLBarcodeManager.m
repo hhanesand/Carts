@@ -24,6 +24,8 @@
 
 @implementation GLBarcodeManager
 
+static int count = 0;
+
 - (instancetype)init {
     if (self = [super init]) {
         self.databases = [NSMutableArray new];
@@ -45,31 +47,36 @@
         NSLog(@"Error, there are no databases to fetch item names from.");
     }
     
+    NSMutableArray *recievedNames = [NSMutableArray new];
+    count = 0;
+    
     for (GLBarcodeDatabase *database in self.databases) {
-        NSString *modifiedBarcode = database.barcodeBlock(barcode);
-        
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[database getURLForDatabaseWithBarcode:modifiedBarcode]]];
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[database getURLForDatabaseWithBarcode:barcode]]];
         AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
         
-        NSMutableArray *recievedNames = [NSMutableArray new];
-        static int count = 0;
-        
+        #warning this code shouldn't be duplicated
         [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-            if (database.returnType == GLBarcodeDatabaseJSON) {
-                NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
-                [recievedNames addObject:dict[database.path]];
+            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+            
+            NSLog(@"Dictionary for database %@, %@", database.name, dict);
+            
+            if ([dict valueForKeyPath:database.path]) {
+                NSLog(@"Recieved name %@", [dict valueForKeyPath:database.path]);
+                NSString *name = [dict valueForKeyPath:database.path];
+                
+                if (![name isEqual:[NSNull null]] && ![name isEqualToString:@" "]) {
+                    [recievedNames addObject:name];
+                } else {
+                    NSLog(@"Database with name %@ did not have barcode %@", database.name, barcode);
+                }
             } else {
-                HTMLDocument *doc = [HTMLDocument documentWithString:[[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]];
-                NSString *htmlElementText = [doc firstNodeMatchingParsedSelector:[HTMLSelector selectorForString:database.path]].innerHTML;
-                [recievedNames addObject:htmlElementText];
+                NSLog(@"Database with name %@ did not have barcode %@", database.name, barcode);
             }
-
+            
             count = count + 1;
             
             if (count >= [self.databases count]) {
                 [self didFinishFetchingNames:recievedNames forBarcodeItemWithBarcode:barcode];
-            } else {
-
             }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Error while fetching name from server. %@", error);
@@ -77,9 +84,7 @@
             count = count + 1;
             
             if (count >= [self.databases count]) {
-                [self didFinishFetchingNames:recievedNames forBarcodeItemWithBarcode:barcode];
-            } else {
-
+               [self didFinishFetchingNames:recievedNames forBarcodeItemWithBarcode:barcode];
             }
         }];
         
@@ -98,7 +103,7 @@
     NSMutableDictionary *wordDictionary = [[NSMutableDictionary alloc] init];
     
     for (NSString *nameOfScannedItem in names) {
-        NSArray *scannedItemWords = [nameOfScannedItem componentsSeparatedByString:@" "];
+        NSArray *scannedItemWords = [nameOfScannedItem componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" -/."]];
         
         for (NSString *word in scannedItemWords) {
             int numberOfOccurences = [[wordDictionary objectForKey:[word lowercaseString]] intValue];
@@ -147,6 +152,7 @@
         high = 0;
         pos = 0;
     }
+
     
     return [result componentsJoinedByString:@" "];
 }

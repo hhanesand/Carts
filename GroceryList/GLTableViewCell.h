@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SWTableViewCell.h"
 
 @interface GLTableViewCell : UITableViewCell
 
 - (void)setNameOfProduct:(NSString *)name;
-    
 - (void)setImageOfProduct:(UIImage *)image;
 
 @end
