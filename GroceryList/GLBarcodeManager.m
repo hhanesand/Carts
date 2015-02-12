@@ -10,7 +10,6 @@
 #import "GLBarcodeDatabase.h"
 #import "GLBarcodeItem.h"
 #import "GLBingFetcher.h"
-#import "HTMLReader.h"
 #import "AFURLResponseSerialization.h"
 
 @interface GLBarcodeManager()
@@ -55,7 +54,7 @@
     } error:^(NSError *error) {
         NSLog(@"Error while fetching from database %@", error);
     } completed:^{
-        [resultSignal sendNext:[self optimalNameForBarcodeProductWithNameCollection:recievedNames]];
+        [resultSignal sendNext:[[self optimalNameForBarcodeProductWithNameCollection:recievedNames] componentsJoinedByString:@" "]];
         [resultSignal sendCompleted];
     }];
     
