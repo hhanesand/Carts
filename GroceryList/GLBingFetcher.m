@@ -8,6 +8,7 @@
 
 #import "GLBingFetcher.h"
 #import "AFHTTPRequestOperationManager+RACSupport.h"
+#import "AFURLResponseSerialization.h"
 
 @interface GLBingFetcher()
 @property (nonatomic) NSString *root;
@@ -49,8 +50,11 @@
     [urlRequest setHTTPMethod:@"GET"];
     [urlRequest setValue:self.auth forHTTPHeaderField:@"Authorization"];
     
-    return [[self.manager rac_enqueueHTTPRequestOperation:[[AFHTTPRequestOperation alloc] initWithRequest:urlRequest]] map:^id(RACTuple *value) {
-        barcodeItem.url = [((NSDictionary *)value.second) valueForKeyPath:self.thumbnailKeyPath];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:urlRequest];
+    [operation setResponseSerializer:[AFJSONResponseSerializer serializer]];
+    
+    return [[self.manager rac_enqueueHTTPRequestOperation:operation] map:^id(RACTuple *value) {
+        barcodeItem.url = [((NSDictionary *)value.second) valueForKeyPath:self.thumbnailKeyPath][0];
         return barcodeItem;
     }];
 }

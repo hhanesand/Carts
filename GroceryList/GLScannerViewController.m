@@ -27,6 +27,7 @@
     if (self = [super initWithCoder:aDecoder]) {
         _apiKey = @"0TyjNGRpheHk1t6Ho8s6z0KJ6wQyLHv7UXs1kmm1Kx4";
         self.manager = [[GLBarcodeManager alloc] init];
+        self.bing = [GLBingFetcher sharedFetcher];
         
         [self.manager addBarcodeDatabase:[[GLBarcodeDatabase alloc] initWithURLOfDatabase:@"http://www.outpan.com/api/get-product.php?apikey=4308c0742cfa452985e8cd4d569336aa&barcode=%@" withName:@"outpan.com" andPath:@"name"]];
         
