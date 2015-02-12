@@ -33,9 +33,7 @@
         [self.manager addBarcodeDatabase:[[GLBarcodeDatabase alloc] initWithURLOfDatabase:@"http://api.upcdatabase.org/json/938a6e05f72b4e5b7531c35374a4457d/%@"  withName:@"upcdatabase.org" andPath:@"itemname"]];
         
         [self.manager addBarcodeDatabase:[[GLBarcodeDatabase alloc] initWithURLOfDatabase:@"http://www.searchupc.com/handlers/upcsearch.ashx?request_type=3&access_token=C9D1021E-37EA-4C29-BAF0-EE92A5AB03BE&upc=%@" withName:@"searchupc.com"  andPath:@"0.productname"]];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishFetchingNamesFromServers) name:[GLBarcodeItem notificationName] object:nil];
-        
+    
         return [self initWithAppKey:self.apiKey];
     }
     
@@ -67,15 +65,21 @@
     [SVProgressHUD show];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [[self.manager fetchNameOfItemWithBarcode:barcode] subscribeNext:^(NSString *x) {
-            [SVProgressHUD showSuccessWithStatus:@"Great Success!"];
-            GLBarcodeItem *newItem = [GLBarcodeItem object];
+        [[[self.manager fetchNameOfItemWithBarcode:barcode] flattenMap:^RACStream *(NSString *nameOfBarcodeItem) {
+            GLBarcodeItem *barcodeItem = [GLBarcodeItem object];
+            barcodeItem.name = nameOfBarcodeItem;
             
+            [SVProgressHUD showSuccessWithStatus:@"Much Success!"];
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.delegate didReceiveUpdateForBarcodeItem:newItem];
+                [self.delegate didReceiveNewBarcodeItem:barcodeItem];
+                [self.navigationController popViewControllerAnimated:YES];
             });
             
-            [self.bing fetchImageFormBingForBarcodeItem:newItem];
+            return [self.bing fetchImageURLFromBingForBarcodeItem:barcodeItem];
+        }] subscribeCompleted:^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate didReceiveUpdateForBarcodeItem];
+            });
         }];
     });
 }

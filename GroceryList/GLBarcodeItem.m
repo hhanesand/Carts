@@ -8,6 +8,7 @@
 
 #import "GLBarcodeItem.h"
 #import <Parse/PFObject+Subclass.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @implementation GLBarcodeItem
 
@@ -18,12 +19,6 @@
 @dynamic name;
 @dynamic url;
 
-static NSString *notificationName = @"barcodeItemUpdated";
-
-+ (NSString *)notificationName {
-    return notificationName;
-}
-
 + (NSString *)parseClassName {
     return @"barcodeItem";
 }
@@ -32,35 +27,26 @@ static NSString *notificationName = @"barcodeItemUpdated";
     [self registerSubclass];
 }
 
-- (instancetype)initWithBarcode:(NSString *)barcode name:(NSString *)name {
-    if (self = [super init]) {
-
-        
-        self.barcode = barcode;
-        self.name = name;
-    }
-    
-    return self;
-}
-
-- (void)fetchPictureWithURL:(NSURL *)url {
-    self.url = [url absoluteString];
+- (void)fetchPicture {
+    RACSignal *completionSignal = [RACSignal new];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSData *data = [NSData dataWithContentsOfURL:url];
+        NSData *data = [NSData dataWithContentsOfURL:self.url];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             self.imageData = data;
-            NSLog(@"Finished downloading picture sending notification");
-            [[NSNotificationCenter defaultCenter] postNotificationName:[GLBarcodeItem notificationName] object:nil];
         });
     });
 }
 
 - (NSString *)description {
-    return [self.barcode stringByAppendingString:[@" | "  stringByAppendingString:self.name]];
+    NSMutableString *string = [NSMutableString stringWithString:self.name];
+    [string appendString:@" | "];
+    [string appendString:self.barcode];
+    [string appendString:@" | "];
+    [string appendString:self.url];
+    
+    return [string description];
 }
-
-
 
 @end

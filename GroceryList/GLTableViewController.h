@@ -14,6 +14,4 @@
 
 @interface GLTableViewController : UITableViewController <GLBarcodeItemDelegate, SWTableViewCellDelegate>
 
-- (void)didFinishLoadingImageForBarcodeItem:(GLBarcodeItem *)barcodeItem;
-
 @end

@@ -11,7 +11,7 @@
 
 @interface GLTableViewCell : UITableViewCell
 
-- (void)setNameOfProduct:(NSString *)name;
-- (void)setImageOfProduct:(UIImage *)image;
+@property (weak, nonatomic) IBOutlet UILabel *productName;
+@property (weak, nonatomic) IBOutlet UIImageView *productImage;
 
 @end

@@ -15,6 +15,7 @@
 #import "AFNetworking.h"
 #import "GLBingFetcher.h"
 #import "GLScannerViewController.h"
+#import "UIImageView+AFNetworking.h"
 
 static NSString *reuseIdentifier = @"GLTableViewCell";
 
@@ -28,18 +29,6 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
     [super viewDidLoad];
     
     self.barcodeItems = [NSMutableArray new];
-    
-//    [self.manager.barcodeItemSignal subscribeNext:^(id x) {
-//        [self.barcodeItems addObject:x];
-//        [self.tableView reloadData];
-//    }];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"showScannerViewController"]) {
-        GLScannerViewController *scannerController = segue.destinationViewController;
-        scannerController.delegate = self;
-    }
 }
 
 - (void)tableViewUpdated {
@@ -79,14 +68,30 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
     GLTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     GLBarcodeItem *barcodeItem = self.barcodeItems[indexPath.row];
-    [cell setNameOfProduct:barcodeItem.name];
-    [cell setImageOfProduct:[UIImage imageWithData:barcodeItem.imageData]];
+    cell.productName.text = barcodeItem.name;
+    [cell.imageView setImageWithURL:[NSURL URLWithString:barcodeItem.url] placeholderImage:[UIImage imageNamed:@"document"]];
     
     return cell;
 }
 
-- (void)didFinishLoadingImageForBarcodeItem:(GLBarcodeItem *)barcodeItem {
+#pragma mark - GLBarcodeItemDelegate
+
+- (void)didReceiveNewBarcodeItem:(GLBarcodeItem *)barcodeItem {
+    [self.barcodeItems addObject:barcodeItem];
+    [self didReceiveUpdateForBarcodeItem];
+}
+
+- (void)didReceiveUpdateForBarcodeItem {
     [self.tableView reloadData];
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"showScannerViewController"]) {
+        GLScannerViewController *scannerController = segue.destinationViewController;
+        scannerController.delegate = self;
+    }
 }
 
 @end

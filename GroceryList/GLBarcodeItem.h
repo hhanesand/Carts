@@ -20,11 +20,8 @@
 
 @property (nonatomic) NSData *imageData;
 
-+ (NSString *)notificationName;
 + (NSString *)parseClassName;
 
-- (instancetype)initWithBarcode:(NSString *)barcode name:(NSString *)name;
-
-- (void)fetchPictureWithURL:(NSURL *)url;
+- (void)updateWithBarcodeItem:(GLBarcodeItem *)barcodeItem;
 
 @end

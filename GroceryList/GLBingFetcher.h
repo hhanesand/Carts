@@ -10,10 +10,12 @@
 #import "AFNetworking.h"
 #import "GLBarcodeItem.h"
 
+@class RACSignal;
+
 @interface GLBingFetcher : NSObject
 
 + (GLBingFetcher *)sharedFetcher;
 
-- (void)fetchImageFormBingForBarcodeItem:(GLBarcodeItem *)barcodeItem;
+- (RACSignal *)fetchImageURLFromBingForBarcodeItem:(GLBarcodeItem *)barcodeItem;
 
 @end

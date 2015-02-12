@@ -11,6 +11,7 @@
 
 @protocol GLBarcodeItemDelegate <NSObject>
 
-- (void)didReceiveUpdateForBarcodeItem:(GLBarcodeItem *)barcodeItem;
+- (void)didReceiveNewBarcodeItem:(GLBarcodeItem *)barcodeItem;
+- (void)didReceiveUpdateForBarcodeItem;
 
 @end

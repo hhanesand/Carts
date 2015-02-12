@@ -42,17 +42,16 @@
     return self;
 }
 
-- (void)fetchImageFormBingForBarcodeItem:(GLBarcodeItem *)barcodeItem {
+- (RACSignal *)fetchImageURLFromBingForBarcodeItem:(GLBarcodeItem *)barcodeItem {
     NSString *url = [self.root stringByAppendingString:[self nameOfItemToBingPhrase:barcodeItem.name]];
     NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     
     [urlRequest setHTTPMethod:@"GET"];
     [urlRequest setValue:self.auth forHTTPHeaderField:@"Authorization"];
     
-    [[self.manager rac_enqueueHTTPRequestOperation:[[AFHTTPRequestOperation alloc] initWithRequest:urlRequest]] subscribeNext:^(RACTuple *x) {
-        [barcodeItem fetchPictureWithURL:[NSURL URLWithString:[((NSDictionary *)x.second) valueForKeyPath:self.thumbnailKeyPath]]];
-    } error:^(NSError *error) {
-        
+    return [[self.manager rac_enqueueHTTPRequestOperation:[[AFHTTPRequestOperation alloc] initWithRequest:urlRequest]] map:^id(RACTuple *value) {
+        barcodeItem.url = [((NSDictionary *)value.second) valueForKeyPath:self.thumbnailKeyPath];
+        return barcodeItem;
     }];
 }
 

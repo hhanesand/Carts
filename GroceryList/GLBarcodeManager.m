@@ -22,15 +22,11 @@
 
 @implementation GLBarcodeManager
 
-static int count = 0;
-
 - (instancetype)init {
     if (self = [super init]) {
         self.databases = [NSMutableArray new];
         self.bingFetcher = [GLBingFetcher sharedFetcher];
         self.manager = [AFHTTPRequestOperationManager manager];
-        self.barcodeItemSignal = [RACSubject subject];
-        self.notification = @"barcodeItemUpdatedNotification";
         
         self.manager.responseSerializer.acceptableContentTypes = [self.manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/plain"];
     }
@@ -43,17 +39,14 @@ static int count = 0;
 }
 
 - (RACSignal *)fetchNameOfItemWithBarcode:(NSString *)barcode {
-    if ([self.databases count] == 0) {
-        NSLog(@"Error, there are no databases to fetch item names from.");
-    }
-    
     NSMutableArray *recievedNames = [NSMutableArray new];
     NSMutableArray *signals = [NSMutableArray new];
     RACSubject *resultSignal = [RACSubject subject];
     
+    //go though each database that has been added and grab a signal for the network request
     [self.databases enumerateObjectsUsingBlock:^(GLBarcodeDatabase *database, NSUInteger index, BOOL *stop) {
         [signals addObject:[[self.manager rac_GET:[database getURLForDatabaseWithBarcode:barcode] parameters:nil] map:^id(RACTuple *value) {
-            return [((NSDictionary *)value.second) valueForKeyPath:database.path];
+            return [((NSDictionary *)value.second) valueForKeyPath:database.path]; //map the value to the name of the item using the JSON path
         }]];
     }];
     
@@ -72,18 +65,6 @@ static int count = 0;
 //this has to be here until the developer behind searchupc.com gets his shit together
 - (BOOL)isValidNameForItem:(NSString *)name {
     return ![name isEqualToString:@" "];
-}
-
-- (void)didFinishFetchingNames:(NSMutableArray *)names forBarcodeItemWithBarcode:(NSString *)barcode {
-    if ([names count] == 0) {
-        NSLog(@"No databases replied");
-        return;
-    }
-    
-    NSString *itemName = [self optimalNameForBarcodeProductWithNameCollection:names];
-    GLBarcodeItem *barcodeItem = [[GLBarcodeItem alloc] initWithBarcode:barcode name:itemName];
-    [self.bingFetcher fetchImageFormBingForBarcodeItem:barcodeItem];
-    [self.barcodeItemSignal sendNext:barcodeItem];
 }
 
 - (NSArray *)optimalNameForBarcodeProductWithNameCollection:(NSMutableArray *)names {
