@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "GLBarcodeDatabase.h"
-#import "ReactiveCocoa/ReactiveCocoa.h"
+#import "AFNetworking.h"
+#import "AFHTTPRequestOperationManager+RACSupport.h"
 
 @interface GLBarcodeManager : NSObject
 
@@ -17,6 +18,6 @@
 
 - (void)addBarcodeDatabase:(GLBarcodeDatabase *)database;
 
-- (void)fetchNameOfItemWithBarcode:(NSString *)barcode;
+- (RACSignal *)fetchNameOfItemWithBarcode:(NSString *)barcode;
 
 @end

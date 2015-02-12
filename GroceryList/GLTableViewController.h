@@ -12,7 +12,7 @@
 #import "SWTableViewCell.h"
 #import "ScanditSDKOverlayController.h"
 
-@interface GLTableViewController : UITableViewController <GLBarcodeItemDelegate, SWTableViewCellDelegate, ScanditSDKOverlayControllerDelegate>
+@interface GLTableViewController : UITableViewController <GLBarcodeItemDelegate, SWTableViewCellDelegate>
 
 - (void)didFinishLoadingImageForBarcodeItem:(GLBarcodeItem *)barcodeItem;
 

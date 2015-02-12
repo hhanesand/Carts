@@ -11,6 +11,6 @@
 
 @protocol GLBarcodeItemDelegate <NSObject>
 
-- (void)didFinishLoadingImageForBarcodeItem:(GLBarcodeItem *)barcodeItem;
+- (void)didReceiveUpdateForBarcodeItem:(GLBarcodeItem *)barcodeItem;
 
 @end

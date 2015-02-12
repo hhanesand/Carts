@@ -10,10 +10,8 @@
 #import "GLBarcodeDatabase.h"
 #import "GLBarcodeItem.h"
 #import "GLBingFetcher.h"
-#import "AFNetworking.h"
 #import "HTMLReader.h"
-
-
+#import "AFURLResponseSerialization.h"
 
 @interface GLBarcodeManager()
 @property (nonatomic) NSMutableArray *databases;
@@ -33,6 +31,8 @@ static int count = 0;
         self.manager = [AFHTTPRequestOperationManager manager];
         self.barcodeItemSignal = [RACSubject subject];
         self.notification = @"barcodeItemUpdatedNotification";
+        
+        self.manager.responseSerializer.acceptableContentTypes = [self.manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/plain"];
     }
     
     return self;
@@ -42,68 +42,55 @@ static int count = 0;
     [self.databases addObject:database];
 }
 
-- (void)fetchNameOfItemWithBarcode:(NSString *)barcode {
+- (RACSignal *)fetchNameOfItemWithBarcode:(NSString *)barcode {
     if ([self.databases count] == 0) {
         NSLog(@"Error, there are no databases to fetch item names from.");
     }
     
     NSMutableArray *recievedNames = [NSMutableArray new];
-    count = 0;
+    NSMutableArray *signals = [NSMutableArray new];
+    RACSubject *resultSignal = [RACSubject subject];
     
-    for (GLBarcodeDatabase *database in self.databases) {
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[database getURLForDatabaseWithBarcode:barcode]]];
-        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-        
-        #warning this code shouldn't be duplicated
-        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
-            
-            NSLog(@"Dictionary for database %@, %@", database.name, dict);
-            
-            if ([dict valueForKeyPath:database.path]) {
-                NSLog(@"Recieved name %@", [dict valueForKeyPath:database.path]);
-                NSString *name = [dict valueForKeyPath:database.path];
-                
-                if (![name isEqual:[NSNull null]] && ![name isEqualToString:@" "]) {
-                    [recievedNames addObject:name];
-                } else {
-                    NSLog(@"Database with name %@ did not have barcode %@", database.name, barcode);
-                }
-            } else {
-                NSLog(@"Database with name %@ did not have barcode %@", database.name, barcode);
-            }
-            
-            count = count + 1;
-            
-            if (count >= [self.databases count]) {
-                [self didFinishFetchingNames:recievedNames forBarcodeItemWithBarcode:barcode];
-            }
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"Error while fetching name from server. %@", error);
+    [self.databases enumerateObjectsUsingBlock:^(GLBarcodeDatabase *database, NSUInteger index, BOOL *stop) {
+        [signals addObject:[[self.manager rac_GET:[database getURLForDatabaseWithBarcode:barcode] parameters:nil] map:^id(RACTuple *value) {
+            return [((NSDictionary *)value.second) valueForKeyPath:database.path];
+        }]];
+    }];
+    
+    [[RACSignal merge:signals] subscribeNext:^(NSString *x) {
+        [recievedNames addObject:x];
+    } error:^(NSError *error) {
+        NSLog(@"Error while fetching from database %@", error);
+    } completed:^{
+        [resultSignal sendNext:[self optimalNameForBarcodeProductWithNameCollection:recievedNames]];
+        [resultSignal sendCompleted];
+    }];
+    
+    return resultSignal;
+}
 
-            count = count + 1;
-            
-            if (count >= [self.databases count]) {
-               [self didFinishFetchingNames:recievedNames forBarcodeItemWithBarcode:barcode];
-            }
-        }];
-        
-        [operation start];
-    }
+//this has to be here until the developer behind searchupc.com gets his shit together
+- (BOOL)isValidNameForItem:(NSString *)name {
+    return ![name isEqualToString:@" "];
 }
 
 - (void)didFinishFetchingNames:(NSMutableArray *)names forBarcodeItemWithBarcode:(NSString *)barcode {
+    if ([names count] == 0) {
+        NSLog(@"No databases replied");
+        return;
+    }
+    
     NSString *itemName = [self optimalNameForBarcodeProductWithNameCollection:names];
     GLBarcodeItem *barcodeItem = [[GLBarcodeItem alloc] initWithBarcode:barcode name:itemName];
     [self.bingFetcher fetchImageFormBingForBarcodeItem:barcodeItem];
     [self.barcodeItemSignal sendNext:barcodeItem];
 }
 
-- (NSString *)optimalNameForBarcodeProductWithNameCollection:(NSMutableArray *)names {
+- (NSArray *)optimalNameForBarcodeProductWithNameCollection:(NSMutableArray *)names {
     NSMutableDictionary *wordDictionary = [[NSMutableDictionary alloc] init];
     
     for (NSString *nameOfScannedItem in names) {
-        NSArray *scannedItemWords = [nameOfScannedItem componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" -/."]];
+        NSArray *scannedItemWords = [nameOfScannedItem componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" -/.,"]];
         
         for (NSString *word in scannedItemWords) {
             int numberOfOccurences = [[wordDictionary objectForKey:[word lowercaseString]] intValue];
@@ -152,9 +139,8 @@ static int count = 0;
         high = 0;
         pos = 0;
     }
-
     
-    return [result componentsJoinedByString:@" "];
+    return [result copy];
 }
 
 

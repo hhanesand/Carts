@@ -7,11 +7,13 @@
 //
 
 #import "GLBingFetcher.h"
+#import "AFHTTPRequestOperationManager+RACSupport.h"
 
 @interface GLBingFetcher()
 @property (nonatomic) NSString *root;
 @property (nonatomic) NSString *auth;
 @property (nonatomic) NSString *thumbnailKeyPath;
+@property (nonatomic) AFHTTPRequestOperationManager *manager;
 @end
 
 @implementation GLBingFetcher
@@ -30,6 +32,7 @@
     if (self = [super init]) {
         self.root = @"https://api.datamarket.azure.com/Bing/Search/v1/Image?$format=JSON&$top=1";
         self.thumbnailKeyPath = @"d.results.Thumbnail.MediaUrl";
+        self.manager = [AFHTTPRequestOperationManager manager];
         
         NSString *key = @"4RmJ+kjMTCXg36g0LmPrDTiLgF3Xb3EqJjBGwzqXC9A";
         NSData *authData = [[NSString stringWithFormat:@"%@:%@", key, key] dataUsingEncoding:NSUTF8StringEncoding];
@@ -40,24 +43,17 @@
 }
 
 - (void)fetchImageFormBingForBarcodeItem:(GLBarcodeItem *)barcodeItem {
-    NSLog(@"Starting bing fetch");
     NSString *url = [self.root stringByAppendingString:[self nameOfItemToBingPhrase:barcodeItem.name]];
     NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     
     [urlRequest setHTTPMethod:@"GET"];
     [urlRequest setValue:self.auth forHTTPHeaderField:@"Authorization"];
     
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:urlRequest];
-    
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:nil];
-        [barcodeItem fetchPictureWithURL:[dict valueForKeyPath:self.thumbnailKeyPath][0]];
-        NSLog(@"Completed bing fetch");
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Failure while fetching URL for barcodeItem with name %@, error is : %@", barcodeItem.name, error);
+    [[self.manager rac_enqueueHTTPRequestOperation:[[AFHTTPRequestOperation alloc] initWithRequest:urlRequest]] subscribeNext:^(RACTuple *x) {
+        [barcodeItem fetchPictureWithURL:[NSURL URLWithString:[((NSDictionary *)x.second) valueForKeyPath:self.thumbnailKeyPath]]];
+    } error:^(NSError *error) {
+        
     }];
-    
-    [operation start];
 }
 
 - (NSString *)nameOfItemToBingPhrase:(NSString *)name {

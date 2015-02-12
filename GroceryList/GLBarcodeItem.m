@@ -7,8 +7,16 @@
 //
 
 #import "GLBarcodeItem.h"
+#import <Parse/PFObject+Subclass.h>
 
 @implementation GLBarcodeItem
+
+@synthesize imageData;
+@synthesize delegate;
+
+@dynamic barcode;
+@dynamic name;
+@dynamic url;
 
 static NSString *notificationName = @"barcodeItemUpdated";
 
@@ -16,8 +24,18 @@ static NSString *notificationName = @"barcodeItemUpdated";
     return notificationName;
 }
 
++ (NSString *)parseClassName {
+    return @"barcodeItem";
+}
+
++ (void)load {
+    [self registerSubclass];
+}
+
 - (instancetype)initWithBarcode:(NSString *)barcode name:(NSString *)name {
     if (self = [super init]) {
+
+        
         self.barcode = barcode;
         self.name = name;
     }
@@ -25,9 +43,10 @@ static NSString *notificationName = @"barcodeItemUpdated";
     return self;
 }
 
-- (void)fetchPictureWithURL:(NSString *)urlString {
+- (void)fetchPictureWithURL:(NSURL *)url {
+    self.url = [url absoluteString];
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSURL *url = [NSURL URLWithString:urlString];
         NSData *data = [NSData dataWithContentsOfURL:url];
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -41,5 +60,7 @@ static NSString *notificationName = @"barcodeItemUpdated";
 - (NSString *)description {
     return [self.barcode stringByAppendingString:[@" | "  stringByAppendingString:self.name]];
 }
+
+
 
 @end
