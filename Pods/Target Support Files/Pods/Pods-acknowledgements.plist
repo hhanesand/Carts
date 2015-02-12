@@ -67,15 +67,6 @@ THE SOFTWARE.</string>
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>HTMLReader is in the public domain.
-</string>
-			<key>Title</key>
-			<string>HTMLReader</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-		</dict>
-		<dict>
-			<key>FooterText</key>
 			<string>**Copyright (c) 2012 - 2014, GitHub, Inc.**
 **All rights reserved.**
 

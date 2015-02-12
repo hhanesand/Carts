@@ -23,7 +23,6 @@ PODS:
   - AFNetworking/UIKit (2.5.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - HTMLReader (0.6.1)
   - ReactiveCocoa (2.4.4):
     - ReactiveCocoa/UI (= 2.4.4)
   - ReactiveCocoa/Core (2.4.4):
@@ -36,7 +35,6 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking-RACExtensions (from `https://github.com/knshiro/AFNetworking-RACExtensions.git`)
-  - HTMLReader
   - ReactiveCocoa (= 2.4.4)
   - SVProgressHUD (HEAD)
   - SWTableViewCell (~> 0.3.7)
@@ -53,7 +51,6 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
   AFNetworking-RACExtensions: b9b18c486fe4e257fb6c1ce6a848e82581af2170
-  HTMLReader: dbcd34d10785e73b3763ab4a534ffa65b669acbd
   ReactiveCocoa: 31119068e3dde866bd257cf74e1f06b4023bf387
   SVProgressHUD: da7a49e789af645d9279ffbca62318945a832438
   SWTableViewCell: 25de71898e3fcd11cf75707ef90245acf990ec03
