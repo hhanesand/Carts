@@ -87,6 +87,7 @@
         
         return [self.bing fetchImageURLFromBingForBarcodeItem:barcodeItem];
     }] doNext:^(GLBarcodeItem *item) {
+        [item saveEventually];
         item.imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:item.url]];
     }] deliverOnMainThread] logAll] subscribeCompleted:^{
         [self.delegate didReceiveUpdateForBarcodeItem];
