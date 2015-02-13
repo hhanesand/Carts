@@ -17,6 +17,7 @@
 @property (nonatomic) NSMutableArray *barcodeItems;
 @property (nonatomic) GLBingFetcher *bingFetcher;
 @property (nonatomic) AFHTTPRequestOperationManager *manager;
+@property (nonatomic) RACSignal *networkErrorSignal;
 @end
 
 @implementation GLBarcodeManager
@@ -40,33 +41,33 @@
 - (RACSignal *)fetchNameOfItemWithBarcode:(NSString *)barcode {
     NSMutableArray *recievedNames = [NSMutableArray new];
     NSMutableArray *signals = [NSMutableArray new];
-    RACSubject *resultSignal = [RACSubject subject];
     
     //go though each database that has been added and grab a signal for the network request
-    [self.databases enumerateObjectsUsingBlock:^(GLBarcodeDatabase *database, NSUInteger index, BOOL *stop) {
-        [signals addObject:[[self.manager rac_GET:[database getURLForDatabaseWithBarcode:barcode] parameters:nil] map:^id(RACTuple *value) {
-            return [((NSDictionary *)value.second) valueForKeyPath:database.path]; //map the value to the name of the item using the JSON path
+    for (GLBarcodeDatabase *database in self.databases) {
+        [signals addObject:[[[[self.manager rac_GET:[database getURLForDatabaseWithBarcode:barcode] parameters:nil] map:^id(RACTuple *value) {
+            NSLog(@"Dictionary %@", value.second);
+            NSLog(@"Name %@", [((NSDictionary *)value.second) valueForKeyPath:database.path]);
+            return [((NSDictionary *)value.second) valueForKeyPath:database.path];
+        }] doError:^(NSError *error) {
+            NSLog(@"Error while fetching name from database %@", error);
+        }] filter:^BOOL(NSString *name) {
+            return [self isValidNameForItem:name];
         }]];
-    }];
-    
-    [[RACSignal merge:signals] subscribeNext:^(NSString *x) {
+    }
+
+    return [[[RACSignal merge:signals] doNext:^(NSString *x) {
         [recievedNames addObject:x];
-    } error:^(NSError *error) {
-        NSLog(@"Error while fetching from database %@", error);
-    } completed:^{
-        [resultSignal sendNext:[[self optimalNameForBarcodeProductWithNameCollection:recievedNames] componentsJoinedByString:@" "]];
-        [resultSignal sendCompleted];
+    }] then:^RACSignal *{
+        return [RACSignal return:[self optimalNameForBarcodeProductWithNameCollection:recievedNames]];
     }];
-    
-    return resultSignal;
 }
 
 //this has to be here until the developer behind searchupc.com gets his shit together
 - (BOOL)isValidNameForItem:(NSString *)name {
-    return ![name isEqualToString:@" "];
+    return name != nil && ![name isEqualToString:@" "] && ![name isEqualToString:@"(null)"];
 }
 
-- (NSArray *)optimalNameForBarcodeProductWithNameCollection:(NSMutableArray *)names {
+- (NSString *)optimalNameForBarcodeProductWithNameCollection:(NSMutableArray *)names {
     NSMutableDictionary *wordDictionary = [[NSMutableDictionary alloc] init];
     
     for (NSString *nameOfScannedItem in names) {
@@ -120,7 +121,7 @@
         pos = 0;
     }
     
-    return [result copy];
+    return [[result copy] componentsJoinedByString:@" "];
 }
 
 

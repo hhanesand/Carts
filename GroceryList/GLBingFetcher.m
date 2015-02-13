@@ -54,6 +54,7 @@
     [operation setResponseSerializer:[AFJSONResponseSerializer serializer]];
     
     return [[self.manager rac_enqueueHTTPRequestOperation:operation] map:^id(RACTuple *value) {
+        NSLog(@"Dict %@", value.second);
         barcodeItem.url = [((NSDictionary *)value.second) valueForKeyPath:self.thumbnailKeyPath][0];
         return barcodeItem;
     }];

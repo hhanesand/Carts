@@ -362,8 +362,8 @@
 			children = (
 				F2E545061A6CB5F500CB52E5 /* GLTableViewController.h */,
 				F2E545071A6CB5F500CB52E5 /* GLTableViewController.m */,
-				F2F948FA1A8BDF65002C5177 /* GLScannerViewController.m */,
 				F2F948FC1A8BDF76002C5177 /* GLScannerViewController.h */,
+				F2F948FA1A8BDF65002C5177 /* GLScannerViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -750,6 +750,7 @@
 					"$(PROJECT_DIR)",
 					"$(inherited)",
 				);
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -771,6 +772,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				VERSIONING_SYSTEM = "";
+				WARNING_CFLAGS = "";
 			};
 			name = Debug;
 		};
@@ -787,6 +789,7 @@
 					"$(PROJECT_DIR)",
 					"$(inherited)",
 				);
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -808,6 +811,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				VERSIONING_SYSTEM = "";
+				WARNING_CFLAGS = "";
 			};
 			name = Release;
 		};

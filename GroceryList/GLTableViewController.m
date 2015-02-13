@@ -15,7 +15,6 @@
 #import "AFNetworking.h"
 #import "GLBingFetcher.h"
 #import "GLScannerViewController.h"
-#import "UIImageView+AFNetworking.h"
 
 static NSString *reuseIdentifier = @"GLTableViewCell";
 
@@ -69,7 +68,7 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
     
     GLBarcodeItem *barcodeItem = self.barcodeItems[indexPath.row];
     cell.productName.text = barcodeItem.name;
-    [cell.imageView setImageWithURL:[NSURL URLWithString:barcodeItem.url] placeholderImage:[UIImage imageNamed:@"document"]];
+    cell.productImage.image = [UIImage imageWithData:barcodeItem.imageData];
     
     return cell;
 }
@@ -91,6 +90,7 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
     if ([segue.identifier isEqualToString:@"showScannerViewController"]) {
         GLScannerViewController *scannerController = segue.destinationViewController;
         scannerController.delegate = self;
+        [scannerController startScanning];
     }
 }
 

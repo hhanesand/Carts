@@ -34,11 +34,19 @@
         [self.manager addBarcodeDatabase:[[GLBarcodeDatabase alloc] initWithURLOfDatabase:@"http://api.upcdatabase.org/json/938a6e05f72b4e5b7531c35374a4457d/%@"  withName:@"upcdatabase.org" andPath:@"itemname"]];
         
         [self.manager addBarcodeDatabase:[[GLBarcodeDatabase alloc] initWithURLOfDatabase:@"http://www.searchupc.com/handlers/upcsearch.ashx?request_type=3&access_token=C9D1021E-37EA-4C29-BAF0-EE92A5AB03BE&upc=%@" withName:@"searchupc.com"  andPath:@"0.productname"]];
-    
+        
         return [self initWithAppKey:self.apiKey];
     }
     
     return nil;
+}
+
+- (instancetype)initWithAppKey:(NSString *)scanditSDKAppKey {
+    if (self = [super initWithAppKey:scanditSDKAppKey]) {
+        self.overlayController.delegate = self;
+    }
+    
+    return self;
 }
 
 #pragma mark - Test methods
@@ -50,7 +58,7 @@
 #pragma mark - SCANDIT implementation
 
 - (void)scanditSDKOverlayController:(ScanditSDKOverlayController *)overlayController didCancelWithStatus:(NSDictionary *)status {
-
+    
 }
 
 - (void)scanditSDKOverlayController:(ScanditSDKOverlayController *)overlayController didManualSearch:(NSString *)text {
@@ -65,24 +73,24 @@
     
     [SVProgressHUD show];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [[[self.manager fetchNameOfItemWithBarcode:barcode] flattenMap:^RACStream *(NSString *nameOfBarcodeItem) {
-            GLBarcodeItem *barcodeItem = [GLBarcodeItem object];
-            barcodeItem.name = nameOfBarcodeItem;
-            
-            [SVProgressHUD showSuccessWithStatus:@"Much Success!"];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.delegate didReceiveNewBarcodeItem:barcodeItem];
-                [self.navigationController popViewControllerAnimated:YES];
-            });
-            
-            return [self.bing fetchImageURLFromBingForBarcodeItem:barcodeItem];
-        }] subscribeCompleted:^{
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.delegate didReceiveUpdateForBarcodeItem];
-            });
-        }];
-    });
+    [[[[[[self.manager fetchNameOfItemWithBarcode:barcode] flattenMap:^RACStream *(NSString *nameOfBarcodeItem) {
+        GLBarcodeItem *barcodeItem = [GLBarcodeItem object];
+        barcodeItem.name = nameOfBarcodeItem;
+        barcodeItem.barcode = barcode;
+        
+        [SVProgressHUD showSuccessWithStatus:@"Much Success!"];
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.delegate didReceiveNewBarcodeItem:barcodeItem];
+            [self.navigationController popViewControllerAnimated:YES];
+        });
+        
+        return [self.bing fetchImageURLFromBingForBarcodeItem:barcodeItem];
+    }] doNext:^(GLBarcodeItem *item) {
+        item.imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:item.url]];
+    }] deliverOnMainThread] logAll] subscribeCompleted:^{
+        [self.delegate didReceiveUpdateForBarcodeItem];
+    }];
 }
 
 @end

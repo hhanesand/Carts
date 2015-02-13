@@ -120,6 +120,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="video_camera-25" width="25" height="25"/>
+        <image name="video_camera-25" width="12" height="12"/>
     </resources>
 </document>
