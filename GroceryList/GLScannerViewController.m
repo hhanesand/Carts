@@ -22,7 +22,6 @@
 
 @implementation GLScannerViewController
 
-#warning does this initialization structure actually work?
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
         _apiKey = @"0TyjNGRpheHk1t6Ho8s6z0KJ6wQyLHv7UXs1kmm1Kx4";

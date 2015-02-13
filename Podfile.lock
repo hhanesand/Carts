@@ -23,6 +23,17 @@ PODS:
   - AFNetworking/UIKit (2.5.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - Bolts (1.1.3)
+  - Facebook-iOS-SDK (3.23.0):
+    - Bolts (~> 1.0)
+  - Parse (1.6.2):
+    - Bolts (~> 1.1)
+  - ParseFacebookUtils (1.6.2):
+    - Facebook-iOS-SDK (~> 3.20)
+    - Parse (~> 1.6.2)
+  - ParseUI (1.1.0):
+    - Parse (~> 1.6)
+    - ParseFacebookUtils (~> 1.6)
   - ReactiveCocoa (2.4.4):
     - ReactiveCocoa/UI (= 2.4.4)
   - ReactiveCocoa/Core (2.4.4):
@@ -35,6 +46,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking-RACExtensions (from `https://github.com/knshiro/AFNetworking-RACExtensions.git`)
+  - ParseUI
   - ReactiveCocoa (= 2.4.4)
   - SVProgressHUD (HEAD)
   - SWTableViewCell (~> 0.3.7)
@@ -51,6 +63,11 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
   AFNetworking-RACExtensions: b9b18c486fe4e257fb6c1ce6a848e82581af2170
+  Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
+  Facebook-iOS-SDK: 3d65f685348b789e46a9aacf92bfa85b60b63755
+  Parse: 60d65108fe39da77ec16c9e51d74b4d296b21424
+  ParseFacebookUtils: 0b86cd67283c60d10e3ddc8427f989f5e60ebbd7
+  ParseUI: 00c4c39aab3944d88758b55416581650caa37f89
   ReactiveCocoa: 31119068e3dde866bd257cf74e1f06b4023bf387
   SVProgressHUD: da7a49e789af645d9279ffbca62318945a832438
   SWTableViewCell: 25de71898e3fcd11cf75707ef90245acf990ec03

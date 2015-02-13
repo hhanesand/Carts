@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		BAC6761EE9F8F7E288863188 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A783D9E5EBD8A030867002CD /* libPods.a */; };
-		F22C8F311A6EE87800139B9D /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F22C8F2F1A6EE87800139B9D /* Bolts.framework */; };
-		F22C8F321A6EE87800139B9D /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F22C8F301A6EE87800139B9D /* Parse.framework */; };
 		F22C8F341A6EE88D00139B9D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F22C8F331A6EE88D00139B9D /* AudioToolbox.framework */; };
 		F22C8F361A6EE89700139B9D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F22C8F351A6EE89700139B9D /* CFNetwork.framework */; };
 		F22C8F381A6EE8A100139B9D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F22C8F371A6EE8A100139B9D /* CoreGraphics.framework */; };
@@ -86,8 +84,6 @@
 		9CA8F7344B4A5BF669FC2DE8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A783D9E5EBD8A030867002CD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F210E9841A855A04000B83EC /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
-		F22C8F2F1A6EE87800139B9D /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		F22C8F301A6EE87800139B9D /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		F22C8F331A6EE88D00139B9D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		F22C8F351A6EE89700139B9D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		F22C8F371A6EE8A100139B9D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -194,8 +190,6 @@
 				F2B4D0DA1A6DF53000A98C7A /* CoreVideo.framework in Frameworks */,
 				F2B4D0D81A6DF52A00A98C7A /* CoreMedia.framework in Frameworks */,
 				F2B4D0D61A6DF52200A98C7A /* AVFoundation.framework in Frameworks */,
-				F22C8F321A6EE87800139B9D /* Parse.framework in Frameworks */,
-				F22C8F311A6EE87800139B9D /* Bolts.framework in Frameworks */,
 				BAC6761EE9F8F7E288863188 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,8 +255,6 @@
 				F22C8F371A6EE8A100139B9D /* CoreGraphics.framework */,
 				F22C8F351A6EE89700139B9D /* CFNetwork.framework */,
 				F22C8F331A6EE88D00139B9D /* AudioToolbox.framework */,
-				F22C8F2F1A6EE87800139B9D /* Bolts.framework */,
-				F22C8F301A6EE87800139B9D /* Parse.framework */,
 				F2B4D0DD1A6DF54500A98C7A /* libiconv.dylib */,
 				F2B4D0DB1A6DF53900A98C7A /* QuartzCore.framework */,
 				F2B4D0D91A6DF53000A98C7A /* CoreVideo.framework */,
