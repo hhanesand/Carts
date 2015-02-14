@@ -10,4 +10,6 @@
 
 @interface PFQueryTableViewController (GLMutableTableView)
 
+- (NSMutableArray *)getInternalObjects;
+
 @end

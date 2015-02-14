@@ -8,6 +8,16 @@
 
 #import "PFQueryTableViewController+GLMutableTableView.h"
 
+@interface PFQueryTableViewController () {
+    NSMutableArray *_mutableObjects;
+}
+@end
+
 @implementation PFQueryTableViewController (GLMutableTableView)
+
+- (NSMutableArray *)getInternalObjects {
+    NSLog(@"Internal objects : %@ and public comparison %@", _mutableObjects, self.objects);
+    return _mutableObjects;
+}
 
 @end
