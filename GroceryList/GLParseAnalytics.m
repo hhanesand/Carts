@@ -19,11 +19,18 @@
     return shared;
 }
 
-- (void)trackMissingBarcode:(NSString *)barcode {
-    PFObject *object = [PFObject objectWithClassName:@"missingProducts"];
-    object[@"barcode"] = barcode;
-    [object saveEventually];
+- (instancetype)init {
+    if (self = [super init]) {
+        _missingBarcodeFunctionName = @"trackMissingBarcode";
+    }
     
+    return self;
+}
+
+- (void)trackMissingBarcode:(NSString *)barcode {
+    [PFCloud callFunctionInBackground:self.missingBarcodeFunctionName withParameters:@{@"barcode" : barcode} block:^(id object, NSError *error) {
+        NSLog(@"TrackMissingBarcode Result %@", object);
+    }];
 }
 
 @end

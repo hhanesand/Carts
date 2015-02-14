@@ -1,28 +1,37 @@
-
-// Use Parse.Cloud.define to define as many cloud functions as you want.
-// For example:
-Parse.Cloud.define("hello", function(request, response) {
-  response.success("Hello world!");
-});
-
-Parse.Cloud.beforeSave("missingProducts", function(request, response) {
-    if(!request.object.get("barcode")) {
-        response.error("Barcode must be specified");
-    } else {
-        var query = new Parse.Query("missingProducts");
-        query.equalTo("barcode", request.object.get("barcode"))
-        
-        query.first({
-            success : function(object) {
-                if(object) {
-                    response.error("Already exists");
-                } else {
-                    response.success();
-                }
-            },
-            error : function(object) {
-                response.error("Could not validate completeness");
+//track whenever the user scans a barcode that is not in the database
+Parse.Cloud.define("trackMissingBarcode", function(request, response) {
+    var query = new Parse.Query("missingProducts");
+    query.equalTo("barcode", request.params.barcode);
+                   
+    query.first({
+        success : function(object) {
+            if(object) {
+                object.increment("count", 1);
+                object.save(null, {
+                        success : function(missingBarcode) {
+                        response.success("Updated count");
+                    },
+                    error : function(error) {
+                        response.error("Error saving updated count");
+                    }
+                });
+            } else {
+                var MissingBarcodeClass = new Parse.Object.extend("missingProducts");
+                var missingBarcode = new MissingBarcodeClass();
+                missingBarcode.set("barcode", request.params.barcode);
+                missingBarcode.set("count", 0);
+                missingBarcode.save(null, {
+                    success : function(missingBarcode) {
+                        response.success("Added new item");
+                    },
+                    error : function(error) {
+                        response.error("Error saving new item");
+                    }
+                });
             }
-        });
-    }
+        },
+        error : function() {
+            response.error("Error querying");
+        }
+    });
 });
