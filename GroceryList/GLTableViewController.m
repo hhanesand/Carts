@@ -15,6 +15,7 @@
 #import "AFNetworking.h"
 #import "GLBingFetcher.h"
 #import "GLScannerViewController.h"
+#import "UIImageView+AFNetworking.h"
 
 static NSString *reuseIdentifier = @"GLTableViewCell";
 
@@ -24,18 +25,63 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
 
 @implementation GLTableViewController
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    NSLog(@"Init with coder");
+    
+    if (self = [super initWithCoder:aDecoder]) {
+        self.parseClassName = @"barcodeItem";
+        self.pullToRefreshEnabled = YES;
+        self.paginationEnabled = YES;
+        self.objectsPerPage = 5;
+    }
+    
+    return self;
+}
+
+#pragma mark - Parse
+
+- (void)objectsDidLoad:(NSError *)error {
+    [super objectsDidLoad:error];
+}
+
+- (void)objectsWillLoad {
+    [super objectsWillLoad];
+}
+
+- (PFQuery *)queryForTable {
+    PFQuery *query = [GLBarcodeItem query];
+    [query orderByAscending:@"name"];
+    return query;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(GLBarcodeItem *)object {
+    NSLog(@"Running update");
+    GLTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
+    
+    cell.productName.text = object.name;
+    
+    //no reactive cocoa for this one...
+    __weak GLTableViewCell *weakCell = cell;
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:object.url]];
+    UIImage *image = [UIImage imageNamed:@"document"];
+    
+    [cell.productImage setImageWithURLRequest:request placeholderImage:image success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        weakCell.productImage.image = image;
+        [weakCell setNeedsLayout];
+    } failure:nil];
+    
+    return cell;
+}
+
+#pragma mark - View Lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.barcodeItems = [NSMutableArray new];
 }
 
-- (void)tableViewUpdated {
-    NSLog(@"Updating table view %@", self.barcodeItems);
-    [self.tableView reloadData];
-}
-
-#pragma mark - Table view data source
+#pragma mark - Tableview data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     if ([self.barcodeItems count] == 0) {
@@ -61,16 +107,6 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.barcodeItems count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    GLTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-    
-    GLBarcodeItem *barcodeItem = self.barcodeItems[indexPath.row];
-    cell.productName.text = barcodeItem.name;
-    cell.productImage.image = [UIImage imageWithData:barcodeItem.imageData];
-    
-    return cell;
 }
 
 #pragma mark - GLBarcodeItemDelegate

@@ -72,7 +72,7 @@
     
     [SVProgressHUD show];
     
-    [[[[[[self.manager fetchNameOfItemWithBarcode:barcode] flattenMap:^RACStream *(NSString *nameOfBarcodeItem) {
+    [[[[[self.manager fetchNameOfItemWithBarcode:barcode] flattenMap:^RACStream *(NSString *nameOfBarcodeItem) {
         GLBarcodeItem *barcodeItem = [GLBarcodeItem object];
         barcodeItem.name = nameOfBarcodeItem;
         barcodeItem.barcode = barcode;
@@ -88,7 +88,7 @@
     }] doNext:^(GLBarcodeItem *item) {
         [item saveEventually];
         item.imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:item.url]];
-    }] deliverOnMainThread] logAll] subscribeCompleted:^{
+    }] deliverOnMainThread] subscribeCompleted:^{
         [self.delegate didReceiveUpdateForBarcodeItem];
     }];
 }
