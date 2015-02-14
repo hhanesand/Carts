@@ -31,13 +31,15 @@
     
 }
 
-
 - (NSString *)description {
     NSMutableString *string = [NSMutableString stringWithString:self.name];
     [string appendString:@" | "];
     [string appendString:self.barcode];
-    [string appendString:@" | "];
-    [string appendString:self.url];
+    
+    if (self.url) {
+        [string appendString:@" | "];
+        [string appendString:self.url];
+    }
     
     return [string description];
 }
