@@ -45,8 +45,6 @@
     //go though each database that has been added and grab a signal for the network request
     for (GLBarcodeDatabase *database in self.databases) {
         [signals addObject:[[[[self.manager rac_GET:[database getURLForDatabaseWithBarcode:barcode] parameters:nil] map:^id(RACTuple *value) {
-            NSLog(@"Dictionary %@", value.second);
-            NSLog(@"Name %@", [((NSDictionary *)value.second) valueForKeyPath:database.path]);
             return [((NSDictionary *)value.second) valueForKeyPath:database.path];
         }] doError:^(NSError *error) {
             NSLog(@"Error while fetching name from database %@", error);
@@ -63,35 +61,23 @@
 }
 
 //this has to be here until the developer behind searchupc.com gets his shit together
-- (BOOL)isValidNameForItem:(NSString *)name {
-    return name != nil && ![name isEqualToString:@" "] && ![name isEqualToString:@"(null)"];
 - (BOOL)isValidNameForItem:(id)name {
     return name != [NSNull null] && ![name isEqualToString:@" "] && ![name isEqualToString:@"(null)"];
 }
 
 - (NSString *)optimalNameForBarcodeProductWithNameCollection:(NSMutableArray *)names {
+    NSLog(@"Names recieved %@", names);
     NSMutableDictionary *wordDictionary = [[NSMutableDictionary alloc] init];
+    NSMutableArray *result = [NSMutableArray new];
     
     for (NSString *nameOfScannedItem in names) {
-        NSArray *scannedItemWords = [nameOfScannedItem componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" -/.,"]];
+        NSArray *scannedItemWords = [nameOfScannedItem componentsSeparatedByString:@" "];
         
         for (NSString *word in scannedItemWords) {
             int numberOfOccurences = [[wordDictionary objectForKey:[word lowercaseString]] intValue];
             
             if (numberOfOccurences == 0) {
-                //this word has not been added to the dictionary yet...
-                NSArray *allKeys = [wordDictionary allKeys];
-                
-                for (NSString *string in allKeys) {
-                    //... but let's check if something similar already exists
-                    if ([self compareString:string toString:word] > 0.8f) {
-                        int newValue = [[wordDictionary objectForKey:string] intValue];
-                        [wordDictionary setObject:[NSNumber numberWithInt:++newValue] forKey:[string lowercaseString]];
-                        continue;
-                    }
-                }
-                
-                //nope, nothing like this word is in the dictionary, so we add a new entry
+                //add a new entry
                 [wordDictionary setObject:[NSNumber numberWithInt:1] forKey:[word lowercaseString]];
             } else {
                 //already exists, so we increment occurence
@@ -101,43 +87,13 @@
         }
     }
     
-    NSMutableArray *allKeys = [[wordDictionary allKeys] mutableCopy];
-    NSMutableArray *result = [NSMutableArray arrayWithCapacity:3];
-    
-    int high = 0;
-    NSInteger pos = 0;
-    
-    //find the 3 words with the highest occurence
-    for (int i = 0; i < 3; i++) {
-        for (NSString *key in allKeys) {
-            if ([[wordDictionary objectForKey:key] intValue] >= high) {
-                pos = [allKeys indexOfObject:key];
-                high = [[wordDictionary objectForKey:key] intValue];
-            }
-        }
-        
-        [result addObject:allKeys[pos]];
-        [allKeys removeObjectAtIndex:pos];
-        
-        high = 0;
-        pos = 0;
+    for (NSString *key in [wordDictionary allKeys]) {
+        if ([[wordDictionary valueForKey:key] intValue] > 1) {
+            [result addObject:key];
+        }   
     }
     
-    return [[result copy] componentsJoinedByString:@" "];
-}
-
-
-//returns the percentage of similar characters in a string : comparing "123" and "123" will return 1.0, while comparing "123$" and "1234" will return 0.75.
-- (int)compareString:(NSString *)a toString:(NSString *)b {
-    double similarCharacters = 0.0;
-    
-    for (int i = 0; i < MIN(a.length, b.length); i++) {
-        if ([a characterAtIndex:i] == [b characterAtIndex:i]) {
-            similarCharacters++;
-        }
-    }
-    
-    return similarCharacters / (double) MIN(a.length, b.length);
+    return [[[result copy] componentsJoinedByString:@" "] capitalizedString];
 }
 
 @end

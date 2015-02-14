@@ -28,31 +28,21 @@
 
 - (void)testExample {
     NSMutableArray *names = [NSMutableArray new];
-    [names addObject:@"Coca-Cola Regular Fridge Pack"];
-    [names addObject:@"Coca Cola Classic"];
+    [names addObject:@"Aquafina Purified Drinking Water"];
+    [names addObject:@"Aquafina bottle water"];
+    [names addObject:@"Red 2001-2007 CHRYSLER VOYAGER / DODGE CARAVAN 3.3 3.3L Air Intake Kit Systems"];
     
     NSMutableDictionary *wordDictionary = [[NSMutableDictionary alloc] init];
+    NSMutableArray *result = [NSMutableArray new];
     
     for (NSString *nameOfScannedItem in names) {
-        NSArray *scannedItemWords = [nameOfScannedItem componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" -/."]];
+        NSArray *scannedItemWords = [nameOfScannedItem componentsSeparatedByString:@" "];
         
         for (NSString *word in scannedItemWords) {
             int numberOfOccurences = [[wordDictionary objectForKey:[word lowercaseString]] intValue];
             
             if (numberOfOccurences == 0) {
-                //this word has not been added to the dictionary yet...
-                NSArray *allKeys = [wordDictionary allKeys];
-                
-                for (NSString *string in allKeys) {
-                    //... but let's check if something similar already exists
-                    if ([self compareString:string toString:word] > 0.8f) {
-                        int newValue = [[wordDictionary objectForKey:string] intValue];
-                        [wordDictionary setObject:[NSNumber numberWithInt:++newValue] forKey:[string lowercaseString]];
-                        continue;
-                    }
-                }
-                
-                //nope, nothing like this word is in the dictionary, so we add a new entry
+                //add a new entry
                 [wordDictionary setObject:[NSNumber numberWithInt:1] forKey:[word lowercaseString]];
             } else {
                 //already exists, so we increment occurence
@@ -62,26 +52,10 @@
         }
     }
     
-    NSMutableArray *allKeys = [[wordDictionary allKeys] mutableCopy];
-    NSMutableArray *result = [NSMutableArray arrayWithCapacity:3];
-    
-    int high = 0;
-    NSInteger pos = 0;
-    
-    //find the 3 words with the highest occurence
-    for (int i = 0; i < 3; i++) {
-        for (NSString *key in allKeys) {
-            if ([[wordDictionary objectForKey:key] intValue] >= high) {
-                pos = [allKeys indexOfObject:key];
-                high = [[wordDictionary objectForKey:key] intValue];
-            }
+    for (NSString *key in [wordDictionary allKeys]) {
+        if ([[wordDictionary valueForKey:key] intValue] > 1) {
+            [result addObject:key];
         }
-        
-        [result addObject:allKeys[pos]];
-        [allKeys removeObjectAtIndex:pos];
-        
-        high = 0;
-        pos = 0;
     }
     
     NSLog(@"Result of test %@", result);

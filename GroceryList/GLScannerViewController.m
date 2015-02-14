@@ -13,6 +13,7 @@
 #import "GLBarcodeManager.h"
 #import "GLBarcodeItem.h"
 #import "GLBingFetcher.h"
+#import "GLParseAnalytics.h"
 
 @interface GLScannerViewController()
 @property (nonatomic, readonly) NSString *apiKey;
@@ -70,15 +71,37 @@
     NSString *barcode = dict[@"barcode"];
     NSLog(@"Recieved barcode %@", barcode);
     
+    [self fetchProductNameForBarcode:barcode];
+}
+
+#pragma mark - Networking
+
+- (void)fetchProductNameForBarcode:(NSString *)barcode {
     [SVProgressHUD show];
     
+    PFQuery *productQuery = [GLBarcodeItem query];
+    [productQuery whereKey:@"product_name" equalTo:barcode];
+    productQuery.limit = 1;
+    
+    [productQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if ([objects count] >= 1) {
+            NSLog(@"Found object in parse database %@", objects[1]);
+        } else {
+            NSLog(@"Could not find product info in parse about %@", barcode);
+            [[GLParseAnalytics shared] trackMissingBarcode:barcode];
+            [self fetchProductNameFromSecondaryDatabasesWithBarcode:barcode];
+        }
+    }];
+}
+
+- (void)fetchProductNameFromSecondaryDatabasesWithBarcode:(NSString *)barcode {
     [[[[[self.manager fetchNameOfItemWithBarcode:barcode] flattenMap:^RACStream *(NSString *nameOfBarcodeItem) {
         GLBarcodeItem *barcodeItem = [GLBarcodeItem object];
         barcodeItem.name = nameOfBarcodeItem;
         barcodeItem.barcode = barcode;
         
         [SVProgressHUD showSuccessWithStatus:@"Much Success!"];
-
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.delegate didReceiveNewBarcodeItem:barcodeItem];
             [self.navigationController popViewControllerAnimated:YES];
