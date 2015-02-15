@@ -1,3 +1,5 @@
+var stream = require("cloud/getstream.js");
+
 //track whenever the user scans a barcode that is not in the database
 Parse.Cloud.define("trackMissingBarcode", function(request, response) {
     var query = new Parse.Query("missingProducts");
