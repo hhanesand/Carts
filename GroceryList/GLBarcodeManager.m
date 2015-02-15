@@ -62,7 +62,7 @@
 
 //this has to be here until the developer behind searchupc.com gets his shit together
 - (BOOL)isValidNameForItem:(id)name {
-    return name != [NSNull null] && ![name isEqualToString:@" "] && ![name isEqualToString:@"(null)"];
+    return name && name != [NSNull null] && ![name isEqualToString:@" "] && ![name isEqualToString:@"(null)"];
 }
 
 - (NSString *)optimalNameForBarcodeProductWithNameCollection:(NSMutableArray *)names {

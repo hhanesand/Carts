@@ -26,7 +26,7 @@ static NSString *password = @"qwerty";
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
         self.parseClassName = @"barcodeItem";
-        self.pullToRefreshEnabled = NO;
+        self.pullToRefreshEnabled = YES;
         self.paginationEnabled = NO;
         self.loadingViewEnabled = NO;
     }
