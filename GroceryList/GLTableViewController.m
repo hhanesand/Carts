@@ -19,34 +19,20 @@
 
 static NSString *reuseIdentifier = @"GLTableViewCell";
 
-@interface GLTableViewController()
-@property (nonatomic) NSMutableArray *barcodeItems;
-@end
-
 @implementation GLTableViewController
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    NSLog(@"Init with coder");
-    
     if (self = [super initWithCoder:aDecoder]) {
         self.parseClassName = @"barcodeItem";
-        self.pullToRefreshEnabled = YES;
-        self.paginationEnabled = YES;
-        self.objectsPerPage = 5;
+        self.pullToRefreshEnabled = NO;
+        self.paginationEnabled = NO;
+        self.loadingViewEnabled = NO;
     }
     
     return self;
 }
 
 #pragma mark - Parse
-
-- (void)objectsDidLoad:(NSError *)error {
-    [super objectsDidLoad:error];
-}
-
-- (void)objectsWillLoad {
-    [super objectsWillLoad];
-}
 
 - (PFQuery *)queryForTable {
     PFQuery *query = [GLBarcodeItem query];
@@ -55,7 +41,6 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(GLBarcodeItem *)object {
-    NSLog(@"Running update");
     GLTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     cell.productName.text = object.name;
@@ -77,14 +62,12 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.barcodeItems = [NSMutableArray new];
 }
 
 #pragma mark - Tableview data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if ([self.barcodeItems count] == 0) {
+    if ([self.objects count] == 0) {
         //notify the user that there are no saved items
         UILabel *noSavedBarcodesLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds))];
         noSavedBarcodesLabel.text = @"You have not saved any barcodes.";
@@ -105,19 +88,10 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
     }
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.barcodeItems count];
-}
-
 #pragma mark - GLBarcodeItemDelegate
 
-- (void)didReceiveNewBarcodeItem:(GLBarcodeItem *)barcodeItem {
-    [self.barcodeItems addObject:barcodeItem];
-    [self didReceiveUpdateForBarcodeItem];
-}
-
 - (void)didReceiveUpdateForBarcodeItem {
-    [self.tableView reloadData];
+    [self loadObjects];
 }
 
 #pragma mark - Navigation

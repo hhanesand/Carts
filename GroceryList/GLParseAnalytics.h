@@ -10,6 +10,8 @@
 
 @interface GLParseAnalytics : NSObject
 
+@property (nonatomic, readonly) NSString *missingBarcodeFunctionName;
+
 + (GLParseAnalytics *)shared;
 
 - (void)trackMissingBarcode:(NSString *)barcode;

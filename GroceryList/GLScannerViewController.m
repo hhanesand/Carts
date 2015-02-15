@@ -81,6 +81,7 @@
     
     PFQuery *productQuery = [GLBarcodeItem query];
     [productQuery whereKey:@"product_name" equalTo:barcode];
+    [productQuery fromLocalDatastore];
     productQuery.limit = 1;
     
     [productQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -95,21 +96,22 @@
 }
 
 - (void)fetchProductNameFromSecondaryDatabasesWithBarcode:(NSString *)barcode {
+    GLBarcodeItem *barcodeItem = [GLBarcodeItem object];
+    
     [[[[[self.manager fetchNameOfItemWithBarcode:barcode] flattenMap:^RACStream *(NSString *nameOfBarcodeItem) {
-        GLBarcodeItem *barcodeItem = [GLBarcodeItem object];
         barcodeItem.name = nameOfBarcodeItem;
         barcodeItem.barcode = barcode;
+        [barcodeItem saveEventually];
         
         [SVProgressHUD showSuccessWithStatus:@"Much Success!"];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.delegate didReceiveNewBarcodeItem:barcodeItem];
+            [self.delegate didReceiveUpdateForBarcodeItem];
             [self.navigationController popViewControllerAnimated:YES];
         });
         
         return [self.bing fetchImageURLFromBingForBarcodeItem:barcodeItem];
     }] doNext:^(GLBarcodeItem *item) {
-        [item saveEventually];
         item.imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:item.url]];
     }] deliverOnMainThread] subscribeCompleted:^{
         [self.delegate didReceiveUpdateForBarcodeItem];

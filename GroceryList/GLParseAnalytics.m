@@ -21,7 +21,7 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        _missingBarcodeFunctionName = @"trackMissingBarcode";
+        _missingBarcodeFunctionName = @"missing";
     }
     
     return self;
