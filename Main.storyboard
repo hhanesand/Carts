@@ -62,13 +62,19 @@
                             <outlet property="delegate" destination="r87-YY-bgT" id="hfE-zD-fvq"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="zDE-en-U8v"/>
+                        <barButtonItem systemItem="action" id="fox-DA-xlv"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="kXm-WI-6hN"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="GroceryList" id="u5t-XX-mok">
-                        <barButtonItem key="rightBarButtonItem" image="video_camera-25" id="aLg-dB-Gmo">
+                        <barButtonItem key="rightBarButtonItem" image="barcode" id="aLg-dB-Gmo">
                             <connections>
                                 <segue destination="tsc-1i-oqR" kind="show" identifier="showScannerViewController" id="Zfg-yh-tFc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QMF-ba-1W4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -120,6 +126,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="video_camera-25" width="12" height="12"/>
+        <image name="barcode" width="32" height="32"/>
     </resources>
 </document>

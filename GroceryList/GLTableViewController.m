@@ -18,6 +18,8 @@
 #import "UIImageView+AFNetworking.h"
 
 static NSString *reuseIdentifier = @"GLTableViewCell";
+static NSString *username = @"lightice11";
+static NSString *password = @"qwerty";
 
 @implementation GLTableViewController
 
@@ -62,7 +64,21 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    #warning blocking call - add a check to see if the user is logged in already
+    if ([PFUser currentUser] == nil) {
+        [PFUser logInWithUsername:username password:password];
+    }
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self.navigationController setToolbarHidden:NO animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [self.navigationController setToolbarHidden:YES animated:YES];
+}
+
 
 #pragma mark - Tableview data source
 
