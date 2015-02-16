@@ -6,9 +6,9 @@
 //
 //
 
+#import <Parse/Parse.h>
 #import "GLTableViewController.h"
 #import "GLTableViewCell.h"
-#import <Parse/Parse.h>
 #import "AFNetworking.h"
 #import "GLBarcodeManager.h"
 #import "ReactiveCocoa/ReactiveCocoa.h"
@@ -16,6 +16,7 @@
 #import "GLBingFetcher.h"
 #import "GLScannerViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "PFQueryTableViewController+Caching.h"
 
 static NSString *reuseIdentifier = @"GLTableViewCell";
 static NSString *username = @"lightice11";
@@ -38,7 +39,7 @@ static NSString *password = @"qwerty";
 
 - (PFQuery *)queryForTable {
     PFQuery *query = [GLBarcodeItem query];
-    [query orderByAscending:@"name"];
+    [query orderByAscending:@"updatedAt"];
     return query;
 }
 
@@ -62,11 +63,17 @@ static NSString *password = @"qwerty";
 
 #pragma mark - View Lifecycle
 
+- (void)loadView {
+    [super loadView];
+    [self cache_init];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    #warning blocking call - add a check to see if the user is logged in already
+    #warning blocking call
     if ([PFUser currentUser] == nil) {
+        NSLog(@"Logging in");
         [PFUser logInWithUsername:username password:password];
     }
 }
@@ -106,8 +113,12 @@ static NSString *password = @"qwerty";
 
 #pragma mark - GLBarcodeItemDelegate
 
+- (void)didReceiveNewBarcodeItem {
+    [self cache_loadObjectsClear:YES];
+}
+
 - (void)didReceiveUpdateForBarcodeItem {
-    [self loadObjects];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Navigation

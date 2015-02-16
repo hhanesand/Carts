@@ -26,6 +26,7 @@
 		F28586BE1A744A75003B91E1 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586BD1A744A75003B91E1 /* AdSupport.framework */; };
 		F296DA121A709738001E9D29 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F296DA111A709738001E9D29 /* ParseCrashReporting.framework */; };
 		F296DA141A709862001E9D29 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F296DA131A709862001E9D29 /* libstdc++.6.dylib */; };
+		F2A6C8D71A915FF900FE3C30 /* PFQueryTableViewController+Caching.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A6C8D61A915FF900FE3C30 /* PFQueryTableViewController+Caching.m */; };
 		F2A917381A8FC0D400A1FC89 /* GLParseAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A917371A8FC0D400A1FC89 /* GLParseAnalytics.m */; };
 		F2B4D0D61A6DF52200A98C7A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0D51A6DF52200A98C7A /* AVFoundation.framework */; };
 		F2B4D0D81A6DF52A00A98C7A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0D71A6DF52A00A98C7A /* CoreMedia.framework */; };
@@ -106,6 +107,8 @@
 		F28586BD1A744A75003B91E1 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		F296DA111A709738001E9D29 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
 		F296DA131A709862001E9D29 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
+		F2A6C8D51A915FF900FE3C30 /* PFQueryTableViewController+Caching.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFQueryTableViewController+Caching.h"; sourceTree = "<group>"; };
+		F2A6C8D61A915FF900FE3C30 /* PFQueryTableViewController+Caching.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFQueryTableViewController+Caching.m"; sourceTree = "<group>"; };
 		F2A917371A8FC0D400A1FC89 /* GLParseAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLParseAnalytics.m; sourceTree = "<group>"; };
 		F2A917391A8FC0E200A1FC89 /* GLParseAnalytics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLParseAnalytics.h; sourceTree = "<group>"; };
 		F2B4D0D51A6DF52200A98C7A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -219,6 +222,8 @@
 		F25E490B1A869E83006E1252 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				F2A6C8D51A915FF900FE3C30 /* PFQueryTableViewController+Caching.h */,
+				F2A6C8D61A915FF900FE3C30 /* PFQueryTableViewController+Caching.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -605,6 +610,7 @@
 				F25E49111A86B141006E1252 /* GLBingFetcher.m in Sources */,
 				F2E545051A6CB5D400CB52E5 /* GLTableViewCell.m in Sources */,
 				F2F948E61A8AED76002C5177 /* empty.cpp in Sources */,
+				F2A6C8D71A915FF900FE3C30 /* PFQueryTableViewController+Caching.m in Sources */,
 				F2E544E01A6CB55000CB52E5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

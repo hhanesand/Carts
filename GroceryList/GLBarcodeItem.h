@@ -18,10 +18,9 @@
 @property (nonatomic) NSString *name;
 @property (nonatomic) NSString *url;
 
+@property (nonatomic) BOOL wasGeneratedLocally;
 @property (nonatomic) NSData *imageData;
 
 + (NSString *)parseClassName;
-
-- (void)updateWithBarcodeItem:(GLBarcodeItem *)barcodeItem;
 
 @end

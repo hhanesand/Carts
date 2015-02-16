@@ -97,22 +97,27 @@
 
 - (void)fetchProductNameFromSecondaryDatabasesWithBarcode:(NSString *)barcode {
     GLBarcodeItem *barcodeItem = [GLBarcodeItem object];
+    barcodeItem.wasGeneratedLocally = YES;
     
     [[[[[self.manager fetchNameOfItemWithBarcode:barcode] flattenMap:^RACStream *(NSString *nameOfBarcodeItem) {
         barcodeItem.name = nameOfBarcodeItem;
         barcodeItem.barcode = barcode;
+        #warning blocking operation
+        [barcodeItem pinWithName:@"GLBarcodeItem"];
         [barcodeItem saveEventually];
         
         [SVProgressHUD showSuccessWithStatus:@"Much Success!"];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.delegate didReceiveUpdateForBarcodeItem];
+            [self.delegate didReceiveNewBarcodeItem];
             [self.navigationController popViewControllerAnimated:YES];
         });
         
         return [self.bing fetchImageURLFromBingForBarcodeItem:barcodeItem];
     }] doNext:^(GLBarcodeItem *item) {
         item.imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:item.url]];
+        [item pinWithName:@"GLBarcodeItem"];
+        [item saveEventually];
     }] deliverOnMainThread] subscribeCompleted:^{
         [self.delegate didReceiveUpdateForBarcodeItem];
     }];

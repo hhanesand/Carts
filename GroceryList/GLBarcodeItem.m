@@ -14,6 +14,7 @@
 
 @synthesize imageData;
 @synthesize delegate;
+@synthesize wasGeneratedLocally;
 
 @dynamic barcode;
 @dynamic name;
@@ -25,10 +26,6 @@
 
 + (void)load {
     [self registerSubclass];
-}
-
-- (void)updateWithBarcodeItem:(GLBarcodeItem *)barcodeItem {
-    
 }
 
 - (NSString *)description {
