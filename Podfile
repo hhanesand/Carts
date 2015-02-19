@@ -6,3 +6,4 @@ pod 'SVProgressHUD', :head
 pod 'AFNetworking-RACExtensions', :git => 'https://github.com/knshiro/AFNetworking-RACExtensions.git'
 pod 'ParseUI'
 pod 'PubNub', '3.7.1'
+pod "AFOAuth1", '~>0.0.1'

@@ -17,6 +17,7 @@
 #import "GLScannerViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "PFQueryTableViewController+Caching.h"
+#import "GLParseAnalytics.h"
 
 static NSString *reuseIdentifier = @"GLTableViewCell";
 static NSString *username = @"lightice11";

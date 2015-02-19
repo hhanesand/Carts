@@ -1,0 +1,260 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"c",
+				"Cloud"
+			],
+			[
+				"texc",
+				"texCoord0"
+			],
+			[
+				"tex",
+				"texCoord0"
+			],
+			[
+				"calcu",
+				"calculateSpotLight"
+			],
+			[
+				"cacl",
+				"calculateDirectionalLight"
+			],
+			[
+				"dir",
+				"directionalLight"
+			],
+			[
+				"te",
+				"texCoord"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "",
+			"file": "main.js",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 67.0,
+		"selected_items":
+		[
+			[
+				"instl",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"packageControl",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/Hakon_Hanesad/Documents/Development/GroceryList/parse/parse.js",
+		"/Users/Hakon_Hanesad/Documents/Development/GroceryList/Podfile",
+		"/Users/Hakon_Hanesad/Documents/Development/GroceryList/external/ReactiveCocoa/script/bootstrap",
+		"/Users/Hakon_Hanesad/Documents/Development/GroceryList/ZBarSDK/.DS_Store",
+		"/Users/Hakon_Hanesad/Documents/Development/CarWars2/ReactiveCocoa/script/bootstrap",
+		"/Users/Hakon_Hanesad/Documents/Development/CarWars2/Podfile",
+		"/Users/Hakon_Hanesad/Documents/Development/CarWars2/ReactiveCocoa-master/script/bootstrap",
+		"/Users/Hakon_Hanesad/Documents/Development/CarWars2/CarWars2.xcodeproj/project.xcworkspace/contents.xcworkspacedata",
+		"/Users/Hakon_Hanesad/Applications/Counter-Strike Global Offensive.app/Contents/MacOS/run.sh",
+		"/Users/Hakon_Hanesad/Documents/Development/CarWars2/.gitignore",
+		"/Users/Hakon_Hanesad/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/Hakon_Hanesad/xCodeProjects/CarWars/podfile",
+		"/Users/Hakon_Hanesad/xCodeProjects/CarWars/M13ProgressSuite-master/M13ProgressSuite.podspec",
+		"/Users/Hakon_Hanesad/xCodeProjects/CarWars/M13ProgressSuite-master/Podfile",
+		"/Users/Hakon_Hanesad/Downloads/modpacks^CrashLanding^1_1_2_1^CrashLandingServer/ForgeModLoader-server-0.log.1",
+		"/Users/Hakon_Hanesad/Downloads/modpacks^CrashLanding^1_1_2_1^CrashLandingServer/server.properties",
+		"/Users/Hakon_Hanesad/IdeaProjects/Labs/res/shaders/forwardPointFragment.frag",
+		"/Users/Hakon_Hanesad/Downloads/daa2iso/src/Makefile",
+		"/Users/Hakon_Hanesad/Downloads/a2freedom-1.2/init.php",
+		"/Users/Hakon_Hanesad/Downloads/hst-article-display.html",
+		"/Users/Hakon_Hanesad/IdeaProjects/Labs/res/shaders/forwardPointFragment.glsl",
+		"/Users/Hakon_Hanesad/IdeaProjects/Labs/res/shaders/forwardDirectionalFragment.glsl",
+		"/Users/Hakon_Hanesad/IdeaProjects/Labs/res/shaders/forwardAmbientFragment.glsl",
+		"/Users/Hakon_Hanesad/IdeaProjects/Labs/res/shaders/forwardSpotFragment.glsl",
+		"/Users/Hakon_Hanesad/Downloads/watch.html",
+		"/Users/Hakon_Hanesad/IdeaProjects/Labs/res/shaders/forwardPointVertex.glsl",
+		"/Users/Hakon_Hanesad/IdeaProjects/Labs/res/shaders/forwardAmbientVertex.glsl",
+		"/Users/Hakon_Hanesad/IdeaProjects/Labs/res/shaders/forwardDirectionalVertex.glsl",
+		"/Users/Hakon_Hanesad/IdeaProjects/Labs/res/shaders/forwardSpotVertex.glsl",
+		"/Users/Hakon_Hanesad/Downloads/firesheep-0.1-1.xpi",
+		"/Users/Hakon_Hanesad/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/Hakon_Hanesad/IdeaProjects/Labs/res/shaders/forwardAmbient.fs",
+		"/Users/Hakon_Hanesad/IdeaProjects/Labs/res/shaders/BasicFragment.glsl",
+		"/Users/Hakon_Hanesad/Downloads/iryoku-smaa-eebbab5/Demo/DX10/Shaders/SMAA.fx"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"mouse",
+			"pods",
+			"\n",
+			")\n",
+			"min",
+			" )",
+			";\n",
+			"sampler",
+			"atten",
+			"out",
+			";\n",
+			"transform",
+			"transformProjected",
+			"textureColor"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "main.js",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 264.0,
+	"status_bar_visible": true
+}

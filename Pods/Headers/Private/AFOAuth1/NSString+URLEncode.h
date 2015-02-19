@@ -1,0 +1,1 @@
+../../../AFOAuth1/Classes/ios/NSString+URLEncode.h

@@ -42,6 +42,19 @@
     NSMutableArray *recievedNames = [NSMutableArray new];
     NSMutableArray *signals = [NSMutableArray new];
     
+    
+    
+    NSString *urlstring=[NSString stringWithFormat:@"http://api.v3.factual.com/t/products-cpg?q=%@&KEY=n5md5zTCv67RV2ctEQKrhK2cAzggCqs3khynDhKT",barcode];
+    NSURL *url=[NSURL URLWithString:[urlstring stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSURLRequest *req = [NSURLRequest requestWithURL:url];
+    
+    [[self.manager HTTPRequestOperationWithRequest:req success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Data %@", responseObject);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Failure %@", error);
+    }] start];
+    
+    
     //go though each database that has been added and grab a signal for the network request
     for (GLBarcodeDatabase *database in self.databases) {
         [signals addObject:[[[[self.manager rac_GET:[database getURLForDatabaseWithBarcode:barcode] parameters:nil] map:^id(RACTuple *value) {

@@ -35,6 +35,9 @@
         
         [self.manager addBarcodeDatabase:[[GLBarcodeDatabase alloc] initWithURLOfDatabase:@"http://www.searchupc.com/handlers/upcsearch.ashx?request_type=3&access_token=C9D1021E-37EA-4C29-BAF0-EE92A5AB03BE&upc=%@" withName:@"searchupc.com"  andPath:@"0.productname"]];
         
+        NSLog(@"Testing");
+        [[GLParseAnalytics shared] testCloudFunction];
+        
         return [self initWithAppKey:self.apiKey];
     }
     

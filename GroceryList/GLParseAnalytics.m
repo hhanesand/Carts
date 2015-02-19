@@ -33,5 +33,9 @@
     }];
 }
 
+- (void)testCloudFunction {
+    [PFCloud callFunction:@"upcLookup" withParameters:@{@"barcode" : @"0012000001086", @"KEY" : @"BhJA9OqHxEXGq0TeTEwfMtz2kB8DsXHSZgFzwKZ9"}];
+}
+
 @end
 

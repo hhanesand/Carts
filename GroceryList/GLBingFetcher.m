@@ -21,6 +21,7 @@
 
 + (GLBingFetcher *)sharedFetcher {
     static GLBingFetcher *shared = nil;
+    
     @synchronized(self) {
         if (shared == nil)
             shared = [[self alloc] init];
