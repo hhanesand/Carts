@@ -16,6 +16,4 @@
 
 - (void)trackMissingBarcode:(NSString *)barcode;
 
-- (void)testCloudFunction;
-
 @end

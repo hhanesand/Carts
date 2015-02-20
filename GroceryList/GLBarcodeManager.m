@@ -11,12 +11,14 @@
 #import "GLBarcodeItem.h"
 #import "GLBingFetcher.h"
 #import "AFURLResponseSerialization.h"
+#import "GLFactualRequestSerializer.h"
+#import <AFNetworking-RACExtensions/AFHTTPRequestOperationManager+RACSupport.h>
 
 @interface GLBarcodeManager()
 @property (nonatomic) NSMutableArray *databases;
 @property (nonatomic) NSMutableArray *barcodeItems;
 @property (nonatomic) GLBingFetcher *bingFetcher;
-@property (nonatomic) AFHTTPRequestOperationManager *manager;
+@property (nonatomic) AFHTTPRequestOperationManager *factualNetworkingManager;
 @property (nonatomic) RACSignal *networkErrorSignal;
 @end
 
@@ -26,9 +28,10 @@
     if (self = [super init]) {
         self.databases = [NSMutableArray new];
         self.bingFetcher = [GLBingFetcher sharedFetcher];
-        self.manager = [AFHTTPRequestOperationManager manager];
         
-        self.manager.responseSerializer.acceptableContentTypes = [self.manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/plain"];
+        self.factualNetworkingManager= [AFHTTPRequestOperationManager manager];
+        self.factualNetworkingManager.responseSerializer = [AFJSONResponseSerializer serializer];
+        self.factualNetworkingManager.requestSerializer = [GLFactualRequestSerializer serializer];
     }
     
     return self;
@@ -39,75 +42,66 @@
 }
 
 - (RACSignal *)fetchNameOfItemWithBarcode:(NSString *)barcode {
-    NSMutableArray *recievedNames = [NSMutableArray new];
-    NSMutableArray *signals = [NSMutableArray new];
+//    NSMutableArray *recievedNames = [NSMutableArray new];
+//    NSMutableArray *signals = [NSMutableArray new];
     
-    
-    
-    NSString *urlstring=[NSString stringWithFormat:@"http://api.v3.factual.com/t/products-cpg?q=%@&KEY=n5md5zTCv67RV2ctEQKrhK2cAzggCqs3khynDhKT",barcode];
-    NSURL *url=[NSURL URLWithString:[urlstring stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    NSURLRequest *req = [NSURLRequest requestWithURL:url];
-    
-    [[self.manager HTTPRequestOperationWithRequest:req success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"Data %@", responseObject);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Failure %@", error);
-    }] start];
-    
-    
-    //go though each database that has been added and grab a signal for the network request
-    for (GLBarcodeDatabase *database in self.databases) {
-        [signals addObject:[[[[self.manager rac_GET:[database getURLForDatabaseWithBarcode:barcode] parameters:nil] map:^id(RACTuple *value) {
-            return [((NSDictionary *)value.second) valueForKeyPath:database.path];
-        }] doError:^(NSError *error) {
-            NSLog(@"Error while fetching name from database %@", error);
-        }] filter:^BOOL(NSString *name) {
-            return [self isValidNameForItem:name];
-        }]];
-    }
-
-    return [[[RACSignal merge:signals] doNext:^(NSString *x) {
-        [recievedNames addObject:x];
-    }] then:^RACSignal *{
-        return [RACSignal return:[self optimalNameForBarcodeProductWithNameCollection:recievedNames]];
+    return [[self.factualNetworkingManager rac_GET:@"http://api.v3.factual.com/t/products-cpg" parameters:@{@"q" : barcode}] map:^id(RACTuple *value) {
+        return [((NSDictionary *)value.second) valueForKeyPath:@"response.data.product_name"][0];
     }];
+    
+//    //go though each database that has been added and grab a signal for the network request
+//    for (GLBarcodeDatabase *database in self.databases) {
+//        [signals addObject:[[[[self.manager rac_GET:[database getURLForDatabaseWithBarcode:barcode] parameters:nil] map:^id(RACTuple *value) {
+//            return [((NSDictionary *)value.second) valueForKeyPath:database.path];
+//        }] doError:^(NSError *error) {
+//            NSLog(@"Error while fetching name from database %@", error);
+//        }] filter:^BOOL(NSString *name) {
+//            return [self isValidNameForItem:name];
+//        }]];
+//    }
+//
+//    return [[[RACSignal merge:signals] doNext:^(NSString *x) {
+//        [recievedNames addObject:x];
+//    }] then:^RACSignal *{
+//        return [RACSignal return:[self optimalNameForBarcodeProductWithNameCollection:recievedNames]];
+//    }];
 }
 
-//this has to be here until the developer behind searchupc.com gets his shit together
-- (BOOL)isValidNameForItem:(id)name {
-    return name && name != [NSNull null] && ![name isEqualToString:@" "] && ![name isEqualToString:@"(null)"];
-}
+////this has to be here until the developer behind searchupc.com gets his shit together
+//- (BOOL)isValidNameForItem:(id)name {
+//    return name && name != [NSNull null] && ![name isEqualToString:@" "] && ![name isEqualToString:@"(null)"];
+//}
 
-- (NSString *)optimalNameForBarcodeProductWithNameCollection:(NSMutableArray *)names {
-    NSLog(@"Names recieved %@", names);
-    NSMutableDictionary *wordDictionary = [[NSMutableDictionary alloc] init];
-    NSMutableArray *result = [NSMutableArray new];
-    
-    for (NSString *nameOfScannedItem in names) {
-        NSArray *scannedItemWords = [nameOfScannedItem componentsSeparatedByString:@" "];
-        
-        for (NSString *word in scannedItemWords) {
-            int numberOfOccurences = [[wordDictionary objectForKey:[word lowercaseString]] intValue];
-            
-            if (numberOfOccurences == 0) {
-                //add a new entry
-                [wordDictionary setObject:[NSNumber numberWithInt:1] forKey:[word lowercaseString]];
-            } else {
-                //already exists, so we increment occurence
-                [wordDictionary setObject:[NSNumber numberWithInt:++numberOfOccurences] forKey:[word lowercaseString]];
-            }
-            
-        }
-    }
-    
-    for (NSString *key in [wordDictionary allKeys]) {
-        if ([[wordDictionary valueForKey:key] intValue] > 1) {
-            [result addObject:key];
-        }   
-    }
-    
-    return [[[result copy] componentsJoinedByString:@" "] capitalizedString];
-}
+//- (NSString *)optimalNameForBarcodeProductWithNameCollection:(NSMutableArray *)names {
+//    NSLog(@"Names recieved %@", names);
+//    NSMutableDictionary *wordDictionary = [[NSMutableDictionary alloc] init];
+//    NSMutableArray *result = [NSMutableArray new];
+//    
+//    for (NSString *nameOfScannedItem in names) {
+//        NSArray *scannedItemWords = [nameOfScannedItem componentsSeparatedByString:@" "];
+//        
+//        for (NSString *word in scannedItemWords) {
+//            int numberOfOccurences = [[wordDictionary objectForKey:[word lowercaseString]] intValue];
+//            
+//            if (numberOfOccurences == 0) {
+//                //add a new entry
+//                [wordDictionary setObject:[NSNumber numberWithInt:1] forKey:[word lowercaseString]];
+//            } else {
+//                //already exists, so we increment occurence
+//                [wordDictionary setObject:[NSNumber numberWithInt:++numberOfOccurences] forKey:[word lowercaseString]];
+//            }
+//            
+//        }
+//    }
+//    
+//    for (NSString *key in [wordDictionary allKeys]) {
+//        if ([[wordDictionary valueForKey:key] intValue] > 1) {
+//            [result addObject:key];
+//        }   
+//    }
+//    
+//    return [[[result copy] componentsJoinedByString:@" "] capitalizedString];
+//}
 
 @end
 
