@@ -18,6 +18,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "PFQueryTableViewController+Caching.h"
 #import "GLParseAnalytics.h"
+#import "GLListItem.h"
 
 static NSString *reuseIdentifier = @"GLTableViewCell";
 
@@ -25,7 +26,7 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
-        self.parseClassName = @"barcodeItem";
+        self.parseClassName = [GLListItem parseClassName];
         self.pullToRefreshEnabled = YES;
         self.paginationEnabled = NO;
         self.loadingViewEnabled = NO;
@@ -37,7 +38,7 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
 #pragma mark - Parse
 
 - (PFQuery *)queryForTable {
-    PFQuery *query = [PFQuery queryWithClassName:@"list"];
+    PFQuery *query = [GLListItem query];
     [query whereKey:@"owner" equalTo:[PFUser currentUser]];
     [query includeKey:@"item"];
     [query orderByAscending:@"updatedAt"];

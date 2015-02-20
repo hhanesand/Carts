@@ -14,4 +14,8 @@
 @property (nonatomic) GLBarcodeItem *item;
 @property (nonatomic) PFUser *owner;
 
+@property (nonatomic) BOOL wasGeneratedLocally;
+
++ (instancetype)objectWithCurrentUser;
+
 @end

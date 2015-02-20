@@ -44,8 +44,8 @@
     return self;
 }
 
-- (RACSignal *)fetchImageURLFromBingForBarcodeItem:(GLBarcodeItem *)barcodeItem {
-    NSString *url = [self.root stringByAppendingString:[self nameOfItemToBingPhrase:barcodeItem.name]];
+- (RACSignal *)fetchImageURLFromBingForListItem:(GLListItem *)listItem {
+    NSString *url = [self.root stringByAppendingString:[self nameOfItemToBingPhrase:listItem.item.name]];
     NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     
     [urlRequest setHTTPMethod:@"GET"];
@@ -55,8 +55,9 @@
     [operation setResponseSerializer:[AFJSONResponseSerializer serializer]];
     
     return [[self.manager rac_enqueueHTTPRequestOperation:operation] map:^id(RACTuple *value) {
-        [barcodeItem.image addObjectsFromArray:[((NSDictionary *)value.second) valueForKeyPath:self.thumbnailKeyPath]];
-        return barcodeItem;
+        NSLog(@"Adding image urls %@", [((NSDictionary *)value.second) valueForKeyPath:self.thumbnailKeyPath]);
+        [listItem.item addImageURLSFromArray:[((NSDictionary *)value.second) valueForKeyPath:self.thumbnailKeyPath]];
+        return listItem;
     }];
 }
 

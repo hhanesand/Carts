@@ -10,8 +10,16 @@
 
 @implementation GLListItem
 
+@synthesize wasGeneratedLocally;
+
 @dynamic item;
 @dynamic owner;
+
++ (instancetype)objectWithCurrentUser {
+    GLListItem *new = [GLListItem object];
+    new.owner = [PFUser currentUser];
+    return new;
+}
 
 + (NSString *)parseClassName {
     return @"list";

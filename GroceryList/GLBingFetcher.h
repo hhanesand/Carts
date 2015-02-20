@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
 #import "GLBarcodeItem.h"
+#import "GLListItem.h"
 
 @class RACSignal;
 
@@ -16,6 +17,6 @@
 
 + (GLBingFetcher *)sharedFetcher;
 
-- (RACSignal *)fetchImageURLFromBingForBarcodeItem:(GLBarcodeItem *)barcodeItem;
+- (RACSignal *)fetchImageURLFromBingForListItem:(GLListItem *)listItem;
 
 @end

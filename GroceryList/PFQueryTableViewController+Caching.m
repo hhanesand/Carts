@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import "GLBarcodeItem.h"
 #import "BFTask.h"
+#import "GLListItem.h"
 
 @interface PFQueryTableViewController () {
     NSMutableArray *_mutableObjects;
@@ -43,7 +44,6 @@
         if (error) {
             NSLog(@"There was an error fetching from cache.");
         } else {
-            NSLog(@"Recieved data from the cache %@", cacheObjects);
             [self cache_updateInternalObjectsWithArray:cacheObjects clear:clear];
             [self.tableView reloadData];
         }
@@ -57,7 +57,6 @@
                 NSLog(@"There was an error fetching from the network");
             } else {
                 if ([self cache_shouldUpdateDataWithCacheResult:cacheObjects withNewNetworkResults:netObjects]) {
-                    NSLog(@"Recieved data from the network %@", netObjects);
                     
                     [[PFObject unpinAllObjectsInBackgroundWithName:@"groceryList"] continueWithSuccessBlock:^id(BFTask *ignored) {
                         return [PFObject pinAllInBackground:netObjects withName:@"groceryList"];
@@ -65,8 +64,6 @@
                     
                     [self cache_updateInternalObjectsWithArray:netObjects clear:clear];
                     [self.tableView reloadData];
-                } else {
-                    NSLog(@"No reason to update tableview");
                 }
             }
             
@@ -97,15 +94,13 @@
     
     if ([cacheResults count] > [networkResults count]) {
         for (NSUInteger i = [networkResults count]; i < [cacheResults count]; i++) {
-            if (!((GLBarcodeItem *)cacheResults[i]).wasGeneratedLocally) {
-                return YES;
+            if (!((GLListItem *)cacheResults[i]).objectId) {
+                return NO;
             }
         }
-        
-        return NO;
-    } else {
-        return YES;
     }
+    
+    return YES;
 }
 
 - (NSMutableArray *)cache_getInternalObjects {

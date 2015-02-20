@@ -15,6 +15,10 @@
 #import "GLBingFetcher.h"
 #import "GLParseAnalytics.h"
 #import "GLListItem.h"
+#import "BFTask.h"
+
+#define TICK   NSDate *startTime = [NSDate date]
+#define TOCK   NSLog(@"Time: %f", -[startTime timeIntervalSinceNow])
 
 @interface GLScannerViewController()
 @property (nonatomic, readonly) NSString *apiKey;
@@ -54,7 +58,7 @@
 #pragma mark - Test methods
 
 - (IBAction)didPressTestButton:(UIBarButtonItem *)sender {
-    [self scanditSDKOverlayController:nil didScanBarcode:[NSDictionary dictionaryWithObject:@"0012000001086" forKey:@"barcode"]];
+    [self scanditSDKOverlayController:nil didScanBarcode:@{@"barcode" : @"0012000001086"}];
 }
 
 #pragma mark - SCANDIT implementation
@@ -82,71 +86,56 @@
     [SVProgressHUD show];
     
     PFQuery *productQuery = [GLBarcodeItem query];
-    [productQuery whereKey:@"product_name" equalTo:barcode];
-    [productQuery fromLocalDatastore];
-    productQuery.limit = 1;
+    [productQuery whereKey:@"upc" equalTo:barcode];
     
-    [productQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if ([objects count] >= 1) {
-            NSLog(@"Found object in parse database %@", objects[1]);
+    [productQuery getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        GLBarcodeItem *result = (GLBarcodeItem *)object;
+        GLListItem *list = [GLListItem objectWithCurrentUser];
+        RACSignal *resultSignal;
+        
+        if (result) {
+            list.item = result;
+            resultSignal = [self pinAndNotifyDelegateWithList:list isNew:YES];
         } else {
-            NSLog(@"Could not find product info in parse about %@", barcode);
-            [[GLParseAnalytics shared] trackMissingBarcode:barcode];
-            [self fetchProductNameFromSecondaryDatabasesWithBarcode:barcode];
+            result = [GLBarcodeItem object];
+            result.upc = barcode;
+            list.item = result;
+            resultSignal = [self fetchProductInformationFromFactualForListItem:list];
         }
-    }];
-}
-
-- (void)fetchProductNameFromSecondaryDatabasesWithBarcode:(NSString *)barcode {
-    [[[[[self.manager fetchNameOfItemWithBarcode:barcode] flattenMap:^RACStream *(NSDictionary *itemInformation) {
-        RACSubject *parseLookupSignal = [self ensureUniqueBarcodeItemAndAddNewListItemWithData:itemInformation];
+        
+        //not really needed - if I do remove it, make sure to subscribe somewhere else
+        [resultSignal subscribeCompleted:^{
+        }];
         
         [SVProgressHUD showSuccessWithStatus:@"Much Success!"];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.delegate didReceiveNewBarcodeItem];
-            [self.navigationController popViewControllerAnimated:YES];
-        });
-        
-        return [parseLookupSignal doNext:^(GLBarcodeItem *barcodeItem) {
-            [self.bing fetchImageURLFromBingForBarcodeItem:barcodeItem];
-        }];
-    }] doNext:^(GLBarcodeItem *item) {
-        item.imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:item.image[0]]];
-        
-        [item pinInBackgroundWithName:@"groceryList" block:^(BOOL succeeded, NSError *error) {
-            [item saveEventually];  
-        }];
-    }] deliverOnMainThread] subscribeCompleted:^{
-        [self.delegate didReceiveUpdateForBarcodeItem];
     }];
 }
 
-- (RACSubject *)ensureUniqueBarcodeItemAndAddNewListItemWithData:(NSDictionary *)data {
+- (RACSignal *)fetchProductInformationFromFactualForListItem:(GLListItem *)list {
+    return [[[[self.manager queryFactualForItemWithUPC:list.item.upc] map:^id(NSDictionary *itemInformation) {
+        [list.item loadJSONData:itemInformation];
+        [self pinAndNotifyDelegateWithList:list isNew:YES];
+        return list;
+    }] flattenMap:^RACStream *(GLListItem *item) {
+        return [self.bing fetchImageURLFromBingForListItem:item];
+    }] flattenMap:^RACStream *(GLListItem *item) {
+        return [self pinAndNotifyDelegateWithList:list isNew:NO];
+    }];
+}
+
+- (RACSignal *)pinAndNotifyDelegateWithList:(GLListItem *)list isNew:(BOOL)new {
     RACSubject *subject = [RACSubject subject];
-    PFQuery *barcodeQuery = [GLBarcodeItem query];
-    [barcodeQuery whereKey:@"upc" equalTo:data[@"upc"]];
-    
-    [barcodeQuery getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-        if (!error) {
-            NSLog(@"Found existing barcode, using it instead");
-            NSLog(@"Type %@", NSStringFromClass([object class]));
-            //use current object
+    [list pinInBackgroundWithName:@"groceryList" block:^(BOOL succeeded, NSError *error) {
+        if (new) {
+            [self.delegate didReceiveNewBarcodeItem];
+            [self.navigationController popViewControllerAnimated:YES];
         } else {
-            NSLog(@"Making new object");
-            object = [GLBarcodeItem objectWithData:data];
+            [self.delegate didReceiveUpdateForBarcodeItem];
         }
-        
-        GLListItem *list = [GLListItem object];
-        list.owner = [PFUser currentUser];
-        list.item = (GLBarcodeItem *)object;
-        
-        [list pinInBackgroundWithName:@"groceryList" block:^(BOOL succeeded, NSError *error) {
-            [list saveEventually];
-        }];
-        
-        [subject sendNext:object];
+
+        [subject sendNext:list];
         [subject sendCompleted];
+        [list saveEventually];
     }];
     
     return subject;

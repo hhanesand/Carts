@@ -23,10 +23,10 @@
 @property (nonatomic) NSString *ean13;
 @property (nonatomic) NSMutableArray *image;
 
-@property (nonatomic) BOOL wasGeneratedLocally;
 @property (nonatomic) NSData *imageData;
 
 + (NSString *)parseClassName;
-+ (instancetype)objectWithData:(NSDictionary *)data;
 
+- (void)loadJSONData:(NSDictionary *)data;
+- (void)addImageURLSFromArray:(NSArray *)array;
 @end

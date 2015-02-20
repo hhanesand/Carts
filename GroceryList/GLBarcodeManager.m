@@ -16,7 +16,6 @@
 
 @interface GLBarcodeManager()
 @property (nonatomic) NSMutableArray *databases;
-@property (nonatomic) NSMutableArray *barcodeItems;
 @property (nonatomic) GLBingFetcher *bingFetcher;
 @property (nonatomic) AFHTTPRequestOperationManager *factualNetworkingManager;
 @property (nonatomic) RACSignal *networkErrorSignal;
@@ -52,10 +51,7 @@
     [self.databases addObject:database];
 }
 
-- (RACSignal *)fetchNameOfItemWithBarcode:(NSString *)barcode {
-//    NSMutableArray *recievedNames = [NSMutableArray new];
-//    NSMutableArray *signals = [NSMutableArray new];
-    
+- (RACSignal *)queryFactualForItemWithUPC:(NSString *)barcode {
     return [[self.factualNetworkingManager rac_GET:@"http://api.v3.factual.com/t/products-cpg" parameters:@{@"q" : barcode}] map:^id(RACTuple *value) {
         NSDictionary *dictionary = (NSDictionary *)value.second;
         return [self modifyFactualResponseForParseUpload:[dictionary valueForKeyPath:@"response.data"][0]];

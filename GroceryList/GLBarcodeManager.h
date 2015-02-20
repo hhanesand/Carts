@@ -15,6 +15,6 @@
 
 - (void)addBarcodeDatabase:(GLBarcodeDatabase *)database;
 
-- (RACSignal *)fetchNameOfItemWithBarcode:(NSString *)barcode;
+- (RACSignal *)queryFactualForItemWithUPC:(NSString *)barcode;
 
 @end

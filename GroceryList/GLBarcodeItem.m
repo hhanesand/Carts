@@ -14,7 +14,6 @@
 
 @synthesize imageData;
 @synthesize delegate;
-@synthesize wasGeneratedLocally;
 
 @dynamic name;
 @dynamic upc;
@@ -33,15 +32,10 @@
     [self registerSubclass];
 }
 
-+ (instancetype)objectWithData:(NSDictionary *)data {
-    GLBarcodeItem *object = [GLBarcodeItem object];
-    
+- (void)loadJSONData:(NSDictionary *)data {
     for (NSString *key in [data allKeys]) {
-        [object setObject:data[key] forKey:key];
+        [self setObject:data[key] forKey:key];
     }
-    
-    NSLog(@"New object - %@", object);
-    return object;
 }
 
 - (NSString *)description {
@@ -49,12 +43,23 @@
     [string appendString:@" | "];
     [string appendString:self.upc];
     
+    NSLog(@"Image array %@", self.image);
+    
     if (self.image && [self.image count] > 0) {
         [string appendString:@" | "];
         [string appendString:self.image[0]];
     }
     
     return [string description];
+}
+
+- (void)addImageURLSFromArray:(NSArray *)array {
+    if (self.image) {
+        [self.image addObjectsFromArray:array];
+    } else {
+        self.image = [NSMutableArray new];
+        [self.image addObjectsFromArray:array];
+    }
 }
 
 @end

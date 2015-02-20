@@ -36,18 +36,19 @@ Parse.Cloud.define("trackMissingBarcode", function(request, response) {
     });
 });
 
-// Parse.Cloud.define("upcLookup", function(request, response) {
-//     Parse.Cloud.httpRequest({
-//         url: "http://api.factual.com/t/products-cpg",
-//         params: {
-//             q : request.barcode,
-//             KEY : request.KEY
-//         },
-//         success: function (httpResponse) {
-//             response.success(httpResponse.data);
-//         },
-//         error: function (httpResponse) {
-//             response.error(httpResponse.data);
-//         }
-//     });
-// });
+Parse.Cloud.define("upcLookup", function(request, response) {
+    Parse.Cloud.httpRequest({
+        url: "http://www.outpan.com/api/get-product.php",
+        params: {
+            apiKey : "4308c0742cfa452985e8cd4d569336aa",
+            q: request.barcode
+        }
+    }).then(
+        function(object) {
+            response.success(object);
+        },
+        function(object) {
+            response.error(object);
+        }
+    );
+});
