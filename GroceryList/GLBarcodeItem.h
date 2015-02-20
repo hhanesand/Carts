@@ -14,13 +14,19 @@
 
 @property (nonatomic) id<GLBarcodeItemDelegate> delegate;
 
-@property (nonatomic) NSString *barcode;
 @property (nonatomic) NSString *name;
-@property (nonatomic) NSString *url;
+@property (nonatomic) NSString *upc;
+@property (nonatomic) NSString *brand;
+@property (nonatomic) NSString *category;
+@property (nonatomic) NSString *manufacturer;
+@property (nonatomic) NSString *upc_e;
+@property (nonatomic) NSString *ean13;
+@property (nonatomic) NSMutableArray *image;
 
 @property (nonatomic) BOOL wasGeneratedLocally;
 @property (nonatomic) NSData *imageData;
 
 + (NSString *)parseClassName;
++ (instancetype)objectWithData:(NSDictionary *)data;
 
 @end

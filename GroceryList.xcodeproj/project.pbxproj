@@ -34,6 +34,7 @@
 		F2B4D0DC1A6DF53900A98C7A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0DB1A6DF53900A98C7A /* QuartzCore.framework */; };
 		F2B4D0DE1A6DF54500A98C7A /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0DD1A6DF54500A98C7A /* libiconv.dylib */; };
 		F2D58A6E1A96BC7700E15FFC /* GLFactualRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D58A6D1A96BC7700E15FFC /* GLFactualRequestSerializer.m */; };
+		F2D58A711A96EB6600E15FFC /* GLListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D58A701A96EB6600E15FFC /* GLListItem.m */; };
 		F2E544E01A6CB55000CB52E5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E544DF1A6CB55000CB52E5 /* main.m */; };
 		F2E544E31A6CB55000CB52E5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E544E21A6CB55000CB52E5 /* AppDelegate.m */; };
 		F2E544EE1A6CB55100CB52E5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2E544EC1A6CB55100CB52E5 /* LaunchScreen.xib */; };
@@ -120,6 +121,8 @@
 		F2B4D0DD1A6DF54500A98C7A /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		F2D58A6D1A96BC7700E15FFC /* GLFactualRequestSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLFactualRequestSerializer.m; sourceTree = "<group>"; };
 		F2D58A6F1A96BD5A00E15FFC /* GLFactualRequestSerializer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLFactualRequestSerializer.h; sourceTree = "<group>"; };
+		F2D58A701A96EB6600E15FFC /* GLListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLListItem.m; sourceTree = "<group>"; };
+		F2D58A721A96EB7000E15FFC /* GLListItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLListItem.h; sourceTree = "<group>"; };
 		F2E544DA1A6CB55000CB52E5 /* GroceryList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E544DE1A6CB55000CB52E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2E544DF1A6CB55000CB52E5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -382,6 +385,8 @@
 			children = (
 				F2F948B11A8947BD002C5177 /* GLBarcodeItem.m */,
 				F2F948B31A8947C8002C5177 /* GLBarcodeItem.h */,
+				F2D58A701A96EB6600E15FFC /* GLListItem.m */,
+				F2D58A721A96EB7000E15FFC /* GLListItem.h */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -614,6 +619,7 @@
 				F2F948B21A8947BD002C5177 /* GLBarcodeItem.m in Sources */,
 				F22F2D791A72D1DB00C878EC /* GLBarcodeManager.m in Sources */,
 				F2F948FB1A8BDF65002C5177 /* GLScannerViewController.m in Sources */,
+				F2D58A711A96EB6600E15FFC /* GLListItem.m in Sources */,
 				F22F2D7D1A72D6FD00C878EC /* GLBarcodeDatabase.m in Sources */,
 				F25E49111A86B141006E1252 /* GLBingFetcher.m in Sources */,
 				F2E545051A6CB5D400CB52E5 /* GLTableViewCell.m in Sources */,

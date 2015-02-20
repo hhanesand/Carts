@@ -14,6 +14,7 @@
 #import "GLBarcodeItem.h"
 #import "GLBingFetcher.h"
 #import "GLParseAnalytics.h"
+#import "GLListItem.h"
 
 @interface GLScannerViewController()
 @property (nonatomic, readonly) NSString *apiKey;
@@ -97,15 +98,8 @@
 }
 
 - (void)fetchProductNameFromSecondaryDatabasesWithBarcode:(NSString *)barcode {
-    GLBarcodeItem *barcodeItem = [GLBarcodeItem object];
-    barcodeItem.wasGeneratedLocally = YES;
-    
-    [[[[[self.manager fetchNameOfItemWithBarcode:barcode] flattenMap:^RACStream *(NSString *nameOfBarcodeItem) {
-        barcodeItem.name = nameOfBarcodeItem;
-        barcodeItem.barcode = barcode;
-        #warning blocking operation
-        [barcodeItem pinWithName:@"GLBarcodeItem"];
-        [barcodeItem saveEventually];
+    [[[[[self.manager fetchNameOfItemWithBarcode:barcode] flattenMap:^RACStream *(NSDictionary *itemInformation) {
+        RACSubject *parseLookupSignal = [self ensureUniqueBarcodeItemAndAddNewListItemWithData:itemInformation];
         
         [SVProgressHUD showSuccessWithStatus:@"Much Success!"];
         
@@ -114,14 +108,48 @@
             [self.navigationController popViewControllerAnimated:YES];
         });
         
-        return [self.bing fetchImageURLFromBingForBarcodeItem:barcodeItem];
+        return [parseLookupSignal doNext:^(GLBarcodeItem *barcodeItem) {
+            [self.bing fetchImageURLFromBingForBarcodeItem:barcodeItem];
+        }];
     }] doNext:^(GLBarcodeItem *item) {
-        item.imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:item.url]];
-        [item pinWithName:@"GLBarcodeItem"];
-        [item saveEventually];
+        item.imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:item.image[0]]];
+        
+        [item pinInBackgroundWithName:@"groceryList" block:^(BOOL succeeded, NSError *error) {
+            [item saveEventually];  
+        }];
     }] deliverOnMainThread] subscribeCompleted:^{
         [self.delegate didReceiveUpdateForBarcodeItem];
     }];
+}
+
+- (RACSubject *)ensureUniqueBarcodeItemAndAddNewListItemWithData:(NSDictionary *)data {
+    RACSubject *subject = [RACSubject subject];
+    PFQuery *barcodeQuery = [GLBarcodeItem query];
+    [barcodeQuery whereKey:@"upc" equalTo:data[@"upc"]];
+    
+    [barcodeQuery getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        if (!error) {
+            NSLog(@"Found existing barcode, using it instead");
+            NSLog(@"Type %@", NSStringFromClass([object class]));
+            //use current object
+        } else {
+            NSLog(@"Making new object");
+            object = [GLBarcodeItem objectWithData:data];
+        }
+        
+        GLListItem *list = [GLListItem object];
+        list.owner = [PFUser currentUser];
+        list.item = (GLBarcodeItem *)object;
+        
+        [list pinInBackgroundWithName:@"groceryList" block:^(BOOL succeeded, NSError *error) {
+            [list saveEventually];
+        }];
+        
+        [subject sendNext:object];
+        [subject sendCompleted];
+    }];
+    
+    return subject;
 }
 
 @end

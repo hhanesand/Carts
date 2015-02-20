@@ -20,8 +20,6 @@
 #import "GLParseAnalytics.h"
 
 static NSString *reuseIdentifier = @"GLTableViewCell";
-static NSString *username = @"lightice11";
-static NSString *password = @"qwerty";
 
 @implementation GLTableViewController
 
@@ -39,19 +37,22 @@ static NSString *password = @"qwerty";
 #pragma mark - Parse
 
 - (PFQuery *)queryForTable {
-    PFQuery *query = [GLBarcodeItem query];
+    PFQuery *query = [PFQuery queryWithClassName:@"list"];
+    [query whereKey:@"owner" equalTo:[PFUser currentUser]];
+    [query includeKey:@"item"];
     [query orderByAscending:@"updatedAt"];
     return query;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(GLBarcodeItem *)object {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
     GLTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
+    GLBarcodeItem *item = object[@"item"];
     
-    cell.productName.text = object.name;
+    cell.productName.text = item.name;
     
     //no reactive cocoa for this one...
     __weak GLTableViewCell *weakCell = cell;
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:object.url]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:item.image[0]]];
     UIImage *image = [UIImage imageNamed:@"document"];
     
     [cell.productImage setImageWithURLRequest:request placeholderImage:image success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
@@ -71,12 +72,6 @@ static NSString *password = @"qwerty";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    #warning blocking call
-    if ([PFUser currentUser] == nil) {
-        NSLog(@"Logging in");
-        [PFUser logInWithUsername:username password:password];
-    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {

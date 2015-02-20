@@ -20,6 +20,7 @@
 @property (nonatomic) GLBingFetcher *bingFetcher;
 @property (nonatomic) AFHTTPRequestOperationManager *factualNetworkingManager;
 @property (nonatomic) RACSignal *networkErrorSignal;
+@property (nonatomic) NSDictionary *factualToParseMapping;
 @end
 
 @implementation GLBarcodeManager
@@ -32,6 +33,16 @@
         self.factualNetworkingManager= [AFHTTPRequestOperationManager manager];
         self.factualNetworkingManager.responseSerializer = [AFJSONResponseSerializer serializer];
         self.factualNetworkingManager.requestSerializer = [GLFactualRequestSerializer serializer];
+        
+        self.factualToParseMapping = @{@"brand" : @"brand",
+                                       @"category" : @"category",
+                                       @"manufacturer" : @"manufacturer",
+                                       @"image_urls" : @"image",
+                                       @"ean13" : @"ean13",
+                                       @"factual_id" : @"factual_id",
+                                       @"product_name" : @"name",
+                                       @"upc" : @"upc",
+                                       @"upc_e" : @"upc_e"};
     }
     
     return self;
@@ -46,9 +57,23 @@
 //    NSMutableArray *signals = [NSMutableArray new];
     
     return [[self.factualNetworkingManager rac_GET:@"http://api.v3.factual.com/t/products-cpg" parameters:@{@"q" : barcode}] map:^id(RACTuple *value) {
-        return [((NSDictionary *)value.second) valueForKeyPath:@"response.data.product_name"][0];
+        NSDictionary *dictionary = (NSDictionary *)value.second;
+        return [self modifyFactualResponseForParseUpload:[dictionary valueForKeyPath:@"response.data"][0]];
     }];
+}
+
+- (NSDictionary *)modifyFactualResponseForParseUpload:(NSDictionary *)factualResponse {
+    NSMutableDictionary *parseCompatibleDictionary = [NSMutableDictionary new];
     
+    for (NSString *key in [factualResponse allKeys]) {
+        if ([self.factualToParseMapping objectForKey:key]) {
+            parseCompatibleDictionary[self.factualToParseMapping[key]] = factualResponse[key];
+        }
+    }
+    
+    return [parseCompatibleDictionary copy];
+}
+
 //    //go though each database that has been added and grab a signal for the network request
 //    for (GLBarcodeDatabase *database in self.databases) {
 //        [signals addObject:[[[[self.manager rac_GET:[database getURLForDatabaseWithBarcode:barcode] parameters:nil] map:^id(RACTuple *value) {
@@ -65,7 +90,7 @@
 //    }] then:^RACSignal *{
 //        return [RACSignal return:[self optimalNameForBarcodeProductWithNameCollection:recievedNames]];
 //    }];
-}
+
 
 ////this has to be here until the developer behind searchupc.com gets his shit together
 //- (BOOL)isValidNameForItem:(id)name {

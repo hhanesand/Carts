@@ -24,6 +24,11 @@
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
+    if ([PFUser currentUser] == nil) {
+        NSLog(@"Logging in");
+        [PFUser logInWithUsername:@"lightice11" password:@"qwerty"];
+    }
+    
     return YES;
 }
 

@@ -16,26 +16,42 @@
 @synthesize delegate;
 @synthesize wasGeneratedLocally;
 
-@dynamic barcode;
 @dynamic name;
-@dynamic url;
+@dynamic upc;
+@dynamic brand;
+@dynamic category;
+@dynamic manufacturer;
+@dynamic upc_e;
+@dynamic ean13;
+@dynamic image;
 
 + (NSString *)parseClassName {
-    return @"barcodeItem";
+    return @"item";
 }
 
 + (void)load {
     [self registerSubclass];
 }
 
++ (instancetype)objectWithData:(NSDictionary *)data {
+    GLBarcodeItem *object = [GLBarcodeItem object];
+    
+    for (NSString *key in [data allKeys]) {
+        [object setObject:data[key] forKey:key];
+    }
+    
+    NSLog(@"New object - %@", object);
+    return object;
+}
+
 - (NSString *)description {
     NSMutableString *string = [NSMutableString stringWithString:self.name];
     [string appendString:@" | "];
-    [string appendString:self.barcode];
+    [string appendString:self.upc];
     
-    if (self.url) {
+    if (self.image && [self.image count] > 0) {
         [string appendString:@" | "];
-        [string appendString:self.url];
+        [string appendString:self.image[0]];
     }
     
     return [string description];

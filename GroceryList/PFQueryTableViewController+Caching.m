@@ -59,8 +59,8 @@
                 if ([self cache_shouldUpdateDataWithCacheResult:cacheObjects withNewNetworkResults:netObjects]) {
                     NSLog(@"Recieved data from the network %@", netObjects);
                     
-                    [[PFObject unpinAllObjectsInBackgroundWithName:@"GLBarcodeItem"] continueWithSuccessBlock:^id(BFTask *ignored) {
-                        return [PFObject pinAllInBackground:netObjects withName:@"GLBarcodeItem"];
+                    [[PFObject unpinAllObjectsInBackgroundWithName:@"groceryList"] continueWithSuccessBlock:^id(BFTask *ignored) {
+                        return [PFObject pinAllInBackground:netObjects withName:@"groceryList"];
                     }];
                     
                     [self cache_updateInternalObjectsWithArray:netObjects clear:clear];
