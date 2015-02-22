@@ -74,7 +74,6 @@
 - (void)scanditSDKOverlayController:(ScanditSDKOverlayController *)overlayController didScanBarcode:(NSDictionary *)dict {
     [self stopScanning];
     
-    
     [[GLParseAnalytics shared] testCloudFunction];
     
     NSString *barcode = dict[@"barcode"];

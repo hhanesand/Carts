@@ -1,40 +1,33 @@
 //track whenever the user scans a barcode that is not in the database
 Parse.Cloud.define("trackMissingBarcode", function(request, response) {
-    var query = new Parse.Query("missingProducts");
-    query.equalTo("barcode", request.params.barcode);
-                   
-    query.first({
-        success : function(object) {
-            if(object) {
-                object.increment("count", 1);
-                object.save(null, {
-                        success : function(missingBarcode) {
-                        response.success("Updated count");
-                    },
-                    error : function(error) {
-                        response.error("Error saving updated count");
-                    }
-                });
-            } else {
-                var MissingBarcodeClass = new Parse.Object.extend("missingProducts");
-                var missingBarcode = new MissingBarcodeClass();
-                missingBarcode.set("barcode", request.params.barcode);
-                missingBarcode.set("count", 0);
-                missingBarcode.save(null, {
-                    success : function(missingBarcode) {
-                        response.success("Added new item");
-                    },
-                    error : function(error) {
-                        response.error("Error saving new item");
-                    }
-                });
-            }
-        },
-        error : function() {
-            response.error("Error querying");
-        }
+    var object = ensureUniqueObject("missingProducts", "barcode", request.params.barcode);
+    object.increment("count", 1);
+    object.set("barcode", request.params.barcode); //the ensureUnique object can return an object whose barcode has not been set
+
+    object.save().then(function(object) {
+        response.success("Added or updated object.");
+    }, function(object) {
+        response.error("There was an error in trackMissingBarcode function.");
     });
 });
+
+function ensureUniqueObject(className, checkKey, value) {
+    console.log("Finding object");
+    var query = new Parse.Query(className);
+    query.equalTo(checkKey, value);
+
+    return query.first().then(function(object) {
+        if (object) {
+            console.log("Returning old object");
+            return object;
+        } else {
+            console.log("Returning new object");
+            return createNewParseObject(className);
+        }
+    }, function(object) {
+        console.log("Error in ensureUniqueObject function while fetching for className " + className + " , key " + checkKey + " and value " + value);
+    });
+}
 
 function checkJSON (json) {
     var parsed;
@@ -42,10 +35,26 @@ function checkJSON (json) {
     try {
         parsed = JSON.parse(json);
     } catch(err) {
+        console.log("returing original");
         return json;
     }
 
     return parsed;
+}
+
+function normalizeInput(p1, p2, p3) {
+    var results = [];
+
+    console.log(checkJSON(p1.text)[0].productname.toLowerCase());
+    console.log(checkJSON(p2.text).itemname.toLowerCase());
+    console.log(checkJSON(p3.text).name.toLowerCase());
+
+    results.push(checkJSON(p1.text)[0].productname.toLowerCase());
+    results.push(checkJSON(p2.text).itemname.toLowerCase());
+    results.push(checkJSON(p3.text).name.toLowerCase());
+
+    console.log(results);
+    return results;
 }
 
 var urls = ["http://www.outpan.com/api/get-product.php?apikey=4308c0742cfa452985e8cd4d569336aa&barcode=",
@@ -60,42 +69,69 @@ Parse.Cloud.define("upcLookup", function(request, response) {
     }
 
     Parse.Promise.when(promises).then(function(p1, p2, p3) {
-        var results_json = [checkJSON(p1.text)[0].productname, checkJSON(p2.text).itemname, checkJSON(p3.text).name];
-        console.log(results_json);
+        var results_json = normalizeInput(p1, p2, p3);
+        var names = getBestName(results_json);
 
-        var numberOfOccurences = [];
+        ensureUniqueObject("pending", "barcode", request.params.barcode).then(function(object) {
+            console.log("Starting update");
+            object.set("barcode", request.params.barcode);
+            object.set("name", names.join(" "));
+            object.set("sources", results_json);
 
-        for (var i = results_json.length - 1; i >= 0; i--) {
-            var name = results_json[i];
-            var words = name.split(" ");
+            object.save();
 
-            for (var j = words.length - 1; j >= 0; j--) {
-                numberOfOccurences[words[j]] = numberOfOccurences[words[j]] + 1;
-            }
-        }
-
-        console.log("Occurences " + numberOfOccurences);
-
-        response.success("");
+            console.log(names);
+            response.success(names);
+        }, function(object) {
+            console.log("Error in ensureUniqueObject");
+            response.error("Error in ensureUniqueObject");
+        });
     }, function(p1, p2, p3) {
         console.error("There was an error in networking or parsing JSON");
         response.error("There was an error in networking or parsing JSON");
     });
-
-    // Parse.Cloud.httpRequest({
-    //     url: "http://www.outpan.com/api/get-product.php?apikey=4308c0742cfa452985e8cd4d569336aa&barcode=" + request.params.barcode
-    // }).then(
-    //     function(object) {
-    //         console.log(JSON.parse(object["text"])["name"]);
-
-    //         var itemClass = new Parse.Object.extend("item");
-    //         var newObject = new itemClass();
-    //         newObject.set("upc", )
-
-    //         response.success(object);
-    //     },
-    //     function(object) {
-    //         response.error(object);
-    //     }
-    // );
 });
+
+
+
+function createNewParseObject (name) {
+    var class_new = Parse.Object.extend(name);
+    return new class_new();
+}
+
+function getBestName (results_json) {
+    var numberOfOccurences = {};
+
+    for (var i = results_json.length - 1; i >= 0; i--) {
+            var words = results_json[i].split(" ");
+
+            for (var j = words.length - 1; j >= 0; j--) {
+                var word = words[j];
+
+                if (word === "") {
+                    continue;
+                }
+
+                if (numberOfOccurences[word]) {
+                    numberOfOccurences[word] = numberOfOccurences[word] + 1;  
+                } else {
+                    numberOfOccurences[word] = 1;
+                }
+            }
+        }
+
+    console.log(numberOfOccurences);
+
+    var keys = Object.keys(numberOfOccurences);
+    var results_name = [];
+
+    for (var k = keys.length - 1; k >= 0; k--) {
+        var key = keys[k];
+
+        if (numberOfOccurences[key] > 1) {
+            results_name.push(key);
+        }
+    }
+
+    return results_name;
+}
