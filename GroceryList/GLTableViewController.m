@@ -50,6 +50,7 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
     GLBarcodeItem *item = object[@"item"];
     
     cell.productName.text = item.name;
+    //cell.details.text = [item.brand stringByAppendingString:[@" , " stringByAppendingString:item.manufacturer]];
     
     //no reactive cocoa for this one...
     __weak GLTableViewCell *weakCell = cell;

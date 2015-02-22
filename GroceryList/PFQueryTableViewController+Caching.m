@@ -12,6 +12,9 @@
 #import "BFTask.h"
 #import "GLListItem.h"
 
+#define TICK   NSDate *startTime = [NSDate date]
+#define TOCK   NSLog(@"Time: %f", -[startTime timeIntervalSinceNow])
+
 @interface PFQueryTableViewController () {
     NSMutableArray *_mutableObjects;
     NSInteger _currentPage;
@@ -57,10 +60,10 @@
                 NSLog(@"There was an error fetching from the network");
             } else {
                 if ([self cache_shouldUpdateDataWithCacheResult:cacheObjects withNewNetworkResults:netObjects]) {
-                    
-                    [[PFObject unpinAllObjectsInBackgroundWithName:@"groceryList"] continueWithSuccessBlock:^id(BFTask *ignored) {
-                        return [PFObject pinAllInBackground:netObjects withName:@"groceryList"];
-                    }];
+                    TICK;
+                    [PFObject unpinAllObjectsWithName:@"groceryList"];
+                    [PFObject pinAll:netObjects withName:@"groceryList"];
+                    TOCK;
                     
                     [self cache_updateInternalObjectsWithArray:netObjects clear:clear];
                     [self.tableView reloadData];

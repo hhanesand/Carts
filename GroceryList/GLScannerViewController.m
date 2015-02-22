@@ -57,7 +57,7 @@
 
 #pragma mark - Test methods
 
-- (IBAction)didPressTestButton:(UIBarButtonItem *)sender {
+- (IBAction)didPressTestButton:(UIBarButtonItem *)sender {//0012000001086
     [self scanditSDKOverlayController:nil didScanBarcode:@{@"barcode" : @"0012000001086"}];
 }
 
@@ -74,6 +74,9 @@
 - (void)scanditSDKOverlayController:(ScanditSDKOverlayController *)overlayController didScanBarcode:(NSDictionary *)dict {
     [self stopScanning];
     
+    
+    [[GLParseAnalytics shared] testCloudFunction];
+    
     NSString *barcode = dict[@"barcode"];
     NSLog(@"Recieved barcode %@", barcode);
     
@@ -82,11 +85,18 @@
 
 #pragma mark - Networking
 
+- (PFQuery *)generateCompoundQuery {
+    PFQuery *upcQuery = [GLBarcodeItem query];
+    PFQuery *upc_eQuery = [GLBarcodeItem query];
+    PFQuery *ean13Query = [GLBarcodeItem query];
+    
+    return [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects:upc_eQuery, upcQuery, ean13Query, nil]];
+}
+
 - (void)fetchProductNameForBarcode:(NSString *)barcode {
     [SVProgressHUD show];
     
-    PFQuery *productQuery = [GLBarcodeItem query];
-    [productQuery whereKey:@"upc" equalTo:barcode];
+    PFQuery *productQuery = [self generateCompoundQuery];
     
     [productQuery getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         GLBarcodeItem *result = (GLBarcodeItem *)object;
@@ -104,10 +114,14 @@
         }
         
         //not really needed - if I do remove it, make sure to subscribe somewhere else
-        [resultSignal subscribeCompleted:^{
+        [resultSignal subscribeNext:^(id x) {
+            NSLog(@"Showing success");
+            [SVProgressHUD showSuccessWithStatus:@"Much Success!"];
+        } error:^(NSError *error) {
+            NSLog(@"Error fetching data for barcode");
+            //save for later attempt?
+            [SVProgressHUD showErrorWithStatus:@"Such loss..."];
         }];
-        
-        [SVProgressHUD showSuccessWithStatus:@"Much Success!"];
     }];
 }
 

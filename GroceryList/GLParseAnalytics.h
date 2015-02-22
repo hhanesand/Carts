@@ -14,6 +14,8 @@
 
 + (GLParseAnalytics *)shared;
 
+- (void)testCloudFunction;
+
 - (void)trackMissingBarcode:(NSString *)barcode;
 
 @end

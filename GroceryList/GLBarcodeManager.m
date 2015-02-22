@@ -12,6 +12,7 @@
 #import "GLBingFetcher.h"
 #import "AFURLResponseSerialization.h"
 #import "GLFactualRequestSerializer.h"
+#import "GLFactualResponseSerializer.h"
 #import <AFNetworking-RACExtensions/AFHTTPRequestOperationManager+RACSupport.h>
 
 @interface GLBarcodeManager()
@@ -30,13 +31,13 @@
         self.bingFetcher = [GLBingFetcher sharedFetcher];
         
         self.factualNetworkingManager= [AFHTTPRequestOperationManager manager];
-        self.factualNetworkingManager.responseSerializer = [AFJSONResponseSerializer serializer];
+        self.factualNetworkingManager.responseSerializer = [GLFactualResponseSerializer serializer];
         self.factualNetworkingManager.requestSerializer = [GLFactualRequestSerializer serializer];
         
         self.factualToParseMapping = @{@"brand" : @"brand",
                                        @"category" : @"category",
                                        @"manufacturer" : @"manufacturer",
-                                       @"image_urls" : @"image",
+                                       //@"image_urls" : @"image", images are sketchy now... at least from factual
                                        @"ean13" : @"ean13",
                                        @"factual_id" : @"factual_id",
                                        @"product_name" : @"name",
@@ -54,6 +55,7 @@
 - (RACSignal *)queryFactualForItemWithUPC:(NSString *)barcode {
     return [[self.factualNetworkingManager rac_GET:@"http://api.v3.factual.com/t/products-cpg" parameters:@{@"q" : barcode}] map:^id(RACTuple *value) {
         NSDictionary *dictionary = (NSDictionary *)value.second;
+        NSLog(@"Factual info %@", dictionary);
         return [self modifyFactualResponseForParseUpload:[dictionary valueForKeyPath:@"response.data"][0]];
     }];
 }

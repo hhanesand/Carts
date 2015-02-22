@@ -24,21 +24,21 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nlK-5j-ue7" id="kyN-Wg-MH6">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1nJ-JF-5nN">
-                                            <rect key="frame" x="8" y="8" width="59" height="55"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1nJ-JF-5nN">
+                                            <rect key="frame" x="8" y="9" width="59" height="55"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="55" id="Kbr-PC-69q"/>
                                                 <constraint firstAttribute="width" constant="59" id="fkp-e5-amE"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZE-kw-bHS">
-                                            <rect key="frame" x="75" y="42" width="53" height="21"/>
+                                            <rect key="frame" x="75" y="44" width="407" height="21"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09D-j8-6cX">
-                                            <rect key="frame" x="75" y="15" width="144" height="26"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Product Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09D-j8-6cX">
+                                            <rect key="frame" x="75" y="16" width="144" height="26"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="21"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -52,6 +52,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="details" destination="MZE-kw-bHS" id="hPf-ui-81c"/>
                                     <outlet property="productImage" destination="1nJ-JF-5nN" id="iXx-av-lGg"/>
                                     <outlet property="productName" destination="09D-j8-6cX" id="ioS-SG-zrR"/>
                                 </connections>
@@ -78,7 +79,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QMF-ba-1W4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="487.5" y="94"/>
+            <point key="canvasLocation" x="487" y="92"/>
         </scene>
         <!--Scanner-->
         <scene sceneID="SdF-BG-qGg">
