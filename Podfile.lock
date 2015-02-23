@@ -34,6 +34,7 @@ PODS:
   - ParseUI (1.1.0):
     - Parse (~> 1.6)
     - ParseFacebookUtils (~> 1.6)
+  - pop (1.0.7)
   - PubNub (3.7.1)
   - ReactiveCocoa (2.4.4):
     - ReactiveCocoa/UI (= 2.4.4)
@@ -49,6 +50,7 @@ DEPENDENCIES:
   - AFNetworking-RACExtensions (from `https://github.com/knshiro/AFNetworking-RACExtensions.git`)
   - AFOAuth1 (~> 0.0.1)
   - ParseUI
+  - pop
   - PubNub (= 3.7.1)
   - ReactiveCocoa (= 2.4.4)
   - SVProgressHUD (HEAD)
@@ -72,6 +74,7 @@ SPEC CHECKSUMS:
   Parse: 60d65108fe39da77ec16c9e51d74b4d296b21424
   ParseFacebookUtils: 0b86cd67283c60d10e3ddc8427f989f5e60ebbd7
   ParseUI: 00c4c39aab3944d88758b55416581650caa37f89
+  pop: 2f14a1ea61339767af9e66741b418c831b3844df
   PubNub: c5e3299f43038f008f060b3519606d68ea5b059d
   ReactiveCocoa: 31119068e3dde866bd257cf74e1f06b4023bf387
   SVProgressHUD: da7a49e789af645d9279ffbca62318945a832438
