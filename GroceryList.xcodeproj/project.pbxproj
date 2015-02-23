@@ -36,6 +36,8 @@
 		F2D58A6E1A96BC7700E15FFC /* GLFactualRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D58A6D1A96BC7700E15FFC /* GLFactualRequestSerializer.m */; };
 		F2D58A711A96EB6600E15FFC /* GLListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D58A701A96EB6600E15FFC /* GLListItem.m */; };
 		F2E4D4BB1A98295D00E8C517 /* GLFactualResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E4D4BA1A98295D00E8C517 /* GLFactualResponseSerializer.m */; };
+		F2E4D4C41A9AA8B900E8C517 /* GLItemConfirmationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2E4D4C31A9AA8B900E8C517 /* GLItemConfirmationView.xib */; };
+		F2E4D4C71A9AC85500E8C517 /* GLItemConfirmationView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E4D4C61A9AC85500E8C517 /* GLItemConfirmationView.m */; };
 		F2E544E01A6CB55000CB52E5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E544DF1A6CB55000CB52E5 /* main.m */; };
 		F2E544E31A6CB55000CB52E5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E544E21A6CB55000CB52E5 /* AppDelegate.m */; };
 		F2E544EE1A6CB55100CB52E5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2E544EC1A6CB55100CB52E5 /* LaunchScreen.xib */; };
@@ -126,6 +128,9 @@
 		F2D58A721A96EB7000E15FFC /* GLListItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLListItem.h; sourceTree = "<group>"; };
 		F2E4D4BA1A98295D00E8C517 /* GLFactualResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLFactualResponseSerializer.m; sourceTree = "<group>"; };
 		F2E4D4BC1A98296F00E8C517 /* GLFactualResponseSerializer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLFactualResponseSerializer.h; sourceTree = "<group>"; };
+		F2E4D4C31A9AA8B900E8C517 /* GLItemConfirmationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLItemConfirmationView.xib; sourceTree = "<group>"; };
+		F2E4D4C51A9AC85500E8C517 /* GLItemConfirmationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLItemConfirmationView.h; sourceTree = "<group>"; };
+		F2E4D4C61A9AC85500E8C517 /* GLItemConfirmationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLItemConfirmationView.m; sourceTree = "<group>"; };
 		F2E544DA1A6CB55000CB52E5 /* GroceryList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E544DE1A6CB55000CB52E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2E544DF1A6CB55000CB52E5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -370,6 +375,9 @@
 				F2F948AE1A8881DE002C5177 /* Main.storyboard */,
 				F2E545031A6CB5D400CB52E5 /* GLTableViewCell.h */,
 				F2E545041A6CB5D400CB52E5 /* GLTableViewCell.m */,
+				F2E4D4C31A9AA8B900E8C517 /* GLItemConfirmationView.xib */,
+				F2E4D4C51A9AC85500E8C517 /* GLItemConfirmationView.h */,
+				F2E4D4C61A9AC85500E8C517 /* GLItemConfirmationView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -563,6 +571,7 @@
 				F2F948E51A8AED76002C5177 /* scanditsdk.strings in Resources */,
 				F2F948E21A8AED76002C5177 /* camera-swap-icon.png in Resources */,
 				F2F948C31A8AD7B5002C5177 /* main.js in Resources */,
+				F2E4D4C41A9AA8B900E8C517 /* GLItemConfirmationView.xib in Resources */,
 				F2F948DF1A8AED76002C5177 /* beep.wav in Resources */,
 				F2F948F11A8AED76002C5177 /* poweredby.png in Resources */,
 				F2F948EA1A8AED76002C5177 /* flashlight-turn-off-icon@2x.png in Resources */,
@@ -626,6 +635,7 @@
 				F2F948FB1A8BDF65002C5177 /* GLScannerViewController.m in Sources */,
 				F2D58A711A96EB6600E15FFC /* GLListItem.m in Sources */,
 				F22F2D7D1A72D6FD00C878EC /* GLBarcodeDatabase.m in Sources */,
+				F2E4D4C71A9AC85500E8C517 /* GLItemConfirmationView.m in Sources */,
 				F25E49111A86B141006E1252 /* GLBingFetcher.m in Sources */,
 				F2E4D4BB1A98295D00E8C517 /* GLFactualResponseSerializer.m in Sources */,
 				F2E545051A6CB5D400CB52E5 /* GLTableViewCell.m in Sources */,

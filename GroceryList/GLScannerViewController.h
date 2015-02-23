@@ -10,10 +10,8 @@
 #import "ScanditSDKOverlayController.h"
 #import "GLBarcodeItemDelegate.h"
 
-@interface GLScannerViewController : ScanditSDKBarcodePicker <ScanditSDKOverlayControllerDelegate>
+@interface GLScannerViewController : UIViewController <ScanditSDKOverlayControllerDelegate>
 
 @property (nonatomic) id<GLBarcodeItemDelegate> delegate;
-
-- (instancetype)initWithCoder:(NSCoder *)aDecoder;
 
 @end

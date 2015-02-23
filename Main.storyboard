@@ -71,7 +71,7 @@
                     <navigationItem key="navigationItem" title="GroceryList" id="u5t-XX-mok">
                         <barButtonItem key="rightBarButtonItem" image="barcode" id="aLg-dB-Gmo">
                             <connections>
-                                <segue destination="tsc-1i-oqR" kind="show" identifier="showScannerViewController" id="Zfg-yh-tFc"/>
+                                <action selector="didTapScannerButton:" destination="r87-YY-bgT" id="bfA-ja-z4m"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -80,34 +80,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QMF-ba-1W4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="487" y="92"/>
-        </scene>
-        <!--Scanner-->
-        <scene sceneID="SdF-BG-qGg">
-            <objects>
-                <viewController title="Scanner" id="tsc-1i-oqR" customClass="GLScannerViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Hsf-56-Hri"/>
-                        <viewControllerLayoutGuide type="bottom" id="cPF-yt-yoh"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="9i7-yb-oMM">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Scanner" id="Ag6-Wc-GZY" userLabel="Scanner">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="ZKW-f3-Thl">
-                            <connections>
-                                <action selector="didPressTestButton:" destination="tsc-1i-oqR" id="8bI-Ud-vi0"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qdX-NI-Wsr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1177.5" y="94"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="v3J-X5-pkc">

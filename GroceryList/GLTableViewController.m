@@ -22,6 +22,11 @@
 
 static NSString *reuseIdentifier = @"GLTableViewCell";
 
+@interface GLTableViewController()
+@property (nonatomic) GLScannerViewController *scanner;
+@property (nonatomic) BOOL isDone;
+@end
+
 @implementation GLTableViewController
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
@@ -30,6 +35,14 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
         self.pullToRefreshEnabled = YES;
         self.paginationEnabled = NO;
         self.loadingViewEnabled = NO;
+        self.isDone = NO;
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+            NSLog(@"Starting task");
+            self.scanner = [[GLScannerViewController alloc] init];
+            self.isDone = YES;
+            NSLog(@"Task is done");
+        });
     }
     
     return self;
@@ -121,11 +134,20 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
 
 #pragma mark - Navigation
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"showScannerViewController"]) {
-        GLScannerViewController *scannerController = segue.destinationViewController;
-        scannerController.delegate = self;
-        [scannerController startScanning];
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    if ([segue.identifier isEqualToString:@"showScannerViewController"]) {
+//        GLScannerViewController *scannerController = segue.destinationViewController;
+//        scannerController.delegate = self;
+//        [scannerController startScanning];
+//    }
+//}
+
+- (IBAction)didTapScannerButton:(id)sender {
+    if (self.isDone) {
+        NSLog(@"View controller is loaded");
+        [self.navigationController pushViewController:self.scanner animated:YES];
+    } else {
+        NSLog(@"View controller is not loaded");
     }
 }
 

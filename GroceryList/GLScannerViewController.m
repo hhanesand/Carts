@@ -16,6 +16,8 @@
 #import "GLParseAnalytics.h"
 #import "GLListItem.h"
 #import "BFTask.h"
+#import <pop/POP.h>
+#import "GLItemConfirmationView.h"
 
 #define TICK   NSDate *startTime = [NSDate date]
 #define TOCK   NSLog(@"Time: %f", -[startTime timeIntervalSinceNow])
@@ -24,35 +26,40 @@
 @property (nonatomic, readonly) NSString *apiKey;
 @property (nonatomic) GLBarcodeManager *manager;
 @property (nonatomic) GLBingFetcher *bing;
+@property (nonatomic) ScanditSDKBarcodePicker *scanner;
 @end
 
 @implementation GLScannerViewController
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    if (self = [super initWithCoder:aDecoder]) {
+- (instancetype)init {
+    if (self = [super init]) {
         _apiKey = @"0TyjNGRpheHk1t6Ho8s6z0KJ6wQyLHv7UXs1kmm1Kx4";
         self.manager = [[GLBarcodeManager alloc] init];
         self.bing = [GLBingFetcher sharedFetcher];
         
-        [self.manager addBarcodeDatabase:[[GLBarcodeDatabase alloc] initWithURLOfDatabase:@"http://www.outpan.com/api/get-product.php?apikey=4308c0742cfa452985e8cd4d569336aa&barcode=%@" withName:@"outpan.com" andPath:@"name"]];
-        
-        [self.manager addBarcodeDatabase:[[GLBarcodeDatabase alloc] initWithURLOfDatabase:@"http://api.upcdatabase.org/json/938a6e05f72b4e5b7531c35374a4457d/%@"  withName:@"upcdatabase.org" andPath:@"itemname"]];
-        
-        [self.manager addBarcodeDatabase:[[GLBarcodeDatabase alloc] initWithURLOfDatabase:@"http://www.searchupc.com/handlers/upcsearch.ashx?request_type=3&access_token=C9D1021E-37EA-4C29-BAF0-EE92A5AB03BE&upc=%@" withName:@"searchupc.com"  andPath:@"0.productname"]];
-        
-        
-        return [self initWithAppKey:self.apiKey];
-    }
-    
-    return nil;
-}
-
-- (instancetype)initWithAppKey:(NSString *)scanditSDKAppKey {
-    if (self = [super initWithAppKey:scanditSDKAppKey]) {
-        self.overlayController.delegate = self;
+        self.scanner = [[ScanditSDKBarcodePicker alloc] initWithAppKey:self.apiKey];
+        self.scanner.overlayController.delegate = self;
+        [self.scanner.overlayController setTorchEnabled:NO];
+        [self.view addSubview:self.scanner.view];
     }
     
     return self;
+}
+
+#pragma mark - Lifecycle
+
+- (void)viewDidLoad {
+    NSLog(@"Loading view");
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    NSLog(@"View will appear");
+    [self.scanner startScanning];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    NSLog(@"View will dissapear");
+    [self.scanner stopScanningAndFreeze];
 }
 
 #pragma mark - Test methods
@@ -72,14 +79,32 @@
 }
 
 - (void)scanditSDKOverlayController:(ScanditSDKOverlayController *)overlayController didScanBarcode:(NSDictionary *)dict {
-    [self stopScanning];
+    //[self stopScanning];
     
-    [[GLParseAnalytics shared] testCloudFunction];
+    [self animate];
+    
+    //[[GLParseAnalytics shared] testCloudFunction];
     
     NSString *barcode = dict[@"barcode"];
     NSLog(@"Recieved barcode %@", barcode);
     
-    [self fetchProductNameForBarcode:barcode];
+    //[self fetchProductNameForBarcode:barcode];
+}
+
+- (void)animate {
+    GLItemConfirmationView *view = [[[UINib nibWithNibName:@"GLItemConfirmationView" bundle:nil] instantiateWithOwner:self options:nil] objectAtIndex:0];
+    view.backgroundColor = [UIColor redColor];
+    [self.view addSubview:view];
+    
+    //animate view from bottom of screen to some point in the middle
+    POPSpringAnimation *bounce = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
+    bounce.toValue = @(CGRectGetHeight(self.view.bounds) - view.bounds.size.height / 2);
+    
+    bounce.completionBlock = ^(POPAnimation *anim, BOOL finished) {
+        NSLog(@"Animation has finished");
+    };
+    
+    [view.layer pop_addAnimation:bounce forKey:@"bounce"];
 }
 
 #pragma mark - Networking
