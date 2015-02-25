@@ -14,4 +14,6 @@
 
 @property (nonatomic) id<GLBarcodeItemDelegate> delegate;
 
+- (void)setScanningView:(ScanditSDKBarcodePicker *)scannerController;
+
 @end

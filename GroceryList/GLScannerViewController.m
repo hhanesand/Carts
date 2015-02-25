@@ -26,31 +26,35 @@
 @property (nonatomic, readonly) NSString *apiKey;
 @property (nonatomic) GLBarcodeManager *manager;
 @property (nonatomic) GLBingFetcher *bing;
-@property (nonatomic) ScanditSDKBarcodePicker *scanner;
+@property (nonatomic, weak) ScanditSDKBarcodePicker *scanner;
 @end
 
 @implementation GLScannerViewController
 
-- (instancetype)init {
-    if (self = [super init]) {
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    NSLog(@"init with coder");
+    
+    if (self = [super initWithCoder:aDecoder]) {
         _apiKey = @"0TyjNGRpheHk1t6Ho8s6z0KJ6wQyLHv7UXs1kmm1Kx4";
         self.manager = [[GLBarcodeManager alloc] init];
         self.bing = [GLBingFetcher sharedFetcher];
-        
-        self.scanner = [[ScanditSDKBarcodePicker alloc] initWithAppKey:self.apiKey];
-        self.scanner.overlayController.delegate = self;
-        [self.scanner.overlayController setTorchEnabled:NO];
-        [self.view addSubview:self.scanner.view];
     }
     
     return self;
 }
 
-#pragma mark - Lifecycle
+//- (void)awakeFromNib {
+//    self.scanner = [[ScanditSDKBarcodePicker alloc] initWithAppKey:self.apiKey];
+//    [self.view addSubview:self.scanner.view];
+//}
 
-- (void)viewDidLoad {
-    NSLog(@"Loading view");
+- (void)setScanningView:(ScanditSDKBarcodePicker *)scanner {
+    self.scanner = scanner;
+    scanner.overlayController.delegate = self;
+    [self.view addSubview:scanner.view];
 }
+
+#pragma mark - Lifecycle
 
 - (void)viewWillAppear:(BOOL)animated {
     NSLog(@"View will appear");
@@ -64,7 +68,7 @@
 
 #pragma mark - Test methods
 
-- (IBAction)didPressTestButton:(UIBarButtonItem *)sender {//0012000001086
+- (void)didPressTestButton {//0012000001086
     [self scanditSDKOverlayController:nil didScanBarcode:@{@"barcode" : @"0012000001086"}];
 }
 
@@ -92,13 +96,13 @@
 }
 
 - (void)animate {
-    GLItemConfirmationView *view = [[[UINib nibWithNibName:@"GLItemConfirmationView" bundle:nil] instantiateWithOwner:self options:nil] objectAtIndex:0];
-    view.backgroundColor = [UIColor redColor];
+    GLItemConfirmationView *view = [[GLItemConfirmationView alloc] init];
+    view.backgroundColor = [UIColor clearColor];
     [self.view addSubview:view];
     
     //animate view from bottom of screen to some point in the middle
-    POPSpringAnimation *bounce = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
-    bounce.toValue = @(CGRectGetHeight(self.view.bounds) - view.bounds.size.height / 2);
+    POPSpringAnimation *bounce = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPosition];
+    bounce.toValue = [NSValue valueWithCGPoint:CGPointMake(CGRectGetWidth(self.view.bounds) / 2, CGRectGetHeight(self.view.bounds) - view.bounds.size.height / 2)];
     
     bounce.completionBlock = ^(POPAnimation *anim, BOOL finished) {
         NSLog(@"Animation has finished");

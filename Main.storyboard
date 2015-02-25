@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--GroceryList-->
@@ -24,8 +25,8 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nlK-5j-ue7" id="kyN-Wg-MH6">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1nJ-JF-5nN">
-                                            <rect key="frame" x="8" y="9" width="59" height="55"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1nJ-JF-5nN">
+                                            <rect key="frame" x="8" y="8" width="59" height="55"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="55" id="Kbr-PC-69q"/>
                                                 <constraint firstAttribute="width" constant="59" id="fkp-e5-amE"/>
@@ -37,8 +38,8 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Product Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09D-j8-6cX">
-                                            <rect key="frame" x="75" y="16" width="144" height="26"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09D-j8-6cX">
+                                            <rect key="frame" x="75" y="15" width="144" height="26"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="21"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -63,15 +64,11 @@
                             <outlet property="delegate" destination="r87-YY-bgT" id="hfE-zD-fvq"/>
                         </connections>
                     </tableView>
-                    <toolbarItems>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="zDE-en-U8v"/>
-                        <barButtonItem systemItem="action" id="fox-DA-xlv"/>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="kXm-WI-6hN"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="GroceryList" id="u5t-XX-mok">
                         <barButtonItem key="rightBarButtonItem" image="barcode" id="aLg-dB-Gmo">
                             <connections>
-                                <action selector="didTapScannerButton:" destination="r87-YY-bgT" id="bfA-ja-z4m"/>
+                                <segue destination="IcR-87-ieK" kind="show" identifier="showScannerViewController" id="WMu-NG-ozj"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -79,7 +76,51 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QMF-ba-1W4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="487" y="92"/>
+            <point key="canvasLocation" x="413" y="-76"/>
+        </scene>
+        <!--Scanner-->
+        <scene sceneID="Pkh-G7-ekf">
+            <objects>
+                <viewController id="IcR-87-ieK" customClass="GLScannerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="44S-jf-hvC"/>
+                        <viewControllerLayoutGuide type="bottom" id="pom-T0-ztU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vVn-iq-dht">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0vN-9B-5Gs" customClass="GLItemConfirmationView">
+                                <rect key="frame" x="0.0" y="556" width="600" height="240"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="heightClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="356" width="600" height="492"/>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0vN-9B-5Gs" firstAttribute="top" secondItem="pom-T0-ztU" secondAttribute="bottom" id="AnV-zu-zX6"/>
+                            <constraint firstItem="0vN-9B-5Gs" firstAttribute="top" secondItem="44S-jf-hvC" secondAttribute="bottom" id="COY-f5-h9z"/>
+                            <constraint firstItem="0vN-9B-5Gs" firstAttribute="leading" secondItem="vVn-iq-dht" secondAttribute="leading" id="Rmg-Vh-O3k"/>
+                            <constraint firstAttribute="trailing" secondItem="0vN-9B-5Gs" secondAttribute="trailing" id="XPU-iX-D32"/>
+                            <constraint firstItem="0vN-9B-5Gs" firstAttribute="height" secondItem="vVn-iq-dht" secondAttribute="height" multiplier="0.4" id="l4P-uz-uOc"/>
+                            <constraint firstItem="pom-T0-ztU" firstAttribute="top" secondItem="0vN-9B-5Gs" secondAttribute="bottom" id="yjE-5T-a8Y"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="COY-f5-h9z"/>
+                                <exclude reference="yjE-5T-a8Y"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Scanner" id="IAm-Sc-xyx">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="8OB-0n-equ"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iTM-eO-8bS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1079" y="-76"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="v3J-X5-pkc">
@@ -95,7 +136,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EZE-dB-Fuz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-205" y="94"/>
+            <point key="canvasLocation" x="-262" y="-76"/>
         </scene>
     </scenes>
     <resources>

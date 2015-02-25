@@ -24,6 +24,7 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
 
 @interface GLTableViewController()
 @property (nonatomic) GLScannerViewController *scanner;
+@property (nonatomic) ScanditSDKBarcodePicker *cachedScannerView;
 @property (nonatomic) BOOL isDone;
 @end
 
@@ -36,16 +37,13 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
         self.paginationEnabled = NO;
         self.loadingViewEnabled = NO;
         self.isDone = NO;
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-            NSLog(@"Starting task");
-            self.scanner = [[GLScannerViewController alloc] init];
-            self.isDone = YES;
-            NSLog(@"Task is done");
-        });
     }
     
     return self;
+}
+
+- (void)awakeFromNib {
+    self.cachedScannerView = [[ScanditSDKBarcodePicker alloc] initWithAppKey: @"0TyjNGRpheHk1t6Ho8s6z0KJ6wQyLHv7UXs1kmm1Kx4"];
 }
 
 #pragma mark - Parse
@@ -134,20 +132,10 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
 
 #pragma mark - Navigation
 
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    if ([segue.identifier isEqualToString:@"showScannerViewController"]) {
-//        GLScannerViewController *scannerController = segue.destinationViewController;
-//        scannerController.delegate = self;
-//        [scannerController startScanning];
-//    }
-//}
-
-- (IBAction)didTapScannerButton:(id)sender {
-    if (self.isDone) {
-        NSLog(@"View controller is loaded");
-        [self.navigationController pushViewController:self.scanner animated:YES];
-    } else {
-        NSLog(@"View controller is not loaded");
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"showScannerViewController"]) {
+        GLScannerViewController *scannerController = segue.destinationViewController;
+        [scannerController setScanningView:self.cachedScannerView];
     }
 }
 
