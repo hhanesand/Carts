@@ -9,19 +9,18 @@
 #import "GLBarcodeItem.h"
 #import <Parse/PFObject+Subclass.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import <AVFoundation/AVFoundation.h>
 
 @implementation GLBarcodeItem
 
-@synthesize imageData;
 @synthesize delegate;
 
 @dynamic name;
-@dynamic upc;
+@dynamic barcodes;
+@dynamic types;
 @dynamic brand;
 @dynamic category;
 @dynamic manufacturer;
-@dynamic upc_e;
-@dynamic ean13;
 @dynamic image;
 
 + (NSString *)parseClassName {
@@ -32,18 +31,29 @@
     [self registerSubclass];
 }
 
++ (instancetype)objectWithMetadataObject:(AVMetadataMachineReadableCodeObject *)metadata {
+    GLBarcodeItem *object = [super object];
+    [object.types addObject:metadata.type];
+    [object.barcodes addObject:metadata.stringValue];
+    return object;
+}
+
+- (NSString *)getFirstBarcode {
+    return [self.barcodes firstObject];
+}
+
 - (void)loadJSONData:(NSDictionary *)data {
     for (NSString *key in [data allKeys]) {
         [self setObject:data[key] forKey:key];
     }
+    
+    NSLog(@"Done");
 }
 
 - (NSString *)description {
     NSMutableString *string = [NSMutableString stringWithString:self.name];
-    [string appendString:@" | "];
-    [string appendString:self.upc];
-    
-    NSLog(@"Image array %@", self.image);
+    [string appendString:[@"barcodes " stringByAppendingString:[self.barcodes description]]];
+    [string appendString:[@"types " stringByAppendingString:[self.types description]]];
     
     if (self.image && [self.image count] > 0) {
         [string appendString:@" | "];
@@ -57,6 +67,7 @@
     if (self.image) {
         [self.image addObjectsFromArray:array];
     } else {
+        NSLog(@"Creating a new array");
         self.image = [NSMutableArray new];
         [self.image addObjectsFromArray:array];
     }

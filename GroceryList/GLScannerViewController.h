@@ -7,13 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ScanditSDKOverlayController.h"
 #import "GLBarcodeItemDelegate.h"
+#import "GLBarcodeScannerDelegate.h"
 
-@interface GLScannerViewController : UIViewController <ScanditSDKOverlayControllerDelegate>
+@interface GLScannerViewController : UIViewController <GLBarcodeScannerDelegate>
 
 @property (nonatomic) id<GLBarcodeItemDelegate> delegate;
-
-- (void)setScanningView:(ScanditSDKBarcodePicker *)scannerController;
 
 @end

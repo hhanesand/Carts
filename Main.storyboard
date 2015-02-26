@@ -3,7 +3,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--GroceryList-->
@@ -90,37 +89,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0vN-9B-5Gs" customClass="GLItemConfirmationView">
-                                <rect key="frame" x="0.0" y="556" width="600" height="240"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j7I-Sy-7G4" userLabel="Container View">
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <variation key="heightClass=compact" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="356" width="600" height="492"/>
-                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="0vN-9B-5Gs" firstAttribute="top" secondItem="pom-T0-ztU" secondAttribute="bottom" id="AnV-zu-zX6"/>
-                            <constraint firstItem="0vN-9B-5Gs" firstAttribute="top" secondItem="44S-jf-hvC" secondAttribute="bottom" id="COY-f5-h9z"/>
-                            <constraint firstItem="0vN-9B-5Gs" firstAttribute="leading" secondItem="vVn-iq-dht" secondAttribute="leading" id="Rmg-Vh-O3k"/>
-                            <constraint firstAttribute="trailing" secondItem="0vN-9B-5Gs" secondAttribute="trailing" id="XPU-iX-D32"/>
-                            <constraint firstItem="0vN-9B-5Gs" firstAttribute="height" secondItem="vVn-iq-dht" secondAttribute="height" multiplier="0.4" id="l4P-uz-uOc"/>
-                            <constraint firstItem="pom-T0-ztU" firstAttribute="top" secondItem="0vN-9B-5Gs" secondAttribute="bottom" id="yjE-5T-a8Y"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="COY-f5-h9z"/>
-                                <exclude reference="yjE-5T-a8Y"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Scanner" id="IAm-Sc-xyx">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="8OB-0n-equ"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="8OB-0n-equ">
+                            <connections>
+                                <action selector="didPressTestButton:" destination="IcR-87-ieK" id="l9j-qM-gdT"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="containerView" destination="j7I-Sy-7G4" id="kpy-Cx-eKB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iTM-eO-8bS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1079" y="-76"/>
+            <point key="canvasLocation" x="1087" y="-76"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="v3J-X5-pkc">

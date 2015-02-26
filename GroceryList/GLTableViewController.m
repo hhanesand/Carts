@@ -6,27 +6,20 @@
 //
 //
 
-#import <Parse/Parse.h>
+#import "PFQueryTableViewController+Caching.h"
+
+#import "UIImageView+AFNetworking.h"
+
 #import "GLTableViewController.h"
 #import "GLTableViewCell.h"
-#import "AFNetworking.h"
 #import "GLBarcodeManager.h"
-#import "ReactiveCocoa/ReactiveCocoa.h"
-#import "AFNetworking.h"
 #import "GLBingFetcher.h"
 #import "GLScannerViewController.h"
-#import "UIImageView+AFNetworking.h"
-#import "PFQueryTableViewController+Caching.h"
 #import "GLParseAnalytics.h"
 #import "GLListItem.h"
+#import "GLBarcodeItem.h"
 
 static NSString *reuseIdentifier = @"GLTableViewCell";
-
-@interface GLTableViewController()
-@property (nonatomic) GLScannerViewController *scanner;
-@property (nonatomic) ScanditSDKBarcodePicker *cachedScannerView;
-@property (nonatomic) BOOL isDone;
-@end
 
 @implementation GLTableViewController
 
@@ -36,14 +29,9 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
         self.pullToRefreshEnabled = YES;
         self.paginationEnabled = NO;
         self.loadingViewEnabled = NO;
-        self.isDone = NO;
     }
     
     return self;
-}
-
-- (void)awakeFromNib {
-    self.cachedScannerView = [[ScanditSDKBarcodePicker alloc] initWithAppKey: @"0TyjNGRpheHk1t6Ho8s6z0KJ6wQyLHv7UXs1kmm1Kx4"];
 }
 
 #pragma mark - Parse
@@ -61,7 +49,6 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
     GLBarcodeItem *item = object[@"item"];
     
     cell.productName.text = item.name;
-    //cell.details.text = [item.brand stringByAppendingString:[@" , " stringByAppendingString:item.manufacturer]];
     
     //no reactive cocoa for this one...
     __weak GLTableViewCell *weakCell = cell;
@@ -132,11 +119,11 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
 
 #pragma mark - Navigation
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"showScannerViewController"]) {
-        GLScannerViewController *scannerController = segue.destinationViewController;
-        [scannerController setScanningView:self.cachedScannerView];
-    }
-}
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    if ([segue.identifier isEqualToString:@"showScannerViewController"]) {
+//        GLScannerViewController *scannerController = segue.destinationViewController;
+//        [scannerController setScanningView:self.cachedScannerView];
+//    }
+//}
 
 @end

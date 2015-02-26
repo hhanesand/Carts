@@ -7,14 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "GLBarcodeDatabase.h"
-#import "AFNetworking.h"
-#import "AFHTTPRequestOperationManager+RACSupport.h"
+
+@class RACSignal;
+@class GLBarcodeItem;
 
 @interface GLBarcodeManager : NSObject
 
-- (void)addBarcodeDatabase:(GLBarcodeDatabase *)database;
-
-- (RACSignal *)queryFactualForItemWithUPC:(NSString *)barcode;
+- (RACSignal *)queryFactualForItem:(GLBarcodeItem *)barcodeItem;
 
 @end

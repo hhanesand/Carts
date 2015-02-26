@@ -1,1 +1,0 @@
-PODS_PUBNUB_OTHER_LDFLAGS = -l"z" -framework "CFNetwork" -framework "SystemConfiguration"

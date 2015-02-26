@@ -90,12 +90,6 @@
 #define COCOAPODS_VERSION_MINOR_ParseUI 1
 #define COCOAPODS_VERSION_PATCH_ParseUI 0
 
-// PubNub
-#define COCOAPODS_POD_AVAILABLE_PubNub
-#define COCOAPODS_VERSION_MAJOR_PubNub 3
-#define COCOAPODS_VERSION_MINOR_PubNub 7
-#define COCOAPODS_VERSION_PATCH_PubNub 1
-
 // ReactiveCocoa
 #define COCOAPODS_POD_AVAILABLE_ReactiveCocoa
 #define COCOAPODS_VERSION_MAJOR_ReactiveCocoa 2
@@ -126,11 +120,11 @@
 #define COCOAPODS_VERSION_MINOR_SVProgressHUD 1
 #define COCOAPODS_VERSION_PATCH_SVProgressHUD 2
 
-// SWTableViewCell
-#define COCOAPODS_POD_AVAILABLE_SWTableViewCell
-#define COCOAPODS_VERSION_MAJOR_SWTableViewCell 0
-#define COCOAPODS_VERSION_MINOR_SWTableViewCell 3
-#define COCOAPODS_VERSION_PATCH_SWTableViewCell 7
+// UIFloatLabelTextField
+#define COCOAPODS_POD_AVAILABLE_UIFloatLabelTextField
+#define COCOAPODS_VERSION_MAJOR_UIFloatLabelTextField 1
+#define COCOAPODS_VERSION_MINOR_UIFloatLabelTextField 1
+#define COCOAPODS_VERSION_PATCH_UIFloatLabelTextField 2
 
 // pop
 #define COCOAPODS_POD_AVAILABLE_pop

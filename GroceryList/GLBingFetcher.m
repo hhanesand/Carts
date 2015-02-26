@@ -6,9 +6,12 @@
 //
 //
 
-#import "GLBingFetcher.h"
 #import "AFHTTPRequestOperationManager+RACSupport.h"
 #import "AFURLResponseSerialization.h"
+
+#import "GLBingFetcher.h"
+#import "GLListItem.h"
+#import "GLBarcodeItem.h"
 
 @interface GLBingFetcher()
 @property (nonatomic) NSString *root;

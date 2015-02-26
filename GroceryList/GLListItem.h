@@ -7,6 +7,7 @@
 //
 
 #import <Parse/Parse.h>
+
 @class GLBarcodeItem;
 
 @interface GLListItem : PFObject<PFSubclassing>

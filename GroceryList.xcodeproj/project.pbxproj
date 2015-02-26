@@ -26,6 +26,7 @@
 		F28586BE1A744A75003B91E1 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586BD1A744A75003B91E1 /* AdSupport.framework */; };
 		F29214B91A9D4BD400015EB2 /* GLItemConfirmationView.m in Sources */ = {isa = PBXBuildFile; fileRef = F29214B81A9D4BD400015EB2 /* GLItemConfirmationView.m */; };
 		F29214BB1A9D4BEF00015EB2 /* GLItemConfirmationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F29214BA1A9D4BEF00015EB2 /* GLItemConfirmationView.xib */; };
+		F29214C11A9ED7F900015EB2 /* GLScannerWrapperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F29214C01A9ED7F900015EB2 /* GLScannerWrapperViewController.m */; };
 		F296DA121A709738001E9D29 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F296DA111A709738001E9D29 /* ParseCrashReporting.framework */; };
 		F296DA141A709862001E9D29 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F296DA131A709862001E9D29 /* libstdc++.6.dylib */; };
 		F2A6C8D71A915FF900FE3C30 /* PFQueryTableViewController+Caching.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A6C8D61A915FF900FE3C30 /* PFQueryTableViewController+Caching.m */; };
@@ -50,26 +51,6 @@
 		F2F948C31A8AD7B5002C5177 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = F2F948BE1A8AD7B5002C5177 /* main.js */; };
 		F2F948C41A8AD7B5002C5177 /* global.json in Resources */ = {isa = PBXBuildFile; fileRef = F2F948C01A8AD7B5002C5177 /* global.json */; };
 		F2F948C51A8AD7B5002C5177 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = F2F948C21A8AD7B5002C5177 /* index.html */; };
-		F2F948DF1A8AED76002C5177 /* beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = F2F948C71A8AED76002C5177 /* beep.wav */; };
-		F2F948E01A8AED76002C5177 /* camera-swap-icon-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F2F948C81A8AED76002C5177 /* camera-swap-icon-pressed.png */; };
-		F2F948E11A8AED76002C5177 /* camera-swap-icon-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2F948C91A8AED76002C5177 /* camera-swap-icon-pressed@2x.png */; };
-		F2F948E21A8AED76002C5177 /* camera-swap-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F2F948CA1A8AED76002C5177 /* camera-swap-icon.png */; };
-		F2F948E31A8AED76002C5177 /* camera-swap-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2F948CB1A8AED76002C5177 /* camera-swap-icon@2x.png */; };
-		F2F948E41A8AED76002C5177 /* CHANGELOG.txt in Resources */ = {isa = PBXBuildFile; fileRef = F2F948CC1A8AED76002C5177 /* CHANGELOG.txt */; };
-		F2F948E51A8AED76002C5177 /* scanditsdk.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2F948CD1A8AED76002C5177 /* scanditsdk.strings */; };
-		F2F948E61A8AED76002C5177 /* empty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F2F948CF1A8AED76002C5177 /* empty.cpp */; };
-		F2F948E71A8AED76002C5177 /* flashlight-turn-off-icon-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F2F948D11A8AED76002C5177 /* flashlight-turn-off-icon-pressed.png */; };
-		F2F948E81A8AED76002C5177 /* flashlight-turn-off-icon-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2F948D21A8AED76002C5177 /* flashlight-turn-off-icon-pressed@2x.png */; };
-		F2F948E91A8AED76002C5177 /* flashlight-turn-off-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F2F948D31A8AED76002C5177 /* flashlight-turn-off-icon.png */; };
-		F2F948EA1A8AED76002C5177 /* flashlight-turn-off-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2F948D41A8AED76002C5177 /* flashlight-turn-off-icon@2x.png */; };
-		F2F948EB1A8AED76002C5177 /* flashlight-turn-on-icon-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F2F948D51A8AED76002C5177 /* flashlight-turn-on-icon-pressed.png */; };
-		F2F948EC1A8AED76002C5177 /* flashlight-turn-on-icon-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2F948D61A8AED76002C5177 /* flashlight-turn-on-icon-pressed@2x.png */; };
-		F2F948ED1A8AED76002C5177 /* flashlight-turn-on-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F2F948D71A8AED76002C5177 /* flashlight-turn-on-icon.png */; };
-		F2F948EE1A8AED76002C5177 /* flashlight-turn-on-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2F948D81A8AED76002C5177 /* flashlight-turn-on-icon@2x.png */; };
-		F2F948EF1A8AED76002C5177 /* libscanditsdk-ios-4.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F948D91A8AED76002C5177 /* libscanditsdk-ios-4.4.0.a */; };
-		F2F948F01A8AED76002C5177 /* LICENSE-2.0.txt in Resources */ = {isa = PBXBuildFile; fileRef = F2F948DA1A8AED76002C5177 /* LICENSE-2.0.txt */; };
-		F2F948F11A8AED76002C5177 /* poweredby.png in Resources */ = {isa = PBXBuildFile; fileRef = F2F948DB1A8AED76002C5177 /* poweredby.png */; };
-		F2F948F21A8AED76002C5177 /* poweredby@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2F948DC1A8AED76002C5177 /* poweredby@2x.png */; };
 		F2F948F41A8AEDB8002C5177 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F948F31A8AEDB8002C5177 /* libc++.dylib */; };
 		F2F948F61A8AEDDF002C5177 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F948F51A8AEDDF002C5177 /* UIKit.framework */; };
 		F2F948F81A8AEDE8002C5177 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F948F71A8AEDE8002C5177 /* Foundation.framework */; };
@@ -113,11 +94,13 @@
 		F29214B71A9D4BD400015EB2 /* GLItemConfirmationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLItemConfirmationView.h; sourceTree = "<group>"; };
 		F29214B81A9D4BD400015EB2 /* GLItemConfirmationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLItemConfirmationView.m; sourceTree = "<group>"; wrapsLines = 1; };
 		F29214BA1A9D4BEF00015EB2 /* GLItemConfirmationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLItemConfirmationView.xib; sourceTree = "<group>"; };
+		F29214BF1A9ED7F900015EB2 /* GLScannerWrapperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLScannerWrapperViewController.h; sourceTree = "<group>"; };
+		F29214C01A9ED7F900015EB2 /* GLScannerWrapperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLScannerWrapperViewController.m; sourceTree = "<group>"; };
+		F29214C21A9FB5C200015EB2 /* GLBarcodeScannerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLBarcodeScannerDelegate.h; sourceTree = "<group>"; };
 		F296DA111A709738001E9D29 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
 		F296DA131A709862001E9D29 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		F2A6C8D51A915FF900FE3C30 /* PFQueryTableViewController+Caching.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFQueryTableViewController+Caching.h"; sourceTree = "<group>"; };
 		F2A6C8D61A915FF900FE3C30 /* PFQueryTableViewController+Caching.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFQueryTableViewController+Caching.m"; sourceTree = "<group>"; };
-		F2A6C8DA1A93D7AC00FE3C30 /* FactualSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FactualSDK.framework; sourceTree = "<group>"; };
 		F2A917371A8FC0D400A1FC89 /* GLParseAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLParseAnalytics.m; sourceTree = "<group>"; };
 		F2A917391A8FC0E200A1FC89 /* GLParseAnalytics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLParseAnalytics.h; sourceTree = "<group>"; };
 		F2B4D0D51A6DF52200A98C7A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -152,29 +135,6 @@
 		F2F948BE1A8AD7B5002C5177 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
 		F2F948C01A8AD7B5002C5177 /* global.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = global.json; sourceTree = "<group>"; };
 		F2F948C21A8AD7B5002C5177 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
-		F2F948C71A8AED76002C5177 /* beep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beep.wav; sourceTree = "<group>"; };
-		F2F948C81A8AED76002C5177 /* camera-swap-icon-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-swap-icon-pressed.png"; sourceTree = "<group>"; };
-		F2F948C91A8AED76002C5177 /* camera-swap-icon-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-swap-icon-pressed@2x.png"; sourceTree = "<group>"; };
-		F2F948CA1A8AED76002C5177 /* camera-swap-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-swap-icon.png"; sourceTree = "<group>"; };
-		F2F948CB1A8AED76002C5177 /* camera-swap-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-swap-icon@2x.png"; sourceTree = "<group>"; };
-		F2F948CC1A8AED76002C5177 /* CHANGELOG.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.txt; sourceTree = "<group>"; };
-		F2F948CE1A8AED76002C5177 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/scanditsdk.strings; sourceTree = "<group>"; };
-		F2F948CF1A8AED76002C5177 /* empty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = empty.cpp; sourceTree = "<group>"; };
-		F2F948D01A8AED76002C5177 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/scanditsdk.strings; sourceTree = "<group>"; };
-		F2F948D11A8AED76002C5177 /* flashlight-turn-off-icon-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashlight-turn-off-icon-pressed.png"; sourceTree = "<group>"; };
-		F2F948D21A8AED76002C5177 /* flashlight-turn-off-icon-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashlight-turn-off-icon-pressed@2x.png"; sourceTree = "<group>"; };
-		F2F948D31A8AED76002C5177 /* flashlight-turn-off-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashlight-turn-off-icon.png"; sourceTree = "<group>"; };
-		F2F948D41A8AED76002C5177 /* flashlight-turn-off-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashlight-turn-off-icon@2x.png"; sourceTree = "<group>"; };
-		F2F948D51A8AED76002C5177 /* flashlight-turn-on-icon-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashlight-turn-on-icon-pressed.png"; sourceTree = "<group>"; };
-		F2F948D61A8AED76002C5177 /* flashlight-turn-on-icon-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashlight-turn-on-icon-pressed@2x.png"; sourceTree = "<group>"; };
-		F2F948D71A8AED76002C5177 /* flashlight-turn-on-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashlight-turn-on-icon.png"; sourceTree = "<group>"; };
-		F2F948D81A8AED76002C5177 /* flashlight-turn-on-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashlight-turn-on-icon@2x.png"; sourceTree = "<group>"; };
-		F2F948D91A8AED76002C5177 /* libscanditsdk-ios-4.4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libscanditsdk-ios-4.4.0.a"; sourceTree = "<group>"; };
-		F2F948DA1A8AED76002C5177 /* LICENSE-2.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "LICENSE-2.0.txt"; sourceTree = "<group>"; };
-		F2F948DB1A8AED76002C5177 /* poweredby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = poweredby.png; sourceTree = "<group>"; };
-		F2F948DC1A8AED76002C5177 /* poweredby@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "poweredby@2x.png"; sourceTree = "<group>"; };
-		F2F948DD1A8AED76002C5177 /* ScanditSDKBarcodePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanditSDKBarcodePicker.h; sourceTree = "<group>"; };
-		F2F948DE1A8AED76002C5177 /* ScanditSDKOverlayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanditSDKOverlayController.h; sourceTree = "<group>"; };
 		F2F948F31A8AEDB8002C5177 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		F2F948F51A8AEDDF002C5177 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F2F948F71A8AEDE8002C5177 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -204,7 +164,6 @@
 				F22C8F3C1A6EE90A00139B9D /* MobileCoreServices.framework in Frameworks */,
 				F22C8F3A1A6EE8FD00139B9D /* CoreLocation.framework in Frameworks */,
 				F22C8F381A6EE8A100139B9D /* CoreGraphics.framework in Frameworks */,
-				F2F948EF1A8AED76002C5177 /* libscanditsdk-ios-4.4.0.a in Frameworks */,
 				F22C8F361A6EE89700139B9D /* CFNetwork.framework in Frameworks */,
 				F296DA121A709738001E9D29 /* ParseCrashReporting.framework in Frameworks */,
 				F22C8F341A6EE88D00139B9D /* AudioToolbox.framework in Frameworks */,
@@ -265,7 +224,6 @@
 		F2B4D0DF1A6DF54B00A98C7A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F2A6C8DA1A93D7AC00FE3C30 /* FactualSDK.framework */,
 				F2F948F71A8AEDE8002C5177 /* Foundation.framework */,
 				F2F948F51A8AEDDF002C5177 /* UIKit.framework */,
 				F2F948F31A8AEDB8002C5177 /* libc++.dylib */,
@@ -298,7 +256,6 @@
 		F2B4D1031A6DF5BE00A98C7A /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				F2F948C61A8AED76002C5177 /* ScanditSDK */,
 			);
 			name = Vendor;
 			sourceTree = "<group>";
@@ -348,6 +305,7 @@
 				F2E544DE1A6CB55000CB52E5 /* Info.plist */,
 				F2E544DF1A6CB55000CB52E5 /* main.m */,
 				F2F948B81A8AA195002C5177 /* GLBarcodeItemDelegate.h */,
+				F29214C21A9FB5C200015EB2 /* GLBarcodeScannerDelegate.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -389,6 +347,8 @@
 				F2E545071A6CB5F500CB52E5 /* GLTableViewController.m */,
 				F2F948FC1A8BDF76002C5177 /* GLScannerViewController.h */,
 				F2F948FA1A8BDF65002C5177 /* GLScannerViewController.m */,
+				F29214BF1A9ED7F900015EB2 /* GLScannerWrapperViewController.h */,
+				F29214C01A9ED7F900015EB2 /* GLScannerWrapperViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -396,10 +356,10 @@
 		F2F948B01A8947A6002C5177 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F2F948B11A8947BD002C5177 /* GLBarcodeItem.m */,
 				F2F948B31A8947C8002C5177 /* GLBarcodeItem.h */,
-				F2D58A701A96EB6600E15FFC /* GLListItem.m */,
+				F2F948B11A8947BD002C5177 /* GLBarcodeItem.m */,
 				F2D58A721A96EB7000E15FFC /* GLListItem.h */,
+				F2D58A701A96EB6600E15FFC /* GLListItem.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -436,35 +396,6 @@
 				F2F948C21A8AD7B5002C5177 /* index.html */,
 			);
 			path = public;
-			sourceTree = "<group>";
-		};
-		F2F948C61A8AED76002C5177 /* ScanditSDK */ = {
-			isa = PBXGroup;
-			children = (
-				F2F948C71A8AED76002C5177 /* beep.wav */,
-				F2F948C81A8AED76002C5177 /* camera-swap-icon-pressed.png */,
-				F2F948C91A8AED76002C5177 /* camera-swap-icon-pressed@2x.png */,
-				F2F948CA1A8AED76002C5177 /* camera-swap-icon.png */,
-				F2F948CB1A8AED76002C5177 /* camera-swap-icon@2x.png */,
-				F2F948CC1A8AED76002C5177 /* CHANGELOG.txt */,
-				F2F948CD1A8AED76002C5177 /* scanditsdk.strings */,
-				F2F948CF1A8AED76002C5177 /* empty.cpp */,
-				F2F948D11A8AED76002C5177 /* flashlight-turn-off-icon-pressed.png */,
-				F2F948D21A8AED76002C5177 /* flashlight-turn-off-icon-pressed@2x.png */,
-				F2F948D31A8AED76002C5177 /* flashlight-turn-off-icon.png */,
-				F2F948D41A8AED76002C5177 /* flashlight-turn-off-icon@2x.png */,
-				F2F948D51A8AED76002C5177 /* flashlight-turn-on-icon-pressed.png */,
-				F2F948D61A8AED76002C5177 /* flashlight-turn-on-icon-pressed@2x.png */,
-				F2F948D71A8AED76002C5177 /* flashlight-turn-on-icon.png */,
-				F2F948D81A8AED76002C5177 /* flashlight-turn-on-icon@2x.png */,
-				F2F948D91A8AED76002C5177 /* libscanditsdk-ios-4.4.0.a */,
-				F2F948DA1A8AED76002C5177 /* LICENSE-2.0.txt */,
-				F2F948DB1A8AED76002C5177 /* poweredby.png */,
-				F2F948DC1A8AED76002C5177 /* poweredby@2x.png */,
-				F2F948DD1A8AED76002C5177 /* ScanditSDKBarcodePicker.h */,
-				F2F948DE1A8AED76002C5177 /* ScanditSDKOverlayController.h */,
-			);
-			path = ScanditSDK;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -552,30 +483,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2F948AF1A8881DE002C5177 /* Main.storyboard in Resources */,
-				F2F948F01A8AED76002C5177 /* LICENSE-2.0.txt in Resources */,
-				F2F948EB1A8AED76002C5177 /* flashlight-turn-on-icon-pressed.png in Resources */,
-				F2F948E71A8AED76002C5177 /* flashlight-turn-off-icon-pressed.png in Resources */,
 				F2F948BA1A8ACCEB002C5177 /* Images.xcassets in Resources */,
-				F2F948E41A8AED76002C5177 /* CHANGELOG.txt in Resources */,
-				F2F948E01A8AED76002C5177 /* camera-swap-icon-pressed.png in Resources */,
-				F2F948F21A8AED76002C5177 /* poweredby@2x.png in Resources */,
 				F2F948C51A8AD7B5002C5177 /* index.html in Resources */,
-				F2F948ED1A8AED76002C5177 /* flashlight-turn-on-icon.png in Resources */,
-				F2F948E81A8AED76002C5177 /* flashlight-turn-off-icon-pressed@2x.png in Resources */,
-				F2F948E31A8AED76002C5177 /* camera-swap-icon@2x.png in Resources */,
 				F2F948C41A8AD7B5002C5177 /* global.json in Resources */,
-				F2F948EC1A8AED76002C5177 /* flashlight-turn-on-icon-pressed@2x.png in Resources */,
-				F2F948EE1A8AED76002C5177 /* flashlight-turn-on-icon@2x.png in Resources */,
-				F2F948E91A8AED76002C5177 /* flashlight-turn-off-icon.png in Resources */,
 				F2E544EE1A6CB55100CB52E5 /* LaunchScreen.xib in Resources */,
-				F2F948E51A8AED76002C5177 /* scanditsdk.strings in Resources */,
-				F2F948E21A8AED76002C5177 /* camera-swap-icon.png in Resources */,
 				F2F948C31A8AD7B5002C5177 /* main.js in Resources */,
 				F29214BB1A9D4BEF00015EB2 /* GLItemConfirmationView.xib in Resources */,
-				F2F948DF1A8AED76002C5177 /* beep.wav in Resources */,
-				F2F948F11A8AED76002C5177 /* poweredby.png in Resources */,
-				F2F948EA1A8AED76002C5177 /* flashlight-turn-off-icon@2x.png in Resources */,
-				F2F948E11A8AED76002C5177 /* camera-swap-icon-pressed@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -638,8 +551,8 @@
 				F29214B91A9D4BD400015EB2 /* GLItemConfirmationView.m in Sources */,
 				F25E49111A86B141006E1252 /* GLBingFetcher.m in Sources */,
 				F2E4D4BB1A98295D00E8C517 /* GLFactualResponseSerializer.m in Sources */,
+				F29214C11A9ED7F900015EB2 /* GLScannerWrapperViewController.m in Sources */,
 				F2E545051A6CB5D400CB52E5 /* GLTableViewCell.m in Sources */,
-				F2F948E61A8AED76002C5177 /* empty.cpp in Sources */,
 				F2A6C8D71A915FF900FE3C30 /* PFQueryTableViewController+Caching.m in Sources */,
 				F2E544E01A6CB55000CB52E5 /* main.m in Sources */,
 			);
@@ -670,15 +583,6 @@
 				F2E544ED1A6CB55100CB52E5 /* Base */,
 			);
 			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-		F2F948CD1A8AED76002C5177 /* scanditsdk.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F2F948CE1A8AED76002C5177 /* de */,
-				F2F948D01A8AED76002C5177 /* en */,
-			);
-			name = scanditsdk.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -792,11 +696,7 @@
 				);
 				INFOPLIST_FILE = GroceryList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/ZBarSDK",
-					"$(PROJECT_DIR)/ScanditSDK",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -832,11 +732,7 @@
 				);
 				INFOPLIST_FILE = GroceryList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/ZBarSDK",
-					"$(PROJECT_DIR)/ScanditSDK",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",

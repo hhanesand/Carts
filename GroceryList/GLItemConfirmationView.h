@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIFloatLabelTextField.h"
 
 @interface GLItemConfirmationView : UIView
+@property (weak, nonatomic) IBOutlet UIFloatLabelTextField *label;
 
 @end

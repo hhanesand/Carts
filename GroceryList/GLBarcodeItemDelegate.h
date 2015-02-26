@@ -6,8 +6,9 @@
 //
 //
 
-@class GLBarcodeItem;
 #import <Foundation/Foundation.h>
+
+@class GLBarcodeItem;
 
 @protocol GLBarcodeItemDelegate <NSObject>
 

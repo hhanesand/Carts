@@ -6,12 +6,8 @@
 //
 //
 
-#import <UIKit/UIKit.h>
-#import "ReactiveCocoa/ReactiveCocoa.h"
+#import "PFQueryTableViewController.h"
 #import "GLBarcodeItemDelegate.h"
-#import "SWTableViewCell.h"
-#import "ScanditSDKOverlayController.h"
-#import <ParseUI/ParseUI.h>
 
-@interface GLTableViewController : PFQueryTableViewController <GLBarcodeItemDelegate, SWTableViewCellDelegate>
+@interface GLTableViewController : PFQueryTableViewController <GLBarcodeItemDelegate>
 @end

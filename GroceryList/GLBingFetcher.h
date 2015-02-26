@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AFNetworking.h"
-#import "GLBarcodeItem.h"
-#import "GLListItem.h"
 
+@class GLBarcodeItem;
 @class RACSignal;
+@class GLBingFetcher;
+@class GLListItem;
 
 @interface GLBingFetcher : NSObject
 
