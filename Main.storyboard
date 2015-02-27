@@ -99,7 +99,7 @@
                     <navigationItem key="navigationItem" title="Scanner" id="IAm-Sc-xyx">
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="8OB-0n-equ">
                             <connections>
-                                <action selector="didPressTestButton:" destination="IcR-87-ieK" id="l9j-qM-gdT"/>
+                                <action selector="didPressTestButton:" destination="IcR-87-ieK" id="lxx-9D-NYe"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

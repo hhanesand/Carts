@@ -56,6 +56,12 @@
 
 #pragma mark - Scanner Delegate
 
+- (IBAction)didPressTestButton:(id)sender {
+    GLBarcodeItem *item = [GLBarcodeItem object];
+    item.barcodes = [NSMutableArray arrayWithObject:@"0012000001086"];
+    [self scanner:nil didRecieveBarcodeItems:[NSArray arrayWithObject:item]];
+}
+
 - (void)scanner:(GLScannerWrapperViewController *)scannerContorller didRecieveBarcodeItems:(NSArray *)barcodeItems {
     NSLog(@"Recieved %lu barcode items.", (unsigned long)[barcodeItems count]);
     
@@ -94,7 +100,7 @@
 
 - (PFQuery *)generateQueryWithBarcodeItem:(GLBarcodeItem *)barcodeItem {
     PFQuery *query = [GLBarcodeItem query];
-    [query whereKey:@"barcode" containsAllObjectsInArray:barcodeItem.barcodes];
+    [query whereKey:@"barcodes" containedIn:barcodeItem.barcodes];
     return query;
 }
 

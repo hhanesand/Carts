@@ -40,7 +40,7 @@
                                        @"product_name" : @"name",
                                        @"ean13" : @"barcodes",
                                        @"upc" : @"barcodes",
-                                       @"upc_e" : @"barcoes"
+                                       @"upc_e" : @"barcodes"
                                        //@"image_urls" : @"image", images are sketchy now... at least from factual
                                        };
     }
@@ -65,11 +65,21 @@
     NSMutableDictionary *parseCompatibleDictionary = [NSMutableDictionary new];
     
     for (NSString *key in [factualResponse allKeys]) {
-        if (parseCompatibleDictionary[self.factualToParseMapping[key]]) {
-            [parseCompatibleDictionary setObject:[NSMutableArray arrayWithObject:factualResponse[key]] forKey:self.factualToParseMapping[key]];
+        if (!self.factualToParseMapping[key]) {
+            continue;
+        }
+        
+        //special handling for the array of barcodes
+        if ([self.factualToParseMapping[key] isEqualToString:@"barcodes"]) {
+            if (!parseCompatibleDictionary[self.factualToParseMapping[key]]) {
+                [parseCompatibleDictionary setObject:[NSMutableArray arrayWithObject:factualResponse[key]] forKey:self.factualToParseMapping[key]];
+            } else {
+                NSMutableArray *array = parseCompatibleDictionary[self.factualToParseMapping[key]];
+                [array addObject:factualResponse[key]];
+            }
         } else {
-            NSMutableArray *array = parseCompatibleDictionary[self.factualToParseMapping[key]];
-            [array addObject:factualResponse[key]];
+            //this is not an array so we can set the value directly
+            [parseCompatibleDictionary setObject:factualResponse[key] forKey:self.factualToParseMapping[key]];
         }
     }
     
