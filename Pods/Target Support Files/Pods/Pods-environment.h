@@ -72,6 +72,12 @@
 #define COCOAPODS_VERSION_MINOR_Facebook_iOS_SDK 23
 #define COCOAPODS_VERSION_PATCH_Facebook_iOS_SDK 0
 
+// JVFloatLabeledTextField
+#define COCOAPODS_POD_AVAILABLE_JVFloatLabeledTextField
+#define COCOAPODS_VERSION_MAJOR_JVFloatLabeledTextField 1
+#define COCOAPODS_VERSION_MINOR_JVFloatLabeledTextField 0
+#define COCOAPODS_VERSION_PATCH_JVFloatLabeledTextField 2
+
 // Parse
 #define COCOAPODS_POD_AVAILABLE_Parse
 #define COCOAPODS_VERSION_MAJOR_Parse 1
@@ -119,12 +125,6 @@
 #define COCOAPODS_VERSION_MAJOR_SVProgressHUD 1
 #define COCOAPODS_VERSION_MINOR_SVProgressHUD 1
 #define COCOAPODS_VERSION_PATCH_SVProgressHUD 2
-
-// UIFloatLabelTextField
-#define COCOAPODS_POD_AVAILABLE_UIFloatLabelTextField
-#define COCOAPODS_VERSION_MAJOR_UIFloatLabelTextField 1
-#define COCOAPODS_VERSION_MINOR_UIFloatLabelTextField 1
-#define COCOAPODS_VERSION_PATCH_UIFloatLabelTextField 2
 
 // pop
 #define COCOAPODS_POD_AVAILABLE_pop
