@@ -25,8 +25,8 @@
 		F28586BC1A744A6B003B91E1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586BB1A744A6B003B91E1 /* Accounts.framework */; };
 		F28586BE1A744A75003B91E1 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586BD1A744A75003B91E1 /* AdSupport.framework */; };
 		F29214B91A9D4BD400015EB2 /* GLItemConfirmationView.m in Sources */ = {isa = PBXBuildFile; fileRef = F29214B81A9D4BD400015EB2 /* GLItemConfirmationView.m */; };
-		F29214BB1A9D4BEF00015EB2 /* GLItemConfirmationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F29214BA1A9D4BEF00015EB2 /* GLItemConfirmationView.xib */; };
 		F29214C11A9ED7F900015EB2 /* GLScannerWrapperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F29214C01A9ED7F900015EB2 /* GLScannerWrapperViewController.m */; };
+		F29214C41AA01A2100015EB2 /* GLItemConfirmationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F29214C31AA01A2100015EB2 /* GLItemConfirmationView.xib */; };
 		F296DA121A709738001E9D29 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F296DA111A709738001E9D29 /* ParseCrashReporting.framework */; };
 		F296DA141A709862001E9D29 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F296DA131A709862001E9D29 /* libstdc++.6.dylib */; };
 		F2A6C8D71A915FF900FE3C30 /* PFQueryTableViewController+Caching.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A6C8D61A915FF900FE3C30 /* PFQueryTableViewController+Caching.m */; };
@@ -93,10 +93,10 @@
 		F28586BD1A744A75003B91E1 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		F29214B71A9D4BD400015EB2 /* GLItemConfirmationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLItemConfirmationView.h; sourceTree = "<group>"; };
 		F29214B81A9D4BD400015EB2 /* GLItemConfirmationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLItemConfirmationView.m; sourceTree = "<group>"; wrapsLines = 1; };
-		F29214BA1A9D4BEF00015EB2 /* GLItemConfirmationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLItemConfirmationView.xib; sourceTree = "<group>"; };
 		F29214BF1A9ED7F900015EB2 /* GLScannerWrapperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLScannerWrapperViewController.h; sourceTree = "<group>"; };
 		F29214C01A9ED7F900015EB2 /* GLScannerWrapperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLScannerWrapperViewController.m; sourceTree = "<group>"; };
 		F29214C21A9FB5C200015EB2 /* GLBarcodeScannerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLBarcodeScannerDelegate.h; sourceTree = "<group>"; };
+		F29214C31AA01A2100015EB2 /* GLItemConfirmationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLItemConfirmationView.xib; sourceTree = "<group>"; };
 		F296DA111A709738001E9D29 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
 		F296DA131A709862001E9D29 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		F2A6C8D51A915FF900FE3C30 /* PFQueryTableViewController+Caching.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFQueryTableViewController+Caching.h"; sourceTree = "<group>"; };
@@ -335,7 +335,7 @@
 				F2E545041A6CB5D400CB52E5 /* GLTableViewCell.m */,
 				F29214B71A9D4BD400015EB2 /* GLItemConfirmationView.h */,
 				F29214B81A9D4BD400015EB2 /* GLItemConfirmationView.m */,
-				F29214BA1A9D4BEF00015EB2 /* GLItemConfirmationView.xib */,
+				F29214C31AA01A2100015EB2 /* GLItemConfirmationView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -486,9 +486,9 @@
 				F2F948BA1A8ACCEB002C5177 /* Images.xcassets in Resources */,
 				F2F948C51A8AD7B5002C5177 /* index.html in Resources */,
 				F2F948C41A8AD7B5002C5177 /* global.json in Resources */,
+				F29214C41AA01A2100015EB2 /* GLItemConfirmationView.xib in Resources */,
 				F2E544EE1A6CB55100CB52E5 /* LaunchScreen.xib in Resources */,
 				F2F948C31A8AD7B5002C5177 /* main.js in Resources */,
-				F29214BB1A9D4BEF00015EB2 /* GLItemConfirmationView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

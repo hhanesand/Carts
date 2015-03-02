@@ -46,8 +46,6 @@
     for (NSString *key in [data allKeys]) {
         [self setObject:data[key] forKey:key];
     }
-    
-    NSLog(@"Done");
 }
 
 - (NSString *)description {

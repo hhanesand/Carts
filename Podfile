@@ -6,4 +6,4 @@ pod 'AFNetworking-RACExtensions', :git => 'https://github.com/knshiro/AFNetworki
 pod 'ParseUI'
 pod 'AFOAuth1', '~>0.0.1'
 pod 'pop'
-pod 'UIFloatLabelTextField'
+pod 'JVFloatLabeledTextField'

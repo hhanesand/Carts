@@ -6,6 +6,7 @@
 //
 //
 
+#import <ReactiveCocoa/ReactiveCocoa.h>
 #import "POPSpringAnimation.h"
 
 //#import "PFQuery.h"
@@ -29,7 +30,12 @@
 @property (nonatomic) GLBarcodeManager *manager;
 @property (nonatomic) GLBingFetcher *bing;
 @property (nonatomic) GLScannerWrapperViewController *scanner;
-@property (weak, nonatomic) IBOutlet UIView *containerView;
+
+@property (nonatomic) GLItemConfirmationView *confirmationView;
+
+@property (nonatomic) RACSignal *canSubmitSignal;
+@property (nonatomic) RACSignal *confirmSignal;
+@property (nonatomic) RACSignal *cancelSignal;
 @end
 
 @implementation GLScannerViewController
@@ -44,10 +50,12 @@
     return self;
 }
 
-- (void)awakeFromNib {
-    self.scanner.view.bounds = self.containerView.bounds;
+- (void)viewDidLoad {
+    self.scanner.view.frame = self.view.frame;
+    [self.scanner willMoveToParentViewController:self];
     [self addChildViewController:self.scanner];
-    [self.containerView addSubview:self.scanner.view];
+    [self.scanner didMoveToParentViewController:self];
+    [self.view addSubview:self.scanner.view];
 }
 
 #pragma mark - Lifecycle
@@ -63,37 +71,61 @@
 }
 
 - (void)scanner:(GLScannerWrapperViewController *)scannerContorller didRecieveBarcodeItems:(NSArray *)barcodeItems {
-    NSLog(@"Recieved %lu barcode items.", (unsigned long)[barcodeItems count]);
-    
-    for (GLBarcodeItem *barcodeItem in barcodeItems) {
-        TICK;
-        [self fetchProductNameForBarcodeItem:barcodeItem];
-        TOCK;
-    }
+    TICK;
+    [self fetchProductNameForBarcodeItem:[barcodeItems firstObject]];
+    TOCK;
+    [self animate];
 }
 
 - (void)animate {
-    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-    UIVisualEffectView *blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-    [blurEffectView setFrame:self.view.bounds];
-    [self.scanner.view addSubview:blurEffectView];
+    CGRect frame = self.view.frame;
+    CGRect popupViewSize = CGRectMake(0, CGRectGetHeight(frame), CGRectGetWidth(frame), CGRectGetHeight(frame) * 0.5);
+    self.confirmationView = [[GLItemConfirmationView alloc] initWithBlurAndFrame:popupViewSize];
     
-    CGRect bounds = self.view.bounds;
-    GLItemConfirmationView *view = [[GLItemConfirmationView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(bounds), CGRectGetWidth(bounds), CGRectGetHeight(bounds) * 0.65)];
+    self.confirmationView.cancel.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        NSLog(@"Type of input cancel %@", NSStringFromClass([input class]));
+        return self.cancelSignal;
+    }];
+    
+    self.confirmationView.confirm.rac_command = [[RACCommand alloc] initWithEnabled:self.canSubmitSignal signalBlock:^RACSignal *(id input) {
+        NSLog(@"Type of input confirm %@", NSStringFromClass([input class]));
+        return self.confirmSignal;
+    }];
 
     //animate view from bottom of screen to some point in the middle
     POPSpringAnimation *bounce = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
-    bounce.toValue = @(CGRectGetHeight(bounds) - CGRectGetHeight(view.bounds) * 0.5 + 30);
+    bounce.toValue = @(CGRectGetHeight(self.view.frame) - CGRectGetHeight(self.confirmationView.frame) * 0.5);
     bounce.springBounciness = 10;
+    bounce.springSpeed = 10;
     
-    bounce.completionBlock = ^(POPAnimation *anim, BOOL finished) {
-        NSLog(@"Animation has finished");
-    };
+    [self.view addSubview:self.confirmationView];
+    [self.confirmationView pop_addAnimation:bounce forKey:@"bounce"];
+}
+
+- (RACSignal *)canSubmitSignal {
+    if (!_canSubmitSignal) {
+        _canSubmitSignal = [_confirmationView.name.rac_textSignal map:^id(NSString *name) {
+            return @([name length] > 0);
+        }];
+    }
     
-    NSLog(@"Bounds %@", NSStringFromCGRect(view.frame));
+    return _canSubmitSignal;
+}
+
+- (RACSignal *)confirmSignal {
+    if (!_confirmSignal) {
+        
+    }
     
-    [blurEffectView addSubview:view];
-    [view pop_addAnimation:bounce forKey:@"bounce"];
+    return _confirmSignal;
+}
+
+- (RACSignal *)cancelSignal {
+    if (!_cancelSignal) {
+        
+    }
+    
+    return _cancelSignal;
 }
 
 #pragma mark - Networking
@@ -104,7 +136,7 @@
     return query;
 }
 
-- (void)fetchProductNameForBarcodeItem:(GLBarcodeItem *)barcodeItem {
+- (RACSignal *)fetchProductNameForBarcodeItem:(GLBarcodeItem *)barcodeItem {
     [SVProgressHUD show];
     
     PFQuery *productQuery = [self generateQueryWithBarcodeItem:barcodeItem];

@@ -39,6 +39,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
 }
 
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self startScanning];
@@ -50,10 +54,9 @@
 }
 
 - (void)setupViews {
-    self.previewView.frame = self.view.frame;
-    self.previewLayer.frame = self.previewView.frame;
-    
-    [self.previewView.layer addSublayer:self.previewLayer];
+    NSLog(@"Rect in wrapper %@", NSStringFromCGRect(self.view.frame));
+    self.previewLayer.frame = self.view.frame;
+    [self.view.layer addSublayer:self.previewLayer];
 }
 
 - (void)setupCaptureSession {
