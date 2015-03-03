@@ -32,8 +32,6 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
 
 @implementation GLTableViewController
 
-@synthesize barcodeSignal;
-
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
         self.parseClassName = [GLListItem parseClassName];
@@ -137,11 +135,11 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
     }
 }
 
-- (void)addNewListItem:(GLListItem *)listItem {
+- (void)didRecieveNewListItem:(GLListItem *)listItem {
     [listItem pinInBackgroundWithName:@"groceryList" block:^(BOOL succeeded, NSError *error) {
-        [self.navigationController popViewControllerAnimated:YES];
         [self cache_loadObjectsClear:YES];
         [listItem saveEventually];
+        [self.navigationController popViewControllerAnimated:YES];
     }];
 }
 

@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <ReactiveCocoa/ReactiveCocoa.h>
+
+@class GLListItem;
 
 @protocol GLBarcodeItemDelegate <NSObject>
-@required
-@property (nonatomic) RACSignal *barcodeSignal;
+- (void)didRecieveNewListItem:(GLListItem *)listItem;
 @end

@@ -121,9 +121,7 @@
     #warning this is bad rac coding
     confirmationView.confirm.rac_command = [[RACCommand alloc] initWithEnabled:canSubmitSignal signalBlock:^RACSignal *(id input) {
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-            
-            [self.delegate.barcodeItem subscribeNext]
-            //[self.delegate sendNext:self.listItem];
+            [self.delegate didRecieveNewListItem:self.listItem];
             [confirmationView removeFromSuperview];
             self.listItem = nil;
             return nil;
