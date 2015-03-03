@@ -12,6 +12,7 @@
 
 @protocol GLBarcodeScannerDelegate <NSObject>
 
+@required
 - (void)scanner:(GLScannerWrapperViewController *)scannerContorller didRecieveBarcodeItems:(NSArray *)barcodeItems;
 
 @end

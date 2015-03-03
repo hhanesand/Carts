@@ -7,15 +7,16 @@
 //
 
 #import "GLItemConfirmationView.h"
+#import "GLBarcodeItem.h"
 
 @implementation GLItemConfirmationView
 
-- (instancetype)initWithBlurAndFrame:(CGRect)frame {
+- (instancetype)initWithBlurAndFrame:(CGRect)frame andBarcodeItem:(GLBarcodeItem *)barcodeItem {
     if (self = [super initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]]) {
         self.frame = frame;
         NSLog(@"Bounds after setting frame %@", NSStringFromCGRect(self.bounds));
         [self loadNib];
-        [self setupViews];
+        [self setupViewsWithBarcodeItem:barcodeItem];
         
         self.textFields = @[self.name, self.brand, self.manufacturer, self.category];
     }
@@ -32,7 +33,7 @@
     [[self contentView] addSubview:view];
 }
 
-- (void)setupViews {
+- (void)setupViewsWithBarcodeItem:(GLBarcodeItem *)barcodeItem {
     [self.name setReturnKeyType:UIReturnKeyDone];
     [self.brand setReturnKeyType:UIReturnKeyDone];
     [self.manufacturer setReturnKeyType:UIReturnKeyDone];
@@ -52,6 +53,22 @@
     [self.brand setPlaceholder:@"Brand" floatingTitle:@"Brand"];
     [self.manufacturer setPlaceholder:@"Manufacturer" floatingTitle:@"Manufacturer"];
     [self.category setPlaceholder:@"Category" floatingTitle:@"Category"];
+    
+    if (barcodeItem.name) {
+        self.name.text = barcodeItem.name;
+    }
+    
+    if (barcodeItem.category) {
+        self.category.text = barcodeItem.category;
+    }
+    
+    if (barcodeItem.brand) {
+        self.brand.text = barcodeItem.brand;
+    }
+    
+    if (barcodeItem.manufacturer) {
+        self.manufacturer.text = barcodeItem.manufacturer;
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

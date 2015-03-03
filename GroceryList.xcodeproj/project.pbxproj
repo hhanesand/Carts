@@ -112,6 +112,7 @@
 		F2D58A6F1A96BD5A00E15FFC /* GLFactualRequestSerializer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLFactualRequestSerializer.h; sourceTree = "<group>"; };
 		F2D58A701A96EB6600E15FFC /* GLListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLListItem.m; sourceTree = "<group>"; };
 		F2D58A721A96EB7000E15FFC /* GLListItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLListItem.h; sourceTree = "<group>"; };
+		F2DFA8631AA56B6300CF05B9 /* GLBarcodeItemDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLBarcodeItemDelegate.h; sourceTree = "<group>"; };
 		F2E4D4BA1A98295D00E8C517 /* GLFactualResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLFactualResponseSerializer.m; sourceTree = "<group>"; };
 		F2E4D4BC1A98296F00E8C517 /* GLFactualResponseSerializer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLFactualResponseSerializer.h; sourceTree = "<group>"; };
 		F2E544DA1A6CB55000CB52E5 /* GroceryList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryList.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,7 +131,6 @@
 		F2F948AE1A8881DE002C5177 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
 		F2F948B11A8947BD002C5177 /* GLBarcodeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBarcodeItem.m; sourceTree = "<group>"; };
 		F2F948B31A8947C8002C5177 /* GLBarcodeItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLBarcodeItem.h; sourceTree = "<group>"; };
-		F2F948B81A8AA195002C5177 /* GLBarcodeItemDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLBarcodeItemDelegate.h; sourceTree = "<group>"; };
 		F2F948B91A8ACCEB002C5177 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = GroceryList/Images.xcassets; sourceTree = "<group>"; };
 		F2F948BE1A8AD7B5002C5177 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
 		F2F948C01A8AD7B5002C5177 /* global.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = global.json; sourceTree = "<group>"; };
@@ -304,8 +304,8 @@
 				F2E544EC1A6CB55100CB52E5 /* LaunchScreen.xib */,
 				F2E544DE1A6CB55000CB52E5 /* Info.plist */,
 				F2E544DF1A6CB55000CB52E5 /* main.m */,
-				F2F948B81A8AA195002C5177 /* GLBarcodeItemDelegate.h */,
 				F29214C21A9FB5C200015EB2 /* GLBarcodeScannerDelegate.h */,
+				F2DFA8631AA56B6300CF05B9 /* GLBarcodeItemDelegate.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";

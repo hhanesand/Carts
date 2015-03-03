@@ -7,14 +7,11 @@
 //
 
 #import <Parse/Parse.h>
-
-#import "GLBarcodeItemDelegate.h"
+#import "GLBarcodeScannerDelegate.h"
 
 @class AVMetadataMachineReadableCodeObject;
 
 @interface GLBarcodeItem : PFObject<PFSubclassing>
-
-@property (nonatomic) id<GLBarcodeItemDelegate> delegate;
 
 @property (nonatomic) NSString *name;
 @property (nonatomic) NSString *brand;

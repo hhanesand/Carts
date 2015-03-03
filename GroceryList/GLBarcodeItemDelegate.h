@@ -2,17 +2,14 @@
 //  GLBarcodeItemDelegate.h
 //  GroceryList
 //
-//  Created by Hakon Hanesand on 2/10/15.
+//  Created by Hakon Hanesand on 3/2/15.
 //
 //
 
 #import <Foundation/Foundation.h>
-
-@class GLBarcodeItem;
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @protocol GLBarcodeItemDelegate <NSObject>
-
-- (void)didReceiveNewBarcodeItem;
-- (void)didReceiveUpdateForBarcodeItem;
-
+@required
+@property (nonatomic) RACSignal *barcodeSignal;
 @end

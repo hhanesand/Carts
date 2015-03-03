@@ -13,8 +13,6 @@
 
 @implementation GLBarcodeItem
 
-@synthesize delegate;
-
 @dynamic name;
 @dynamic barcodes;
 @dynamic types;

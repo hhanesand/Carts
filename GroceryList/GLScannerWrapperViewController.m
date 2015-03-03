@@ -25,32 +25,30 @@
 
 @implementation GLScannerWrapperViewController
 
-- (void)didMoveToParentViewController:(UIViewController *)parent {
-    NSLog(@"Moved to parent");
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (instancetype)init {
+    if (self = [super init]) {
+        [self setupCaptureSession];
+        [self setupViews];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    }
     
-    [self setupCaptureSession];
-    [self setupViews];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    return self;
 }
 
 -(void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewDidDisappear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self startScanning];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [self stopScanning];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self startScanning];
 }
 
 - (void)setupViews {

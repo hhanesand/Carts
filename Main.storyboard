@@ -67,7 +67,7 @@
                     <navigationItem key="navigationItem" title="GroceryList" id="u5t-XX-mok">
                         <barButtonItem key="rightBarButtonItem" image="barcode" id="aLg-dB-Gmo">
                             <connections>
-                                <segue destination="IcR-87-ieK" kind="show" identifier="showScannerViewController" id="WMu-NG-ozj"/>
+                                <action selector="didPressScannerButton:" destination="r87-YY-bgT" id="7OO-ui-pdn"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -76,31 +76,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QMF-ba-1W4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="413" y="-76"/>
-        </scene>
-        <!--Scanner-->
-        <scene sceneID="Pkh-G7-ekf">
-            <objects>
-                <viewController id="IcR-87-ieK" customClass="GLScannerViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="44S-jf-hvC"/>
-                        <viewControllerLayoutGuide type="bottom" id="pom-T0-ztU"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="vVn-iq-dht">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Scanner" id="IAm-Sc-xyx">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="8OB-0n-equ">
-                            <connections>
-                                <action selector="didPressTestButton:" destination="IcR-87-ieK" id="lxx-9D-NYe"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iTM-eO-8bS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1087" y="-76"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="v3J-X5-pkc">

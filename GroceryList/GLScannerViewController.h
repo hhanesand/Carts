@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GLBarcodeItemDelegate.h"
 #import "GLBarcodeScannerDelegate.h"
+#import "GLBarcodeItemDelegate.h"
+
+@class RACSubject;
 
 @interface GLScannerViewController : UIViewController <GLBarcodeScannerDelegate>
 

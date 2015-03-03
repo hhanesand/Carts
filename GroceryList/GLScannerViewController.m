@@ -31,17 +31,15 @@
 @property (nonatomic) GLBingFetcher *bing;
 @property (nonatomic) GLScannerWrapperViewController *scanner;
 
-@property (nonatomic) GLItemConfirmationView *confirmationView;
-
-@property (nonatomic) RACSignal *canSubmitSignal;
-@property (nonatomic) RACSignal *confirmSignal;
-@property (nonatomic) RACSignal *cancelSignal;
+//this is the current item the user has scanned
+//nil if no item scanned, or if the user has confirmed an item
+@property (nonatomic) GLListItem *listItem;
 @end
 
 @implementation GLScannerViewController
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    if (self = [super initWithCoder:aDecoder]) {
+- (instancetype)init {
+    if (self = [super init]) {
         self.manager = [[GLBarcodeManager alloc] init];
         self.bing = [GLBingFetcher sharedFetcher];
         self.scanner = [[GLScannerWrapperViewController alloc] init];
@@ -50,21 +48,31 @@
     return self;
 }
 
+#pragma mark - Lifecycle
+
 - (void)viewDidLoad {
+    [super viewDidLoad];
+    [self addContainerScannerViewControllerWrapper];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(didPressTestButton)] animated:YES];
+}
+
+- (void)addContainerScannerViewControllerWrapper {
     self.scanner.view.frame = self.view.frame;
+    [self.view addSubview:self.scanner.view];
+    
     [self.scanner willMoveToParentViewController:self];
     [self addChildViewController:self.scanner];
     [self.scanner didMoveToParentViewController:self];
-    [self.view addSubview:self.scanner.view];
 }
-
-#pragma mark - Lifecycle
-
-#pragma mark - Test methods
 
 #pragma mark - Scanner Delegate
 
-- (IBAction)didPressTestButton:(id)sender {
+- (void)didPressTestButton {
     GLBarcodeItem *item = [GLBarcodeItem object];
     item.barcodes = [NSMutableArray arrayWithObject:@"0012000001086"];
     [self scanner:nil didRecieveBarcodeItems:[NSArray arrayWithObject:item]];
@@ -72,60 +80,57 @@
 
 - (void)scanner:(GLScannerWrapperViewController *)scannerContorller didRecieveBarcodeItems:(NSArray *)barcodeItems {
     TICK;
-    [self fetchProductNameForBarcodeItem:[barcodeItems firstObject]];
+    RACSignal *barcodeInfoSignal = [self fetchProductNameForBarcodeItem:[barcodeItems firstObject]];
+    
+    [[barcodeInfoSignal logError] subscribeNext:^(GLListItem *list) {
+        [SVProgressHUD showSuccessWithStatus:@""];
+        self.listItem = list;
+        [self showConfirmationView];
+    }];
+    
     TOCK;
-    [self animate];
 }
 
-- (void)animate {
+- (void)showConfirmationView {
+    GLItemConfirmationView *confirmationView = [self prepareConfirmationViewWithListItem:self.listItem];
+    
+    POPSpringAnimation *presentConfirmationView = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
+    presentConfirmationView.toValue = @(CGRectGetHeight(self.view.frame) - CGRectGetHeight(confirmationView.frame) * 0.5);
+    presentConfirmationView.springBounciness = 10;
+    presentConfirmationView.springSpeed = 10;
+    
+    [self.view addSubview:confirmationView];
+    [confirmationView pop_addAnimation:presentConfirmationView forKey:@"bounce"];
+}
+
+- (GLItemConfirmationView *)prepareConfirmationViewWithListItem:(GLListItem *)list {
     CGRect frame = self.view.frame;
     CGRect popupViewSize = CGRectMake(0, CGRectGetHeight(frame), CGRectGetWidth(frame), CGRectGetHeight(frame) * 0.5);
-    self.confirmationView = [[GLItemConfirmationView alloc] initWithBlurAndFrame:popupViewSize];
+    GLItemConfirmationView *confirmationView = [[GLItemConfirmationView alloc] initWithBlurAndFrame:popupViewSize andBarcodeItem:list.item];
     
-    self.confirmationView.cancel.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        NSLog(@"Type of input cancel %@", NSStringFromClass([input class]));
-        return self.cancelSignal;
+    RACSignal *canSubmitSignal = [confirmationView.name.rac_textSignal map:^id(NSString *name) {
+        return @([name length] > 0);
     }];
     
-    self.confirmationView.confirm.rac_command = [[RACCommand alloc] initWithEnabled:self.canSubmitSignal signalBlock:^RACSignal *(id input) {
-        NSLog(@"Type of input confirm %@", NSStringFromClass([input class]));
-        return self.confirmSignal;
-    }];
-
-    //animate view from bottom of screen to some point in the middle
-    POPSpringAnimation *bounce = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
-    bounce.toValue = @(CGRectGetHeight(self.view.frame) - CGRectGetHeight(self.confirmationView.frame) * 0.5);
-    bounce.springBounciness = 10;
-    bounce.springSpeed = 10;
-    
-    [self.view addSubview:self.confirmationView];
-    [self.confirmationView pop_addAnimation:bounce forKey:@"bounce"];
-}
-
-- (RACSignal *)canSubmitSignal {
-    if (!_canSubmitSignal) {
-        _canSubmitSignal = [_confirmationView.name.rac_textSignal map:^id(NSString *name) {
-            return @([name length] > 0);
+    confirmationView.cancel.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            return nil;
         }];
-    }
+    }];
     
-    return _canSubmitSignal;
-}
-
-- (RACSignal *)confirmSignal {
-    if (!_confirmSignal) {
-        
-    }
+    #warning this is bad rac coding
+    confirmationView.confirm.rac_command = [[RACCommand alloc] initWithEnabled:canSubmitSignal signalBlock:^RACSignal *(id input) {
+        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            
+            [self.delegate.barcodeItem subscribeNext]
+            //[self.delegate sendNext:self.listItem];
+            [confirmationView removeFromSuperview];
+            self.listItem = nil;
+            return nil;
+        }];
+    }];
     
-    return _confirmSignal;
-}
-
-- (RACSignal *)cancelSignal {
-    if (!_cancelSignal) {
-        
-    }
-    
-    return _cancelSignal;
+    return confirmationView;
 }
 
 #pragma mark - Networking
@@ -138,63 +143,34 @@
 
 - (RACSignal *)fetchProductNameForBarcodeItem:(GLBarcodeItem *)barcodeItem {
     [SVProgressHUD show];
-    
-    PFQuery *productQuery = [self generateQueryWithBarcodeItem:barcodeItem];
-    
-    [productQuery getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-        GLBarcodeItem *result = (GLBarcodeItem *)object;
+
+    RACSignal *resultSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        PFQuery *productQuery = [self generateQueryWithBarcodeItem:barcodeItem];
+        GLBarcodeItem *result = (GLBarcodeItem *)[productQuery getFirstObject];
         GLListItem *list = [GLListItem objectWithCurrentUser];
-        RACSignal *resultSignal;
         
         if (result) {
             list.item = result;
-            resultSignal = [self pinAndNotifyDelegateWithList:list isNew:YES];
+            [subscriber sendNext:list];
         } else {
-            result = barcodeItem;
-            list.item = result;
-            resultSignal = [self fetchProductInformationFromFactualForListItem:list];
+            list.item = barcodeItem;
+            [subscriber sendNext:[self fetchProductInformationFromFactualForListItem:list]];
         }
         
-        //not really needed - if I do remove it, make sure to subscribe somewhere else
-        [resultSignal subscribeNext:^(id x) {
-            NSLog(@"Showing success");
-            [SVProgressHUD showSuccessWithStatus:@"Much Success!"];
-        } error:^(NSError *error) {
-            NSLog(@"Error fetching data for barcode");
-            //save for later attempt?
-            [SVProgressHUD showErrorWithStatus:@"Such loss..."];
-        }];
+        [subscriber sendCompleted];
+        return nil;
     }];
+    
+    return resultSignal;
 }
 
 - (RACSignal *)fetchProductInformationFromFactualForListItem:(GLListItem *)list {
-    return [[[[self.manager queryFactualForItem:list.item] map:^id(NSDictionary *itemInformation) {
+    return [[[self.manager queryFactualForItem:list.item] map:^id(NSDictionary *itemInformation) {
         [list.item loadJSONData:itemInformation];
-        [self pinAndNotifyDelegateWithList:list isNew:YES];
         return list;
     }] flattenMap:^RACStream *(GLListItem *item) {
         return [self.bing fetchImageURLFromBingForListItem:item];
-    }] flattenMap:^RACStream *(GLListItem *item) {
-        return [self pinAndNotifyDelegateWithList:list isNew:NO];
     }];
-}
-
-- (RACSignal *)pinAndNotifyDelegateWithList:(GLListItem *)list isNew:(BOOL)new {
-    RACSubject *subject = [RACSubject subject];
-    [list pinInBackgroundWithName:@"groceryList" block:^(BOOL succeeded, NSError *error) {
-        if (new) {
-            [self.delegate didReceiveNewBarcodeItem];
-            [self.navigationController popViewControllerAnimated:YES];
-        } else {
-            [self.delegate didReceiveUpdateForBarcodeItem];
-        }
-
-        [subject sendNext:list];
-        [subject sendCompleted];
-        [list saveEventually];
-    }];
-    
-    return subject;
 }
 
 @end

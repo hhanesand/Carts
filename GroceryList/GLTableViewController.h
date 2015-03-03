@@ -9,5 +9,6 @@
 #import "PFQueryTableViewController.h"
 #import "GLBarcodeItemDelegate.h"
 
-@interface GLTableViewController : PFQueryTableViewController <GLBarcodeItemDelegate>
+@interface GLTableViewController : PFQueryTableViewController<GLBarcodeItemDelegate>
+@property (nonatomic) RACSignal *barcodeSignal;
 @end

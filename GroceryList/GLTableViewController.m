@@ -6,6 +6,8 @@
 //
 //
 
+#import <ReactiveCocoa/ReactiveCocoa.h>
+
 #import "PFQueryTableViewController+Caching.h"
 
 #import "UIImageView+AFNetworking.h"
@@ -21,7 +23,16 @@
 
 static NSString *reuseIdentifier = @"GLTableViewCell";
 
+#define TICK   NSDate *startTime = [NSDate date]
+#define TOCK   NSLog(@"Time: %f", -[startTime timeIntervalSinceNow])
+
+@interface GLTableViewController()
+@property (nonatomic) GLScannerViewController *scanner;
+@end
+
 @implementation GLTableViewController
+
+@synthesize barcodeSignal;
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
@@ -29,9 +40,30 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
         self.pullToRefreshEnabled = YES;
         self.paginationEnabled = NO;
         self.loadingViewEnabled = NO;
+        
+        TICK;
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+            GLScannerViewController *s = [[GLScannerViewController alloc] init];
+            s.delegate = self;
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.scanner = s;
+            });
+        });
+        TOCK;
     }
     
     return self;
+}
+
+#pragma mark - Navigation
+
+- (IBAction)didPressScannerButton:(UIBarButtonItem *)sender {
+    if (!self.scanner) {
+        NSLog(@"Scanner was not loaded");
+    }
+    
+    [self.navigationController pushViewController:self.scanner animated:YES];
 }
 
 #pragma mark - Parse
@@ -70,15 +102,13 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
     [self cache_init];
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
-
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self.navigationController setToolbarHidden:NO animated:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     [self.navigationController setToolbarHidden:YES animated:YES];
 }
 
@@ -107,23 +137,12 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
     }
 }
 
-#pragma mark - GLBarcodeItemDelegate
-
-- (void)didReceiveNewBarcodeItem {
-    [self cache_loadObjectsClear:YES];
+- (void)addNewListItem:(GLListItem *)listItem {
+    [listItem pinInBackgroundWithName:@"groceryList" block:^(BOOL succeeded, NSError *error) {
+        [self.navigationController popViewControllerAnimated:YES];
+        [self cache_loadObjectsClear:YES];
+        [listItem saveEventually];
+    }];
 }
-
-- (void)didReceiveUpdateForBarcodeItem {
-    [self.tableView reloadData];
-}
-
-#pragma mark - Navigation
-
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    if ([segue.identifier isEqualToString:@"showScannerViewController"]) {
-//        GLScannerViewController *scannerController = segue.destinationViewController;
-//        [scannerController setScanningView:self.cachedScannerView];
-//    }
-//}
 
 @end
