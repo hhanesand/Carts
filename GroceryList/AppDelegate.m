@@ -29,9 +29,6 @@
         [PFUser logInWithUsername:@"lightice11" password:@"qwerty"];
     }
     
-    [self.window setTintColor:[UIColor greenColor]];
-    [[UIView appearance] setTintColor:[UIColor greenColor]];
-    
     return YES;
 }
 

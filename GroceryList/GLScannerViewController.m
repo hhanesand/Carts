@@ -109,6 +109,7 @@
     confirmationView.confirm.rac_command = [[RACCommand alloc] initWithEnabled:canSubmitSignal signalBlock:^RACSignal *(id input) {
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             [self.delegate didRecieveNewListItem:list];
+            [confirmationView removeFromSuperview];
             [subscriber sendCompleted];
             return nil;
         }];
