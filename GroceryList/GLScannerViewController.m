@@ -30,10 +30,6 @@
 @property (nonatomic) GLBarcodeManager *manager;
 @property (nonatomic) GLBingFetcher *bing;
 @property (nonatomic) GLScannerWrapperViewController *scanner;
-
-//this is the current item the user has scanned
-//nil if no item scanned, or if the user has confirmed an item
-@property (nonatomic) GLListItem *listItem;
 @end
 
 @implementation GLScannerViewController
@@ -80,19 +76,16 @@
 
 - (void)scanner:(GLScannerWrapperViewController *)scannerContorller didRecieveBarcodeItems:(NSArray *)barcodeItems {
     TICK;
-    RACSignal *barcodeInfoSignal = [self fetchProductNameForBarcodeItem:[barcodeItems firstObject]];
-    
-    [[barcodeInfoSignal logError] subscribeNext:^(GLListItem *list) {
+    [[[self fetchProductNameForBarcodeItem:[barcodeItems firstObject]] logAll] subscribeNext:^(GLListItem *listItem) {
         [SVProgressHUD showSuccessWithStatus:@""];
-        self.listItem = list;
-        [self showConfirmationView];
+        [self showConfirmationViewWithListItem:listItem];
     }];
-    
     TOCK;
 }
 
-- (void)showConfirmationView {
-    GLItemConfirmationView *confirmationView = [self prepareConfirmationViewWithListItem:self.listItem];
+//preparse confirmation view and add animation
+- (void)showConfirmationViewWithListItem:(GLListItem *)listItem {
+    GLItemConfirmationView *confirmationView = [self prepareConfirmationViewWithListItem:listItem];
     
     POPSpringAnimation *presentConfirmationView = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
     presentConfirmationView.toValue = @(CGRectGetHeight(self.view.frame) - CGRectGetHeight(confirmationView.frame) * 0.5);
@@ -103,6 +96,7 @@
     [confirmationView pop_addAnimation:presentConfirmationView forKey:@"bounce"];
 }
 
+//sets up a confirmation view that tells the delegate when the user has clicked the confirm button and passes the list item to it
 - (GLItemConfirmationView *)prepareConfirmationViewWithListItem:(GLListItem *)list {
     CGRect frame = self.view.frame;
     CGRect popupViewSize = CGRectMake(0, CGRectGetHeight(frame), CGRectGetWidth(frame), CGRectGetHeight(frame) * 0.5);
@@ -112,20 +106,16 @@
         return @([name length] > 0);
     }];
     
-    confirmationView.cancel.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+    confirmationView.confirm.rac_command = [[RACCommand alloc] initWithEnabled:canSubmitSignal signalBlock:^RACSignal *(id input) {
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            [self.delegate didRecieveNewListItem:list];
+            [subscriber sendCompleted];
             return nil;
         }];
     }];
     
-    #warning this is bad rac coding
-    confirmationView.confirm.rac_command = [[RACCommand alloc] initWithEnabled:canSubmitSignal signalBlock:^RACSignal *(id input) {
-        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-            [self.delegate didRecieveNewListItem:self.listItem];
-            [confirmationView removeFromSuperview];
-            self.listItem = nil;
-            return nil;
-        }];
+    confirmationView.cancel.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        return [RACSignal error:[NSError errorWithDomain:@"groceryList" code:10 userInfo:@{@"reason" : @"User clicked cancel button"}]];
     }];
     
     return confirmationView;
