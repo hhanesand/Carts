@@ -14,7 +14,6 @@
 - (instancetype)initWithBlurAndFrame:(CGRect)frame andBarcodeItem:(GLBarcodeItem *)barcodeItem {
     if (self = [super initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight]]) {
         self.frame = frame;
-        NSLog(@"Bounds after setting frame %@", NSStringFromCGRect(self.bounds));
         [self loadNib];
         [self setupViewsWithBarcodeItem:barcodeItem];
         
@@ -27,7 +26,6 @@
 - (void)loadNib {
     UIView *view = [[[NSBundle mainBundle] loadNibNamed:@"GLItemConfirmationView" owner:self options:nil] objectAtIndex:0];
     view.frame = CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds));
-    NSLog(@"Number of subviews for nib file %lu", (unsigned long)[[view subviews] count]);
     
     #warning think about removing the extra view added by nib loading?
     [[self contentView] addSubview:view];

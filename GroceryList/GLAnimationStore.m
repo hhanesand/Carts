@@ -27,9 +27,4 @@
 {
     return [NSString stringWithFormat:@"Anim %@ Object %@", self.animation, self.targetObject];
 }
-
-- (void)dealloc {
-    NSLog(@"Even worse");
-}
-
 @end

@@ -32,6 +32,8 @@
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
+        
+        [self startScanning];
     }
     
     return self;
@@ -43,7 +45,7 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self startScanning];
+    [self stopScanning];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

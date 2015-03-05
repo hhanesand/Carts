@@ -26,7 +26,7 @@
 #import "POPPropertyAnimation+GLAdditions.h"
 
 #define TICK   NSDate *startTime = [NSDate date]
-#define TOCK   NSLog(@"Time: %f", -[startTime timeIntervalSinceNow])
+#define TOCK   NSLog(@"Time GLScannerViewController: %f", -[startTime timeIntervalSinceNow])
 
 @interface GLScannerViewController()
 @property (nonatomic) GLBarcodeManager *manager;
@@ -51,6 +51,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addContainerScannerViewControllerWrapper];
+    [self.scanner startScanning];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -62,6 +63,7 @@
 }
 
 - (void)addContainerScannerViewControllerWrapper {
+    NSLog(@"Frame %@", NSStringFromCGRect(self.view.frame));
     self.scanner.view.frame = self.view.frame;
     [self.view addSubview:self.scanner.view];
     
@@ -80,6 +82,7 @@
 
 - (void)scanner:(GLScannerWrapperViewController *)scannerContorller didRecieveBarcodeItems:(NSArray *)barcodeItems {
     TICK;
+    [SVProgressHUD show];
     [[[self fetchProductNameForBarcodeItem:[barcodeItems firstObject]] logAll] subscribeNext:^(GLListItem *listItem) {
         [SVProgressHUD showSuccessWithStatus:@""];
         [self showConfirmationViewWithListItem:listItem];

@@ -24,7 +24,7 @@
 static NSString *reuseIdentifier = @"GLTableViewCell";
 
 #define TICK   NSDate *startTime = [NSDate date]
-#define TOCK   NSLog(@"Time: %f", -[startTime timeIntervalSinceNow])
+#define TOCK   NSLog(@"Time GLTableViewController: %f", -[startTime timeIntervalSinceNow])
 
 @interface GLTableViewController()
 @property (nonatomic) GLScannerViewController *scanner;
@@ -61,7 +61,9 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
         NSLog(@"Scanner was not loaded");
     }
     
+    TICK;
     [self.navigationController pushViewController:self.scanner animated:YES];
+    TOCK;
 }
 
 #pragma mark - Parse
@@ -99,17 +101,6 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
     [super loadView];
     [self cache_init];
 }
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.navigationController setToolbarHidden:NO animated:YES];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [self.navigationController setToolbarHidden:YES animated:YES];
-}
-
 
 #pragma mark - Tableview data source
 
