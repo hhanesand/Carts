@@ -26,7 +26,6 @@
     GLAnimationStore *animation = [GLAnimationStore objectWithAnimation:[POPPropertyAnimation reverseAnimation:anim] onTargetObject:targetObject];
     [self.animationStack addObject:animation];
     [targetObject pop_addAnimation:anim forKey:key];
-    NSLog(@"%@", self.animationStack);
 }
 
 - (RACSignal *)popAnimation {
@@ -39,17 +38,18 @@
 }
 
 - (RACSignal *)popAllAnimations {
-    NSMutableArray *signals = [NSMutableArray new];
-    
-    while ([self.animationStack count] != 0) {
-        [signals addObject:[self popAnimation]];
-    }
-    
-    NSLog(@"HI!");
-    
-    return [[RACSignal combineLatest:signals] map:^id(id x) {
-        return @(YES);
+    return [[[[self.animationStack.rac_sequence.signal doNext:^(GLAnimationStore *store) {
+        [store.targetObject pop_addAnimation:store.animation forKey:@"reverseAnimation"];
+    }] flattenMap:^RACStream *(GLAnimationStore *store) {
+        return [store.animation addRACSignalToAnimation];
+    }] logCompleted] doCompleted:^{
+        self.animationStack = [NSMutableArray new];
     }];
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"All Animations %@", self.animationStack];
 }
 
 @end

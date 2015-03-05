@@ -60,6 +60,9 @@
     return completion;
 }
 
+- (void)dealloc {
+    NSLog(@"Fishy");
+}
 
 
 @end

@@ -13,8 +13,8 @@
 
 + (GLAnimationStore *)objectWithAnimation:(POPPropertyAnimation *)animation onTargetObject:(id)targetObject;
 
-@property (nonatomic, weak) POPPropertyAnimation *animation;
-@property (nonatomic, weak) id targetObject;
+@property (nonatomic) POPPropertyAnimation *animation;
+@property (nonatomic) id targetObject;
 
 - (instancetype)initWithAnimation:(POPPropertyAnimation *)animation onTargetObject:(id)targetObject;
 

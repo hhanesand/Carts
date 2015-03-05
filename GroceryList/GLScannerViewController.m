@@ -83,7 +83,6 @@
     [[[self fetchProductNameForBarcodeItem:[barcodeItems firstObject]] logAll] subscribeNext:^(GLListItem *listItem) {
         [SVProgressHUD showSuccessWithStatus:@""];
         [self showConfirmationViewWithListItem:listItem];
-        [self scaleAndFadeBackgroundViewWithShrink:0.85];
     }];
     TOCK;
 }
@@ -104,29 +103,22 @@
     [self.animationStack pushAnimation:presentConfirmationView withTargetObject:confirmationView forKey:@"bounce"];
 }
 
-- (RACSignal *)scaleAndFadeBackgroundViewWithShrink:(CGFloat)scale {
+- (void)scaleAndFadeBackgroundViewWithShrink:(CGFloat)scale {
     UIView *topView = [self getTopView];
-    BOOL isShrinking = scale < 1;
     
-    POPSpringAnimation *scaleAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewScaleXY];
+    POPBasicAnimation *scaleAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
     scaleAnimation.fromValue = [NSValue valueWithCGPoint:CGPointMake(1, 1)];
     scaleAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(scale, scale)];
-    scaleAnimation.springBounciness = 16;
-    scaleAnimation.springSpeed = 20;
     
-    RACSignal *completeSignal = [scaleAnimation addRACSignalToAnimation];
+    [self.animationStack pushAnimation:scaleAnimation withTargetObject:topView.layer forKey:@"scale"];
     
-    [self.animationStack pushAnimation:scaleAnimation withTargetObject:topView forKey:@"scale"];
-    
-    POPSpringAnimation *opacityAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlpha];
-    opacityAnimation.fromValue = @(1);
-    opacityAnimation.toValue = @(0.75);
-    opacityAnimation.springBounciness = 16;
-    opacityAnimation.springSpeed = 20;
-    
-    [self.animationStack pushAnimation:opacityAnimation withTargetObject:topView forKey:@"alpha"];
-    
-    return completeSignal;
+//    POPSpringAnimation *opacityAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlpha];
+//    opacityAnimation.fromValue = @(1);
+//    opacityAnimation.toValue = @(0.75);
+//    opacityAnimation.springBounciness = 16;
+//    opacityAnimation.springSpeed = 20;
+//    
+//    [self.animationStack pushAnimation:opacityAnimation withTargetObject:topView forKey:@"alpha"];
 }
 
 //sets up a confirmation view that tells the delegate when the user has clicked the confirm button and passes the list item to it
@@ -144,7 +136,8 @@
             [self.delegate didRecieveNewListItem:list];
             [subscriber sendCompleted];
             
-            [[self.animationStack popAllAnimations] subscribeCompleted:^{
+            [[[self.animationStack popAllAnimations] deliverOnMainThread] subscribeCompleted:^{
+                NSLog(@"Completed");
                 [confirmationView removeFromSuperview];
                 [self.navigationController popViewControllerAnimated:YES];
             }];
