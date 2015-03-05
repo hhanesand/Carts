@@ -29,6 +29,7 @@
 		F29214C41AA01A2100015EB2 /* GLItemConfirmationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F29214C31AA01A2100015EB2 /* GLItemConfirmationView.xib */; };
 		F296DA121A709738001E9D29 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F296DA111A709738001E9D29 /* ParseCrashReporting.framework */; };
 		F296DA141A709862001E9D29 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F296DA131A709862001E9D29 /* libstdc++.6.dylib */; };
+		F2A00A571AA7F1B1004B8988 /* GLAnimationStack.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A00A561AA7F1B1004B8988 /* GLAnimationStack.m */; };
 		F2A6C8D71A915FF900FE3C30 /* PFQueryTableViewController+Caching.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A6C8D61A915FF900FE3C30 /* PFQueryTableViewController+Caching.m */; };
 		F2A917381A8FC0D400A1FC89 /* GLParseAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A917371A8FC0D400A1FC89 /* GLParseAnalytics.m */; };
 		F2B4D0D61A6DF52200A98C7A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0D51A6DF52200A98C7A /* AVFoundation.framework */; };
@@ -38,6 +39,10 @@
 		F2B4D0DE1A6DF54500A98C7A /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0DD1A6DF54500A98C7A /* libiconv.dylib */; };
 		F2D58A6E1A96BC7700E15FFC /* GLFactualRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D58A6D1A96BC7700E15FFC /* GLFactualRequestSerializer.m */; };
 		F2D58A711A96EB6600E15FFC /* GLListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D58A701A96EB6600E15FFC /* GLListItem.m */; };
+		F2DFA8711AA7C75B00CF05B9 /* UIColor+GLColor.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DFA8701AA7C75B00CF05B9 /* UIColor+GLColor.m */; };
+		F2DFA8771AA7CC0100CF05B9 /* GLBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DFA8761AA7CC0100CF05B9 /* GLBaseViewController.m */; };
+		F2DFA8791AA7E66200CF05B9 /* GLAnimationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DFA8781AA7E66200CF05B9 /* GLAnimationStore.m */; };
+		F2DFA87D1AA7E8B200CF05B9 /* POPPropertyAnimation+GLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DFA87C1AA7E8B200CF05B9 /* POPPropertyAnimation+GLAdditions.m */; };
 		F2E4D4BB1A98295D00E8C517 /* GLFactualResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E4D4BA1A98295D00E8C517 /* GLFactualResponseSerializer.m */; };
 		F2E544E01A6CB55000CB52E5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E544DF1A6CB55000CB52E5 /* main.m */; };
 		F2E544E31A6CB55000CB52E5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E544E21A6CB55000CB52E5 /* AppDelegate.m */; };
@@ -99,6 +104,8 @@
 		F29214C31AA01A2100015EB2 /* GLItemConfirmationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLItemConfirmationView.xib; sourceTree = "<group>"; };
 		F296DA111A709738001E9D29 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
 		F296DA131A709862001E9D29 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
+		F2A00A561AA7F1B1004B8988 /* GLAnimationStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLAnimationStack.m; sourceTree = "<group>"; };
+		F2A00A581AA7F1BC004B8988 /* GLAnimationStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLAnimationStack.h; sourceTree = "<group>"; };
 		F2A6C8D51A915FF900FE3C30 /* PFQueryTableViewController+Caching.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFQueryTableViewController+Caching.h"; sourceTree = "<group>"; };
 		F2A6C8D61A915FF900FE3C30 /* PFQueryTableViewController+Caching.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFQueryTableViewController+Caching.m"; sourceTree = "<group>"; };
 		F2A917371A8FC0D400A1FC89 /* GLParseAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLParseAnalytics.m; sourceTree = "<group>"; };
@@ -113,6 +120,14 @@
 		F2D58A701A96EB6600E15FFC /* GLListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLListItem.m; sourceTree = "<group>"; };
 		F2D58A721A96EB7000E15FFC /* GLListItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLListItem.h; sourceTree = "<group>"; };
 		F2DFA8631AA56B6300CF05B9 /* GLBarcodeItemDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLBarcodeItemDelegate.h; sourceTree = "<group>"; };
+		F2DFA86F1AA7C75B00CF05B9 /* UIColor+GLColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+GLColor.h"; sourceTree = "<group>"; };
+		F2DFA8701AA7C75B00CF05B9 /* UIColor+GLColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+GLColor.m"; sourceTree = "<group>"; };
+		F2DFA8751AA7CC0100CF05B9 /* GLBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLBaseViewController.h; sourceTree = "<group>"; };
+		F2DFA8761AA7CC0100CF05B9 /* GLBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBaseViewController.m; sourceTree = "<group>"; };
+		F2DFA8781AA7E66200CF05B9 /* GLAnimationStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLAnimationStore.m; sourceTree = "<group>"; };
+		F2DFA87A1AA7E66E00CF05B9 /* GLAnimationStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLAnimationStore.h; sourceTree = "<group>"; };
+		F2DFA87B1AA7E8B200CF05B9 /* POPPropertyAnimation+GLAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "POPPropertyAnimation+GLAdditions.h"; sourceTree = "<group>"; };
+		F2DFA87C1AA7E8B200CF05B9 /* POPPropertyAnimation+GLAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "POPPropertyAnimation+GLAdditions.m"; sourceTree = "<group>"; };
 		F2E4D4BA1A98295D00E8C517 /* GLFactualResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLFactualResponseSerializer.m; sourceTree = "<group>"; };
 		F2E4D4BC1A98296F00E8C517 /* GLFactualResponseSerializer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLFactualResponseSerializer.h; sourceTree = "<group>"; };
 		F2E544DA1A6CB55000CB52E5 /* GroceryList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryList.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -198,6 +213,10 @@
 			children = (
 				F2A6C8D51A915FF900FE3C30 /* PFQueryTableViewController+Caching.h */,
 				F2A6C8D61A915FF900FE3C30 /* PFQueryTableViewController+Caching.m */,
+				F2DFA86F1AA7C75B00CF05B9 /* UIColor+GLColor.h */,
+				F2DFA8701AA7C75B00CF05B9 /* UIColor+GLColor.m */,
+				F2DFA87B1AA7E8B200CF05B9 /* POPPropertyAnimation+GLAdditions.h */,
+				F2DFA87C1AA7E8B200CF05B9 /* POPPropertyAnimation+GLAdditions.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -219,6 +238,17 @@
 				F2E4D4BA1A98295D00E8C517 /* GLFactualResponseSerializer.m */,
 			);
 			name = Networking;
+			sourceTree = "<group>";
+		};
+		F2A00A591AA8048C004B8988 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				F2DFA87A1AA7E66E00CF05B9 /* GLAnimationStore.h */,
+				F2DFA8781AA7E66200CF05B9 /* GLAnimationStore.m */,
+				F2A00A561AA7F1B1004B8988 /* GLAnimationStack.m */,
+				F2A00A581AA7F1BC004B8988 /* GLAnimationStack.h */,
+			);
+			name = Animation;
 			sourceTree = "<group>";
 		};
 		F2B4D0DF1A6DF54B00A98C7A /* Frameworks */ = {
@@ -286,6 +316,7 @@
 		F2E544DC1A6CB55000CB52E5 /* GroceryList */ = {
 			isa = PBXGroup;
 			children = (
+				F2A00A591AA8048C004B8988 /* Animation */,
 				F2F948B01A8947A6002C5177 /* Model */,
 				F25E490B1A869E83006E1252 /* Categories */,
 				F2E5450A1A6CB60A00CB52E5 /* Controllers */,
@@ -343,6 +374,8 @@
 		F2E5450A1A6CB60A00CB52E5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F2DFA8751AA7CC0100CF05B9 /* GLBaseViewController.h */,
+				F2DFA8761AA7CC0100CF05B9 /* GLBaseViewController.m */,
 				F2E545061A6CB5F500CB52E5 /* GLTableViewController.h */,
 				F2E545071A6CB5F500CB52E5 /* GLTableViewController.m */,
 				F2F948FC1A8BDF76002C5177 /* GLScannerViewController.h */,
@@ -539,20 +572,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2DFA8711AA7C75B00CF05B9 /* UIColor+GLColor.m in Sources */,
+				F2DFA8771AA7CC0100CF05B9 /* GLBaseViewController.m in Sources */,
 				F2A917381A8FC0D400A1FC89 /* GLParseAnalytics.m in Sources */,
 				F2E545081A6CB5F500CB52E5 /* GLTableViewController.m in Sources */,
 				F2D58A6E1A96BC7700E15FFC /* GLFactualRequestSerializer.m in Sources */,
 				F2E544E31A6CB55000CB52E5 /* AppDelegate.m in Sources */,
+				F2DFA87D1AA7E8B200CF05B9 /* POPPropertyAnimation+GLAdditions.m in Sources */,
 				F2F948B21A8947BD002C5177 /* GLBarcodeItem.m in Sources */,
 				F22F2D791A72D1DB00C878EC /* GLBarcodeManager.m in Sources */,
 				F2F948FB1A8BDF65002C5177 /* GLScannerViewController.m in Sources */,
 				F2D58A711A96EB6600E15FFC /* GLListItem.m in Sources */,
+				F2DFA8791AA7E66200CF05B9 /* GLAnimationStore.m in Sources */,
 				F22F2D7D1A72D6FD00C878EC /* GLBarcodeDatabase.m in Sources */,
 				F29214B91A9D4BD400015EB2 /* GLItemConfirmationView.m in Sources */,
 				F25E49111A86B141006E1252 /* GLBingFetcher.m in Sources */,
 				F2E4D4BB1A98295D00E8C517 /* GLFactualResponseSerializer.m in Sources */,
 				F29214C11A9ED7F900015EB2 /* GLScannerWrapperViewController.m in Sources */,
 				F2E545051A6CB5D400CB52E5 /* GLTableViewCell.m in Sources */,
+				F2A00A571AA7F1B1004B8988 /* GLAnimationStack.m in Sources */,
 				F2A6C8D71A915FF900FE3C30 /* PFQueryTableViewController+Caching.m in Sources */,
 				F2E544E01A6CB55000CB52E5 /* main.m in Sources */,
 			);

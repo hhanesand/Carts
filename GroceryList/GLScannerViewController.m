@@ -7,7 +7,7 @@
 //
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
-#import "POPSpringAnimation.h"
+#import <Pop/POP.h>
 
 //#import "PFQuery.h"
 
@@ -22,6 +22,7 @@
 #import "GLItemConfirmationView.h"
 #import "GLListItem.h"
 #import "GLBarcodeItem.h"
+#import "UIColor+GLColor.h"
 
 #define TICK   NSDate *startTime = [NSDate date]
 #define TOCK   NSLog(@"Time: %f", -[startTime timeIntervalSinceNow])
@@ -55,6 +56,8 @@
     [super viewWillAppear:animated];
     
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(didPressTestButton)] animated:YES];
+    
+    [self getWindow].backgroundColor = [UIColor r:0 g:67 b:88];
 }
 
 - (void)addContainerScannerViewControllerWrapper {
@@ -79,20 +82,63 @@
     [[[self fetchProductNameForBarcodeItem:[barcodeItems firstObject]] logAll] subscribeNext:^(GLListItem *listItem) {
         [SVProgressHUD showSuccessWithStatus:@""];
         [self showConfirmationViewWithListItem:listItem];
+        [self scaleAndFadeBackgroundViewWithShrink:0.85];
     }];
     TOCK;
 }
 
+- (UIView *)getTopView {
+    return [self getWindow].subviews[0];
+}
+
+- (UIWindow *)getWindow {
+    return [[UIApplication sharedApplication] keyWindow];
+}
+
+//scales the background view - call again with value of 1 for scale to undo effects
+//returns a signal that sends a message when the animation is done
+- (RACSignal *)scaleAndFadeBackgroundViewWithShrink:(CGFloat)scale {
+    UIView *topView = [self getTopView];
+    BOOL isShrinking = scale < 1;
+    RACSubject *finishSignal = [RACSubject subject];
+    
+    POPSpringAnimation *scaleAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewScaleXY];
+    scaleAnimation.fromValue = [NSValue valueWithCGPoint:CGPointMake(1, 1)];
+    scaleAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(scale, scale)];
+    scaleAnimation.springBounciness = 16;
+    scaleAnimation.springSpeed = 20;
+    
+    //consider adding a category for this
+    scaleAnimation.completionBlock = ^(POPAnimation *anim, BOOL finished) {
+        if (finished) {
+            [finishSignal sendCompleted];
+        }
+    };
+    
+    [self.animationStack pushAnimation:scaleAnimation withTargetObject:topView forKey:@"scale"];
+    
+    POPSpringAnimation *opacityAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlpha];
+    opacityAnimation.toValue = isShrinking ? @(0.75) : @(1);
+    opacityAnimation.springBounciness = 16;
+    opacityAnimation.springSpeed = 20;
+    
+    [self.animationStack pushAnimation:opacityAnimation withTargetObject:topView forKey:@"alpha"];
+    
+    return finishSignal;
+}
+
 //preparse confirmation view and add animation
 - (void)showConfirmationViewWithListItem:(GLListItem *)listItem {
+    [self scaleAndFadeBackgroundViewWithShrink:0.85];
+     
     GLItemConfirmationView *confirmationView = [self prepareConfirmationViewWithListItem:listItem];
     
-    POPSpringAnimation *presentConfirmationView = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
-    presentConfirmationView.toValue = @(CGRectGetHeight(self.view.frame) - CGRectGetHeight(confirmationView.frame) * 0.5);
-    presentConfirmationView.springBounciness = 10;
-    presentConfirmationView.springSpeed = 10;
+    POPSpringAnimation *presentConfirmationView = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
+    presentConfirmationView.toValue = [NSValue valueWithCGPoint:CGPointMake(self.view.center.x, CGRectGetHeight(self.view.frame) - CGRectGetHeight(confirmationView.frame) * 0.5)];
+    presentConfirmationView.springBounciness = 16;
+    presentConfirmationView.springSpeed = 16;
     
-    [self.view addSubview:confirmationView];
+    [[self getWindow] addSubview:confirmationView];
     [confirmationView pop_addAnimation:presentConfirmationView forKey:@"bounce"];
 }
 
@@ -109,8 +155,13 @@
     confirmationView.confirm.rac_command = [[RACCommand alloc] initWithEnabled:canSubmitSignal signalBlock:^RACSignal *(id input) {
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             [self.delegate didRecieveNewListItem:list];
-            [confirmationView removeFromSuperview];
             [subscriber sendCompleted];
+            
+            [[self scaleAndFadeBackgroundViewWithShrink:1.0] subscribeCompleted:^{
+                [confirmationView removeFromSuperview];
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+            
             return nil;
         }];
     }];

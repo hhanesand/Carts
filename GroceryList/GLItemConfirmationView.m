@@ -12,7 +12,7 @@
 @implementation GLItemConfirmationView
 
 - (instancetype)initWithBlurAndFrame:(CGRect)frame andBarcodeItem:(GLBarcodeItem *)barcodeItem {
-    if (self = [super initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]]) {
+    if (self = [super initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight]]) {
         self.frame = frame;
         NSLog(@"Bounds after setting frame %@", NSStringFromCGRect(self.bounds));
         [self loadNib];

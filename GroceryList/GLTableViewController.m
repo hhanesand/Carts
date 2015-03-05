@@ -139,7 +139,6 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
     [listItem pinInBackgroundWithName:@"groceryList" block:^(BOOL succeeded, NSError *error) {
         [self cache_loadObjectsClear:YES];
         [listItem saveEventually];
-        [self.navigationController popViewControllerAnimated:YES];
     }];
 }
 

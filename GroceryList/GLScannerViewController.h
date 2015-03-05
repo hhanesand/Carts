@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "GLBarcodeScannerDelegate.h"
 #import "GLBarcodeItemDelegate.h"
+#import "GLBaseViewController.h"
 
 @class RACSubject;
 
-@interface GLScannerViewController : UIViewController <GLBarcodeScannerDelegate>
+@interface GLScannerViewController : GLBaseViewController <GLBarcodeScannerDelegate>
 
 @property (nonatomic) id<GLBarcodeItemDelegate> delegate;
 
