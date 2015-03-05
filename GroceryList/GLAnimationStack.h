@@ -13,6 +13,8 @@
 
 @interface GLAnimationStack : NSObject
 
+@property (nonatomic) NSMutableArray *animationStack;
+
 /**
  *  If YES, then a call to popAllAnimations will start all animations concurrently.
  */

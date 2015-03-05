@@ -26,9 +26,9 @@
 + (POPPropertyAnimation *)reverseAnimation:(POPPropertyAnimation *)animationToReverse;
 
 /**
- *  Overwrites the completion handler to return a signal when the animation is done
+ *  Overwrites the completion handler with one that returns a signal when the animation is done
  *
- *  @return The cold RACSignal that will send the events, one next followed by a complete signal
+ *  @return The cold RACSignal that will send the events after animation is done, one next followed by a complete signal
  */
 - (RACSignal *)addRACSignalToAnimation;
 

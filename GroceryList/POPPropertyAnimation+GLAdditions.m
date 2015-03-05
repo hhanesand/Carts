@@ -48,16 +48,16 @@
 }
 
 - (RACSignal *)addRACSignalToAnimation {
-    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        self.completionBlock = ^(POPAnimation *animation, BOOL done) {
-            if (done) {
-                [subscriber sendNext:[RACTupleNil tupleNil]];
-                [subscriber sendCompleted];
-            }
-        };
-        
-        return nil;
-    }];
+    RACSubject *completion = [RACSubject subject];
+    
+    self.completionBlock = ^(POPAnimation *animation, BOOL done) {
+        if (done) {
+            [completion sendNext:[RACTupleNil tupleNil]];
+            [completion sendCompleted];
+        }
+    };
+    
+    return completion;
 }
 
 
