@@ -8,6 +8,7 @@
 
 #import "GLTweaks.h"
 #import "GLTweakObserver.h"
+#import "UIColor+GLColor.h"
 
 #import <Tweaks/FBTweakStore.h>
 #import <Tweaks/FBTweakCategory.h>
@@ -33,13 +34,26 @@ static NSString *identifier = @"com.github.lightice11.GroceryList";
     return sharedInstance;
 }
 
-- (void)tweakDidChange:(FBTweak *)tweak {
-    FBTweakCollection *collection = [self collectionForTweak:tweak];
-    id<GLTweakObserver> observer = self.customCollections[collection];
-    [observer tweakCollectionDidChange:collection];
+#pragma mark - Tweak Creation
+
+- (FBTweakCollection *)tweakCollectionWithCategoryName:(NSString *)category collectionName:(NSString *)collection tweakType:(GLTweaksType)type andObserver:(id<GLTweakObserver>)observer {
+    switch (type) {
+        case GLTweakUIColor:
+            return [self colorTweakWithCategoryName:category collectionName:collection andObserver:observer];
+    }
 }
 
-- (FBTweak *)tweakWithCategoryName:(NSString *)categoryName collectionName:(NSString *)collectionName name:(NSString *)name defaultValue:(id)value andObserver:(id<GLTweakObserver>)observer {
+- (FBTweakCollection *)colorTweakWithCategoryName:(NSString *)category collectionName:(NSString *)collectionName andObserver:(id<GLTweakObserver>)observer {
+    [self tweakWithCategoryName:category collectionName:collectionName name:@"Red" defaultValue:@(100)];
+    [self tweakWithCategoryName:category collectionName:collectionName name:@"Blue" defaultValue:@(100)];
+    [self tweakWithCategoryName:category collectionName:collectionName name:@"Green" defaultValue:@(100)];
+    
+    FBTweakCollection *collection = [self tweakCollectionWithName:collectionName forCategoryName:category];
+    [self.customCollections setValue:collection forKey:collectionName];
+    return collection;
+}
+
+- (FBTweak *)tweakWithCategoryName:(NSString *)categoryName collectionName:(NSString *)collectionName name:(NSString *)name defaultValue:(id)value {
     FBTweak *tweak = [[FBTweak alloc] initWithIdentifier:identifier];
     tweak.name = name;
     tweak.defaultValue = value;
@@ -52,20 +66,38 @@ static NSString *identifier = @"com.github.lightice11.GroceryList";
     return tweak;
 }
 
-- (FBTweakCollection *)tweakCollectionWithCategoryName:(NSString *)category collectionName:(NSString *)collection tweakType:(GLTweaksType)type andObserver:(id<FBTweakObserver>)observer {
-    switch (type) {
-        case GLTweakUIColor:
-            return [self colorTweakWithCategoryName:category collectionName:collection andObserver:observer];
-    }
+#pragma mark - Tweak Notifications
+
+- (void)tweakDidChange:(FBTweak *)tweak {
+    FBTweakCollection *collection = [self collectionForTweak:tweak];
+    id<GLTweakObserver> observer = self.customCollections[collection];
+    [observer tweakCollectionDidChange:[self getValueForCustomCollection:collection]];
 }
 
-- (FBTweakCollection *)colorTweakWithCategoryName:(NSString *)category collectionName:(NSString *)collection andObserver:(id<FBTweakObserver>)observer {
-    [self tweakWithCategoryName:category collectionName:collection name:@"Red" defaultValue:@(100) andObserver:observer];
-    [self tweakWithCategoryName:category collectionName:collection name:@"Blue" defaultValue:@(100) andObserver:observer];
-    [self tweakWithCategoryName:category collectionName:collection name:@"Green" defaultValue:@(100) andObserver:observer];
+- (id)getValueForCustomCollection:(FBTweakCollection *)collection {
+    if ([collection.tweaks count] == 3) {
+        int red = 0;
+        int blue = 0;
+        int green = 0;
+        
+        for (FBTweak *tweak in collection.tweaks) {
+            if ([tweak.name isEqualToString:@"Red"]) {
+                red = [tweak.currentValue intValue];
+            } else if ([tweak.name isEqualToString:@"Green"]) {
+                green = [tweak.currentValue intValue];
+            } else if ([tweak.name isEqualToString:@"Blue"]) {
+                blue = [tweak.currentValue intValue];
+            }
+        }
+        
+        return [UIColor r:red g:green b:blue];
+    }
     
-    return [self tweakCollectionWithName:collection forCategoryName:category];
+    NSAssert(false, @"Failed to provide custom value for collection %@", collection);
+    return nil;
 }
+
+#pragma mark - Helper Acessor Methods
 
 - (FBTweakCategory *)tweakCategoryWithName:(NSString *)name {
     FBTweakStore *store = [FBTweakStore sharedInstance];
@@ -104,7 +136,7 @@ static NSString *identifier = @"com.github.lightice11.GroceryList";
         }
     }
     
-    NSAssert(true, @"Failed to find collection for Tweak %@", tweak);
+    NSAssert(false, @"Failed to find collection for Tweak %@", tweak);
     return nil;
 }
 

@@ -8,11 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import <Tweaks/FBTweak.h>
+#import "GLTweakObserver.h"
 
 @class FBTweak;
 @class FBTweakCategory;
 @class FBTweakCollection;
 
+/**
+ *  Defines an extention to the Tweaks library designed to facilitate custom tweaks. For example, one can create a UIColor tweak and this class
+ *  will generate 3 tweaks, one for each color component. It also is able to send notifications when any of the values change.
+ */
 @interface GLTweaks : NSObject<FBTweakObserver>
 
 typedef NS_ENUM(NSInteger, GLTweaksType) {
@@ -25,19 +30,6 @@ typedef NS_ENUM(NSInteger, GLTweaksType) {
 + (GLTweaks *)sharedInstance;
 
 /**
- *  Creates and returns a FBTweak
- *
- *  @param category   The category name of the Tweak
- *  @param collection The collection name of the Tweak
- *  @param name       The name of the Tweak
- *  @param value      The default value of the Tweak
- *  @param observer   The observer
- *
- *  @return The new FBTweak
- */
-- (FBTweak *)tweakWithCategoryName:(NSString *)category collectionName:(NSString *)collection name:(NSString *)name defaultValue:(id)value andObserver:(id<FBTweakObserver>)observer;
-
-/**
  *  Creates and returns a FBTweakCollection that contains FBTweaks based on the Tweak type (@see GLTweaksType)
  *
  *  @param category   Name of the category
@@ -47,15 +39,6 @@ typedef NS_ENUM(NSInteger, GLTweaksType) {
  *
  *  @return The new FBTweakCollection
  */
-- (FBTweakCollection *)tweakCollectionWithCategoryName:(NSString *)category collectionName:(NSString *)collection tweakType:(GLTweaksType)type andObserver:(id<FBTweakObserver>)observer;
-
-/**
- *  Gets the FBTweakCategory with the specified name, or creates it if it is nil
- *
- *  @param name Name of the category
- *
- *  @return The category that has been fetched or created
- */
-- (FBTweakCategory *)tweakCategoryWithName:(NSString *)name;
+- (FBTweakCollection *)tweakCollectionWithCategoryName:(NSString *)category collectionName:(NSString *)collection tweakType:(GLTweaksType)type andObserver:(id<GLTweakObserver>)observer;
 
 @end
