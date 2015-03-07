@@ -12,6 +12,6 @@
 
 @protocol GLTweakObserver <NSObject>
 
-- (void)tweakCollectionDidChange:(FBTweakCollection *)collection;
+- (void)tweakCollectionWithName:(NSString *)name didChange:(id)valueOfCollection;
 
 @end

@@ -24,6 +24,9 @@ PODS:
   - AFOAuth1 (0.0.1):
     - AFNetworking (~> 2.2.0)
   - Bolts (1.1.4)
+  - dyci (0.1.5.6):
+    - dyci/Injections (= 0.1.5.6)
+  - dyci/Injections (0.1.5.6)
   - Facebook-iOS-SDK (3.23.0):
     - Bolts (~> 1.0)
   - JVFloatLabeledTextField (1.0.2)
@@ -49,6 +52,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking-RACExtensions
   - AFOAuth1
+  - dyci
   - JVFloatLabeledTextField
   - ParseUI
   - pop
@@ -61,6 +65,7 @@ SPEC CHECKSUMS:
   AFNetworking-RACExtensions: dd55d08dbfa013b9e118d5c1a5e4b58b63e734e1
   AFOAuth1: 0ac5604b3c03b4deaa33735767aebd6faa592099
   Bolts: dd9fb8433d67f5acc3b6b4d1379bbc5513d716c1
+  dyci: 86668b266b8a281cb6db02843150f6a210c34ee9
   Facebook-iOS-SDK: 3d65f685348b789e46a9aacf92bfa85b60b63755
   JVFloatLabeledTextField: c1ad6b4b5bd77115cfe6c71ba4c023866df5c4cf
   Parse: c2610f7a12ad0defc974803b819c4efe7746e6db

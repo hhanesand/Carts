@@ -5,6 +5,6 @@ pod 'SVProgressHUD'
 pod 'AFNetworking-RACExtensions'
 pod 'ParseUI'
 pod 'AFOAuth1'
-pod 'pop'
 pod 'JVFloatLabeledTextField'
 pod 'Tweaks'
+pod 'dyci', :configuration => ['Debug']
