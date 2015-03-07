@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
 #import <ParseCrashReporting/ParseCrashReporting.h>
+#import "UIColor+GLColor.h"
+#import "GLTweakWindow.h"
 
 @interface AppDelegate ()
 
@@ -30,6 +32,14 @@
     }
     
     return YES;
+}
+
+- (UIWindow *)window {
+    if (!_window) {
+        _window = [[GLTweakWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    }
+    
+    return _window;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

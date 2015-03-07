@@ -52,14 +52,14 @@
     [super viewDidLoad];
     [self addContainerScannerViewControllerWrapper];
     [self.scanner startScanning];
+    
+    [self getWindow].backgroundColor = [UIColor colorWithRed:0 green:67 blue:88];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(didPressTestButton)] animated:YES];
-    
-    [self getWindow].backgroundColor = [UIColor r:0 g:67 b:88];
 }
 
 - (void)addContainerScannerViewControllerWrapper {

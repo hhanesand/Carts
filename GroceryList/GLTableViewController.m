@@ -20,6 +20,13 @@
 #import "GLParseAnalytics.h"
 #import "GLListItem.h"
 #import "GLBarcodeItem.h"
+#import "UIColor+GLColor.h"
+
+#import <Tweaks/FBTweakStore.h>
+#import <Tweaks/FBTweakCategory.h>
+#import "GLTweakCollection.h"
+
+#import <objc/runtime.h>
 
 static NSString *reuseIdentifier = @"GLTableViewCell";
 
@@ -49,9 +56,28 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
             });
         });
         TOCK;
+        
+        [self tweaks];
     }
     
     return self;
+}
+
+- (void)tweaks {
+    [GLTweakCollection defineTweakCollectionInCategory:@"Color" collection:@"Navigation Bar" withType:GLTweakUIColor andObserver:self];
+    [GLTweakCollection defineTweakCollectionInCategory:@"Color" collection:@"Tint" withType:GLTweakUIColor andObserver:self];
+}
+
+- (void)tweakCollection:(GLTweakCollection *)collection didChangeTo:(id)valueOfCollection {
+    if ([collection.name isEqualToString:@"Navigation Bar"]) {
+        [UINavigationBar appearance].barTintColor = valueOfCollection;
+        self.navigationController.navigationBar.barTintColor = valueOfCollection;
+    } else if ([collection.name isEqualToString:@"Tint"]) {
+        [[[UIApplication sharedApplication] keyWindow] setTintColor:valueOfCollection];
+    }
+    
+    
+    [[[UIApplication sharedApplication] keyWindow] setNeedsDisplay];
 }
 
 #pragma mark - Navigation
@@ -100,6 +126,10 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
 - (void)loadView {
     [super loadView];
     [self cache_init];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 }
 
 #pragma mark - Tableview data source

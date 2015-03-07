@@ -8,6 +8,9 @@
 
 #import "PFQueryTableViewController.h"
 #import "GLBarcodeItemDelegate.h"
+#import "GLTweakObserver.h"
+#import <Tweaks/FBTweak.h>
 
-@interface GLTableViewController : PFQueryTableViewController<GLBarcodeItemDelegate>
+@interface GLTableViewController : PFQueryTableViewController<GLBarcodeItemDelegate, GLTweakObserver>
+
 @end

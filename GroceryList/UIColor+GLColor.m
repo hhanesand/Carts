@@ -10,7 +10,7 @@
 
 @implementation UIColor (GLColor)
 
-+ (UIColor *)r:(float)red g:(float)green b:(float)blue {
++ (UIColor *)colorWithRed:(float)red green:(float)green blue:(float)blue {
     return [UIColor colorWithRed:red/255.0 green:green/255 blue:blue/255 alpha:1];
 }
 

@@ -6,10 +6,10 @@
 //
 //
 
-#import <UIKit/UIKit.h>
+#import <UIKit/UIColor.h>
 
 @interface UIColor (GLColor)
 
-+ (UIColor *)r:(float)red g:(float)green b:(float)blue;
++ (UIColor *)colorWithRed:(float)red green:(float)green blue:(float)blue;
 
 @end

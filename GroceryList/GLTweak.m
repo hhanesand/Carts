@@ -10,11 +10,12 @@
 
 @implementation GLTweak
 
-- (instancetype)initWithIdentifier:(NSString *)identifier name:(NSString *)name defaultValue:(id)defaultValue andStepValue:(id)stepValue {
+- (instancetype)initWithIdentifier:(NSString *)identifier name:(NSString *)name defaultValue:(id)defaultValue stepValue:(id)stepValue andObserver:(id<FBTweakObserver>)observer {
     if (self = [super initWithIdentifier:identifier]) {
         self.name = name;
         self.defaultValue = defaultValue;
         self.stepValue = stepValue;
+        [self addObserver:observer];
     }
     
     return self;

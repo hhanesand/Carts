@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@class FBTweakCollection;
+@class GLTweakCollection;
 
 @protocol GLTweakObserver <NSObject>
 
-- (void)tweakCollectionWithName:(NSString *)name didChange:(id)valueOfCollection;
+- (void)tweakCollection:(GLTweakCollection *)collection didChangeTo:(id)valueOfCollection;
 
 @end
