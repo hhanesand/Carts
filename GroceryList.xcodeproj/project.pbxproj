@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		BAC6761EE9F8F7E288863188 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A783D9E5EBD8A030867002CD /* libPods.a */; };
+		F22416291AAB6795001AFDCB /* GLTweakCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = F22416281AAB6795001AFDCB /* GLTweakCollection.m */; };
+		F224162C1AAB9001001AFDCB /* GLTweakWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F224162B1AAB9001001AFDCB /* GLTweakWindow.m */; };
 		F22C8F341A6EE88D00139B9D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F22C8F331A6EE88D00139B9D /* AudioToolbox.framework */; };
 		F22C8F361A6EE89700139B9D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F22C8F351A6EE89700139B9D /* CFNetwork.framework */; };
 		F22C8F381A6EE8A100139B9D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F22C8F371A6EE8A100139B9D /* CoreGraphics.framework */; };
@@ -21,6 +23,7 @@
 		F22F2D791A72D1DB00C878EC /* GLBarcodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F2D781A72D1DB00C878EC /* GLBarcodeManager.m */; };
 		F22F2D7D1A72D6FD00C878EC /* GLBarcodeDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F2D7C1A72D6FD00C878EC /* GLBarcodeDatabase.m */; };
 		F25E49111A86B141006E1252 /* GLBingFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F25E49101A86B141006E1252 /* GLBingFetcher.m */; };
+		F2680BC41AAA320B00D851D2 /* GLTweak.m in Sources */ = {isa = PBXBuildFile; fileRef = F2680BC31AAA320B00D851D2 /* GLTweak.m */; };
 		F28586BA1A744A63003B91E1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586B91A744A63003B91E1 /* Social.framework */; };
 		F28586BC1A744A6B003B91E1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586BB1A744A6B003B91E1 /* Accounts.framework */; };
 		F28586BE1A744A75003B91E1 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586BD1A744A75003B91E1 /* AdSupport.framework */; };
@@ -77,6 +80,10 @@
 		9CA8F7344B4A5BF669FC2DE8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A783D9E5EBD8A030867002CD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F210E9841A855A04000B83EC /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		F22416271AAB6795001AFDCB /* GLTweakCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTweakCollection.h; sourceTree = "<group>"; };
+		F22416281AAB6795001AFDCB /* GLTweakCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTweakCollection.m; sourceTree = "<group>"; };
+		F224162A1AAB9001001AFDCB /* GLTweakWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTweakWindow.h; sourceTree = "<group>"; };
+		F224162B1AAB9001001AFDCB /* GLTweakWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTweakWindow.m; sourceTree = "<group>"; };
 		F22C8F331A6EE88D00139B9D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		F22C8F351A6EE89700139B9D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		F22C8F371A6EE8A100139B9D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -93,6 +100,9 @@
 		F22F2D7C1A72D6FD00C878EC /* GLBarcodeDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBarcodeDatabase.m; sourceTree = "<group>"; };
 		F25E49101A86B141006E1252 /* GLBingFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBingFetcher.m; sourceTree = "<group>"; };
 		F25E49121A86B150006E1252 /* GLBingFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLBingFetcher.h; sourceTree = "<group>"; };
+		F2680BC21AAA316E00D851D2 /* GLTweak.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLTweak.h; sourceTree = "<group>"; };
+		F2680BC31AAA320B00D851D2 /* GLTweak.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTweak.m; sourceTree = "<group>"; };
+		F2680BC51AAA454400D851D2 /* GLTweakObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTweakObserver.h; sourceTree = "<group>"; };
 		F28586B91A744A63003B91E1 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		F28586BB1A744A6B003B91E1 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		F28586BD1A744A75003B91E1 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -217,6 +227,11 @@
 				F2DFA8701AA7C75B00CF05B9 /* UIColor+GLColor.m */,
 				F2DFA87B1AA7E8B200CF05B9 /* POPPropertyAnimation+GLAdditions.h */,
 				F2DFA87C1AA7E8B200CF05B9 /* POPPropertyAnimation+GLAdditions.m */,
+				F2680BC21AAA316E00D851D2 /* GLTweak.h */,
+				F2680BC31AAA320B00D851D2 /* GLTweak.m */,
+				F22416271AAB6795001AFDCB /* GLTweakCollection.h */,
+				F22416281AAB6795001AFDCB /* GLTweakCollection.m */,
+				F2680BC51AAA454400D851D2 /* GLTweakObserver.h */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -337,6 +352,8 @@
 				F2E544DF1A6CB55000CB52E5 /* main.m */,
 				F29214C21A9FB5C200015EB2 /* GLBarcodeScannerDelegate.h */,
 				F2DFA8631AA56B6300CF05B9 /* GLBarcodeItemDelegate.h */,
+				F224162A1AAB9001001AFDCB /* GLTweakWindow.h */,
+				F224162B1AAB9001001AFDCB /* GLTweakWindow.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -439,6 +456,7 @@
 			buildConfigurationList = F2E544FD1A6CB55100CB52E5 /* Build configuration list for PBXNativeTarget "GroceryList" */;
 			buildPhases = (
 				149CD6F275B38C56F8085418 /* Check Pods Manifest.lock */,
+				F29F27631AAA6D930011093B /* ShellScript */,
 				F2E544D61A6CB55000CB52E5 /* Sources */,
 				F2E544D71A6CB55000CB52E5 /* Frameworks */,
 				F2E544D81A6CB55000CB52E5 /* Resources */,
@@ -565,6 +583,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F29F27631AAA6D930011093B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"$CODESIGNING_FOLDER_PATH\" >/tmp/\"$USER.ident\" && echo \"$CODE_SIGN_IDENTITY\" >>/tmp/\"$USER.ident\" && exit;";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -573,6 +604,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2DFA8711AA7C75B00CF05B9 /* UIColor+GLColor.m in Sources */,
+				F224162C1AAB9001001AFDCB /* GLTweakWindow.m in Sources */,
+				F22416291AAB6795001AFDCB /* GLTweakCollection.m in Sources */,
 				F2DFA8771AA7CC0100CF05B9 /* GLBaseViewController.m in Sources */,
 				F2A917381A8FC0D400A1FC89 /* GLParseAnalytics.m in Sources */,
 				F2E545081A6CB5F500CB52E5 /* GLTableViewController.m in Sources */,
@@ -583,6 +616,7 @@
 				F22F2D791A72D1DB00C878EC /* GLBarcodeManager.m in Sources */,
 				F2F948FB1A8BDF65002C5177 /* GLScannerViewController.m in Sources */,
 				F2D58A711A96EB6600E15FFC /* GLListItem.m in Sources */,
+				F2680BC41AAA320B00D851D2 /* GLTweak.m in Sources */,
 				F2DFA8791AA7E66200CF05B9 /* GLAnimationStore.m in Sources */,
 				F22F2D7D1A72D6FD00C878EC /* GLBarcodeDatabase.m in Sources */,
 				F29214B91A9D4BD400015EB2 /* GLItemConfirmationView.m in Sources */,
@@ -726,8 +760,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = "";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(PROJECT_DIR)",
-					"$(inherited)",
+					"$(PROJECT_DIR)/**",
+					"$(inherited)/**",
 				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				HEADER_SEARCH_PATHS = (
@@ -762,8 +796,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = "";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(PROJECT_DIR)",
-					"$(inherited)",
+					"$(PROJECT_DIR)/**",
+					"$(inherited)/**",
 				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				HEADER_SEARCH_PATHS = (

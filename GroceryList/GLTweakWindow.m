@@ -42,4 +42,9 @@
     [tweakViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 
+- (void)setNeedsDisplay {
+    NSLog(@"Needs display");
+    [super setNeedsDisplay];
+}
+
 @end

@@ -72,11 +72,22 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
     if ([collection.name isEqualToString:@"Navigation Bar"]) {
         [UINavigationBar appearance].barTintColor = valueOfCollection;
         self.navigationController.navigationBar.barTintColor = valueOfCollection;
+        [self.navigationController.navigationBar setNeedsDisplay];
+        
+        #warning remove me before release
+        
+        UIViewController *visibleViewController = [[UIApplication sharedApplication] keyWindow].rootViewController;
+        while (visibleViewController.presentedViewController != nil) {
+            visibleViewController = visibleViewController.presentedViewController;
+        }
+        
+        NSArray *subviews = visibleViewController.view.subviews;
+        ((UINavigationBar *)subviews[1]).barTintColor = valueOfCollection;
     } else if ([collection.name isEqualToString:@"Tint"]) {
         [[[UIApplication sharedApplication] keyWindow] setTintColor:valueOfCollection];
     }
     
-    
+    [self.presentedViewController.view setNeedsDisplay];
     [[[UIApplication sharedApplication] keyWindow] setNeedsDisplay];
 }
 
