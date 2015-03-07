@@ -10,10 +10,4 @@
 
 @implementation GLTableViewCell
 
-- (void)awakeFromNib {
-}
-
-- (void)layoutSubviews {
-}
-
 @end
