@@ -104,9 +104,11 @@
         return;
     }
     
-    [self.captureSession startRunning];
-    [self.metadataOutput setMetadataObjectTypes:self.metadataOutput.availableMetadataObjectTypes];
-    self.running = YES;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        [self.captureSession startRunning];
+        [self.metadataOutput setMetadataObjectTypes:self.metadataOutput.availableMetadataObjectTypes];
+        self.running = YES;
+    });
 }
 
 - (void)applicationWillEnterForeground:(NSNotification *)notif {
