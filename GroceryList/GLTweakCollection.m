@@ -14,6 +14,8 @@
 
 @implementation GLTweakCollection
 
+static NSString *identifier = @"com.github.lightice11.GroceryList";
+
 + (void)defineTweakCollectionInCategory:(NSString *)categoryName collection:(NSString *)collectionName withType:(GLTweakCollectionType)type andObserver:(id<GLTweakObserver>)observer {
     FBTweakCategory *category = [GLTweakCollection tweakCategoryWithName:categoryName];
     

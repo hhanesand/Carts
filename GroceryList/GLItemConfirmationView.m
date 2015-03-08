@@ -17,14 +17,18 @@
         [self loadNib];
         [self setupViewsWithBarcodeItem:barcodeItem];
         
-        self.textFields = @[self.name, self.brand, self.manufacturer, self.category];
+     
     }
     
     return self;
 }
 
 - (void)loadNib {
-    UIView *view = [[[NSBundle mainBundle] loadNibNamed:@"GLItemConfirmationView" owner:self options:nil] objectAtIndex:0];
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"GLItemConfirmationView" owner:self options:nil];
+    NSLog(@"Number of views %@", @([nib count]));
+
+    UIView *view = [nib objectAtIndex:0];
+    
     view.frame = CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds));
     
     #warning think about removing the extra view added by nib loading?
@@ -32,45 +36,26 @@
 }
 
 - (void)setupViewsWithBarcodeItem:(GLBarcodeItem *)barcodeItem {
-    [self.name setReturnKeyType:UIReturnKeyDone];
-    [self.brand setReturnKeyType:UIReturnKeyDone];
-    [self.manufacturer setReturnKeyType:UIReturnKeyDone];
-    [self.category setReturnKeyType:UIReturnKeyDone];
-    
-    [self.name setKeyboardAppearance:UIKeyboardAppearanceDark];
-    [self.brand setKeyboardAppearance:UIKeyboardAppearanceDark];
-    [self.manufacturer setKeyboardAppearance:UIKeyboardAppearanceDark];
-    [self.category setKeyboardAppearance:UIKeyboardAppearanceDark];
-    
-    self.name.delegate = self;
-    self.brand.delegate = self;
-    self.manufacturer.delegate = self;
-    self.category.delegate = self;
-    
-    [self.name setPlaceholder:@"Product Name" floatingTitle:@"Product Name"];
-    [self.brand setPlaceholder:@"Brand" floatingTitle:@"Brand"];
-    [self.manufacturer setPlaceholder:@"Manufacturer" floatingTitle:@"Manufacturer"];
-    [self.category setPlaceholder:@"Category" floatingTitle:@"Category"];
-    
-    if (barcodeItem.name) {
-        self.name.text = barcodeItem.name;
-    }
-    
-    if (barcodeItem.category) {
-        self.category.text = barcodeItem.category;
-    }
-    
-    if (barcodeItem.brand) {
-        self.brand.text = barcodeItem.brand;
-    }
-    
-    if (barcodeItem.manufacturer) {
-        self.manufacturer.text = barcodeItem.manufacturer;
-    }
+    self.name.text = barcodeItem.name;
+    self.brand.text = barcodeItem.brand;
+    self.category.text = barcodeItem.category;
+    self.manufacturer.text = barcodeItem.manufacturer;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    self.activeField = textField;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    self.activeField = nil;
+}
+
+- (BOOL)textFieldShouldClear:(UITextField *)textField {
     return YES;
 }
 

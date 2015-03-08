@@ -15,12 +15,13 @@
 
 - (instancetype)initWithBlurAndFrame:(CGRect)frame andBarcodeItem:(GLBarcodeItem *)barcodeItem;
 
-@property (nonatomic) NSArray *textFields;
+@property (weak, nonatomic) UITextField *activeField;
 
-@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *manufacturer;
-@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *category;
-@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *name;
-@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *brand;
+@property (weak, nonatomic) IBOutlet UITextField *name;
+@property (weak, nonatomic) IBOutlet UITextField *brand;
+@property (weak, nonatomic) IBOutlet UITextField *category;
+@property (weak, nonatomic) IBOutlet UITextField *manufacturer;
+
 @property (weak, nonatomic) IBOutlet UIButton *cancel;
 @property (weak, nonatomic) IBOutlet UIButton *confirm;
 @end

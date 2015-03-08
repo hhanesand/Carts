@@ -38,6 +38,8 @@
 @property (nonatomic) NSDictionary *tweaksForConfirmAnimation;
 @end
 
+static NSString *identifier = @"GLBarcodeItemTableViewCell";
+
 @implementation GLScannerViewController
 
 - (instancetype)init {
@@ -49,9 +51,18 @@
         
         [self.scanner startScanning];
         [self tweak];
+        
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillAppear:) name:UIKeyboardWillShowNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillDisappear:) name:UIKeyboardWillHideNotification object:nil];
+        
     }
     
     return self;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)tweak {
@@ -61,6 +72,42 @@
 - (void)tweakCollection:(GLTweakCollection *)collection didChangeTo:(NSDictionary *)values {
     if ([collection.name isEqualToString:@"Present Confirm View"]) {
         self.tweaksForConfirmAnimation = values;
+    }
+}
+
+- (void)keyboardWillAppear:(NSNotification *)notif {
+    //see http://stackoverflow.com/a/19236013/4080860
+    
+    CGRect keyboardFrame = [notif.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGRect activeFieldFrame = [[self getWindow] convertRect:self.confirmationView.activeField.frame fromView:self.confirmationView];
+    
+    if (CGRectIntersectsRect(keyboardFrame, activeFieldFrame)) {
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:[notif.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
+        [UIView setAnimationCurve:[notif.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue]];
+        [UIView setAnimationBeginsFromCurrentState:YES];
+    
+        CGFloat intersectionDistance =  CGRectGetMaxY(activeFieldFrame) - CGRectGetMinY(keyboardFrame);
+        self.confirmationView.frame = CGRectOffset(self.confirmationView.frame, 0, -intersectionDistance);
+    
+        [UIView commitAnimations];
+    }
+}
+
+- (void)keyboardWillDisappear:(NSNotification *)notif {
+    //see http://stackoverflow.com/a/19236013/4080860
+    
+    CGFloat offset = CGRectGetHeight([self getWindow].frame) - CGRectGetMaxY(self.confirmationView.frame);
+    
+    if (roundf(offset) != 0) {
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:[notif.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
+        [UIView setAnimationCurve:[notif.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue]];
+        [UIView setAnimationBeginsFromCurrentState:YES];
+        
+        self.confirmationView.frame = CGRectOffset(self.confirmationView.frame, 0, roundf(offset));
+        
+        [UIView commitAnimations];
     }
 }
 
@@ -77,6 +124,10 @@
     [super viewWillAppear:animated];
     
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(didPressTestButton)] animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
 }
 
 - (void)addContainerScannerViewControllerWrapper {
@@ -110,7 +161,7 @@
 //prepare confirmation view and add background scale + opacity animation and the custom present animation
 - (void)showConfirmationViewWithListItem:(GLListItem *)listItem {
     [self scaleAndFadeBackgroundViewWithShrink:0.85];
-     
+    
     GLItemConfirmationView *confirmationView = [self prepareConfirmationViewWithListItem:listItem];
     
     POPSpringAnimation *presentConfirmationView = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
@@ -122,6 +173,7 @@
     NSLog(@"Adding spring animation %@", presentConfirmationView);
     
     [[self getWindow] addSubview:confirmationView];
+    self.confirmationView = confirmationView; //weak pointer so set after we add it to the subview
     [self.animationStack pushAnimation:presentConfirmationView withTargetObject:confirmationView forKey:@"bounce"];
 }
 
@@ -147,12 +199,15 @@
 - (GLItemConfirmationView *)prepareConfirmationViewWithListItem:(GLListItem *)list {
     CGRect frame = self.view.frame;
     CGRect popupViewSize = CGRectMake(0, CGRectGetHeight(frame), CGRectGetWidth(frame), CGRectGetHeight(frame) * 0.5);
+    
     GLItemConfirmationView *confirmationView = [[GLItemConfirmationView alloc] initWithBlurAndFrame:popupViewSize andBarcodeItem:list.item];
     
-    RACSignal *canSubmitSignal = [confirmationView.name.rac_textSignal map:^id(NSString *name) {
-        return @([name length] > 0);
-    }];
+//    RACSignal *canSubmitSignal = [confirmationView.name.rac_textSignal map:^id(NSString *name) {
+//        return @([name length] > 0);
+//    }];
     
+    RACSignal *canSubmitSignal = [RACSignal return:@(YES)];
+
     confirmationView.confirm.rac_command = [[RACCommand alloc] initWithEnabled:canSubmitSignal signalBlock:^RACSignal *(id input) {
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             [self.delegate didRecieveNewListItem:list];
