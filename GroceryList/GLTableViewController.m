@@ -68,10 +68,11 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
     [GLTweakCollection defineTweakCollectionInCategory:@"Color" collection:@"Tint" withType:GLTweakUIColor andObserver:self];
 }
 
-- (void)tweakCollection:(GLTweakCollection *)collection didChangeTo:(id)valueOfCollection {
+- (void)tweakCollection:(GLTweakCollection *)collection didChangeTo:(NSDictionary *)values {
     if ([collection.name isEqualToString:@"Navigation Bar"]) {
-        [UINavigationBar appearance].barTintColor = valueOfCollection;
-        self.navigationController.navigationBar.barTintColor = valueOfCollection;
+        UIColor *color = [UIColor colorWithRed:[values[@"Red"] intValue] green:[values[@"Green"] intValue] blue:[values[@"Blue"] intValue]];
+        [UINavigationBar appearance].barTintColor = color;
+        self.navigationController.navigationBar.barTintColor = color;
         [self.navigationController.navigationBar setNeedsDisplay];
         
         #warning remove me before release
@@ -82,9 +83,10 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
         }
         
         NSArray *subviews = visibleViewController.view.subviews;
-        ((UINavigationBar *)subviews[1]).barTintColor = valueOfCollection;
+        ((UINavigationBar *)subviews[1]).barTintColor = color;
     } else if ([collection.name isEqualToString:@"Tint"]) {
-        [[[UIApplication sharedApplication] keyWindow] setTintColor:valueOfCollection];
+        UIColor *color = [UIColor colorWithRed:[values[@"Red"] intValue] green:[values[@"Green"] intValue] blue:[values[@"Blue"] intValue]];
+        [[[UIApplication sharedApplication] keyWindow] setTintColor:color];
     }
     
     [self.presentedViewController.view setNeedsDisplay];

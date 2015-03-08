@@ -12,6 +12,6 @@
 
 @protocol GLTweakObserver <NSObject>
 
-- (void)tweakCollection:(GLTweakCollection *)collection didChangeTo:(id)valueOfCollection;
+- (void)tweakCollection:(GLTweakCollection *)collection didChangeTo:(NSDictionary *)values;
 
 @end

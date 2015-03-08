@@ -65,36 +65,16 @@
 }
 
 - (void)addSpringTweaks {
-    [self addTweak:[[GLTweak alloc] initWithIdentifier:identifier name:@"Mass" defaultValue:@(1) stepValue:@(1) andObserver:self]];
-    [self addTweak:[[GLTweak alloc] initWithIdentifier:identifier name:@"Tension" defaultValue:@(2) stepValue:@(1) andObserver:self]];
-    [self addTweak:[[GLTweak alloc] initWithIdentifier:identifier name:@"Friction" defaultValue:@(3) stepValue:@(1) andObserver:self]];
+    [self addTweak:[[GLTweak alloc] initWithIdentifier:identifier name:@"Spring Speed" defaultValue:@(12) stepValue:@(1) andObserver:self]];
+    [self addTweak:[[GLTweak alloc] initWithIdentifier:identifier name:@"Spring Bounce" defaultValue:@(12) stepValue:@(1) andObserver:self]];
     
-    [self.values setObject:@(1) forKey:@"Mass"];
-    [self.values setObject:@(2) forKey:@"Tension"];
-    [self.values setObject:@(3) forKey:@"Friction"];
+    [self.values setObject:@(1) forKey:@"Spring Speed"];
+    [self.values setObject:@(2) forKey:@"Spring Bounce"];
 }
 
 - (void)tweakDidChange:(GLTweak *)tweak {
     [self.values setObject:tweak.currentValue forKey:tweak.name];
-    [self.observer tweakCollection:self didChangeTo:[self valueForTweakType]];
-}
-
-- (id)valueForTweakType {
-    switch (self.type) {
-        case GLTweakUIColor:
-            return [self getColorValue];
-
-        case GLTWeakPOPSpringAnimation:
-            return [self getSpringAnimationValue];
-    }
-}
-
-- (UIColor *)getColorValue {
-    return [UIColor colorWithRed:[[self.values valueForKey:@"Red"] floatValue] green:[[self.values valueForKey:@"Green"] floatValue] blue:[[self.values valueForKey:@"Blue"] floatValue]];
-}
-
-- (POPSpringAnimation *)getSpringAnimationValue {
-    return nil;
+    [self.observer tweakCollection:self didChangeTo:self.values];
 }
 
 - (NSMutableDictionary *)values {

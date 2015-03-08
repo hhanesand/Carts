@@ -24,6 +24,8 @@
 #import "GLBarcodeItem.h"
 #import "UIColor+GLColor.h"
 #import "POPPropertyAnimation+GLAdditions.h"
+#import "GLTweakCollection.h"
+#import "POPAnimationExtras.h"
 
 #define TICK   NSDate *startTime = [NSDate date]
 #define TOCK   NSLog(@"Time GLScannerViewController: %f", -[startTime timeIntervalSinceNow])
@@ -32,6 +34,8 @@
 @property (nonatomic) GLBarcodeManager *manager;
 @property (nonatomic) GLBingFetcher *bing;
 @property (nonatomic) GLScannerWrapperViewController *scanner;
+
+@property (nonatomic) NSDictionary *tweaksForConfirmAnimation;
 @end
 
 @implementation GLScannerViewController
@@ -41,9 +45,21 @@
         self.manager = [[GLBarcodeManager alloc] init];
         self.bing = [GLBingFetcher sharedFetcher];
         self.scanner = [[GLScannerWrapperViewController alloc] init];
+        self.tweaksForConfirmAnimation = @{@"Spring Speed" : @(20), @"Spring Bounce" : @(0)};
+        [self tweak];
     }
     
     return self;
+}
+
+- (void)tweak {
+    [GLTweakCollection defineTweakCollectionInCategory:@"Animations" collection:@"Present Confirm View" withType:GLTWeakPOPSpringAnimation andObserver:self];
+}
+
+- (void)tweakCollection:(GLTweakCollection *)collection didChangeTo:(NSDictionary *)values {
+    if ([collection.name isEqualToString:@"Present Confirm View"]) {
+        self.tweaksForConfirmAnimation = values;
+    }
 }
 
 #pragma mark - Lifecycle
@@ -51,7 +67,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addContainerScannerViewControllerWrapper];
-    [self.scanner startScanning];
     
     [self getWindow].backgroundColor = [UIColor colorWithRed:0 green:67 blue:88];
 }
@@ -99,8 +114,10 @@
     POPSpringAnimation *presentConfirmationView = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
     presentConfirmationView.fromValue = [NSValue valueWithCGPoint:confirmationView.center];
     presentConfirmationView.toValue = [NSValue valueWithCGPoint:CGPointMake(self.view.center.x, CGRectGetHeight(self.view.frame) - CGRectGetHeight(confirmationView.frame) * 0.5)];
-    presentConfirmationView.springBounciness = 16;
-    presentConfirmationView.springSpeed = 20;
+    presentConfirmationView.springBounciness = [self.tweaksForConfirmAnimation[@"Spring Bounce"] floatValue];
+    presentConfirmationView.springSpeed = [self.tweaksForConfirmAnimation[@"Spring Speed"] floatValue];
+    
+    NSLog(@"Adding spring animation %@", presentConfirmationView);
     
     [[self getWindow] addSubview:confirmationView];
     [self.animationStack pushAnimation:presentConfirmationView withTargetObject:confirmationView forKey:@"bounce"];

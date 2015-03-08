@@ -14,7 +14,10 @@
     if (self = [super initWithIdentifier:identifier]) {
         self.name = name;
         self.defaultValue = defaultValue;
+        self.currentValue = defaultValue;
         self.stepValue = stepValue;
+        self.minimumValue = @(0);
+        self.maximumValue = @(600);
         [self addObserver:observer];
     }
     
