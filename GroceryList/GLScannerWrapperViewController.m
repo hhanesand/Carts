@@ -29,28 +29,12 @@
     if (self = [super init]) {
         [self setupCaptureSession];
         [self setupViews];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    
         
         [self startScanning];
     }
     
     return self;
-}
-
--(void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self stopScanning];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self startScanning];
 }
 
 - (void)setupViews {
@@ -95,8 +79,10 @@
         return;
     }
     
-    [self.captureSession stopRunning];
-    self.running = NO;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        [self.captureSession stopRunning];
+        self.running = NO;
+    });
 }
 
 - (void)startScanning {

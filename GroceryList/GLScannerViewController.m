@@ -46,6 +46,8 @@
         self.bing = [GLBingFetcher sharedFetcher];
         self.scanner = [[GLScannerWrapperViewController alloc] init];
         self.tweaksForConfirmAnimation = @{@"Spring Speed" : @(20), @"Spring Bounce" : @(0)};
+        
+        [self.scanner startScanning];
         [self tweak];
     }
     
