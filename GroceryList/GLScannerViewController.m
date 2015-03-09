@@ -151,7 +151,9 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 - (void)scanner:(GLScannerWrapperViewController *)scannerContorller didRecieveBarcodeItems:(NSArray *)barcodeItems {
     TICK;
     [SVProgressHUD show];
+    @weakify(self);
     [[[self fetchProductNameForBarcodeItem:[barcodeItems firstObject]] logAll] subscribeNext:^(GLListItem *listItem) {
+        @strongify(self);
         [SVProgressHUD showSuccessWithStatus:@""];
         [self showConfirmationViewWithListItem:listItem];
     }];
@@ -208,11 +210,15 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
         return @([name length] > 0);
     }];
 
+    @weakify(self, confirmationView);
     confirmationView.confirm.rac_command = [[RACCommand alloc] initWithEnabled:canSubmitSignal signalBlock:^RACSignal *(id input) {
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            @strongify(self);
             [self.delegate didRecieveNewListItem:list];
             
+            @weakify(self);
             [[[self.animationStack popAllAnimations] deliverOnMainThread] subscribeCompleted:^{
+                @strongify(self, confirmationView);
                 NSLog(@"Completed");
                 [confirmationView removeFromSuperview];
                 [self.navigationController popViewControllerAnimated:YES];

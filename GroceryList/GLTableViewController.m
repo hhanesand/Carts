@@ -47,7 +47,9 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
         self.loadingViewEnabled = NO;
         
         TICK;
+        @weakify(self);
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+            @strongify(self);
             GLScannerViewController *s = [[GLScannerViewController alloc] init];
             s.delegate = self;
             
