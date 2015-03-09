@@ -8,3 +8,4 @@ pod 'AFOAuth1'
 pod 'JVFloatLabeledTextField'
 pod 'Tweaks'
 pod 'dyci', :configuration => ['Debug']
+pod 'pop'
