@@ -21,6 +21,13 @@
     return self;
 }
 
+//#warning not too keen on this solution
+//- (void)removeFromSuperview {
+//    UIView *superview = self.superview;
+//    [super removeFromSuperview];
+//    [superview removeFromSuperview];
+//}
+
 - (void)loadNib {
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"GLItemConfirmationView" owner:self options:nil];
     NSLog(@"Number of views %@", @([nib count]));

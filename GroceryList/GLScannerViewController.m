@@ -171,8 +171,9 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     presentConfirmationView.springBounciness = [self.tweaksForConfirmAnimation[@"Spring Bounce"] floatValue];
     presentConfirmationView.springSpeed = [self.tweaksForConfirmAnimation[@"Spring Speed"] floatValue];
     
-    [self prepareDimmingViewWithAlphaAnimationTo:0.6 forFinalYPositionOfConfirmationView:finalConfirmationViewPosition.y];
+//    UIView *dimmingView = [self prepareDimmingViewWithAlphaAnimationTo:0.6 forFinalYPositionOfConfirmationView:finalConfirmationViewPosition.y - CGRectGetHeight(confirmationView.frame) / 2];
     
+    //[[self getTopView] addSubview:dimmingView];
     [self.view addSubview:confirmationView];
     [self.animationStack pushAnimation:presentConfirmationView withTargetObject:confirmationView forKey:@"bounce"];
     
@@ -184,20 +185,18 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     RAC(listItem.item, brand) = [self.confirmationView.brand.rac_textSignal logAll];
 }
 
-- (void)prepareDimmingViewWithAlphaAnimationTo:(CGFloat)alpha forFinalYPositionOfConfirmationView:(float)pos {
-    UIView *dimmingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), pos)];
-    dimmingView.backgroundColor = [UIColor blackColor];
-    
-    POPSpringAnimation *dimmingAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlpha];
-    dimmingAnimation.fromValue = @(0);
-    dimmingAnimation.toValue = @(alpha);
-    dimmingAnimation.springBounciness = [self.tweaksForConfirmAnimation[@"Spring Bounce"] floatValue];
-    dimmingAnimation.springSpeed = [self.tweaksForConfirmAnimation[@"Spring Speed"] floatValue];
-    
-    #warning dimming view is never removed from the stack?
-    [self.view addSubview:dimmingView];
-    [self.animationStack pushAnimation:dimmingAnimation withTargetObject:dimmingView forKey:@"dimming"];
-}
+//- (UIView *)prepareDimmingViewWithAlphaAnimationTo:(CGFloat)alpha forFinalYPositionOfConfirmationView:(float)pos {
+//    UIView *dimmingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth([self getTopView].frame), CGRectGetHeight([self getTopView].frame))];
+//    
+//    POPSpringAnimation *dimmingAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewBackgroundColor];
+//    dimmingAnimation.fromValue = (id)[UIColor clearColor];
+//    dimmingAnimation.toValue = (id)[UIColor colorWithRed:0 green:0 blue:0 alpha:alpha];
+//    dimmingAnimation.springBounciness = [self.tweaksForConfirmAnimation[@"Spring Bounce"] floatValue];
+//    dimmingAnimation.springSpeed = [self.tweaksForConfirmAnimation[@"Spring Speed"] floatValue];
+//    
+//    [self.animationStack pushAnimation:dimmingAnimation withTargetObject:dimmingView forKey:@"dimming"];
+//    return dimmingView;
+//}
 
 //sets up a confirmation view that tells the delegate when the user has clicked the confirm button and passes the list item to it
 - (GLItemConfirmationView *)prepareConfirmationViewWithListItem:(GLListItem *)list {
