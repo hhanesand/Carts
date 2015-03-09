@@ -28,7 +28,7 @@
 
 #import <objc/runtime.h>
 
-static NSString *reuseIdentifier = @"GLTableViewCell";
+static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 
 #define TICK   NSDate *startTime = [NSDate date]
 #define TOCK   NSLog(@"Time GLTableViewController: %f", -[startTime timeIntervalSinceNow])
@@ -119,16 +119,17 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
     GLTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
     GLBarcodeItem *item = object[@"item"];
     
-    cell.productName.text = item.name;
+    cell.name.text = item.name;
+    cell.brand.text = item.brand;
+    cell.category.text = item.category;
     
     //no reactive cocoa for this one...
-    __weak GLTableViewCell *weakCell = cell;
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:item.image[0]]];
     UIImage *image = [UIImage imageNamed:@"document"];
     
-    [cell.productImage setImageWithURLRequest:request placeholderImage:image success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-        weakCell.productImage.image = image;
-        [weakCell setNeedsLayout];
+    [cell.image setImageWithURLRequest:request placeholderImage:image success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *newImage) {
+        cell.image.image = newImage;
+        [cell setNeedsLayout];
     } failure:nil];
     
     return cell;
@@ -171,8 +172,8 @@ static NSString *reuseIdentifier = @"GLTableViewCell";
 
 - (void)didRecieveNewListItem:(GLListItem *)listItem {
     [listItem pinInBackgroundWithName:@"groceryList" block:^(BOOL succeeded, NSError *error) {
-        [self cache_loadObjectsClear:YES];
         [listItem saveEventually];
+        [self cache_loadObjectsClear:YES];
     }];
 }
 

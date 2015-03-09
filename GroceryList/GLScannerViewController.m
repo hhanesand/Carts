@@ -160,39 +160,41 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 
 //prepare confirmation view and add background scale + opacity animation and the custom present animation
 - (void)showConfirmationViewWithListItem:(GLListItem *)listItem {
-    [self scaleAndFadeBackgroundViewWithShrink:0.85];
-    
     GLItemConfirmationView *confirmationView = [self prepareConfirmationViewWithListItem:listItem];
+    CGPoint finalConfirmationViewPosition = CGPointMake(self.view.center.x, CGRectGetHeight(self.view.frame) - CGRectGetHeight(confirmationView.frame) * 0.5);
     
     POPSpringAnimation *presentConfirmationView = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
     presentConfirmationView.fromValue = [NSValue valueWithCGPoint:confirmationView.center];
-    presentConfirmationView.toValue = [NSValue valueWithCGPoint:CGPointMake(self.view.center.x, CGRectGetHeight(self.view.frame) - CGRectGetHeight(confirmationView.frame) * 0.5)];
+    presentConfirmationView.toValue = [NSValue valueWithCGPoint:finalConfirmationViewPosition];
     presentConfirmationView.springBounciness = [self.tweaksForConfirmAnimation[@"Spring Bounce"] floatValue];
     presentConfirmationView.springSpeed = [self.tweaksForConfirmAnimation[@"Spring Speed"] floatValue];
     
-    NSLog(@"Adding spring animation %@", presentConfirmationView);
+    [self prepareDimmingViewWithAlphaAnimationTo:0.6 forFinalYPositionOfConfirmationView:finalConfirmationViewPosition.y];
     
-    [[self getWindow] addSubview:confirmationView];
-    self.confirmationView = confirmationView; //weak pointer so set after we add it to the subview
+    [self.view addSubview:confirmationView];
     [self.animationStack pushAnimation:presentConfirmationView withTargetObject:confirmationView forKey:@"bounce"];
+    
+    self.confirmationView = confirmationView; //weak pointer so set after we add it to the subview
+    
+    RAC(listItem.item, name) = [self.confirmationView.name.rac_textSignal logAll];
+    RAC(listItem.item, category) = [self.confirmationView.category.rac_textSignal logAll];
+    RAC(listItem.item, manufacturer) = [self.confirmationView.manufacturer.rac_textSignal logAll];
+    RAC(listItem.item, brand) = [self.confirmationView.brand.rac_textSignal logAll];
 }
 
-- (void)scaleAndFadeBackgroundViewWithShrink:(CGFloat)scale {
-    UIView *topView = [self getTopView];
+- (void)prepareDimmingViewWithAlphaAnimationTo:(CGFloat)alpha forFinalYPositionOfConfirmationView:(float)pos {
+    UIView *dimmingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), pos)];
+    dimmingView.backgroundColor = [UIColor blackColor];
     
-    POPBasicAnimation *scaleAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
-    scaleAnimation.fromValue = [NSValue valueWithCGPoint:CGPointMake(1, 1)];
-    scaleAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(scale, scale)];
+    POPSpringAnimation *dimmingAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlpha];
+    dimmingAnimation.fromValue = @(0);
+    dimmingAnimation.toValue = @(alpha);
+    dimmingAnimation.springBounciness = [self.tweaksForConfirmAnimation[@"Spring Bounce"] floatValue];
+    dimmingAnimation.springSpeed = [self.tweaksForConfirmAnimation[@"Spring Speed"] floatValue];
     
-    [self.animationStack pushAnimation:scaleAnimation withTargetObject:topView.layer forKey:@"scale"];
-    
-//    POPSpringAnimation *opacityAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlpha];
-//    opacityAnimation.fromValue = @(1);
-//    opacityAnimation.toValue = @(0.75);
-//    opacityAnimation.springBounciness = 16;
-//    opacityAnimation.springSpeed = 20;
-//    
-//    [self.animationStack pushAnimation:opacityAnimation withTargetObject:topView forKey:@"alpha"];
+    #warning dimming view is never removed from the stack?
+    [self.view addSubview:dimmingView];
+    [self.animationStack pushAnimation:dimmingAnimation withTargetObject:dimmingView forKey:@"dimming"];
 }
 
 //sets up a confirmation view that tells the delegate when the user has clicked the confirm button and passes the list item to it
@@ -202,22 +204,21 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     
     GLItemConfirmationView *confirmationView = [[GLItemConfirmationView alloc] initWithBlurAndFrame:popupViewSize andBarcodeItem:list.item];
     
-//    RACSignal *canSubmitSignal = [confirmationView.name.rac_textSignal map:^id(NSString *name) {
-//        return @([name length] > 0);
-//    }];
-    
-    RACSignal *canSubmitSignal = [RACSignal return:@(YES)];
+    RACSignal *canSubmitSignal = [confirmationView.name.rac_textSignal map:^id(NSString *name) {
+        return @([name length] > 0);
+    }];
 
     confirmationView.confirm.rac_command = [[RACCommand alloc] initWithEnabled:canSubmitSignal signalBlock:^RACSignal *(id input) {
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             [self.delegate didRecieveNewListItem:list];
-            [subscriber sendCompleted];
             
             [[[self.animationStack popAllAnimations] deliverOnMainThread] subscribeCompleted:^{
                 NSLog(@"Completed");
                 [confirmationView removeFromSuperview];
                 [self.navigationController popViewControllerAnimated:YES];
             }];
+            
+            [subscriber sendCompleted];
             
             return nil;
         }];

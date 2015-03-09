@@ -48,8 +48,9 @@
 
 - (NSString *)description {
     NSMutableString *string = [NSMutableString stringWithString:self.name];
-    [string appendString:[@"barcodes " stringByAppendingString:[self.barcodes description]]];
-    [string appendString:[@"types " stringByAppendingString:[self.types description]]];
+    [string appendString:[@" barcodes " stringByAppendingString:[self.barcodes description]]];
+    #warning stop gap bug fix
+    //[string appendString:[@" types " stringByAppendingString:[self.types description]]];
     
     if (self.image && [self.image count] > 0) {
         [string appendString:@" | "];

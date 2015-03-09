@@ -143,7 +143,6 @@
                             </connections>
                         </textField>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="dca-Ho-iWF" firstAttribute="top" secondItem="W3L-rs-s0Y" secondAttribute="bottom" constant="8" id="1Ma-3p-3Gu"/>
                         <constraint firstItem="cAN-mV-2qM" firstAttribute="top" secondItem="X4A-dL-ejO" secondAttribute="top" constant="38" id="4YT-3U-Xtc"/>

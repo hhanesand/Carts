@@ -11,7 +11,7 @@
 @implementation UIColor (GLColor)
 
 + (UIColor *)colorWithRed:(float)red green:(float)green blue:(float)blue {
-    return [UIColor colorWithRed:red/255.0 green:green/255 blue:blue/255 alpha:1];
+    return [UIColor colorWithRed:red/255.0f green:green/255.0f blue:blue/255.0f alpha:1];
 }
 
 @end

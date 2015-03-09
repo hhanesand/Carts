@@ -12,12 +12,10 @@
 @implementation GLItemConfirmationView
 
 - (instancetype)initWithBlurAndFrame:(CGRect)frame andBarcodeItem:(GLBarcodeItem *)barcodeItem {
-    if (self = [super initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight]]) {
+    if (self = [super initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]]) {
         self.frame = frame;
         [self loadNib];
         [self setupViewsWithBarcodeItem:barcodeItem];
-        
-     
     }
     
     return self;
