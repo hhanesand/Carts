@@ -11,6 +11,7 @@
 #import <ParseCrashReporting/ParseCrashReporting.h>
 #import "UIColor+GLColor.h"
 #import "GLTweakWindow.h"
+#import "GLScannerViewController.h"
 
 @interface AppDelegate ()
 
@@ -26,19 +27,18 @@
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
+    #warning blocking
     if ([PFUser currentUser] == nil) {
         NSLog(@"Logging in");
         [PFUser logInWithUsername:@"lightice11" password:@"qwerty"];
     }
     
+    self.window = [[GLTweakWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    GLScannerViewController *scanner = [[GLScannerViewController alloc] init];
+    self.window.rootViewController = scanner;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
-- (UIWindow *)window {
-    if (!_window) {
-        _window = [[GLTweakWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    }
-    
-    return _window;
-}
 @end

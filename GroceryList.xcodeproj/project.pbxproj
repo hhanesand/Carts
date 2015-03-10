@@ -28,7 +28,6 @@
 		F28586BC1A744A6B003B91E1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586BB1A744A6B003B91E1 /* Accounts.framework */; };
 		F28586BE1A744A75003B91E1 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586BD1A744A75003B91E1 /* AdSupport.framework */; };
 		F29214B91A9D4BD400015EB2 /* GLItemConfirmationView.m in Sources */ = {isa = PBXBuildFile; fileRef = F29214B81A9D4BD400015EB2 /* GLItemConfirmationView.m */; };
-		F29214C11A9ED7F900015EB2 /* GLScannerWrapperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F29214C01A9ED7F900015EB2 /* GLScannerWrapperViewController.m */; };
 		F29214C41AA01A2100015EB2 /* GLItemConfirmationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F29214C31AA01A2100015EB2 /* GLItemConfirmationView.xib */; };
 		F296DA121A709738001E9D29 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F296DA111A709738001E9D29 /* ParseCrashReporting.framework */; };
 		F296DA141A709862001E9D29 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F296DA131A709862001E9D29 /* libstdc++.6.dylib */; };
@@ -40,6 +39,8 @@
 		F2B4D0DA1A6DF53000A98C7A /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0D91A6DF53000A98C7A /* CoreVideo.framework */; };
 		F2B4D0DC1A6DF53900A98C7A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0DB1A6DF53900A98C7A /* QuartzCore.framework */; };
 		F2B4D0DE1A6DF54500A98C7A /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0DD1A6DF54500A98C7A /* libiconv.dylib */; };
+		F2BB86841AAE3EF700E02FF3 /* GLScanningSession.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BB86831AAE3EF700E02FF3 /* GLScanningSession.m */; };
+		F2BB86871AAE561800E02FF3 /* GLTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2BB86861AAE561800E02FF3 /* GLTableViewCell.xib */; };
 		F2D58A6E1A96BC7700E15FFC /* GLFactualRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D58A6D1A96BC7700E15FFC /* GLFactualRequestSerializer.m */; };
 		F2D58A711A96EB6600E15FFC /* GLListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D58A701A96EB6600E15FFC /* GLListItem.m */; };
 		F2DFA8711AA7C75B00CF05B9 /* UIColor+GLColor.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DFA8701AA7C75B00CF05B9 /* UIColor+GLColor.m */; };
@@ -53,7 +54,6 @@
 		F2E544FA1A6CB55100CB52E5 /* GroceryListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E544F91A6CB55100CB52E5 /* GroceryListTests.m */; };
 		F2E545051A6CB5D400CB52E5 /* GLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E545041A6CB5D400CB52E5 /* GLTableViewCell.m */; };
 		F2E545081A6CB5F500CB52E5 /* GLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E545071A6CB5F500CB52E5 /* GLTableViewController.m */; };
-		F2F948AF1A8881DE002C5177 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2F948AE1A8881DE002C5177 /* Main.storyboard */; };
 		F2F948B21A8947BD002C5177 /* GLBarcodeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F948B11A8947BD002C5177 /* GLBarcodeItem.m */; };
 		F2F948BA1A8ACCEB002C5177 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2F948B91A8ACCEB002C5177 /* Images.xcassets */; };
 		F2F948C31A8AD7B5002C5177 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = F2F948BE1A8AD7B5002C5177 /* main.js */; };
@@ -108,8 +108,6 @@
 		F28586BD1A744A75003B91E1 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		F29214B71A9D4BD400015EB2 /* GLItemConfirmationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLItemConfirmationView.h; sourceTree = "<group>"; };
 		F29214B81A9D4BD400015EB2 /* GLItemConfirmationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLItemConfirmationView.m; sourceTree = "<group>"; wrapsLines = 1; };
-		F29214BF1A9ED7F900015EB2 /* GLScannerWrapperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLScannerWrapperViewController.h; sourceTree = "<group>"; };
-		F29214C01A9ED7F900015EB2 /* GLScannerWrapperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLScannerWrapperViewController.m; sourceTree = "<group>"; };
 		F29214C21A9FB5C200015EB2 /* GLBarcodeScannerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLBarcodeScannerDelegate.h; sourceTree = "<group>"; };
 		F29214C31AA01A2100015EB2 /* GLItemConfirmationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLItemConfirmationView.xib; sourceTree = "<group>"; };
 		F296DA111A709738001E9D29 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
@@ -125,6 +123,9 @@
 		F2B4D0D91A6DF53000A98C7A /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		F2B4D0DB1A6DF53900A98C7A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F2B4D0DD1A6DF54500A98C7A /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		F2BB86831AAE3EF700E02FF3 /* GLScanningSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLScanningSession.m; sourceTree = "<group>"; };
+		F2BB86851AAE3F0500E02FF3 /* GLScanningSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLScanningSession.h; sourceTree = "<group>"; };
+		F2BB86861AAE561800E02FF3 /* GLTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLTableViewCell.xib; sourceTree = "<group>"; };
 		F2D58A6D1A96BC7700E15FFC /* GLFactualRequestSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLFactualRequestSerializer.m; sourceTree = "<group>"; };
 		F2D58A6F1A96BD5A00E15FFC /* GLFactualRequestSerializer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLFactualRequestSerializer.h; sourceTree = "<group>"; };
 		F2D58A701A96EB6600E15FFC /* GLListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLListItem.m; sourceTree = "<group>"; };
@@ -153,7 +154,6 @@
 		F2E545041A6CB5D400CB52E5 /* GLTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTableViewCell.m; sourceTree = "<group>"; };
 		F2E545061A6CB5F500CB52E5 /* GLTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTableViewController.h; sourceTree = "<group>"; };
 		F2E545071A6CB5F500CB52E5 /* GLTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTableViewController.m; sourceTree = "<group>"; };
-		F2F948AE1A8881DE002C5177 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
 		F2F948B11A8947BD002C5177 /* GLBarcodeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBarcodeItem.m; sourceTree = "<group>"; };
 		F2F948B31A8947C8002C5177 /* GLBarcodeItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLBarcodeItem.h; sourceTree = "<group>"; };
 		F2F948B91A8ACCEB002C5177 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = GroceryList/Images.xcassets; sourceTree = "<group>"; };
@@ -305,6 +305,40 @@
 			name = Vendor;
 			sourceTree = "<group>";
 		};
+		F2BB867A1AAE30DF00E02FF3 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
+		F2BB867D1AAE315D00E02FF3 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				F2DFA8751AA7CC0100CF05B9 /* GLBaseViewController.h */,
+				F2DFA8761AA7CC0100CF05B9 /* GLBaseViewController.m */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		F2BB867E1AAE316A00E02FF3 /* Table View */ = {
+			isa = PBXGroup;
+			children = (
+				F2E545061A6CB5F500CB52E5 /* GLTableViewController.h */,
+				F2E545071A6CB5F500CB52E5 /* GLTableViewController.m */,
+			);
+			name = "Table View";
+			sourceTree = "<group>";
+		};
+		F2BB867F1AAE36CA00E02FF3 /* Scanner */ = {
+			isa = PBXGroup;
+			children = (
+				F2F948FC1A8BDF76002C5177 /* GLScannerViewController.h */,
+				F2F948FA1A8BDF65002C5177 /* GLScannerViewController.m */,
+			);
+			name = Scanner;
+			sourceTree = "<group>";
+		};
 		F2E544D11A6CB55000CB52E5 = {
 			isa = PBXGroup;
 			children = (
@@ -331,6 +365,7 @@
 		F2E544DC1A6CB55000CB52E5 /* GroceryList */ = {
 			isa = PBXGroup;
 			children = (
+				F2BB867A1AAE30DF00E02FF3 /* New Group */,
 				F2A00A591AA8048C004B8988 /* Animation */,
 				F2F948B01A8947A6002C5177 /* Model */,
 				F25E490B1A869E83006E1252 /* Categories */,
@@ -378,12 +413,12 @@
 		F2E545091A6CB60100CB52E5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F2F948AE1A8881DE002C5177 /* Main.storyboard */,
 				F2E545031A6CB5D400CB52E5 /* GLTableViewCell.h */,
 				F2E545041A6CB5D400CB52E5 /* GLTableViewCell.m */,
 				F29214B71A9D4BD400015EB2 /* GLItemConfirmationView.h */,
 				F29214B81A9D4BD400015EB2 /* GLItemConfirmationView.m */,
 				F29214C31AA01A2100015EB2 /* GLItemConfirmationView.xib */,
+				F2BB86861AAE561800E02FF3 /* GLTableViewCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -391,14 +426,9 @@
 		F2E5450A1A6CB60A00CB52E5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F2DFA8751AA7CC0100CF05B9 /* GLBaseViewController.h */,
-				F2DFA8761AA7CC0100CF05B9 /* GLBaseViewController.m */,
-				F2E545061A6CB5F500CB52E5 /* GLTableViewController.h */,
-				F2E545071A6CB5F500CB52E5 /* GLTableViewController.m */,
-				F2F948FC1A8BDF76002C5177 /* GLScannerViewController.h */,
-				F2F948FA1A8BDF65002C5177 /* GLScannerViewController.m */,
-				F29214BF1A9ED7F900015EB2 /* GLScannerWrapperViewController.h */,
-				F29214C01A9ED7F900015EB2 /* GLScannerWrapperViewController.m */,
+				F2BB867D1AAE315D00E02FF3 /* Base */,
+				F2BB867E1AAE316A00E02FF3 /* Table View */,
+				F2BB867F1AAE36CA00E02FF3 /* Scanner */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -406,6 +436,8 @@
 		F2F948B01A8947A6002C5177 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F2BB86831AAE3EF700E02FF3 /* GLScanningSession.m */,
+				F2BB86851AAE3F0500E02FF3 /* GLScanningSession.h */,
 				F2F948B31A8947C8002C5177 /* GLBarcodeItem.h */,
 				F2F948B11A8947BD002C5177 /* GLBarcodeItem.m */,
 				F2D58A721A96EB7000E15FFC /* GLListItem.h */,
@@ -533,10 +565,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2F948AF1A8881DE002C5177 /* Main.storyboard in Resources */,
 				F2F948BA1A8ACCEB002C5177 /* Images.xcassets in Resources */,
 				F2F948C51A8AD7B5002C5177 /* index.html in Resources */,
 				F2F948C41A8AD7B5002C5177 /* global.json in Resources */,
+				F2BB86871AAE561800E02FF3 /* GLTableViewCell.xib in Resources */,
 				F29214C41AA01A2100015EB2 /* GLItemConfirmationView.xib in Resources */,
 				F2E544EE1A6CB55100CB52E5 /* LaunchScreen.xib in Resources */,
 				F2F948C31A8AD7B5002C5177 /* main.js in Resources */,
@@ -620,9 +652,9 @@
 				F2DFA8791AA7E66200CF05B9 /* GLAnimationStore.m in Sources */,
 				F22F2D7D1A72D6FD00C878EC /* GLBarcodeDatabase.m in Sources */,
 				F29214B91A9D4BD400015EB2 /* GLItemConfirmationView.m in Sources */,
+				F2BB86841AAE3EF700E02FF3 /* GLScanningSession.m in Sources */,
 				F25E49111A86B141006E1252 /* GLBingFetcher.m in Sources */,
 				F2E4D4BB1A98295D00E8C517 /* GLFactualResponseSerializer.m in Sources */,
-				F29214C11A9ED7F900015EB2 /* GLScannerWrapperViewController.m in Sources */,
 				F2E545051A6CB5D400CB52E5 /* GLTableViewCell.m in Sources */,
 				F2A00A571AA7F1B1004B8988 /* GLAnimationStack.m in Sources */,
 				F2A6C8D71A915FF900FE3C30 /* PFQueryTableViewController+Caching.m in Sources */,

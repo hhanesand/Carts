@@ -16,7 +16,7 @@
 
 typedef NS_ENUM(NSInteger, GLTweakCollectionType) {
     GLTweakUIColor, //creates 3 tweaks, one for each color (red, green, blue)
-    GLTWeakPOPSpringAnimation
+    GLTWeakPOPSpringAnimation //creates 2 tweaks, spring speed and bounciness
 };
 
 + (void)defineTweakCollectionInCategory:(NSString *)category collection:(NSString *)collection withType:(GLTweakCollectionType)type andObserver:(id<GLTweakObserver>)observer;

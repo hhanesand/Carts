@@ -9,8 +9,6 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <Pop/POP.h>
 
-//#import "PFQuery.h"
-
 #import "RACSubject.h"
 
 #import "SVProgressHUD.h"
@@ -18,7 +16,6 @@
 #import "GLScannerViewController.h"
 #import "GLBarcodeManager.h"
 #import "GLBingFetcher.h"
-#import "GLScannerWrapperViewController.h"
 #import "GLItemConfirmationView.h"
 #import "GLListItem.h"
 #import "GLBarcodeItem.h"
@@ -26,6 +23,8 @@
 #import "POPPropertyAnimation+GLAdditions.h"
 #import "GLTweakCollection.h"
 #import "POPAnimationExtras.h"
+#import "GLTableViewController.h"
+#import "GLScanningSession.h"
 
 #define TICK   NSDate *startTime = [NSDate date]
 #define TOCK   NSLog(@"Time GLScannerViewController: %f", -[startTime timeIntervalSinceNow])
@@ -33,9 +32,10 @@
 @interface GLScannerViewController()
 @property (nonatomic) GLBarcodeManager *manager;
 @property (nonatomic) GLBingFetcher *bing;
-@property (nonatomic) GLScannerWrapperViewController *scanner;
-
+@property (nonatomic) GLTableViewController *tableViewController;
+@property (nonatomic) GLScanningSession *scanning;
 @property (nonatomic) NSDictionary *tweaksForConfirmAnimation;
+@property (nonatomic) UIVisualEffectView *blurView;
 @end
 
 static NSString *identifier = @"GLBarcodeItemTableViewCell";
@@ -46,98 +46,82 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     if (self = [super init]) {
         self.manager = [[GLBarcodeManager alloc] init];
         self.bing = [GLBingFetcher sharedFetcher];
-        self.scanner = [[GLScannerWrapperViewController alloc] init];
-        self.tweaksForConfirmAnimation = @{@"Spring Speed" : @(20), @"Spring Bounce" : @(0)};
+        self.scanning = [GLScanningSession session];
         
-        [self.scanner startScanning];
+        [self rac];
         [self tweak];
-        
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillAppear:) name:UIKeyboardWillShowNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillDisappear:) name:UIKeyboardWillHideNotification object:nil];
-        
     }
     
     return self;
 }
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)tweak {
-    [GLTweakCollection defineTweakCollectionInCategory:@"Animations" collection:@"Present Confirm View" withType:GLTWeakPOPSpringAnimation andObserver:self];
-}
-
-- (void)tweakCollection:(GLTweakCollection *)collection didChangeTo:(NSDictionary *)values {
-    if ([collection.name isEqualToString:@"Present Confirm View"]) {
-        self.tweaksForConfirmAnimation = values;
-    }
-}
-
-- (void)keyboardWillAppear:(NSNotification *)notif {
-    //see http://stackoverflow.com/a/19236013/4080860
-    
-    CGRect keyboardFrame = [notif.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    CGRect activeFieldFrame = [[self getWindow] convertRect:self.confirmationView.activeField.frame fromView:self.confirmationView];
-    
-    if (CGRectIntersectsRect(keyboardFrame, activeFieldFrame)) {
-        [UIView beginAnimations:nil context:NULL];
-        [UIView setAnimationDuration:[notif.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
-        [UIView setAnimationCurve:[notif.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue]];
-        [UIView setAnimationBeginsFromCurrentState:YES];
-    
-        CGFloat intersectionDistance =  CGRectGetMaxY(activeFieldFrame) - CGRectGetMinY(keyboardFrame);
-        self.confirmationView.frame = CGRectOffset(self.confirmationView.frame, 0, -intersectionDistance);
-    
-        [UIView commitAnimations];
-    }
-}
-
-- (void)keyboardWillDisappear:(NSNotification *)notif {
-    //see http://stackoverflow.com/a/19236013/4080860
-    
-    CGFloat offset = CGRectGetHeight([self getWindow].frame) - CGRectGetMaxY(self.confirmationView.frame);
-    
-    if (roundf(offset) != 0) {
-        [UIView beginAnimations:nil context:NULL];
-        [UIView setAnimationDuration:[notif.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
-        [UIView setAnimationCurve:[notif.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue]];
-        [UIView setAnimationBeginsFromCurrentState:YES];
-        
-        self.confirmationView.frame = CGRectOffset(self.confirmationView.frame, 0, roundf(offset));
-        
-        [UIView commitAnimations];
-    }
-}
-
 #pragma mark - Lifecycle
+
+- (void)loadView {
+    [super loadView];
+    
+    self.scanning.previewLayer.frame = self.view.frame;
+    [self.view.layer addSublayer:self.scanning.previewLayer];
+    
+    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    self.blurView = [[UIVisualEffectView alloc] initWithEffect:blur];
+    self.blurView.frame = self.view.frame;
+    [self.view addSubview:self.blurView];
+    
+    self.tableViewController = [[GLTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    self.tableViewController.view.frame = self.view.frame;
+    
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.tableViewController];
+    [nav.navigationBar setBackgroundImage:[UIColor imageWithColor:[UIColor colorWithRed:0.002 green:1.000 blue:0.120 alpha:0.230]] forBarMetrics:UIBarMetricsDefault];
+    self.tableViewController.title = @"Grocery List";
+    
+    [[self.blurView contentView] addSubview:nav.view];
+    [self moveToViewController:nav];
+    
+    [self subscribeToSignals];
+}
+
+- (void)subscribeToSignals {
+    @weakify(self);
+    [self.tableViewController.addItemSignal subscribeNext:^(id x) {
+        @strongify(self);
+        
+        POPSpringAnimation *alpha = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlpha];
+        alpha.springSpeed = 10;
+        alpha.springBounciness = 1;
+        alpha.fromValue = @(1.0);
+        alpha.toValue = @(0.0);
+        
+        POPSpringAnimation *lift = [POPSpringAnimation animationWithPropertyNamed:kPOPViewScaleXY];
+        lift.springSpeed = 10;
+        lift.springBounciness = 1;
+        lift.fromValue = [NSValue valueWithCGPoint:CGPointMake(1, 1)];
+        lift.toValue = [NSValue valueWithCGPoint:CGPointMake(2, 2)];
+        
+        [self.blurView pop_addAnimation:alpha forKey:@"fade"];
+        [self.blurView pop_addAnimation:lift forKey:@"lift"];
+    }];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self addContainerScannerViewControllerWrapper];
     
-    [self getWindow].backgroundColor = [UIColor colorWithRed:0 green:67 blue:88];
+   // [self.view addSubview:self.blurView];
+   
+    
+//  self.tableViewController = [[GLTableViewController alloc] initWithStyle:UITableViewStylePlain];
+//  self.tableViewController.view.frame = self.view.frame;
+    
+   
+    //[[[self blurView] contentView] addSubview:self.tableViewController.view];
+    //[self moveToViewController:self.tableViewController];
+    
+    //[self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didPressTestButton)]];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(didPressTestButton)] animated:YES];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-}
-
-- (void)addContainerScannerViewControllerWrapper {
-    NSLog(@"Frame %@", NSStringFromCGRect(self.view.frame));
-    self.scanner.view.frame = self.view.frame;
-    [self.view addSubview:self.scanner.view];
-    
-    [self.scanner willMoveToParentViewController:self];
-    [self addChildViewController:self.scanner];
-    [self.scanner didMoveToParentViewController:self];
+- (void)moveToViewController:(UIViewController *)viewController {
+    [self addChildViewController:viewController];
+    [viewController didMoveToParentViewController:self];
 }
 
 #pragma mark - Scanner Delegate
@@ -145,18 +129,20 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 - (void)didPressTestButton {
     GLBarcodeItem *item = [GLBarcodeItem object];
     item.barcodes = [NSMutableArray arrayWithObject:@"0012000001086"];
-    [self scanner:nil didRecieveBarcodeItems:[NSArray arrayWithObject:item]];
+    [self scanner:nil didRecieveBarcodeItem:item];
 }
 
-- (void)scanner:(GLScannerWrapperViewController *)scannerContorller didRecieveBarcodeItems:(NSArray *)barcodeItems {
+- (void)scanner:(GLScanningSession *)scanner didRecieveBarcodeItem:(GLBarcodeItem *)item {
     TICK;
     [SVProgressHUD show];
+    
     @weakify(self);
-    [[[self fetchProductNameForBarcodeItem:[barcodeItems firstObject]] logAll] subscribeNext:^(GLListItem *listItem) {
+    [[[self fetchProductNameForBarcodeItem:item] logAll] subscribeNext:^(GLListItem *listItem) {
         @strongify(self);
         [SVProgressHUD showSuccessWithStatus:@""];
         [self showConfirmationViewWithListItem:listItem];
     }];
+    
     TOCK;
 }
 
@@ -282,6 +268,59 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 
 - (UIWindow *)getWindow {
     return [[UIApplication sharedApplication] keyWindow];
+}
+
+- (void)tweak {
+    self.tweaksForConfirmAnimation = @{@"Spring Speed" : @(20), @"Spring Bounce" : @(0)};
+    [GLTweakCollection defineTweakCollectionInCategory:@"Animations" collection:@"Present Confirm View" withType:GLTWeakPOPSpringAnimation andObserver:self];
+}
+
+- (void)tweakCollection:(GLTweakCollection *)collection didChangeTo:(NSDictionary *)values {
+    if ([collection.name isEqualToString:@"Present Confirm View"]) {
+        self.tweaksForConfirmAnimation = values;
+    }
+}
+
+- (void)rac {
+    [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:UIKeyboardWillShowNotification object:nil]
+        takeUntil:self.rac_willDeallocSignal]
+        subscribeNext:^(NSNotification *notif) {
+            //see http://stackoverflow.com/a/19236013/4080860
+         
+            CGRect keyboardFrame = [notif.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+            CGRect activeFieldFrame = [[self getWindow] convertRect:self.confirmationView.activeField.frame fromView:self.confirmationView];
+         
+            if (CGRectIntersectsRect(keyboardFrame, activeFieldFrame)) {
+                [UIView beginAnimations:nil context:NULL];
+                [UIView setAnimationDuration:[notif.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
+                [UIView setAnimationCurve:[notif.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue]];
+                [UIView setAnimationBeginsFromCurrentState:YES];
+             
+                CGFloat intersectionDistance =  CGRectGetMaxY(activeFieldFrame) - CGRectGetMinY(keyboardFrame);
+                self.confirmationView.frame = CGRectOffset(self.confirmationView.frame, 0, -intersectionDistance);
+             
+                [UIView commitAnimations];
+            }
+        }];
+    
+    [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:UIKeyboardWillHideNotification object:nil]
+        takeUntil:self.rac_willDeallocSignal]
+        subscribeNext:^(NSNotification *notif) {
+            //see http://stackoverflow.com/a/19236013/4080860
+        
+            CGFloat offset = CGRectGetHeight([self getWindow].frame) - CGRectGetMaxY(self.confirmationView.frame);
+        
+            if (roundf(offset) != 0) {
+                [UIView beginAnimations:nil context:NULL];
+                [UIView setAnimationDuration:[notif.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
+                [UIView setAnimationCurve:[notif.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue]];
+                [UIView setAnimationBeginsFromCurrentState:YES];
+            
+                self.confirmationView.frame = CGRectOffset(self.confirmationView.frame, 0, roundf(offset));
+            
+                [UIView commitAnimations];
+            }
+        }];
 }
 
 @end
