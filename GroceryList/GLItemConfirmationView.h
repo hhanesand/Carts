@@ -15,6 +15,8 @@
 
 - (instancetype)initWithBlurAndFrame:(CGRect)frame andBarcodeItem:(GLBarcodeItem *)barcodeItem;
 
+@property (nonatomic) NSArray *textSignals;
+
 @property (weak, nonatomic) UITextField *activeField;
 
 @property (weak, nonatomic) IBOutlet UITextField *name;

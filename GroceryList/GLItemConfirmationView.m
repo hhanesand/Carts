@@ -8,6 +8,7 @@
 
 #import "GLItemConfirmationView.h"
 #import "GLBarcodeItem.h"
+#import "UITextField+RACSignalSupport.h"
 
 @implementation GLItemConfirmationView
 
@@ -20,13 +21,6 @@
     
     return self;
 }
-
-//#warning not too keen on this solution
-//- (void)removeFromSuperview {
-//    UIView *superview = self.superview;
-//    [super removeFromSuperview];
-//    [superview removeFromSuperview];
-//}
 
 - (void)loadNib {
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"GLItemConfirmationView" owner:self options:nil];
@@ -62,6 +56,14 @@
 
 - (BOOL)textFieldShouldClear:(UITextField *)textField {
     return YES;
+}
+
+- (NSArray *)textSignals {
+    if (!_textSignals) {
+        _textSignals = @[self.name.rac_textSignal, self.brand.rac_textSignal, self.category.rac_textSignal, self.manufacturer.rac_textSignal];
+    }
+    
+    return _textSignals;
 }
 
 @end

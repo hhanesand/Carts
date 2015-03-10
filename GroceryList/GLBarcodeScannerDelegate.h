@@ -8,13 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@class GLScannerWrapperViewController;
-@class GLBarcodeItem;
 @class GLScanningSession;
+@class GLBarcode;
 
 @protocol GLBarcodeScannerDelegate <NSObject>
 
 @required
-- (void)scanner:(GLScanningSession *)scanner didRecieveBarcodeItem:(GLBarcodeItem *)item;
+- (void)scanner:(GLScanningSession *)scanner didRecieveBarcode:(GLBarcode *)barcode;
 
 @end

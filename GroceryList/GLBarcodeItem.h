@@ -24,10 +24,11 @@
 @property (nonatomic) NSMutableArray *image;
 
 + (NSString *)parseClassName;
-+ (instancetype)objectWithMetadataObject:(AVMetadataMachineReadableCodeObject *)object;
+
++ (GLBarcodeItem *)objectWithBarcode:(GLBarcode *)barcode;
 
 - (NSString *)getFirstBarcode;
 
-- (void)loadJSONData:(NSDictionary *)data;
+- (GLBarcodeItem *)loadJSONData:(NSDictionary *)data;
 - (void)addImageURLSFromArray:(NSArray *)array;
 @end

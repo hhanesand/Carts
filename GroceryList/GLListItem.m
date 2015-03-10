@@ -14,6 +14,13 @@
 
 @dynamic item;
 @dynamic owner;
+@dynamic userModifications;
+
++ (instancetype)objectWithCurrentUserAndBarcodeItem:(GLBarcodeItem *)barcodeItem {
+    GLListItem *new = [GLListItem objectWithCurrentUser];
+    new.item = barcodeItem;
+    return new;
+}
 
 + (instancetype)objectWithCurrentUser {
     GLListItem *new = [GLListItem object];

@@ -9,6 +9,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <Pop/POP.h>
 
+
 #import "RACSubject.h"
 
 #import "SVProgressHUD.h"
@@ -25,6 +26,8 @@
 #import "POPAnimationExtras.h"
 #import "GLTableViewController.h"
 #import "GLScanningSession.h"
+#import "PFQuery+GLQuery.h"
+#import "GLBarcode.h"
 
 #define TICK   NSDate *startTime = [NSDate date]
 #define TOCK   NSLog(@"Time GLScannerViewController: %f", -[startTime timeIntervalSinceNow])
@@ -63,21 +66,22 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     self.scanning.previewLayer.frame = self.view.frame;
     self.scanning.delegate = self;
     [self.view.layer addSublayer:self.scanning.previewLayer];
+    [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didPressTestButton)]];
     
-    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-    self.blurView = [[UIVisualEffectView alloc] initWithEffect:blur];
-    self.blurView.frame = self.view.frame;
-    [self.view addSubview:self.blurView];
-    
-    self.tableViewController = [[GLTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    self.tableViewController.view.frame = self.view.frame;
-    
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.tableViewController];
-    [nav.navigationBar setBackgroundImage:[UIColor imageWithColor:[UIColor colorWithRed:0.002 green:1.000 blue:0.120 alpha:0.230]] forBarMetrics:UIBarMetricsDefault];
-    self.tableViewController.title = @"Grocery List";
-    
-    [[self.blurView contentView] addSubview:nav.view];
-    [self moveToViewController:nav];
+//    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+//    self.blurView = [[UIVisualEffectView alloc] initWithEffect:blur];
+//    self.blurView.frame = self.view.frame;
+//    [self.view addSubview:self.blurView];
+//    
+//    self.tableViewController = [[GLTableViewController alloc] initWithStyle:UITableViewStylePlain];
+//    self.tableViewController.view.frame = self.view.frame;
+//    
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.tableViewController];
+//    [nav.navigationBar setBackgroundImage:[UIColor imageWithColor:[UIColor colorWithRed:0.002 green:1.000 blue:0.120 alpha:0.230]] forBarMetrics:UIBarMetricsDefault];
+//    self.tableViewController.title = @"Grocery List";
+//    
+//    [[self.blurView contentView] addSubview:nav.view];
+//    [self moveToViewController:nav];
     
     [self subscribeToSignals];
 }
@@ -104,22 +108,6 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     }];
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-   // [self.view addSubview:self.blurView];
-   
-    
-//  self.tableViewController = [[GLTableViewController alloc] initWithStyle:UITableViewStylePlain];
-//  self.tableViewController.view.frame = self.view.frame;
-    
-   
-    //[[[self blurView] contentView] addSubview:self.tableViewController.view];
-    //[self moveToViewController:self.tableViewController];
-    
-    //[self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didPressTestButton)]];
-}
-
 - (void)moveToViewController:(UIViewController *)viewController {
     [self addChildViewController:viewController];
     [viewController didMoveToParentViewController:self];
@@ -128,20 +116,27 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 #pragma mark - Scanner Delegate
 
 - (void)didPressTestButton {
-    GLBarcodeItem *item = [GLBarcodeItem object];
-    item.barcodes = [NSMutableArray arrayWithObject:@"0012000001086"];
-    [self scanner:nil didRecieveBarcodeItem:item];
+    [self scanner:nil didRecieveBarcode:[GLBarcode barcodeWithBarcode:@"0012000001086"]];
 }
 
-- (void)scanner:(GLScanningSession *)scanner didRecieveBarcodeItem:(GLBarcodeItem *)item {
+- (void)scanner:(GLScanningSession *)scanner didRecieveBarcode:(GLBarcode *)barcode {
+    [scanner stopScanning];
+    
     TICK;
+    
     [SVProgressHUD show];
     
     @weakify(self);
-    [[[self fetchProductNameForBarcodeItem:item] logAll] subscribeNext:^(GLListItem *listItem) {
+    [[[[[self fetchProductInformationForBarcode:barcode] deliverOnMainThread] doNext:^(id x) {
+        //show success before we catch for the failure so user can tell his item info was found
+        [SVProgressHUD showSuccessWithStatus:@"Item found!"];
+    }] catch:^RACSignal *(NSError *error) {
+        //neither parse nor factual have any information (or net error) about this item so we'll make an empty one for user to fill out
+        [SVProgressHUD showErrorWithStatus:@"Item not found"];
+        return [RACSignal return:[GLListItem objectWithCurrentUser]];
+    }] subscribeNext:^(GLListItem *newListItem) {
         @strongify(self);
-        [SVProgressHUD showSuccessWithStatus:@""];
-        [self showConfirmationViewWithListItem:listItem];
+        [self showConfirmationViewWithListItem:newListItem];
     }];
     
     TOCK;
@@ -158,32 +153,19 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     presentConfirmationView.springBounciness = [self.tweaksForConfirmAnimation[@"Spring Bounce"] floatValue];
     presentConfirmationView.springSpeed = [self.tweaksForConfirmAnimation[@"Spring Speed"] floatValue];
     
-//    UIView *dimmingView = [self prepareDimmingViewWithAlphaAnimationTo:0.6 forFinalYPositionOfConfirmationView:finalConfirmationViewPosition.y - CGRectGetHeight(confirmationView.frame) / 2];
-    
-    //[[self getTopView] addSubview:dimmingView];
     [self.view addSubview:confirmationView];
     [self.animationStack pushAnimation:presentConfirmationView withTargetObject:confirmationView forKey:@"bounce"];
     
     self.confirmationView = confirmationView; //weak pointer so set after we add it to the subview
+    
+    
+    
     
     RAC(listItem.item, name) = [self.confirmationView.name.rac_textSignal logAll];
     RAC(listItem.item, category) = [self.confirmationView.category.rac_textSignal logAll];
     RAC(listItem.item, manufacturer) = [self.confirmationView.manufacturer.rac_textSignal logAll];
     RAC(listItem.item, brand) = [self.confirmationView.brand.rac_textSignal logAll];
 }
-
-//- (UIView *)prepareDimmingViewWithAlphaAnimationTo:(CGFloat)alpha forFinalYPositionOfConfirmationView:(float)pos {
-//    UIView *dimmingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth([self getTopView].frame), CGRectGetHeight([self getTopView].frame))];
-//    
-//    POPSpringAnimation *dimmingAnimation = [POPSpringAnimation animationWithPropertyNamed:kPOPViewBackgroundColor];
-//    dimmingAnimation.fromValue = (id)[UIColor clearColor];
-//    dimmingAnimation.toValue = (id)[UIColor colorWithRed:0 green:0 blue:0 alpha:alpha];
-//    dimmingAnimation.springBounciness = [self.tweaksForConfirmAnimation[@"Spring Bounce"] floatValue];
-//    dimmingAnimation.springSpeed = [self.tweaksForConfirmAnimation[@"Spring Speed"] floatValue];
-//    
-//    [self.animationStack pushAnimation:dimmingAnimation withTargetObject:dimmingView forKey:@"dimming"];
-//    return dimmingView;
-//}
 
 //sets up a confirmation view that tells the delegate when the user has clicked the confirm button and passes the list item to it
 - (GLItemConfirmationView *)prepareConfirmationViewWithListItem:(GLListItem *)list {
@@ -225,42 +207,31 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 
 #pragma mark - Networking
 
-- (PFQuery *)generateQueryWithBarcodeItem:(GLBarcodeItem *)barcodeItem {
+- (PFQuery *)queryForBarcode:(GLBarcode *)item {
     PFQuery *query = [GLBarcodeItem query];
-    [query whereKey:@"barcodes" containedIn:barcodeItem.barcodes];
+    [query whereKey:@"barcodes" equalTo:item.barcode];
     return query;
 }
 
-- (RACSignal *)fetchProductNameForBarcodeItem:(GLBarcodeItem *)barcodeItem {
-    [SVProgressHUD show];
-
-    RACSignal *resultSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        PFQuery *productQuery = [self generateQueryWithBarcodeItem:barcodeItem];
-        GLBarcodeItem *result = (GLBarcodeItem *)[productQuery getFirstObject];
-        GLListItem *list = [GLListItem objectWithCurrentUser];
-        
-        if (result) {
-            list.item = result;
-            [subscriber sendNext:list];
-        } else {
-            list.item = barcodeItem;
-            [subscriber sendNext:[self fetchProductInformationFromFactualForListItem:list]];
-        }
-        
-        [subscriber sendCompleted];
-        return nil;
-    }];
+- (RACSignal *)fetchProductInformationForBarcode:(GLBarcode *)barcode {
+    PFQuery *productQuery = [self queryForBarcode:barcode];
     
-    return resultSignal;
+    @weakify(self);
+    return [[[productQuery getFirstObjectWithRACSignal] catch:^RACSignal *(NSError *error) {
+        @strongify(self);
+        
+        //parse does not have this object so we'll ask factual
+        return [self fetchProductInformationFromFactualForBarcode:barcode];
+    }] map:^GLListItem *(GLBarcodeItem *value) {
+        return [GLListItem objectWithCurrentUserAndBarcodeItem:value];
+    }];
 }
 
-- (RACSignal *)fetchProductInformationFromFactualForListItem:(GLListItem *)list {
-    return [[[self.manager queryFactualForItem:list.item] map:^id(NSDictionary *itemInformation) {
-        [list.item loadJSONData:itemInformation];
-        return list;
-    }] flattenMap:^RACStream *(GLListItem *item) {
-        return [self.bing fetchImageURLFromBingForListItem:item];
+- (RACSignal *)fetchProductInformationFromFactualForBarcode:(GLBarcode *)barcode {
+    return [[self.manager queryFactualForBarcode:barcode.barcode] map:^id(NSDictionary *itemInformation) {
+        return [RACSignal return:[GLListItem objectWithCurrentUserAndBarcodeItem:[GLBarcodeItem objectWithBarcode:barcode]]];
     }];
+    //TODO : reimplement image loading
 }
 
 - (UIView *)getTopView {

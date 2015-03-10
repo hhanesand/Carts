@@ -14,9 +14,11 @@
 
 @property (nonatomic) GLBarcodeItem *item;
 @property (nonatomic) PFUser *owner;
+@property (nonatomic) NSDictionary *userModifications;
 
 @property (nonatomic) BOOL wasGeneratedLocally;
 
++ (instancetype)objectWithCurrentUserAndBarcodeItem:(GLBarcodeItem *)barcodeItem;
 + (instancetype)objectWithCurrentUser;
 
 @end

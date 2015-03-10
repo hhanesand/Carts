@@ -10,6 +10,7 @@
 #import <Parse/PFObject+Subclass.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <AVFoundation/AVFoundation.h>
+#import "GLBarcode.h"
 
 @implementation GLBarcodeItem
 
@@ -29,10 +30,10 @@
     [self registerSubclass];
 }
 
-+ (instancetype)objectWithMetadataObject:(AVMetadataMachineReadableCodeObject *)metadata {
-    GLBarcodeItem *object = [super object];
-    [object.types addObject:metadata.type];
-    [object.barcodes addObject:metadata.stringValue];
++ (GLBarcodeItem *)objectWithBarcode:(GLBarcode *)item {
+    GLBarcodeItem *object = [GLBarcodeItem object];
+    [object setObject:[NSArray arrayWithObject:item.barcode] forKey:@"barcodes"];
+    [object setObject:[NSArray arrayWithObject:item.type] forKey:@"types"];
     return object;
 }
 
@@ -40,10 +41,12 @@
     return [self.barcodes firstObject];
 }
 
-- (void)loadJSONData:(NSDictionary *)data {
+- (GLBarcodeItem *)loadJSONData:(NSDictionary *)data {
     for (NSString *key in [data allKeys]) {
         [self setObject:data[key] forKey:key];
     }
+    
+    return self;
 }
 
 - (NSString *)description {
