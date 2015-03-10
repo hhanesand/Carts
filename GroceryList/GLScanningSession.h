@@ -22,9 +22,9 @@
 + (GLScanningSession *)session;
 
 /**
- *  Newly scanned items are sent on this signal
+ *  The object that responds to scanning events
  */
-@property (nonatomic) RACSignal *barcodeSignal;
+@property (nonatomic) id<GLBarcodeScannerDelegate> delegate;
 
 /**
  *  The preview video layer that can be added to any view hierarchy

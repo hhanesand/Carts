@@ -61,6 +61,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     [super loadView];
     
     self.scanning.previewLayer.frame = self.view.frame;
+    self.scanning.delegate = self;
     [self.view.layer addSublayer:self.scanning.previewLayer];
     
     UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];

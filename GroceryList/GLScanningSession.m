@@ -23,15 +23,18 @@
         [self.captureSession startRunning];
         
         @weakify(self);
-        self.barcodeSignal = [[[[[self rac_signalForSelector:@selector(captureOutput:didOutputMetadataObjects:fromConnection:) fromProtocol:@protocol(AVCaptureMetadataOutputObjectsDelegate)]
-            takeUntil:self.rac_willDeallocSignal]
-            reduceEach:^id(id _, NSArray *metadataObjects, id __) {
-                return [metadataObjects firstObject];
-            }] filter:^BOOL(AVMetadataObject *meta) {
-                return [meta isKindOfClass:[AVMetadataMachineReadableCodeObject class]];
-            }] map:^GLBarcodeItem *(AVMetadataMachineReadableCodeObject *barcode) {
+        [[[[[[[self rac_signalForSelector:@selector(captureOutput:didOutputMetadataObjects:fromConnection:) fromProtocol:@protocol(AVCaptureMetadataOutputObjectsDelegate)]
+        takeUntil:self.rac_willDeallocSignal] logAll]
+        reduceEach:^id(id _, NSArray *metadataObjects, id __) {
+            return [metadataObjects firstObject];
+        }] filter:^BOOL(AVMetadataObject *meta) {
+            return [meta isKindOfClass:[AVMetadataMachineReadableCodeObject class]];
+        }] map:^GLBarcodeItem *(AVMetadataMachineReadableCodeObject *barcode) {
                 return [GLBarcodeItem objectWithMetadataObject:barcode];
-            }];
+        }] doNext:^(id x) {
+            @strongify(self);
+            [self.delegate scanner:self didRecieveBarcodeItem:x];
+        }];
     }
     
     return self;
