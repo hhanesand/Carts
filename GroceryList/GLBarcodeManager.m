@@ -8,7 +8,7 @@
 
 #import "GLBarcodeManager.h"
 #import "GLBarcodeDatabase.h"
-#import "GLBarcodeItem.h"
+#import "GLBarcodeObject.h"
 #import "GLBingFetcher.h"
 #import "AFURLResponseSerialization.h"
 #import "GLFactualRequestSerializer.h"
@@ -48,9 +48,9 @@
 - (RACSignal *)queryFactualForBarcode:(NSString *)barcode {
     RACSignal *factualResponseSignal = [[self.factualNetworkingManager rac_GET:@"http://api.v3.factual.com/t/products-cpg" parameters:@{@"q" : barcode}] logAll];
     
-    return [factualResponseSignal map:^id(RACTuple *value) {
-        NSDictionary *dictionary = (NSDictionary *)value.second;
-        return [self modifyFactualResponseForParseUpload:[dictionary valueForKeyPath:@"response.data"][0]];
+    return [factualResponseSignal map:^id(NSDictionary *dict) {
+//        NSDictionary *dictionary = (NSDictionary *)value.third;
+        return [self modifyFactualResponseForParseUpload:[dict valueForKeyPath:@"response.data"][0]];
     }];
 }
 

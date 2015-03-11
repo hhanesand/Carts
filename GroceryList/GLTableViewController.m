@@ -18,8 +18,8 @@
 #import "GLBingFetcher.h"
 #import "GLScannerViewController.h"
 #import "GLParseAnalytics.h"
-#import "GLListItem.h"
-#import "GLBarcodeItem.h"
+#import "GLListObject.h"
+#import "GLBarcodeObject.h"
 #import "UIColor+GLColor.h"
 
 #import <Tweaks/FBTweakStore.h>
@@ -37,7 +37,7 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 
 - (instancetype)initWithStyle:(UITableViewStyle)style {
     if (self = [super initWithStyle:style]) {
-        self.parseClassName = [GLListItem parseClassName];
+        self.parseClassName = [GLListObject parseClassName];
         self.pullToRefreshEnabled = YES;
         self.paginationEnabled = NO;
         self.loadingViewEnabled = NO;
@@ -86,7 +86,7 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 #pragma mark - Parse
 
 - (PFQuery *)queryForTable {
-    PFQuery *query = [GLListItem query];
+    PFQuery *query = [GLListObject query];
     [query whereKey:@"owner" equalTo:[PFUser currentUser]];
     [query includeKey:@"item"];
     [query orderByAscending:@"updatedAt"];
@@ -95,7 +95,7 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
     GLTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-    GLBarcodeItem *item = object[@"item"];
+    GLBarcodeObject *item = object[@"item"];
     
     cell.name.text = item.name;
     cell.brand.text = item.brand;
@@ -141,7 +141,7 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
     return 71;
 }
 
-- (void)didRecieveNewListItem:(GLListItem *)listItem {
+- (void)didRecieveNewListItem:(GLListObject *)listItem {
     [listItem pinInBackgroundWithName:@"groceryList" block:^(BOOL succeeded, NSError *error) {
         [listItem saveEventually];
         [self cache_loadObjectsClear:YES];

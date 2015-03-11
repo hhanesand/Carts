@@ -6,24 +6,22 @@
 //
 //
 
-#import "GLListItem.h"
+#import "GLListObject.h"
 
-@implementation GLListItem
-
-@synthesize wasGeneratedLocally;
+@implementation GLListObject
 
 @dynamic item;
 @dynamic owner;
 @dynamic userModifications;
 
-+ (instancetype)objectWithCurrentUserAndBarcodeItem:(GLBarcodeItem *)barcodeItem {
-    GLListItem *new = [GLListItem objectWithCurrentUser];
++ (instancetype)objectWithCurrentUserAndBarcodeItem:(GLBarcodeObject *)barcodeItem {
+    GLListObject *new = [GLListObject objectWithCurrentUser];
     new.item = barcodeItem;
     return new;
 }
 
 + (instancetype)objectWithCurrentUser {
-    GLListItem *new = [GLListItem object];
+    GLListObject *new = [GLListObject object];
     new.owner = [PFUser currentUser];
     return new;
 }

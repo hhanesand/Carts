@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@class GLListItem;
+@class GLListObject;
 
 @protocol GLBarcodeItemDelegate <NSObject>
-- (void)didRecieveNewListItem:(GLListItem *)listItem;
+- (void)didRecieveNewListItem:(GLListObject *)listItem;
 @end

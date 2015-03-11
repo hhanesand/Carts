@@ -8,7 +8,7 @@
 
 #import "GLScanningSession.h"
 #import <AVFoundation/AVFoundation.h>
-#import "GLBarcodeItem.h"
+#import "GLBarcodeObject.h"
 #import "ReactiveCocoa.h"
 #import "GLBarcode.h"
 

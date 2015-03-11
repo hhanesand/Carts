@@ -9,13 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "JVFloatLabeledTextField.h"
 
-@class GLBarcodeItem;
+@class GLBarcodeObject;
 
 @interface GLItemConfirmationView : UIVisualEffectView<UITextFieldDelegate>
 
-- (instancetype)initWithBlurAndFrame:(CGRect)frame andBarcodeItem:(GLBarcodeItem *)barcodeItem;
-
-@property (nonatomic) NSArray *textSignals;
+- (instancetype)initWithBlurAndFrame:(CGRect)frame andBarcodeItem:(GLBarcodeObject *)barcodeItem;
 
 @property (weak, nonatomic) UITextField *activeField;
 

@@ -8,17 +8,15 @@
 
 #import <Parse/Parse.h>
 
-@class GLBarcodeItem;
+@class GLBarcodeObject;
 
-@interface GLListItem : PFObject<PFSubclassing>
+@interface GLListObject : PFObject<PFSubclassing>
 
-@property (nonatomic) GLBarcodeItem *item;
+@property (nonatomic) GLBarcodeObject *item;
 @property (nonatomic) PFUser *owner;
 @property (nonatomic) NSDictionary *userModifications;
 
-@property (nonatomic) BOOL wasGeneratedLocally;
-
-+ (instancetype)objectWithCurrentUserAndBarcodeItem:(GLBarcodeItem *)barcodeItem;
++ (instancetype)objectWithCurrentUserAndBarcodeItem:(GLBarcodeObject *)barcodeItem;
 + (instancetype)objectWithCurrentUser;
 
 @end

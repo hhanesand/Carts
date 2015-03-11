@@ -8,9 +8,9 @@
 
 #import "PFQueryTableViewController+Caching.h"
 #import <Parse/Parse.h>
-#import "GLBarcodeItem.h"
+#import "GLBarcodeObject.h"
 #import "BFTask.h"
-#import "GLListItem.h"
+#import "GLListObject.h"
 
 #define TICK   NSDate *startTime = [NSDate date]
 #define TOCK   NSLog(@"Time: %f", -[startTime timeIntervalSinceNow])
@@ -97,7 +97,7 @@
     
     if ([cacheResults count] > [networkResults count]) {
         for (NSUInteger i = [networkResults count]; i < [cacheResults count]; i++) {
-            if (!((GLListItem *)cacheResults[i]).objectId) {
+            if (!((GLListObject *)cacheResults[i]).objectId) {
                 return NO;
             }
         }

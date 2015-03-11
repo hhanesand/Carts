@@ -10,8 +10,8 @@
 #import "AFURLResponseSerialization.h"
 
 #import "GLBingFetcher.h"
-#import "GLListItem.h"
-#import "GLBarcodeItem.h"
+#import "GLListObject.h"
+#import "GLBarcodeObject.h"
 
 @interface GLBingFetcher()
 @property (nonatomic) NSString *root;
@@ -47,7 +47,7 @@
     return self;
 }
 
-- (RACSignal *)fetchImageURLFromBingForListItem:(GLListItem *)listItem {
+- (RACSignal *)fetchImageURLFromBingForListItem:(GLListObject *)listItem {
     NSString *url = [self.root stringByAppendingString:[self nameOfItemToBingPhrase:listItem.item.name]];
     NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     
