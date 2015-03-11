@@ -14,9 +14,15 @@
 
 @property (nonatomic) GLBarcodeObject *item;
 @property (nonatomic) PFUser *owner;
-@property (nonatomic) NSDictionary *userModifications;
+@property (nonatomic) NSMutableDictionary *userModifications;
 
 + (instancetype)objectWithCurrentUserAndBarcodeItem:(GLBarcodeObject *)barcodeItem;
 + (instancetype)objectWithCurrentUser;
+
+- (void)addUserModification:(NSString *)value forKey:(NSString *)key;
+
+- (NSString *)getName;
+- (NSString *)getCategory;
+- (NSString *)getBrand;
 
 @end

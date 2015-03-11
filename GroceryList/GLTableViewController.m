@@ -61,6 +61,7 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
     self.tableView.frame = self.navigationController.view.frame;
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 8, 0, 8);
     self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([GLTableViewCell class]) bundle:nil] forCellReuseIdentifier:reuseIdentifier];
     [self cache_init];
@@ -70,12 +71,12 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.navigationController setToolbarHidden:NO animated:YES];
+    [self.navigationController setToolbarHidden:NO animated:NO];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.navigationController setToolbarHidden:YES animated:YES];
+    [self.navigationController setToolbarHidden:YES animated:NO];
 }
 
 - (void)didPressAddButton {
@@ -95,14 +96,14 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
     GLTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-    GLBarcodeObject *item = object[@"item"];
+    GLListObject *obj = (GLListObject *)object;
     
-    cell.name.text = item.name;
-    cell.brand.text = item.brand;
-    cell.category.text = item.category;
+    cell.name.text = [obj getName];
+    cell.brand.text = [obj getBrand];
+    cell.category.text = [obj getCategory];
     
     //no reactive cocoa for this one...
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:item.image[0]]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:obj.item.image[0]]];
     UIImage *image = [UIImage imageNamed:@"document"];
     
     [cell.image setImageWithURLRequest:request placeholderImage:image success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *newImage) {

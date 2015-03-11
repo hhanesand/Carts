@@ -95,7 +95,7 @@
                             </connections>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cAN-mV-2qM" userLabel="Separator View Container">
-                            <rect key="frame" x="8" y="38" width="568" height="9"/>
+                            <rect key="frame" x="8" y="38" width="596" height="9"/>
                             <subviews>
                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oID-G4-MEp" userLabel="Separator View">
                                     <rect key="frame" x="0.0" y="4" width="596" height="1"/>
@@ -107,7 +107,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dn5-Yl-D1Z" userLabel="Separator View Container">
-                            <rect key="frame" x="8" y="77" width="568" height="9"/>
+                            <rect key="frame" x="8" y="77" width="596" height="9"/>
                             <subviews>
                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0vp-6G-hRP" userLabel="Separator View">
                                     <rect key="frame" x="0.0" y="4" width="596" height="1"/>
@@ -119,7 +119,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mzL-Ao-ra7" userLabel="Separator View Container">
-                            <rect key="frame" x="8" y="116" width="568" height="9"/>
+                            <rect key="frame" x="8" y="116" width="596" height="9"/>
                             <subviews>
                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Ba-HO-Ylm" userLabel="Separator View">
                                     <rect key="frame" x="0.0" y="4" width="596" height="1"/>
@@ -160,13 +160,13 @@
                         <constraint firstItem="dca-Ho-iWF" firstAttribute="centerY" secondItem="rkG-Hf-UKu" secondAttribute="centerY" id="asv-Eb-Vfx"/>
                         <constraint firstAttribute="trailing" secondItem="yN0-YK-hAx" secondAttribute="trailing" constant="8" id="bHb-P3-2gs"/>
                         <constraint firstItem="rkG-Hf-UKu" firstAttribute="leading" secondItem="X4A-dL-ejO" secondAttribute="leading" constant="8" id="fgr-OZ-vdP"/>
-                        <constraint firstAttribute="trailing" secondItem="mzL-Ao-ra7" secondAttribute="trailing" constant="36" id="gys-rD-R9L"/>
+                        <constraint firstAttribute="trailing" secondItem="mzL-Ao-ra7" secondAttribute="trailing" constant="8" id="gys-rD-R9L"/>
                         <constraint firstItem="Ppx-ir-Blj" firstAttribute="top" secondItem="X4A-dL-ejO" secondAttribute="top" constant="8" id="l3V-vs-Czs"/>
                         <constraint firstItem="dn5-Yl-D1Z" firstAttribute="leading" secondItem="X4A-dL-ejO" secondAttribute="leading" constant="8" id="l56-bj-PFh"/>
-                        <constraint firstAttribute="trailing" secondItem="cAN-mV-2qM" secondAttribute="trailing" constant="36" id="mFF-g7-FB0"/>
+                        <constraint firstAttribute="trailing" secondItem="cAN-mV-2qM" secondAttribute="trailing" constant="8" id="mFF-g7-FB0"/>
                         <constraint firstItem="mzL-Ao-ra7" firstAttribute="leading" secondItem="X4A-dL-ejO" secondAttribute="leading" constant="8" id="mZY-5h-yYZ"/>
                         <constraint firstItem="4OK-hQ-NDs" firstAttribute="leading" secondItem="X4A-dL-ejO" secondAttribute="leading" constant="8" id="r4V-IP-ZoH"/>
-                        <constraint firstAttribute="trailing" secondItem="dn5-Yl-D1Z" secondAttribute="trailing" constant="36" id="rTn-SY-3e5"/>
+                        <constraint firstAttribute="trailing" secondItem="dn5-Yl-D1Z" secondAttribute="trailing" constant="8" id="rTn-SY-3e5"/>
                         <constraint firstAttribute="bottom" secondItem="8G5-Z5-0CO" secondAttribute="bottom" constant="8" id="rjV-oS-UHF"/>
                         <constraint firstItem="mzL-Ao-ra7" firstAttribute="top" secondItem="dn5-Yl-D1Z" secondAttribute="bottom" constant="30" id="tHI-34-z8m"/>
                         <constraint firstItem="Qul-jT-6Ag" firstAttribute="leading" secondItem="X4A-dL-ejO" secondAttribute="leading" constant="8" id="ttk-L7-6fq"/>
@@ -184,7 +184,7 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="506" y="1204"/>
+            <point key="canvasLocation" x="558" y="1201"/>
         </view>
     </objects>
 </document>

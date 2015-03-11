@@ -159,25 +159,25 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     
     //we can't hook the user's inputs directly to the GLBarcodeItem because that would change the database when we save it
     //instead, we hook the user's changes to a modification dicionary on the user's list item, preventing changes to other user's items
-    //when the user wants his item, we get the GLBarcodeItem and apply the changes in the userModificaion dictionary (skipping the initial value)
+    //when the user wants his item, we get the GLBarcodeItem and apply the changes in the userModificaion dictionary
     
     [[[[self.confirmationView.name.rac_textSignal distinctUntilChanged] skip:1] logAll] subscribeNext:^(NSString *value) {
-        [listItem.userModifications setValue:value forKey:@"name"];
+        [listItem addUserModification:value forKey:@"name"];
         NSLog(@"List item's modification dict %@", listItem.userModifications);
     }];
     
     [[[[self.confirmationView.brand.rac_textSignal distinctUntilChanged] skip:1] logAll] subscribeNext:^(NSString *value) {
-        [listItem.userModifications setValue:value forKey:@"brand"];
+        [listItem addUserModification:value forKey:@"brand"];
         NSLog(@"List item's modification dict %@", listItem.userModifications);
     }];
     
     [[[[self.confirmationView.category.rac_textSignal distinctUntilChanged] skip:1] logAll] subscribeNext:^(NSString *value) {
-        [listItem.userModifications setValue:value forKey:@"category"];
+        [listItem addUserModification:value forKey:@"category"];
         NSLog(@"List item's modification dict %@", listItem.userModifications);
     }];
     
     [[[[self.confirmationView.manufacturer.rac_textSignal distinctUntilChanged] skip:1] logAll] subscribeNext:^(NSString *value) {
-        [listItem.userModifications setValue:value forKey:@"manufacturer"];
+        [listItem addUserModification:value forKey:@"manufacturer"];
         NSLog(@"List item's modification dict %@", listItem.userModifications);
     }];
 }
@@ -197,11 +197,13 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     confirmationView.confirm.rac_command = [[RACCommand alloc] initWithEnabled:canSubmitSignal signalBlock:^RACSignal *(id input) {
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             @strongify(self);
-            [self.delegate didRecieveNewListItem:list];
+            [self.tableViewController didRecieveNewListItem:list];
             
             [[[[self.animationStack popAllAnimationsWithTargetObject:self.confirmationView] doCompleted:^{
                 [self.confirmationView removeFromSuperview];
             }] flattenMap:^RACStream *(id value) {
+                //TODO : figure out why animation stack isn't working
+                //return [self.animationStack popAllAnimationsWithTargetObject:self.blurView];
                 POPSpringAnimation *alpha = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlpha];
                 alpha.springSpeed = 10;
                 alpha.springBounciness = 1;
@@ -217,7 +219,6 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
                 [self.blurView pop_addAnimation:lift forKey:@"a"];
                 [self.blurView pop_addAnimation:alpha forKey:@"b"];
                 return [RACSignal empty];
-//                return [self.animationStack popAllAnimationsWithTargetObject:self.blurView];
             }] subscribeCompleted:^{
                 [subscriber sendCompleted];
             }];
