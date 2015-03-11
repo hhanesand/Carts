@@ -13,12 +13,18 @@
 @interface PFQuery (GLQuery)
 
 /**
- *  Calls 
+ *  Calls findObjects to perform the query when the returned signal is subscribed to
  *
- *  @return <#return value description#>
+ *  @return The signal that will send a next event with an NSArray if the query was successful, or an error if not
  */
 - (RACSignal *)findObjectsInbackgroundWithRACSignal;
 
+
+/**
+ *  Calls getFirstObject to perform the query when the returned signal is subscriber to
+ *
+ *  @return The signal that will send a next event with a PFObject if the query was successful, or an error if not
+ */
 - (RACSignal *)getFirstObjectWithRACSignal;
 
 @end

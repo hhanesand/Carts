@@ -28,7 +28,7 @@
 /**
  *  Overwrites the completion handler with one that returns a signal when the animation is done
  *
- *  @return The cold RACSignal that will send the events after animation is done, one next followed by a complete signal
+ *  @return A signal that, when subscribed to, will send one next event with the animation and then a complete event
  */
 - (RACSignal *)addRACSignalToAnimation;
 
