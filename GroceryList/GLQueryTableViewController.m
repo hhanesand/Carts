@@ -34,16 +34,16 @@
     RACSignal *netSignal = [netQuery findObjectsInbackgroundWithRACSignal];
     
     @weakify(self);
-    [[[[[[cacheSignal doNext:^(NSArray *cacheResponse) {
+    [[[[[cacheSignal doNext:^(NSArray *cacheResponse) {
         if ([cacheResponse count] > 0) { //can't use filter because we still want the empty array to pass though, we just don't need to update
             @strongify(self);
             [self updateInternalObjectsWithArray:cacheResponse clear:clear];
             [self.tableView reloadData];
             [self objectsDidLoad:nil];
         }
-    }] combineLatestWith:netSignal] doNext:^(id x) {
-        [self.refreshControl endRefreshing]; //end refreshing now because signal may be stopped by filter below
-    }] filter:^BOOL(RACTuple *tuple) {
+    }] combineLatestWith:netSignal] filter:^BOOL(RACTuple *tuple) {
+        @strongify(self);
+        [self.refreshControl endRefreshing];
         return [self shouldUpdateTableViewWithCacheResponse:tuple.first andNetworkResponse:tuple.second];
     }] reduceEach:^NSArray *(NSArray *cacheResponse, NSArray *networkResponse) {
         return networkResponse;
