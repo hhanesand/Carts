@@ -19,7 +19,7 @@
  *  @param stepValue    The step value
  *  @param observer     The observer for this tweak
  *
- *  @return <#return value description#>
+ *  @return The new tweak
  */
 - (instancetype)initWithIdentifier:(NSString *)identifier name:(NSString *)name defaultValue:(id)defaultValue stepValue:(id)stepValue andObserver:(id<FBTweakObserver>)observer;
 
