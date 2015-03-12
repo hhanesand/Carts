@@ -28,6 +28,7 @@
 #import "GLScanningSession.h"
 #import "PFQuery+GLQuery.h"
 #import "GLBarcode.h"
+#import "GLParseAnalytics.h"
 
 #define TICK   NSDate *startTime = [NSDate date]
 #define TOCK   NSLog(@"Time GLScannerViewController: %f", -[startTime timeIntervalSinceNow])
@@ -77,8 +78,8 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     self.tableViewController.view.frame = self.view.frame;
     
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.tableViewController];
-    [nav.navigationBar setBackgroundImage:[UIColor imageWithColor:[UIColor colorWithRed:0.578 green:1.000 blue:0.542 alpha:0.230]] forBarMetrics:UIBarMetricsDefault];
-    [nav.toolbar setBackgroundImage:[UIColor imageWithColor:[UIColor colorWithRed:0.578 green:1.000 blue:0.542 alpha:0.230]] forToolbarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+//    [nav.navigationBar setBackgroundImage:[UIColor imageWithColor:[UIColor colorWithWhite:1.000 alpha:0.500]] forBarMetrics:UIBarMetricsDefault];
+//    [nav.toolbar setBackgroundImage:[UIColor imageWithColor:[UIColor whiteColor]] forToolbarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
     self.tableViewController.title = @"Grocery List";
     
     [[self.blurView contentView] addSubview:nav.view];
@@ -248,19 +249,20 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     @weakify(self);
     return [[[productQuery getFirstObjectWithRACSignal] catch:^RACSignal *(NSError *error) {
         @strongify(self);
-        
-        //parse does not have this object so we'll ask factual
-        return [self fetchProductInformationFromFactualForBarcode:barcode];
+        return [[self fetchProductInformationFromFactualForBarcode:barcode] doError:^(NSError *error) {
+            [[GLParseAnalytics shared] trackMissingBarcode:barcode.barcode];
+        }];
     }] map:^GLListObject *(GLBarcodeObject *value) {
         return [GLListObject objectWithCurrentUserAndBarcodeItem:value];
     }];
 }
 
 - (RACSignal *)fetchProductInformationFromFactualForBarcode:(GLBarcode *)barcode {
-    return [[self.manager queryFactualForBarcode:barcode.barcode] map:^id(NSDictionary *itemInformation) {
+    return [[[self.manager queryFactualForBarcode:barcode.barcode] map:^id(NSDictionary *itemInformation) {
         return [GLBarcodeObject objectWithDictionary:itemInformation];
+    }] flattenMap:^RACStream *(GLBarcodeObject *barcode) {
+        return [self.bing fetchImageURLFromBingForBarcodeObject:barcode];
     }];
-    //TODO : reimplement image loading
 }
 
 - (UIView *)getTopView {

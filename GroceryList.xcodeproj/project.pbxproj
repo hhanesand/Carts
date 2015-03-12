@@ -253,8 +253,6 @@
 				F22F2D7C1A72D6FD00C878EC /* GLBarcodeDatabase.m */,
 				F25E49121A86B150006E1252 /* GLBingFetcher.h */,
 				F25E49101A86B141006E1252 /* GLBingFetcher.m */,
-				F2A917391A8FC0E200A1FC89 /* GLParseAnalytics.h */,
-				F2A917371A8FC0D400A1FC89 /* GLParseAnalytics.m */,
 				F2D58A6F1A96BD5A00E15FFC /* GLFactualRequestSerializer.h */,
 				F2D58A6D1A96BC7700E15FFC /* GLFactualRequestSerializer.m */,
 				F2E4D4BC1A98296F00E8C517 /* GLFactualResponseSerializer.h */,
@@ -447,6 +445,8 @@
 				F232735F1AAF730C001965FD /* PFQuery+GLQuery.m */,
 				F2F797D31AB1323500886A2D /* PFObject+GLPFObject.h */,
 				F2F797D41AB1323500886A2D /* PFObject+GLPFObject.m */,
+				F2A917391A8FC0E200A1FC89 /* GLParseAnalytics.h */,
+				F2A917371A8FC0D400A1FC89 /* GLParseAnalytics.m */,
 			);
 			name = Parse;
 			sourceTree = "<group>";

@@ -60,7 +60,7 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
     
     self.tableView.frame = self.navigationController.view.frame;
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 8, 0, 8);
-    self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.backgroundColor = [UIColor colorWithWhite:1.000 alpha:0.500];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([GLTableViewCell class]) bundle:nil] forCellReuseIdentifier:reuseIdentifier];

@@ -17,6 +17,6 @@
 
 + (GLBingFetcher *)sharedFetcher;
 
-- (RACSignal *)fetchImageURLFromBingForListItem:(GLListObject *)listItem;
+- (RACSignal *)fetchImageURLFromBingForBarcodeObject:(GLBarcodeObject *)barcodeObject;
 
 @end
