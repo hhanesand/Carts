@@ -27,24 +27,27 @@
     [self objectsWillLoad];
     
     PFQuery *cacheQuery = [self queryForTable];
-    [cacheQuery fromLocalDatastore];
+    [cacheQuery fromPinWithName:self.localDatastoreTag];
     RACSignal *cacheSignal = [cacheQuery findObjectsInbackgroundWithRACSignal];
     
     PFQuery *netQuery = [self queryForTable];
     RACSignal *netSignal = [netQuery findObjectsInbackgroundWithRACSignal];
     
     @weakify(self);
-    [[[[cacheSignal doNext:^(NSArray *cacheResponse) {
+    [[[[[[cacheSignal doNext:^(NSArray *cacheResponse) {
         if ([cacheResponse count] > 0) { //can't use filter because we still want the empty array to pass though, we just don't need to update
             @strongify(self);
             [self updateInternalObjectsWithArray:cacheResponse clear:clear];
             [self.tableView reloadData];
             [self objectsDidLoad:nil];
         }
-    }] combineLatestWith:netSignal] reduceEach:^NSArray *(NSArray *cacheResponse, NSArray *networkResponse){
-        return [self shouldUpdateTableViewWithCacheResponse:cacheResponse andNetworkResponse:networkResponse];
+    }] combineLatestWith:netSignal] doNext:^(id x) {
+        [self.refreshControl endRefreshing]; //end refreshing now because signal may be stopped by filter below
+    }] filter:^BOOL(RACTuple *tuple) {
+        return [self shouldUpdateTableViewWithCacheResponse:tuple.first andNetworkResponse:tuple.second];
+    }] reduceEach:^NSArray *(NSArray *cacheResponse, NSArray *networkResponse) {
+        return networkResponse;
     }] subscribeNext:^(NSArray *objects) {
-        //TODO : optimize for cases where we don't need to update again (ie shouldUpdateTableView returns the cached reponse)
         @strongify(self);
         
         [self updateInternalObjectsWithArray:objects clear:YES];
@@ -52,13 +55,12 @@
         [self objectsDidLoad:nil];
         
         [self.tableView reloadData];
-        [self.refreshControl endRefreshing];
     }];
 }
 
-- (NSArray *)shouldUpdateTableViewWithCacheResponse:(NSArray *)cacheResponse andNetworkResponse:(NSArray *)networkResponse {
+- (BOOL)shouldUpdateTableViewWithCacheResponse:(NSArray *)cacheResponse andNetworkResponse:(NSArray *)networkResponse {
     if ([cacheResponse isEqualToArray:networkResponse]) {
-        return cacheResponse;
+        return NO;
     }
     
     //the cache has more entries than the cache so we check if all the
@@ -66,18 +68,18 @@
     if ([cacheResponse count] > [networkResponse count]) {
         for (NSUInteger i = [networkResponse count]; i < [cacheResponse count]; i++) {
             if (((PFObject *)cacheResponse[i]).objectId) {
-                return networkResponse;
+                return YES;
             }
         }
         
-        return cacheResponse;
+        return NO;
     }
     
     //TODO : Figure out how to fix this for client side deletion
     //currently, if the cache has less objects than the net reponse, then it falls though and automatically returns the network response...
     //if I were to check for it, I would need a way of figuring out that the extra net objects are "old" or not needed anymore
     
-    return networkResponse;
+    return YES;
 }
 
 //TODO : more efficient choosing of what to pin and unpin?
@@ -89,12 +91,12 @@
     }];
     
     if ([array count] > 0) {
-        [unpinSignal concat:[PFObject pinAll:array withSignalAndName:self.localDatastoreTag]];
+        unpinSignal = [unpinSignal concat:[PFObject pinAll:array withSignalAndName:self.localDatastoreTag]];
     }
     
     [unpinSignal subscribeCompleted:^{
         NSLog(@"Done");
-    }]; 
+    }];
 }
 
 
