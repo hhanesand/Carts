@@ -57,6 +57,7 @@
 		F2E545051A6CB5D400CB52E5 /* GLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E545041A6CB5D400CB52E5 /* GLTableViewCell.m */; };
 		F2E545081A6CB5F500CB52E5 /* GLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E545071A6CB5F500CB52E5 /* GLTableViewController.m */; };
 		F2F797CE1AB0B6EF00886A2D /* GLQueryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F797CD1AB0B6EF00886A2D /* GLQueryTableViewController.m */; };
+		F2F797D51AB1323500886A2D /* PFObject+GLPFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F797D41AB1323500886A2D /* PFObject+GLPFObject.m */; };
 		F2F948B21A8947BD002C5177 /* GLBarcodeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F948B11A8947BD002C5177 /* GLBarcodeObject.m */; };
 		F2F948BA1A8ACCEB002C5177 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2F948B91A8ACCEB002C5177 /* Images.xcassets */; };
 		F2F948C31A8AD7B5002C5177 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = F2F948BE1A8AD7B5002C5177 /* main.js */; };
@@ -163,6 +164,8 @@
 		F2E545071A6CB5F500CB52E5 /* GLTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTableViewController.m; sourceTree = "<group>"; };
 		F2F797CC1AB0B6EF00886A2D /* GLQueryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLQueryTableViewController.h; sourceTree = "<group>"; };
 		F2F797CD1AB0B6EF00886A2D /* GLQueryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLQueryTableViewController.m; sourceTree = "<group>"; };
+		F2F797D31AB1323500886A2D /* PFObject+GLPFObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFObject+GLPFObject.h"; sourceTree = "<group>"; };
+		F2F797D41AB1323500886A2D /* PFObject+GLPFObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFObject+GLPFObject.m"; sourceTree = "<group>"; };
 		F2F948B11A8947BD002C5177 /* GLBarcodeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBarcodeObject.m; sourceTree = "<group>"; };
 		F2F948B31A8947C8002C5177 /* GLBarcodeObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLBarcodeObject.h; sourceTree = "<group>"; };
 		F2F948B91A8ACCEB002C5177 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = GroceryList/Images.xcassets; sourceTree = "<group>"; };
@@ -230,21 +233,13 @@
 		F25E490B1A869E83006E1252 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				F2A6C8D51A915FF900FE3C30 /* PFQueryTableViewController+Caching.h */,
-				F2A6C8D61A915FF900FE3C30 /* PFQueryTableViewController+Caching.m */,
-				F232735E1AAF730C001965FD /* PFQuery+GLQuery.h */,
-				F232735F1AAF730C001965FD /* PFQuery+GLQuery.m */,
 				F2DFA86F1AA7C75B00CF05B9 /* UIColor+GLColor.h */,
 				F2DFA8701AA7C75B00CF05B9 /* UIColor+GLColor.m */,
-				F2DFA87B1AA7E8B200CF05B9 /* POPPropertyAnimation+GLAdditions.h */,
-				F2DFA87C1AA7E8B200CF05B9 /* POPPropertyAnimation+GLAdditions.m */,
 				F2680BC21AAA316E00D851D2 /* GLTweak.h */,
 				F2680BC31AAA320B00D851D2 /* GLTweak.m */,
 				F22416271AAB6795001AFDCB /* GLTweakCollection.h */,
 				F22416281AAB6795001AFDCB /* GLTweakCollection.m */,
 				F2680BC51AAA454400D851D2 /* GLTweakObserver.h */,
-				F2F797CC1AB0B6EF00886A2D /* GLQueryTableViewController.h */,
-				F2F797CD1AB0B6EF00886A2D /* GLQueryTableViewController.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -271,6 +266,8 @@
 		F2A00A591AA8048C004B8988 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				F2DFA87B1AA7E8B200CF05B9 /* POPPropertyAnimation+GLAdditions.h */,
+				F2DFA87C1AA7E8B200CF05B9 /* POPPropertyAnimation+GLAdditions.m */,
 				F2DFA87A1AA7E66E00CF05B9 /* GLAnimationStore.h */,
 				F2DFA8781AA7E66200CF05B9 /* GLAnimationStore.m */,
 				F2A00A561AA7F1B1004B8988 /* GLAnimationStack.m */,
@@ -316,13 +313,6 @@
 			children = (
 			);
 			name = Vendor;
-			sourceTree = "<group>";
-		};
-		F2BB867A1AAE30DF00E02FF3 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "New Group";
 			sourceTree = "<group>";
 		};
 		F2BB867D1AAE315D00E02FF3 /* Base */ = {
@@ -378,7 +368,7 @@
 		F2E544DC1A6CB55000CB52E5 /* GroceryList */ = {
 			isa = PBXGroup;
 			children = (
-				F2BB867A1AAE30DF00E02FF3 /* New Group */,
+				F2F797CF1AB0C3FD00886A2D /* Parse */,
 				F2A00A591AA8048C004B8988 /* Animation */,
 				F2F948B01A8947A6002C5177 /* Model */,
 				F25E490B1A869E83006E1252 /* Categories */,
@@ -444,6 +434,21 @@
 				F2BB867F1AAE36CA00E02FF3 /* Scanner */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		F2F797CF1AB0C3FD00886A2D /* Parse */ = {
+			isa = PBXGroup;
+			children = (
+				F2F797CC1AB0B6EF00886A2D /* GLQueryTableViewController.h */,
+				F2F797CD1AB0B6EF00886A2D /* GLQueryTableViewController.m */,
+				F2A6C8D51A915FF900FE3C30 /* PFQueryTableViewController+Caching.h */,
+				F2A6C8D61A915FF900FE3C30 /* PFQueryTableViewController+Caching.m */,
+				F232735E1AAF730C001965FD /* PFQuery+GLQuery.h */,
+				F232735F1AAF730C001965FD /* PFQuery+GLQuery.m */,
+				F2F797D31AB1323500886A2D /* PFObject+GLPFObject.h */,
+				F2F797D41AB1323500886A2D /* PFObject+GLPFObject.m */,
+			);
+			name = Parse;
 			sourceTree = "<group>";
 		};
 		F2F948B01A8947A6002C5177 /* Model */ = {
@@ -650,6 +655,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2F797D51AB1323500886A2D /* PFObject+GLPFObject.m in Sources */,
 				F2DFA8711AA7C75B00CF05B9 /* UIColor+GLColor.m in Sources */,
 				F224162C1AAB9001001AFDCB /* GLTweakWindow.m in Sources */,
 				F22416291AAB6795001AFDCB /* GLTweakCollection.m in Sources */,

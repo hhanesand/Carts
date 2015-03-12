@@ -27,6 +27,7 @@
 #import "GLTweakCollection.h"
 
 #import <objc/runtime.h>
+#import "PFObject+GLPFObject.h"
 
 static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 
@@ -36,7 +37,7 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 @implementation GLTableViewController
 
 - (instancetype)initWithStyle:(UITableViewStyle)style {
-    if (self = [super initWithStyle:style]) {
+    if (self = [super initWithStyle:style localDatastoreTag:@"groceryList"]) {
         self.parseClassName = [GLListObject parseClassName];
         self.pullToRefreshEnabled = YES;
         self.paginationEnabled = NO;
@@ -55,7 +56,6 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 #pragma mark - View Lifecycle
 
 - (void)viewDidLoad {
-    //TODO : proper subclassing of pfqueryviewcontroller
     [super viewDidLoad];
     
     self.tableView.frame = self.navigationController.view.frame;
@@ -64,7 +64,6 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([GLTableViewCell class]) bundle:nil] forCellReuseIdentifier:reuseIdentifier];
-    [self cache_init];
     
     self.addItemSignal = [RACSubject subject];
 }
@@ -143,9 +142,10 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 }
 
 - (void)didRecieveNewListItem:(GLListObject *)listItem {
-    [listItem pinInBackgroundWithName:@"groceryList" block:^(BOOL succeeded, NSError *error) {
-        [listItem saveEventually];
-        [self cache_loadObjectsClear:YES];
+    [[[[listItem pinWithSignalAndName:@"groceryList"] doCompleted:^{
+        [self loadObjects];
+    }] concat:[listItem saveWithSignal]] subscribeCompleted:^{
+        NSLog(@"Saved");
     }];
 }
 

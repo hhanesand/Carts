@@ -15,13 +15,9 @@
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         NSError *error;
         NSArray *objects = [self findObjects:&error];
-
-        if ([objects count] >= 1) {
-            [subscriber sendNext:objects];
-            [subscriber sendCompleted];
-        } else {
-            [subscriber sendError:error];
-        }
+        
+        [subscriber sendNext:objects];
+        [subscriber sendCompleted];
         
         return [RACDisposable disposableWithBlock:^{
             [self cancel];

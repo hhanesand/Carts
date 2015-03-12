@@ -11,11 +11,24 @@
 
 @interface GLAnimationStore : NSObject
 
+/**
+ *  Creates and returns a GLAnimationStore
+ *
+ *  @param animation    The animation
+ *  @param targetObject The target
+ *
+ *  @return The new GLAnimationStore
+ */
 + (GLAnimationStore *)objectWithAnimation:(POPPropertyAnimation *)animation onTargetObject:(id)targetObject;
 
+/**
+ *  The animation
+ */
 @property (nonatomic) POPPropertyAnimation *animation;
-@property (nonatomic) id targetObject;
 
-- (instancetype)initWithAnimation:(POPPropertyAnimation *)animation onTargetObject:(id)targetObject;
+/**
+ *  The object this animation should be applied to
+ */
+@property (nonatomic) id targetObject;
 
 @end
