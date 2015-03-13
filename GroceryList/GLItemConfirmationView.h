@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JVFloatLabeledTextField.h"
 
 @class GLBarcodeObject;
 
