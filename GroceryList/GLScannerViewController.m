@@ -20,6 +20,7 @@
 #import "GLItemConfirmationView.h"
 #import "GLListObject.h"
 #import "GLBarcodeObject.h"
+#import "UIColor+GLColor.h"
 #import "POPPropertyAnimation+GLAdditions.h"
 #import "GLTweakCollection.h"
 #import "POPAnimationExtras.h"
@@ -77,6 +78,9 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     self.tableViewController.view.frame = self.view.frame;
     
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.tableViewController];
+//    [nav.navigationBar setBackgroundImage:[UIColor imageWithColor:[UIColor colorWithWhite:1.000 alpha:0.500]] forBarMetrics:UIBarMetricsDefault];
+//    [nav.toolbar setBackgroundImage:[UIColor imageWithColor:[UIColor whiteColor]] forToolbarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    self.tableViewController.title = @"Grocery List";
     
     [[self.blurView contentView] addSubview:nav.view];
     [self moveToViewController:nav];
@@ -84,17 +88,10 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     [self subscribeToSignals];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
-
 - (void)subscribeToSignals {
     @weakify(self);
     [self.tableViewController.addItemSignal subscribeNext:^(id x) {
         @strongify(self);
-        
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-        [self setNeedsStatusBarAppearanceUpdate];
         
         POPSpringAnimation *alpha = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlpha];
         alpha.springSpeed = 10;

@@ -34,10 +34,6 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 #define TICK   NSDate *startTime = [NSDate date]
 #define TOCK   NSLog(@"Time GLTableViewController: %f", -[startTime timeIntervalSinceNow])
 
-@interface GLTableViewController ()
-@property (nonatomic) UILabel *titleLabel;
-@end
-
 @implementation GLTableViewController
 
 - (instancetype)initWithStyle:(UITableViewStyle)style {
@@ -47,8 +43,10 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
         self.paginationEnabled = NO;
         self.loadingViewEnabled = NO;
         
-        self.addItemSignal = [RACSubject subject];
-
+        UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(didPressAddButton)];
+        UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        [self setToolbarItems:[NSArray arrayWithObjects:flexibleSpace, button, flexibleSpace, nil]];
+        
         [self tweaks];
     }
     
@@ -59,27 +57,19 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNeedsStatusBarAppearanceUpdate];
     
     self.tableView.frame = self.navigationController.view.frame;
-//    self.tableView.separatorInset = UIEdgeInsetsMake(0, 8, 0, 8);
-    self.tableView.backgroundColor = [UIColor colorWithWhite:1.000 alpha:0.200];
+    self.tableView.separatorInset = UIEdgeInsetsMake(0, 8, 0, 8);
+    self.tableView.backgroundColor = [UIColor colorWithWhite:1.000 alpha:0.500];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([GLTableViewCell class]) bundle:nil] forCellReuseIdentifier:reuseIdentifier];
+    
+    self.addItemSignal = [RACSubject subject];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(didPressAddButton)];
-    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    [self setToolbarItems:[NSArray arrayWithObjects:flexibleSpace, button, flexibleSpace, nil]];
-    
-    self.navigationController.navigationBar.topItem.titleView = self.titleLabel;
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    [self setNeedsStatusBarAppearanceUpdate];
-
     [self.navigationController setToolbarHidden:NO animated:NO];
 }
 
@@ -91,10 +81,6 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 - (void)didPressAddButton {
     //TODO : figure out RACCommand...
     [self.addItemSignal sendNext:nil];
-}
-
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
 }
 
 #pragma mark - Parse
@@ -152,14 +138,12 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 68;
+    return 71;
 }
 
 - (void)didRecieveNewListItem:(GLListObject *)listItem {
     [[[[listItem pinWithSignalAndName:@"groceryList"] doCompleted:^{
         [self loadObjects];
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-        [self setNeedsStatusBarAppearanceUpdate];
     }] concat:[listItem saveWithSignal]] subscribeCompleted:^{
         NSLog(@"Saved");
     }];
@@ -195,19 +179,6 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
     
     [self.presentedViewController.view setNeedsDisplay];
     [[[UIApplication sharedApplication] keyWindow] setNeedsDisplay];
-}
-
-- (UILabel *)titleLabel {
-    if (!_titleLabel) {
-        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-        _titleLabel.text = @"Grocery List";
-        _titleLabel.textColor = [UIColor whiteColor];
-        _titleLabel.font = [UIFont fontWithName:@"AvenirNext-Heavy" size:24];
-        _titleLabel.textAlignment = NSTextAlignmentCenter;
-        [_titleLabel sizeToFit];
-    }
-    
-    return _titleLabel;
 }
 
 
