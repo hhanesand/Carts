@@ -28,11 +28,18 @@
 
 #import <objc/runtime.h>
 #import "PFObject+GLPFObject.h"
+#import "GLFadeTransition.h"
+
+#import "GLTransitionManager.h"
 
 static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 
 #define TICK   NSDate *startTime = [NSDate date]
 #define TOCK   NSLog(@"Time GLTableViewController: %f", -[startTime timeIntervalSinceNow])
+
+@interface GLTableViewController ()
+@property (nonatomic) GLScannerViewController *scanner;
+@end
 
 @implementation GLTableViewController
 
@@ -42,6 +49,10 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
         self.pullToRefreshEnabled = YES;
         self.paginationEnabled = NO;
         self.loadingViewEnabled = NO;
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+            self.scanner = [[GLScannerViewController alloc] init];
+        });
         
         UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(didPressAddButton)];
         UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
@@ -57,10 +68,8 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.tableView.frame = self.navigationController.view.frame;
+
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 8, 0, 8);
-    self.tableView.backgroundColor = [UIColor colorWithWhite:1.000 alpha:0.500];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([GLTableViewCell class]) bundle:nil] forCellReuseIdentifier:reuseIdentifier];
@@ -79,9 +88,14 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 }
 
 - (void)didPressAddButton {
-    //TODO : figure out RACCommand...
-    [self.addItemSignal sendNext:nil];
+//    //TODO : figure out RACCommand...
+//    [self.addItemSignal sendNext:nil];
+    [[GLTransitionManager sharedInstance] pushViewController:self.scanner withAnimation:[GLFadeTransition transition]];
 }
+
+//- (void)transitionToScannerViewControllerWithFadeAnimation {
+//    GLFadeTransition *fade = [[GLFadeTransition alloc] init];
+//}
 
 #pragma mark - Parse
 

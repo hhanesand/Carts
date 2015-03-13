@@ -29,6 +29,8 @@
 #import "PFQuery+GLQuery.h"
 #import "GLBarcode.h"
 #import "GLParseAnalytics.h"
+#import "GLTransitionManager.h"
+#import "GLFadeTransition.h"
 
 #define TICK   NSDate *startTime = [NSDate date]
 #define TOCK   NSLog(@"Time GLScannerViewController: %f", -[startTime timeIntervalSinceNow])
@@ -69,22 +71,6 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     [self.view.layer addSublayer:self.scanning.previewLayer];
     [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didPressTestButton)]];
     
-    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-    self.blurView = [[UIVisualEffectView alloc] initWithEffect:blur];
-    self.blurView.frame = self.view.frame;
-    [self.view addSubview:self.blurView];
-    
-    self.tableViewController = [[GLTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    self.tableViewController.view.frame = self.view.frame;
-    
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.tableViewController];
-//    [nav.navigationBar setBackgroundImage:[UIColor imageWithColor:[UIColor colorWithWhite:1.000 alpha:0.500]] forBarMetrics:UIBarMetricsDefault];
-//    [nav.toolbar setBackgroundImage:[UIColor imageWithColor:[UIColor whiteColor]] forToolbarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
-    self.tableViewController.title = @"Grocery List";
-    
-    [[self.blurView contentView] addSubview:nav.view];
-    [self moveToViewController:nav];
-    
     [self subscribeToSignals];
 }
 
@@ -118,7 +104,10 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 #pragma mark - Scanner Delegate
 
 - (void)didPressTestButton {
-    [self scanner:nil didRecieveBarcode:[GLBarcode barcodeWithBarcode:@"0012000001086"]];
+    GLFadeTransition *transition = [GLFadeTransition transition];
+    transition.reverse = YES;
+    [[GLTransitionManager sharedInstance] popViewControllerWithAnimation:transition];
+//    [self scanner:nil didRecieveBarcode:[GLBarcode barcodeWithBarcode:@"0012000001086"]];
 }
 
 - (void)scanner:(GLScanningSession *)scanner didRecieveBarcode:(GLBarcode *)barcode {
