@@ -7,11 +7,11 @@
 //
 
 #import "GLItemConfirmationView.h"
-#import "GLBarcodeItem.h"
+#import "GLBarcodeObject.h"
 
 @implementation GLItemConfirmationView
 
-- (instancetype)initWithBlurAndFrame:(CGRect)frame andBarcodeItem:(GLBarcodeItem *)barcodeItem {
+- (instancetype)initWithBlurAndFrame:(CGRect)frame andBarcodeItem:(GLBarcodeObject *)barcodeItem {
     if (self = [super initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]]) {
         self.frame = frame;
         [self loadNib];
@@ -20,13 +20,6 @@
     
     return self;
 }
-
-//#warning not too keen on this solution
-//- (void)removeFromSuperview {
-//    UIView *superview = self.superview;
-//    [super removeFromSuperview];
-//    [superview removeFromSuperview];
-//}
 
 - (void)loadNib {
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"GLItemConfirmationView" owner:self options:nil];
@@ -40,7 +33,7 @@
     [[self contentView] addSubview:view];
 }
 
-- (void)setupViewsWithBarcodeItem:(GLBarcodeItem *)barcodeItem {
+- (void)setupViewsWithBarcodeItem:(GLBarcodeObject *)barcodeItem {
     self.name.text = barcodeItem.name;
     self.brand.text = barcodeItem.brand;
     self.category.text = barcodeItem.category;

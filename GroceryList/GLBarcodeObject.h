@@ -11,7 +11,7 @@
 
 @class AVMetadataMachineReadableCodeObject;
 
-@interface GLBarcodeItem : PFObject<PFSubclassing>
+@interface GLBarcodeObject : PFObject<PFSubclassing>
 
 @property (nonatomic) NSString *name;
 @property (nonatomic) NSString *brand;
@@ -24,10 +24,11 @@
 @property (nonatomic) NSMutableArray *image;
 
 + (NSString *)parseClassName;
-+ (instancetype)objectWithMetadataObject:(AVMetadataMachineReadableCodeObject *)object;
+
++ (GLBarcodeObject *)objectWithBarcode:(GLBarcode *)barcode;
++ (GLBarcodeObject *)objectWithDictionary:(NSDictionary *)data;
 
 - (NSString *)getFirstBarcode;
 
-- (void)loadJSONData:(NSDictionary *)data;
 - (void)addImageURLSFromArray:(NSArray *)array;
 @end

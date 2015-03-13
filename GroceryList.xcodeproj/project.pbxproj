@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BAC6761EE9F8F7E288863188 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A783D9E5EBD8A030867002CD /* libPods.a */; };
+		F22079F81AAF982200BC5C98 /* GLBarcode.m in Sources */ = {isa = PBXBuildFile; fileRef = F22079F71AAF982200BC5C98 /* GLBarcode.m */; };
 		F22416291AAB6795001AFDCB /* GLTweakCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = F22416281AAB6795001AFDCB /* GLTweakCollection.m */; };
 		F224162C1AAB9001001AFDCB /* GLTweakWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F224162B1AAB9001001AFDCB /* GLTweakWindow.m */; };
 		F22C8F341A6EE88D00139B9D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F22C8F331A6EE88D00139B9D /* AudioToolbox.framework */; };
@@ -22,13 +23,13 @@
 		F22C8F461A6EE94A00139B9D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F22C8F451A6EE94A00139B9D /* libsqlite3.dylib */; };
 		F22F2D791A72D1DB00C878EC /* GLBarcodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F2D781A72D1DB00C878EC /* GLBarcodeManager.m */; };
 		F22F2D7D1A72D6FD00C878EC /* GLBarcodeDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F2D7C1A72D6FD00C878EC /* GLBarcodeDatabase.m */; };
+		F23273601AAF730C001965FD /* PFQuery+GLQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = F232735F1AAF730C001965FD /* PFQuery+GLQuery.m */; };
 		F25E49111A86B141006E1252 /* GLBingFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F25E49101A86B141006E1252 /* GLBingFetcher.m */; };
 		F2680BC41AAA320B00D851D2 /* GLTweak.m in Sources */ = {isa = PBXBuildFile; fileRef = F2680BC31AAA320B00D851D2 /* GLTweak.m */; };
 		F28586BA1A744A63003B91E1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586B91A744A63003B91E1 /* Social.framework */; };
 		F28586BC1A744A6B003B91E1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586BB1A744A6B003B91E1 /* Accounts.framework */; };
 		F28586BE1A744A75003B91E1 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586BD1A744A75003B91E1 /* AdSupport.framework */; };
 		F29214B91A9D4BD400015EB2 /* GLItemConfirmationView.m in Sources */ = {isa = PBXBuildFile; fileRef = F29214B81A9D4BD400015EB2 /* GLItemConfirmationView.m */; };
-		F29214C11A9ED7F900015EB2 /* GLScannerWrapperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F29214C01A9ED7F900015EB2 /* GLScannerWrapperViewController.m */; };
 		F29214C41AA01A2100015EB2 /* GLItemConfirmationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F29214C31AA01A2100015EB2 /* GLItemConfirmationView.xib */; };
 		F296DA121A709738001E9D29 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F296DA111A709738001E9D29 /* ParseCrashReporting.framework */; };
 		F296DA141A709862001E9D29 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F296DA131A709862001E9D29 /* libstdc++.6.dylib */; };
@@ -40,8 +41,10 @@
 		F2B4D0DA1A6DF53000A98C7A /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0D91A6DF53000A98C7A /* CoreVideo.framework */; };
 		F2B4D0DC1A6DF53900A98C7A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0DB1A6DF53900A98C7A /* QuartzCore.framework */; };
 		F2B4D0DE1A6DF54500A98C7A /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0DD1A6DF54500A98C7A /* libiconv.dylib */; };
+		F2BB86841AAE3EF700E02FF3 /* GLScanningSession.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BB86831AAE3EF700E02FF3 /* GLScanningSession.m */; };
+		F2BB86871AAE561800E02FF3 /* GLTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2BB86861AAE561800E02FF3 /* GLTableViewCell.xib */; };
 		F2D58A6E1A96BC7700E15FFC /* GLFactualRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D58A6D1A96BC7700E15FFC /* GLFactualRequestSerializer.m */; };
-		F2D58A711A96EB6600E15FFC /* GLListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D58A701A96EB6600E15FFC /* GLListItem.m */; };
+		F2D58A711A96EB6600E15FFC /* GLListObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D58A701A96EB6600E15FFC /* GLListObject.m */; };
 		F2DFA8711AA7C75B00CF05B9 /* UIColor+GLColor.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DFA8701AA7C75B00CF05B9 /* UIColor+GLColor.m */; };
 		F2DFA8771AA7CC0100CF05B9 /* GLBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DFA8761AA7CC0100CF05B9 /* GLBaseViewController.m */; };
 		F2DFA8791AA7E66200CF05B9 /* GLAnimationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DFA8781AA7E66200CF05B9 /* GLAnimationStore.m */; };
@@ -53,8 +56,9 @@
 		F2E544FA1A6CB55100CB52E5 /* GroceryListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E544F91A6CB55100CB52E5 /* GroceryListTests.m */; };
 		F2E545051A6CB5D400CB52E5 /* GLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E545041A6CB5D400CB52E5 /* GLTableViewCell.m */; };
 		F2E545081A6CB5F500CB52E5 /* GLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E545071A6CB5F500CB52E5 /* GLTableViewController.m */; };
-		F2F948AF1A8881DE002C5177 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2F948AE1A8881DE002C5177 /* Main.storyboard */; };
-		F2F948B21A8947BD002C5177 /* GLBarcodeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F948B11A8947BD002C5177 /* GLBarcodeItem.m */; };
+		F2F797CE1AB0B6EF00886A2D /* GLQueryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F797CD1AB0B6EF00886A2D /* GLQueryTableViewController.m */; };
+		F2F797D51AB1323500886A2D /* PFObject+GLPFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F797D41AB1323500886A2D /* PFObject+GLPFObject.m */; };
+		F2F948B21A8947BD002C5177 /* GLBarcodeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F948B11A8947BD002C5177 /* GLBarcodeObject.m */; };
 		F2F948BA1A8ACCEB002C5177 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2F948B91A8ACCEB002C5177 /* Images.xcassets */; };
 		F2F948C31A8AD7B5002C5177 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = F2F948BE1A8AD7B5002C5177 /* main.js */; };
 		F2F948C41A8AD7B5002C5177 /* global.json in Resources */ = {isa = PBXBuildFile; fileRef = F2F948C01A8AD7B5002C5177 /* global.json */; };
@@ -80,6 +84,8 @@
 		9CA8F7344B4A5BF669FC2DE8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A783D9E5EBD8A030867002CD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F210E9841A855A04000B83EC /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		F22079F61AAF982200BC5C98 /* GLBarcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLBarcode.h; sourceTree = "<group>"; };
+		F22079F71AAF982200BC5C98 /* GLBarcode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBarcode.m; sourceTree = "<group>"; };
 		F22416271AAB6795001AFDCB /* GLTweakCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTweakCollection.h; sourceTree = "<group>"; };
 		F22416281AAB6795001AFDCB /* GLTweakCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTweakCollection.m; sourceTree = "<group>"; };
 		F224162A1AAB9001001AFDCB /* GLTweakWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTweakWindow.h; sourceTree = "<group>"; };
@@ -98,6 +104,8 @@
 		F22F2D7A1A72D1FA00C878EC /* GLBarcodeManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLBarcodeManager.h; sourceTree = "<group>"; };
 		F22F2D7B1A72D66600C878EC /* GLBarcodeDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLBarcodeDatabase.h; sourceTree = "<group>"; };
 		F22F2D7C1A72D6FD00C878EC /* GLBarcodeDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBarcodeDatabase.m; sourceTree = "<group>"; };
+		F232735E1AAF730C001965FD /* PFQuery+GLQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFQuery+GLQuery.h"; sourceTree = "<group>"; };
+		F232735F1AAF730C001965FD /* PFQuery+GLQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFQuery+GLQuery.m"; sourceTree = "<group>"; };
 		F25E49101A86B141006E1252 /* GLBingFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBingFetcher.m; sourceTree = "<group>"; };
 		F25E49121A86B150006E1252 /* GLBingFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLBingFetcher.h; sourceTree = "<group>"; };
 		F2680BC21AAA316E00D851D2 /* GLTweak.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLTweak.h; sourceTree = "<group>"; };
@@ -108,8 +116,6 @@
 		F28586BD1A744A75003B91E1 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		F29214B71A9D4BD400015EB2 /* GLItemConfirmationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLItemConfirmationView.h; sourceTree = "<group>"; };
 		F29214B81A9D4BD400015EB2 /* GLItemConfirmationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLItemConfirmationView.m; sourceTree = "<group>"; wrapsLines = 1; };
-		F29214BF1A9ED7F900015EB2 /* GLScannerWrapperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLScannerWrapperViewController.h; sourceTree = "<group>"; };
-		F29214C01A9ED7F900015EB2 /* GLScannerWrapperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLScannerWrapperViewController.m; sourceTree = "<group>"; };
 		F29214C21A9FB5C200015EB2 /* GLBarcodeScannerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLBarcodeScannerDelegate.h; sourceTree = "<group>"; };
 		F29214C31AA01A2100015EB2 /* GLItemConfirmationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLItemConfirmationView.xib; sourceTree = "<group>"; };
 		F296DA111A709738001E9D29 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
@@ -125,10 +131,13 @@
 		F2B4D0D91A6DF53000A98C7A /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		F2B4D0DB1A6DF53900A98C7A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F2B4D0DD1A6DF54500A98C7A /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		F2BB86831AAE3EF700E02FF3 /* GLScanningSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLScanningSession.m; sourceTree = "<group>"; };
+		F2BB86851AAE3F0500E02FF3 /* GLScanningSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLScanningSession.h; sourceTree = "<group>"; };
+		F2BB86861AAE561800E02FF3 /* GLTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLTableViewCell.xib; sourceTree = "<group>"; };
 		F2D58A6D1A96BC7700E15FFC /* GLFactualRequestSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLFactualRequestSerializer.m; sourceTree = "<group>"; };
 		F2D58A6F1A96BD5A00E15FFC /* GLFactualRequestSerializer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLFactualRequestSerializer.h; sourceTree = "<group>"; };
-		F2D58A701A96EB6600E15FFC /* GLListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLListItem.m; sourceTree = "<group>"; };
-		F2D58A721A96EB7000E15FFC /* GLListItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLListItem.h; sourceTree = "<group>"; };
+		F2D58A701A96EB6600E15FFC /* GLListObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLListObject.m; sourceTree = "<group>"; };
+		F2D58A721A96EB7000E15FFC /* GLListObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLListObject.h; sourceTree = "<group>"; };
 		F2DFA8631AA56B6300CF05B9 /* GLBarcodeItemDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLBarcodeItemDelegate.h; sourceTree = "<group>"; };
 		F2DFA86F1AA7C75B00CF05B9 /* UIColor+GLColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+GLColor.h"; sourceTree = "<group>"; };
 		F2DFA8701AA7C75B00CF05B9 /* UIColor+GLColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+GLColor.m"; sourceTree = "<group>"; };
@@ -153,9 +162,12 @@
 		F2E545041A6CB5D400CB52E5 /* GLTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTableViewCell.m; sourceTree = "<group>"; };
 		F2E545061A6CB5F500CB52E5 /* GLTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTableViewController.h; sourceTree = "<group>"; };
 		F2E545071A6CB5F500CB52E5 /* GLTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTableViewController.m; sourceTree = "<group>"; };
-		F2F948AE1A8881DE002C5177 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../Main.storyboard; sourceTree = "<group>"; };
-		F2F948B11A8947BD002C5177 /* GLBarcodeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBarcodeItem.m; sourceTree = "<group>"; };
-		F2F948B31A8947C8002C5177 /* GLBarcodeItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLBarcodeItem.h; sourceTree = "<group>"; };
+		F2F797CC1AB0B6EF00886A2D /* GLQueryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLQueryTableViewController.h; sourceTree = "<group>"; };
+		F2F797CD1AB0B6EF00886A2D /* GLQueryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLQueryTableViewController.m; sourceTree = "<group>"; };
+		F2F797D31AB1323500886A2D /* PFObject+GLPFObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFObject+GLPFObject.h"; sourceTree = "<group>"; };
+		F2F797D41AB1323500886A2D /* PFObject+GLPFObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFObject+GLPFObject.m"; sourceTree = "<group>"; };
+		F2F948B11A8947BD002C5177 /* GLBarcodeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBarcodeObject.m; sourceTree = "<group>"; };
+		F2F948B31A8947C8002C5177 /* GLBarcodeObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLBarcodeObject.h; sourceTree = "<group>"; };
 		F2F948B91A8ACCEB002C5177 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = GroceryList/Images.xcassets; sourceTree = "<group>"; };
 		F2F948BE1A8AD7B5002C5177 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
 		F2F948C01A8AD7B5002C5177 /* global.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = global.json; sourceTree = "<group>"; };
@@ -218,24 +230,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		F25E490B1A869E83006E1252 /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				F2A6C8D51A915FF900FE3C30 /* PFQueryTableViewController+Caching.h */,
-				F2A6C8D61A915FF900FE3C30 /* PFQueryTableViewController+Caching.m */,
-				F2DFA86F1AA7C75B00CF05B9 /* UIColor+GLColor.h */,
-				F2DFA8701AA7C75B00CF05B9 /* UIColor+GLColor.m */,
-				F2DFA87B1AA7E8B200CF05B9 /* POPPropertyAnimation+GLAdditions.h */,
-				F2DFA87C1AA7E8B200CF05B9 /* POPPropertyAnimation+GLAdditions.m */,
-				F2680BC21AAA316E00D851D2 /* GLTweak.h */,
-				F2680BC31AAA320B00D851D2 /* GLTweak.m */,
-				F22416271AAB6795001AFDCB /* GLTweakCollection.h */,
-				F22416281AAB6795001AFDCB /* GLTweakCollection.m */,
-				F2680BC51AAA454400D851D2 /* GLTweakObserver.h */,
-			);
-			name = Categories;
-			sourceTree = "<group>";
-		};
 		F25E490F1A86B126006E1252 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,8 +239,6 @@
 				F22F2D7C1A72D6FD00C878EC /* GLBarcodeDatabase.m */,
 				F25E49121A86B150006E1252 /* GLBingFetcher.h */,
 				F25E49101A86B141006E1252 /* GLBingFetcher.m */,
-				F2A917391A8FC0E200A1FC89 /* GLParseAnalytics.h */,
-				F2A917371A8FC0D400A1FC89 /* GLParseAnalytics.m */,
 				F2D58A6F1A96BD5A00E15FFC /* GLFactualRequestSerializer.h */,
 				F2D58A6D1A96BC7700E15FFC /* GLFactualRequestSerializer.m */,
 				F2E4D4BC1A98296F00E8C517 /* GLFactualResponseSerializer.h */,
@@ -258,10 +250,14 @@
 		F2A00A591AA8048C004B8988 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				F2DFA86F1AA7C75B00CF05B9 /* UIColor+GLColor.h */,
+				F2DFA8701AA7C75B00CF05B9 /* UIColor+GLColor.m */,
+				F2DFA87B1AA7E8B200CF05B9 /* POPPropertyAnimation+GLAdditions.h */,
+				F2DFA87C1AA7E8B200CF05B9 /* POPPropertyAnimation+GLAdditions.m */,
 				F2DFA87A1AA7E66E00CF05B9 /* GLAnimationStore.h */,
 				F2DFA8781AA7E66200CF05B9 /* GLAnimationStore.m */,
-				F2A00A561AA7F1B1004B8988 /* GLAnimationStack.m */,
 				F2A00A581AA7F1BC004B8988 /* GLAnimationStack.h */,
+				F2A00A561AA7F1B1004B8988 /* GLAnimationStack.m */,
 			);
 			name = Animation;
 			sourceTree = "<group>";
@@ -331,13 +327,14 @@
 		F2E544DC1A6CB55000CB52E5 /* GroceryList */ = {
 			isa = PBXGroup;
 			children = (
+				F25E490F1A86B126006E1252 /* Networking */,
+				F2F797CF1AB0C3FD00886A2D /* Parse */,
 				F2A00A591AA8048C004B8988 /* Animation */,
 				F2F948B01A8947A6002C5177 /* Model */,
-				F25E490B1A869E83006E1252 /* Categories */,
 				F2E5450A1A6CB60A00CB52E5 /* Controllers */,
 				F2E545091A6CB60100CB52E5 /* Views */,
 				F2E544DD1A6CB55000CB52E5 /* Supporting Files */,
-				F25E490F1A86B126006E1252 /* Networking */,
+				F2F797D61AB2114100886A2D /* Tweaks */,
 			);
 			path = GroceryList;
 			sourceTree = "<group>";
@@ -350,10 +347,6 @@
 				F2E544EC1A6CB55100CB52E5 /* LaunchScreen.xib */,
 				F2E544DE1A6CB55000CB52E5 /* Info.plist */,
 				F2E544DF1A6CB55000CB52E5 /* main.m */,
-				F29214C21A9FB5C200015EB2 /* GLBarcodeScannerDelegate.h */,
-				F2DFA8631AA56B6300CF05B9 /* GLBarcodeItemDelegate.h */,
-				F224162A1AAB9001001AFDCB /* GLTweakWindow.h */,
-				F224162B1AAB9001001AFDCB /* GLTweakWindow.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -378,9 +371,9 @@
 		F2E545091A6CB60100CB52E5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F2F948AE1A8881DE002C5177 /* Main.storyboard */,
 				F2E545031A6CB5D400CB52E5 /* GLTableViewCell.h */,
 				F2E545041A6CB5D400CB52E5 /* GLTableViewCell.m */,
+				F2BB86861AAE561800E02FF3 /* GLTableViewCell.xib */,
 				F29214B71A9D4BD400015EB2 /* GLItemConfirmationView.h */,
 				F29214B81A9D4BD400015EB2 /* GLItemConfirmationView.m */,
 				F29214C31AA01A2100015EB2 /* GLItemConfirmationView.xib */,
@@ -397,19 +390,54 @@
 				F2E545071A6CB5F500CB52E5 /* GLTableViewController.m */,
 				F2F948FC1A8BDF76002C5177 /* GLScannerViewController.h */,
 				F2F948FA1A8BDF65002C5177 /* GLScannerViewController.m */,
-				F29214BF1A9ED7F900015EB2 /* GLScannerWrapperViewController.h */,
-				F29214C01A9ED7F900015EB2 /* GLScannerWrapperViewController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		F2F797CF1AB0C3FD00886A2D /* Parse */ = {
+			isa = PBXGroup;
+			children = (
+				F2F797CC1AB0B6EF00886A2D /* GLQueryTableViewController.h */,
+				F2F797CD1AB0B6EF00886A2D /* GLQueryTableViewController.m */,
+				F2A6C8D51A915FF900FE3C30 /* PFQueryTableViewController+Caching.h */,
+				F2A6C8D61A915FF900FE3C30 /* PFQueryTableViewController+Caching.m */,
+				F232735E1AAF730C001965FD /* PFQuery+GLQuery.h */,
+				F232735F1AAF730C001965FD /* PFQuery+GLQuery.m */,
+				F2F797D31AB1323500886A2D /* PFObject+GLPFObject.h */,
+				F2F797D41AB1323500886A2D /* PFObject+GLPFObject.m */,
+				F2A917391A8FC0E200A1FC89 /* GLParseAnalytics.h */,
+				F2A917371A8FC0D400A1FC89 /* GLParseAnalytics.m */,
+			);
+			name = Parse;
+			sourceTree = "<group>";
+		};
+		F2F797D61AB2114100886A2D /* Tweaks */ = {
+			isa = PBXGroup;
+			children = (
+				F2680BC51AAA454400D851D2 /* GLTweakObserver.h */,
+				F2680BC21AAA316E00D851D2 /* GLTweak.h */,
+				F2680BC31AAA320B00D851D2 /* GLTweak.m */,
+				F22416271AAB6795001AFDCB /* GLTweakCollection.h */,
+				F22416281AAB6795001AFDCB /* GLTweakCollection.m */,
+				F224162A1AAB9001001AFDCB /* GLTweakWindow.h */,
+				F224162B1AAB9001001AFDCB /* GLTweakWindow.m */,
+			);
+			name = Tweaks;
 			sourceTree = "<group>";
 		};
 		F2F948B01A8947A6002C5177 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F2F948B31A8947C8002C5177 /* GLBarcodeItem.h */,
-				F2F948B11A8947BD002C5177 /* GLBarcodeItem.m */,
-				F2D58A721A96EB7000E15FFC /* GLListItem.h */,
-				F2D58A701A96EB6600E15FFC /* GLListItem.m */,
+				F29214C21A9FB5C200015EB2 /* GLBarcodeScannerDelegate.h */,
+				F2DFA8631AA56B6300CF05B9 /* GLBarcodeItemDelegate.h */,
+				F2BB86851AAE3F0500E02FF3 /* GLScanningSession.h */,
+				F2BB86831AAE3EF700E02FF3 /* GLScanningSession.m */,
+				F2F948B31A8947C8002C5177 /* GLBarcodeObject.h */,
+				F2F948B11A8947BD002C5177 /* GLBarcodeObject.m */,
+				F2D58A721A96EB7000E15FFC /* GLListObject.h */,
+				F2D58A701A96EB6600E15FFC /* GLListObject.m */,
+				F22079F61AAF982200BC5C98 /* GLBarcode.h */,
+				F22079F71AAF982200BC5C98 /* GLBarcode.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -533,10 +561,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2F948AF1A8881DE002C5177 /* Main.storyboard in Resources */,
 				F2F948BA1A8ACCEB002C5177 /* Images.xcassets in Resources */,
 				F2F948C51A8AD7B5002C5177 /* index.html in Resources */,
 				F2F948C41A8AD7B5002C5177 /* global.json in Resources */,
+				F2BB86871AAE561800E02FF3 /* GLTableViewCell.xib in Resources */,
 				F29214C41AA01A2100015EB2 /* GLItemConfirmationView.xib in Resources */,
 				F2E544EE1A6CB55100CB52E5 /* LaunchScreen.xib in Resources */,
 				F2F948C31A8AD7B5002C5177 /* main.js in Resources */,
@@ -603,6 +631,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2F797D51AB1323500886A2D /* PFObject+GLPFObject.m in Sources */,
 				F2DFA8711AA7C75B00CF05B9 /* UIColor+GLColor.m in Sources */,
 				F224162C1AAB9001001AFDCB /* GLTweakWindow.m in Sources */,
 				F22416291AAB6795001AFDCB /* GLTweakCollection.m in Sources */,
@@ -612,17 +641,20 @@
 				F2D58A6E1A96BC7700E15FFC /* GLFactualRequestSerializer.m in Sources */,
 				F2E544E31A6CB55000CB52E5 /* AppDelegate.m in Sources */,
 				F2DFA87D1AA7E8B200CF05B9 /* POPPropertyAnimation+GLAdditions.m in Sources */,
-				F2F948B21A8947BD002C5177 /* GLBarcodeItem.m in Sources */,
+				F2F948B21A8947BD002C5177 /* GLBarcodeObject.m in Sources */,
 				F22F2D791A72D1DB00C878EC /* GLBarcodeManager.m in Sources */,
 				F2F948FB1A8BDF65002C5177 /* GLScannerViewController.m in Sources */,
-				F2D58A711A96EB6600E15FFC /* GLListItem.m in Sources */,
+				F2D58A711A96EB6600E15FFC /* GLListObject.m in Sources */,
 				F2680BC41AAA320B00D851D2 /* GLTweak.m in Sources */,
 				F2DFA8791AA7E66200CF05B9 /* GLAnimationStore.m in Sources */,
 				F22F2D7D1A72D6FD00C878EC /* GLBarcodeDatabase.m in Sources */,
 				F29214B91A9D4BD400015EB2 /* GLItemConfirmationView.m in Sources */,
+				F2BB86841AAE3EF700E02FF3 /* GLScanningSession.m in Sources */,
 				F25E49111A86B141006E1252 /* GLBingFetcher.m in Sources */,
+				F22079F81AAF982200BC5C98 /* GLBarcode.m in Sources */,
+				F2F797CE1AB0B6EF00886A2D /* GLQueryTableViewController.m in Sources */,
 				F2E4D4BB1A98295D00E8C517 /* GLFactualResponseSerializer.m in Sources */,
-				F29214C11A9ED7F900015EB2 /* GLScannerWrapperViewController.m in Sources */,
+				F23273601AAF730C001965FD /* PFQuery+GLQuery.m in Sources */,
 				F2E545051A6CB5D400CB52E5 /* GLTableViewCell.m in Sources */,
 				F2A00A571AA7F1B1004B8988 /* GLAnimationStack.m in Sources */,
 				F2A6C8D71A915FF900FE3C30 /* PFQueryTableViewController+Caching.m in Sources */,

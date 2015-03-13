@@ -36,6 +36,8 @@
  */
 - (RACSignal *)popAnimation;
 
+- (RACSignal *)popAllAnimationsWithTargetObject:(id)object;
+
 /**
  *  Pop all animations off the stack using popAnimation.
  *  @see shouldPopAnimationsConcurrently

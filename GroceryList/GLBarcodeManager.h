@@ -9,10 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @class RACSignal;
-@class GLBarcodeItem;
 
 @interface GLBarcodeManager : NSObject
 
-- (RACSignal *)queryFactualForItem:(GLBarcodeItem *)barcodeItem;
+- (RACSignal *)queryFactualForBarcode:(NSString *)barcode;
 
 @end

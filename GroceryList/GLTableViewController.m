@@ -18,8 +18,8 @@
 #import "GLBingFetcher.h"
 #import "GLScannerViewController.h"
 #import "GLParseAnalytics.h"
-#import "GLListItem.h"
-#import "GLBarcodeItem.h"
+#import "GLListObject.h"
+#import "GLBarcodeObject.h"
 #import "UIColor+GLColor.h"
 
 #import <Tweaks/FBTweakStore.h>
@@ -27,37 +27,25 @@
 #import "GLTweakCollection.h"
 
 #import <objc/runtime.h>
+#import "PFObject+GLPFObject.h"
 
 static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 
 #define TICK   NSDate *startTime = [NSDate date]
 #define TOCK   NSLog(@"Time GLTableViewController: %f", -[startTime timeIntervalSinceNow])
 
-@interface GLTableViewController()
-@property (nonatomic) GLScannerViewController *scanner;
-@end
-
 @implementation GLTableViewController
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    if (self = [super initWithCoder:aDecoder]) {
-        self.parseClassName = [GLListItem parseClassName];
+- (instancetype)initWithStyle:(UITableViewStyle)style {
+    if (self = [super initWithStyle:style localDatastoreTag:@"groceryList"]) {
+        self.parseClassName = [GLListObject parseClassName];
         self.pullToRefreshEnabled = YES;
         self.paginationEnabled = NO;
         self.loadingViewEnabled = NO;
         
-        TICK;
-        @weakify(self);
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-            @strongify(self);
-            GLScannerViewController *s = [[GLScannerViewController alloc] init];
-            s.delegate = self;
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.scanner = s;
-            });
-        });
-        TOCK;
+        UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(didPressAddButton)];
+        UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        [self setToolbarItems:[NSArray arrayWithObjects:flexibleSpace, button, flexibleSpace, nil]];
         
         [self tweaks];
     }
@@ -65,52 +53,40 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
     return self;
 }
 
-- (void)tweaks {
-    [GLTweakCollection defineTweakCollectionInCategory:@"Color" collection:@"Navigation Bar" withType:GLTweakUIColor andObserver:self];
-    [GLTweakCollection defineTweakCollectionInCategory:@"Color" collection:@"Tint" withType:GLTweakUIColor andObserver:self];
+#pragma mark - View Lifecycle
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.tableView.frame = self.navigationController.view.frame;
+    self.tableView.separatorInset = UIEdgeInsetsMake(0, 8, 0, 8);
+    self.tableView.backgroundColor = [UIColor colorWithWhite:1.000 alpha:0.500];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([GLTableViewCell class]) bundle:nil] forCellReuseIdentifier:reuseIdentifier];
+    
+    self.addItemSignal = [RACSubject subject];
 }
 
-- (void)tweakCollection:(GLTweakCollection *)collection didChangeTo:(NSDictionary *)values {
-    if ([collection.name isEqualToString:@"Navigation Bar"]) {
-        UIColor *color = [UIColor colorWithRed:[values[@"Red"] intValue] green:[values[@"Green"] intValue] blue:[values[@"Blue"] intValue]];
-        [UINavigationBar appearance].barTintColor = color;
-        self.navigationController.navigationBar.barTintColor = color;
-        [self.navigationController.navigationBar setNeedsDisplay];
-        
-        #warning remove me before release
-        
-        UIViewController *visibleViewController = [[UIApplication sharedApplication] keyWindow].rootViewController;
-        while (visibleViewController.presentedViewController != nil) {
-            visibleViewController = visibleViewController.presentedViewController;
-        }
-        
-        NSArray *subviews = visibleViewController.view.subviews;
-        ((UINavigationBar *)subviews[1]).barTintColor = color;
-    } else if ([collection.name isEqualToString:@"Tint"]) {
-        UIColor *color = [UIColor colorWithRed:[values[@"Red"] intValue] green:[values[@"Green"] intValue] blue:[values[@"Blue"] intValue]];
-        [[[UIApplication sharedApplication] keyWindow] setTintColor:color];
-    }
-    
-    [self.presentedViewController.view setNeedsDisplay];
-    [[[UIApplication sharedApplication] keyWindow] setNeedsDisplay];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setToolbarHidden:NO animated:NO];
 }
 
-#pragma mark - Navigation
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.navigationController setToolbarHidden:YES animated:NO];
+}
 
-- (IBAction)didPressScannerButton:(UIBarButtonItem *)sender {
-    if (!self.scanner) {
-        NSLog(@"Scanner was not loaded");
-    }
-    
-    TICK;
-    [self.navigationController pushViewController:self.scanner animated:YES];
-    TOCK;
+- (void)didPressAddButton {
+    //TODO : figure out RACCommand...
+    [self.addItemSignal sendNext:nil];
 }
 
 #pragma mark - Parse
 
 - (PFQuery *)queryForTable {
-    PFQuery *query = [GLListItem query];
+    PFQuery *query = [GLListObject query];
     [query whereKey:@"owner" equalTo:[PFUser currentUser]];
     [query includeKey:@"item"];
     [query orderByAscending:@"updatedAt"];
@@ -119,14 +95,14 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
     GLTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-    GLBarcodeItem *item = object[@"item"];
+    GLListObject *obj = (GLListObject *)object;
     
-    cell.name.text = item.name;
-    cell.brand.text = item.brand;
-    cell.category.text = item.category;
+    cell.name.text = [obj getName];
+    cell.brand.text = [obj getBrand];
+    cell.category.text = [obj getCategory];
     
     //no reactive cocoa for this one...
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:item.image[0]]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:obj.item.image[0]]];
     UIImage *image = [UIImage imageNamed:@"document"];
     
     [cell.image setImageWithURLRequest:request placeholderImage:image success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *newImage) {
@@ -135,17 +111,6 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
     } failure:nil];
     
     return cell;
-}
-
-#pragma mark - View Lifecycle
-
-- (void)loadView {
-    [super loadView];
-    [self cache_init];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
 }
 
 #pragma mark - Tableview data source
@@ -172,11 +137,49 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
     }
 }
 
-- (void)didRecieveNewListItem:(GLListItem *)listItem {
-    [listItem pinInBackgroundWithName:@"groceryList" block:^(BOOL succeeded, NSError *error) {
-        [listItem saveEventually];
-        [self cache_loadObjectsClear:YES];
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 71;
+}
+
+- (void)didRecieveNewListItem:(GLListObject *)listItem {
+    [[[[listItem pinWithSignalAndName:@"groceryList"] doCompleted:^{
+        [self loadObjects];
+    }] concat:[listItem saveWithSignal]] subscribeCompleted:^{
+        NSLog(@"Saved");
     }];
 }
+
+#pragma mark - Tweaks
+
+- (void)tweaks {
+    [GLTweakCollection defineTweakCollectionInCategory:@"Color" collection:@"Navigation Bar" withType:GLTweakUIColor andObserver:self];
+    [GLTweakCollection defineTweakCollectionInCategory:@"Color" collection:@"Tint" withType:GLTweakUIColor andObserver:self];
+}
+
+- (void)tweakCollection:(GLTweakCollection *)collection didChangeTo:(NSDictionary *)values {
+    if ([collection.name isEqualToString:@"Navigation Bar"]) {
+        UIColor *color = [UIColor colorWithRed:[values[@"Red"] intValue] green:[values[@"Green"] intValue] blue:[values[@"Blue"] intValue]];
+        [UINavigationBar appearance].barTintColor = color;
+        self.navigationController.navigationBar.barTintColor = color;
+        [self.navigationController.navigationBar setNeedsDisplay];
+        
+#warning remove me before release
+        
+        UIViewController *visibleViewController = [[UIApplication sharedApplication] keyWindow].rootViewController;
+        while (visibleViewController.presentedViewController != nil) {
+            visibleViewController = visibleViewController.presentedViewController;
+        }
+        
+        NSArray *subviews = visibleViewController.view.subviews;
+        ((UINavigationBar   *)subviews[1]).barTintColor = color;
+    } else if ([collection.name isEqualToString:@"Tint"]) {
+        UIColor *color = [UIColor colorWithRed:[values[@"Red"] intValue] green:[values[@"Green"] intValue] blue:[values[@"Blue"] intValue]];
+        [[[UIApplication sharedApplication] keyWindow] setTintColor:color];
+    }
+    
+    [self.presentedViewController.view setNeedsDisplay];
+    [[[UIApplication sharedApplication] keyWindow] setNeedsDisplay];
+}
+
 
 @end

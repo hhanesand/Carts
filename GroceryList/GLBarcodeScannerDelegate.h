@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-@class GLScannerWrapperViewController;
-@class GLBarcodeItem;
+
+@class GLScanningSession;
+@class GLBarcode;
 
 @protocol GLBarcodeScannerDelegate <NSObject>
 
 @required
-- (void)scanner:(GLScannerWrapperViewController *)scannerContorller didRecieveBarcodeItems:(NSArray *)barcodeItems;
+- (void)scanner:(GLScanningSession *)scanner didRecieveBarcode:(GLBarcode *)barcode;
 
 @end

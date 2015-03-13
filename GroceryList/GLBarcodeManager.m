@@ -8,7 +8,7 @@
 
 #import "GLBarcodeManager.h"
 #import "GLBarcodeDatabase.h"
-#import "GLBarcodeItem.h"
+#import "GLBarcodeObject.h"
 #import "GLBingFetcher.h"
 #import "AFURLResponseSerialization.h"
 #import "GLFactualRequestSerializer.h"
@@ -16,10 +16,8 @@
 #import "AFHTTPRequestOperationManager+RACSupport.h"
 
 @interface GLBarcodeManager()
-@property (nonatomic) NSMutableArray *databases;
 @property (nonatomic) GLBingFetcher *bingFetcher;
 @property (nonatomic) AFHTTPRequestOperationManager *factualNetworkingManager;
-@property (nonatomic) RACSignal *networkErrorSignal;
 @property (nonatomic) NSDictionary *factualToParseMapping;
 @end
 
@@ -27,7 +25,6 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        self.databases = [NSMutableArray new];
         self.bingFetcher = [GLBingFetcher sharedFetcher];
         
         self.factualNetworkingManager= [AFHTTPRequestOperationManager manager];
@@ -48,16 +45,12 @@
     return self;
 }
 
-- (void)addBarcodeDatabase:(GLBarcodeDatabase *)database {
-    [self.databases addObject:database];
-}
-
-- (RACSignal *)queryFactualForItem:(GLBarcodeItem *)barcodeItem {
-    NSString *barcode = [barcodeItem getFirstBarcode];
-    return [[self.factualNetworkingManager rac_GET:@"http://api.v3.factual.com/t/products-cpg" parameters:@{@"q" : barcode}] map:^id(RACTuple *value) {
-        NSDictionary *dictionary = (NSDictionary *)value.second;
-        NSLog(@"Factual info %@", dictionary);
-        return [self modifyFactualResponseForParseUpload:[dictionary valueForKeyPath:@"response.data"][0]];
+- (RACSignal *)queryFactualForBarcode:(NSString *)barcode {
+    RACSignal *factualResponseSignal = [[self.factualNetworkingManager rac_GET:@"http://api.v3.factual.com/t/products-cpg" parameters:@{@"q" : barcode}] logAll];
+    
+    return [factualResponseSignal map:^id(NSDictionary *dict) {
+//        NSDictionary *dictionary = (NSDictionary *)value.third;
+        return [self modifyFactualResponseForParseUpload:[dict valueForKeyPath:@"response.data"][0]];
     }];
 }
 

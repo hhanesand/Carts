@@ -95,40 +95,64 @@
                             </connections>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cAN-mV-2qM" userLabel="Separator View Container">
-                            <rect key="frame" x="8" y="38" width="568" height="9"/>
+                            <rect key="frame" x="8" y="38" width="596" height="9"/>
                             <subviews>
-                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oID-G4-MEp" userLabel="Separator View">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oID-G4-MEp" userLabel="Separator View">
                                     <rect key="frame" x="0.0" y="4" width="596" height="1"/>
                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="Ru0-nt-fky"/>
+                                    </constraints>
                                 </view>
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="height" constant="9" id="LOE-xv-JaL"/>
+                                <constraint firstAttribute="trailing" secondItem="oID-G4-MEp" secondAttribute="trailing" id="fLu-pl-Jca"/>
+                                <constraint firstItem="oID-G4-MEp" firstAttribute="leading" secondItem="cAN-mV-2qM" secondAttribute="leading" id="rhT-mo-KRL"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dn5-Yl-D1Z" userLabel="Separator View Container">
-                            <rect key="frame" x="8" y="77" width="568" height="9"/>
+                            <rect key="frame" x="8" y="77" width="596" height="9"/>
                             <subviews>
-                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0vp-6G-hRP" userLabel="Separator View">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0vp-6G-hRP" userLabel="Separator View">
                                     <rect key="frame" x="0.0" y="4" width="596" height="1"/>
                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="eEq-Ih-Ss4"/>
+                                    </constraints>
                                 </view>
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="height" constant="9" id="COe-gg-AGT"/>
+                                <constraint firstItem="0vp-6G-hRP" firstAttribute="leading" secondItem="dn5-Yl-D1Z" secondAttribute="leading" id="hJj-WX-ccm"/>
+                                <constraint firstAttribute="trailing" secondItem="0vp-6G-hRP" secondAttribute="trailing" id="mFk-ai-GkG"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mzL-Ao-ra7" userLabel="Separator View Container">
-                            <rect key="frame" x="8" y="116" width="568" height="9"/>
+                            <rect key="frame" x="8" y="116" width="596" height="9"/>
                             <subviews>
-                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Ba-HO-Ylm" userLabel="Separator View">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ba-HO-Ylm" userLabel="Separator View">
                                     <rect key="frame" x="0.0" y="4" width="596" height="1"/>
                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="U34-7Z-K6x"/>
+                                    </constraints>
                                 </view>
                             </subviews>
                             <constraints>
+                                <constraint firstItem="8Ba-HO-Ylm" firstAttribute="leading" secondItem="mzL-Ao-ra7" secondAttribute="leading" id="SQd-sN-MCl"/>
+                                <constraint firstAttribute="trailing" secondItem="8Ba-HO-Ylm" secondAttribute="trailing" id="T8a-wx-oXj"/>
+                                <constraint firstAttribute="bottom" secondItem="8Ba-HO-Ylm" secondAttribute="bottom" constant="4" id="Ul0-rA-kik"/>
+                                <constraint firstItem="8Ba-HO-Ylm" firstAttribute="top" secondItem="mzL-Ao-ra7" secondAttribute="top" constant="4" id="Zth-VN-ODT"/>
                                 <constraint firstAttribute="height" constant="9" id="anS-kT-Rnf"/>
+                                <constraint firstAttribute="centerY" secondItem="8Ba-HO-Ylm" secondAttribute="centerY" id="i35-GI-nbv"/>
                             </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="Ul0-rA-kik"/>
+                                    <exclude reference="Zth-VN-ODT"/>
+                                </mask>
+                            </variation>
                         </view>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Brand" textAlignment="right" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="yN0-YK-hAx">
                             <rect key="frame" x="402" y="47" width="202" height="30"/>
@@ -145,9 +169,11 @@
                     </subviews>
                     <constraints>
                         <constraint firstItem="dca-Ho-iWF" firstAttribute="top" secondItem="W3L-rs-s0Y" secondAttribute="bottom" constant="8" id="1Ma-3p-3Gu"/>
+                        <constraint firstItem="dn5-Yl-D1Z" firstAttribute="centerY" secondItem="0vp-6G-hRP" secondAttribute="centerY" id="3a3-WR-br5"/>
                         <constraint firstItem="cAN-mV-2qM" firstAttribute="top" secondItem="X4A-dL-ejO" secondAttribute="top" constant="38" id="4YT-3U-Xtc"/>
                         <constraint firstItem="8G5-Z5-0CO" firstAttribute="top" secondItem="DTz-QQ-snc" secondAttribute="bottom" constant="8" id="57P-M7-T99"/>
                         <constraint firstAttribute="centerX" secondItem="8G5-Z5-0CO" secondAttribute="centerX" id="7Tt-2v-MeK"/>
+                        <constraint firstItem="cAN-mV-2qM" firstAttribute="centerY" secondItem="oID-G4-MEp" secondAttribute="centerY" id="CPz-aj-SCW"/>
                         <constraint firstItem="Qul-jT-6Ag" firstAttribute="centerY" secondItem="W3L-rs-s0Y" secondAttribute="centerY" id="F1p-Ez-RK8"/>
                         <constraint firstAttribute="trailing" secondItem="dca-Ho-iWF" secondAttribute="trailing" constant="8" id="Kz3-nV-MAS"/>
                         <constraint firstItem="yN0-YK-hAx" firstAttribute="top" secondItem="Ppx-ir-Blj" secondAttribute="bottom" constant="9" id="LSd-8H-QTx"/>
@@ -160,13 +186,13 @@
                         <constraint firstItem="dca-Ho-iWF" firstAttribute="centerY" secondItem="rkG-Hf-UKu" secondAttribute="centerY" id="asv-Eb-Vfx"/>
                         <constraint firstAttribute="trailing" secondItem="yN0-YK-hAx" secondAttribute="trailing" constant="8" id="bHb-P3-2gs"/>
                         <constraint firstItem="rkG-Hf-UKu" firstAttribute="leading" secondItem="X4A-dL-ejO" secondAttribute="leading" constant="8" id="fgr-OZ-vdP"/>
-                        <constraint firstAttribute="trailing" secondItem="mzL-Ao-ra7" secondAttribute="trailing" constant="36" id="gys-rD-R9L"/>
+                        <constraint firstAttribute="trailing" secondItem="mzL-Ao-ra7" secondAttribute="trailing" constant="8" id="gys-rD-R9L"/>
                         <constraint firstItem="Ppx-ir-Blj" firstAttribute="top" secondItem="X4A-dL-ejO" secondAttribute="top" constant="8" id="l3V-vs-Czs"/>
                         <constraint firstItem="dn5-Yl-D1Z" firstAttribute="leading" secondItem="X4A-dL-ejO" secondAttribute="leading" constant="8" id="l56-bj-PFh"/>
-                        <constraint firstAttribute="trailing" secondItem="cAN-mV-2qM" secondAttribute="trailing" constant="36" id="mFF-g7-FB0"/>
+                        <constraint firstAttribute="trailing" secondItem="cAN-mV-2qM" secondAttribute="trailing" constant="8" id="mFF-g7-FB0"/>
                         <constraint firstItem="mzL-Ao-ra7" firstAttribute="leading" secondItem="X4A-dL-ejO" secondAttribute="leading" constant="8" id="mZY-5h-yYZ"/>
                         <constraint firstItem="4OK-hQ-NDs" firstAttribute="leading" secondItem="X4A-dL-ejO" secondAttribute="leading" constant="8" id="r4V-IP-ZoH"/>
-                        <constraint firstAttribute="trailing" secondItem="dn5-Yl-D1Z" secondAttribute="trailing" constant="36" id="rTn-SY-3e5"/>
+                        <constraint firstAttribute="trailing" secondItem="dn5-Yl-D1Z" secondAttribute="trailing" constant="8" id="rTn-SY-3e5"/>
                         <constraint firstAttribute="bottom" secondItem="8G5-Z5-0CO" secondAttribute="bottom" constant="8" id="rjV-oS-UHF"/>
                         <constraint firstItem="mzL-Ao-ra7" firstAttribute="top" secondItem="dn5-Yl-D1Z" secondAttribute="bottom" constant="30" id="tHI-34-z8m"/>
                         <constraint firstItem="Qul-jT-6Ag" firstAttribute="leading" secondItem="X4A-dL-ejO" secondAttribute="leading" constant="8" id="ttk-L7-6fq"/>
@@ -184,7 +210,7 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="506" y="1204"/>
+            <point key="canvasLocation" x="558" y="1201"/>
         </view>
     </objects>
 </document>

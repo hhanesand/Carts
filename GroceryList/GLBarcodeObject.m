@@ -6,12 +6,13 @@
 //
 //
 
-#import "GLBarcodeItem.h"
+#import "GLBarcodeObject.h"
 #import <Parse/PFObject+Subclass.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <AVFoundation/AVFoundation.h>
+#import "GLBarcode.h"
 
-@implementation GLBarcodeItem
+@implementation GLBarcodeObject
 
 @dynamic name;
 @dynamic barcodes;
@@ -29,21 +30,25 @@
     [self registerSubclass];
 }
 
-+ (instancetype)objectWithMetadataObject:(AVMetadataMachineReadableCodeObject *)metadata {
-    GLBarcodeItem *object = [super object];
-    [object.types addObject:metadata.type];
-    [object.barcodes addObject:metadata.stringValue];
++ (GLBarcodeObject *)objectWithBarcode:(GLBarcode *)item {
+    GLBarcodeObject *object = [GLBarcodeObject object];
+    [object setObject:[NSArray arrayWithObject:item.barcode] forKey:@"barcodes"];
+    [object setObject:[NSArray arrayWithObject:item.type] forKey:@"types"];
     return object;
 }
 
-- (NSString *)getFirstBarcode {
-    return [self.barcodes firstObject];
++ (GLBarcodeObject *)objectWithDictionary:(NSDictionary *)data {
+    GLBarcodeObject *object = [GLBarcodeObject object];
+    for (NSString *key in [data allKeys]) {
+        [object setObject:data[key] forKey:key];
+    }
+    
+    return object;
 }
 
-- (void)loadJSONData:(NSDictionary *)data {
-    for (NSString *key in [data allKeys]) {
-        [self setObject:data[key] forKey:key];
-    }
+
+- (NSString *)getFirstBarcode {
+    return [self.barcodes firstObject];
 }
 
 - (NSString *)description {

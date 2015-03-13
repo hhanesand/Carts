@@ -10,7 +10,12 @@
 #import "GLBarcodeItemDelegate.h"
 #import "GLTweakObserver.h"
 #import <Tweaks/FBTweak.h>
+#import "GLQueryTableViewController.h"
 
-@interface GLTableViewController : PFQueryTableViewController<GLBarcodeItemDelegate, GLTweakObserver>
+@class RACSignal;
+
+@interface GLTableViewController : GLQueryTableViewController<GLBarcodeItemDelegate, GLTweakObserver>
+
+@property (nonatomic) RACSubject *addItemSignal;
 
 @end

@@ -8,15 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@class GLBarcodeItem;
+@class GLBarcodeObject;
 @class RACSignal;
 @class GLBingFetcher;
-@class GLListItem;
+@class GLListObject;
 
 @interface GLBingFetcher : NSObject
 
 + (GLBingFetcher *)sharedFetcher;
 
-- (RACSignal *)fetchImageURLFromBingForListItem:(GLListItem *)listItem;
+- (RACSignal *)fetchImageURLFromBingForBarcodeObject:(GLBarcodeObject *)barcodeObject;
 
 @end

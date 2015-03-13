@@ -52,7 +52,7 @@
     
     self.completionBlock = ^(POPAnimation *animation, BOOL done) {
         if (done) {
-            [completion sendNext:[RACTupleNil tupleNil]];
+            [completion sendNext:animation];
             [completion sendCompleted];
         }
     };
