@@ -26,11 +26,8 @@
 #import <Tweaks/FBTweakCategory.h>
 #import "GLTweakCollection.h"
 
-#import <objc/runtime.h>
 #import "PFObject+GLPFObject.h"
 #import "GLFadeTransition.h"
-
-#import "GLTransitionManager.h"
 
 static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 
@@ -44,19 +41,22 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 @implementation GLTableViewController
 
 - (instancetype)initWithStyle:(UITableViewStyle)style {
-    if (self = [super initWithStyle:style localDatastoreTag:@"groceryList"]) {
+    if (self = [super initWithStyle:style]) {
         self.parseClassName = [GLListObject parseClassName];
         self.pullToRefreshEnabled = YES;
         self.paginationEnabled = NO;
         self.loadingViewEnabled = NO;
+        self.localDatastoreTag = @"groceryList";
+        
+        self.title = @"Grocery List";
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
             self.scanner = [[GLScannerViewController alloc] init];
+            self.scanner.delegate = self;
         });
         
-        UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(didPressAddButton)];
-        UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-        [self setToolbarItems:[NSArray arrayWithObjects:flexibleSpace, button, flexibleSpace, nil]];
+        self.modalPresentationStyle = UIModalPresentationCustom;
+        self.transitioningDelegate = self;
         
         [self tweaks];
     }
@@ -64,17 +64,39 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
     return self;
 }
 
+- (void)didMoveToParentViewController:(UIViewController *)parent {
+    [super didMoveToParentViewController:parent];
+    NSLog(@"Did move to super controller %@", parent);
+}
+
+- (void)willMoveToParentViewController:(UIViewController *)parent {
+    [super willMoveToParentViewController:parent];
+    NSLog(@"Will move to super view controller %@", parent);
+}
+
+#pragma mark - View Controller Transitioning Delegate
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    return [GLFadeTransition transitionWithPresentation:NO];
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+    return [GLFadeTransition transitionWithPresentation:YES];
+}
+
 #pragma mark - View Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
+    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(didPressAddButton)];
+    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    [self setToolbarItems:[NSArray arrayWithObjects:flexibleSpace, button, flexibleSpace, nil]];
+    
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 8, 0, 8);
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([GLTableViewCell class]) bundle:nil] forCellReuseIdentifier:reuseIdentifier];
-    
-    self.addItemSignal = [RACSubject subject];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -88,14 +110,8 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 }
 
 - (void)didPressAddButton {
-//    //TODO : figure out RACCommand...
-//    [self.addItemSignal sendNext:nil];
-    [[GLTransitionManager sharedInstance] pushViewController:self.scanner withAnimation:[GLFadeTransition transition]];
+    [self presentViewController:self.scanner animated:YES completion:nil];
 }
-
-//- (void)transitionToScannerViewControllerWithFadeAnimation {
-//    GLFadeTransition *fade = [[GLFadeTransition alloc] init];
-//}
 
 #pragma mark - Parse
 

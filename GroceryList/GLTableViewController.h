@@ -15,10 +15,6 @@
 
 @class RACSignal;
 
-@interface GLTableViewController : GLQueryTableViewController<GLBarcodeItemDelegate, GLTweakObserver>
-
-@property (nonatomic, weak) GLBaseViewController *transitionDelegate;
-
-@property (nonatomic) RACSubject *addItemSignal;
+@interface GLTableViewController : GLQueryTableViewController<GLBarcodeItemDelegate, GLTweakObserver, UIViewControllerTransitioningDelegate>
 
 @end

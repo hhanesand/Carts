@@ -8,19 +8,19 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "GLTransitioningContext.h"
 
 @class RACSubject;
 
 /**
  *  Implements a transition between two view controllers without any animation
  */
-@interface GLTransition : NSObject
+@interface GLTransition : NSObject<UIViewControllerAnimatedTransitioning>
 
-+ (instancetype)transition;
+/**
+ *  Indicates whether the transition is presenting or dismissing views
+ */
+@property (nonatomic, getter=isPresenting) BOOL presenting;
 
-- (void)animateTransitionWithContext:(GLTransitioningContext *)context;
-
-@property (nonatomic) RACSubject *completionSignal;
++ (instancetype)transitionWithPresentation:(BOOL)isPresenting;
 
 @end

@@ -29,7 +29,6 @@
 #import "PFQuery+GLQuery.h"
 #import "GLBarcode.h"
 #import "GLParseAnalytics.h"
-#import "GLTransitionManager.h"
 #import "GLFadeTransition.h"
 
 #define TICK   NSDate *startTime = [NSDate date]
@@ -38,7 +37,6 @@
 @interface GLScannerViewController()
 @property (nonatomic) GLBarcodeManager *manager;
 @property (nonatomic) GLBingFetcher *bing;
-@property (nonatomic) GLTableViewController *tableViewController;
 @property (nonatomic) GLScanningSession *scanning;
 @property (nonatomic) NSDictionary *tweaksForConfirmAnimation;
 @property (nonatomic) UIVisualEffectView *blurView;
@@ -70,30 +68,10 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     self.scanning.delegate = self;
     [self.view.layer addSublayer:self.scanning.previewLayer];
     [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didPressTestButton)]];
-    
-    [self subscribeToSignals];
 }
 
-- (void)subscribeToSignals {
-    @weakify(self);
-    [self.tableViewController.addItemSignal subscribeNext:^(id x) {
-        @strongify(self);
-        
-        POPSpringAnimation *alpha = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlpha];
-        alpha.springSpeed = 10;
-        alpha.springBounciness = 1;
-        alpha.fromValue = @(1.0);
-        alpha.toValue = @(0.0);
-        
-        POPSpringAnimation *lift = [POPSpringAnimation animationWithPropertyNamed:kPOPViewScaleXY];
-        lift.springSpeed = 10;
-        lift.springBounciness = 1;
-        lift.fromValue = [NSValue valueWithCGPoint:CGPointMake(1, 1)];
-        lift.toValue = [NSValue valueWithCGPoint:CGPointMake(2, 2)];
-        
-        [self.animationStack pushAnimation:alpha withTargetObject:self.blurView forKey:@"fade"];
-        [self.animationStack pushAnimation:lift withTargetObject:self.blurView forKey:@"lift"];
-    }];
+- (void)viewWillAppear:(BOOL)animated {
+    [self.scanning startScanning];
 }
 
 - (void)moveToViewController:(UIViewController *)viewController {
@@ -104,10 +82,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 #pragma mark - Scanner Delegate
 
 - (void)didPressTestButton {
-    GLFadeTransition *transition = [GLFadeTransition transition];
-    transition.reverse = YES;
-    [[GLTransitionManager sharedInstance] popViewControllerWithAnimation:transition];
-//    [self scanner:nil didRecieveBarcode:[GLBarcode barcodeWithBarcode:@"0012000001086"]];
+    [self scanner:self.scanning didRecieveBarcode:[GLBarcode barcodeWithBarcode:@"0012000001086"]];
 }
 
 - (void)scanner:(GLScanningSession *)scanner didRecieveBarcode:(GLBarcode *)barcode {
@@ -151,22 +126,22 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     //instead, we hook the user's changes to a modification dicionary on the user's list item, preventing changes to other user's items
     //when the user wants his item, we get the GLBarcodeItem and apply the changes in the userModificaion dictionary
     
-    [[[[self.confirmationView.name.rac_textSignal distinctUntilChanged] skip:1] logAll] subscribeNext:^(NSString *value) {
+    [[[self.confirmationView.name.rac_textSignal distinctUntilChanged] skip:1] subscribeNext:^(NSString *value) {
         [listItem addUserModification:value forKey:@"name"];
         NSLog(@"List item's modification dict %@", listItem.userModifications);
     }];
     
-    [[[[self.confirmationView.brand.rac_textSignal distinctUntilChanged] skip:1] logAll] subscribeNext:^(NSString *value) {
+    [[[self.confirmationView.brand.rac_textSignal distinctUntilChanged] skip:1] subscribeNext:^(NSString *value) {
         [listItem addUserModification:value forKey:@"brand"];
         NSLog(@"List item's modification dict %@", listItem.userModifications);
     }];
     
-    [[[[self.confirmationView.category.rac_textSignal distinctUntilChanged] skip:1] logAll] subscribeNext:^(NSString *value) {
+    [[[self.confirmationView.category.rac_textSignal distinctUntilChanged] skip:1] subscribeNext:^(NSString *value) {
         [listItem addUserModification:value forKey:@"category"];
         NSLog(@"List item's modification dict %@", listItem.userModifications);
     }];
     
-    [[[[self.confirmationView.manufacturer.rac_textSignal distinctUntilChanged] skip:1] logAll] subscribeNext:^(NSString *value) {
+    [[[self.confirmationView.manufacturer.rac_textSignal distinctUntilChanged] skip:1] subscribeNext:^(NSString *value) {
         [listItem addUserModification:value forKey:@"manufacturer"];
         NSLog(@"List item's modification dict %@", listItem.userModifications);
     }];
@@ -187,38 +162,17 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     confirmationView.confirm.rac_command = [[RACCommand alloc] initWithEnabled:canSubmitSignal signalBlock:^RACSignal *(id input) {
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             @strongify(self);
-            [self.tableViewController didRecieveNewListItem:list];
+            [self.delegate didRecieveNewListItem:list];
             
-            [[[[self.animationStack popAllAnimationsWithTargetObject:self.confirmationView] doCompleted:^{
+            [[[self.animationStack popAllAnimations] doCompleted:^{
                 [self.confirmationView removeFromSuperview];
-            }] flattenMap:^RACStream *(id value) {
-                //TODO : figure out why animation stack isn't working
-                //return [self.animationStack popAllAnimationsWithTargetObject:self.blurView];
-                POPSpringAnimation *alpha = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlpha];
-                alpha.springSpeed = 10;
-                alpha.springBounciness = 1;
-                alpha.fromValue = @(0.0);
-                alpha.toValue = @(1.0);
-                
-                POPSpringAnimation *lift = [POPSpringAnimation animationWithPropertyNamed:kPOPViewScaleXY];
-                lift.springSpeed = 10;
-                lift.springBounciness = 1;
-                lift.fromValue = [NSValue valueWithCGPoint:CGPointMake(2, 2)];
-                lift.toValue = [NSValue valueWithCGPoint:CGPointMake(1, 1)];
-                
-                [self.blurView pop_addAnimation:lift forKey:@"a"];
-                [self.blurView pop_addAnimation:alpha forKey:@"b"];
-                return [RACSignal empty];
+                [self dismissViewControllerAnimated:YES completion:nil];
             }] subscribeCompleted:^{
                 [subscriber sendCompleted];
             }];
             
             return nil;
         }];
-    }];
-    
-    confirmationView.cancel.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        return [RACSignal error:[NSError errorWithDomain:@"groceryList" code:10 userInfo:@{@"reason" : @"User clicked cancel button"}]];
     }];
     
     return confirmationView;
@@ -254,13 +208,8 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     }];
 }
 
-- (UIView *)getTopView {
-    return [self getWindow].subviews[0];
-}
 
-- (UIWindow *)getWindow {
-    return [[UIApplication sharedApplication] keyWindow];
-}
+#pragma mark - Tweaks
 
 - (void)tweak {
     self.tweaksForConfirmAnimation = @{@"Spring Speed" : @(20), @"Spring Bounce" : @(0)};
@@ -314,5 +263,14 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
             }
         }];
 }
+
+- (UIView *)getTopView {
+    return [self getWindow].subviews[0];
+}
+
+- (UIWindow *)getWindow {
+    return [[UIApplication sharedApplication] keyWindow];
+}
+
 
 @end

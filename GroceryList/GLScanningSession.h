@@ -37,5 +37,6 @@
 @property (nonatomic) AVCaptureSession *captureSession;
 
 - (void)stopScanning;
+- (void)startScanning;
 
 @end

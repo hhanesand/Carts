@@ -13,40 +13,60 @@
 
 @implementation GLFadeTransition
 
-- (void)animateTransitionWithContext:(GLTransitioningContext *)context {
-    UIViewController *fromViewController = context.fromViewController;
-    UIViewController *toViewController = context.toViewController;
+- (void)animatePresentationWithTransitionContext:(id<UIViewControllerContextTransitioning>)context {
+    UIView *presentedViewControllerView = [context viewForKey:UITransitionContextToViewKey];
+    UIView *presentingViewControllerView = [context viewForKey:UITransitionContextFromViewKey];
     
-    if (self.reverse) {
-        [context.containerView addSubview:toViewController.view];
-    } else {
-        [context.containerView addSubview:toViewController.view];
-        [context.containerView sendSubviewToBack:toViewController.view];
-    }
+    [context.containerView addSubview:presentedViewControllerView];
+    [context.containerView sendSubviewToBack:presentedViewControllerView];
     
     POPSpringAnimation *alpha = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlpha];
-    alpha.fromValue = self.reverse ? @(0.0) : @(1.0);
-    alpha.toValue = self.reverse ? @(1.0) : @(0.0);
+    alpha.fromValue = @(1.0);
+    alpha.toValue = @(0.0);
     alpha.springSpeed = 16;
     alpha.springBounciness = 0;
     
     POPSpringAnimation *lift = [POPSpringAnimation animationWithPropertyNamed:kPOPViewScaleXY];
-    lift.fromValue = [NSValue valueWithCGPoint:(self.reverse ? CGPointMake(2, 2) : CGPointMake(1, 1))];
-    lift.toValue = [NSValue valueWithCGPoint:(self.reverse ? CGPointMake(1, 1) : CGPointMake(2, 2))];
+    lift.fromValue = [NSValue valueWithCGPoint:CGPointMake(1, 1)];
+    lift.toValue = [NSValue valueWithCGPoint:CGPointMake(2, 2)];
     alpha.springSpeed = 16;
     alpha.springBounciness = 0;
     
-    if (self.reverse) {
-        [toViewController.view pop_addAnimation:alpha forKey:@"transition_alpha"];
-        [toViewController.view pop_addAnimation:lift forKey:@"transition_scale"];
-    } else {
-        [fromViewController.view pop_addAnimation:alpha forKey:@"transition_alpha"];
-        [fromViewController.view pop_addAnimation:lift forKey:@"transition_scale"];
-    }
+    //increase scale and reduce opacity on the view doing the presenting (creates a lifting effect)
+    [presentingViewControllerView pop_addAnimation:alpha forKey:@"presenting_transition_alpha"];
+    [presentingViewControllerView pop_addAnimation:lift forKey:@"presenting_transition_scale"];
     
     lift.completionBlock = ^(POPAnimation *animation, BOOL finished) {
         if (finished) {
-            [self.completionSignal sendCompleted];
+            //TODO : rac signal?
+            [context completeTransition:YES];
+        }
+    };
+}
+
+- (void)animateDismissalWithTransitionContext:(id<UIViewControllerContextTransitioning>)context {
+    UIView *presentingViewControllerView = [context viewForKey:UITransitionContextFromViewKey];
+    
+    POPSpringAnimation *alpha = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlpha];
+    alpha.fromValue = @(0.0);
+    alpha.toValue = @(1.0);
+    alpha.springSpeed = 16;
+    alpha.springBounciness = 0;
+    
+    POPSpringAnimation *lift = [POPSpringAnimation animationWithPropertyNamed:kPOPViewScaleXY];
+    lift.fromValue = [NSValue valueWithCGPoint:CGPointMake(2, 2)];
+    lift.toValue = [NSValue valueWithCGPoint:CGPointMake(1, 1)];
+    alpha.springSpeed = 16;
+    alpha.springBounciness = 0;
+    
+    //de-scale and increase opacity on the presenting view to "lower" it back down
+    [presentingViewControllerView pop_addAnimation:alpha forKey:@"dismissal_transition_alpha"];
+    [presentingViewControllerView pop_addAnimation:lift forKey:@"dismissal_transition_scale"];
+    
+    lift.completionBlock = ^(POPAnimation *animation, BOOL finished) {
+        if (finished) {
+            //TODO :rac signal?
+            [context completeTransition:YES];
         }
     };
 }

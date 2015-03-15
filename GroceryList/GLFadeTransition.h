@@ -11,6 +11,4 @@
 
 @interface GLFadeTransition : GLTransition
 
-@property (nonatomic) BOOL reverse;
-
 @end

@@ -27,7 +27,7 @@
 - (instancetype)init {
     if (self = [super init]) {
         [self initializeCaptureSession];
-        [self.captureSession startRunning];
+        [self startScanning];
         [self.metadataOutput setMetadataObjectTypes:self.metadataOutput.availableMetadataObjectTypes];
         
 //        @weakify(self);
@@ -50,6 +50,10 @@
 
 - (void)stopScanning {
     [self.captureSession stopRunning];
+}
+
+- (void)startScanning {
+    [self.captureSession startRunning];
 }
 
 - (void)initializeCaptureSession {

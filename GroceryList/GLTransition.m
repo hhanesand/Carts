@@ -7,27 +7,32 @@
 //
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
-
 #import "GLTransition.h"
 #import "MustOverride.h"
 
 @implementation GLTransition
 
-+ (GLTransition *)transition {
-    return [[self alloc] init];
+- (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext {
+    //using pop spring animations, which do not have a time value...
+    //TODO : figure out effect of exceeding animation time
+    return 0;
 }
 
-- (void)animateTransitionWithContext:(GLTransitioningContext *)context {
-    [context.containerView addSubview:context.toViewController.view];
-    [self.completionSignal sendCompleted];
-}
-
-- (RACSubject *)completionSignal {
-    if (!_completionSignal) {
-        _completionSignal = [RACSubject subject];
+- (void)animateTransition:(id<UIViewControllerContextTransitioning>)context {
+    if (self.isPresenting) {
+        [self animatePresentationWithTransitionContext:context];
+    } else {
+        [self animateDismissalWithTransitionContext:context];
     }
-    
-    return _completionSignal;
+}
+
+- (void)animatePresentationWithTransitionContext:(id<UIViewControllerContextTransitioning>)context {
+    [[context containerView] addSubview:[context viewForKey:UITransitionContextToViewKey]];
+    [context completeTransition:YES];
+}
+
+- (void)animateDismissalWithTransitionContext:(id<UIViewControllerContextTransitioning>)context {
+    [context completeTransition:YES];
 }
 
 @end
