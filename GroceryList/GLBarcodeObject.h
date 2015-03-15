@@ -13,10 +13,10 @@
 
 @interface GLBarcodeObject : PFObject<PFSubclassing>
 
-@property (nonatomic) NSString *name;
-@property (nonatomic) NSString *brand;
-@property (nonatomic) NSString *category;
-@property (nonatomic) NSString *manufacturer;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *brand;
+@property (nonatomic, copy) NSString *category;
+@property (nonatomic, copy) NSString *manufacturer;
 
 @property (nonatomic) NSMutableArray *barcodes;
 @property (nonatomic) NSMutableArray *types;

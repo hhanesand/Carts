@@ -57,7 +57,7 @@
     #warning stop gap bug fix
     //[string appendString:[@" types " stringByAppendingString:[self.types description]]];
     
-    if (self.image && [self.image count] > 0) {
+    if ([self.image count] > 0) {
         [string appendString:@" | "];
         [string appendString:self.image[0]];
     }
