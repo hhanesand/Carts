@@ -53,10 +53,9 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
         
         self.scanner = [[GLScannerViewController alloc] init];
         self.scanner.delegate = self;
-        self.scanner.modalPresentationStyle = UIModalPresentationCustom;
-        self.scanner.transitioningDelegate = self;
-        self.modalPresentationStyle = UIModalPresentationCustom;
-        self.transitioningDelegate = self;
+        
+//        self.scanner.modalPresentationStyle = UIModalPresentationCustom;
+//        self.scanner.transitioningDelegate = self;
         
         [self tweaks];
     }
