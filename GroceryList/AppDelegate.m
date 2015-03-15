@@ -36,7 +36,7 @@
     }
     
     self.window = [[GLTweakWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    GLTableViewController *tableViewController = [[GLTableViewController alloc] init];
+    GLTableViewController *tableViewController = [[GLTableViewController alloc] initWithStyle:UITableViewStylePlain];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:tableViewController];
     self.window.rootViewController = navigationController;
     

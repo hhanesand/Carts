@@ -12,6 +12,12 @@
 
 @implementation GLTransition
 
++ (instancetype)transitionWithPresentation:(BOOL)isPresenting {
+    id new = [[self alloc] init];
+    ((GLTransition *)new).presenting = isPresenting;
+    return new;
+}
+
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext {
     //using pop spring animations, which do not have a time value...
     //TODO : figure out effect of exceeding animation time
