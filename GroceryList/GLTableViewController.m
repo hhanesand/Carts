@@ -50,11 +50,11 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
         
         self.title = @"Grocery List";
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-            self.scanner = [[GLScannerViewController alloc] init];
-            self.scanner.delegate = self;
-        });
         
+        self.scanner = [[GLScannerViewController alloc] init];
+        self.scanner.delegate = self;
+        self.scanner.modalPresentationStyle = UIModalPresentationCustom;
+        self.scanner.transitioningDelegate = self;
         self.modalPresentationStyle = UIModalPresentationCustom;
         self.transitioningDelegate = self;
         
@@ -97,6 +97,9 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([GLTableViewCell class]) bundle:nil] forCellReuseIdentifier:reuseIdentifier];
+    
+    self.modalPresentationStyle = UIModalPresentationCustom;
+    self.transitioningDelegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -110,6 +113,8 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 }
 
 - (void)didPressAddButton {
+    NSLog(@"%ld", self.modalPresentationStyle);
+    NSLog(@"%@", self.transitioningDelegate);
     [self presentViewController:self.scanner animated:YES completion:nil];
 }
 

@@ -13,9 +13,9 @@
 @implementation GLTransition
 
 + (instancetype)transitionWithPresentation:(BOOL)isPresenting {
-    id new = [[self alloc] init];
-    ((GLTransition *)new).presenting = isPresenting;
-    return new;
+    GLTransition *transition = [[GLTransition alloc] init];
+    transition.presenting = isPresenting;
+    return transition;
 }
 
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext {
