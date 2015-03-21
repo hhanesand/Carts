@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "GLTransition.h"
 
 /**
  *  A class that manages animations to and from view controllers on the screen
@@ -27,9 +26,5 @@
 @property (nonatomic) NSUInteger index;
 
 - (instancetype)initWithRootViewController:(UIViewController *)rootViewController;
-
-- (void)pushViewController:(UIViewController *)viewController withTransition:(GLTransition *)transition;
-
-- (void)popViewControllerView:(UIViewController *)viewController withTransition:(GLTransition *)transition;
 
 @end

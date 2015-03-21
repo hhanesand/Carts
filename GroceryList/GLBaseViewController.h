@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "GLAnimationStack.h"
-#import "GLTransition.h"
 
 /**
  *  Defines the base view controller for almost all VSs used in this project.

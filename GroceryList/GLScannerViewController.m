@@ -28,7 +28,6 @@
 #import "PFQuery+GLQuery.h"
 #import "GLBarcode.h"
 #import "GLParseAnalytics.h"
-#import "GLFadeTransition.h"
 
 #define TICK   NSDate *startTime = [NSDate date]
 #define TOCK   NSLog(@"Time GLScannerViewController: %f", -[startTime timeIntervalSinceNow])
@@ -45,11 +44,20 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 
 @implementation GLScannerViewController
 
-- (instancetype)init {
+- (instancetype)init {//askdjakjsbdkjasbdkjb
     if (self = [super init]) {
         self.manager = [[GLBarcodeManager alloc] init];
         self.bing = [GLBingFetcher sharedFetcher];
         self.scanning = [GLScanningSession session];
+        
+        GLTableViewController *tableViewController = [[GLTableViewController alloc] initWithStyle:UITableViewStylePlain];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:tableViewController];
+        
+        UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+        self.blurView = [[UIVisualEffectView alloc] initWithEffect:blur];
+        [self.view addSubview:self.blurView];
+        [self.blurView addSubview:navigationController.view];
+        [self moveToViewController:navigationController];
         
         [self rac];
         [self tweak];

@@ -15,6 +15,6 @@
 
 @class RACSignal;
 
-@interface GLTableViewController : GLQueryTableViewController<GLBarcodeItemDelegate, GLTweakObserver, UIViewControllerTransitioningDelegate>
+@interface GLTableViewController : GLQueryTableViewController<GLBarcodeItemDelegate, GLTweakObserver>
 
 @end

@@ -13,7 +13,6 @@
 #import "GLTweakWindow.h"
 #import "GLScannerViewController.h"
 #import "GLTableViewController.h"
-#import "GLTransition.h"
 
 @interface AppDelegate ()
 
@@ -36,9 +35,8 @@
     }
     
     self.window = [[GLTweakWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    GLTableViewController *tableViewController = [[GLTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:tableViewController];
-    self.window.rootViewController = navigationController;
+    GLScannerViewController *scanner = [[GLScannerViewController alloc] init];
+    self.window.rootViewController = scanner;
     
     [self.window makeKeyAndVisible];
     

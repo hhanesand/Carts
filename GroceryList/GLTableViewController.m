@@ -27,7 +27,6 @@
 #import "GLTweakCollection.h"
 
 #import "PFObject+GLPFObject.h"
-#import "GLFadeTransition.h"
 
 static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 
@@ -50,13 +49,6 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
         
         self.title = @"Grocery List";
         
-        
-        self.scanner = [[GLScannerViewController alloc] init];
-        self.scanner.delegate = self;
-        
-//        self.scanner.modalPresentationStyle = UIModalPresentationCustom;
-//        self.scanner.transitioningDelegate = self;
-        
         [self tweaks];
     }
     
@@ -73,16 +65,6 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
     NSLog(@"Will move to super view controller %@", parent);
 }
 
-#pragma mark - View Controller Transitioning Delegate
-
-- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
-    return [GLFadeTransition transitionWithPresentation:NO];
-}
-
-- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
-    return [GLFadeTransition transitionWithPresentation:YES];
-}
-
 #pragma mark - View Lifecycle
 
 - (void)viewDidLoad {
@@ -94,11 +76,17 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
     
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 8, 0, 8);
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.backgroundColor = [UIColor colorWithWhite:1.000 alpha:0.750];
+    
+    [self.navigationController.navigationBar setBackgroundImage:[UIColor imageWithColor:[UIColor colorWithWhite:1 alpha:0.9]] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0.523 green:0.935 blue:1.000 alpha:0.2]];
+    self.navigationController.navigationBar.translucent = YES;
+    
+    [self.navigationController.toolbar setBackgroundImage:[UIColor imageWithColor:[UIColor colorWithWhite:1 alpha:0.9]] forToolbarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    self.navigationController.toolbar.translucent = YES;
     
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([GLTableViewCell class]) bundle:nil] forCellReuseIdentifier:reuseIdentifier];
-    
-    self.modalPresentationStyle = UIModalPresentationCustom;
-    self.transitioningDelegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -112,9 +100,7 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 }
 
 - (void)didPressAddButton {
-    NSLog(@"%ld", self.modalPresentationStyle);
-    NSLog(@"%@", self.transitioningDelegate);
-    [self presentViewController:self.scanner animated:YES completion:nil];
+    
 }
 
 #pragma mark - Parse

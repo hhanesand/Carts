@@ -9,7 +9,6 @@
 #import "GLBaseViewController.h"
 #import "GLAnimationContext.h"
 #import "GLTableViewController.h"
-#import "GLTransition.h"
 
 @implementation GLBaseViewController
 
