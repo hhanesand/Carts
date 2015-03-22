@@ -47,10 +47,9 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
         self.loadingViewEnabled = NO;
         self.localDatastoreTag = @"groceryList";
         
-        self.scanner = [[UIStoryboard storyboardWithName:@"GLScannerViewController" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"GLScannerViewController"];
-        self.scanner.view;
-        self.scanner.tableView;
-        self.scanner.searchField;
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+            self.scanner = [[UIStoryboard storyboardWithName:@"GLScannerViewController" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"GLScannerViewController"];
+        });
         
         self.view.frame = [UIScreen mainScreen].bounds;
         

@@ -65,23 +65,22 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 
 #pragma mark - Lifecycle
 
-//- (void)loadView {
-//    [super loadView];
-//
-//    self.scanning.previewLayer.frame = self.view.frame;
-//    self.scanning.delegate = self;
-//    [self.view.layer addSublayer:self.scanning.previewLayer];
-//    [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didPressTestButton)]];
-//}
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.scanning.previewLayer.frame = self.view.frame;
+    self.scanning.delegate = self;
+    [self.view.layer addSublayer:self.scanning.previewLayer];
+    [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didPressTestButton)]];
+
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(15, 0, CGRectGetWidth(self.tableView.frame) - 15, 1 / [UIScreen mainScreen].scale)];
+    line.backgroundColor = self.tableView.separatorColor;
+    self.tableView.tableHeaderView = line;
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    //[self.scanning startScanning];
-}
-
-- (void)moveToViewController:(UIViewController *)viewController {
-    [self addChildViewController:viewController];
-    [viewController didMoveToParentViewController:self];
+    [self.scanning startScanning];
 }
 
 #pragma mark - Scanner Delegate
