@@ -44,7 +44,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 
 @implementation GLScannerViewController
 
-- (instancetype)init {
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super init]) {
         self.manager = [[GLBarcodeManager alloc] init];
         self.bing = [GLBingFetcher sharedFetcher];
@@ -55,6 +55,10 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     }
     
     return self;
+}
+
+- (void)awakeFromNib {
+    NSLog(@"");
 }
 
 #pragma mark - Lifecycle
@@ -69,6 +73,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self.scanning startScanning];
 }
 
@@ -268,6 +273,18 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 
 - (UIWindow *)getWindow {
     return [[UIApplication sharedApplication] keyWindow];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 0;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [tableView dequeueReusableCellWithIdentifier:@"SearchItem" forIndexPath:indexPath];
 }
 
 

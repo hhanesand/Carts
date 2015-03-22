@@ -14,7 +14,9 @@
 @class GLItemConfirmationView;
 @class RACSubject;
 
-@interface GLScannerViewController : GLBaseViewController <GLBarcodeScannerDelegate, GLTweakObserver>
+@interface GLScannerViewController : GLBaseViewController <GLBarcodeScannerDelegate, GLTweakObserver, UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UITextField *searchField;
 
 @property (nonatomic) id<GLBarcodeItemDelegate> delegate;
 

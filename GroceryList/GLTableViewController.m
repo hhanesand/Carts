@@ -47,7 +47,7 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
         self.loadingViewEnabled = NO;
         self.localDatastoreTag = @"groceryList";
         
-        self.scanner = [[GLScannerViewController alloc] init];
+        self.view.frame = [UIScreen mainScreen].bounds;
         
         self.title = @"Grocery List";
         
@@ -76,19 +76,7 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
     UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     [self setToolbarItems:[NSArray arrayWithObjects:flexibleSpace, button, flexibleSpace, nil]];
     
-    self.tableView.separatorInset = UIEdgeInsetsMake(0, 8, 0, 8);
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.tableView.backgroundColor = [UIColor colorWithWhite:1.000 alpha:0.750];
-    
-    [self.navigationController.navigationBar setBackgroundImage:[UIColor imageWithColor:[UIColor colorWithWhite:1 alpha:0.9]] forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0.523 green:0.935 blue:1.000 alpha:0.2]];
-    self.navigationController.navigationBar.translucent = YES;
-    
-    [self.navigationController.toolbar setBackgroundImage:[UIColor imageWithColor:[UIColor colorWithWhite:1 alpha:0.9]] forToolbarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
-    self.navigationController.toolbar.translucent = YES;
-    
-    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([GLTableViewCell class]) bundle:nil] forCellReuseIdentifier:reuseIdentifier];
+    //[self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([GLTableViewCell class]) bundle:nil] forCellReuseIdentifier:reuseIdentifier];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -102,7 +90,7 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 }
 
 - (void)didPressAddButton {
-    [self.navigationController presentViewController:self.scanner animated:YES completion:nil];
+    [self.navigationController presentViewController:[[UIStoryboard storyboardWithName:@"GLScannerViewController" bundle:[NSBundle mainBundle]] instantiateInitialViewController] animated:YES completion:nil];
 }
 
 #pragma mark - Parse
