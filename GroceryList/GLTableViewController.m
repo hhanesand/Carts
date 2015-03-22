@@ -47,6 +47,8 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
         self.loadingViewEnabled = NO;
         self.localDatastoreTag = @"groceryList";
         
+        self.scanner = [[GLScannerViewController alloc] init];
+        
         self.title = @"Grocery List";
         
         [self tweaks];
@@ -100,7 +102,7 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 }
 
 - (void)didPressAddButton {
-    
+    [self.navigationController presentViewController:self.scanner animated:YES completion:nil];
 }
 
 #pragma mark - Parse

@@ -35,8 +35,9 @@
     }
     
     self.window = [[GLTweakWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    GLScannerViewController *scanner = [[GLScannerViewController alloc] init];
-    self.window.rootViewController = scanner;
+    GLTableViewController *itemsTableViewController = [[GLTableViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:itemsTableViewController];
+    self.window.rootViewController = navigationController;
     
     [self.window makeKeyAndVisible];
     
