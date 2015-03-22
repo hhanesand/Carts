@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14A329r" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GLScannerViewController">
+            <connections>
+                <outlet property="searchField" destination="br3-hX-t2c" id="nrq-vZ-FkQ"/>
+                <outlet property="tableView" destination="Drf-tu-fWk" id="7ro-BM-MuE"/>
+                <outlet property="view" destination="kcO-Ss-gXb" id="Qx1-t4-S3F"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="kcO-Ss-gXb">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="133-pb-666">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="65"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="gBT-1L-SsI">
+                            <rect key="frame" x="8" y="16" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="idq-Vt-wSr"/>
+                                <constraint firstAttribute="height" constant="30" id="x7D-g3-XDr"/>
+                            </constraints>
+                        </imageView>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Search" placeholder="Search" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="br3-hX-t2c" userLabel="Search field">
+                            <rect key="frame" x="46" y="8" width="546" height="49"/>
+                            <color key="textColor" white="0.69165826610000003" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="23"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="light"/>
+                        </textField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="br3-hX-t2c" firstAttribute="top" secondItem="133-pb-666" secondAttribute="top" constant="8" id="0cd-nS-iY9"/>
+                        <constraint firstAttribute="trailing" secondItem="br3-hX-t2c" secondAttribute="trailing" constant="8" id="5ni-Kx-el4"/>
+                        <constraint firstAttribute="height" constant="65" id="8Pt-Ah-Tlx"/>
+                        <constraint firstAttribute="centerY" secondItem="gBT-1L-SsI" secondAttribute="centerY" constant="2" id="KsT-XN-eGC"/>
+                        <constraint firstAttribute="bottom" secondItem="br3-hX-t2c" secondAttribute="bottom" constant="8" id="SDs-AF-3T6"/>
+                        <constraint firstItem="gBT-1L-SsI" firstAttribute="leading" secondItem="133-pb-666" secondAttribute="leading" constant="8" id="UmO-5d-o7H"/>
+                        <constraint firstItem="br3-hX-t2c" firstAttribute="leading" secondItem="gBT-1L-SsI" secondAttribute="trailing" constant="8" id="ptG-wu-G7d"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Drf-tu-fWk">
+                    <rect key="frame" x="0.0" y="65" width="600" height="470"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ced-vD-K50">
+                    <rect key="frame" x="0.0" y="535" width="600" height="65"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scan" translatesAutoresizingMaskIntoConstraints="NO" id="eCZ-Y8-XdA">
+                            <rect key="frame" x="270" y="2" width="61" height="61"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="61" id="1QJ-he-nDL"/>
+                                <constraint firstAttribute="width" constant="61" id="UIj-hu-N9R"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="centerX" secondItem="eCZ-Y8-XdA" secondAttribute="centerX" constant="-0.5" id="0dh-A1-qGW"/>
+                        <constraint firstAttribute="height" constant="65" id="2CE-10-jre"/>
+                        <constraint firstAttribute="centerY" secondItem="eCZ-Y8-XdA" secondAttribute="centerY" id="s3N-xd-xR7"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Drf-tu-fWk" secondAttribute="trailing" id="0Ps-gf-IYJ"/>
+                <constraint firstAttribute="trailing" secondItem="ced-vD-K50" secondAttribute="trailing" id="1B1-wy-6ud"/>
+                <constraint firstAttribute="bottom" secondItem="ced-vD-K50" secondAttribute="bottom" id="3yl-PP-j0P"/>
+                <constraint firstAttribute="trailing" secondItem="ced-vD-K50" secondAttribute="trailing" id="7HW-Qp-Zbn"/>
+                <constraint firstItem="ced-vD-K50" firstAttribute="top" secondItem="Drf-tu-fWk" secondAttribute="bottom" id="7Tw-19-fVU"/>
+                <constraint firstItem="133-pb-666" firstAttribute="top" secondItem="kcO-Ss-gXb" secondAttribute="top" id="7dn-oS-g8C"/>
+                <constraint firstItem="ced-vD-K50" firstAttribute="leading" secondItem="kcO-Ss-gXb" secondAttribute="leading" id="9rP-fo-nb7"/>
+                <constraint firstItem="Drf-tu-fWk" firstAttribute="top" secondItem="133-pb-666" secondAttribute="bottom" id="9vO-I1-M3T"/>
+                <constraint firstItem="ced-vD-K50" firstAttribute="top" secondItem="Drf-tu-fWk" secondAttribute="bottom" id="DNY-To-VO2"/>
+                <constraint firstAttribute="trailing" secondItem="133-pb-666" secondAttribute="trailing" id="DqG-Pk-SxS"/>
+                <constraint firstItem="Drf-tu-fWk" firstAttribute="leading" secondItem="kcO-Ss-gXb" secondAttribute="leading" id="TSI-u7-dah"/>
+                <constraint firstItem="ced-vD-K50" firstAttribute="top" secondItem="Drf-tu-fWk" secondAttribute="bottom" id="XQ1-Nt-zEQ"/>
+                <constraint firstItem="Drf-tu-fWk" firstAttribute="leading" secondItem="kcO-Ss-gXb" secondAttribute="leading" id="dn5-5a-b8m"/>
+                <constraint firstAttribute="trailing" secondItem="133-pb-666" secondAttribute="trailing" id="eTN-Wn-JHY"/>
+                <constraint firstItem="Drf-tu-fWk" firstAttribute="top" secondItem="133-pb-666" secondAttribute="bottom" id="g9F-4G-7ok"/>
+                <constraint firstItem="Drf-tu-fWk" firstAttribute="top" secondItem="133-pb-666" secondAttribute="bottom" id="rBX-02-mir"/>
+                <constraint firstItem="ced-vD-K50" firstAttribute="leading" secondItem="kcO-Ss-gXb" secondAttribute="leading" id="rQ0-GC-SPf"/>
+                <constraint firstItem="133-pb-666" firstAttribute="leading" secondItem="kcO-Ss-gXb" secondAttribute="leading" id="wXI-TK-Qjk"/>
+                <constraint firstAttribute="trailing" secondItem="Drf-tu-fWk" secondAttribute="trailing" id="yiz-68-Hd1"/>
+                <constraint firstItem="133-pb-666" firstAttribute="leading" secondItem="kcO-Ss-gXb" secondAttribute="leading" id="zlW-1J-Fe9"/>
+            </constraints>
+            <point key="canvasLocation" x="737" y="694"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="scan" width="60" height="60"/>
+        <image name="search" width="30" height="30"/>
+    </resources>
+</document>

@@ -15,6 +15,7 @@
 @class RACSubject;
 
 @interface GLScannerViewController : GLBaseViewController <GLBarcodeScannerDelegate, GLTweakObserver, UITableViewDelegate, UITableViewDataSource>
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *searchField;
 

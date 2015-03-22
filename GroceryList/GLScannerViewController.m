@@ -44,8 +44,8 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 
 @implementation GLScannerViewController
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    if (self = [super init]) {
+- (instancetype)init {
+    if (self = [super initWithNibName:@"GLScannerViewController" bundle:[NSBundle mainBundle]]) {
         self.manager = [[GLBarcodeManager alloc] init];
         self.bing = [GLBingFetcher sharedFetcher];
         self.scanning = [GLScanningSession session];
@@ -58,23 +58,25 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 }
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
+    
     NSLog(@"");
 }
 
 #pragma mark - Lifecycle
 
-- (void)loadView {
-    [super loadView];
-    
-    self.scanning.previewLayer.frame = self.view.frame;
-    self.scanning.delegate = self;
-    [self.view.layer addSublayer:self.scanning.previewLayer];
-    [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didPressTestButton)]];
-}
+//- (void)loadView {
+//    [super loadView];
+//
+//    self.scanning.previewLayer.frame = self.view.frame;
+//    self.scanning.delegate = self;
+//    [self.view.layer addSublayer:self.scanning.previewLayer];
+//    [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didPressTestButton)]];
+//}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.scanning startScanning];
+    //[self.scanning startScanning];
 }
 
 - (void)moveToViewController:(UIViewController *)viewController {
@@ -160,7 +162,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     RACSignal *canSubmitSignal = [confirmationView.name.rac_textSignal map:^id(NSString *name) {
         return @([name length] > 0);
     }];
-
+    
     @weakify(self);
     confirmationView.confirm.rac_command = [[RACCommand alloc] initWithEnabled:canSubmitSignal signalBlock:^RACSignal *(id input) {
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
@@ -227,44 +229,44 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 
 - (void)rac {
     [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:UIKeyboardWillShowNotification object:nil]
-        takeUntil:self.rac_willDeallocSignal]
-        subscribeNext:^(NSNotification *notif) {
-            //see http://stackoverflow.com/a/19236013/4080860
+      takeUntil:self.rac_willDeallocSignal]
+     subscribeNext:^(NSNotification *notif) {
+         //see http://stackoverflow.com/a/19236013/4080860
          
-            CGRect keyboardFrame = [notif.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-            CGRect activeFieldFrame = [[self getWindow] convertRect:self.confirmationView.activeField.frame fromView:self.confirmationView];
+         CGRect keyboardFrame = [notif.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+         CGRect activeFieldFrame = [[self getWindow] convertRect:self.confirmationView.activeField.frame fromView:self.confirmationView];
          
-            if (CGRectIntersectsRect(keyboardFrame, activeFieldFrame)) {
-                [UIView beginAnimations:nil context:NULL];
-                [UIView setAnimationDuration:[notif.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
-                [UIView setAnimationCurve:[notif.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue]];
-                [UIView setAnimationBeginsFromCurrentState:YES];
+         if (CGRectIntersectsRect(keyboardFrame, activeFieldFrame)) {
+             [UIView beginAnimations:nil context:NULL];
+             [UIView setAnimationDuration:[notif.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
+             [UIView setAnimationCurve:[notif.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue]];
+             [UIView setAnimationBeginsFromCurrentState:YES];
              
-                CGFloat intersectionDistance =  CGRectGetMaxY(activeFieldFrame) - CGRectGetMinY(keyboardFrame);
-                self.confirmationView.frame = CGRectOffset(self.confirmationView.frame, 0, -intersectionDistance);
+             CGFloat intersectionDistance =  CGRectGetMaxY(activeFieldFrame) - CGRectGetMinY(keyboardFrame);
+             self.confirmationView.frame = CGRectOffset(self.confirmationView.frame, 0, -intersectionDistance);
              
-                [UIView commitAnimations];
-            }
-        }];
+             [UIView commitAnimations];
+         }
+     }];
     
     [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:UIKeyboardWillHideNotification object:nil]
-        takeUntil:self.rac_willDeallocSignal]
-        subscribeNext:^(NSNotification *notif) {
-            //see http://stackoverflow.com/a/19236013/4080860
-        
-            CGFloat offset = CGRectGetHeight([self getWindow].frame) - CGRectGetMaxY(self.confirmationView.frame);
-        
-            if (roundf(offset) != 0) {
-                [UIView beginAnimations:nil context:NULL];
-                [UIView setAnimationDuration:[notif.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
-                [UIView setAnimationCurve:[notif.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue]];
-                [UIView setAnimationBeginsFromCurrentState:YES];
-            
-                self.confirmationView.frame = CGRectOffset(self.confirmationView.frame, 0, roundf(offset));
-            
-                [UIView commitAnimations];
-            }
-        }];
+      takeUntil:self.rac_willDeallocSignal]
+     subscribeNext:^(NSNotification *notif) {
+         //see http://stackoverflow.com/a/19236013/4080860
+         
+         CGFloat offset = CGRectGetHeight([self getWindow].frame) - CGRectGetMaxY(self.confirmationView.frame);
+         
+         if (roundf(offset) != 0) {
+             [UIView beginAnimations:nil context:NULL];
+             [UIView setAnimationDuration:[notif.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
+             [UIView setAnimationCurve:[notif.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue]];
+             [UIView setAnimationBeginsFromCurrentState:YES];
+             
+             self.confirmationView.frame = CGRectOffset(self.confirmationView.frame, 0, roundf(offset));
+             
+             [UIView commitAnimations];
+         }
+     }];
 }
 
 - (UIView *)getTopView {

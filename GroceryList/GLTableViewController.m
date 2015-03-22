@@ -47,6 +47,11 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
         self.loadingViewEnabled = NO;
         self.localDatastoreTag = @"groceryList";
         
+        self.scanner = [[UIStoryboard storyboardWithName:@"GLScannerViewController" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"GLScannerViewController"];
+        self.scanner.view;
+        self.scanner.tableView;
+        self.scanner.searchField;
+        
         self.view.frame = [UIScreen mainScreen].bounds;
         
         self.title = @"Grocery List";
@@ -90,7 +95,7 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 }
 
 - (void)didPressAddButton {
-    [self.navigationController presentViewController:[[UIStoryboard storyboardWithName:@"GLScannerViewController" bundle:[NSBundle mainBundle]] instantiateInitialViewController] animated:YES completion:nil];
+    [self.navigationController presentViewController:self.scanner animated:YES completion:nil];
 }
 
 #pragma mark - Parse
