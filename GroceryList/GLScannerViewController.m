@@ -65,22 +65,31 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 
 #pragma mark - Lifecycle
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
     self.scanning.previewLayer.frame = self.view.frame;
     self.scanning.delegate = self;
-    [self.view.layer addSublayer:self.scanning.previewLayer];
-    [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didPressTestButton)]];
+    [self.scanning startScanning];
+    
+    UIView *videoPreviewView = [[UIView alloc] initWithFrame:self.view.frame];
+    [videoPreviewView.layer addSublayer:self.scanning.previewLayer];
+    
+    [self.view addSubview:videoPreviewView];
+    [self.view sendSubviewToBack:videoPreviewView];
+    
+    UIBlurEffect *blue = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    self.blurView = [[UIVisualEffectView alloc] initWithEffect:blue];
+    
+    [self.view addSubview:self.blurView];
 
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(15, 0, CGRectGetWidth(self.tableView.frame) - 15, 1 / [UIScreen mainScreen].scale)];
     line.backgroundColor = self.tableView.separatorColor;
     self.tableView.tableHeaderView = line;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.scanning startScanning];
+- (BOOL)prefersStatusBarHidden {
+    return YES;
 }
 
 #pragma mark - Scanner Delegate

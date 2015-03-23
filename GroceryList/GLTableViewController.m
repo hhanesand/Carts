@@ -48,7 +48,7 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
         self.localDatastoreTag = @"groceryList";
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-            self.scanner = [[UIStoryboard storyboardWithName:@"GLScannerViewController" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"GLScannerViewController"];
+            self.scanner = [[GLScannerViewController alloc] init];
         });
         
         self.view.frame = [UIScreen mainScreen].bounds;
@@ -95,6 +95,10 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 
 - (void)didPressAddButton {
     [self.navigationController presentViewController:self.scanner animated:YES completion:nil];
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return NO;
 }
 
 #pragma mark - Parse
