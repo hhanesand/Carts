@@ -77,11 +77,6 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     
     [self.view addSubview:videoPreviewView];
     [self.view sendSubviewToBack:videoPreviewView];
-    
-    UIBlurEffect *blue = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-    self.blurView = [[UIVisualEffectView alloc] initWithEffect:blue];
-    
-    [self.view addSubview:self.blurView];
 
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(15, 0, CGRectGetWidth(self.tableView.frame) - 15, 1 / [UIScreen mainScreen].scale)];
     line.backgroundColor = self.tableView.separatorColor;
