@@ -28,6 +28,7 @@
 #import "PFQuery+GLQuery.h"
 #import "GLBarcode.h"
 #import "GLParseAnalytics.h"
+#import "UIView+RecursiveInteraction.h"
 
 #define TICK   NSDate *startTime = [NSDate date]
 #define TOCK   NSLog(@"Time GLScannerViewController: %f", -[startTime timeIntervalSinceNow])
@@ -37,7 +38,6 @@
 @property (nonatomic) GLBingFetcher *bing;
 @property (nonatomic) GLScanningSession *scanning;
 @property (nonatomic) NSDictionary *tweaksForConfirmAnimation;
-@property (nonatomic) UIVisualEffectView *blurView;
 @end
 
 static NSString *identifier = @"GLBarcodeItemTableViewCell";
@@ -57,23 +57,21 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     return self;
 }
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    
-    NSLog(@"");
-}
-
 #pragma mark - Lifecycle
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+
     self.scanning.previewLayer.frame = self.view.frame;
     self.scanning.delegate = self;
     [self.scanning startScanning];
     
     UIView *videoPreviewView = [[UIView alloc] initWithFrame:self.view.frame];
     [videoPreviewView.layer addSublayer:self.scanning.previewLayer];
+    
+    UITapGestureRecognizer *doubleTapTestingScan = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(testScanning)];
+    doubleTapTestingScan.numberOfTapsRequired = 2;
+    [videoPreviewView addGestureRecognizer:doubleTapTestingScan];
     
     [self.view addSubview:videoPreviewView];
     [self.view sendSubviewToBack:videoPreviewView];
@@ -83,19 +81,42 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     self.tableView.tableHeaderView = line;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
 - (BOOL)prefersStatusBarHidden {
     return YES;
 }
 
 #pragma mark - Scanner Delegate
+//present the camera view that is lying in the background
+- (IBAction)didTapScanningButton:(UIButton *)sender {
+    NSLog(@"Logging");
+    POPSpringAnimation *lift = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+    lift.fromValue = [NSValue valueWithCGPoint:CGPointMake(1, 1)];
+    lift.toValue = [NSValue valueWithCGPoint:CGPointMake(2, 2)];
+    lift.springSpeed = 15;
+    lift.springBounciness = 0;
+    
+    POPSpringAnimation *fade = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlpha];
+    fade.fromValue = @1;
+    fade.toValue = @0;
+    fade.springSpeed = 15;
+    fade.springBounciness = 0;
+    
+    //disable user interaction since we are never removing the view we are animating out of the way from the view hierarchy
+   // [self.blurView setRecursiveInteraction:NO];
+    
+    [self.animationStack pushAnimation:lift withTargetObject:self.blurView.layer forKey:@"lift"];
+    [self.animationStack pushAnimation:fade withTargetObject:self.blurView forKey:@"fade"];
+}
 
-- (void)didPressTestButton {
+- (void)testScanning {
     [self scanner:self.scanning didRecieveBarcode:[GLBarcode barcodeWithBarcode:@"0012000001086"]];
 }
 
 - (void)scanner:(GLScanningSession *)scanner didRecieveBarcode:(GLBarcode *)barcode {
-    [scanner stopScanning];
-    
     [SVProgressHUD show];
     
     @weakify(self);
@@ -172,9 +193,10 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
             @strongify(self);
             [self.delegate didRecieveNewListItem:list];
             
-            [[[self.animationStack popAllAnimations] doCompleted:^{
-                [self.confirmationView removeFromSuperview];
-                [self dismissViewControllerAnimated:YES completion:nil];
+            [[[self.animationStack popAllAnimationsWithTargetObject:self.confirmationView] flattenMap:^RACStream *(id value) {
+                return [[self.animationStack popAllAnimations] doCompleted:^{
+                    [self.confirmationView removeFromSuperview];
+                }];
             }] subscribeCompleted:^{
                 [subscriber sendCompleted];
             }];

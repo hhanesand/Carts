@@ -50,11 +50,11 @@
 
 - (RACSignal *)popAllAnimations {
     @weakify(self);
-    return [[[[self.animationStack.rac_sequence.signal doNext:^(GLAnimationStore *store) {
+    return [[[self.animationStack.rac_sequence.signal doNext:^(GLAnimationStore *store) {
         [store.targetObject pop_addAnimation:store.animation forKey:@"reverseAnimation"];
     }] flattenMap:^RACStream *(GLAnimationStore *store) {
         return [store.animation addRACSignalToAnimation];
-    }] logCompleted] doCompleted:^{
+    }] doCompleted:^{
         @strongify(self);
         self.animationStack = [NSMutableArray new];
     }];

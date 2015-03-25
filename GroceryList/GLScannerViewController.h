@@ -18,6 +18,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *searchField;
+@property (weak, nonatomic) IBOutlet UIVisualEffectView *blurView;
 
 @property (nonatomic) id<GLBarcodeItemDelegate> delegate;
 
