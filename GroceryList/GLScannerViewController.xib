@@ -90,7 +90,7 @@
                                     </constraints>
                                 </view>
                                 <vibrancyEffect>
-                                    <blurEffect style="light"/>
+                                    <blurEffect style="dark"/>
                                 </vibrancyEffect>
                             </visualEffectView>
                         </subviews>
@@ -101,7 +101,7 @@
                             <constraint firstItem="Oc9-28-TH1" firstAttribute="top" secondItem="FVQ-OC-AV6" secondAttribute="top" id="wCt-xe-Fde"/>
                         </constraints>
                     </view>
-                    <blurEffect style="light"/>
+                    <blurEffect style="dark"/>
                 </visualEffectView>
             </subviews>
             <constraints>

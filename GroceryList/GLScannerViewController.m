@@ -29,6 +29,7 @@
 #import "GLBarcode.h"
 #import "GLParseAnalytics.h"
 #import "UIView+RecursiveInteraction.h"
+#import "GLCameraLayer.h"
 
 #define TICK   NSDate *startTime = [NSDate date]
 #define TOCK   NSLog(@"Time GLScannerViewController: %f", -[startTime timeIntervalSinceNow])
@@ -38,6 +39,7 @@
 @property (nonatomic) GLBingFetcher *bing;
 @property (nonatomic) GLScanningSession *scanning;
 @property (nonatomic) NSDictionary *tweaksForConfirmAnimation;
+@property (nonatomic) GLCameraLayer *targetingReticule;
 @end
 
 static NSString *identifier = @"GLBarcodeItemTableViewCell";
@@ -61,12 +63,15 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    NSLog(@"Frame %@", NSStringFromCGRect(self.view.frame));
+    NSLog(@"Bounds %@", NSStringFromCGRect(self.view.bounds));
 
     self.scanning.previewLayer.frame = self.view.frame;
     self.scanning.delegate = self;
     [self.scanning startScanning];
-    
-    UIView *videoPreviewView = [[UIView alloc] initWithFrame:self.view.frame];
+
+    UIView *videoPreviewView = [[UIView alloc] initWithFrame:self.view.bounds];
     [videoPreviewView.layer addSublayer:self.scanning.previewLayer];
     
     UITapGestureRecognizer *doubleTapTestingScan = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(testScanning)];
@@ -75,6 +80,14 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     
     [self.view addSubview:videoPreviewView];
     [self.view sendSubviewToBack:videoPreviewView];
+    
+    CGRect bounds = self.view.bounds;
+    const CGFloat sideLength = CGRectGetWidth(bounds) * 0.66;
+    CGRect cameraRect = CGRectMake(CGRectGetMidX(bounds) - sideLength * 0.5, CGRectGetMidY(bounds) - sideLength * 0.5, sideLength, sideLength);
+    
+    self.targetingReticule = [[GLCameraLayer alloc] initWithBounds:cameraRect cornerRadius:10 lineLength:4];
+    [self.view.layer addSublayer:self.targetingReticule];
+    self.targetingReticule.opacity = 0;
 
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(15, 0, CGRectGetWidth(self.tableView.frame) - 15, 1 / [UIScreen mainScreen].scale)];
     line.backgroundColor = self.tableView.separatorColor;
@@ -92,24 +105,26 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 #pragma mark - Scanner Delegate
 //present the camera view that is lying in the background
 - (IBAction)didTapScanningButton:(UIButton *)sender {
-    NSLog(@"Logging");
+    //layer scale somehow works better than the view scale... don't know why
     POPSpringAnimation *lift = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
     lift.fromValue = [NSValue valueWithCGPoint:CGPointMake(1, 1)];
     lift.toValue = [NSValue valueWithCGPoint:CGPointMake(2, 2)];
-    lift.springSpeed = 15;
+    lift.springSpeed = 12;
     lift.springBounciness = 0;
     
-    POPSpringAnimation *fade = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlpha];
+    POPSpringAnimation *fade = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerOpacity];
     fade.fromValue = @1;
     fade.toValue = @0;
-    fade.springSpeed = 15;
+    fade.springSpeed = 10;
     fade.springBounciness = 0;
     
     //disable user interaction since we are never removing the view we are animating out of the way from the view hierarchy
    // [self.blurView setRecursiveInteraction:NO];
     
+    [self.animationStack pushAnimation:fade withTargetObject:self.blurView.layer forKey:@"fade"];
     [self.animationStack pushAnimation:lift withTargetObject:self.blurView.layer forKey:@"lift"];
-    [self.animationStack pushAnimation:fade withTargetObject:self.blurView forKey:@"fade"];
+    
+//    [self.animationStack pushAnimation:[POPPropertyAnimation reverseAnimation:fade] withTargetObject:self.targetingReticule forKey:@"fade"];
 }
 
 - (void)testScanning {
@@ -312,6 +327,12 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     return [tableView dequeueReusableCellWithIdentifier:@"SearchItem" forIndexPath:indexPath];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(15, 0, CGRectGetWidth(self.tableView.frame) - 15, 1 / [UIScreen mainScreen].scale)];
+    line.backgroundColor = self.tableView.separatorColor;
+    return line;
 }
 
 

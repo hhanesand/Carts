@@ -49,6 +49,7 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
             self.scanner = [[GLScannerViewController alloc] init];
+            self.scanner.view.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds));
         });
         
         self.view.frame = [UIScreen mainScreen].bounds;

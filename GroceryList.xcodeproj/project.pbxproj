@@ -58,6 +58,7 @@
 		F2E544EE1A6CB55100CB52E5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2E544EC1A6CB55100CB52E5 /* LaunchScreen.xib */; };
 		F2E544FA1A6CB55100CB52E5 /* GroceryListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E544F91A6CB55100CB52E5 /* GroceryListTests.m */; };
 		F2E545051A6CB5D400CB52E5 /* GLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E545041A6CB5D400CB52E5 /* GLTableViewCell.m */; };
+		F2F454051AC4816D002B8768 /* GLCameraLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F454041AC4816D002B8768 /* GLCameraLayer.m */; };
 		F2F797CE1AB0B6EF00886A2D /* GLQueryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F797CD1AB0B6EF00886A2D /* GLQueryTableViewController.m */; };
 		F2F797D51AB1323500886A2D /* PFObject+GLPFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F797D41AB1323500886A2D /* PFObject+GLPFObject.m */; };
 		F2F948B21A8947BD002C5177 /* GLBarcodeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F948B11A8947BD002C5177 /* GLBarcodeObject.m */; };
@@ -169,6 +170,8 @@
 		F2E544F91A6CB55100CB52E5 /* GroceryListTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroceryListTests.m; sourceTree = "<group>"; };
 		F2E545031A6CB5D400CB52E5 /* GLTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTableViewCell.h; sourceTree = "<group>"; };
 		F2E545041A6CB5D400CB52E5 /* GLTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTableViewCell.m; sourceTree = "<group>"; };
+		F2F454031AC4816D002B8768 /* GLCameraLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCameraLayer.h; sourceTree = "<group>"; };
+		F2F454041AC4816D002B8768 /* GLCameraLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLCameraLayer.m; sourceTree = "<group>"; };
 		F2F797CC1AB0B6EF00886A2D /* GLQueryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLQueryTableViewController.h; sourceTree = "<group>"; };
 		F2F797CD1AB0B6EF00886A2D /* GLQueryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLQueryTableViewController.m; sourceTree = "<group>"; };
 		F2F797D31AB1323500886A2D /* PFObject+GLPFObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFObject+GLPFObject.h"; sourceTree = "<group>"; };
@@ -397,6 +400,8 @@
 				F29214B71A9D4BD400015EB2 /* GLItemConfirmationView.h */,
 				F29214B81A9D4BD400015EB2 /* GLItemConfirmationView.m */,
 				F29214C31AA01A2100015EB2 /* GLItemConfirmationView.xib */,
+				F2F454031AC4816D002B8768 /* GLCameraLayer.h */,
+				F2F454041AC4816D002B8768 /* GLCameraLayer.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -671,6 +676,7 @@
 				F2DFA8791AA7E66200CF05B9 /* GLAnimationStore.m in Sources */,
 				F22F2D7D1A72D6FD00C878EC /* GLBarcodeDatabase.m in Sources */,
 				F29214B91A9D4BD400015EB2 /* GLItemConfirmationView.m in Sources */,
+				F2F454051AC4816D002B8768 /* GLCameraLayer.m in Sources */,
 				F2BB86841AAE3EF700E02FF3 /* GLScanningSession.m in Sources */,
 				F25E49111A86B141006E1252 /* GLBingFetcher.m in Sources */,
 				F22079F81AAF982200BC5C98 /* GLBarcode.m in Sources */,

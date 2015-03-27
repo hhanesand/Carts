@@ -10,3 +10,4 @@ pod 'AFOAuth1'
 pod 'Tweaks'
 pod 'dyci', :configuration => ['Debug']
 pod 'pop'
+pod 'POP+MCAnimate'

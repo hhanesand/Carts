@@ -27,17 +27,39 @@ PODS:
   - dyci (0.1.5.6):
     - dyci/Injections (= 0.1.5.6)
   - dyci/Injections (0.1.5.6)
-  - Facebook-iOS-SDK (3.23.0):
+  - Facebook-iOS-SDK (3.23.2):
     - Bolts (~> 1.0)
-  - Parse (1.6.4):
+  - Parse (1.7.0):
     - Bolts (~> 1.1)
-  - ParseFacebookUtils (1.6.4):
-    - Facebook-iOS-SDK (~> 3.20)
-    - Parse (~> 1.6.4)
+  - ParseFacebookUtils (1.7.0):
+    - Facebook-iOS-SDK (~> 3.23)
+    - Parse (~> 1.7.0)
   - ParseUI (1.1.1):
     - Parse (~> 1.6)
     - ParseFacebookUtils (~> 1.6)
   - pop (1.0.7)
+  - POP+MCAnimate (2.0.1):
+    - pop (~> 1.0)
+    - POP+MCAnimate/Animations (= 2.0.1)
+    - POP+MCAnimate/Group (= 2.0.1)
+    - POP+MCAnimate/Internal (= 2.0.1)
+    - POP+MCAnimate/Shorthand (= 2.0.1)
+    - POP+MCAnimate/Velocity (= 2.0.1)
+  - POP+MCAnimate/Animations (2.0.1):
+    - pop (~> 1.0)
+    - POP+MCAnimate/Group
+    - POP+MCAnimate/Internal
+    - POP+MCAnimate/Shorthand
+    - POP+MCAnimate/Velocity
+  - POP+MCAnimate/Group (2.0.1):
+    - pop (~> 1.0)
+  - POP+MCAnimate/Internal (2.0.1):
+    - pop (~> 1.0)
+  - POP+MCAnimate/Shorthand (2.0.1):
+    - pop (~> 1.0)
+  - POP+MCAnimate/Velocity (2.0.1):
+    - pop (~> 1.0)
+    - POP+MCAnimate/Internal
   - ReactiveCocoa (2.4.7):
     - ReactiveCocoa/UI (= 2.4.7)
   - ReactiveCocoa/Core (2.4.7):
@@ -46,7 +68,7 @@ PODS:
   - ReactiveCocoa/UI (2.4.7):
     - ReactiveCocoa/Core
   - SVProgressHUD (1.1.2)
-  - Tweaks (1.1.0)
+  - Tweaks (2.0.0)
 
 DEPENDENCIES:
   - AFNetworking-RACExtensions
@@ -54,6 +76,7 @@ DEPENDENCIES:
   - dyci
   - ParseUI
   - pop
+  - POP+MCAnimate
   - ReactiveCocoa
   - SVProgressHUD
   - Tweaks
@@ -64,13 +87,14 @@ SPEC CHECKSUMS:
   AFOAuth1: 0ac5604b3c03b4deaa33735767aebd6faa592099
   Bolts: dd9fb8433d67f5acc3b6b4d1379bbc5513d716c1
   dyci: 86668b266b8a281cb6db02843150f6a210c34ee9
-  Facebook-iOS-SDK: 3d65f685348b789e46a9aacf92bfa85b60b63755
-  Parse: c2610f7a12ad0defc974803b819c4efe7746e6db
-  ParseFacebookUtils: 00833ccf6fec7d6429e2403fe457496a5089358b
+  Facebook-iOS-SDK: cd87f0b2f0c1d9574b44e8fa2baacc275524bac3
+  Parse: 3c2d4e6ade7b59d31c0bc8106340c6b81b31bc0f
+  ParseFacebookUtils: f0c954253a65e945d7cb73400c33bc661f516b85
   ParseUI: f7e9e0e5271f75a19c74ead8fdd95d36160e268e
   pop: 2f14a1ea61339767af9e66741b418c831b3844df
+  POP+MCAnimate: 528a556e3754a0b406adc481b02ec2984cfd1032
   ReactiveCocoa: 313fc53cc9aeb2bbbc3f5f13c7eac16478d9af8f
   SVProgressHUD: da7a49e789af645d9279ffbca62318945a832438
-  Tweaks: 05b197d4a1247288f576587546bc1932189d8c98
+  Tweaks: 524fa47636cce3bf3a4d9156e980f10ae9480e81
 
 COCOAPODS: 0.36.0.beta.1
