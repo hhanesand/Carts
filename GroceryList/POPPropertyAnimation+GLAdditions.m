@@ -24,10 +24,6 @@
         
         reverseSpringAnimation.springBounciness = springAnimationToReverse.springBounciness;
         reverseSpringAnimation.springSpeed = springAnimationToReverse.springSpeed;
-        reverseSpringAnimation.dynamicsFriction = springAnimationToReverse.dynamicsFriction;
-        reverseSpringAnimation.dynamicsMass = springAnimationToReverse.dynamicsMass;
-        reverseSpringAnimation.dynamicsTension = springAnimationToReverse.dynamicsTension;
-        
 
         reverseSpringAnimation.toValue = springAnimationToReverse.fromValue;
         reverseSpringAnimation.fromValue = springAnimationToReverse.toValue;
@@ -52,7 +48,6 @@
     
     self.completionBlock = ^(POPAnimation *animation, BOOL done) {
         if (done) {
-            [completion sendNext:animation];
             [completion sendCompleted];
         }
     };

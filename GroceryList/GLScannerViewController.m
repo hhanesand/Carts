@@ -106,25 +106,32 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 //present the camera view that is lying in the background
 - (IBAction)didTapScanningButton:(UIButton *)sender {
     //layer scale somehow works better than the view scale... don't know why
-    POPSpringAnimation *lift = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+    POPBasicAnimation *lift = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
     lift.fromValue = [NSValue valueWithCGPoint:CGPointMake(1, 1)];
     lift.toValue = [NSValue valueWithCGPoint:CGPointMake(2, 2)];
-    lift.springSpeed = 12;
-    lift.springBounciness = 0;
+//    lift.springSpeed = 12;
+//    lift.springBounciness = 0;
     
-    POPSpringAnimation *fade = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerOpacity];
+//    NSLog(@"Lift %@", lift);
+//    NSLog(@"Vel %@", lift.velocity);
+    
+    POPBasicAnimation *fade = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerOpacity];
     fade.fromValue = @1;
     fade.toValue = @0;
-    fade.springSpeed = 10;
-    fade.springBounciness = 0;
+//    fade.springSpeed = 10;
+//    fade.springBounciness = 0;
     
+//    NSLog(@"Fade %@", fade);
+//    NSLog(@"Vel %@", fade.velocity);
+    
+//    NSLog(@"Reverse %@", [POPPropertyAnimation reverseAnimation:fade]);
+//    NSLog(@"Vel %@", ((POPSpringAnimation *)[POPPropertyAnimation reverseAnimation:fade]).velocity);
     //disable user interaction since we are never removing the view we are animating out of the way from the view hierarchy
    // [self.blurView setRecursiveInteraction:NO];
     
     [self.animationStack pushAnimation:fade withTargetObject:self.blurView.layer forKey:@"fade"];
     [self.animationStack pushAnimation:lift withTargetObject:self.blurView.layer forKey:@"lift"];
-    
-//    [self.animationStack pushAnimation:[POPPropertyAnimation reverseAnimation:fade] withTargetObject:self.targetingReticule forKey:@"fade"];
+    [self.animationStack pushAnimation:[POPPropertyAnimation reverseAnimation:fade] withTargetObject:self.targetingReticule forKey:@"fade"];
 }
 
 - (void)testScanning {
@@ -155,11 +162,11 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     GLItemConfirmationView *confirmationView = [self prepareConfirmationViewWithListItem:listItem];
     CGPoint finalConfirmationViewPosition = CGPointMake(self.view.center.x, CGRectGetHeight(self.view.frame) - CGRectGetHeight(confirmationView.frame) * 0.5);
     
-    POPSpringAnimation *presentConfirmationView = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
+    POPBasicAnimation *presentConfirmationView = [POPBasicAnimation animationWithPropertyNamed:kPOPViewCenter];
     presentConfirmationView.fromValue = [NSValue valueWithCGPoint:confirmationView.center];
     presentConfirmationView.toValue = [NSValue valueWithCGPoint:finalConfirmationViewPosition];
-    presentConfirmationView.springBounciness = [self.tweaksForConfirmAnimation[@"Spring Bounce"] floatValue];
-    presentConfirmationView.springSpeed = [self.tweaksForConfirmAnimation[@"Spring Speed"] floatValue];
+//    presentConfirmationView.springBounciness = [self.tweaksForConfirmAnimation[@"Spring Bounce"] floatValue];
+//    presentConfirmationView.springSpeed = [self.tweaksForConfirmAnimation[@"Spring Speed"] floatValue];
     
     [self.view addSubview:confirmationView];
     [self.animationStack pushAnimation:presentConfirmationView withTargetObject:confirmationView forKey:@"bounce"];
@@ -208,13 +215,17 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
             @strongify(self);
             [self.delegate didRecieveNewListItem:list];
             
-            [[[self.animationStack popAllAnimationsWithTargetObject:self.confirmationView] flattenMap:^RACStream *(id value) {
-                return [[self.animationStack popAllAnimations] doCompleted:^{
-                    [self.confirmationView removeFromSuperview];
-                }];
-            }] subscribeCompleted:^{
+            [[self.animationStack popAllAnimations] subscribeCompleted:^{
                 [subscriber sendCompleted];
             }];
+            
+//            [[[self.animationStack popAllAnimationsWithTargetObject:self.confirmationView] flattenMap:^RACStream *(id value) {
+//                return [[self.animationStack popAllAnimations] doCompleted:^{
+//                    [self.confirmationView removeFromSuperview];
+//                }];
+//            }] subscribeCompleted:^{
+//                [subscriber sendCompleted];
+//            }];
             
             return nil;
         }];
