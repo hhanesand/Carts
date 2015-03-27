@@ -173,29 +173,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     
     self.confirmationView = confirmationView; //weak pointer so set after we add it to the subview
     
-    //we can't hook the user's inputs directly to the GLBarcodeItem because that would change the database when we save it
-    //instead, we hook the user's changes to a modification dicionary on the user's list item, preventing changes to other user's items
-    //when the user wants his item, we get the GLBarcodeItem and apply the changes in the userModificaion dictionary
-    
-    [[[self.confirmationView.name.rac_textSignal distinctUntilChanged] skip:1] subscribeNext:^(NSString *value) {
-        [listItem addUserModification:value forKey:@"name"];
-        NSLog(@"List item's modification dict %@", listItem.userModifications);
-    }];
-    
-    [[[self.confirmationView.brand.rac_textSignal distinctUntilChanged] skip:1] subscribeNext:^(NSString *value) {
-        [listItem addUserModification:value forKey:@"brand"];
-        NSLog(@"List item's modification dict %@", listItem.userModifications);
-    }];
-    
-    [[[self.confirmationView.category.rac_textSignal distinctUntilChanged] skip:1] subscribeNext:^(NSString *value) {
-        [listItem addUserModification:value forKey:@"category"];
-        NSLog(@"List item's modification dict %@", listItem.userModifications);
-    }];
-    
-    [[[self.confirmationView.manufacturer.rac_textSignal distinctUntilChanged] skip:1] subscribeNext:^(NSString *value) {
-        [listItem addUserModification:value forKey:@"manufacturer"];
-        NSLog(@"List item's modification dict %@", listItem.userModifications);
-    }];
+ 
 }
 
 //sets up a confirmation view that tells the delegate when the user has clicked the confirm button and passes the list item to it
@@ -203,7 +181,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     CGRect frame = self.view.frame;
     CGRect popupViewSize = CGRectMake(0, CGRectGetHeight(frame), CGRectGetWidth(frame), CGRectGetHeight(frame) * 0.5);
     
-    GLItemConfirmationView *confirmationView = [[GLItemConfirmationView alloc] initWithBlurAndFrame:popupViewSize andBarcodeItem:list.item];
+    GLItemConfirmationView *confirmationView = [[GLItemConfirmationView alloc] initWithBlurAndFrame:popupViewSize barcodeItem:list.item];
     
     RACSignal *canSubmitSignal = [confirmationView.name.rac_textSignal map:^id(NSString *name) {
         return @([name length] > 0);
@@ -215,7 +193,13 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
             @strongify(self);
             [self.delegate didRecieveNewListItem:list];
             
-            [[self.animationStack popAllAnimations] subscribeCompleted:^{
+            [[self.animationStack popAllAnimations] sub]
+            
+            [[[[[[self.animationStack popAllAnimationsWithTargetObject:self.confirmationView] logAll] flattenMap:^RACStream *(id value) {
+                return [self.animationStack popAllAnimationsWithTargetObject:self.blurView.layer];
+            }] logAll] flattenMap:^RACStream *(id value) {
+                return [self.animationStack popAllAnimationsWithTargetObject:self.targetingReticule];
+            }] subscribeCompleted:^{
                 [subscriber sendCompleted];
             }];
             

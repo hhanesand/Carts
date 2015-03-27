@@ -38,14 +38,14 @@
 }
 
 - (RACSignal *)popAllAnimationsWithTargetObject:(id)object {
-    return [[[self.animationStack.rac_sequence.signal filter:^BOOL(GLAnimationStore *value) {
+    return [[[[self.animationStack.rac_sequence.signal filter:^BOOL(GLAnimationStore *value) {
         return [value.targetObject isEqual:object];
     }] doNext:^(GLAnimationStore *store) {
         [store.targetObject pop_addAnimation:store.animation forKey:@"reverseAnimation"];
         [self.animationStack removeObject:store];
     }] flattenMap:^RACStream *(GLAnimationStore *store) {
         return [store.animation addRACSignalToAnimation];
-    }];
+    }] logAll];
 }
 
 - (RACSignal *)popAllAnimations {

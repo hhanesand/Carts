@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class GLBarcodeObject;
+@class GLListObject;
 
 @interface GLItemConfirmationView : UIVisualEffectView<UITextFieldDelegate>
 
-- (instancetype)initWithBlurAndFrame:(CGRect)frame andBarcodeItem:(GLBarcodeObject *)barcodeItem;
+- (instancetype)initWithBlurAndFrame:(CGRect)frame listObject:(GLListObject *)listObject;
 
 @property (weak, nonatomic) UITextField *activeField;
 

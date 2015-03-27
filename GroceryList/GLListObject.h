@@ -24,5 +24,6 @@
 - (NSString *)getName;
 - (NSString *)getCategory;
 - (NSString *)getBrand;
+- (NSString *)getManufacturer;
 
 @end

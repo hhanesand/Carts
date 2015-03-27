@@ -9,7 +9,7 @@
                 <outlet property="blurView" destination="m5D-zc-DfF" id="3Xc-jN-hUd"/>
                 <outlet property="searchField" destination="g5i-yO-wYK" id="138-LU-U1C"/>
                 <outlet property="tableView" destination="ZRn-2q-MY7" id="1Qz-UN-1bn"/>
-                <outlet property="view" destination="BqI-cB-5Ui" id="UxO-T8-P9h"/>
+                <outlet property="view" destination="BqI-cB-5Ui" id="yP7-yH-yGi"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -110,7 +110,7 @@
                 <constraint firstItem="m5D-zc-DfF" firstAttribute="leading" secondItem="BqI-cB-5Ui" secondAttribute="leading" id="dWu-gE-MnA"/>
                 <constraint firstAttribute="bottom" secondItem="m5D-zc-DfF" secondAttribute="bottom" id="e8Y-hi-EwO"/>
             </constraints>
-            <point key="canvasLocation" x="243" y="373"/>
+            <point key="canvasLocation" x="407" y="434"/>
         </view>
     </objects>
     <resources>

@@ -67,4 +67,12 @@
     return self.item.category;
 }
 
+- (NSString *)getManufacturer {
+    if (self.userModifications[@"manufacturer"]) {
+        return self.userModifications[@"manufacturer"];
+    }
+    
+    return self.item.manufacturer;
+}
+
 @end

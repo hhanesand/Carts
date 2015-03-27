@@ -8,20 +8,26 @@
 
 #import "GLItemConfirmationView.h"
 #import "GLBarcodeObject.h"
+#import "GLListObject.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
+
+@interface GLItemConfirmationView ()
+@property (nonatomic, weak) GLListObject *listObject;
+@end
 
 @implementation GLItemConfirmationView
 
-- (instancetype)initWithBlurAndFrame:(CGRect)frame andBarcodeItem:(GLBarcodeObject *)barcodeItem {
-    if (self = [super initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]]) {
+- (instancetype)initWithBlurAndFrame:(CGRect)frame listObject:(GLListObject *)listObject {
+    if (self = [super initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark]]) {
         self.frame = frame;
         [self loadNib];
-        [self setupViewsWithBarcodeItem:barcodeItem];
+        [self setupViewWithListObject:listObject];
     }
     
     return self;
 }
 
-- (void)loadNib {
+- (void)loadNib {    
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"GLItemConfirmationView" owner:self options:nil];
     NSLog(@"Number of views %@", @([nib count]));
 
@@ -33,11 +39,31 @@
     [[self contentView] addSubview:view];
 }
 
-- (void)setupViewsWithBarcodeItem:(GLBarcodeObject *)barcodeItem {
-    self.name.text = barcodeItem.name;
-    self.brand.text = barcodeItem.brand;
-    self.category.text = barcodeItem.category;
-    self.manufacturer.text = barcodeItem.manufacturer;
+- (void)setupViewWithListObject:(GLListObject *)listObject {
+    self.name.text = [listObject getName];
+    self.brand.text = [listObject getBrand];
+    self.category.text = [listObject getCategory];
+    self.manufacturer.text = [listObject getManufacturer];
+    
+    [[[self.name.rac_textSignal distinctUntilChanged] skip:1] subscribeNext:^(NSString *value) {
+        [listObject addUserModification:value forKey:@"name"];
+        NSLog(@"List item's modification dict %@", listObject.userModifications);
+    }];
+    
+    [[[self.brand.rac_textSignal distinctUntilChanged] skip:1] subscribeNext:^(NSString *value) {
+        [listObject addUserModification:value forKey:@"brand"];
+        NSLog(@"List item's modification dict %@", listObject.userModifications);
+    }];
+    
+    [[[self.category.rac_textSignal distinctUntilChanged] skip:1] subscribeNext:^(NSString *value) {
+        [listObject addUserModification:value forKey:@"category"];
+        NSLog(@"List item's modification dict %@", listObject.userModifications);
+    }];
+    
+    [[[self.manufacturer.rac_textSignal distinctUntilChanged] skip:1] subscribeNext:^(NSString *value) {
+        [listObject addUserModification:value forKey:@"manufacturer"];
+        NSLog(@"List item's modification dict %@", listObject.userModifications);
+    }];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
