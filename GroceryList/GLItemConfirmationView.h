@@ -7,14 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GLReusableNibView.h"
 
 @class GLListObject;
 
-@interface GLItemConfirmationView : UIVisualEffectView<UITextFieldDelegate>
-
-- (instancetype)initWithBlurAndFrame:(CGRect)frame listObject:(GLListObject *)listObject;
-
-@property (weak, nonatomic) UITextField *activeField;
+@interface GLItemConfirmationView : GLReusableNibView<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *name;
 @property (weak, nonatomic) IBOutlet UITextField *brand;
@@ -23,4 +20,9 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *cancel;
 @property (weak, nonatomic) IBOutlet UIButton *confirm;
+
+- (void)bindWithListObject:(GLListObject *)listObject;
+
+@property (weak, nonatomic) UITextField *activeField;
+
 @end

@@ -17,29 +17,7 @@
 
 @implementation GLItemConfirmationView
 
-- (instancetype)initWithBlurAndFrame:(CGRect)frame listObject:(GLListObject *)listObject {
-    if (self = [super initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark]]) {
-        self.frame = frame;
-        [self loadNib];
-        [self setupViewWithListObject:listObject];
-    }
-    
-    return self;
-}
-
-- (void)loadNib {    
-    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"GLItemConfirmationView" owner:self options:nil];
-    NSLog(@"Number of views %@", @([nib count]));
-
-    UIView *view = [nib objectAtIndex:0];
-    
-    view.frame = CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds));
-    
-    #warning think about removing the extra view added by nib loading?
-    [[self contentView] addSubview:view];
-}
-
-- (void)setupViewWithListObject:(GLListObject *)listObject {
+- (void)bindWithListObject:(GLListObject *)listObject {
     self.name.text = [listObject getName];
     self.brand.text = [listObject getBrand];
     self.category.text = [listObject getCategory];
