@@ -186,6 +186,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
                 return [self.animationStack popAllAnimations];
             }] subscribeCompleted:^{
                 NSLog(@"Completed poping animations");
+                [self.barcodeScanner startScanningWithDelegate:self];
                 [subscriber sendCompleted];
             }];
             
