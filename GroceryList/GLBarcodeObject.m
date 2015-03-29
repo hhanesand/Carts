@@ -69,7 +69,6 @@
     if (self.image) {
         [self.image addObjectsFromArray:array];
     } else {
-        NSLog(@"Creating a new array");
         self.image = [NSMutableArray new];
         [self.image addObjectsFromArray:array];
     }

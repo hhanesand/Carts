@@ -43,10 +43,9 @@
     self.lineCap = kCALineJoinRound;
     self.opacity = 0.3;
 
-    NSLog(@"Shape bounds %@", NSStringFromCGRect(bounds));
-    CGFloat skipLength = CGRectGetHeight(bounds) - self.cornerRadius - self.lineLength;
-    CGFloat combinedLength = self.cornerRadius + self.lineLength;
-//    
+//    CGFloat skipLength = CGRectGetHeight(bounds) - self.cornerRadius - self.lineLength;
+//    CGFloat combinedLength = self.cornerRadius + self.lineLength;
+//
 //    self.lineDashPattern = @[@(combinedLength), @(skipLength), @(combinedLength * 2), @(skipLength), @(combinedLength * 2), @(skipLength), @(combinedLength * 2), @(skipLength), @(combinedLength)];
     
     self.path = [self buildPathWithBounds:bounds].CGPath;

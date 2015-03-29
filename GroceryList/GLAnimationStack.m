@@ -30,7 +30,6 @@
 
 - (RACSignal *)popAllAnimations {
     return [[[self.stack.rac_sequence.signal doNext:^(GLAnimation *animation) {
-        NSLog(@"Is main thread %@", [NSThread isMainThread] ? @"YES" : @"NO");
         [animation startAnimation];
     }] flattenMap:^RACStream *(GLAnimation *animation) {
         return [animation.animation completionSignal];
@@ -43,7 +42,6 @@
     return [[[self.stack.rac_sequence.signal filter:^BOOL(GLAnimation *animation) {
         return [animation.targetObject isEqual:target];
     }] doNext:^(GLAnimation *animation) {
-        NSLog(@"Is main thread %@", [NSThread isMainThread] ? @"YES" : @"NO");
         [animation startAnimation];
         [self.stack removeObject:animation];
     }] flattenMap:^RACStream *(GLAnimation *animation) {

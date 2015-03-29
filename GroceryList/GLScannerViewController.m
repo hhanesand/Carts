@@ -185,7 +185,6 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
             [[[self.animationStack popAnimationWithTargetObject:self.confirmationView] flattenMap:^RACStream *(id value) {
                 return [self.animationStack popAllAnimations];
             }] subscribeCompleted:^{
-                NSLog(@"Completed poping animations");
                 [self.barcodeScanner startScanningWithDelegate:self];
                 [subscriber sendCompleted];
             }];

@@ -94,9 +94,7 @@
         unpinSignal = [unpinSignal concat:[PFObject pinAll:array withSignalAndName:self.localDatastoreTag]];
     }
     
-    [unpinSignal subscribeCompleted:^{
-        NSLog(@"Done");
-    }];
+    [unpinSignal subscribeCompleted:^{}];
 }
 
 

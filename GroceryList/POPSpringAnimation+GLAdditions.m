@@ -22,8 +22,6 @@
     reversed.toValue = self.fromValue;
     reversed.fromValue = self.toValue;
     
-    NSLog(@"INFO - Original Animation [%@]\nReversed Animation [%@]", self, reversed);
-    
     return reversed;
 }
 

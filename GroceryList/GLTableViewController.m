@@ -62,16 +62,6 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
     return self;
 }
 
-- (void)didMoveToParentViewController:(UIViewController *)parent {
-    [super didMoveToParentViewController:parent];
-    NSLog(@"Did move to super controller %@", parent);
-}
-
-- (void)willMoveToParentViewController:(UIViewController *)parent {
-    [super willMoveToParentViewController:parent];
-    NSLog(@"Will move to super view controller %@", parent);
-}
-
 #pragma mark - View Lifecycle
 
 - (void)viewDidLoad {
@@ -163,9 +153,7 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 - (void)didRecieveNewListItem:(GLListObject *)listItem {
     [[[[listItem pinWithSignalAndName:@"groceryList"] doCompleted:^{
         [self loadObjects];
-    }] concat:[listItem saveWithSignal]] subscribeCompleted:^{
-        NSLog(@"Saved");
-    }];
+    }] concat:[listItem saveWithSignal]] subscribeCompleted:^{}];
 }
 
 #pragma mark - Tweaks
