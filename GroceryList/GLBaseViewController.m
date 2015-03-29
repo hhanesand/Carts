@@ -12,4 +12,12 @@
 
 @implementation GLBaseViewController
 
+- (GLAnimationStack *)animationStack {
+    if (!_animationStack) {
+        _animationStack = [[GLAnimationStack alloc] init];
+    }
+    
+    return _animationStack;
+}
+
 @end

@@ -6,7 +6,7 @@
 //
 //
 
-#import "POPPropertyAnimation.h"
+#import <POP/POP.h>
 
 @class RACSignal;
 
@@ -14,22 +14,20 @@
  *  Implements methods that allow the reversion of POPAnimations. This allows one to apply several animations, and then undo them
  *  later by running the exact same animation only in reverse.
  */
-@interface POPPropertyAnimation (Reverse)
+@interface POPSpringAnimation (Reverse)
 
 /**
- *  Creates a new POPAnimation with toValue and fromValue switched
- *
- *  @param animationToReverse The animation to reverse, currently supports POPSpringAnimation and POPBasicAnimation
+ *  Creates a new POPSpringAnimation with toValue and fromValue switched
  *
  *  @return A new POPAnimation with the same type as animationToReverse
  */
-+ (POPPropertyAnimation *)reverseAnimation:(POPPropertyAnimation *)animationToReverse;
+- (POPSpringAnimation *)reverse;
 
 /**
  *  Overwrites the completion handler with one that returns a signal when the animation is done
  *
- *  @return A signal that, when subscribed to, will send one next event with the animation and then a complete event
+ *  @return A signal that, when subscribed to, will send a completion event upon animation completion
  */
-- (RACSignal *)addRACSignalToAnimation;
+- (RACSignal *)completionSignal;
 
 @end
