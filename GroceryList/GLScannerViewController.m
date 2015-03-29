@@ -128,6 +128,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 
 - (void)scanner:(GLScanningSession *)scanner didRecieveBarcode:(GLBarcode *)barcode {
     [SVProgressHUD show];
+    [scanner stopScanning];
     
     @weakify(self);
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
@@ -207,6 +208,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
                 
                 [[scale addRACSignalToAnimation] subscribeCompleted:^{
                     [self.confirmationView removeFromSuperview];
+                    [self.barcodeScanner startScanningWithDelegate:self];
                     [subscriber sendCompleted];
                 }];
             }];
@@ -218,6 +220,8 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     confirmationView.cancel.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             @strongify(self);
+            
+            [self.barcodeScanner startScanningWithDelegate:self];
             
             CGAffineTransform translate = CGAffineTransformMakeTranslation(0, CGRectGetHeight(self.confirmationView.frame));
             POPSpringAnimation *dismiss = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
