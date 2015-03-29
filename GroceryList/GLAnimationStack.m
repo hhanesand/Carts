@@ -29,14 +29,26 @@
 }
 
 - (RACSignal *)popAllAnimations {
-    return [self.stack.rac_sequence.signal doNext:^(GLAnimation *animation) {
+    return [[[self.stack.rac_sequence.signal doNext:^(GLAnimation *animation) {
         NSLog(@"Is main thread %@", [NSThread isMainThread] ? @"YES" : @"NO");
-        [animation.targetObject pop_addAnimation:animation.animation forKey:animation.identifier];
+        [animation startAnimation];
+    }] flattenMap:^RACStream *(GLAnimation *animation) {
+        return [animation.animation completionSignal];
+    }] doCompleted:^{
+        [self.stack removeAllObjects];
     }];
 }
 
 - (RACSignal *)popAnimationWithTargetObject:(id)target {
-    return nil;
+    return [[[self.stack.rac_sequence.signal filter:^BOOL(GLAnimation *animation) {
+        return [animation.targetObject isEqual:target];
+    }] doNext:^(GLAnimation *animation) {
+        NSLog(@"Is main thread %@", [NSThread isMainThread] ? @"YES" : @"NO");
+        [animation startAnimation];
+        [self.stack removeObject:animation];
+    }] flattenMap:^RACStream *(GLAnimation *animation) {
+        return [animation.animation completionSignal];
+    }];
 }
 
 - (NSMutableArray *)stack {

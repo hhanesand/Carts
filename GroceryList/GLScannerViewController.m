@@ -182,36 +182,30 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
             @strongify(self);
             [self.delegate didRecieveNewListItem:list];
             
-            [[self.animationStack popAllAnimations] subscribeCompleted:^{
+            [[[self.animationStack popAnimationWithTargetObject:self.confirmationView] flattenMap:^RACStream *(id value) {
+                return [self.animationStack popAllAnimations];
+            }] subscribeCompleted:^{
                 NSLog(@"Completed poping animations");
+                [subscriber sendCompleted];
             }];
             
             return nil;
         }];
     }];
     
-//    confirmationView.cancel.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-//        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-//            @strongify(self);
-//            
-//            [self.barcodeScanner startScanningWithDelegate:self];
-//            
-//            CGAffineTransform translate = CGAffineTransformMakeTranslation(0, CGRectGetHeight(self.confirmationView.frame));
-//            POPSpringAnimation *dismiss = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
-//            dismiss.toValue = [NSValue valueWithCGPoint:CGPointApplyAffineTransform(self.confirmationView.center, translate)];
-//            dismiss.springBounciness = [self.tweaksForConfirmAnimation[@"Spring Bounce"] floatValue];
-//            dismiss.springSpeed = [self.tweaksForConfirmAnimation[@"Spring Speed"] floatValue];
-//            
-//            [self.confirmationView pop_addAnimation:dismiss forKey:@"dimiss"];
-//            
-//            [[dismiss addRACSignalToAnimation] subscribeCompleted:^{
-//                [self.confirmationView removeFromSuperview];
-//                [subscriber sendCompleted];
-//            }];
-//            
-//            return nil;
-//        }];
-//    }];
+    confirmationView.cancel.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            @strongify(self);
+            [self.barcodeScanner startScanningWithDelegate:self];
+            
+            [[self.animationStack popAnimationWithTargetObject:self.confirmationView] subscribeCompleted:^{
+                [self.confirmationView removeFromSuperview];
+                [subscriber sendCompleted];
+            }];
+            
+            return nil;
+        }];
+    }];
     
     return confirmationView;
 }

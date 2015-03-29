@@ -35,6 +35,7 @@
         
         self.completionBlock = ^(POPAnimation *animation, BOOL done) {
             if (done) {
+                [subscriber sendNext:nil];
                 [subscriber sendCompleted];
             }
         };
