@@ -30,7 +30,7 @@
 //  3. This notice may not be removed or altered from any source distribution.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 /**
  * Include this macro inside any class or instance method that MUST be overridden

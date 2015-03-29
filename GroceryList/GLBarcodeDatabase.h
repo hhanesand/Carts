@@ -6,7 +6,7 @@
 //
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 @class GLBarcodeManager;
 
 @interface GLBarcodeDatabase : NSObject

@@ -27,6 +27,7 @@
 #import "GLTweakCollection.h"
 
 #import "PFObject+GLPFObject.h"
+#import "GLPullToCloseTransitionManager.h"
 
 static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 
@@ -35,6 +36,7 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 
 @interface GLTableViewController ()
 @property (nonatomic) GLScannerViewController *scanner;
+@property (nonatomic) GLPullToCloseTransitionManager *transitionManager;
 @end
 
 @implementation GLTableViewController
@@ -47,9 +49,12 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
         self.loadingViewEnabled = NO;
         self.localDatastoreTag = @"groceryList";
         
+        self.transitionManager = [[GLPullToCloseTransitionManager alloc] init];
+        
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
             self.scanner = [[GLScannerViewController alloc] init];
             self.scanner.view.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds));
+
         });
         
         self.view.frame = [UIScreen mainScreen].bounds;
@@ -60,6 +65,18 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
     }
     
     return self;
+}
+
+#pragma mark - UIViewControllerTransistioningDelegate
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    self.transitionManager.presenting = NO;
+    return self.transitionManager;
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+    self.transitionManager.presenting = YES;
+    return self.transitionManager;
 }
 
 #pragma mark - View Lifecycle
@@ -85,7 +102,11 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 }
 
 - (void)didPressAddButton {
-    [self.navigationController presentViewController:self.scanner animated:YES completion:nil];
+    self.scanner.transitioningDelegate = self;
+    self.scanner.modalPresentationStyle = UIModalPresentationCustom;
+    self.scanner.modalPresentationCapturesStatusBarAppearance = YES;
+    
+    [self presentViewController:self.scanner animated:YES completion:nil];
 }
 
 - (BOOL)prefersStatusBarHidden {

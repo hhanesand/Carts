@@ -6,15 +6,13 @@
 //
 //
 
-#import "PFQueryTableViewController.h"
 #import "GLBarcodeItemDelegate.h"
 #import "GLTweakObserver.h"
-#import <Tweaks/FBTweak.h>
 #import "GLQueryTableViewController.h"
 #import "GLBaseViewController.h"
 
 @class RACSignal;
 
-@interface GLTableViewController : GLQueryTableViewController<GLBarcodeItemDelegate, GLTweakObserver>
+@interface GLTableViewController : GLQueryTableViewController <GLBarcodeItemDelegate, GLTweakObserver, UIViewControllerTransitioningDelegate>
 
 @end

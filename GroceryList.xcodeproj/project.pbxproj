@@ -28,6 +28,7 @@
 		F23D370B1AC76924001FEA45 /* GLReusableNibView.m in Sources */ = {isa = PBXBuildFile; fileRef = F23D370A1AC76924001FEA45 /* GLReusableNibView.m */; };
 		F23D37131AC7ABE2001FEA45 /* GLAnimationStack.m in Sources */ = {isa = PBXBuildFile; fileRef = F23D37121AC7ABE2001FEA45 /* GLAnimationStack.m */; };
 		F23D37161AC7ABEB001FEA45 /* GLAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F23D37151AC7ABEB001FEA45 /* GLAnimation.m */; };
+		F23D37191AC84A97001FEA45 /* GLPullToCloseTransitionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F23D37181AC84A97001FEA45 /* GLPullToCloseTransitionManager.m */; };
 		F25E49111A86B141006E1252 /* GLBingFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F25E49101A86B141006E1252 /* GLBingFetcher.m */; };
 		F2680BC41AAA320B00D851D2 /* GLTweak.m in Sources */ = {isa = PBXBuildFile; fileRef = F2680BC31AAA320B00D851D2 /* GLTweak.m */; };
 		F280CBDC1AB3CA7D00F2A973 /* GLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F280CBDA1AB3CA7D00F2A973 /* GLTableViewController.m */; };
@@ -119,6 +120,8 @@
 		F23D37121AC7ABE2001FEA45 /* GLAnimationStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLAnimationStack.m; sourceTree = "<group>"; };
 		F23D37141AC7ABEB001FEA45 /* GLAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLAnimation.h; sourceTree = "<group>"; };
 		F23D37151AC7ABEB001FEA45 /* GLAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLAnimation.m; sourceTree = "<group>"; };
+		F23D37171AC84A97001FEA45 /* GLPullToCloseTransitionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLPullToCloseTransitionManager.h; sourceTree = "<group>"; };
+		F23D37181AC84A97001FEA45 /* GLPullToCloseTransitionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLPullToCloseTransitionManager.m; sourceTree = "<group>"; };
 		F25E49101A86B141006E1252 /* GLBingFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBingFetcher.m; sourceTree = "<group>"; };
 		F25E49121A86B150006E1252 /* GLBingFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLBingFetcher.h; sourceTree = "<group>"; };
 		F2680BC21AAA316E00D851D2 /* GLTweak.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLTweak.h; sourceTree = "<group>"; };
@@ -272,6 +275,8 @@
 				F23D37121AC7ABE2001FEA45 /* GLAnimationStack.m */,
 				F23D37141AC7ABEB001FEA45 /* GLAnimation.h */,
 				F23D37151AC7ABEB001FEA45 /* GLAnimation.m */,
+				F23D37171AC84A97001FEA45 /* GLPullToCloseTransitionManager.h */,
+				F23D37181AC84A97001FEA45 /* GLPullToCloseTransitionManager.m */,
 			);
 			name = Animation;
 			sourceTree = "<group>";
@@ -681,6 +686,7 @@
 				F2D58A711A96EB6600E15FFC /* GLListObject.m in Sources */,
 				F2680BC41AAA320B00D851D2 /* GLTweak.m in Sources */,
 				F22F2D7D1A72D6FD00C878EC /* GLBarcodeDatabase.m in Sources */,
+				F23D37191AC84A97001FEA45 /* GLPullToCloseTransitionManager.m in Sources */,
 				F29214B91A9D4BD400015EB2 /* GLItemConfirmationView.m in Sources */,
 				F2F454051AC4816D002B8768 /* GLCameraLayer.m in Sources */,
 				F2BB86841AAE3EF700E02FF3 /* GLScanningSession.m in Sources */,

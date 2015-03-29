@@ -6,7 +6,8 @@
 //
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
+
 #import <Pop/POP.h>
 
 @interface GLAnimation : NSObject

@@ -6,7 +6,7 @@
 //
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 #import <AVFoundation/AVFoundation.h>
 #import "GLBarcodeScannerDelegate.h"
 
