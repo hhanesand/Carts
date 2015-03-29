@@ -27,32 +27,19 @@
 - (instancetype)init {
     if (self = [super init]) {
         [self initializeCaptureSession];
-        [self startScanning];
         [self.metadataOutput setMetadataObjectTypes:self.metadataOutput.availableMetadataObjectTypes];
-        
-//        @weakify(self);
-//        [[[[[[[self rac_signalForSelector:@selector(captureOutput:didOutputMetadataObjects:fromConnection:) fromProtocol:@protocol(AVCaptureMetadataOutputObjectsDelegate)] logAll]
-//        takeUntil:self.rac_willDeallocSignal]
-//        reduceEach:^id(id _, NSArray *metadataObjects, id __) {
-//            return [metadataObjects firstObject];
-//        }] filter:^BOOL(AVMetadataObject *meta) {
-//            return [meta isKindOfClass:[AVMetadataMachineReadableCodeObject class]];
-//        }] map:^GLBarcodeItem *(AVMetadataMachineReadableCodeObject *barcode) {
-//                return [GLBarcodeItem objectWithMetadataObject:barcode];
-//        }] doNext:^(id x) {
-//            @strongify(self);
-//            [self.delegate scanner:self didRecieveBarcodeItem:x];
-//        }];
     }
     
     return self;
 }
 
 - (void)stopScanning {
+    self.delegate = nil;
     [self.captureSession stopRunning];
 }
 
-- (void)startScanning {
+- (void)startScanningWithDelegate:(id<GLBarcodeScannerDelegate>)delegate {
+    self.delegate = delegate;
     [self.captureSession startRunning];
 }
 

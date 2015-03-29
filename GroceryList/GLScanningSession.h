@@ -37,6 +37,6 @@
 @property (nonatomic) AVCaptureSession *captureSession;
 
 - (void)stopScanning;
-- (void)startScanning;
+- (void)startScanningWithDelegate:(id<GLBarcodeScannerDelegate>)delegate;
 
 @end

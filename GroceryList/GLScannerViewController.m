@@ -37,7 +37,7 @@
 @interface GLScannerViewController()
 @property (nonatomic) GLBarcodeManager *manager;
 @property (nonatomic) GLBingFetcher *bing;
-@property (nonatomic) GLScanningSession *scanning;
+@property (nonatomic) GLScanningSession *barcodeScanner;
 @property (nonatomic) NSDictionary *tweaksForConfirmAnimation;
 @property (nonatomic) GLCameraLayer *targetingReticule;
 @end
@@ -50,7 +50,8 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     if (self = [super initWithNibName:@"GLScannerViewController" bundle:[NSBundle mainBundle]]) {
         self.manager = [[GLBarcodeManager alloc] init];
         self.bing = [GLBingFetcher sharedFetcher];
-        self.scanning = [GLScanningSession session];
+        self.barcodeScanner = [GLScanningSession session];
+        [self.barcodeScanner startScanningWithDelegate:self];
         
         [self rac];
         [self tweak];
@@ -63,35 +64,30 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    NSLog(@"Frame %@", NSStringFromCGRect(self.view.frame));
-    NSLog(@"Bounds %@", NSStringFromCGRect(self.view.bounds));
 
-    self.scanning.previewLayer.frame = self.view.frame;
-    self.scanning.delegate = self;
-    [self.scanning startScanning];
+    self.barcodeScanner.previewLayer.frame = self.view.frame;
+    [self.barcodeScanner startScanningWithDelegate:self];
 
     UIView *videoPreviewView = [[UIView alloc] initWithFrame:self.view.bounds];
-    [videoPreviewView.layer addSublayer:self.scanning.previewLayer];
+    [videoPreviewView.layer addSublayer:self.barcodeScanner.previewLayer];
     
     UITapGestureRecognizer *doubleTapTestingScan = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(testScanning)];
     doubleTapTestingScan.numberOfTapsRequired = 2;
     [videoPreviewView addGestureRecognizer:doubleTapTestingScan];
     
-    [self.view addSubview:videoPreviewView];
-    [self.view sendSubviewToBack:videoPreviewView];
+    [self.view insertSubview:videoPreviewView atIndex:0];
     
     CGRect bounds = self.view.bounds;
-    const CGFloat sideLength = CGRectGetWidth(bounds) * 0.66;
+    const CGFloat sideLength = CGRectGetWidth(bounds) * 0.5;
     CGRect cameraRect = CGRectMake(CGRectGetMidX(bounds) - sideLength * 0.5, CGRectGetMidY(bounds) - sideLength * 0.5, sideLength, sideLength);
     
     self.targetingReticule = [[GLCameraLayer alloc] initWithBounds:cameraRect cornerRadius:10 lineLength:4];
     [self.view.layer addSublayer:self.targetingReticule];
     self.targetingReticule.opacity = 0;
 
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(15, 0, CGRectGetWidth(self.tableView.frame) - 15, 1 / [UIScreen mainScreen].scale)];
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(15, 0, CGRectGetWidth(self.tableView.frame) - 15, 1)];
     line.backgroundColor = self.tableView.separatorColor;
-    self.tableView.tableHeaderView = line;
+//    self.tableView.tableHeaderView = line;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -127,7 +123,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 }
 
 - (void)testScanning {
-    [self scanner:self.scanning didRecieveBarcode:[GLBarcode barcodeWithBarcode:@"0012000001086"]];
+    [self scanner:self.barcodeScanner didRecieveBarcode:[GLBarcode barcodeWithBarcode:@"0012000001086"]];
 }
 
 - (void)scanner:(GLScanningSession *)scanner didRecieveBarcode:(GLBarcode *)barcode {
@@ -152,16 +148,13 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 //prepare confirmation view and add background scale + opacity animation and the custom present animation
 - (void)showConfirmationViewWithListItem:(GLListObject *)listItem {
     GLItemConfirmationView *confirmationView = [self prepareConfirmationViewWithListItem:listItem];
-    CGPoint finalConfirmationViewPosition = CGPointMake(self.view.center.x, CGRectGetHeight(self.view.frame) - CGRectGetHeight(confirmationView.frame) * 0.5);
     
     POPSpringAnimation *presentConfirmationView = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
-    presentConfirmationView.fromValue = [NSValue valueWithCGPoint:confirmationView.center];
-    presentConfirmationView.toValue = [NSValue valueWithCGPoint:finalConfirmationViewPosition];
+    presentConfirmationView.toValue = [NSValue valueWithCGPoint:CGPointMake(CGRectGetMidX(self.view.frame), CGRectGetHeight(self.view.frame) - CGRectGetHeight(confirmationView.frame) * 0.5)];
     presentConfirmationView.springBounciness = [self.tweaksForConfirmAnimation[@"Spring Bounce"] floatValue];
     presentConfirmationView.springSpeed = [self.tweaksForConfirmAnimation[@"Spring Speed"] floatValue];
     
     [self.view addSubview:confirmationView];
-    
     [confirmationView pop_addAnimation:presentConfirmationView forKey:@"showConfirmationView"];
     
     self.confirmationView = confirmationView; //weak pointer so set after we add it to the subview
@@ -190,18 +183,19 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
             dismiss.springBounciness = [self.tweaksForConfirmAnimation[@"Spring Bounce"] floatValue];
             dismiss.springSpeed = [self.tweaksForConfirmAnimation[@"Spring Speed"] floatValue];
             
+            POPSpringAnimation *fade = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerOpacity];
+            fade.toValue = @0;
+            fade.springSpeed = 10;
+            fade.springBounciness = 0;
+            
             [self.confirmationView pop_addAnimation:dismiss forKey:@"dismiss"];
+            [self.targetingReticule pop_addAnimation:fade forKey:@"fade"];
             
             [[dismiss addRACSignalToAnimation] subscribeCompleted:^{
                 POPSpringAnimation *scale = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
                 scale.toValue = [NSValue valueWithCGPoint:CGPointMake(1, 1)];
                 scale.springSpeed = 12;
                 scale.springBounciness = 0;
-                
-                POPSpringAnimation *fade = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerOpacity];
-                fade.toValue = @0;
-                fade.springSpeed = 10;
-                fade.springBounciness = 0;
                 
                 POPSpringAnimation *show = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerOpacity];
                 show.toValue = @1;
@@ -210,7 +204,6 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
                 
                 [self.blurView.layer pop_addAnimation:show forKey:@"show"];
                 [self.blurView.layer pop_addAnimation:scale forKey:@"scale"];
-                [self.targetingReticule pop_addAnimation:fade forKey:@"fade"];
                 
                 [[scale addRACSignalToAnimation] subscribeCompleted:^{
                     [self.confirmationView removeFromSuperview];
@@ -225,8 +218,20 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     confirmationView.cancel.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             @strongify(self);
-            [self.confirmationView removeFromSuperview];
-            [subscriber sendCompleted];
+            
+            CGAffineTransform translate = CGAffineTransformMakeTranslation(0, CGRectGetHeight(self.confirmationView.frame));
+            POPSpringAnimation *dismiss = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
+            dismiss.toValue = [NSValue valueWithCGPoint:CGPointApplyAffineTransform(self.confirmationView.center, translate)];
+            dismiss.springBounciness = [self.tweaksForConfirmAnimation[@"Spring Bounce"] floatValue];
+            dismiss.springSpeed = [self.tweaksForConfirmAnimation[@"Spring Speed"] floatValue];
+            
+            [self.confirmationView pop_addAnimation:dismiss forKey:@"dimiss"];
+            
+            [[dismiss addRACSignalToAnimation] subscribeCompleted:^{
+                [self.confirmationView removeFromSuperview];
+                [subscriber sendCompleted];
+            }];
+            
             return nil;
         }];
     }];
@@ -274,6 +279,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 
 - (void)tweakCollection:(GLTweakCollection *)collection didChangeTo:(NSDictionary *)values {
     if ([collection.name isEqualToString:@"Present Confirm View"]) {
+        NSLog(@"Tweaks changed to %@", values);
         self.tweaksForConfirmAnimation = values;
     }
 }
