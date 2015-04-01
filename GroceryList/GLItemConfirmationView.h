@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GLReusableNibView.h"
+#import "GLDismissableView.h"
 
 @class GLListObject;
+@class RACSubject;
 
-@interface GLItemConfirmationView : GLReusableNibView<UITextFieldDelegate>
+@interface GLItemConfirmationView : GLDismissableView <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *name;
 @property (weak, nonatomic) IBOutlet UITextField *brand;
