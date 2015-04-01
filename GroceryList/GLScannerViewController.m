@@ -40,6 +40,8 @@
 @property (nonatomic) GLScanningSession *barcodeScanner;
 @property (nonatomic) NSDictionary *tweaksForConfirmAnimation;
 @property (nonatomic) GLCameraLayer *targetingReticule;
+
+@property (nonatomic) GLListObject *currentListItem;
 @end
 
 static NSString *identifier = @"GLBarcodeItemTableViewCell";
@@ -54,7 +56,6 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
         [self.barcodeScanner startScanningWithDelegate:self];
         
         [self rac];
-        [self tweak];
     }
     
     return self;
@@ -90,18 +91,11 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 //    self.tableView.tableHeaderView = line;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
 
-- (BOOL)prefersStatusBarHidden {
-    return YES;
-}
 
 #pragma mark - Scanner Delegate
-//present the camera view that is lying in the background
+
 - (IBAction)didTapScanningButton:(UIButton *)sender {
-    //layer scale somehow works better than the view scale... don't know why
     POPSpringAnimation *scale = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
     scale.fromValue = [NSValue valueWithCGPoint:CGPointMake(1, 1)];
     scale.toValue = [NSValue valueWithCGPoint:CGPointMake(2, 2)];
@@ -144,70 +138,25 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
             return [RACSignal return:[GLListObject objectWithCurrentUser]];
         }] subscribeNext:^(GLListObject *newListItem) {
             @strongify(self);
+            self.currentListItem = newListItem;
             [self showConfirmationViewWithListItem:newListItem];
         }];
     });
 }
 
-//prepare confirmation view and add background scale + opacity animation and the custom present animation
 - (void)showConfirmationViewWithListItem:(GLListObject *)listItem {
-    GLItemConfirmationView *confirmationView = [self prepareConfirmationViewWithListItem:listItem];
-    
-    POPSpringAnimation *presentConfirmationView = [POPSpringAnimation animationWithPropertyNamed:kPOPViewCenter];
-    presentConfirmationView.fromValue = [NSValue valueWithCGPoint:confirmationView.center];
-    presentConfirmationView.toValue = [NSValue valueWithCGPoint:CGPointMake(CGRectGetMidX(self.view.frame), CGRectGetHeight(self.view.frame) - CGRectGetHeight(confirmationView.frame) * 0.5)];
-    presentConfirmationView.springBounciness = [self.tweaksForConfirmAnimation[@"Spring Bounce"] floatValue];
-    presentConfirmationView.springSpeed = [self.tweaksForConfirmAnimation[@"Spring Speed"] floatValue];
-    
-    [self.view addSubview:confirmationView];
-    [self.animationStack pushAnimation:presentConfirmationView withTargetObject:confirmationView andDescription:@"presentConfirmationView"];
-    
-    self.confirmationView = confirmationView; //weak pointer so set after we add it to the subview
+    [self.confirmationView bindWithListObject:listItem];
+    [self.view addSubview:self.confirmationView];
+    [self.confirmationView presentView];
 }
 
-//sets up a confirmation view that tells the delegate when the user has clicked the confirm button and passes the list item to it
-- (GLItemConfirmationView *)prepareConfirmationViewWithListItem:(GLListObject *)list {
-    CGRect popupViewSize = CGRectMake(0, CGRectGetHeight(self.view.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) * 0.5);
+- (void)shouldDismissDismissableView:(GLDismissableView *)view withGestureRecognizer:(UIPanGestureRecognizer *)pan {
+    //yes - so dismiss the view
+    [self.barcodeScanner startScanningWithDelegate:self];
     
-    GLItemConfirmationView *confirmationView = [[GLItemConfirmationView alloc] initWithFrame:popupViewSize];
-    [confirmationView bindWithListObject:list];
-    
-    RACSignal *canSubmitSignal = [confirmationView.name.rac_textSignal map:^id(NSString *name) {
-        return @([name length] > 0);
+    [[view dismissViewWithPanGestureRecognizer:pan] subscribeCompleted:^{
+        [self.confirmationView removeFromSuperview];
     }];
-    
-    @weakify(self);
-    confirmationView.confirm.rac_command = [[RACCommand alloc] initWithEnabled:canSubmitSignal signalBlock:^RACSignal *(id input) {
-        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-            @strongify(self);
-            [self.delegate didRecieveNewListItem:list];
-            
-            [[[self.animationStack popAnimationWithTargetObject:self.confirmationView] flattenMap:^RACStream *(id value) {
-                return [self.animationStack popAllAnimations];
-            }] subscribeCompleted:^{
-                [self.barcodeScanner startScanningWithDelegate:self];
-                [subscriber sendCompleted];
-            }];
-            
-            return nil;
-        }];
-    }];
-    
-    confirmationView.cancel.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-            @strongify(self);
-            [self.barcodeScanner startScanningWithDelegate:self];
-            
-            [[self.animationStack popAnimationWithTargetObject:self.confirmationView] subscribeCompleted:^{
-                [self.confirmationView removeFromSuperview];
-                [subscriber sendCompleted];
-            }];
-            
-            return nil;
-        }];
-    }];
-    
-    return confirmationView;
 }
 
 #pragma mark - Networking
@@ -240,25 +189,51 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     }];
 }
 
-
-#pragma mark - Tweaks
-
-- (void)tweak {
-    self.tweaksForConfirmAnimation = @{@"Spring Speed" : @(20), @"Spring Bounce" : @(0)};
-    [GLTweakCollection defineTweakCollectionInCategory:@"Animations" collection:@"Present Confirm View" withType:GLTWeakPOPSpringAnimation andObserver:self];
-}
-
-- (void)tweakCollection:(GLTweakCollection *)collection didChangeTo:(NSDictionary *)values {
-    if ([collection.name isEqualToString:@"Present Confirm View"]) {
-        NSLog(@"Tweaks changed to %@", values);
-        self.tweaksForConfirmAnimation = values;
+- (GLItemConfirmationView *)confirmationView {
+    if (!_confirmationView) {
+        _confirmationView = [[GLItemConfirmationView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) * 0.5)];
+        _confirmationView.delegate = self;
+        
+        RACSignal *canSubmitSignal = [self.confirmationView.name.rac_textSignal map:^id(NSString *name) {
+            return @([name length] > 0);
+        }];
+        
+        @weakify(self);
+        _confirmationView.confirm.rac_command = [[RACCommand alloc] initWithEnabled:canSubmitSignal signalBlock:^RACSignal *(id input) {
+            return [RACSignal defer:^RACSignal *{
+                @strongify(self);
+                [self.delegate didRecieveNewListItem:self.currentListItem];
+                
+                return [[[self.confirmationView dismissView] flattenMap:^RACStream *(id value) {
+                    return [self.animationStack popAllAnimations];
+                }] doCompleted:^{
+                    [self.barcodeScanner startScanningWithDelegate:self];
+                }];
+            }];
+        }];
+        
+        self.confirmationView.cancel.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+                @strongify(self);
+                
+                [self.barcodeScanner startScanningWithDelegate:self];
+                
+                [[self.confirmationView dismissView] subscribeCompleted:^{
+                    [self.confirmationView removeFromSuperview];
+                }];
+                
+                return nil;
+            }];
+        }];
     }
+    
+    return _confirmationView;
 }
+
+#pragma mark - Notification Center
 
 - (void)rac {
-    [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:UIKeyboardWillShowNotification object:nil]
-      takeUntil:self.rac_willDeallocSignal]
-     subscribeNext:^(NSNotification *notif) {
+    [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:UIKeyboardWillShowNotification object:nil] takeUntil:self.rac_willDeallocSignal] subscribeNext:^(NSNotification *notif) {
          //see http://stackoverflow.com/a/19236013/4080860
          
          CGRect keyboardFrame = [notif.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
@@ -277,9 +252,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
          }
      }];
     
-    [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:UIKeyboardWillHideNotification object:nil]
-      takeUntil:self.rac_willDeallocSignal]
-     subscribeNext:^(NSNotification *notif) {
+    [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:UIKeyboardWillHideNotification object:nil] takeUntil:self.rac_willDeallocSignal] subscribeNext:^(NSNotification *notif) {
          //see http://stackoverflow.com/a/19236013/4080860
          
          CGFloat offset = CGRectGetHeight([self getWindow].frame) - CGRectGetMaxY(self.confirmationView.frame);
@@ -295,10 +268,6 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
              [UIView commitAnimations];
          }
      }];
-}
-
-- (UIView *)getTopView {
-    return [self getWindow].subviews[0];
 }
 
 - (UIWindow *)getWindow {
@@ -317,10 +286,20 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     return [tableView dequeueReusableCellWithIdentifier:@"SearchItem" forIndexPath:indexPath];
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(15, 0, CGRectGetWidth(self.tableView.frame) - 15, 1 / [UIScreen mainScreen].scale)];
-    line.backgroundColor = self.tableView.separatorColor;
-    return line;
+#pragma mark - GLDismissableViewDelegate
+
+- (CGFloat)finalPositionForDismissableView:(GLDismissableView *)view inState:(GLDismissableViewState)state {
+    switch (state) {
+        case GLDismissableViewStatePresented:
+            return CGRectGetHeight(self.view.frame) - CGRectGetHeight(view.frame) * 0.5;
+            
+        case GLDismissableViewStateDismissed:
+            return CGRectGetMaxY(self.view.frame) + CGRectGetMidY(view.frame);
+    }
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return YES;
 }
 
 @end

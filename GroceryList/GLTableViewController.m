@@ -22,8 +22,6 @@
 #import "GLBarcodeObject.h"
 #import "UIColor+GLColor.h"
 
-#import <Tweaks/FBTweakStore.h>
-#import <Tweaks/FBTweakCategory.h>
 #import "GLTweakCollection.h"
 
 #import "PFObject+GLPFObject.h"
@@ -60,8 +58,6 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
         self.view.frame = [UIScreen mainScreen].bounds;
         
         self.title = @"Grocery List";
-        
-        [self tweaks];
     }
     
     return self;
@@ -88,7 +84,7 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
     UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     [self setToolbarItems:[NSArray arrayWithObjects:flexibleSpace, button, flexibleSpace, nil]];
     
-    //[self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([GLTableViewCell class]) bundle:nil] forCellReuseIdentifier:reuseIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([GLTableViewCell class]) bundle:nil] forCellReuseIdentifier:reuseIdentifier];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -176,38 +172,5 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
         [self loadObjects];
     }] concat:[listItem saveWithSignal]] subscribeCompleted:^{}];
 }
-
-#pragma mark - Tweaks
-
-- (void)tweaks {
-    [GLTweakCollection defineTweakCollectionInCategory:@"Color" collection:@"Navigation Bar" withType:GLTweakUIColor andObserver:self];
-    [GLTweakCollection defineTweakCollectionInCategory:@"Color" collection:@"Tint" withType:GLTweakUIColor andObserver:self];
-}
-
-- (void)tweakCollection:(GLTweakCollection *)collection didChangeTo:(NSDictionary *)values {
-    if ([collection.name isEqualToString:@"Navigation Bar"]) {
-        UIColor *color = [UIColor colorWithRed:[values[@"Red"] intValue] green:[values[@"Green"] intValue] blue:[values[@"Blue"] intValue]];
-        [UINavigationBar appearance].barTintColor = color;
-        self.navigationController.navigationBar.barTintColor = color;
-        [self.navigationController.navigationBar setNeedsDisplay];
-        
-#warning remove me before release
-        
-        UIViewController *visibleViewController = [[UIApplication sharedApplication] keyWindow].rootViewController;
-        while (visibleViewController.presentedViewController != nil) {
-            visibleViewController = visibleViewController.presentedViewController;
-        }
-        
-        NSArray *subviews = visibleViewController.view.subviews;
-        ((UINavigationBar   *)subviews[1]).barTintColor = color;
-    } else if ([collection.name isEqualToString:@"Tint"]) {
-        UIColor *color = [UIColor colorWithRed:[values[@"Red"] intValue] green:[values[@"Green"] intValue] blue:[values[@"Blue"] intValue]];
-        [[[UIApplication sharedApplication] keyWindow] setTintColor:color];
-    }
-    
-    [self.presentedViewController.view setNeedsDisplay];
-    [[[UIApplication sharedApplication] keyWindow] setNeedsDisplay];
-}
-
 
 @end

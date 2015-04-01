@@ -9,12 +9,12 @@
 #import "GLBarcodeScannerDelegate.h"
 #import "GLBarcodeItemDelegate.h"
 #import "GLBaseViewController.h"
-#import "GLTweakObserver.h"
+#import "GLDismissableViewDelegate.h"
 
 @class GLItemConfirmationView;
 @class RACSubject;
 
-@interface GLScannerViewController : GLBaseViewController <GLBarcodeScannerDelegate, GLTweakObserver, UITableViewDelegate, UITableViewDataSource>
+@interface GLScannerViewController : GLBaseViewController <GLBarcodeScannerDelegate, UITableViewDelegate, UITableViewDataSource, GLDismissableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *searchField;
@@ -22,6 +22,6 @@
 
 @property (nonatomic) id<GLBarcodeItemDelegate> delegate;
 
-@property (nonatomic, weak) GLItemConfirmationView *confirmationView;
+@property (nonatomic) GLItemConfirmationView *confirmationView;
 
 @end
