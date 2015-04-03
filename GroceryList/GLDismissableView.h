@@ -16,9 +16,6 @@
 @interface GLDismissableView : UIView <UIGestureRecognizerDelegate>
 
 - (RACSignal *)presentView;
-
-- (RACSignal *)dismissView;
-- (RACSignal *)dismissViewWithPanGestureRecognizer:(UIPanGestureRecognizer *)pan;
 - (RACSignal *)dismissViewWithVelocity:(CGFloat)velocity;
 
 @property (nonatomic) id<GLDismissableViewDelegate> delegate;

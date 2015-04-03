@@ -150,11 +150,23 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     [self.confirmationView presentView];
 }
 
-- (void)shouldDismissDismissableView:(GLDismissableView *)view withGestureRecognizer:(UIPanGestureRecognizer *)pan {
+- (void)shouldDismissDismissableView:(GLDismissableView *)view withVelocity:(CGFloat)velocity{
     //yes - so dismiss the view
+    [self dismissConfirmationViewWithVelocity:velocity andPopAllAnimations:YES];
+}
+
+- (RACSignal *)dismissConfirmationViewWithVelocity:(CGFloat)velocity andPopAllAnimations:(BOOL)popAll {
     [self.barcodeScanner startScanningWithDelegate:self];
     
-    [[view dismissViewWithPanGestureRecognizer:pan] subscribeCompleted:^{
+    RACSignal *dismissConfirmationViewSignal = [self.confirmationView dismissViewWithVelocity:velocity];
+    
+    if (popAll) {
+        dismissConfirmationViewSignal = [dismissConfirmationViewSignal flattenMap:^RACStream *(id value) {
+            return [self.animationStack popAllAnimations];
+        }];
+    }
+    
+    return [dismissConfirmationViewSignal doCompleted:^{
         [self.confirmationView removeFromSuperview];
     }];
 }
@@ -200,15 +212,11 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
         
         @weakify(self);
         _confirmationView.confirm.rac_command = [[RACCommand alloc] initWithEnabled:canSubmitSignal signalBlock:^RACSignal *(id input) {
-            return [RACSignal defer:^RACSignal *{
+            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
                 @strongify(self);
                 [self.delegate didRecieveNewListItem:self.currentListItem];
-                
-                return [[[self.confirmationView dismissView] flattenMap:^RACStream *(id value) {
-                    return [self.animationStack popAllAnimations];
-                }] doCompleted:^{
-                    [self.barcodeScanner startScanningWithDelegate:self];
-                }];
+                [self dismissConfirmationViewWithVelocity:0 andPopAllAnimations:YES];
+                return nil;
             }];
         }];
         
@@ -216,11 +224,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
                 @strongify(self);
                 
-                [self.barcodeScanner startScanningWithDelegate:self];
-                
-                [[self.confirmationView dismissView] subscribeCompleted:^{
-                    [self.confirmationView removeFromSuperview];
-                }];
+                [self dismissConfirmationViewWithVelocity:0 andPopAllAnimations:NO];
                 
                 return nil;
             }];

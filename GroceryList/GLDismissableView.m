@@ -23,6 +23,7 @@
 }
 
 - (void)didMoveToSuperview {
+    //figure out what to do if there is a pan on super
     UIPanGestureRecognizer *dismiss = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleDismiss:)];
     dismiss.delegate = self;
     [self.superview addGestureRecognizer:dismiss];
@@ -59,7 +60,7 @@
 }
 
 - (void)userDidEndInteractionWithGestureRecognizer:(UIPanGestureRecognizer *)pan {
-    [self.delegate shouldDismissDismissableView:self withGestureRecognizer:pan];
+    [self.delegate shouldDismissDismissableView:self withVelocity:[pan velocityInView:self.superview].y];
 }
 
 #pragma mark - Presentation
@@ -74,18 +75,11 @@
     return [present completionSignal];
 }
 
-- (RACSignal *)dismissViewWithPanGestureRecognizer:(UIPanGestureRecognizer *)pan {
-    return [self dismissViewWithVelocity:[pan velocityInView:self].y];
-}
-
-- (RACSignal *)dismissView {
-    return [self dismissViewWithVelocity:200];
-}
-
 - (RACSignal *)dismissViewWithVelocity:(CGFloat)velocity {
     POPSpringAnimation *dismiss = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
     dismiss.toValue = @([self.delegate finalPositionForDismissableView:self inState:GLDismissableViewStateDismissed]);
     dismiss.velocity = @(velocity);
+    dismiss.springSpeed = 20;
     dismiss.springBounciness = 0;
     
     [self pop_addAnimation:dismiss forKey:@"interactive_dismiss"];

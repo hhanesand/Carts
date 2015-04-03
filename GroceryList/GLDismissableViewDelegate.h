@@ -19,8 +19,7 @@ typedef NS_ENUM(NSInteger, GLDismissableViewState) {
     GLDismissableViewStateDismissed
 };
 
-//datasource for final postition - usually the bottom of the screen
 - (CGFloat)finalPositionForDismissableView:(GLDismissableView *)view inState:(GLDismissableViewState)state;
-- (void)shouldDismissDismissableView:(GLDismissableView *)view withGestureRecognizer:(UIPanGestureRecognizer *)pan;
+- (void)shouldDismissDismissableView:(GLDismissableView *)view withVelocity:(CGFloat)velocity;
 
 @end
