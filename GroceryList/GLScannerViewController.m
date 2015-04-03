@@ -105,18 +105,6 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     self.targetingReticule.opacity = 0;
 }
 
-- (void)setupInteractiveDismissalOfConfirmationView {
-    UIPanGestureRecognizer *swipeDownToDismiss = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePullDownToDismissGestureRecognizer:)];
-    [self.view addGestureRecognizer:swipeDownToDismiss];
-
-    self.confirmationViewDismissHandler = [[GLDismissableViewHandler alloc] initWithView:self.confirmationView];
-    self.confirmationViewDismissHandler.delegate = self;
-}
-
-- (void)handlePullDownToDismissGestureRecognizer:(UIPanGestureRecognizer *)pan {
-    [self.confirmationViewDismissHandler handlePan:pan];
-}
-
 #pragma mark - IBActions
 
 - (void)testScanning {
@@ -177,6 +165,19 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     [self setupInteractiveDismissalOfConfirmationView];
 }
 
+- (void)setupInteractiveDismissalOfConfirmationView {
+    UIPanGestureRecognizer *swipeDownToDismiss = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePullDownToDismissGestureRecognizer:)];
+    [self.view addGestureRecognizer:swipeDownToDismiss];
+    
+    self.confirmationViewDismissHandler = [[GLDismissableViewHandler alloc] initWithView:self.confirmationView];
+    self.confirmationViewDismissHandler.delegate = self;
+}
+
+- (void)handlePullDownToDismissGestureRecognizer:(UIPanGestureRecognizer *)pan {
+    [self.confirmationViewDismissHandler handlePan:pan];
+}
+
+
 #pragma mark - Dismissable View Handler Delegate
 
 - (void)willDismissViewAfterUserInteraction {
@@ -211,12 +212,14 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
                 [self.delegate didRecieveNewListItem:self.currentListItem];
                 [self.barcodeScanner startScanningWithDelegate:self];
 
-                [[[[self dismissConfirmationView] delay:0.001] flattenMap:^RACStream *(id value) {
-                    return [self.animationStack popAllAnimations];
-                }] subscribeCompleted:^{
-                    [self.confirmationView removeFromSuperview];
-                    [subscriber sendCompleted];
-                }];
+                [self dismissConfirmationView];
+                
+//                [[[self dismissConfirmationView] flattenMap:^RACStream *(id value) {
+//                    return [self.animationStack popAllAnimations];
+//                }] subscribeCompleted:^{
+//                    [self.confirmationView removeFromSuperview];
+//                    [subscriber sendCompleted];
+//                }];
                 
                 return nil;
             }];

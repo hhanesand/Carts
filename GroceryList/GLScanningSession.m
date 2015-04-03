@@ -35,11 +35,12 @@
 
 - (void)stopScanning {
     self.delegate = nil;
-    [self.captureSession stopRunning];
+    self.previewLayer.connection.enabled = NO;
 }
 
 - (void)startScanningWithDelegate:(id<GLBarcodeScannerDelegate>)delegate {
     self.delegate = delegate;
+    self.previewLayer.connection.enabled = YES;
     [self.captureSession startRunning];
 }
 
