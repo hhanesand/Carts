@@ -12,6 +12,7 @@
 
 #import <pop/POP.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import "POPAnimation+GLAnimation.h"
 
 @implementation GLAnimationStack
 

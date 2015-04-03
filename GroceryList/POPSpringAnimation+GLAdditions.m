@@ -25,22 +25,5 @@
     return reversed;
 }
 
-- (RACSignal *)completionSignal {
-    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        if (self.completionBlock) {
-            NSLog(@"WARNING : Overwriting completion block on SpringAnimation %@", self);
-        }
-        
-        self.completionBlock = ^(POPAnimation *animation, BOOL done) {
-            if (done) {
-                [subscriber sendNext:animation];
-                [subscriber sendCompleted];
-            }
-        };
-        
-        return nil;
-    }];
-}
-
 
 @end

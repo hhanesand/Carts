@@ -16,6 +16,8 @@
 @property (nonatomic) AVCaptureDevice *captureDevice;
 @property (nonatomic) AVCaptureDeviceInput *videoInput;
 @property (nonatomic) AVCaptureMetadataOutput *metadataOutput;
+
+@property (nonatomic) AVCaptureStillImageOutput *imageCapture;
 @end
 
 @implementation GLScanningSession
@@ -35,13 +37,13 @@
 
 - (void)stopScanning {
     self.delegate = nil;
-    self.previewLayer.connection.enabled = NO;
+    [self.previewLayer pauseWithSignal:[self captureImageFromCamera]];
 }
 
 - (void)startScanningWithDelegate:(id<GLBarcodeScannerDelegate>)delegate {
     self.delegate = delegate;
-    self.previewLayer.connection.enabled = YES;
     [self.captureSession startRunning];
+    [self.previewLayer start];
 }
 
 - (void)initializeCaptureSession {
@@ -49,7 +51,15 @@
         return;
     }
     
-    self.captureSession = [[AVCaptureSession alloc] init];
+    self.captureSession = [AVCaptureSession new];
+    self.captureSession.sessionPreset = AVCaptureSessionPreset640x480;
+    
+    self.imageCapture = [AVCaptureStillImageOutput new];
+    self.imageCapture.outputSettings = @{AVVideoCodecKey : AVVideoCodecJPEG, AVVideoQualityKey : @0.6};
+    
+    if ([self.captureSession canAddOutput:self.imageCapture]) {
+        [self.captureSession addOutput:self.imageCapture];
+    }
     
     self.captureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     
@@ -68,8 +78,10 @@
         NSLog(@"Error %@", error);
     }
     
-    self.previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.captureSession];
-    self.previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    AVCaptureVideoPreviewLayer *av_previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.captureSession];
+    av_previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    
+    self.previewLayer = [[GLVideoPreviewLayer alloc] initWithPreviewLayer:av_previewLayer];
     
     self.metadataOutput = [[AVCaptureMetadataOutput alloc] init];
     [self.metadataOutput setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
@@ -84,6 +96,21 @@
         GLBarcode *barcode = [GLBarcode barcodeWithMetadataObject:[metadataObjects firstObject]];
         [self.delegate scanner:self didRecieveBarcode:barcode];
     }
+}
+
+- (RACSignal *)captureImageFromCamera {
+    AVCaptureConnection *captureConnection = [self.imageCapture connectionWithMediaType:AVMediaTypeVideo];
+    
+    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [self.imageCapture captureStillImageAsynchronouslyFromConnection:captureConnection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
+            NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
+            UIImage *image = [UIImage imageWithData:imageData];
+            [subscriber sendNext:(id)image.CGImage];
+            [subscriber sendCompleted];
+        }];
+        
+        return nil;
+    }] subscribeOn:[RACScheduler schedulerWithPriority:RACSchedulerPriorityHigh]];
 }
 
 @end

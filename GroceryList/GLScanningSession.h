@@ -9,10 +9,11 @@
 @import Foundation;
 #import <AVFoundation/AVFoundation.h>
 #import "GLBarcodeScannerDelegate.h"
+#import "GLVideoPreviewLayer.h"
 
 @class RACSignal;
 
-@interface GLScanningSession : NSObject<AVCaptureMetadataOutputObjectsDelegate>
+@interface GLScanningSession : NSObject <AVCaptureMetadataOutputObjectsDelegate>
 
 /**
  *  Sets up a new scanning session
@@ -26,10 +27,7 @@
  */
 @property (nonatomic) id<GLBarcodeScannerDelegate> delegate;
 
-/**
- *  The preview video layer that can be added to any view hierarchy
- */
-@property (nonatomic) AVCaptureVideoPreviewLayer *previewLayer;
+@property (nonatomic) GLVideoPreviewLayer *previewLayer;
 
 /**
  *  The capture session
@@ -38,5 +36,12 @@
 
 - (void)stopScanning;
 - (void)startScanningWithDelegate:(id<GLBarcodeScannerDelegate>)delegate;
+
+/**
+ *  Captures an image from the camera
+ *
+ *  @return A signal that will return the CGImage from the camera
+ */
+- (RACSignal *)captureImageFromCamera;
 
 @end

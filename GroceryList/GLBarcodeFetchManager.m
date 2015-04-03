@@ -42,19 +42,21 @@
 }
 
 - (RACSignal *)fetchProductInformationForBarcode:(GLBarcode *)barcode {
-    [SVProgressHUD show];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [SVProgressHUD show];
+    });
     
     PFQuery *productQuery = [self queryForBarcode:barcode];
     
     @weakify(self);
-    return [[[[[productQuery getFirstObjectWithRACSignal] catch:^RACSignal *(NSError *error) {
+    return [[[[[[productQuery getFirstObjectWithRACSignal] catch:^RACSignal *(NSError *error) {
         @strongify(self);
         return [[self fetchProductInformationFromFactualForBarcode:barcode] doError:^(NSError *error) {
             [[GLParseAnalytics shared] trackMissingBarcode:barcode.barcode];
         }];
     }] map:^GLListObject *(GLBarcodeObject *value) {
         return [GLListObject objectWithCurrentUserAndBarcodeItem:value];
-    }] doNext:^(id x) {
+    }] deliverOnMainThread] doNext:^(id x) {
         [SVProgressHUD showSuccessWithStatus:@"Item found!"];
     }] catch:^RACSignal *(NSError *error) {
         [SVProgressHUD showErrorWithStatus:@"Not found :("];

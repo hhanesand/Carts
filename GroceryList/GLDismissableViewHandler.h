@@ -21,6 +21,7 @@
 @interface GLDismissableViewHandler : NSObject <UIGestureRecognizerDelegate>
 
 @property (nonatomic) id<GLDismissableHandlerDelegate> delegate;
+@property (nonatomic) BOOL enabled;
 
 - (instancetype)initWithView:(UIView *)view;
 

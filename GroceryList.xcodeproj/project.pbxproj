@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BAC6761EE9F8F7E288863188 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A783D9E5EBD8A030867002CD /* libPods.a */; };
+		F2098E041ACF12D600CF422A /* GLVideoPreviewLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2098E031ACF12D600CF422A /* GLVideoPreviewLayer.m */; };
 		F21536F51ACE1B5A005C7C40 /* GLBarcodeFetchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F21536F41ACE1B5A005C7C40 /* GLBarcodeFetchManager.m */; };
 		F22079F81AAF982200BC5C98 /* GLBarcode.m in Sources */ = {isa = PBXBuildFile; fileRef = F22079F71AAF982200BC5C98 /* GLBarcode.m */; };
 		F22416291AAB6795001AFDCB /* GLTweakCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = F22416281AAB6795001AFDCB /* GLTweakCollection.m */; };
@@ -55,6 +56,7 @@
 		F2DFA8711AA7C75B00CF05B9 /* UIColor+GLColor.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DFA8701AA7C75B00CF05B9 /* UIColor+GLColor.m */; };
 		F2DFA8771AA7CC0100CF05B9 /* GLBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DFA8761AA7CC0100CF05B9 /* GLBaseViewController.m */; };
 		F2DFA87D1AA7E8B200CF05B9 /* POPSpringAnimation+GLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DFA87C1AA7E8B200CF05B9 /* POPSpringAnimation+GLAdditions.m */; };
+		F2E1E5631ACF20F0001584C8 /* POPAnimation+GLAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E1E5621ACF20F0001584C8 /* POPAnimation+GLAnimation.m */; };
 		F2E4D4BB1A98295D00E8C517 /* GLFactualResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E4D4BA1A98295D00E8C517 /* GLFactualResponseSerializer.m */; };
 		F2E544E01A6CB55000CB52E5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E544DF1A6CB55000CB52E5 /* main.m */; };
 		F2E544E31A6CB55000CB52E5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E544E21A6CB55000CB52E5 /* AppDelegate.m */; };
@@ -90,6 +92,8 @@
 		254AFE9F5A4C9859E25FAB80 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		9CA8F7344B4A5BF669FC2DE8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A783D9E5EBD8A030867002CD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2098E021ACF12D600CF422A /* GLVideoPreviewLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLVideoPreviewLayer.h; sourceTree = "<group>"; };
+		F2098E031ACF12D600CF422A /* GLVideoPreviewLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLVideoPreviewLayer.m; sourceTree = "<group>"; };
 		F210E9841A855A04000B83EC /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		F21536F31ACE1B5A005C7C40 /* GLBarcodeFetchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLBarcodeFetchManager.h; sourceTree = "<group>"; };
 		F21536F41ACE1B5A005C7C40 /* GLBarcodeFetchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBarcodeFetchManager.m; sourceTree = "<group>"; };
@@ -166,6 +170,8 @@
 		F2DFA8761AA7CC0100CF05B9 /* GLBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBaseViewController.m; sourceTree = "<group>"; };
 		F2DFA87B1AA7E8B200CF05B9 /* POPSpringAnimation+GLAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "POPSpringAnimation+GLAdditions.h"; sourceTree = "<group>"; };
 		F2DFA87C1AA7E8B200CF05B9 /* POPSpringAnimation+GLAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "POPSpringAnimation+GLAdditions.m"; sourceTree = "<group>"; };
+		F2E1E5611ACF20F0001584C8 /* POPAnimation+GLAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "POPAnimation+GLAnimation.h"; sourceTree = "<group>"; };
+		F2E1E5621ACF20F0001584C8 /* POPAnimation+GLAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "POPAnimation+GLAnimation.m"; sourceTree = "<group>"; };
 		F2E4D4BA1A98295D00E8C517 /* GLFactualResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLFactualResponseSerializer.m; sourceTree = "<group>"; };
 		F2E4D4BC1A98296F00E8C517 /* GLFactualResponseSerializer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLFactualResponseSerializer.h; sourceTree = "<group>"; };
 		F2E544DA1A6CB55000CB52E5 /* GroceryList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryList.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -267,6 +273,15 @@
 			name = Networking;
 			sourceTree = "<group>";
 		};
+		F26147FB1ACF1CCA002395BE /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				F2BB86851AAE3F0500E02FF3 /* GLScanningSession.h */,
+				F2BB86831AAE3EF700E02FF3 /* GLScanningSession.m */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
 		F2A00A591AA8048C004B8988 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +296,8 @@
 				F23D37151AC7ABEB001FEA45 /* GLAnimation.m */,
 				F23D37171AC84A97001FEA45 /* GLPullToCloseTransitionManager.h */,
 				F23D37181AC84A97001FEA45 /* GLPullToCloseTransitionManager.m */,
+				F2E1E5611ACF20F0001584C8 /* POPAnimation+GLAnimation.h */,
+				F2E1E5621ACF20F0001584C8 /* POPAnimation+GLAnimation.m */,
 			);
 			name = Animation;
 			sourceTree = "<group>";
@@ -423,6 +440,8 @@
 				F29214C31AA01A2100015EB2 /* GLItemConfirmationView.xib */,
 				F2F454031AC4816D002B8768 /* GLCameraLayer.h */,
 				F2F454041AC4816D002B8768 /* GLCameraLayer.m */,
+				F2098E021ACF12D600CF422A /* GLVideoPreviewLayer.h */,
+				F2098E031ACF12D600CF422A /* GLVideoPreviewLayer.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -430,6 +449,7 @@
 		F2E5450A1A6CB60A00CB52E5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F26147FB1ACF1CCA002395BE /* Managers */,
 				F2DFA8751AA7CC0100CF05B9 /* GLBaseViewController.h */,
 				F2DFA8761AA7CC0100CF05B9 /* GLBaseViewController.m */,
 				F280CBD91AB3CA7D00F2A973 /* GLTableViewController.h */,
@@ -479,8 +499,6 @@
 			children = (
 				F29214C21A9FB5C200015EB2 /* GLBarcodeScannerDelegate.h */,
 				F2DFA8631AA56B6300CF05B9 /* GLBarcodeItemDelegate.h */,
-				F2BB86851AAE3F0500E02FF3 /* GLScanningSession.h */,
-				F2BB86831AAE3EF700E02FF3 /* GLScanningSession.m */,
 				F2F948B31A8947C8002C5177 /* GLBarcodeObject.h */,
 				F2F948B11A8947BD002C5177 /* GLBarcodeObject.m */,
 				F2D58A721A96EB7000E15FFC /* GLListObject.h */,
@@ -683,6 +701,7 @@
 			files = (
 				F2F797D51AB1323500886A2D /* PFObject+GLPFObject.m in Sources */,
 				F2DFA8711AA7C75B00CF05B9 /* UIColor+GLColor.m in Sources */,
+				F2E1E5631ACF20F0001584C8 /* POPAnimation+GLAnimation.m in Sources */,
 				F224162C1AAB9001001AFDCB /* GLTweakWindow.m in Sources */,
 				F22416291AAB6795001AFDCB /* GLTweakCollection.m in Sources */,
 				F2DFA8771AA7CC0100CF05B9 /* GLBaseViewController.m in Sources */,
@@ -715,6 +734,7 @@
 				F280CBDC1AB3CA7D00F2A973 /* GLTableViewController.m in Sources */,
 				F2A6C8D71A915FF900FE3C30 /* PFQueryTableViewController+Caching.m in Sources */,
 				F2E544E01A6CB55000CB52E5 /* main.m in Sources */,
+				F2098E041ACF12D600CF422A /* GLVideoPreviewLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -32,6 +32,7 @@
 #import "GLCameraLayer.h"
 #import "GLBarcodeFetchManager.h"
 #import "GLDismissableViewHandler.h"
+#import "POPAnimation+GLAnimation.h"
 
 #define TICK   NSDate *startTime = [NSDate date]
 #define TOCK   NSLog(@"Time GLScannerViewController: %f", -[startTime timeIntervalSinceNow])
@@ -142,7 +143,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     
     @weakify(self);
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        [[[self.barcodeManager fetchProductInformationForBarcode:barcode] deliverOnMainThread] subscribeNext:^(GLListObject *newListItem) {
+        [[self.barcodeManager fetchProductInformationForBarcode:barcode] subscribeNext:^(GLListObject *newListItem) {
             @strongify(self);
             self.currentListItem = newListItem;
             [self showConfirmationViewWithListItem:newListItem];
@@ -152,6 +153,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 
 - (void)showConfirmationViewWithListItem:(GLListObject *)listItem {
     [self.confirmationView bindWithListObject:listItem];
+    [self hookupRACCommandsToConfirmationView];
     [self.view addSubview:self.confirmationView];
     
     POPSpringAnimation *presentConfirmationView = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
@@ -168,9 +170,10 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 - (void)setupInteractiveDismissalOfConfirmationView {
     UIPanGestureRecognizer *swipeDownToDismiss = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePullDownToDismissGestureRecognizer:)];
     [self.view addGestureRecognizer:swipeDownToDismiss];
+    swipeDownToDismiss.delegate = self.confirmationViewDismissHandler;
     
-    self.confirmationViewDismissHandler = [[GLDismissableViewHandler alloc] initWithView:self.confirmationView];
     self.confirmationViewDismissHandler.delegate = self;
+    self.confirmationViewDismissHandler.enabled = YES;
 }
 
 - (void)handlePullDownToDismissGestureRecognizer:(UIPanGestureRecognizer *)pan {
@@ -182,17 +185,20 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 
 - (void)willDismissViewAfterUserInteraction {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        self.confirmationViewDismissHandler.enabled = NO;
         [self.barcodeScanner startScanningWithDelegate:self];
     });
 }
 
 - (RACSignal *)dismissConfirmationView {
     POPSpringAnimation *dismiss = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
-    dismiss.toValue = @(CGRectGetHeight(self.view.frame) - CGRectGetHeight(self.confirmationView.frame) / 2);
+    dismiss.toValue = @(CGRectGetHeight(self.view.frame) + CGRectGetHeight(self.confirmationView.frame) / 2);
     dismiss.springSpeed = 20;
     dismiss.springBounciness = 0;
     
     [self.confirmationView pop_addAnimation:dismiss forKey:@"manual_confirmation_view_dismiss"];
+    
+    self.confirmationViewDismissHandler.enabled = NO;
     
     return [dismiss completionSignal];
 }
@@ -200,47 +206,55 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 - (GLItemConfirmationView *)confirmationView {
     if (!_confirmationView) {
         _confirmationView = [[GLItemConfirmationView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) * 0.5)];
-        
-        RACSignal *canSubmitSignal = [self.confirmationView.name.rac_textSignal map:^id(NSString *name) {
-            return @([name length] > 0);
-        }];
-        
-        @weakify(self);
-        _confirmationView.confirm.rac_command = [[RACCommand alloc] initWithEnabled:canSubmitSignal signalBlock:^RACSignal *(id input) {
-            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                @strongify(self);
-                [self.delegate didRecieveNewListItem:self.currentListItem];
-                [self.barcodeScanner startScanningWithDelegate:self];
-
-                [self dismissConfirmationView];
-                
-//                [[[self dismissConfirmationView] flattenMap:^RACStream *(id value) {
-//                    return [self.animationStack popAllAnimations];
-//                }] subscribeCompleted:^{
-//                    [self.confirmationView removeFromSuperview];
-//                    [subscriber sendCompleted];
-//                }];
-                
-                return nil;
-            }];
-        }];
-        
-        self.confirmationView.cancel.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                @strongify(self);
-                [self.barcodeScanner startScanningWithDelegate:self];
-                
-                [[self dismissConfirmationView] subscribeCompleted:^{
-                    [self.confirmationView removeFromSuperview];
-                    [subscriber sendCompleted];
-                }];
-                
-                return nil;
-            }];
-        }];
     }
     
     return _confirmationView;
+}
+
+- (GLDismissableViewHandler *)confirmationViewDismissHandler {
+    if (!_confirmationViewDismissHandler) {
+        _confirmationViewDismissHandler = [[GLDismissableViewHandler alloc] initWithView:self.confirmationView];
+    }
+    
+    return _confirmationViewDismissHandler;
+}
+
+- (void)hookupRACCommandsToConfirmationView {
+    RACSignal *canSubmitSignal = [self.confirmationView.name.rac_textSignal map:^id(NSString *name) {
+        return @([name length] > 0);
+    }];
+    
+    @weakify(self);
+    _confirmationView.confirm.rac_command = [[RACCommand alloc] initWithEnabled:canSubmitSignal signalBlock:^RACSignal *(id input) {
+        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            @strongify(self);
+            [self.delegate didRecieveNewListItem:self.currentListItem];
+            [self.barcodeScanner startScanningWithDelegate:self];
+            
+            [[[self dismissConfirmationView] flattenMap:^RACStream *(id value) {
+                return [self.animationStack popAllAnimations];
+            }] subscribeCompleted:^{
+                [self.confirmationView removeFromSuperview];
+                [subscriber sendCompleted];
+            }];
+            
+            return nil;
+        }];
+    }];
+    
+    self.confirmationView.cancel.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            @strongify(self);
+            [self.barcodeScanner startScanningWithDelegate:self];
+            
+            [[self dismissConfirmationView] subscribeCompleted:^{
+                [self.confirmationView removeFromSuperview];
+                [subscriber sendCompleted];
+            }];
+            
+            return nil;
+        }];
+    }];
 }
 
 #pragma mark - Notification Center

@@ -10,6 +10,7 @@
 #import <pop/POP.h>
 #import "POPSpringAnimation+GLAdditions.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import "POPAnimation+GLAnimation.h"
 
 @implementation GLPullToCloseTransitionManager
 
