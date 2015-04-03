@@ -23,6 +23,6 @@
  *  @param signal A signal that will deliver a CGImage of the camera input
  */
 - (void)pauseWithSignal:(RACSignal *)signal;
-- (void)start;
+- (void)resume;
 
 @end

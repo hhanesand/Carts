@@ -35,15 +35,27 @@
     return self;
 }
 
-- (void)stopScanning {
+- (void)pause {
     self.delegate = nil;
-    [self.previewLayer pauseWithSignal:[self captureImageFromCamera]];
+    
+    if (self.captureSession.running) {
+        [self.previewLayer pauseWithSignal:[self captureImageFromCamera]];
+    }
+}
+
+- (void)resumeWithDelegate:(id<GLBarcodeScannerDelegate>)delegate {
+    [self.previewLayer resume];
+    
+    [self startScanningWithDelegate:delegate];
 }
 
 - (void)startScanningWithDelegate:(id<GLBarcodeScannerDelegate>)delegate {
     self.delegate = delegate;
-    [self.captureSession startRunning];
-    [self.previewLayer start];
+    self.previewLayer.previewLayer.connection.enabled = YES;
+    
+    if (!self.captureSession.running) {
+        [self.captureSession startRunning];
+    }
 }
 
 - (void)initializeCaptureSession {

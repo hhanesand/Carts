@@ -87,7 +87,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     });
     
     UIView *videoPreviewView = [[UIView alloc] initWithFrame:self.view.bounds];
-    [videoPreviewView.layer addSublayer:self.barcodeScanner.previewLayer];
+    [videoPreviewView.layer addSublayer:self.barcodeScanner.previewLayer.previewLayer];
     
     UITapGestureRecognizer *doubleTapTestingScan = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(testScanning)];
     doubleTapTestingScan.numberOfTapsRequired = 2;
@@ -139,7 +139,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 #pragma mark - Barcode Scanner Delegate
 
 - (void)scanner:(GLScanningSession *)scanner didRecieveBarcode:(GLBarcode *)barcode {
-    [scanner stopScanning];
+    [scanner pause];
     
     @weakify(self);
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
@@ -186,7 +186,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 - (void)willDismissViewAfterUserInteraction {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         self.confirmationViewDismissHandler.enabled = NO;
-        [self.barcodeScanner startScanningWithDelegate:self];
+        [self.barcodeScanner resumeWithDelegate:self];
     });
 }
 
@@ -229,7 +229,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             @strongify(self);
             [self.delegate didRecieveNewListItem:self.currentListItem];
-            [self.barcodeScanner startScanningWithDelegate:self];
+            [self.barcodeScanner resumeWithDelegate:self];
             
             [[[self dismissConfirmationView] flattenMap:^RACStream *(id value) {
                 return [self.animationStack popAllAnimations];
@@ -245,7 +245,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     self.confirmationView.cancel.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             @strongify(self);
-            [self.barcodeScanner startScanningWithDelegate:self];
+            [self.barcodeScanner resumeWithDelegate:self];
             
             [[self dismissConfirmationView] subscribeCompleted:^{
                 [self.confirmationView removeFromSuperview];

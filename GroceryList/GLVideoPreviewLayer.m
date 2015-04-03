@@ -19,15 +19,19 @@
 
 - (instancetype)initWithPreviewLayer:(AVCaptureVideoPreviewLayer *)previewLayer {
     if (self = [super init]) {
+        self.backgroundColor = [UIColor clearColor].CGColor;
         self.previewLayer = previewLayer;
-        self.imageLayer = [CALayer layer];
         [self addSublayer:self.previewLayer];
+        self.previewLayer.connection.enabled = YES;
+        self.imageLayer = [CALayer layer];
     }
     
     return self;
 }
 
-- (void)start {
+- (void)resume {
+    self.previewLayer.connection.enabled = YES;
+    
     [self insertSublayer:self.previewLayer atIndex:0];
     
     POPBasicAnimation *alpha = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerOpacity];
@@ -43,6 +47,8 @@
 }
 
 - (void)pauseWithSignal:(RACSignal *)signal {
+    self.previewLayer.connection.enabled = NO;
+    
 	[[signal deliverOnMainThread] subscribeNext:^(id image) {
         self.imageLayer.contents = image;
         [self addSublayer:self.imageLayer];
