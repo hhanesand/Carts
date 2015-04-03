@@ -55,8 +55,9 @@
     }] map:^GLListObject *(GLBarcodeObject *value) {
         return [GLListObject objectWithCurrentUserAndBarcodeItem:value];
     }] doNext:^(id x) {
-        [SVProgressHUD showSuccessWithStatus:<#(NSString *)#>]
+        [SVProgressHUD showSuccessWithStatus:@"Item found!"];
     }] catch:^RACSignal *(NSError *error) {
+        [SVProgressHUD showErrorWithStatus:@"Not found :("];
         return [RACSignal return:[GLListObject objectWithCurrentUser]];
     }];
 }

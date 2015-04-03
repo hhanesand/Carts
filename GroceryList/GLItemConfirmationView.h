@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GLDismissableView.h"
 
 @class GLListObject;
 @class RACSubject;
 
-@interface GLItemConfirmationView : GLDismissableView <UITextFieldDelegate>
+@interface GLItemConfirmationView : UIView <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *name;
 @property (weak, nonatomic) IBOutlet UITextField *brand;
