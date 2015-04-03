@@ -14,7 +14,7 @@
 #import "SVProgressHUD.h"
 
 #import "GLScannerViewController.h"
-#import "GLBarcodeManager.h"
+#import "GLFactualManager.h"
 #import "GLBingFetcher.h"
 #import "GLItemConfirmationView.h"
 #import "GLListObject.h"
@@ -30,18 +30,20 @@
 #import "GLParseAnalytics.h"
 #import "UIView+RecursiveInteraction.h"
 #import "GLCameraLayer.h"
+#import "GLBarcodeFetchManager.h"
 
 #define TICK   NSDate *startTime = [NSDate date]
 #define TOCK   NSLog(@"Time GLScannerViewController: %f", -[startTime timeIntervalSinceNow])
 
 @interface GLScannerViewController()
-@property (nonatomic) GLBarcodeManager *manager;
+@property (nonatomic) GLFactualManager *manager;
 @property (nonatomic) GLBingFetcher *bing;
 @property (nonatomic) GLScanningSession *barcodeScanner;
 @property (nonatomic) NSDictionary *tweaksForConfirmAnimation;
 @property (nonatomic) GLCameraLayer *targetingReticule;
 
 @property (nonatomic) GLListObject *currentListItem;
+@property (nonatomic) GLBarcodeFetchManager *barcodeManager;
 @end
 
 static NSString *identifier = @"GLBarcodeItemTableViewCell";
@@ -50,12 +52,12 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 
 - (instancetype)init {
     if (self = [super initWithNibName:@"GLScannerViewController" bundle:[NSBundle mainBundle]]) {
-        self.manager = [[GLBarcodeManager alloc] init];
+        self.manager = [[GLFactualManager alloc] init];
         self.bing = [GLBingFetcher sharedFetcher];
         self.barcodeScanner = [GLScanningSession session];
         [self.barcodeScanner startScanningWithDelegate:self];
         
-        [self rac];
+        [self configureKeyboardAnimations];
     }
     
     return self;
@@ -124,20 +126,12 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 }
 
 - (void)scanner:(GLScanningSession *)scanner didRecieveBarcode:(GLBarcode *)barcode {
-    [SVProgressHUD show];
     [scanner stopScanning];
     
     @weakify(self);
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        [[[[[self fetchProductInformationForBarcode:barcode] deliverOnMainThread] doNext:^(id x) {
-            //show success before we catch for the failure so user can tell his item info was found
-            [SVProgressHUD showSuccessWithStatus:@"Item found!"];
-        }] catch:^RACSignal *(NSError *error) {
-            //neither parse nor factual have any information (or net error) about this item so we'll make an empty one for user to fill out
-            [SVProgressHUD showErrorWithStatus:@"Item not found"];
-            return [RACSignal return:[GLListObject objectWithCurrentUser]];
-        }] subscribeNext:^(GLListObject *newListItem) {
-            @strongify(self);
+        [[self.barcodeManager fetchProductInformationForBarcode:barcode] subscribeNext:^(GLListObject *newListItem) {
+            @weakify(self);
             self.currentListItem = newListItem;
             [self showConfirmationViewWithListItem:newListItem];
         }];
@@ -171,35 +165,6 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     }];
 }
 
-#pragma mark - Networking
-
-- (PFQuery *)queryForBarcode:(GLBarcode *)item {
-    PFQuery *query = [GLBarcodeObject query];
-    [query whereKey:@"barcodes" equalTo:item.barcode];
-    return query;
-}
-
-- (RACSignal *)fetchProductInformationForBarcode:(GLBarcode *)barcode {
-    PFQuery *productQuery = [self queryForBarcode:barcode];
-    
-    @weakify(self);
-    return [[[productQuery getFirstObjectWithRACSignal] catch:^RACSignal *(NSError *error) {
-        @strongify(self);
-        return [[self fetchProductInformationFromFactualForBarcode:barcode] doError:^(NSError *error) {
-            [[GLParseAnalytics shared] trackMissingBarcode:barcode.barcode];
-        }];
-    }] map:^GLListObject *(GLBarcodeObject *value) {
-        return [GLListObject objectWithCurrentUserAndBarcodeItem:value];
-    }];
-}
-
-- (RACSignal *)fetchProductInformationFromFactualForBarcode:(GLBarcode *)barcode {
-    return [[[self.manager queryFactualForBarcode:barcode.barcode] map:^id(NSDictionary *itemInformation) {
-        return [GLBarcodeObject objectWithDictionary:itemInformation];
-    }] flattenMap:^RACStream *(GLBarcodeObject *barcode) {
-        return [self.bing fetchImageURLFromBingForBarcodeObject:barcode];
-    }];
-}
 
 - (GLItemConfirmationView *)confirmationView {
     if (!_confirmationView) {
@@ -236,7 +201,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 
 #pragma mark - Notification Center
 
-- (void)rac {
+- (void)configureKeyboardAnimations {
     [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:UIKeyboardWillShowNotification object:nil] takeUntil:self.rac_willDeallocSignal] subscribeNext:^(NSNotification *notif) {
          //see http://stackoverflow.com/a/19236013/4080860
          

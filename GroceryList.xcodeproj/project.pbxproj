@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BAC6761EE9F8F7E288863188 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A783D9E5EBD8A030867002CD /* libPods.a */; };
+		F21536F51ACE1B5A005C7C40 /* GLBarcodeFetchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F21536F41ACE1B5A005C7C40 /* GLBarcodeFetchManager.m */; };
 		F22079F81AAF982200BC5C98 /* GLBarcode.m in Sources */ = {isa = PBXBuildFile; fileRef = F22079F71AAF982200BC5C98 /* GLBarcode.m */; };
 		F22416291AAB6795001AFDCB /* GLTweakCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = F22416281AAB6795001AFDCB /* GLTweakCollection.m */; };
 		F224162C1AAB9001001AFDCB /* GLTweakWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F224162B1AAB9001001AFDCB /* GLTweakWindow.m */; };
@@ -21,8 +22,7 @@
 		F22C8F421A6EE92D00139B9D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F22C8F411A6EE92D00139B9D /* SystemConfiguration.framework */; };
 		F22C8F441A6EE93600139B9D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F22C8F431A6EE93600139B9D /* libz.dylib */; };
 		F22C8F461A6EE94A00139B9D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F22C8F451A6EE94A00139B9D /* libsqlite3.dylib */; };
-		F22F2D791A72D1DB00C878EC /* GLBarcodeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F2D781A72D1DB00C878EC /* GLBarcodeManager.m */; };
-		F22F2D7D1A72D6FD00C878EC /* GLBarcodeDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F2D7C1A72D6FD00C878EC /* GLBarcodeDatabase.m */; };
+		F22F2D791A72D1DB00C878EC /* GLFactualManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F2D781A72D1DB00C878EC /* GLFactualManager.m */; };
 		F23273601AAF730C001965FD /* PFQuery+GLQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = F232735F1AAF730C001965FD /* PFQuery+GLQuery.m */; };
 		F23B418A1AC1E6FA00209C29 /* UIView+RecursiveInteraction.m in Sources */ = {isa = PBXBuildFile; fileRef = F23B41891AC1E6FA00209C29 /* UIView+RecursiveInteraction.m */; };
 		F23D37131AC7ABE2001FEA45 /* GLAnimationStack.m in Sources */ = {isa = PBXBuildFile; fileRef = F23D37121AC7ABE2001FEA45 /* GLAnimationStack.m */; };
@@ -91,6 +91,8 @@
 		9CA8F7344B4A5BF669FC2DE8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A783D9E5EBD8A030867002CD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F210E9841A855A04000B83EC /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		F21536F31ACE1B5A005C7C40 /* GLBarcodeFetchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLBarcodeFetchManager.h; sourceTree = "<group>"; };
+		F21536F41ACE1B5A005C7C40 /* GLBarcodeFetchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBarcodeFetchManager.m; sourceTree = "<group>"; };
 		F22079F61AAF982200BC5C98 /* GLBarcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLBarcode.h; sourceTree = "<group>"; };
 		F22079F71AAF982200BC5C98 /* GLBarcode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBarcode.m; sourceTree = "<group>"; };
 		F22416271AAB6795001AFDCB /* GLTweakCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTweakCollection.h; sourceTree = "<group>"; };
@@ -107,10 +109,8 @@
 		F22C8F411A6EE92D00139B9D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F22C8F431A6EE93600139B9D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		F22C8F451A6EE94A00139B9D /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		F22F2D781A72D1DB00C878EC /* GLBarcodeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBarcodeManager.m; sourceTree = "<group>"; };
-		F22F2D7A1A72D1FA00C878EC /* GLBarcodeManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLBarcodeManager.h; sourceTree = "<group>"; };
-		F22F2D7B1A72D66600C878EC /* GLBarcodeDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLBarcodeDatabase.h; sourceTree = "<group>"; };
-		F22F2D7C1A72D6FD00C878EC /* GLBarcodeDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBarcodeDatabase.m; sourceTree = "<group>"; };
+		F22F2D781A72D1DB00C878EC /* GLFactualManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLFactualManager.m; sourceTree = "<group>"; };
+		F22F2D7A1A72D1FA00C878EC /* GLFactualManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLFactualManager.h; sourceTree = "<group>"; };
 		F232735E1AAF730C001965FD /* PFQuery+GLQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFQuery+GLQuery.h"; sourceTree = "<group>"; };
 		F232735F1AAF730C001965FD /* PFQuery+GLQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFQuery+GLQuery.m"; sourceTree = "<group>"; };
 		F23B41881AC1E6FA00209C29 /* UIView+RecursiveInteraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RecursiveInteraction.h"; sourceTree = "<group>"; };
@@ -254,16 +254,16 @@
 		F25E490F1A86B126006E1252 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				F22F2D7A1A72D1FA00C878EC /* GLBarcodeManager.h */,
-				F22F2D781A72D1DB00C878EC /* GLBarcodeManager.m */,
-				F22F2D7B1A72D66600C878EC /* GLBarcodeDatabase.h */,
-				F22F2D7C1A72D6FD00C878EC /* GLBarcodeDatabase.m */,
+				F22F2D7A1A72D1FA00C878EC /* GLFactualManager.h */,
+				F22F2D781A72D1DB00C878EC /* GLFactualManager.m */,
 				F25E49121A86B150006E1252 /* GLBingFetcher.h */,
 				F25E49101A86B141006E1252 /* GLBingFetcher.m */,
 				F2D58A6F1A96BD5A00E15FFC /* GLFactualRequestSerializer.h */,
 				F2D58A6D1A96BC7700E15FFC /* GLFactualRequestSerializer.m */,
 				F2E4D4BC1A98296F00E8C517 /* GLFactualResponseSerializer.h */,
 				F2E4D4BA1A98295D00E8C517 /* GLFactualResponseSerializer.m */,
+				F21536F31ACE1B5A005C7C40 /* GLBarcodeFetchManager.h */,
+				F21536F41ACE1B5A005C7C40 /* GLBarcodeFetchManager.m */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -687,12 +687,11 @@
 				F2E544E31A6CB55000CB52E5 /* AppDelegate.m in Sources */,
 				F2DFA87D1AA7E8B200CF05B9 /* POPSpringAnimation+GLAdditions.m in Sources */,
 				F2F948B21A8947BD002C5177 /* GLBarcodeObject.m in Sources */,
-				F22F2D791A72D1DB00C878EC /* GLBarcodeManager.m in Sources */,
+				F22F2D791A72D1DB00C878EC /* GLFactualManager.m in Sources */,
 				F23D37131AC7ABE2001FEA45 /* GLAnimationStack.m in Sources */,
 				F2FB73BB1ABF72480098D248 /* GLScannerViewController.m in Sources */,
 				F2D58A711A96EB6600E15FFC /* GLListObject.m in Sources */,
 				F2680BC41AAA320B00D851D2 /* GLTweak.m in Sources */,
-				F22F2D7D1A72D6FD00C878EC /* GLBarcodeDatabase.m in Sources */,
 				F23D37191AC84A97001FEA45 /* GLPullToCloseTransitionManager.m in Sources */,
 				F29214B91A9D4BD400015EB2 /* GLItemConfirmationView.m in Sources */,
 				F2F454051AC4816D002B8768 /* GLCameraLayer.m in Sources */,
@@ -704,6 +703,7 @@
 				F23273601AAF730C001965FD /* PFQuery+GLQuery.m in Sources */,
 				F23B418A1AC1E6FA00209C29 /* UIView+RecursiveInteraction.m in Sources */,
 				F23D37161AC7ABEB001FEA45 /* GLAnimation.m in Sources */,
+				F21536F51ACE1B5A005C7C40 /* GLBarcodeFetchManager.m in Sources */,
 				F2E545051A6CB5D400CB52E5 /* GLTableViewCell.m in Sources */,
 				F23D37211ACA41A4001FEA45 /* GLDismissableView.m in Sources */,
 				F280CBDC1AB3CA7D00F2A973 /* GLTableViewController.m in Sources */,

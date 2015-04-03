@@ -14,7 +14,7 @@
 
 #import "GLTableViewController.h"
 #import "GLTableViewCell.h"
-#import "GLBarcodeManager.h"
+#import "GLFactualManager.h"
 #import "GLBingFetcher.h"
 #import "GLScannerViewController.h"
 #import "GLParseAnalytics.h"

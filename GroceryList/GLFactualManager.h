@@ -10,7 +10,7 @@
 
 @class RACSignal;
 
-@interface GLBarcodeManager : NSObject
+@interface GLFactualManager : NSObject
 
 - (RACSignal *)queryFactualForBarcode:(NSString *)barcode;
 

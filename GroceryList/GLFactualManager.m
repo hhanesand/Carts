@@ -6,8 +6,7 @@
 //
 //
 
-#import "GLBarcodeManager.h"
-#import "GLBarcodeDatabase.h"
+#import "GLFactualManager.h"
 #import "GLBarcodeObject.h"
 #import "GLBingFetcher.h"
 #import "AFURLResponseSerialization.h"
@@ -15,13 +14,13 @@
 #import "GLFactualResponseSerializer.h"
 #import "AFHTTPRequestOperationManager+RACSupport.h"
 
-@interface GLBarcodeManager()
+@interface GLFactualManager()
 @property (nonatomic) GLBingFetcher *bingFetcher;
 @property (nonatomic) AFHTTPRequestOperationManager *factualNetworkingManager;
 @property (nonatomic) NSDictionary *factualToParseMapping;
 @end
 
-@implementation GLBarcodeManager
+@implementation GLFactualManager
 
 - (instancetype)init {
     if (self = [super init]) {
