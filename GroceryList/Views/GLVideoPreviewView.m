@@ -47,6 +47,7 @@
     self.previewLayer.connection.enabled = NO;
     
     self.imageView.image = image;
+    self.imageView.frame = self.bounds;
     [self addSubview:self.imageView];
     [self.previewLayer removeFromSuperlayer];
 }
