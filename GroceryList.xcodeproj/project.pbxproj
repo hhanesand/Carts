@@ -51,7 +51,6 @@
 		F25286E31ACFA27D00435261 /* GLTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F25286DC1ACFA27D00435261 /* GLTableViewCell.xib */; };
 		F25286E41ACFA27D00435261 /* GLVideoPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286DE1ACFA27D00435261 /* GLVideoPreviewView.m */; };
 		F25286EB1ACFA2B300435261 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286E61ACFA2B300435261 /* AppDelegate.m */; };
-		F25286EC1ACFA2B300435261 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F25286E71ACFA2B300435261 /* Info.plist */; };
 		F25286ED1ACFA2B300435261 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286E81ACFA2B300435261 /* main.m */; };
 		F25286EE1ACFA2B300435261 /* UIView+RecursiveInteraction.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286EA1ACFA2B300435261 /* UIView+RecursiveInteraction.m */; };
 		F25286F01ACFA2FE00435261 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F25286EF1ACFA2FE00435261 /* ParseCrashReporting.framework */; };
@@ -593,7 +592,6 @@
 			files = (
 				F25286D01ACFA26300435261 /* GLScannerViewController.xib in Resources */,
 				F2F948BA1A8ACCEB002C5177 /* Images.xcassets in Resources */,
-				F25286EC1ACFA2B300435261 /* Info.plist in Resources */,
 				F25286E31ACFA27D00435261 /* GLTableViewCell.xib in Resources */,
 				F2F948C51A8AD7B5002C5177 /* index.html in Resources */,
 				F2F948C41A8AD7B5002C5177 /* global.json in Resources */,
