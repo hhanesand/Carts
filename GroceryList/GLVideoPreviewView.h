@@ -7,11 +7,11 @@
 //
 
 @import AVFoundation;
-#import <QuartzCore/QuartzCore.h>
+@import UIKit;
 
 @class RACSignal;
 
-@interface GLVideoPreviewLayer : CALayer
+@interface GLVideoPreviewView : UIView
 
 @property (nonatomic) AVCaptureVideoPreviewLayer *previewLayer;
 
@@ -20,9 +20,9 @@
 /**
  *  Pauses the video preview layer
  *
- *  @param signal A signal that will deliver a CGImage of the camera input
+ *  @param image An image of the camera stream
  */
-- (void)pauseWithSignal:(RACSignal *)signal;
+- (void)pauseWithImage:(UIImage *)image;
 - (void)resume;
 
 @end

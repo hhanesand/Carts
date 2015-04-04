@@ -1,29 +1,26 @@
 //
-//  GLVideoPreviewLayer.m
+//  GLVideoPreviewView.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/3/15.
-//
-//
 
-#import "GLVideoPreviewLayer.h"
+#import "GLVideoPreviewView.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <POP/POP.h>
 #import "POPAnimation+GLAnimation.h"
 
-@interface GLVideoPreviewLayer ()
-@property (nonatomic) CALayer *imageLayer;
+@interface GLVideoPreviewView ()
+@property (nonatomic) UIImageView *imageView;
 @end
 
-@implementation GLVideoPreviewLayer
+@implementation GLVideoPreviewView
 
 - (instancetype)initWithPreviewLayer:(AVCaptureVideoPreviewLayer *)previewLayer {
     if (self = [super init]) {
-        self.backgroundColor = [UIColor clearColor].CGColor;
+        self.imageView = [UIImageView new];
         self.previewLayer = previewLayer;
-        [self addSublayer:self.previewLayer];
+        [self.layer addSublayer:self.previewLayer];
         self.previewLayer.connection.enabled = YES;
-        self.imageLayer = [CALayer layer];
     }
     
     return self;
@@ -32,28 +29,31 @@
 - (void)resume {
     self.previewLayer.connection.enabled = YES;
     
-    [self insertSublayer:self.previewLayer atIndex:0];
+    [self.layer addSublayer:self.previewLayer];
     
     POPBasicAnimation *alpha = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerOpacity];
     alpha.toValue = 0;
     alpha.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     alpha.duration = 0.2;
     
-    [self.imageLayer pop_addAnimation:alpha forKey:@"fade"];
+    [self.imageView.layer pop_addAnimation:alpha forKey:@"fade"];
     
     [[alpha completionSignal] subscribeCompleted:^{
-        [self.imageLayer removeFromSuperlayer];
+        [self.imageView removeFromSuperview];
     }];
 }
 
-- (void)pauseWithSignal:(RACSignal *)signal {
+- (void)pauseWithImage:(UIImage *)image {
     self.previewLayer.connection.enabled = NO;
     
-	[[signal deliverOnMainThread] subscribeNext:^(id image) {
-        self.imageLayer.contents = image;
-        [self addSublayer:self.imageLayer];
-        [self.previewLayer removeFromSuperlayer];
-    }];
+    self.imageView.image = image;
+    [self addSubview:self.imageView];
+    [self.previewLayer removeFromSuperlayer];
+}
+
+- (void)setFrame:(CGRect)frame {
+    self.previewLayer.frame = frame;
+    [super setFrame:frame];
 }
 
 @end

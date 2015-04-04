@@ -54,7 +54,6 @@
 
 - (void)userDidPanDismissableViewWithGestureRecognizer:(UIPanGestureRecognizer *)pan {
     CGPoint locationOfFinger = [pan locationInView:pan.view];
-    NSLog(@"Point of finger %@", NSStringFromCGPoint(locationOfFinger));
     
     if (locationOfFinger.y >= self.threshhold) {
         CGRect newFrame = CGRectApplyAffineTransform(self.dimissableView.frame, CGAffineTransformMakeTranslation(0, [pan translationInView:pan.view].y));

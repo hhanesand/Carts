@@ -9,7 +9,7 @@
 @import Foundation;
 #import <AVFoundation/AVFoundation.h>
 #import "GLBarcodeScannerDelegate.h"
-#import "GLVideoPreviewLayer.h"
+#import "GLVideoPreviewView.h"
 
 @class RACSignal;
 
@@ -27,7 +27,7 @@
  */
 @property (nonatomic) id<GLBarcodeScannerDelegate> delegate;
 
-@property (nonatomic) GLVideoPreviewLayer *previewLayer;
+@property (nonatomic) GLVideoPreviewView *previewView;
 
 /**
  *  The capture session

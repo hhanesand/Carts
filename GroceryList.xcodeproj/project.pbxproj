@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		BAC6761EE9F8F7E288863188 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A783D9E5EBD8A030867002CD /* libPods.a */; };
-		F2098E041ACF12D600CF422A /* GLVideoPreviewLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2098E031ACF12D600CF422A /* GLVideoPreviewLayer.m */; };
 		F21536F51ACE1B5A005C7C40 /* GLBarcodeFetchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F21536F41ACE1B5A005C7C40 /* GLBarcodeFetchManager.m */; };
 		F22079F81AAF982200BC5C98 /* GLBarcode.m in Sources */ = {isa = PBXBuildFile; fileRef = F22079F71AAF982200BC5C98 /* GLBarcode.m */; };
 		F22416291AAB6795001AFDCB /* GLTweakCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = F22416281AAB6795001AFDCB /* GLTweakCollection.m */; };
@@ -41,6 +40,7 @@
 		F296DA141A709862001E9D29 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F296DA131A709862001E9D29 /* libstdc++.6.dylib */; };
 		F2A6C8D71A915FF900FE3C30 /* PFQueryTableViewController+Caching.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A6C8D61A915FF900FE3C30 /* PFQueryTableViewController+Caching.m */; };
 		F2A917381A8FC0D400A1FC89 /* GLParseAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A917371A8FC0D400A1FC89 /* GLParseAnalytics.m */; };
+		F2A9D5271ACF8CD600928B80 /* GLVideoPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A9D5261ACF8CD600928B80 /* GLVideoPreviewView.m */; };
 		F2B4D0D61A6DF52200A98C7A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0D51A6DF52200A98C7A /* AVFoundation.framework */; };
 		F2B4D0D81A6DF52A00A98C7A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0D71A6DF52A00A98C7A /* CoreMedia.framework */; };
 		F2B4D0DA1A6DF53000A98C7A /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0D91A6DF53000A98C7A /* CoreVideo.framework */; };
@@ -92,8 +92,6 @@
 		254AFE9F5A4C9859E25FAB80 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		9CA8F7344B4A5BF669FC2DE8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A783D9E5EBD8A030867002CD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		F2098E021ACF12D600CF422A /* GLVideoPreviewLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLVideoPreviewLayer.h; sourceTree = "<group>"; };
-		F2098E031ACF12D600CF422A /* GLVideoPreviewLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLVideoPreviewLayer.m; sourceTree = "<group>"; };
 		F210E9841A855A04000B83EC /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		F21536F31ACE1B5A005C7C40 /* GLBarcodeFetchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLBarcodeFetchManager.h; sourceTree = "<group>"; };
 		F21536F41ACE1B5A005C7C40 /* GLBarcodeFetchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBarcodeFetchManager.m; sourceTree = "<group>"; };
@@ -145,6 +143,8 @@
 		F2A6C8D61A915FF900FE3C30 /* PFQueryTableViewController+Caching.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFQueryTableViewController+Caching.m"; sourceTree = "<group>"; };
 		F2A917371A8FC0D400A1FC89 /* GLParseAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLParseAnalytics.m; sourceTree = "<group>"; };
 		F2A917391A8FC0E200A1FC89 /* GLParseAnalytics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLParseAnalytics.h; sourceTree = "<group>"; };
+		F2A9D5251ACF8CD600928B80 /* GLVideoPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLVideoPreviewView.h; sourceTree = "<group>"; };
+		F2A9D5261ACF8CD600928B80 /* GLVideoPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLVideoPreviewView.m; sourceTree = "<group>"; };
 		F2B4D0D51A6DF52200A98C7A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F2B4D0D71A6DF52A00A98C7A /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		F2B4D0D91A6DF53000A98C7A /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -440,8 +440,8 @@
 				F29214C31AA01A2100015EB2 /* GLItemConfirmationView.xib */,
 				F2F454031AC4816D002B8768 /* GLCameraLayer.h */,
 				F2F454041AC4816D002B8768 /* GLCameraLayer.m */,
-				F2098E021ACF12D600CF422A /* GLVideoPreviewLayer.h */,
-				F2098E031ACF12D600CF422A /* GLVideoPreviewLayer.m */,
+				F2A9D5251ACF8CD600928B80 /* GLVideoPreviewView.h */,
+				F2A9D5261ACF8CD600928B80 /* GLVideoPreviewView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -551,7 +551,6 @@
 			buildConfigurationList = F2E544FD1A6CB55100CB52E5 /* Build configuration list for PBXNativeTarget "GroceryList" */;
 			buildPhases = (
 				149CD6F275B38C56F8085418 /* Check Pods Manifest.lock */,
-				F29F27631AAA6D930011093B /* ShellScript */,
 				F2E544D61A6CB55000CB52E5 /* Sources */,
 				F2E544D71A6CB55000CB52E5 /* Frameworks */,
 				F2E544D81A6CB55000CB52E5 /* Resources */,
@@ -599,6 +598,7 @@
 					};
 					F2E544F21A6CB55100CB52E5 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = M7Z4JP773F;
 						TestTargetID = F2E544D91A6CB55000CB52E5;
 					};
 				};
@@ -651,7 +651,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		149CD6F275B38C56F8085418 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
@@ -659,14 +659,14 @@
 			name = "Check Pods Manifest.lock";
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		CA7CC3E8F2417FB0BADE9137 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
@@ -674,23 +674,10 @@
 			name = "Copy Pods Resources";
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		F29F27631AAA6D930011093B /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"$CODESIGNING_FOLDER_PATH\" >/tmp/\"$USER.ident\" && echo \"$CODE_SIGN_IDENTITY\" >>/tmp/\"$USER.ident\" && exit;";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -721,6 +708,7 @@
 				F23D37191AC84A97001FEA45 /* GLPullToCloseTransitionManager.m in Sources */,
 				F29214B91A9D4BD400015EB2 /* GLItemConfirmationView.m in Sources */,
 				F2F454051AC4816D002B8768 /* GLCameraLayer.m in Sources */,
+				F2A9D5271ACF8CD600928B80 /* GLVideoPreviewView.m in Sources */,
 				F2BB86841AAE3EF700E02FF3 /* GLScanningSession.m in Sources */,
 				F25E49111A86B141006E1252 /* GLBingFetcher.m in Sources */,
 				F22079F81AAF982200BC5C98 /* GLBarcode.m in Sources */,
@@ -734,7 +722,6 @@
 				F280CBDC1AB3CA7D00F2A973 /* GLTableViewController.m in Sources */,
 				F2A6C8D71A915FF900FE3C30 /* PFQueryTableViewController+Caching.m in Sources */,
 				F2E544E01A6CB55000CB52E5 /* main.m in Sources */,
-				F2098E041ACF12D600CF422A /* GLVideoPreviewLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -772,22 +759,34 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_STATIC_ANALYZER_MODE = shallow;
+				CLANG_WARN_BOOL_CONVERSION = NO;
+				CLANG_WARN_CONSTANT_CONVERSION = NO;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = NO;
+				CLANG_WARN_INT_CONVERSION = NO;
+				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = NO;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = NO;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Trond Hanesand (R4NC66U98V)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Trond Hanesand (R4NC66U98V)";
 				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -798,11 +797,23 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				"GCC_WARN_64_TO_32_BIT_CONVERSION[arch=*64]" = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -811,6 +822,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
+				PROVISIONING_PROFILE = "b94bae46-c59a-4b72-a81b-0f7f461a33dc";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -819,31 +831,55 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_STATIC_ANALYZER_MODE = shallow;
+				CLANG_WARN_BOOL_CONVERSION = NO;
+				CLANG_WARN_CONSTANT_CONVERSION = NO;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = NO;
+				CLANG_WARN_INT_CONVERSION = NO;
+				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = NO;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = NO;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Trond Hanesand (R4NC66U98V)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Trond Hanesand (R4NC66U98V)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_OPTIMIZATION_LEVEL = fast;
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				"GCC_WARN_64_TO_32_BIT_CONVERSION[arch=*64]" = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -852,6 +888,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
+				PROVISIONING_PROFILE = "b94bae46-c59a-4b72-a81b-0f7f461a33dc";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -861,45 +898,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9CA8F7344B4A5BF669FC2DE8 /* Pods.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
-				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
-				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
-				CLANG_STATIC_ANALYZER_MODE = deep;
-				CLANG_WARN_ASSIGN_ENUM = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = NO;
-				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
-				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = NO;
-				CLANG_WARN_OBJC_RECEIVER_WEAK = NO;
-				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = NO;
-				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/**",
 					"$(inherited)/**",
 				);
-				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
-				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
-				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
-				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
-				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = YES;
 				GCC_WARN_PEDANTIC = NO;
-				GCC_WARN_SHADOW = NO;
-				GCC_WARN_SIGN_COMPARE = YES;
-				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
-				GCC_WARN_UNKNOWN_PRAGMAS = YES;
-				GCC_WARN_UNUSED_LABEL = YES;
-				GCC_WARN_UNUSED_PARAMETER = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -907,7 +912,6 @@
 				INFOPLIST_FILE = GroceryList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"$(OTHER_LDFLAGS)",
@@ -915,8 +919,6 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				VERSIONING_SYSTEM = "";
 				WARNING_CFLAGS = "";
 			};
 			name = Debug;
@@ -925,45 +927,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 254AFE9F5A4C9859E25FAB80 /* Pods.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
-				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
-				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
-				CLANG_STATIC_ANALYZER_MODE = deep;
-				CLANG_WARN_ASSIGN_ENUM = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = NO;
-				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
-				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = NO;
-				CLANG_WARN_OBJC_RECEIVER_WEAK = NO;
-				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = NO;
-				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/**",
 					"$(inherited)/**",
 				);
-				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
-				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
-				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
-				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
-				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = YES;
 				GCC_WARN_PEDANTIC = NO;
-				GCC_WARN_SHADOW = NO;
-				GCC_WARN_SIGN_COMPARE = YES;
-				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
-				GCC_WARN_UNKNOWN_PRAGMAS = YES;
-				GCC_WARN_UNUSED_LABEL = YES;
-				GCC_WARN_UNUSED_PARAMETER = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -971,7 +941,6 @@
 				INFOPLIST_FILE = GroceryList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"$(OTHER_LDFLAGS)",
@@ -979,8 +948,6 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				VERSIONING_SYSTEM = "";
 				WARNING_CFLAGS = "";
 			};
 			name = Release;
@@ -989,6 +956,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1000,6 +969,7 @@
 				INFOPLIST_FILE = GroceryListTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GroceryList.app/GroceryList";
 			};
 			name = Debug;
@@ -1008,6 +978,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1015,6 +987,7 @@
 				INFOPLIST_FILE = GroceryListTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GroceryList.app/GroceryList";
 			};
 			name = Release;

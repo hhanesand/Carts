@@ -39,19 +39,21 @@
     self.delegate = nil;
     
     if (self.captureSession.running) {
-        [self.previewLayer pauseWithSignal:[self captureImageFromCamera]];
+        [[self captureImageFromCamera] subscribeNext:^(UIImage *image) {
+            [self.previewView pauseWithImage:image];
+        }];
     }
 }
 
 - (void)resumeWithDelegate:(id<GLBarcodeScannerDelegate>)delegate {
-    [self.previewLayer resume];
+    [self.previewView resume];
     
     [self startScanningWithDelegate:delegate];
 }
 
 - (void)startScanningWithDelegate:(id<GLBarcodeScannerDelegate>)delegate {
     self.delegate = delegate;
-    self.previewLayer.previewLayer.connection.enabled = YES;
+    self.previewView.previewLayer.connection.enabled = YES;
     
     if (!self.captureSession.running) {
         [self.captureSession startRunning];
@@ -93,7 +95,7 @@
     AVCaptureVideoPreviewLayer *av_previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.captureSession];
     av_previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     
-    self.previewLayer = [[GLVideoPreviewLayer alloc] initWithPreviewLayer:av_previewLayer];
+    self.previewView = [[GLVideoPreviewView alloc] initWithPreviewLayer:av_previewLayer];
     
     self.metadataOutput = [[AVCaptureMetadataOutput alloc] init];
     [self.metadataOutput setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
@@ -117,7 +119,7 @@
         [self.imageCapture captureStillImageAsynchronouslyFromConnection:captureConnection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
             NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
             UIImage *image = [UIImage imageWithData:imageData];
-            [subscriber sendNext:(id)image.CGImage];
+            [subscriber sendNext:image];
             [subscriber sendCompleted];
         }];
         

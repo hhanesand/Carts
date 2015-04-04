@@ -80,20 +80,18 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 }
 
 - (void)initializeVideoPreviewLayer {
-    self.barcodeScanner.previewLayer.frame = self.view.frame;
-    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         [self.barcodeScanner startScanningWithDelegate:self];
     });
     
-    UIView *videoPreviewView = [[UIView alloc] initWithFrame:self.view.bounds];
-    [videoPreviewView.layer addSublayer:self.barcodeScanner.previewLayer.previewLayer];
+    self.barcodeScanner.previewView.frame = self.view.bounds;
+
     
     UITapGestureRecognizer *doubleTapTestingScan = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(testScanning)];
     doubleTapTestingScan.numberOfTapsRequired = 2;
-    [videoPreviewView addGestureRecognizer:doubleTapTestingScan];
+    [self.barcodeScanner.previewView addGestureRecognizer:doubleTapTestingScan];
     
-    [self.view insertSubview:videoPreviewView atIndex:0];
+    [self.view insertSubview:self.barcodeScanner.previewView atIndex:0];
 }
 
 - (void)initializeCameraReticule {

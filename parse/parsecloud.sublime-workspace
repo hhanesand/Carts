@@ -130,12 +130,33 @@
 				"buffer_size": 4431,
 				"line_ending": "Unix"
 			}
+		},
+		{
+			"file": "/Users/Hakon_Hanesad/Documents/Development/GroceryList/Podfile",
+			"settings":
+			{
+				"buffer_size": 229,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/Hakon_Hanesad/.lldbinit",
+			"settings":
+			{
+				"buffer_size": 61,
+				"line_ending": "Unix"
+			}
 		}
 	],
 	"build_system": "Packages/User/parsebuild.sublime-build",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
 	"command_palette":
 	{
 		"height": 287.0,
+		"last_filter": "",
 		"selected_items":
 		[
 			[
@@ -324,7 +345,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -340,8 +361,8 @@
 						"selection":
 						[
 							[
-								904,
-								904
+								3093,
+								3093
 							]
 						],
 						"settings":
@@ -349,6 +370,62 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 957.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/Hakon_Hanesad/Documents/Development/GroceryList/Podfile",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 229,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								229,
+								229
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Users/Hakon_Hanesad/.lldbinit",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 61,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								61,
+								61
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -399,6 +476,7 @@
 	{
 		"height": 0.0
 	},
+	"pinned_build_system": "",
 	"project": "parsecloud.sublime-project",
 	"replace":
 	{
@@ -408,6 +486,7 @@
 	"select_file":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -416,6 +495,7 @@
 	"select_project":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -424,6 +504,7 @@
 	"select_symbol":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
