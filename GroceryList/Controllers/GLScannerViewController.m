@@ -21,7 +21,6 @@
 #import "GLBarcodeObject.h"
 #import "UIColor+GLColor.h"
 #import "POPSpringAnimation+GLAdditions.h"
-#import "GLTweakCollection.h"
 #import "POPAnimationExtras.h"
 #import "GLTableViewController.h"
 #import "GLScanningSession.h"

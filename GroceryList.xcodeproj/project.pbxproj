@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		BAC6761EE9F8F7E288863188 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A783D9E5EBD8A030867002CD /* libPods.a */; };
-		F21536F51ACE1B5A005C7C40 /* GLBarcodeFetchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F21536F41ACE1B5A005C7C40 /* GLBarcodeFetchManager.m */; };
-		F22079F81AAF982200BC5C98 /* GLBarcode.m in Sources */ = {isa = PBXBuildFile; fileRef = F22079F71AAF982200BC5C98 /* GLBarcode.m */; };
-		F22416291AAB6795001AFDCB /* GLTweakCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = F22416281AAB6795001AFDCB /* GLTweakCollection.m */; };
-		F224162C1AAB9001001AFDCB /* GLTweakWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F224162B1AAB9001001AFDCB /* GLTweakWindow.m */; };
 		F22C8F341A6EE88D00139B9D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F22C8F331A6EE88D00139B9D /* AudioToolbox.framework */; };
 		F22C8F361A6EE89700139B9D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F22C8F351A6EE89700139B9D /* CFNetwork.framework */; };
 		F22C8F381A6EE8A100139B9D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F22C8F371A6EE8A100139B9D /* CoreGraphics.framework */; };
@@ -22,51 +18,54 @@
 		F22C8F421A6EE92D00139B9D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F22C8F411A6EE92D00139B9D /* SystemConfiguration.framework */; };
 		F22C8F441A6EE93600139B9D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F22C8F431A6EE93600139B9D /* libz.dylib */; };
 		F22C8F461A6EE94A00139B9D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F22C8F451A6EE94A00139B9D /* libsqlite3.dylib */; };
-		F22F2D791A72D1DB00C878EC /* GLFactualManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F22F2D781A72D1DB00C878EC /* GLFactualManager.m */; };
-		F23273601AAF730C001965FD /* PFQuery+GLQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = F232735F1AAF730C001965FD /* PFQuery+GLQuery.m */; };
-		F23B418A1AC1E6FA00209C29 /* UIView+RecursiveInteraction.m in Sources */ = {isa = PBXBuildFile; fileRef = F23B41891AC1E6FA00209C29 /* UIView+RecursiveInteraction.m */; };
-		F23D37131AC7ABE2001FEA45 /* GLAnimationStack.m in Sources */ = {isa = PBXBuildFile; fileRef = F23D37121AC7ABE2001FEA45 /* GLAnimationStack.m */; };
-		F23D37161AC7ABEB001FEA45 /* GLAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F23D37151AC7ABEB001FEA45 /* GLAnimation.m */; };
-		F23D37191AC84A97001FEA45 /* GLPullToCloseTransitionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F23D37181AC84A97001FEA45 /* GLPullToCloseTransitionManager.m */; };
-		F25E49111A86B141006E1252 /* GLBingFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F25E49101A86B141006E1252 /* GLBingFetcher.m */; };
-		F2680BC41AAA320B00D851D2 /* GLTweak.m in Sources */ = {isa = PBXBuildFile; fileRef = F2680BC31AAA320B00D851D2 /* GLTweak.m */; };
-		F280CBDC1AB3CA7D00F2A973 /* GLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F280CBDA1AB3CA7D00F2A973 /* GLTableViewController.m */; };
+		F25286901ACFA1FD00435261 /* GLBarcodeFetchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286871ACFA1FD00435261 /* GLBarcodeFetchManager.m */; };
+		F25286911ACFA1FD00435261 /* GLBingFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286891ACFA1FD00435261 /* GLBingFetcher.m */; };
+		F25286921ACFA1FD00435261 /* GLFactualManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F252868B1ACFA1FD00435261 /* GLFactualManager.m */; };
+		F25286931ACFA1FD00435261 /* GLFactualRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F252868D1ACFA1FD00435261 /* GLFactualRequestSerializer.m */; };
+		F25286941ACFA1FD00435261 /* GLFactualResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F252868F1ACFA1FD00435261 /* GLFactualResponseSerializer.m */; };
+		F25286A11ACFA21D00435261 /* GLParseAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286961ACFA21D00435261 /* GLParseAnalytics.m */; };
+		F25286A21ACFA21D00435261 /* GLQueryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286981ACFA21D00435261 /* GLQueryTableViewController.m */; };
+		F25286A31ACFA21D00435261 /* PFObject+GLPFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F252869A1ACFA21D00435261 /* PFObject+GLPFObject.m */; };
+		F25286A41ACFA21D00435261 /* PFQuery+GLQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = F252869C1ACFA21D00435261 /* PFQuery+GLQuery.m */; };
+		F25286A51ACFA21D00435261 /* PFQueryTableViewController+Caching.m in Sources */ = {isa = PBXBuildFile; fileRef = F252869E1ACFA21D00435261 /* PFQueryTableViewController+Caching.m */; };
+		F25286A61ACFA21D00435261 /* PFUser+GLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286A01ACFA21D00435261 /* PFUser+GLUser.m */; };
+		F25286A91ACFA22E00435261 /* GLDismissableViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286A81ACFA22E00435261 /* GLDismissableViewHandler.m */; };
+		F25286B61ACFA23B00435261 /* GLAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286AB1ACFA23B00435261 /* GLAnimation.m */; };
+		F25286B71ACFA23B00435261 /* GLAnimationStack.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286AD1ACFA23B00435261 /* GLAnimationStack.m */; };
+		F25286B81ACFA23B00435261 /* GLPullToCloseTransitionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286AF1ACFA23B00435261 /* GLPullToCloseTransitionManager.m */; };
+		F25286B91ACFA23B00435261 /* POPAnimation+GLAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286B11ACFA23B00435261 /* POPAnimation+GLAnimation.m */; };
+		F25286BA1ACFA23B00435261 /* POPSpringAnimation+GLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286B31ACFA23B00435261 /* POPSpringAnimation+GLAdditions.m */; };
+		F25286BB1ACFA23B00435261 /* UIColor+GLColor.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286B51ACFA23B00435261 /* UIColor+GLColor.m */; };
+		F25286C41ACFA24F00435261 /* GLBarcode.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286BD1ACFA24F00435261 /* GLBarcode.m */; };
+		F25286C51ACFA24F00435261 /* GLBarcodeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286C01ACFA24F00435261 /* GLBarcodeObject.m */; };
+		F25286C61ACFA24F00435261 /* GLListObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286C31ACFA24F00435261 /* GLListObject.m */; };
+		F25286CE1ACFA26300435261 /* GLBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286C81ACFA26300435261 /* GLBaseViewController.m */; };
+		F25286CF1ACFA26300435261 /* GLScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286CA1ACFA26300435261 /* GLScannerViewController.m */; };
+		F25286D01ACFA26300435261 /* GLScannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F25286CB1ACFA26300435261 /* GLScannerViewController.xib */; };
+		F25286D11ACFA26300435261 /* GLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286CD1ACFA26300435261 /* GLTableViewController.m */; };
+		F25286D41ACFA26D00435261 /* GLScanningSession.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286D31ACFA26D00435261 /* GLScanningSession.m */; };
+		F25286DF1ACFA27D00435261 /* GLCameraLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286D61ACFA27D00435261 /* GLCameraLayer.m */; };
+		F25286E01ACFA27D00435261 /* GLItemConfirmationView.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286D81ACFA27D00435261 /* GLItemConfirmationView.m */; };
+		F25286E11ACFA27D00435261 /* GLItemConfirmationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F25286D91ACFA27D00435261 /* GLItemConfirmationView.xib */; };
+		F25286E21ACFA27D00435261 /* GLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286DB1ACFA27D00435261 /* GLTableViewCell.m */; };
+		F25286E31ACFA27D00435261 /* GLTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F25286DC1ACFA27D00435261 /* GLTableViewCell.xib */; };
+		F25286E41ACFA27D00435261 /* GLVideoPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286DE1ACFA27D00435261 /* GLVideoPreviewView.m */; };
+		F25286EB1ACFA2B300435261 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286E61ACFA2B300435261 /* AppDelegate.m */; };
+		F25286EC1ACFA2B300435261 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F25286E71ACFA2B300435261 /* Info.plist */; };
+		F25286ED1ACFA2B300435261 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286E81ACFA2B300435261 /* main.m */; };
+		F25286EE1ACFA2B300435261 /* UIView+RecursiveInteraction.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286EA1ACFA2B300435261 /* UIView+RecursiveInteraction.m */; };
+		F25286F01ACFA2FE00435261 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F25286EF1ACFA2FE00435261 /* ParseCrashReporting.framework */; };
 		F28586BA1A744A63003B91E1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586B91A744A63003B91E1 /* Social.framework */; };
 		F28586BC1A744A6B003B91E1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586BB1A744A6B003B91E1 /* Accounts.framework */; };
 		F28586BE1A744A75003B91E1 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586BD1A744A75003B91E1 /* AdSupport.framework */; };
-		F29214B91A9D4BD400015EB2 /* GLItemConfirmationView.m in Sources */ = {isa = PBXBuildFile; fileRef = F29214B81A9D4BD400015EB2 /* GLItemConfirmationView.m */; };
-		F29214C41AA01A2100015EB2 /* GLItemConfirmationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F29214C31AA01A2100015EB2 /* GLItemConfirmationView.xib */; };
-		F296DA121A709738001E9D29 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F296DA111A709738001E9D29 /* ParseCrashReporting.framework */; };
 		F296DA141A709862001E9D29 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F296DA131A709862001E9D29 /* libstdc++.6.dylib */; };
-		F2A6C8D71A915FF900FE3C30 /* PFQueryTableViewController+Caching.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A6C8D61A915FF900FE3C30 /* PFQueryTableViewController+Caching.m */; };
-		F2A917381A8FC0D400A1FC89 /* GLParseAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A917371A8FC0D400A1FC89 /* GLParseAnalytics.m */; };
-		F2A9D5271ACF8CD600928B80 /* GLVideoPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A9D5261ACF8CD600928B80 /* GLVideoPreviewView.m */; };
 		F2B4D0D61A6DF52200A98C7A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0D51A6DF52200A98C7A /* AVFoundation.framework */; };
 		F2B4D0D81A6DF52A00A98C7A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0D71A6DF52A00A98C7A /* CoreMedia.framework */; };
 		F2B4D0DA1A6DF53000A98C7A /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0D91A6DF53000A98C7A /* CoreVideo.framework */; };
 		F2B4D0DC1A6DF53900A98C7A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0DB1A6DF53900A98C7A /* QuartzCore.framework */; };
 		F2B4D0DE1A6DF54500A98C7A /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0DD1A6DF54500A98C7A /* libiconv.dylib */; };
-		F2BB86841AAE3EF700E02FF3 /* GLScanningSession.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BB86831AAE3EF700E02FF3 /* GLScanningSession.m */; };
-		F2BB86871AAE561800E02FF3 /* GLTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2BB86861AAE561800E02FF3 /* GLTableViewCell.xib */; };
-		F2C57A861ACE45530033445C /* GLDismissableViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C57A851ACE45530033445C /* GLDismissableViewHandler.m */; };
-		F2C94B011ACDCD2B00BCE132 /* PFUser+GLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C94B001ACDCD2B00BCE132 /* PFUser+GLUser.m */; };
-		F2CD15BD1AB2A19E004E326E /* MustOverride.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CD15BC1AB2A19E004E326E /* MustOverride.m */; };
-		F2D58A6E1A96BC7700E15FFC /* GLFactualRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D58A6D1A96BC7700E15FFC /* GLFactualRequestSerializer.m */; };
-		F2D58A711A96EB6600E15FFC /* GLListObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D58A701A96EB6600E15FFC /* GLListObject.m */; };
-		F2DFA8711AA7C75B00CF05B9 /* UIColor+GLColor.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DFA8701AA7C75B00CF05B9 /* UIColor+GLColor.m */; };
-		F2DFA8771AA7CC0100CF05B9 /* GLBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DFA8761AA7CC0100CF05B9 /* GLBaseViewController.m */; };
-		F2DFA87D1AA7E8B200CF05B9 /* POPSpringAnimation+GLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DFA87C1AA7E8B200CF05B9 /* POPSpringAnimation+GLAdditions.m */; };
-		F2E1E5631ACF20F0001584C8 /* POPAnimation+GLAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E1E5621ACF20F0001584C8 /* POPAnimation+GLAnimation.m */; };
-		F2E4D4BB1A98295D00E8C517 /* GLFactualResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E4D4BA1A98295D00E8C517 /* GLFactualResponseSerializer.m */; };
-		F2E544E01A6CB55000CB52E5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E544DF1A6CB55000CB52E5 /* main.m */; };
-		F2E544E31A6CB55000CB52E5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E544E21A6CB55000CB52E5 /* AppDelegate.m */; };
 		F2E544EE1A6CB55100CB52E5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2E544EC1A6CB55100CB52E5 /* LaunchScreen.xib */; };
 		F2E544FA1A6CB55100CB52E5 /* GroceryListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E544F91A6CB55100CB52E5 /* GroceryListTests.m */; };
-		F2E545051A6CB5D400CB52E5 /* GLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E545041A6CB5D400CB52E5 /* GLTableViewCell.m */; };
-		F2F454051AC4816D002B8768 /* GLCameraLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F454041AC4816D002B8768 /* GLCameraLayer.m */; };
-		F2F797CE1AB0B6EF00886A2D /* GLQueryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F797CD1AB0B6EF00886A2D /* GLQueryTableViewController.m */; };
-		F2F797D51AB1323500886A2D /* PFObject+GLPFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F797D41AB1323500886A2D /* PFObject+GLPFObject.m */; };
-		F2F948B21A8947BD002C5177 /* GLBarcodeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F948B11A8947BD002C5177 /* GLBarcodeObject.m */; };
 		F2F948BA1A8ACCEB002C5177 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2F948B91A8ACCEB002C5177 /* Images.xcassets */; };
 		F2F948C31A8AD7B5002C5177 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = F2F948BE1A8AD7B5002C5177 /* main.js */; };
 		F2F948C41A8AD7B5002C5177 /* global.json in Resources */ = {isa = PBXBuildFile; fileRef = F2F948C01A8AD7B5002C5177 /* global.json */; };
@@ -74,8 +73,6 @@
 		F2F948F41A8AEDB8002C5177 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F948F31A8AEDB8002C5177 /* libc++.dylib */; };
 		F2F948F61A8AEDDF002C5177 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F948F51A8AEDDF002C5177 /* UIKit.framework */; };
 		F2F948F81A8AEDE8002C5177 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F948F71A8AEDE8002C5177 /* Foundation.framework */; };
-		F2FB73BB1ABF72480098D248 /* GLScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2FB73B91ABF72480098D248 /* GLScannerViewController.m */; };
-		F2FB73BC1ABF72480098D248 /* GLScannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2FB73BA1ABF72480098D248 /* GLScannerViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,14 +90,6 @@
 		9CA8F7344B4A5BF669FC2DE8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A783D9E5EBD8A030867002CD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F210E9841A855A04000B83EC /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
-		F21536F31ACE1B5A005C7C40 /* GLBarcodeFetchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLBarcodeFetchManager.h; sourceTree = "<group>"; };
-		F21536F41ACE1B5A005C7C40 /* GLBarcodeFetchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBarcodeFetchManager.m; sourceTree = "<group>"; };
-		F22079F61AAF982200BC5C98 /* GLBarcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLBarcode.h; sourceTree = "<group>"; };
-		F22079F71AAF982200BC5C98 /* GLBarcode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBarcode.m; sourceTree = "<group>"; };
-		F22416271AAB6795001AFDCB /* GLTweakCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTweakCollection.h; sourceTree = "<group>"; };
-		F22416281AAB6795001AFDCB /* GLTweakCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTweakCollection.m; sourceTree = "<group>"; };
-		F224162A1AAB9001001AFDCB /* GLTweakWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTweakWindow.h; sourceTree = "<group>"; };
-		F224162B1AAB9001001AFDCB /* GLTweakWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTweakWindow.m; sourceTree = "<group>"; };
 		F22C8F331A6EE88D00139B9D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		F22C8F351A6EE89700139B9D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		F22C8F371A6EE8A100139B9D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -111,88 +100,90 @@
 		F22C8F411A6EE92D00139B9D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F22C8F431A6EE93600139B9D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		F22C8F451A6EE94A00139B9D /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		F22F2D781A72D1DB00C878EC /* GLFactualManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLFactualManager.m; sourceTree = "<group>"; };
-		F22F2D7A1A72D1FA00C878EC /* GLFactualManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLFactualManager.h; sourceTree = "<group>"; };
-		F232735E1AAF730C001965FD /* PFQuery+GLQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFQuery+GLQuery.h"; sourceTree = "<group>"; };
-		F232735F1AAF730C001965FD /* PFQuery+GLQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFQuery+GLQuery.m"; sourceTree = "<group>"; };
-		F23B41881AC1E6FA00209C29 /* UIView+RecursiveInteraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RecursiveInteraction.h"; sourceTree = "<group>"; };
-		F23B41891AC1E6FA00209C29 /* UIView+RecursiveInteraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RecursiveInteraction.m"; sourceTree = "<group>"; };
-		F23D37111AC7ABE2001FEA45 /* GLAnimationStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLAnimationStack.h; sourceTree = "<group>"; };
-		F23D37121AC7ABE2001FEA45 /* GLAnimationStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLAnimationStack.m; sourceTree = "<group>"; };
-		F23D37141AC7ABEB001FEA45 /* GLAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLAnimation.h; sourceTree = "<group>"; };
-		F23D37151AC7ABEB001FEA45 /* GLAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLAnimation.m; sourceTree = "<group>"; };
-		F23D37171AC84A97001FEA45 /* GLPullToCloseTransitionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLPullToCloseTransitionManager.h; sourceTree = "<group>"; };
-		F23D37181AC84A97001FEA45 /* GLPullToCloseTransitionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLPullToCloseTransitionManager.m; sourceTree = "<group>"; };
-		F25E49101A86B141006E1252 /* GLBingFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBingFetcher.m; sourceTree = "<group>"; };
-		F25E49121A86B150006E1252 /* GLBingFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLBingFetcher.h; sourceTree = "<group>"; };
-		F2680BC21AAA316E00D851D2 /* GLTweak.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLTweak.h; sourceTree = "<group>"; };
-		F2680BC31AAA320B00D851D2 /* GLTweak.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTweak.m; sourceTree = "<group>"; };
-		F2680BC51AAA454400D851D2 /* GLTweakObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTweakObserver.h; sourceTree = "<group>"; };
-		F280CBD91AB3CA7D00F2A973 /* GLTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTableViewController.h; sourceTree = "<group>"; };
-		F280CBDA1AB3CA7D00F2A973 /* GLTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTableViewController.m; sourceTree = "<group>"; };
+		F25286861ACFA1FD00435261 /* GLBarcodeFetchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLBarcodeFetchManager.h; path = Networking/GLBarcodeFetchManager.h; sourceTree = "<group>"; };
+		F25286871ACFA1FD00435261 /* GLBarcodeFetchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLBarcodeFetchManager.m; path = Networking/GLBarcodeFetchManager.m; sourceTree = "<group>"; };
+		F25286881ACFA1FD00435261 /* GLBingFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLBingFetcher.h; path = Networking/GLBingFetcher.h; sourceTree = "<group>"; };
+		F25286891ACFA1FD00435261 /* GLBingFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLBingFetcher.m; path = Networking/GLBingFetcher.m; sourceTree = "<group>"; };
+		F252868A1ACFA1FD00435261 /* GLFactualManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLFactualManager.h; path = Networking/GLFactualManager.h; sourceTree = "<group>"; };
+		F252868B1ACFA1FD00435261 /* GLFactualManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLFactualManager.m; path = Networking/GLFactualManager.m; sourceTree = "<group>"; };
+		F252868C1ACFA1FD00435261 /* GLFactualRequestSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLFactualRequestSerializer.h; path = Networking/GLFactualRequestSerializer.h; sourceTree = "<group>"; };
+		F252868D1ACFA1FD00435261 /* GLFactualRequestSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLFactualRequestSerializer.m; path = Networking/GLFactualRequestSerializer.m; sourceTree = "<group>"; };
+		F252868E1ACFA1FD00435261 /* GLFactualResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLFactualResponseSerializer.h; path = Networking/GLFactualResponseSerializer.h; sourceTree = "<group>"; };
+		F252868F1ACFA1FD00435261 /* GLFactualResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLFactualResponseSerializer.m; path = Networking/GLFactualResponseSerializer.m; sourceTree = "<group>"; };
+		F25286951ACFA21D00435261 /* GLParseAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLParseAnalytics.h; path = Parse/GLParseAnalytics.h; sourceTree = "<group>"; };
+		F25286961ACFA21D00435261 /* GLParseAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLParseAnalytics.m; path = Parse/GLParseAnalytics.m; sourceTree = "<group>"; };
+		F25286971ACFA21D00435261 /* GLQueryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLQueryTableViewController.h; path = Parse/GLQueryTableViewController.h; sourceTree = "<group>"; };
+		F25286981ACFA21D00435261 /* GLQueryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLQueryTableViewController.m; path = Parse/GLQueryTableViewController.m; sourceTree = "<group>"; };
+		F25286991ACFA21D00435261 /* PFObject+GLPFObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PFObject+GLPFObject.h"; path = "Parse/PFObject+GLPFObject.h"; sourceTree = "<group>"; };
+		F252869A1ACFA21D00435261 /* PFObject+GLPFObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PFObject+GLPFObject.m"; path = "Parse/PFObject+GLPFObject.m"; sourceTree = "<group>"; };
+		F252869B1ACFA21D00435261 /* PFQuery+GLQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PFQuery+GLQuery.h"; path = "Parse/PFQuery+GLQuery.h"; sourceTree = "<group>"; };
+		F252869C1ACFA21D00435261 /* PFQuery+GLQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PFQuery+GLQuery.m"; path = "Parse/PFQuery+GLQuery.m"; sourceTree = "<group>"; };
+		F252869D1ACFA21D00435261 /* PFQueryTableViewController+Caching.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PFQueryTableViewController+Caching.h"; path = "Parse/PFQueryTableViewController+Caching.h"; sourceTree = "<group>"; };
+		F252869E1ACFA21D00435261 /* PFQueryTableViewController+Caching.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PFQueryTableViewController+Caching.m"; path = "Parse/PFQueryTableViewController+Caching.m"; sourceTree = "<group>"; };
+		F252869F1ACFA21D00435261 /* PFUser+GLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PFUser+GLUser.h"; path = "Parse/PFUser+GLUser.h"; sourceTree = "<group>"; };
+		F25286A01ACFA21D00435261 /* PFUser+GLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PFUser+GLUser.m"; path = "Parse/PFUser+GLUser.m"; sourceTree = "<group>"; };
+		F25286A71ACFA22E00435261 /* GLDismissableViewHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLDismissableViewHandler.h; path = "Animation/View Presentation/GLDismissableViewHandler.h"; sourceTree = "<group>"; };
+		F25286A81ACFA22E00435261 /* GLDismissableViewHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLDismissableViewHandler.m; path = "Animation/View Presentation/GLDismissableViewHandler.m"; sourceTree = "<group>"; };
+		F25286AA1ACFA23B00435261 /* GLAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLAnimation.h; path = Animation/GLAnimation.h; sourceTree = "<group>"; };
+		F25286AB1ACFA23B00435261 /* GLAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLAnimation.m; path = Animation/GLAnimation.m; sourceTree = "<group>"; };
+		F25286AC1ACFA23B00435261 /* GLAnimationStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLAnimationStack.h; path = Animation/GLAnimationStack.h; sourceTree = "<group>"; };
+		F25286AD1ACFA23B00435261 /* GLAnimationStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLAnimationStack.m; path = Animation/GLAnimationStack.m; sourceTree = "<group>"; };
+		F25286AE1ACFA23B00435261 /* GLPullToCloseTransitionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLPullToCloseTransitionManager.h; path = Animation/GLPullToCloseTransitionManager.h; sourceTree = "<group>"; };
+		F25286AF1ACFA23B00435261 /* GLPullToCloseTransitionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLPullToCloseTransitionManager.m; path = Animation/GLPullToCloseTransitionManager.m; sourceTree = "<group>"; };
+		F25286B01ACFA23B00435261 /* POPAnimation+GLAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "POPAnimation+GLAnimation.h"; path = "Animation/POPAnimation+GLAnimation.h"; sourceTree = "<group>"; };
+		F25286B11ACFA23B00435261 /* POPAnimation+GLAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "POPAnimation+GLAnimation.m"; path = "Animation/POPAnimation+GLAnimation.m"; sourceTree = "<group>"; };
+		F25286B21ACFA23B00435261 /* POPSpringAnimation+GLAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "POPSpringAnimation+GLAdditions.h"; path = "Animation/POPSpringAnimation+GLAdditions.h"; sourceTree = "<group>"; };
+		F25286B31ACFA23B00435261 /* POPSpringAnimation+GLAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "POPSpringAnimation+GLAdditions.m"; path = "Animation/POPSpringAnimation+GLAdditions.m"; sourceTree = "<group>"; };
+		F25286B41ACFA23B00435261 /* UIColor+GLColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+GLColor.h"; path = "Animation/UIColor+GLColor.h"; sourceTree = "<group>"; };
+		F25286B51ACFA23B00435261 /* UIColor+GLColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+GLColor.m"; path = "Animation/UIColor+GLColor.m"; sourceTree = "<group>"; };
+		F25286BC1ACFA24F00435261 /* GLBarcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLBarcode.h; path = Model/GLBarcode.h; sourceTree = "<group>"; };
+		F25286BD1ACFA24F00435261 /* GLBarcode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLBarcode.m; path = Model/GLBarcode.m; sourceTree = "<group>"; };
+		F25286BE1ACFA24F00435261 /* GLBarcodeItemDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLBarcodeItemDelegate.h; path = Model/GLBarcodeItemDelegate.h; sourceTree = "<group>"; };
+		F25286BF1ACFA24F00435261 /* GLBarcodeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLBarcodeObject.h; path = Model/GLBarcodeObject.h; sourceTree = "<group>"; };
+		F25286C01ACFA24F00435261 /* GLBarcodeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLBarcodeObject.m; path = Model/GLBarcodeObject.m; sourceTree = "<group>"; };
+		F25286C11ACFA24F00435261 /* GLBarcodeScannerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLBarcodeScannerDelegate.h; path = Model/GLBarcodeScannerDelegate.h; sourceTree = "<group>"; };
+		F25286C21ACFA24F00435261 /* GLListObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLListObject.h; path = Model/GLListObject.h; sourceTree = "<group>"; };
+		F25286C31ACFA24F00435261 /* GLListObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLListObject.m; path = Model/GLListObject.m; sourceTree = "<group>"; };
+		F25286C71ACFA26300435261 /* GLBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLBaseViewController.h; path = Controllers/GLBaseViewController.h; sourceTree = "<group>"; };
+		F25286C81ACFA26300435261 /* GLBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLBaseViewController.m; path = Controllers/GLBaseViewController.m; sourceTree = "<group>"; };
+		F25286C91ACFA26300435261 /* GLScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLScannerViewController.h; path = Controllers/GLScannerViewController.h; sourceTree = "<group>"; };
+		F25286CA1ACFA26300435261 /* GLScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLScannerViewController.m; path = Controllers/GLScannerViewController.m; sourceTree = "<group>"; };
+		F25286CB1ACFA26300435261 /* GLScannerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GLScannerViewController.xib; path = Controllers/GLScannerViewController.xib; sourceTree = "<group>"; };
+		F25286CC1ACFA26300435261 /* GLTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLTableViewController.h; path = Controllers/GLTableViewController.h; sourceTree = "<group>"; };
+		F25286CD1ACFA26300435261 /* GLTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLTableViewController.m; path = Controllers/GLTableViewController.m; sourceTree = "<group>"; };
+		F25286D21ACFA26D00435261 /* GLScanningSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLScanningSession.h; path = Controllers/Managers/GLScanningSession.h; sourceTree = "<group>"; };
+		F25286D31ACFA26D00435261 /* GLScanningSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLScanningSession.m; path = Controllers/Managers/GLScanningSession.m; sourceTree = "<group>"; };
+		F25286D51ACFA27D00435261 /* GLCameraLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLCameraLayer.h; path = Views/GLCameraLayer.h; sourceTree = "<group>"; };
+		F25286D61ACFA27D00435261 /* GLCameraLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLCameraLayer.m; path = Views/GLCameraLayer.m; sourceTree = "<group>"; };
+		F25286D71ACFA27D00435261 /* GLItemConfirmationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLItemConfirmationView.h; path = Views/GLItemConfirmationView.h; sourceTree = "<group>"; };
+		F25286D81ACFA27D00435261 /* GLItemConfirmationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLItemConfirmationView.m; path = Views/GLItemConfirmationView.m; sourceTree = "<group>"; };
+		F25286D91ACFA27D00435261 /* GLItemConfirmationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GLItemConfirmationView.xib; path = Views/GLItemConfirmationView.xib; sourceTree = "<group>"; };
+		F25286DA1ACFA27D00435261 /* GLTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLTableViewCell.h; path = Views/GLTableViewCell.h; sourceTree = "<group>"; };
+		F25286DB1ACFA27D00435261 /* GLTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLTableViewCell.m; path = Views/GLTableViewCell.m; sourceTree = "<group>"; };
+		F25286DC1ACFA27D00435261 /* GLTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GLTableViewCell.xib; path = Views/GLTableViewCell.xib; sourceTree = "<group>"; };
+		F25286DD1ACFA27D00435261 /* GLVideoPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLVideoPreviewView.h; path = Views/GLVideoPreviewView.h; sourceTree = "<group>"; };
+		F25286DE1ACFA27D00435261 /* GLVideoPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLVideoPreviewView.m; path = Views/GLVideoPreviewView.m; sourceTree = "<group>"; };
+		F25286E51ACFA2B300435261 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "Supporting Files/AppDelegate.h"; sourceTree = "<group>"; };
+		F25286E61ACFA2B300435261 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = "Supporting Files/AppDelegate.m"; sourceTree = "<group>"; };
+		F25286E71ACFA2B300435261 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Supporting Files/Info.plist"; sourceTree = "<group>"; };
+		F25286E81ACFA2B300435261 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Supporting Files/main.m"; sourceTree = "<group>"; };
+		F25286E91ACFA2B300435261 /* UIView+RecursiveInteraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+RecursiveInteraction.h"; path = "Supporting Files/UIView+RecursiveInteraction.h"; sourceTree = "<group>"; };
+		F25286EA1ACFA2B300435261 /* UIView+RecursiveInteraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+RecursiveInteraction.m"; path = "Supporting Files/UIView+RecursiveInteraction.m"; sourceTree = "<group>"; };
+		F25286EF1ACFA2FE00435261 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseCrashReporting.framework; path = Frameworks/ParseCrashReporting.framework; sourceTree = "<group>"; };
 		F28586B91A744A63003B91E1 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		F28586BB1A744A6B003B91E1 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		F28586BD1A744A75003B91E1 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
-		F29214B71A9D4BD400015EB2 /* GLItemConfirmationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLItemConfirmationView.h; sourceTree = "<group>"; };
-		F29214B81A9D4BD400015EB2 /* GLItemConfirmationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLItemConfirmationView.m; sourceTree = "<group>"; wrapsLines = 1; };
-		F29214C21A9FB5C200015EB2 /* GLBarcodeScannerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLBarcodeScannerDelegate.h; sourceTree = "<group>"; };
-		F29214C31AA01A2100015EB2 /* GLItemConfirmationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLItemConfirmationView.xib; sourceTree = "<group>"; };
-		F296DA111A709738001E9D29 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
 		F296DA131A709862001E9D29 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
-		F2A6C8D51A915FF900FE3C30 /* PFQueryTableViewController+Caching.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFQueryTableViewController+Caching.h"; sourceTree = "<group>"; };
-		F2A6C8D61A915FF900FE3C30 /* PFQueryTableViewController+Caching.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFQueryTableViewController+Caching.m"; sourceTree = "<group>"; };
-		F2A917371A8FC0D400A1FC89 /* GLParseAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLParseAnalytics.m; sourceTree = "<group>"; };
-		F2A917391A8FC0E200A1FC89 /* GLParseAnalytics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLParseAnalytics.h; sourceTree = "<group>"; };
-		F2A9D5251ACF8CD600928B80 /* GLVideoPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLVideoPreviewView.h; sourceTree = "<group>"; };
-		F2A9D5261ACF8CD600928B80 /* GLVideoPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLVideoPreviewView.m; sourceTree = "<group>"; };
 		F2B4D0D51A6DF52200A98C7A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F2B4D0D71A6DF52A00A98C7A /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		F2B4D0D91A6DF53000A98C7A /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		F2B4D0DB1A6DF53900A98C7A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F2B4D0DD1A6DF54500A98C7A /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
-		F2BB86831AAE3EF700E02FF3 /* GLScanningSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLScanningSession.m; sourceTree = "<group>"; };
-		F2BB86851AAE3F0500E02FF3 /* GLScanningSession.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLScanningSession.h; sourceTree = "<group>"; };
-		F2BB86861AAE561800E02FF3 /* GLTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLTableViewCell.xib; sourceTree = "<group>"; };
-		F2C57A841ACE45530033445C /* GLDismissableViewHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLDismissableViewHandler.h; sourceTree = "<group>"; };
-		F2C57A851ACE45530033445C /* GLDismissableViewHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLDismissableViewHandler.m; sourceTree = "<group>"; };
-		F2C94AFF1ACDCD2B00BCE132 /* PFUser+GLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFUser+GLUser.h"; sourceTree = "<group>"; };
-		F2C94B001ACDCD2B00BCE132 /* PFUser+GLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFUser+GLUser.m"; sourceTree = "<group>"; };
-		F2CD15BB1AB2A19E004E326E /* MustOverride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MustOverride.h; sourceTree = "<group>"; };
-		F2CD15BC1AB2A19E004E326E /* MustOverride.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MustOverride.m; sourceTree = "<group>"; };
-		F2D58A6D1A96BC7700E15FFC /* GLFactualRequestSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLFactualRequestSerializer.m; sourceTree = "<group>"; };
-		F2D58A6F1A96BD5A00E15FFC /* GLFactualRequestSerializer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLFactualRequestSerializer.h; sourceTree = "<group>"; };
-		F2D58A701A96EB6600E15FFC /* GLListObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLListObject.m; sourceTree = "<group>"; };
-		F2D58A721A96EB7000E15FFC /* GLListObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLListObject.h; sourceTree = "<group>"; };
-		F2DFA8631AA56B6300CF05B9 /* GLBarcodeItemDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLBarcodeItemDelegate.h; sourceTree = "<group>"; };
-		F2DFA86F1AA7C75B00CF05B9 /* UIColor+GLColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+GLColor.h"; sourceTree = "<group>"; };
-		F2DFA8701AA7C75B00CF05B9 /* UIColor+GLColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+GLColor.m"; sourceTree = "<group>"; };
-		F2DFA8751AA7CC0100CF05B9 /* GLBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLBaseViewController.h; sourceTree = "<group>"; };
-		F2DFA8761AA7CC0100CF05B9 /* GLBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBaseViewController.m; sourceTree = "<group>"; };
-		F2DFA87B1AA7E8B200CF05B9 /* POPSpringAnimation+GLAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "POPSpringAnimation+GLAdditions.h"; sourceTree = "<group>"; };
-		F2DFA87C1AA7E8B200CF05B9 /* POPSpringAnimation+GLAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "POPSpringAnimation+GLAdditions.m"; sourceTree = "<group>"; };
-		F2E1E5611ACF20F0001584C8 /* POPAnimation+GLAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "POPAnimation+GLAnimation.h"; sourceTree = "<group>"; };
-		F2E1E5621ACF20F0001584C8 /* POPAnimation+GLAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "POPAnimation+GLAnimation.m"; sourceTree = "<group>"; };
-		F2E4D4BA1A98295D00E8C517 /* GLFactualResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLFactualResponseSerializer.m; sourceTree = "<group>"; };
-		F2E4D4BC1A98296F00E8C517 /* GLFactualResponseSerializer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLFactualResponseSerializer.h; sourceTree = "<group>"; };
 		F2E544DA1A6CB55000CB52E5 /* GroceryList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryList.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F2E544DE1A6CB55000CB52E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F2E544DF1A6CB55000CB52E5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		F2E544E11A6CB55000CB52E5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		F2E544E21A6CB55000CB52E5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F2E544ED1A6CB55100CB52E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		F2E544F31A6CB55100CB52E5 /* GroceryListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GroceryListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E544F81A6CB55100CB52E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2E544F91A6CB55100CB52E5 /* GroceryListTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroceryListTests.m; sourceTree = "<group>"; };
-		F2E545031A6CB5D400CB52E5 /* GLTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTableViewCell.h; sourceTree = "<group>"; };
-		F2E545041A6CB5D400CB52E5 /* GLTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTableViewCell.m; sourceTree = "<group>"; };
-		F2F454031AC4816D002B8768 /* GLCameraLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCameraLayer.h; sourceTree = "<group>"; };
-		F2F454041AC4816D002B8768 /* GLCameraLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLCameraLayer.m; sourceTree = "<group>"; };
-		F2F797CC1AB0B6EF00886A2D /* GLQueryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLQueryTableViewController.h; sourceTree = "<group>"; };
-		F2F797CD1AB0B6EF00886A2D /* GLQueryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLQueryTableViewController.m; sourceTree = "<group>"; };
-		F2F797D31AB1323500886A2D /* PFObject+GLPFObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFObject+GLPFObject.h"; sourceTree = "<group>"; };
-		F2F797D41AB1323500886A2D /* PFObject+GLPFObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFObject+GLPFObject.m"; sourceTree = "<group>"; };
-		F2F948B11A8947BD002C5177 /* GLBarcodeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBarcodeObject.m; sourceTree = "<group>"; };
-		F2F948B31A8947C8002C5177 /* GLBarcodeObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLBarcodeObject.h; sourceTree = "<group>"; };
 		F2F948B91A8ACCEB002C5177 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = GroceryList/Images.xcassets; sourceTree = "<group>"; };
 		F2F948BE1A8AD7B5002C5177 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
 		F2F948C01A8AD7B5002C5177 /* global.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = global.json; sourceTree = "<group>"; };
@@ -200,9 +191,6 @@
 		F2F948F31A8AEDB8002C5177 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		F2F948F51A8AEDDF002C5177 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F2F948F71A8AEDE8002C5177 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		F2FB73B81ABF72480098D248 /* GLScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLScannerViewController.h; sourceTree = "<group>"; };
-		F2FB73B91ABF72480098D248 /* GLScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLScannerViewController.m; sourceTree = "<group>"; };
-		F2FB73BA1ABF72480098D248 /* GLScannerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLScannerViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +198,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F25286F01ACFA2FE00435261 /* ParseCrashReporting.framework in Frameworks */,
 				F22C8F441A6EE93600139B9D /* libz.dylib in Frameworks */,
 				F2F948F81A8AEDE8002C5177 /* Foundation.framework in Frameworks */,
 				F2F948F61A8AEDDF002C5177 /* UIKit.framework in Frameworks */,
@@ -228,7 +217,6 @@
 				F22C8F3A1A6EE8FD00139B9D /* CoreLocation.framework in Frameworks */,
 				F22C8F381A6EE8A100139B9D /* CoreGraphics.framework in Frameworks */,
 				F22C8F361A6EE89700139B9D /* CFNetwork.framework in Frameworks */,
-				F296DA121A709738001E9D29 /* ParseCrashReporting.framework in Frameworks */,
 				F22C8F341A6EE88D00139B9D /* AudioToolbox.framework in Frameworks */,
 				F2B4D0DA1A6DF53000A98C7A /* CoreVideo.framework in Frameworks */,
 				F2B4D0D81A6DF52A00A98C7A /* CoreMedia.framework in Frameworks */,
@@ -259,16 +247,16 @@
 		F25E490F1A86B126006E1252 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				F22F2D7A1A72D1FA00C878EC /* GLFactualManager.h */,
-				F22F2D781A72D1DB00C878EC /* GLFactualManager.m */,
-				F25E49121A86B150006E1252 /* GLBingFetcher.h */,
-				F25E49101A86B141006E1252 /* GLBingFetcher.m */,
-				F2D58A6F1A96BD5A00E15FFC /* GLFactualRequestSerializer.h */,
-				F2D58A6D1A96BC7700E15FFC /* GLFactualRequestSerializer.m */,
-				F2E4D4BC1A98296F00E8C517 /* GLFactualResponseSerializer.h */,
-				F2E4D4BA1A98295D00E8C517 /* GLFactualResponseSerializer.m */,
-				F21536F31ACE1B5A005C7C40 /* GLBarcodeFetchManager.h */,
-				F21536F41ACE1B5A005C7C40 /* GLBarcodeFetchManager.m */,
+				F25286861ACFA1FD00435261 /* GLBarcodeFetchManager.h */,
+				F25286871ACFA1FD00435261 /* GLBarcodeFetchManager.m */,
+				F25286881ACFA1FD00435261 /* GLBingFetcher.h */,
+				F25286891ACFA1FD00435261 /* GLBingFetcher.m */,
+				F252868A1ACFA1FD00435261 /* GLFactualManager.h */,
+				F252868B1ACFA1FD00435261 /* GLFactualManager.m */,
+				F252868C1ACFA1FD00435261 /* GLFactualRequestSerializer.h */,
+				F252868D1ACFA1FD00435261 /* GLFactualRequestSerializer.m */,
+				F252868E1ACFA1FD00435261 /* GLFactualResponseSerializer.h */,
+				F252868F1ACFA1FD00435261 /* GLFactualResponseSerializer.m */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -276,8 +264,8 @@
 		F26147FB1ACF1CCA002395BE /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				F2BB86851AAE3F0500E02FF3 /* GLScanningSession.h */,
-				F2BB86831AAE3EF700E02FF3 /* GLScanningSession.m */,
+				F25286D21ACFA26D00435261 /* GLScanningSession.h */,
+				F25286D31ACFA26D00435261 /* GLScanningSession.m */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -285,19 +273,19 @@
 		F2A00A591AA8048C004B8988 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				F25286AA1ACFA23B00435261 /* GLAnimation.h */,
+				F25286AB1ACFA23B00435261 /* GLAnimation.m */,
+				F25286AC1ACFA23B00435261 /* GLAnimationStack.h */,
+				F25286AD1ACFA23B00435261 /* GLAnimationStack.m */,
+				F25286AE1ACFA23B00435261 /* GLPullToCloseTransitionManager.h */,
+				F25286AF1ACFA23B00435261 /* GLPullToCloseTransitionManager.m */,
+				F25286B01ACFA23B00435261 /* POPAnimation+GLAnimation.h */,
+				F25286B11ACFA23B00435261 /* POPAnimation+GLAnimation.m */,
+				F25286B21ACFA23B00435261 /* POPSpringAnimation+GLAdditions.h */,
+				F25286B31ACFA23B00435261 /* POPSpringAnimation+GLAdditions.m */,
+				F25286B41ACFA23B00435261 /* UIColor+GLColor.h */,
+				F25286B51ACFA23B00435261 /* UIColor+GLColor.m */,
 				F2C57A831ACE45380033445C /* View Presentation */,
-				F2DFA86F1AA7C75B00CF05B9 /* UIColor+GLColor.h */,
-				F2DFA8701AA7C75B00CF05B9 /* UIColor+GLColor.m */,
-				F2DFA87B1AA7E8B200CF05B9 /* POPSpringAnimation+GLAdditions.h */,
-				F2DFA87C1AA7E8B200CF05B9 /* POPSpringAnimation+GLAdditions.m */,
-				F23D37111AC7ABE2001FEA45 /* GLAnimationStack.h */,
-				F23D37121AC7ABE2001FEA45 /* GLAnimationStack.m */,
-				F23D37141AC7ABEB001FEA45 /* GLAnimation.h */,
-				F23D37151AC7ABEB001FEA45 /* GLAnimation.m */,
-				F23D37171AC84A97001FEA45 /* GLPullToCloseTransitionManager.h */,
-				F23D37181AC84A97001FEA45 /* GLPullToCloseTransitionManager.m */,
-				F2E1E5611ACF20F0001584C8 /* POPAnimation+GLAnimation.h */,
-				F2E1E5621ACF20F0001584C8 /* POPAnimation+GLAnimation.m */,
 			);
 			name = Animation;
 			sourceTree = "<group>";
@@ -305,6 +293,7 @@
 		F2B4D0DF1A6DF54B00A98C7A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F25286EF1ACFA2FE00435261 /* ParseCrashReporting.framework */,
 				F2F948F71A8AEDE8002C5177 /* Foundation.framework */,
 				F2F948F51A8AEDDF002C5177 /* UIKit.framework */,
 				F2F948F31A8AEDB8002C5177 /* libc++.dylib */,
@@ -313,7 +302,6 @@
 				F28586BB1A744A6B003B91E1 /* Accounts.framework */,
 				F28586B91A744A63003B91E1 /* Social.framework */,
 				F296DA131A709862001E9D29 /* libstdc++.6.dylib */,
-				F296DA111A709738001E9D29 /* ParseCrashReporting.framework */,
 				F22C8F451A6EE94A00139B9D /* libsqlite3.dylib */,
 				F22C8F431A6EE93600139B9D /* libz.dylib */,
 				F22C8F411A6EE92D00139B9D /* SystemConfiguration.framework */,
@@ -337,7 +325,6 @@
 		F2B4D1031A6DF5BE00A98C7A /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				F2CD15BA1AB2A186004E326E /* MustOverride */,
 			);
 			name = Vendor;
 			sourceTree = "<group>";
@@ -345,19 +332,10 @@
 		F2C57A831ACE45380033445C /* View Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				F2C57A841ACE45530033445C /* GLDismissableViewHandler.h */,
-				F2C57A851ACE45530033445C /* GLDismissableViewHandler.m */,
+				F25286A71ACFA22E00435261 /* GLDismissableViewHandler.h */,
+				F25286A81ACFA22E00435261 /* GLDismissableViewHandler.m */,
 			);
 			name = "View Presentation";
-			sourceTree = "<group>";
-		};
-		F2CD15BA1AB2A186004E326E /* MustOverride */ = {
-			isa = PBXGroup;
-			children = (
-				F2CD15BB1AB2A19E004E326E /* MustOverride.h */,
-				F2CD15BC1AB2A19E004E326E /* MustOverride.m */,
-			);
-			name = MustOverride;
 			sourceTree = "<group>";
 		};
 		F2E544D11A6CB55000CB52E5 = {
@@ -393,7 +371,6 @@
 				F2E5450A1A6CB60A00CB52E5 /* Controllers */,
 				F2E545091A6CB60100CB52E5 /* Views */,
 				F2E544DD1A6CB55000CB52E5 /* Supporting Files */,
-				F2F797D61AB2114100886A2D /* Tweaks */,
 			);
 			path = GroceryList;
 			sourceTree = "<group>";
@@ -401,13 +378,13 @@
 		F2E544DD1A6CB55000CB52E5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F23B41881AC1E6FA00209C29 /* UIView+RecursiveInteraction.h */,
-				F23B41891AC1E6FA00209C29 /* UIView+RecursiveInteraction.m */,
-				F2E544E11A6CB55000CB52E5 /* AppDelegate.h */,
-				F2E544E21A6CB55000CB52E5 /* AppDelegate.m */,
+				F25286E51ACFA2B300435261 /* AppDelegate.h */,
+				F25286E61ACFA2B300435261 /* AppDelegate.m */,
+				F25286E71ACFA2B300435261 /* Info.plist */,
+				F25286E81ACFA2B300435261 /* main.m */,
+				F25286E91ACFA2B300435261 /* UIView+RecursiveInteraction.h */,
+				F25286EA1ACFA2B300435261 /* UIView+RecursiveInteraction.m */,
 				F2E544EC1A6CB55100CB52E5 /* LaunchScreen.xib */,
-				F2E544DE1A6CB55000CB52E5 /* Info.plist */,
-				F2E544DF1A6CB55000CB52E5 /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -432,16 +409,16 @@
 		F2E545091A6CB60100CB52E5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F2E545031A6CB5D400CB52E5 /* GLTableViewCell.h */,
-				F2E545041A6CB5D400CB52E5 /* GLTableViewCell.m */,
-				F2BB86861AAE561800E02FF3 /* GLTableViewCell.xib */,
-				F29214B71A9D4BD400015EB2 /* GLItemConfirmationView.h */,
-				F29214B81A9D4BD400015EB2 /* GLItemConfirmationView.m */,
-				F29214C31AA01A2100015EB2 /* GLItemConfirmationView.xib */,
-				F2F454031AC4816D002B8768 /* GLCameraLayer.h */,
-				F2F454041AC4816D002B8768 /* GLCameraLayer.m */,
-				F2A9D5251ACF8CD600928B80 /* GLVideoPreviewView.h */,
-				F2A9D5261ACF8CD600928B80 /* GLVideoPreviewView.m */,
+				F25286D51ACFA27D00435261 /* GLCameraLayer.h */,
+				F25286D61ACFA27D00435261 /* GLCameraLayer.m */,
+				F25286D71ACFA27D00435261 /* GLItemConfirmationView.h */,
+				F25286D81ACFA27D00435261 /* GLItemConfirmationView.m */,
+				F25286D91ACFA27D00435261 /* GLItemConfirmationView.xib */,
+				F25286DA1ACFA27D00435261 /* GLTableViewCell.h */,
+				F25286DB1ACFA27D00435261 /* GLTableViewCell.m */,
+				F25286DC1ACFA27D00435261 /* GLTableViewCell.xib */,
+				F25286DD1ACFA27D00435261 /* GLVideoPreviewView.h */,
+				F25286DE1ACFA27D00435261 /* GLVideoPreviewView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -449,14 +426,14 @@
 		F2E5450A1A6CB60A00CB52E5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F25286C71ACFA26300435261 /* GLBaseViewController.h */,
+				F25286C81ACFA26300435261 /* GLBaseViewController.m */,
+				F25286C91ACFA26300435261 /* GLScannerViewController.h */,
+				F25286CA1ACFA26300435261 /* GLScannerViewController.m */,
+				F25286CB1ACFA26300435261 /* GLScannerViewController.xib */,
+				F25286CC1ACFA26300435261 /* GLTableViewController.h */,
+				F25286CD1ACFA26300435261 /* GLTableViewController.m */,
 				F26147FB1ACF1CCA002395BE /* Managers */,
-				F2DFA8751AA7CC0100CF05B9 /* GLBaseViewController.h */,
-				F2DFA8761AA7CC0100CF05B9 /* GLBaseViewController.m */,
-				F280CBD91AB3CA7D00F2A973 /* GLTableViewController.h */,
-				F280CBDA1AB3CA7D00F2A973 /* GLTableViewController.m */,
-				F2FB73B81ABF72480098D248 /* GLScannerViewController.h */,
-				F2FB73B91ABF72480098D248 /* GLScannerViewController.m */,
-				F2FB73BA1ABF72480098D248 /* GLScannerViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -464,47 +441,33 @@
 		F2F797CF1AB0C3FD00886A2D /* Parse */ = {
 			isa = PBXGroup;
 			children = (
-				F2F797CC1AB0B6EF00886A2D /* GLQueryTableViewController.h */,
-				F2F797CD1AB0B6EF00886A2D /* GLQueryTableViewController.m */,
-				F2A6C8D51A915FF900FE3C30 /* PFQueryTableViewController+Caching.h */,
-				F2A6C8D61A915FF900FE3C30 /* PFQueryTableViewController+Caching.m */,
-				F232735E1AAF730C001965FD /* PFQuery+GLQuery.h */,
-				F232735F1AAF730C001965FD /* PFQuery+GLQuery.m */,
-				F2F797D31AB1323500886A2D /* PFObject+GLPFObject.h */,
-				F2F797D41AB1323500886A2D /* PFObject+GLPFObject.m */,
-				F2A917391A8FC0E200A1FC89 /* GLParseAnalytics.h */,
-				F2A917371A8FC0D400A1FC89 /* GLParseAnalytics.m */,
-				F2C94AFF1ACDCD2B00BCE132 /* PFUser+GLUser.h */,
-				F2C94B001ACDCD2B00BCE132 /* PFUser+GLUser.m */,
+				F25286951ACFA21D00435261 /* GLParseAnalytics.h */,
+				F25286961ACFA21D00435261 /* GLParseAnalytics.m */,
+				F25286971ACFA21D00435261 /* GLQueryTableViewController.h */,
+				F25286981ACFA21D00435261 /* GLQueryTableViewController.m */,
+				F25286991ACFA21D00435261 /* PFObject+GLPFObject.h */,
+				F252869A1ACFA21D00435261 /* PFObject+GLPFObject.m */,
+				F252869B1ACFA21D00435261 /* PFQuery+GLQuery.h */,
+				F252869C1ACFA21D00435261 /* PFQuery+GLQuery.m */,
+				F252869D1ACFA21D00435261 /* PFQueryTableViewController+Caching.h */,
+				F252869E1ACFA21D00435261 /* PFQueryTableViewController+Caching.m */,
+				F252869F1ACFA21D00435261 /* PFUser+GLUser.h */,
+				F25286A01ACFA21D00435261 /* PFUser+GLUser.m */,
 			);
 			name = Parse;
-			sourceTree = "<group>";
-		};
-		F2F797D61AB2114100886A2D /* Tweaks */ = {
-			isa = PBXGroup;
-			children = (
-				F2680BC51AAA454400D851D2 /* GLTweakObserver.h */,
-				F2680BC21AAA316E00D851D2 /* GLTweak.h */,
-				F2680BC31AAA320B00D851D2 /* GLTweak.m */,
-				F22416271AAB6795001AFDCB /* GLTweakCollection.h */,
-				F22416281AAB6795001AFDCB /* GLTweakCollection.m */,
-				F224162A1AAB9001001AFDCB /* GLTweakWindow.h */,
-				F224162B1AAB9001001AFDCB /* GLTweakWindow.m */,
-			);
-			name = Tweaks;
 			sourceTree = "<group>";
 		};
 		F2F948B01A8947A6002C5177 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F29214C21A9FB5C200015EB2 /* GLBarcodeScannerDelegate.h */,
-				F2DFA8631AA56B6300CF05B9 /* GLBarcodeItemDelegate.h */,
-				F2F948B31A8947C8002C5177 /* GLBarcodeObject.h */,
-				F2F948B11A8947BD002C5177 /* GLBarcodeObject.m */,
-				F2D58A721A96EB7000E15FFC /* GLListObject.h */,
-				F2D58A701A96EB6600E15FFC /* GLListObject.m */,
-				F22079F61AAF982200BC5C98 /* GLBarcode.h */,
-				F22079F71AAF982200BC5C98 /* GLBarcode.m */,
+				F25286BC1ACFA24F00435261 /* GLBarcode.h */,
+				F25286BD1ACFA24F00435261 /* GLBarcode.m */,
+				F25286BE1ACFA24F00435261 /* GLBarcodeItemDelegate.h */,
+				F25286BF1ACFA24F00435261 /* GLBarcodeObject.h */,
+				F25286C01ACFA24F00435261 /* GLBarcodeObject.m */,
+				F25286C11ACFA24F00435261 /* GLBarcodeScannerDelegate.h */,
+				F25286C21ACFA24F00435261 /* GLListObject.h */,
+				F25286C31ACFA24F00435261 /* GLListObject.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -628,13 +591,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F25286D01ACFA26300435261 /* GLScannerViewController.xib in Resources */,
 				F2F948BA1A8ACCEB002C5177 /* Images.xcassets in Resources */,
+				F25286EC1ACFA2B300435261 /* Info.plist in Resources */,
+				F25286E31ACFA27D00435261 /* GLTableViewCell.xib in Resources */,
 				F2F948C51A8AD7B5002C5177 /* index.html in Resources */,
 				F2F948C41A8AD7B5002C5177 /* global.json in Resources */,
-				F2BB86871AAE561800E02FF3 /* GLTableViewCell.xib in Resources */,
-				F29214C41AA01A2100015EB2 /* GLItemConfirmationView.xib in Resources */,
+				F25286E11ACFA27D00435261 /* GLItemConfirmationView.xib in Resources */,
 				F2E544EE1A6CB55100CB52E5 /* LaunchScreen.xib in Resources */,
-				F2FB73BC1ABF72480098D248 /* GLScannerViewController.xib in Resources */,
 				F2F948C31A8AD7B5002C5177 /* main.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -686,42 +650,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2F797D51AB1323500886A2D /* PFObject+GLPFObject.m in Sources */,
-				F2DFA8711AA7C75B00CF05B9 /* UIColor+GLColor.m in Sources */,
-				F2E1E5631ACF20F0001584C8 /* POPAnimation+GLAnimation.m in Sources */,
-				F224162C1AAB9001001AFDCB /* GLTweakWindow.m in Sources */,
-				F22416291AAB6795001AFDCB /* GLTweakCollection.m in Sources */,
-				F2DFA8771AA7CC0100CF05B9 /* GLBaseViewController.m in Sources */,
-				F2A917381A8FC0D400A1FC89 /* GLParseAnalytics.m in Sources */,
-				F2C94B011ACDCD2B00BCE132 /* PFUser+GLUser.m in Sources */,
-				F2C57A861ACE45530033445C /* GLDismissableViewHandler.m in Sources */,
-				F2D58A6E1A96BC7700E15FFC /* GLFactualRequestSerializer.m in Sources */,
-				F2CD15BD1AB2A19E004E326E /* MustOverride.m in Sources */,
-				F2E544E31A6CB55000CB52E5 /* AppDelegate.m in Sources */,
-				F2DFA87D1AA7E8B200CF05B9 /* POPSpringAnimation+GLAdditions.m in Sources */,
-				F2F948B21A8947BD002C5177 /* GLBarcodeObject.m in Sources */,
-				F22F2D791A72D1DB00C878EC /* GLFactualManager.m in Sources */,
-				F23D37131AC7ABE2001FEA45 /* GLAnimationStack.m in Sources */,
-				F2FB73BB1ABF72480098D248 /* GLScannerViewController.m in Sources */,
-				F2D58A711A96EB6600E15FFC /* GLListObject.m in Sources */,
-				F2680BC41AAA320B00D851D2 /* GLTweak.m in Sources */,
-				F23D37191AC84A97001FEA45 /* GLPullToCloseTransitionManager.m in Sources */,
-				F29214B91A9D4BD400015EB2 /* GLItemConfirmationView.m in Sources */,
-				F2F454051AC4816D002B8768 /* GLCameraLayer.m in Sources */,
-				F2A9D5271ACF8CD600928B80 /* GLVideoPreviewView.m in Sources */,
-				F2BB86841AAE3EF700E02FF3 /* GLScanningSession.m in Sources */,
-				F25E49111A86B141006E1252 /* GLBingFetcher.m in Sources */,
-				F22079F81AAF982200BC5C98 /* GLBarcode.m in Sources */,
-				F2F797CE1AB0B6EF00886A2D /* GLQueryTableViewController.m in Sources */,
-				F2E4D4BB1A98295D00E8C517 /* GLFactualResponseSerializer.m in Sources */,
-				F23273601AAF730C001965FD /* PFQuery+GLQuery.m in Sources */,
-				F23B418A1AC1E6FA00209C29 /* UIView+RecursiveInteraction.m in Sources */,
-				F23D37161AC7ABEB001FEA45 /* GLAnimation.m in Sources */,
-				F21536F51ACE1B5A005C7C40 /* GLBarcodeFetchManager.m in Sources */,
-				F2E545051A6CB5D400CB52E5 /* GLTableViewCell.m in Sources */,
-				F280CBDC1AB3CA7D00F2A973 /* GLTableViewController.m in Sources */,
-				F2A6C8D71A915FF900FE3C30 /* PFQueryTableViewController+Caching.m in Sources */,
-				F2E544E01A6CB55000CB52E5 /* main.m in Sources */,
+				F25286A21ACFA21D00435261 /* GLQueryTableViewController.m in Sources */,
+				F25286E21ACFA27D00435261 /* GLTableViewCell.m in Sources */,
+				F25286A91ACFA22E00435261 /* GLDismissableViewHandler.m in Sources */,
+				F25286E41ACFA27D00435261 /* GLVideoPreviewView.m in Sources */,
+				F25286A41ACFA21D00435261 /* PFQuery+GLQuery.m in Sources */,
+				F25286ED1ACFA2B300435261 /* main.m in Sources */,
+				F25286C51ACFA24F00435261 /* GLBarcodeObject.m in Sources */,
+				F25286BB1ACFA23B00435261 /* UIColor+GLColor.m in Sources */,
+				F25286A51ACFA21D00435261 /* PFQueryTableViewController+Caching.m in Sources */,
+				F25286931ACFA1FD00435261 /* GLFactualRequestSerializer.m in Sources */,
+				F25286DF1ACFA27D00435261 /* GLCameraLayer.m in Sources */,
+				F25286C41ACFA24F00435261 /* GLBarcode.m in Sources */,
+				F25286D41ACFA26D00435261 /* GLScanningSession.m in Sources */,
+				F25286B91ACFA23B00435261 /* POPAnimation+GLAnimation.m in Sources */,
+				F25286B61ACFA23B00435261 /* GLAnimation.m in Sources */,
+				F25286E01ACFA27D00435261 /* GLItemConfirmationView.m in Sources */,
+				F25286CE1ACFA26300435261 /* GLBaseViewController.m in Sources */,
+				F25286B81ACFA23B00435261 /* GLPullToCloseTransitionManager.m in Sources */,
+				F25286921ACFA1FD00435261 /* GLFactualManager.m in Sources */,
+				F25286941ACFA1FD00435261 /* GLFactualResponseSerializer.m in Sources */,
+				F25286CF1ACFA26300435261 /* GLScannerViewController.m in Sources */,
+				F25286911ACFA1FD00435261 /* GLBingFetcher.m in Sources */,
+				F25286B71ACFA23B00435261 /* GLAnimationStack.m in Sources */,
+				F25286EE1ACFA2B300435261 /* UIView+RecursiveInteraction.m in Sources */,
+				F25286EB1ACFA2B300435261 /* AppDelegate.m in Sources */,
+				F25286D11ACFA26300435261 /* GLTableViewController.m in Sources */,
+				F25286BA1ACFA23B00435261 /* POPSpringAnimation+GLAdditions.m in Sources */,
+				F25286A11ACFA21D00435261 /* GLParseAnalytics.m in Sources */,
+				F25286A31ACFA21D00435261 /* PFObject+GLPFObject.m in Sources */,
+				F25286901ACFA1FD00435261 /* GLBarcodeFetchManager.m in Sources */,
+				F25286C61ACFA24F00435261 /* GLListObject.m in Sources */,
+				F25286A61ACFA21D00435261 /* PFUser+GLUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -902,6 +862,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/**",
 					"$(inherited)/**",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_WARN_PEDANTIC = NO;
@@ -931,6 +892,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/**",
 					"$(inherited)/**",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_WARN_PEDANTIC = NO;

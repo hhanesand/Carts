@@ -10,7 +10,6 @@
 #import <Parse/Parse.h>
 #import <ParseCrashReporting/ParseCrashReporting.h>
 #import "UIColor+GLColor.h"
-#import "GLTweakWindow.h"
 #import "GLScannerViewController.h"
 #import "GLTableViewController.h"
 
@@ -33,8 +32,8 @@
         NSLog(@"Logging in");
         [PFUser logInWithUsername:@"lightice11" password:@"qwerty"];
     }
-    
-    self.window = [[GLTweakWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     GLTableViewController *itemsTableViewController = [[GLTableViewController alloc] init];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:itemsTableViewController];
     self.window.rootViewController = navigationController;

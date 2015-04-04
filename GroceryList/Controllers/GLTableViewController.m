@@ -22,8 +22,6 @@
 #import "GLBarcodeObject.h"
 #import "UIColor+GLColor.h"
 
-#import "GLTweakCollection.h"
-
 #import "PFObject+GLPFObject.h"
 #import "GLPullToCloseTransitionManager.h"
 
