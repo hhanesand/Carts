@@ -53,7 +53,6 @@
 		F25286EB1ACFA2B300435261 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286E61ACFA2B300435261 /* AppDelegate.m */; };
 		F25286ED1ACFA2B300435261 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286E81ACFA2B300435261 /* main.m */; };
 		F25286EE1ACFA2B300435261 /* UIView+RecursiveInteraction.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286EA1ACFA2B300435261 /* UIView+RecursiveInteraction.m */; };
-		F25286F01ACFA2FE00435261 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F25286EF1ACFA2FE00435261 /* ParseCrashReporting.framework */; };
 		F28586BA1A744A63003B91E1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586B91A744A63003B91E1 /* Social.framework */; };
 		F28586BC1A744A6B003B91E1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586BB1A744A6B003B91E1 /* Accounts.framework */; };
 		F28586BE1A744A75003B91E1 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586BD1A744A75003B91E1 /* AdSupport.framework */; };
@@ -197,7 +196,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F25286F01ACFA2FE00435261 /* ParseCrashReporting.framework in Frameworks */,
 				F22C8F441A6EE93600139B9D /* libz.dylib in Frameworks */,
 				F2F948F81A8AEDE8002C5177 /* Foundation.framework in Frameworks */,
 				F2F948F61A8AEDDF002C5177 /* UIKit.framework in Frameworks */,
@@ -857,11 +855,6 @@
 			baseConfigurationReference = 9CA8F7344B4A5BF669FC2DE8 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/**",
-					"$(inherited)/**",
-					"$(PROJECT_DIR)/Frameworks",
-				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_WARN_PEDANTIC = NO;
 				HEADER_SEARCH_PATHS = (
@@ -887,11 +880,6 @@
 			baseConfigurationReference = 254AFE9F5A4C9859E25FAB80 /* Pods.release.xcconfig */;
 			buildSettings = {
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(PROJECT_DIR)/**",
-					"$(inherited)/**",
-					"$(PROJECT_DIR)/Frameworks",
-				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_WARN_PEDANTIC = NO;
 				HEADER_SEARCH_PATHS = (
