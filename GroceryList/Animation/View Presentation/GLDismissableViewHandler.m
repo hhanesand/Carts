@@ -87,8 +87,9 @@
     down.springBounciness = 0;
     down.springSpeed = 20;
     down.velocity = @(velocity);
+    down.name = @"DismissInteractiveView";
     
-    [self.dimissableView pop_addAnimation:down forKey:@"present_interactive"];
+    [self.dimissableView pop_addAnimation:down forKey:@"dismiss_interactive_view"];
     
     if ([self.delegate respondsToSelector:@selector(didPresentViewAfterUserInteraction)]) {
         [[down completionSignal] subscribeCompleted:^{
@@ -109,8 +110,9 @@
     up.springSpeed = 20;
     up.springBounciness = 0;
     up.velocity = @(velocity);
+    up.name = @"PresentInteractiveView";
     
-    [self.dimissableView pop_addAnimation:up forKey:@"dismiss_interactive"];
+    [self.dimissableView pop_addAnimation:up forKey:@"present_interactive_view"];
     
     if ([self.delegate respondsToSelector:@selector(didDismissViewAfterUserInteraction)]) {
         [[up completionSignal] subscribeCompleted:^{

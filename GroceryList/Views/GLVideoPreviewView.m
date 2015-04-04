@@ -11,6 +11,7 @@
 
 @interface GLVideoPreviewView ()
 @property (nonatomic) UIImageView *imageView;
+@property (nonatomic) UIView *previewView;
 @end
 
 @implementation GLVideoPreviewView
@@ -19,24 +20,25 @@
     if (self = [super init]) {
         self.imageView = [UIImageView new];
         self.previewLayer = previewLayer;
-        [self.layer addSublayer:self.previewLayer];
-        self.previewLayer.connection.enabled = YES;
     }
     
     return self;
 }
 
+- (void)didMoveToSuperview {
+    [self addSubview:self.previewView];
+}
+
 - (void)resume {
-    self.previewLayer.connection.enabled = YES;
+    [self insertSubview:self.previewView belowSubview:self.imageView];
     
-    [self.layer addSublayer:self.previewLayer];
-    
-    POPBasicAnimation *alpha = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerOpacity];
-    alpha.toValue = 0;
+    POPBasicAnimation *alpha = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
+    alpha.fromValue = @(1);
+    alpha.toValue = @(0);
     alpha.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    alpha.duration = 0.2;
+    alpha.duration = 0.1;
     
-    [self.imageView.layer pop_addAnimation:alpha forKey:@"fade"];
+    [self.imageView pop_addAnimation:alpha forKey:@"fade"];
     
     [[alpha completionSignal] subscribeCompleted:^{
         [self.imageView removeFromSuperview];
@@ -44,17 +46,38 @@
 }
 
 - (void)pauseWithImage:(UIImage *)image {
-    self.previewLayer.connection.enabled = NO;
-    
-    self.imageView.image = image;
+    self.imageView = [[UIImageView alloc] initWithImage:image];
     self.imageView.frame = self.bounds;
-    [self addSubview:self.imageView];
-    [self.previewLayer removeFromSuperlayer];
+    [self insertSubview:self.imageView aboveSubview:self.previewView];
 }
 
 - (void)setFrame:(CGRect)frame {
     self.previewLayer.frame = frame;
     [super setFrame:frame];
+}
+
+- (UIView *)previewView {
+    if (!_previewView) {
+        _previewView = [[UIView alloc] initWithFrame:self.bounds];
+        [_previewView.layer addSublayer:self.previewLayer];
+        _previewView.backgroundColor = [UIColor blueColor];
+    }
+    
+    return _previewView;
+}
+
++ (UIImage *)imageWithColor:(UIColor *)color {
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 
 @end

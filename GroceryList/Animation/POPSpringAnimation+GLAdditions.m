@@ -22,6 +22,8 @@
     reversed.toValue = self.fromValue;
     reversed.fromValue = self.toValue;
     
+    reversed.name = [NSString stringWithFormat:@"reversed_%@", self.name];
+    
     return reversed;
 }
 

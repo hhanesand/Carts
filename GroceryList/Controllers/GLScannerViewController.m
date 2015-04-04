@@ -115,18 +115,21 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     scale.toValue = [NSValue valueWithCGPoint:CGPointMake(2, 2)];
     scale.springSpeed = 12;
     scale.springBounciness = 0;
+    scale.name = @"scaleBlurViewLayer";
 
     POPSpringAnimation *fade = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerOpacity];
     fade.fromValue = @1;
     fade.toValue = @0;
     fade.springSpeed = 10;
     fade.springBounciness = 0;
+    fade.name = @"fadeBlurViewLayer";
 
     POPSpringAnimation *show = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerOpacity];
     show.fromValue = @0;
     show.toValue = @1;
     fade.springSpeed = 10;
     fade.springBounciness = 0;
+    show.name = @"showTargetingReticule";
     
     [self.animationStack pushAnimation:scale withTargetObject:self.blurView.layer andDescription:@"scale"];
     [self.animationStack pushAnimation:fade withTargetObject:self.blurView.layer andDescription:@"fade"];
@@ -158,6 +161,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     presentConfirmationView.toValue = @(CGRectGetHeight(self.view.frame) - CGRectGetHeight(self.confirmationView.frame) * 0.5);
     presentConfirmationView.springBounciness = 0;
     presentConfirmationView.springSpeed = 20;
+    presentConfirmationView.name = @"presentConfirmationView";
     
     [self.confirmationView pop_addAnimation:presentConfirmationView forKey:@"presentConfirmationView"];
     
@@ -192,6 +196,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     dismiss.toValue = @(CGRectGetHeight(self.view.frame) + CGRectGetHeight(self.confirmationView.frame) / 2);
     dismiss.springSpeed = 20;
     dismiss.springBounciness = 0;
+    dismiss.name = @"dismissConfirmationView";
     
     [self.confirmationView pop_addAnimation:dismiss forKey:@"manual_confirmation_view_dismiss"];
     

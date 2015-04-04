@@ -32,6 +32,7 @@
     slide.toValue = self.presenting ? @(CGRectGetMidY(to.view.frame)) : @(offset + CGRectGetMidY(to.view.frame));
     slide.springSpeed = 15;
     slide.springBounciness = 0;
+    slide.name = @"modalPopover";
     
     [[slide completionSignal] subscribeCompleted:^{
         [transitionContext completeTransition:YES];
