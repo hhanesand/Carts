@@ -50,6 +50,7 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
             self.scanner = [[GLScannerViewController alloc] init];
             self.scanner.view.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds));
+            self.scanner.delegate = self;
         });
         
         self.view.frame = [UIScreen mainScreen].bounds;
@@ -124,14 +125,7 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
     cell.brand.text = [obj getBrand];
     cell.category.text = [obj getCategory];
     
-    //no reactive cocoa for this one...
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:obj.item.image[0]]];
-    UIImage *image = [UIImage imageNamed:@"document"];
-    
-    [cell.image setImageWithURLRequest:request placeholderImage:image success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *newImage) {
-        cell.image.image = newImage;
-        [cell setNeedsLayout];
-    } failure:nil];
+    [cell.image setImageWithURL:[NSURL URLWithString:obj.item.image[0]]];
     
     return cell;
 }
