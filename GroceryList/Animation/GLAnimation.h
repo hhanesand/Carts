@@ -3,12 +3,10 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/28/15.
-//
-//
-
-@import Foundation;
 
 #import <Pop/POP.h>
+
+@import Foundation;
 
 @interface GLAnimation : NSObject
 

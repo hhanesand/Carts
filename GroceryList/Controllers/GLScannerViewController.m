@@ -3,40 +3,21 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 2/11/15.
-//
-//
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <Pop/POP.h>
-
-#import "RACSubject.h"
-
-#import "SVProgressHUD.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 #import "GLScannerViewController.h"
-#import "GLFactualManager.h"
-#import "GLBingFetcher.h"
 #import "GLItemConfirmationView.h"
-#import "GLListObject.h"
-#import "GLBarcodeObject.h"
-#import "UIColor+GLColor.h"
-#import "POPSpringAnimation+GLAdditions.h"
-#import "POPAnimationExtras.h"
-#import "GLTableViewController.h"
 #import "GLScanningSession.h"
-#import "PFQuery+GLQuery.h"
 #import "GLBarcode.h"
-#import "GLParseAnalytics.h"
-#import "UIView+RecursiveInteraction.h"
 #import "GLCameraLayer.h"
 #import "GLBarcodeFetchManager.h"
-#import "GLDismissableViewHandler.h"
-#import "POPAnimation+GLAnimation.h"
 #import "GLPullToCloseTransitionManager.h"
 #import "GLPullToCloseTransitionPresentationController.h"
 
-#define TICK   NSDate *startTime = [NSDate date]
-#define TOCK   NSLog(@"Time GLScannerViewController: %f", -[startTime timeIntervalSinceNow])
+#import "POPAnimation+GLAnimation.h"
 
 typedef RACSignal* (^RACCommandBlock)(id);
 

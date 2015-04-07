@@ -3,11 +3,9 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/10/15.
-//
-//
 
 @import Foundation;
-#import <AVFoundation/AVFoundation.h>
+@import AVFoundation;
 
 @interface GLBarcode : NSObject
 

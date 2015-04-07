@@ -3,32 +3,21 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 1/18/15.
-//
-//
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-#import "PFQueryTableViewController+Caching.h"
-
-#import "UIImageView+AFNetworking.h"
-
 #import "GLTableViewController.h"
 #import "GLTableViewCell.h"
-#import "GLFactualManager.h"
-#import "GLBingFetcher.h"
 #import "GLScannerViewController.h"
-#import "GLParseAnalytics.h"
 #import "GLListObject.h"
 #import "GLBarcodeObject.h"
-#import "UIColor+GLColor.h"
 
+#import "PFQueryTableViewController+Caching.h"
 #import "PFObject+GLPFObject.h"
 #import "GLPullToCloseTransitionManager.h"
+#import "UIImageView+AFNetworking.h"
 
 static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
-
-#define TICK   NSDate *startTime = [NSDate date]
-#define TOCK   NSLog(@"Time GLTableViewController: %f", -[startTime timeIntervalSinceNow])
 
 @interface GLTableViewController ()
 @property (nonatomic) GLScannerViewController *scanner;

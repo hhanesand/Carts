@@ -3,8 +3,6 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/6/15.
-//
-//
 
 #import "GLPullToCloseTransitionPresentationController.h"
 

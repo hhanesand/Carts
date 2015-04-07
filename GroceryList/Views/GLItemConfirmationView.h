@@ -3,10 +3,8 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 2/24/15.
-//
-//
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @class GLListObject;
 @class RACSubject;

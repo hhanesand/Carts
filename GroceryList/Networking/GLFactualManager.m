@@ -3,16 +3,15 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 1/23/15.
-//
-//
+
+#import <AFNetworking/AFNetworking.h>
+#import <AFNetworking-RACExtensions/AFHTTPRequestOperationManager+RACSupport.h>
 
 #import "GLFactualManager.h"
 #import "GLBarcodeObject.h"
 #import "GLBingFetcher.h"
-#import "AFURLResponseSerialization.h"
 #import "GLFactualRequestSerializer.h"
 #import "GLFactualResponseSerializer.h"
-#import "AFHTTPRequestOperationManager+RACSupport.h"
 
 @interface GLFactualManager()
 @property (nonatomic) GLBingFetcher *bingFetcher;
@@ -36,8 +35,8 @@
                                        @"product_name" : @"name",
                                        @"ean13" : @"barcodes",
                                        @"upc" : @"barcodes",
-                                       @"upc_e" : @"barcodes"
-                                       //@"image_urls" : @"image", images are sketchy now... at least from factual
+                                       @"upc_e" : @"barcodes",
+                                       @"image_urls" : @"image"
                                        };
     }
     

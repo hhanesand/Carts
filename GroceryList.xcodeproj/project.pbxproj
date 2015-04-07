@@ -52,7 +52,6 @@
 		F25286E41ACFA27D00435261 /* GLVideoPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286DE1ACFA27D00435261 /* GLVideoPreviewView.m */; };
 		F25286EB1ACFA2B300435261 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286E61ACFA2B300435261 /* AppDelegate.m */; };
 		F25286ED1ACFA2B300435261 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286E81ACFA2B300435261 /* main.m */; };
-		F25286EE1ACFA2B300435261 /* UIView+RecursiveInteraction.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286EA1ACFA2B300435261 /* UIView+RecursiveInteraction.m */; };
 		F28586BA1A744A63003B91E1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586B91A744A63003B91E1 /* Social.framework */; };
 		F28586BC1A744A6B003B91E1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586BB1A744A6B003B91E1 /* Accounts.framework */; };
 		F28586BE1A744A75003B91E1 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586BD1A744A75003B91E1 /* AdSupport.framework */; };
@@ -167,8 +166,6 @@
 		F25286E61ACFA2B300435261 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = "Supporting Files/AppDelegate.m"; sourceTree = "<group>"; };
 		F25286E71ACFA2B300435261 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Supporting Files/Info.plist"; sourceTree = "<group>"; };
 		F25286E81ACFA2B300435261 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Supporting Files/main.m"; sourceTree = "<group>"; };
-		F25286E91ACFA2B300435261 /* UIView+RecursiveInteraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+RecursiveInteraction.h"; path = "Supporting Files/UIView+RecursiveInteraction.h"; sourceTree = "<group>"; };
-		F25286EA1ACFA2B300435261 /* UIView+RecursiveInteraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+RecursiveInteraction.m"; path = "Supporting Files/UIView+RecursiveInteraction.m"; sourceTree = "<group>"; };
 		F25286EF1ACFA2FE00435261 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseCrashReporting.framework; path = Frameworks/ParseCrashReporting.framework; sourceTree = "<group>"; };
 		F28586B91A744A63003B91E1 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		F28586BB1A744A6B003B91E1 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -376,8 +373,6 @@
 				F25286E61ACFA2B300435261 /* AppDelegate.m */,
 				F25286E71ACFA2B300435261 /* Info.plist */,
 				F25286E81ACFA2B300435261 /* main.m */,
-				F25286E91ACFA2B300435261 /* UIView+RecursiveInteraction.h */,
-				F25286EA1ACFA2B300435261 /* UIView+RecursiveInteraction.m */,
 				F2E544EC1A6CB55100CB52E5 /* LaunchScreen.xib */,
 			);
 			name = "Supporting Files";
@@ -678,7 +673,6 @@
 				F25286CF1ACFA26300435261 /* GLScannerViewController.m in Sources */,
 				F25286911ACFA1FD00435261 /* GLBingFetcher.m in Sources */,
 				F25286B71ACFA23B00435261 /* GLAnimationStack.m in Sources */,
-				F25286EE1ACFA2B300435261 /* UIView+RecursiveInteraction.m in Sources */,
 				F25286EB1ACFA2B300435261 /* AppDelegate.m in Sources */,
 				F25286D11ACFA26300435261 /* GLTableViewController.m in Sources */,
 				F25286BA1ACFA23B00435261 /* POPSpringAnimation+GLAdditions.m in Sources */,

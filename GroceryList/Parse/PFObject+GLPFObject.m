@@ -3,11 +3,10 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/11/15.
-//
-//
+
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import "PFObject+GLPFObject.h"
-#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @implementation PFObject (GLPFObject)
 

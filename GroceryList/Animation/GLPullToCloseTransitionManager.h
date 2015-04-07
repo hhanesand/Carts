@@ -3,8 +3,6 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/29/15.
-//
-//
 
 @import Foundation;
 @import UIKit;

@@ -3,10 +3,8 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/2/15.
-//
-//
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 #import "GLFactualManager.h"
 

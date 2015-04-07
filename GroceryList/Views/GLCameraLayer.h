@@ -3,10 +3,8 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/26/15.
-//
-//
 
-#import <QuartzCore/QuartzCore.h>
+@import QuartzCore;
 
 @interface GLCameraLayer : CAShapeLayer
 

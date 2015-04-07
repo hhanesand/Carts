@@ -3,11 +3,10 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/10/15.
-//
-//
+
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import "PFQuery+GLQuery.h"
-#import "ReactiveCocoa.h"
 
 @implementation PFQuery (GLQuery)
 

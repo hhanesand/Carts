@@ -3,14 +3,13 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 2/9/15.
-//
-//
+
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import "GLBarcodeObject.h"
-#import <Parse/PFObject+Subclass.h>
-#import <ReactiveCocoa/ReactiveCocoa.h>
-#import <AVFoundation/AVFoundation.h>
 #import "GLBarcode.h"
+
+@import AVFoundation;
 
 @implementation GLBarcodeObject
 
@@ -54,7 +53,6 @@
 - (NSString *)description {
     NSMutableString *string = [NSMutableString stringWithString:self.name];
     [string appendString:[@" barcodes " stringByAppendingString:[self.barcodes description]]];
-    #warning eh...
     //[string appendString:[@" types " stringByAppendingString:[self.types description]]];
     
     if ([self.image count] > 0) {

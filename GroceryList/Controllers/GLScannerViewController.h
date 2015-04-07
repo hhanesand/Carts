@@ -3,8 +3,6 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 2/11/15.
-//
-//
 
 #import "GLBarcodeScannerDelegate.h"
 #import "GLBarcodeItemDelegate.h"

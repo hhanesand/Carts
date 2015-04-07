@@ -3,11 +3,10 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/2/15.
-//
-//
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <Parse/Parse.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 #import "GLBarcodeFetchManager.h"
 #import "GLBarcodeObject.h"
@@ -17,7 +16,6 @@
 #import "GLBingFetcher.h"
 
 #import "PFQuery+GLQuery.h"
-#import "SVProgressHUD.h"
 
 @interface GLBarcodeFetchManager ()
 @property (nonatomic) GLFactualManager *factual;

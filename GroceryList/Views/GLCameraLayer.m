@@ -3,12 +3,10 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/26/15.
-//
-//
-
-@import UIKit;
 
 #import "GLCameraLayer.h"
+
+@import UIKit;
 
 @interface GLCameraLayer ()
 @property (nonatomic) CGFloat lineLength;
@@ -42,11 +40,6 @@
     self.strokeColor = [UIColor whiteColor].CGColor;
     self.lineCap = kCALineJoinRound;
     self.opacity = 0.3;
-
-//    CGFloat skipLength = CGRectGetHeight(bounds) - self.cornerRadius - self.lineLength;
-//    CGFloat combinedLength = self.cornerRadius + self.lineLength;
-//
-//    self.lineDashPattern = @[@(combinedLength), @(skipLength), @(combinedLength * 2), @(skipLength), @(combinedLength * 2), @(skipLength), @(combinedLength * 2), @(skipLength), @(combinedLength)];
     
     self.path = [self buildPathWithBounds:bounds].CGPath;
 }

@@ -3,10 +3,7 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 1/18/15.
-//
-//
 
-#import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
 int main(int argc, char * argv[]) {

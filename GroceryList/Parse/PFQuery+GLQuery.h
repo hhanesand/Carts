@@ -3,8 +3,6 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/10/15.
-//
-//
 
 #import <Parse/PFQuery.h>
 

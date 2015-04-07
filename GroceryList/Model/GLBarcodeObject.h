@@ -3,10 +3,9 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 2/9/15.
-//
-//
 
 #import <Parse/Parse.h>
+
 #import "GLBarcodeScannerDelegate.h"
 
 @class AVMetadataMachineReadableCodeObject;

@@ -3,11 +3,10 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 2/15/15.
-//
-//
+
+#import <Parse/Parse.h>
 
 #import "PFQueryTableViewController+Caching.h"
-#import <Parse/Parse.h>
 
 @interface PFQueryTableViewController () {
     NSMutableArray *_mutableObjects;

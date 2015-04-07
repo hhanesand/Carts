@@ -4,9 +4,11 @@
 //
 //  Created by Hakon Hanesand on 4/3/15.
 
-#import "GLVideoPreviewView.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <POP/POP.h>
+
+#import "GLVideoPreviewView.h"
+
 #import "POPAnimation+GLAnimation.h"
 
 @interface GLVideoPreviewView ()
@@ -36,7 +38,7 @@
     alpha.fromValue = @(1);
     alpha.toValue = @(0);
     alpha.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    alpha.duration = 0.1;
+    alpha.duration = 0.5;
     
     [self.imageView pop_addAnimation:alpha forKey:@"fade"];
     

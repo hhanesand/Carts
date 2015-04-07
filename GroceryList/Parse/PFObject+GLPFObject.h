@@ -3,8 +3,6 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/11/15.
-//
-//
 
 #import <Parse/Parse.h>
 

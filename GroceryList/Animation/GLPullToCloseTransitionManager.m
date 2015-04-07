@@ -3,13 +3,13 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/29/15.
-//
-//
+
+#import <pop/POP.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import "GLPullToCloseTransitionManager.h"
-#import <pop/POP.h>
+
 #import "POPSpringAnimation+GLAdditions.h"
-#import <ReactiveCocoa/ReactiveCocoa.h>
 #import "POPAnimation+GLAnimation.h"
 
 @implementation GLPullToCloseTransitionManager

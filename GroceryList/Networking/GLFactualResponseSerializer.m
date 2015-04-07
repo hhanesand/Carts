@@ -3,8 +3,6 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 2/20/15.
-//
-//
 
 #import "GLFactualResponseSerializer.h"
 

@@ -3,13 +3,12 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/9/15.
-//
-//
 
-@import Foundation;
-#import <AVFoundation/AVFoundation.h>
 #import "GLBarcodeScannerDelegate.h"
 #import "GLVideoPreviewView.h"
+
+@import Foundation;
+@import AVFoundation;
 
 @class RACSignal;
 

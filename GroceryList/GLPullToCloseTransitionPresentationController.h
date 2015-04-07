@@ -3,10 +3,8 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/6/15.
-//
-//
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface GLPullToCloseTransitionPresentationController : UIPresentationController
 

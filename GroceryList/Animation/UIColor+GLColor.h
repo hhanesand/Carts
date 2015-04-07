@@ -3,10 +3,8 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/4/15.
-//
-//
 
-#import <UIKit/UIColor.h>
+@import UIKit;
 
 @interface UIColor (GLColor)
 
