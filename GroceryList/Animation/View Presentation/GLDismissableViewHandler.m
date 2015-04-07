@@ -107,7 +107,7 @@
     POPSpringAnimation *up = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
     up.toValue = @(self.threshhold + CGRectGetHeight(self.dimissableView.frame) / 2);
     up.springSpeed = 20;
-    up.springBounciness = 0;
+    up.springBounciness = 10;
     up.velocity = @(velocity);
     up.name = @"PresentInteractiveView";
     

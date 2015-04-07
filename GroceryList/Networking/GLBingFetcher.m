@@ -46,7 +46,7 @@
 }
 
 - (RACSignal *)fetchImageURLFromBingForBarcodeObject:(GLBarcodeObject *)item {
-    NSString *url = [self.root stringByAppendingString:[self nameOfItemToBingPhrase:item.name]];
+    NSString *url = [self.root stringByAppendingString:[self addQueryTagsToSearchPhrase:[NSString stringWithFormat:@"%@ %@", item.name, item.brand]]];
     NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     
     [urlRequest setHTTPMethod:@"GET"];
@@ -61,7 +61,7 @@
     }];
 }
 
-- (NSString *)nameOfItemToBingPhrase:(NSString *)name {
+- (NSString *)addQueryTagsToSearchPhrase:(NSString *)name {
     NSString *result = [name stringByReplacingOccurrencesOfString:@" " withString:@"+"];
     return [[@"&Query=%27" stringByAppendingString:result] stringByAppendingString:@"%27"];
 }

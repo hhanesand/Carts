@@ -273,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				F2EC284D1AD3138900E4DB27 /* View Controller Presentation */,
+				F2C57A831ACE45380033445C /* View Presentation */,
 				F25286AA1ACFA23B00435261 /* GLAnimation.h */,
 				F25286AB1ACFA23B00435261 /* GLAnimation.m */,
 				F25286AC1ACFA23B00435261 /* GLAnimationStack.h */,
@@ -283,7 +284,6 @@
 				F25286B31ACFA23B00435261 /* POPSpringAnimation+GLAdditions.m */,
 				F25286B41ACFA23B00435261 /* UIColor+GLColor.h */,
 				F25286B51ACFA23B00435261 /* UIColor+GLColor.m */,
-				F2C57A831ACE45380033445C /* View Presentation */,
 			);
 			name = Animation;
 			sourceTree = "<group>";
