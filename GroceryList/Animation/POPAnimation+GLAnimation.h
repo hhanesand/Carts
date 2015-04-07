@@ -3,10 +3,8 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/3/15.
-//
-//
 
-#import "POPAnimation.h"
+#import <POP/POP.h>
 
 @class RACSignal;
 

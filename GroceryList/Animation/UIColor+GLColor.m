@@ -3,12 +3,10 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/4/15.
-//
-//
 
 #import "UIColor+GLColor.h"
-#import <UIKit/UIKit.h>
-#import <QuartzCore/QuartzCore.h>
+
+@import QuartzCore;
 
 @implementation UIColor (GLColor)
 

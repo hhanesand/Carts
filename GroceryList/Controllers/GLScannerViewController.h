@@ -3,8 +3,6 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 2/11/15.
-//
-//
 
 #import "GLBarcodeScannerDelegate.h"
 #import "GLBarcodeItemDelegate.h"
@@ -14,7 +12,10 @@
 @class GLItemConfirmationView;
 @class RACSubject;
 
-@interface GLScannerViewController : GLBaseViewController <GLBarcodeScannerDelegate, GLDismissableHandlerDelegate, UITableViewDelegate, UITableViewDataSource>
+/**
+ *  The view controller that handles barcode searching, scanning and networking with Factual
+ */
+@interface GLScannerViewController : GLBaseViewController <GLBarcodeScannerDelegate, GLDismissableHandlerDelegate, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *searchField;

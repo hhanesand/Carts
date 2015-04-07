@@ -52,11 +52,11 @@
 		F25286E41ACFA27D00435261 /* GLVideoPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286DE1ACFA27D00435261 /* GLVideoPreviewView.m */; };
 		F25286EB1ACFA2B300435261 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286E61ACFA2B300435261 /* AppDelegate.m */; };
 		F25286ED1ACFA2B300435261 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286E81ACFA2B300435261 /* main.m */; };
-		F25286EE1ACFA2B300435261 /* UIView+RecursiveInteraction.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286EA1ACFA2B300435261 /* UIView+RecursiveInteraction.m */; };
 		F28586BA1A744A63003B91E1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586B91A744A63003B91E1 /* Social.framework */; };
 		F28586BC1A744A6B003B91E1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586BB1A744A6B003B91E1 /* Accounts.framework */; };
 		F28586BE1A744A75003B91E1 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586BD1A744A75003B91E1 /* AdSupport.framework */; };
 		F296DA141A709862001E9D29 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F296DA131A709862001E9D29 /* libstdc++.6.dylib */; };
+		F2AC65FF1AD1DE3D00C0A09F /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F2AC65FE1AD1DE3D00C0A09F /* SVProgressHUD.bundle */; };
 		F2B4D0D61A6DF52200A98C7A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0D51A6DF52200A98C7A /* AVFoundation.framework */; };
 		F2B4D0D81A6DF52A00A98C7A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0D71A6DF52A00A98C7A /* CoreMedia.framework */; };
 		F2B4D0DA1A6DF53000A98C7A /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0D91A6DF53000A98C7A /* CoreVideo.framework */; };
@@ -64,6 +64,7 @@
 		F2B4D0DE1A6DF54500A98C7A /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0DD1A6DF54500A98C7A /* libiconv.dylib */; };
 		F2E544EE1A6CB55100CB52E5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2E544EC1A6CB55100CB52E5 /* LaunchScreen.xib */; };
 		F2E544FA1A6CB55100CB52E5 /* GroceryListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E544F91A6CB55100CB52E5 /* GroceryListTests.m */; };
+		F2EC284C1AD3136B00E4DB27 /* GLPullToCloseTransitionPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EC284B1AD3136B00E4DB27 /* GLPullToCloseTransitionPresentationController.m */; };
 		F2F948BA1A8ACCEB002C5177 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2F948B91A8ACCEB002C5177 /* Images.xcassets */; };
 		F2F948C31A8AD7B5002C5177 /* main.js in Resources */ = {isa = PBXBuildFile; fileRef = F2F948BE1A8AD7B5002C5177 /* main.js */; };
 		F2F948C41A8AD7B5002C5177 /* global.json in Resources */ = {isa = PBXBuildFile; fileRef = F2F948C01A8AD7B5002C5177 /* global.json */; };
@@ -165,13 +166,12 @@
 		F25286E61ACFA2B300435261 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = "Supporting Files/AppDelegate.m"; sourceTree = "<group>"; };
 		F25286E71ACFA2B300435261 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Supporting Files/Info.plist"; sourceTree = "<group>"; };
 		F25286E81ACFA2B300435261 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Supporting Files/main.m"; sourceTree = "<group>"; };
-		F25286E91ACFA2B300435261 /* UIView+RecursiveInteraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+RecursiveInteraction.h"; path = "Supporting Files/UIView+RecursiveInteraction.h"; sourceTree = "<group>"; };
-		F25286EA1ACFA2B300435261 /* UIView+RecursiveInteraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+RecursiveInteraction.m"; path = "Supporting Files/UIView+RecursiveInteraction.m"; sourceTree = "<group>"; };
 		F25286EF1ACFA2FE00435261 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseCrashReporting.framework; path = Frameworks/ParseCrashReporting.framework; sourceTree = "<group>"; };
 		F28586B91A744A63003B91E1 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		F28586BB1A744A6B003B91E1 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		F28586BD1A744A75003B91E1 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		F296DA131A709862001E9D29 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
+		F2AC65FE1AD1DE3D00C0A09F /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SVProgressHUD.bundle; path = Pods/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle; sourceTree = "<group>"; };
 		F2B4D0D51A6DF52200A98C7A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F2B4D0D71A6DF52A00A98C7A /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		F2B4D0D91A6DF53000A98C7A /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -182,6 +182,8 @@
 		F2E544F31A6CB55100CB52E5 /* GroceryListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GroceryListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E544F81A6CB55100CB52E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2E544F91A6CB55100CB52E5 /* GroceryListTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GroceryListTests.m; sourceTree = "<group>"; };
+		F2EC284A1AD3136B00E4DB27 /* GLPullToCloseTransitionPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLPullToCloseTransitionPresentationController.h; sourceTree = "<group>"; };
+		F2EC284B1AD3136B00E4DB27 /* GLPullToCloseTransitionPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLPullToCloseTransitionPresentationController.m; sourceTree = "<group>"; };
 		F2F948B91A8ACCEB002C5177 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = GroceryList/Images.xcassets; sourceTree = "<group>"; };
 		F2F948BE1A8AD7B5002C5177 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = main.js; sourceTree = "<group>"; };
 		F2F948C01A8AD7B5002C5177 /* global.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = global.json; sourceTree = "<group>"; };
@@ -270,12 +272,11 @@
 		F2A00A591AA8048C004B8988 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				F2EC284D1AD3138900E4DB27 /* View Controller Presentation */,
 				F25286AA1ACFA23B00435261 /* GLAnimation.h */,
 				F25286AB1ACFA23B00435261 /* GLAnimation.m */,
 				F25286AC1ACFA23B00435261 /* GLAnimationStack.h */,
 				F25286AD1ACFA23B00435261 /* GLAnimationStack.m */,
-				F25286AE1ACFA23B00435261 /* GLPullToCloseTransitionManager.h */,
-				F25286AF1ACFA23B00435261 /* GLPullToCloseTransitionManager.m */,
 				F25286B01ACFA23B00435261 /* POPAnimation+GLAnimation.h */,
 				F25286B11ACFA23B00435261 /* POPAnimation+GLAnimation.m */,
 				F25286B21ACFA23B00435261 /* POPSpringAnimation+GLAdditions.h */,
@@ -319,13 +320,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F2B4D1031A6DF5BE00A98C7A /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Vendor;
-			sourceTree = "<group>";
-		};
 		F2C57A831ACE45380033445C /* View Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -338,6 +332,7 @@
 		F2E544D11A6CB55000CB52E5 = {
 			isa = PBXGroup;
 			children = (
+				F2AC65FE1AD1DE3D00C0A09F /* SVProgressHUD.bundle */,
 				F2F948B91A8ACCEB002C5177 /* Images.xcassets */,
 				F2E544DC1A6CB55000CB52E5 /* GroceryList */,
 				F2E544F61A6CB55100CB52E5 /* GroceryListTests */,
@@ -345,7 +340,6 @@
 				F2F948BC1A8AD7B5002C5177 /* parse */,
 				F2B4D0DF1A6DF54B00A98C7A /* Frameworks */,
 				C8F326AD488A3D96D6A729A2 /* Pods */,
-				F2B4D1031A6DF5BE00A98C7A /* Vendor */,
 			);
 			sourceTree = "<group>";
 		};
@@ -379,8 +373,6 @@
 				F25286E61ACFA2B300435261 /* AppDelegate.m */,
 				F25286E71ACFA2B300435261 /* Info.plist */,
 				F25286E81ACFA2B300435261 /* main.m */,
-				F25286E91ACFA2B300435261 /* UIView+RecursiveInteraction.h */,
-				F25286EA1ACFA2B300435261 /* UIView+RecursiveInteraction.m */,
 				F2E544EC1A6CB55100CB52E5 /* LaunchScreen.xib */,
 			);
 			name = "Supporting Files";
@@ -433,6 +425,17 @@
 				F26147FB1ACF1CCA002395BE /* Managers */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		F2EC284D1AD3138900E4DB27 /* View Controller Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				F2EC284A1AD3136B00E4DB27 /* GLPullToCloseTransitionPresentationController.h */,
+				F2EC284B1AD3136B00E4DB27 /* GLPullToCloseTransitionPresentationController.m */,
+				F25286AE1ACFA23B00435261 /* GLPullToCloseTransitionManager.h */,
+				F25286AF1ACFA23B00435261 /* GLPullToCloseTransitionManager.m */,
+			);
+			name = "View Controller Presentation";
 			sourceTree = "<group>";
 		};
 		F2F797CF1AB0C3FD00886A2D /* Parse */ = {
@@ -588,6 +591,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2AC65FF1AD1DE3D00C0A09F /* SVProgressHUD.bundle in Resources */,
 				F25286D01ACFA26300435261 /* GLScannerViewController.xib in Resources */,
 				F2F948BA1A8ACCEB002C5177 /* Images.xcassets in Resources */,
 				F25286E31ACFA27D00435261 /* GLTableViewCell.xib in Resources */,
@@ -669,10 +673,10 @@
 				F25286CF1ACFA26300435261 /* GLScannerViewController.m in Sources */,
 				F25286911ACFA1FD00435261 /* GLBingFetcher.m in Sources */,
 				F25286B71ACFA23B00435261 /* GLAnimationStack.m in Sources */,
-				F25286EE1ACFA2B300435261 /* UIView+RecursiveInteraction.m in Sources */,
 				F25286EB1ACFA2B300435261 /* AppDelegate.m in Sources */,
 				F25286D11ACFA26300435261 /* GLTableViewController.m in Sources */,
 				F25286BA1ACFA23B00435261 /* POPSpringAnimation+GLAdditions.m in Sources */,
+				F2EC284C1AD3136B00E4DB27 /* GLPullToCloseTransitionPresentationController.m in Sources */,
 				F25286A11ACFA21D00435261 /* GLParseAnalytics.m in Sources */,
 				F25286A31ACFA21D00435261 /* PFObject+GLPFObject.m in Sources */,
 				F25286901ACFA1FD00435261 /* GLBarcodeFetchManager.m in Sources */,

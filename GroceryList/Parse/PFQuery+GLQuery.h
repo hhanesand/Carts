@@ -3,13 +3,14 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/10/15.
-//
-//
 
 #import <Parse/PFQuery.h>
 
 @class RACSignal;
 
+/**
+ *  ReactiveCocoa extensions for the Parse API
+ */
 @interface PFQuery (GLQuery)
 
 /**

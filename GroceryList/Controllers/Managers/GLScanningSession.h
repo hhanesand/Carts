@@ -3,16 +3,18 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/9/15.
-//
-//
 
-@import Foundation;
-#import <AVFoundation/AVFoundation.h>
 #import "GLBarcodeScannerDelegate.h"
 #import "GLVideoPreviewView.h"
 
+@import Foundation;
+@import AVFoundation;
+
 @class RACSignal;
 
+/**
+ *  Stores a scanning session that encapsulates all AVFoundation objects
+ */
 @interface GLScanningSession : NSObject <AVCaptureMetadataOutputObjectsDelegate>
 
 /**

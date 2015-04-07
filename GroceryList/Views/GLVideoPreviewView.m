@@ -4,9 +4,11 @@
 //
 //  Created by Hakon Hanesand on 4/3/15.
 
-#import "GLVideoPreviewView.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <POP/POP.h>
+
+#import "GLVideoPreviewView.h"
+
 #import "POPAnimation+GLAnimation.h"
 
 @interface GLVideoPreviewView ()
@@ -36,7 +38,7 @@
     alpha.fromValue = @(1);
     alpha.toValue = @(0);
     alpha.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    alpha.duration = 0.1;
+    alpha.duration = 0.5;
     
     [self.imageView pop_addAnimation:alpha forKey:@"fade"];
     
@@ -60,24 +62,9 @@
     if (!_previewView) {
         _previewView = [[UIView alloc] initWithFrame:self.bounds];
         [_previewView.layer addSublayer:self.previewLayer];
-        _previewView.backgroundColor = [UIColor blueColor];
     }
     
     return _previewView;
-}
-
-+ (UIImage *)imageWithColor:(UIColor *)color {
-    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
-    UIGraphicsBeginImageContext(rect.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    CGContextSetFillColorWithColor(context, [color CGColor]);
-    CGContextFillRect(context, rect);
-    
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return image;
 }
 
 @end

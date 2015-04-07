@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14A329r" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14A329r" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GLScannerViewController">
@@ -59,20 +60,51 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sua-iu-cEm">
                                             <rect key="frame" x="0.0" y="535" width="600" height="65"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iAF-u2-A4S">
-                                                    <rect key="frame" x="270" y="3" width="60" height="60"/>
-                                                    <state key="normal" image="scan">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="didTapScanningButton:" destination="-1" eventType="touchUpInside" id="vwO-7k-hS7"/>
-                                                    </connections>
-                                                </button>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nDd-Br-Cy1">
+                                                    <rect key="frame" x="150" y="0.0" width="300" height="65"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iAF-u2-A4S">
+                                                            <rect key="frame" x="8" y="3" width="60" height="60"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="60" id="pZc-lg-Mxn"/>
+                                                                <constraint firstAttribute="height" constant="60" id="zYv-uu-IqK"/>
+                                                            </constraints>
+                                                            <state key="normal" image="scan">
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="didTapScanningButton:" destination="-1" eventType="touchUpInside" id="vwO-7k-hS7"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CEF-Dk-zkj">
+                                                            <rect key="frame" x="232" y="3" width="60" height="60"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="60" id="2dw-3d-yjA"/>
+                                                                <constraint firstAttribute="height" constant="60" id="JqL-QR-fVM"/>
+                                                            </constraints>
+                                                            <state key="normal" image="Checkmark-50">
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="didTapDoneButton:" destination="-1" eventType="touchUpInside" id="QTz-ap-ijZ"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="centerY" secondItem="CEF-Dk-zkj" secondAttribute="centerY" constant="-0.5" id="VWD-wE-8xC"/>
+                                                        <constraint firstAttribute="centerY" secondItem="iAF-u2-A4S" secondAttribute="centerY" constant="-0.5" id="a7l-1B-p1u"/>
+                                                        <constraint firstItem="iAF-u2-A4S" firstAttribute="leading" secondItem="nDd-Br-Cy1" secondAttribute="leading" constant="8" id="m6x-eu-ZfN"/>
+                                                        <constraint firstAttribute="trailing" secondItem="CEF-Dk-zkj" secondAttribute="trailing" constant="8" id="p7p-08-1zc"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="centerY" secondItem="iAF-u2-A4S" secondAttribute="centerY" id="4rG-uL-kcO"/>
-                                                <constraint firstAttribute="centerX" secondItem="iAF-u2-A4S" secondAttribute="centerX" id="EJV-sX-dlL"/>
+                                                <constraint firstAttribute="centerX" secondItem="nDd-Br-Cy1" secondAttribute="centerX" id="7U7-ln-OMJ"/>
+                                                <constraint firstItem="nDd-Br-Cy1" firstAttribute="width" secondItem="Sua-iu-cEm" secondAttribute="width" multiplier="0.5" id="Me1-aR-RdP"/>
                                                 <constraint firstAttribute="height" constant="65" id="bFL-an-mOF"/>
+                                                <constraint firstItem="nDd-Br-Cy1" firstAttribute="top" secondItem="Sua-iu-cEm" secondAttribute="top" id="uXE-ot-NQ9"/>
+                                                <constraint firstAttribute="bottom" secondItem="nDd-Br-Cy1" secondAttribute="bottom" id="whU-cZ-Hm3"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -110,10 +142,11 @@
                 <constraint firstItem="m5D-zc-DfF" firstAttribute="leading" secondItem="BqI-cB-5Ui" secondAttribute="leading" id="dWu-gE-MnA"/>
                 <constraint firstAttribute="bottom" secondItem="m5D-zc-DfF" secondAttribute="bottom" id="e8Y-hi-EwO"/>
             </constraints>
-            <point key="canvasLocation" x="407" y="434"/>
+            <point key="canvasLocation" x="583" y="470"/>
         </view>
     </objects>
     <resources>
+        <image name="Checkmark-50" width="50" height="50"/>
         <image name="scan" width="60" height="60"/>
         <image name="search" width="30" height="30"/>
     </resources>

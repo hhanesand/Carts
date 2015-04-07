@@ -3,13 +3,12 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 2/24/15.
-//
-//
+
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import "GLItemConfirmationView.h"
 #import "GLBarcodeObject.h"
 #import "GLListObject.h"
-#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @implementation GLItemConfirmationView
 

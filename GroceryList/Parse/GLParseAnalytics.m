@@ -4,8 +4,9 @@
 //
 //  Created by Hakon Hanesand on 2/14/15.
 
-#import "GLParseAnalytics.h"
 #import <Parse/Parse.h>
+
+#import "GLParseAnalytics.h"
 
 @implementation GLParseAnalytics
 

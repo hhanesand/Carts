@@ -3,13 +3,13 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/29/15.
-//
-//
+
+#import <pop/POP.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import "GLPullToCloseTransitionManager.h"
-#import <pop/POP.h>
+
 #import "POPSpringAnimation+GLAdditions.h"
-#import <ReactiveCocoa/ReactiveCocoa.h>
 #import "POPAnimation+GLAnimation.h"
 
 @implementation GLPullToCloseTransitionManager
@@ -19,26 +19,47 @@
 }
 
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext {
-    UIViewController *to = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
-    UIViewController *from = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    if (self.presenting) {
+        [self animatePresentationWithTransitionContext:transitionContext];
+    } else {
+        [self animateDismissalWithTransitionContext:transitionContext];
+    }
+}
+
+
+- (void)animatePresentationWithTransitionContext:(id<UIViewControllerContextTransitioning>)transitionContext {
+    UIViewController *viewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    UIView *presentedControllerView = [transitionContext viewForKey:UITransitionContextToViewKey];
+    UIView *containerView = [transitionContext containerView];
     
-    UIView *container = [transitionContext containerView];
-    [container insertSubview:to.view belowSubview:from.view];
+    //position the presented view below the screen
+    presentedControllerView.frame = translateRect([transitionContext finalFrameForViewController:viewController], 0, CGRectGetHeight(containerView.bounds));
     
-    CGFloat offset = CGRectGetMidY([UIScreen mainScreen].applicationFrame);
-    
-    POPSpringAnimation *slide = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
-    slide.fromValue = self.presenting ? @(offset + CGRectGetMidY(to.view.frame)) : @(CGRectGetMidY(to.view.frame));
-    slide.toValue = self.presenting ? @(CGRectGetMidY(to.view.frame)) : @(offset + CGRectGetMidY(to.view.frame));
-    slide.springSpeed = 15;
-    slide.springBounciness = 0;
-    slide.name = @"modalPopover";
-    
-    [[slide completionSignal] subscribeCompleted:^{
-        [transitionContext completeTransition:YES];
+    //animate the presented view up to cover the screen
+    [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
+        presentedControllerView.center = translatePoint(presentedControllerView.center, 0, -CGRectGetHeight(containerView.bounds));
+    } completion:^(BOOL finished) {
+        [transitionContext completeTransition:finished];
     }];
+}
+
+- (void)animateDismissalWithTransitionContext:(id<UIViewControllerContextTransitioning>)transitionContext {
+    UIView *presentedControllerView = [transitionContext viewForKey:UITransitionContextToViewKey];
+    UIView *containerView = [transitionContext containerView];
     
-    [to.view pop_addAnimation:slide forKey:@"modalPopover"];
+    [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
+        presentedControllerView.center = translatePoint(presentedControllerView.center, 0, CGRectGetHeight(containerView.bounds));
+    } completion:^(BOOL finished) {
+        [transitionContext completeTransition:finished];
+    }];
+}
+
+static inline CGRect translateRect(CGRect rect, CGFloat dx, CGFloat dy) {
+    return CGRectMake(rect.origin.x + dx, rect.origin.y + dy, CGRectGetWidth(rect), CGRectGetHeight(rect));
+}
+
+static inline CGPoint translatePoint(CGPoint point, CGFloat dx, CGFloat dy) {
+    return CGPointMake(point.x + dx, point.y + dy);
 }
 
 @end

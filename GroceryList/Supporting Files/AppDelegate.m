@@ -3,15 +3,14 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 1/18/15.
-//
-//
 
-#import "AppDelegate.h"
 #import <Parse/Parse.h>
 #import <ParseCrashReporting/ParseCrashReporting.h>
-#import "UIColor+GLColor.h"
-#import "GLScannerViewController.h"
+
 #import "GLTableViewController.h"
+#import "AppDelegate.h"
+
+#import "UIColor+GLColor.h"
 
 @interface AppDelegate ()
 
@@ -27,7 +26,6 @@
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
-    #warning blocking
     if ([PFUser currentUser] == nil) {
         NSLog(@"Logging in");
         [PFUser logInWithUsername:@"lightice11" password:@"qwerty"];

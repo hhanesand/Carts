@@ -3,16 +3,17 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/2/15.
-//
-//
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 #import "GLFactualManager.h"
 
 @class GLBarcode;
 @class RACSignal;
 
+/**
+ *  Encapsulates the process of retrieving information about a barcode that has been scanned
+ */
 @interface GLBarcodeFetchManager : NSObject
 
 /**

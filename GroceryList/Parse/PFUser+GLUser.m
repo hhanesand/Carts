@@ -3,11 +3,10 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/2/15.
-//
-//
+
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import "PFUser+GLUser.h"
-#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @implementation PFUser (GLUser)
 

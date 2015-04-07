@@ -3,15 +3,14 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/28/15.
-//
-//
-
-#import "GLAnimationStack.h"
-#import "GLAnimation.h"
-#import "POPSpringAnimation+GLAdditions.h"
 
 #import <pop/POP.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
+
+#import "GLAnimationStack.h"
+#import "GLAnimation.h"
+
+#import "POPSpringAnimation+GLAdditions.h"
 #import "POPAnimation+GLAnimation.h"
 
 @implementation GLAnimationStack

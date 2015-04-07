@@ -3,13 +3,12 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/2/15.
-//
-//
 
 #import <POP/POP.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import "GLDismissableViewHandler.h"
+
 #import "POPSpringAnimation+GLAdditions.h"
 #import "POPAnimation+GLAnimation.h"
 

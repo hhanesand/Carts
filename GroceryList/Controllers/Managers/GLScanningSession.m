@@ -3,14 +3,14 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/9/15.
-//
-//
+
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import "GLScanningSession.h"
-#import <AVFoundation/AVFoundation.h>
 #import "GLBarcodeObject.h"
-#import "ReactiveCocoa.h"
 #import "GLBarcode.h"
+
+@import AVFoundation;
 
 @interface GLScanningSession()
 @property (nonatomic) AVCaptureDevice *captureDevice;

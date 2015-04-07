@@ -3,13 +3,13 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/11/15.
-//
-//
+
+#import <Parse/Parse.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import "GLQueryTableViewController.h"
-#import <Parse/Parse.h>
+
 #import "PFQuery+GLQuery.h"
-#import <ReactiveCocoa/ReactiveCocoa.h>
 #import "PFQueryTableViewController+Caching.h"
 #import "PFObject+GLPFObject.h"
 

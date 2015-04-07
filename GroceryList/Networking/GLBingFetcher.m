@@ -3,11 +3,9 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 2/7/15.
-//
-//
 
-#import "AFHTTPRequestOperationManager+RACSupport.h"
-#import "AFURLResponseSerialization.h"
+#import <AFNetworking/AFNetworking.h>
+#import <AFNetworking-RACExtensions/AFHTTPRequestOperationManager+RACSupport.h>
 
 #import "GLBingFetcher.h"
 #import "GLListObject.h"
