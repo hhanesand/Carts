@@ -60,24 +60,9 @@
     if (!_previewView) {
         _previewView = [[UIView alloc] initWithFrame:self.bounds];
         [_previewView.layer addSublayer:self.previewLayer];
-        _previewView.backgroundColor = [UIColor blueColor];
     }
     
     return _previewView;
-}
-
-+ (UIImage *)imageWithColor:(UIColor *)color {
-    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
-    UIGraphicsBeginImageContext(rect.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    CGContextSetFillColorWithColor(context, [color CGColor]);
-    CGContextFillRect(context, rect);
-    
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return image;
 }
 
 @end

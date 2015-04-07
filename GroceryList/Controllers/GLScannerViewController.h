@@ -14,7 +14,7 @@
 @class GLItemConfirmationView;
 @class RACSubject;
 
-@interface GLScannerViewController : GLBaseViewController <GLBarcodeScannerDelegate, GLDismissableHandlerDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface GLScannerViewController : GLBaseViewController <GLBarcodeScannerDelegate, GLDismissableHandlerDelegate, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *searchField;

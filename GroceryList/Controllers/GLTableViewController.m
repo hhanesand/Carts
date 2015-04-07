@@ -61,18 +61,6 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
     return self;
 }
 
-#pragma mark - UIViewControllerTransistioningDelegate
-
-- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
-    self.transitionManager.presenting = NO;
-    return self.transitionManager;
-}
-
-- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
-    self.transitionManager.presenting = YES;
-    return self.transitionManager;
-}
-
 #pragma mark - View Lifecycle
 
 - (void)viewDidLoad {
