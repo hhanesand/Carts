@@ -323,13 +323,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F2B4D1031A6DF5BE00A98C7A /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Vendor;
-			sourceTree = "<group>";
-		};
 		F2C57A831ACE45380033445C /* View Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -350,7 +343,6 @@
 				F2F948BC1A8AD7B5002C5177 /* parse */,
 				F2B4D0DF1A6DF54B00A98C7A /* Frameworks */,
 				C8F326AD488A3D96D6A729A2 /* Pods */,
-				F2B4D1031A6DF5BE00A98C7A /* Vendor */,
 			);
 			sourceTree = "<group>";
 		};

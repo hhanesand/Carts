@@ -85,13 +85,11 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
         [self.barcodeScanner resumeWithDelegate:self];
         
         //pop all animations from the stack after confirmation view is dismissed
-        [[[self dismissConfirmationView] flattenMap:^RACStream *(id value) {
+        return [[[self dismissConfirmationView] flattenMap:^RACStream *(id value) {
             return [self.animationStack popAllAnimations];
-        }] subscribeCompleted:^{
+        }] doCompleted:^{
             [self.confirmationView removeFromSuperview];
         }];
-        
-        return nil;
     };
     
     //block called when the user presses cancel -> should not save the item scanned
@@ -100,11 +98,9 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
         [self.barcodeScanner resumeWithDelegate:self];
         
         //pop all animations from the stack after confirmation view is dismissed
-        [[self dismissConfirmationView] subscribeCompleted:^{
+        return [[self dismissConfirmationView] doCompleted:^{
             [self.confirmationView removeFromSuperview];
         }];
-        
-        return nil;
     };
 
 }

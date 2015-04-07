@@ -18,10 +18,6 @@
 
 - (RACSignal *)saveWithSignal;
 
-- (RACSignal *)pinWithSignal;
-
 - (RACSignal *)pinWithSignalAndName:(NSString *)name;
-
-- (RACSignal *)pinAndSaveWithSignal;
 
 @end
