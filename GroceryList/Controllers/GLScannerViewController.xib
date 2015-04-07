@@ -63,20 +63,6 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nDd-Br-Cy1">
                                                     <rect key="frame" x="150" y="0.0" width="300" height="65"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CEF-Dk-zkj">
-                                                            <rect key="frame" x="232" y="3" width="60" height="60"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="60" id="2dw-3d-yjA"/>
-                                                                <constraint firstAttribute="height" constant="60" id="JqL-QR-fVM"/>
-                                                            </constraints>
-                                                            <state key="normal" image="Checkmark-50">
-                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </state>
-                                                            <connections>
-                                                                <action selector="didTapDoneButton:" destination="-1" eventType="touchUpInside" id="QTz-ap-ijZ"/>
-                                                                <action selector="didTapScanningButton:" destination="-1" eventType="touchUpInside" id="0am-dB-GSy"/>
-                                                            </connections>
-                                                        </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iAF-u2-A4S">
                                                             <rect key="frame" x="8" y="3" width="60" height="60"/>
                                                             <constraints>
@@ -88,6 +74,19 @@
                                                             </state>
                                                             <connections>
                                                                 <action selector="didTapScanningButton:" destination="-1" eventType="touchUpInside" id="vwO-7k-hS7"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CEF-Dk-zkj">
+                                                            <rect key="frame" x="232" y="3" width="60" height="60"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="60" id="2dw-3d-yjA"/>
+                                                                <constraint firstAttribute="height" constant="60" id="JqL-QR-fVM"/>
+                                                            </constraints>
+                                                            <state key="normal" image="Checkmark-50">
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="didTapDoneButton:" destination="-1" eventType="touchUpInside" id="QTz-ap-ijZ"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
