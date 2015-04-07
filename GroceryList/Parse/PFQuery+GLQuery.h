@@ -8,6 +8,9 @@
 
 @class RACSignal;
 
+/**
+ *  ReactiveCocoa extensions for the Parse API
+ */
 @interface PFQuery (GLQuery)
 
 /**

@@ -6,6 +6,9 @@
 
 #import "PFQueryTableViewController.h"
 
+/**
+ *  Allows subclasses of PFQueryTableViewController to directly access the internal objects managed to said class
+ */
 @interface PFQueryTableViewController (Caching)
 
 /**

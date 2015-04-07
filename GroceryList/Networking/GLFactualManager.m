@@ -47,7 +47,6 @@
     RACSignal *factualResponseSignal = [self.factualNetworkingManager rac_GET:@"http://api.v3.factual.com/t/products-cpg" parameters:@{@"q" : barcode}];
     
     return [factualResponseSignal map:^id(NSDictionary *dict) {
-//        NSDictionary *dictionary = (NSDictionary *)value.third;
         return [self modifyFactualResponseForParseUpload:[dict valueForKeyPath:@"response.data"][0]];
     }];
 }

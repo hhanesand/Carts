@@ -9,6 +9,9 @@
 @class GLListObject;
 @class RACSubject;
 
+/**
+ *  The view that appears when the user has scanned an item, allows editing of fields
+ */
 @interface GLItemConfirmationView : UIView <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *name;

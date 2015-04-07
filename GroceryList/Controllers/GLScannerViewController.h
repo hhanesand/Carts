@@ -12,6 +12,9 @@
 @class GLItemConfirmationView;
 @class RACSubject;
 
+/**
+ *  The view controller that handles barcode searching, scanning and networking with Factual
+ */
 @interface GLScannerViewController : GLBaseViewController <GLBarcodeScannerDelegate, GLDismissableHandlerDelegate, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
