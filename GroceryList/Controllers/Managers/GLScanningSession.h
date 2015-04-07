@@ -12,6 +12,9 @@
 
 @class RACSignal;
 
+/**
+ *  Stores a scanning session that encapsulates all AVFoundation objects
+ */
 @interface GLScanningSession : NSObject <AVCaptureMetadataOutputObjectsDelegate>
 
 /**

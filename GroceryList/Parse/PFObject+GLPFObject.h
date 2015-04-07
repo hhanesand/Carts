@@ -8,6 +8,9 @@
 
 @class RACSignal;
 
+/**
+ *  Reactive Cococa extensions for the Parse API
+ */
 @interface PFObject (GLPFObject)
 
 + (RACSignal *)pinAll:(NSArray *)objects withSignalAndName:(NSString *)tagName;

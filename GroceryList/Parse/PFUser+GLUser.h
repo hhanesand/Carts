@@ -8,6 +8,9 @@
 
 @class RACSignal;
 
+/**
+ *  Reactive Cocoa extensions for the Parse API
+ */
 @interface PFUser (GLUser)
 
 + (RACSignal *)logInInBackgroundWithUsername:(NSString *)username password:(NSString *)password;

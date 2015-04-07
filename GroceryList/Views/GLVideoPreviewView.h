@@ -9,6 +9,9 @@
 
 @class RACSignal;
 
+/**
+ *  A view that manages a AVCaptureVideoPreviewLayer and smoothly (and quickly) fades between the paused and started phase
+ */
 @interface GLVideoPreviewView : UIView
 
 @property (nonatomic) AVCaptureVideoPreviewLayer *previewLayer;

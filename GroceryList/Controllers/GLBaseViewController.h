@@ -9,7 +9,7 @@
 @import UIKit;
 
 /**
- *  Defines the base view controller for almost all VSs used in this project.
+ * Defines a base view controller that has an Animation Stack to manage animations
  */
 @interface GLBaseViewController : UIViewController
 

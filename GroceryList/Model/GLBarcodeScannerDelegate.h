@@ -9,6 +9,9 @@
 @class GLScanningSession;
 @class GLBarcode;
 
+/**
+ *  Delegate for the barcode scanner
+ */
 @protocol GLBarcodeScannerDelegate <NSObject>
 
 @required

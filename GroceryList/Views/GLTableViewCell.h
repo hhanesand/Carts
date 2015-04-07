@@ -6,6 +6,9 @@
 
 @import UIKit;
 
+/**
+ *  The cell used in th GLTableViewController
+ */
 @interface GLTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UILabel *brand;

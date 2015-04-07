@@ -11,6 +11,9 @@
 @class GLBarcode;
 @class RACSignal;
 
+/**
+ *  Encapsulates the process of retrieving information about a barcode that has been scanned
+ */
 @interface GLBarcodeFetchManager : NSObject
 
 /**

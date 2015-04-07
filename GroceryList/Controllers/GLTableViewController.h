@@ -10,6 +10,9 @@
 
 @class RACSignal;
 
+/**
+ *  The view controller that handles the user's grocery list
+ */
 @interface GLTableViewController : GLQueryTableViewController <GLBarcodeItemDelegate, UIViewControllerTransitioningDelegate>
 
 @end
