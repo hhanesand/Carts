@@ -34,18 +34,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="TQi-U8-jSl">
-                                                    <rect key="frame" x="8" y="16" width="30" height="30"/>
+                                                    <rect key="frame" x="8" y="13" width="40" height="40"/>
                                                 </imageView>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g5i-yO-wYK">
-                                                    <rect key="frame" x="46" y="8" width="546" height="50"/>
-                                                    <color key="textColor" red="0.74509803921568629" green="0.74509803921568629" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <rect key="frame" x="56" y="8" width="536" height="50"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="23"/>
-                                                    <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="g5i-yO-wYK" secondAttribute="bottom" constant="8" id="P2I-OH-1Go"/>
-                                                <constraint firstAttribute="centerY" secondItem="TQi-U8-jSl" secondAttribute="centerY" constant="2" id="a0B-kT-pr7"/>
+                                                <constraint firstAttribute="centerY" secondItem="TQi-U8-jSl" secondAttribute="centerY" id="a0B-kT-pr7"/>
                                                 <constraint firstAttribute="trailing" secondItem="g5i-yO-wYK" secondAttribute="trailing" constant="8" id="b4G-Os-HdX"/>
                                                 <constraint firstAttribute="height" constant="66" id="fbQ-LW-yqp"/>
                                                 <constraint firstItem="TQi-U8-jSl" firstAttribute="leading" secondItem="3HL-vM-tQs" secondAttribute="leading" constant="8" id="kyy-76-xQl"/>
@@ -82,7 +82,7 @@
                                                                 <constraint firstAttribute="width" constant="60" id="2dw-3d-yjA"/>
                                                                 <constraint firstAttribute="height" constant="60" id="JqL-QR-fVM"/>
                                                             </constraints>
-                                                            <state key="normal" image="Checkmark-50">
+                                                            <state key="normal" image="done">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <connections>
@@ -146,8 +146,8 @@
         </view>
     </objects>
     <resources>
-        <image name="Checkmark-50" width="50" height="50"/>
+        <image name="done" width="40" height="40"/>
         <image name="scan" width="60" height="60"/>
-        <image name="search" width="30" height="30"/>
+        <image name="search" width="40" height="40"/>
     </resources>
 </document>
