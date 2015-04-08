@@ -123,7 +123,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 
 - (UIPresentationController *)presentationControllerForPresentedViewController:(UIViewController *)to presentingViewController:(UIViewController *)from sourceViewController:(UIViewController *)source {
     if ([to isEqual:self]) {
-        return self.presentationController;
+        return [[GLPullToCloseTransitionPresentationController alloc] initWithPresentedViewController:to presentingViewController:from];
     }
     
     return nil;
@@ -335,14 +335,6 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     }
     
     return _transitionManager;
-}
-
-- (GLPullToCloseTransitionPresentationController *)presentationController {
-    if (!_presentationController) {
-        _presentationController = [[GLPullToCloseTransitionPresentationController alloc] init];
-    }
-    
-    return _presentationController;
 }
 
 - (GLItemConfirmationView *)confirmationView {

@@ -34,7 +34,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="TQi-U8-jSl">
-                                                    <rect key="frame" x="8" y="13" width="40" height="40"/>
+                                                    <rect key="frame" x="8" y="15" width="40" height="40"/>
                                                 </imageView>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g5i-yO-wYK">
                                                     <rect key="frame" x="56" y="8" width="536" height="50"/>
@@ -45,7 +45,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="g5i-yO-wYK" secondAttribute="bottom" constant="8" id="P2I-OH-1Go"/>
-                                                <constraint firstAttribute="centerY" secondItem="TQi-U8-jSl" secondAttribute="centerY" id="a0B-kT-pr7"/>
+                                                <constraint firstAttribute="centerY" secondItem="TQi-U8-jSl" secondAttribute="centerY" constant="-2" id="a0B-kT-pr7"/>
                                                 <constraint firstAttribute="trailing" secondItem="g5i-yO-wYK" secondAttribute="trailing" constant="8" id="b4G-Os-HdX"/>
                                                 <constraint firstAttribute="height" constant="66" id="fbQ-LW-yqp"/>
                                                 <constraint firstItem="TQi-U8-jSl" firstAttribute="leading" secondItem="3HL-vM-tQs" secondAttribute="leading" constant="8" id="kyy-76-xQl"/>
