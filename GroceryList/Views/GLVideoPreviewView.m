@@ -10,6 +10,7 @@
 #import "GLVideoPreviewView.h"
 
 #import "POPAnimation+GLAnimation.h"
+#import "UIView+GLView.h"
 
 @interface GLVideoPreviewView ()
 @property (nonatomic) UIImageView *imageView;
@@ -47,8 +48,8 @@
     }];
 }
 
-- (void)pauseWithImage:(UIImage *)image {
-    self.imageView = [[UIImageView alloc] initWithImage:image];
+- (void)pause {
+    self.imageView = [[UIImageView alloc] initWithImage:[self.previewView screenshotInGraphicsContext]];
     self.imageView.frame = self.bounds;
     [self insertSubview:self.imageView aboveSubview:self.previewView];
 }

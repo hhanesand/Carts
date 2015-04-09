@@ -62,6 +62,9 @@
 		F2B4D0DA1A6DF53000A98C7A /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0D91A6DF53000A98C7A /* CoreVideo.framework */; };
 		F2B4D0DC1A6DF53900A98C7A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0DB1A6DF53900A98C7A /* QuartzCore.framework */; };
 		F2B4D0DE1A6DF54500A98C7A /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0DD1A6DF54500A98C7A /* libiconv.dylib */; };
+		F2DC2FC11AD5DF8D00E46D3C /* GLBingRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DC2FC01AD5DF8D00E46D3C /* GLBingRequestSerializer.m */; };
+		F2DC2FC71AD6F53B00E46D3C /* UIImage+GLImage.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DC2FC61AD6F53B00E46D3C /* UIImage+GLImage.m */; };
+		F2DC2FDD1AD7216300E46D3C /* UIView+GLView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DC2FDC1AD7216300E46D3C /* UIView+GLView.m */; };
 		F2E544EE1A6CB55100CB52E5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2E544EC1A6CB55100CB52E5 /* LaunchScreen.xib */; };
 		F2E544FA1A6CB55100CB52E5 /* GroceryListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E544F91A6CB55100CB52E5 /* GroceryListTests.m */; };
 		F2EC284C1AD3136B00E4DB27 /* GLPullToCloseTransitionPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EC284B1AD3136B00E4DB27 /* GLPullToCloseTransitionPresentationController.m */; };
@@ -177,6 +180,12 @@
 		F2B4D0D91A6DF53000A98C7A /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		F2B4D0DB1A6DF53900A98C7A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F2B4D0DD1A6DF54500A98C7A /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		F2DC2FBF1AD5DF8D00E46D3C /* GLBingRequestSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLBingRequestSerializer.h; sourceTree = "<group>"; };
+		F2DC2FC01AD5DF8D00E46D3C /* GLBingRequestSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBingRequestSerializer.m; sourceTree = "<group>"; };
+		F2DC2FC51AD6F53B00E46D3C /* UIImage+GLImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GLImage.h"; sourceTree = "<group>"; };
+		F2DC2FC61AD6F53B00E46D3C /* UIImage+GLImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GLImage.m"; sourceTree = "<group>"; };
+		F2DC2FDB1AD7216300E46D3C /* UIView+GLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+GLView.h"; sourceTree = "<group>"; };
+		F2DC2FDC1AD7216300E46D3C /* UIView+GLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GLView.m"; sourceTree = "<group>"; };
 		F2E544DA1A6CB55000CB52E5 /* GroceryList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E544ED1A6CB55100CB52E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		F2E544F31A6CB55100CB52E5 /* GroceryListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GroceryListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -248,14 +257,7 @@
 			children = (
 				F25286861ACFA1FD00435261 /* GLBarcodeFetchManager.h */,
 				F25286871ACFA1FD00435261 /* GLBarcodeFetchManager.m */,
-				F25286881ACFA1FD00435261 /* GLBingFetcher.h */,
-				F25286891ACFA1FD00435261 /* GLBingFetcher.m */,
-				F252868A1ACFA1FD00435261 /* GLFactualManager.h */,
-				F252868B1ACFA1FD00435261 /* GLFactualManager.m */,
-				F252868C1ACFA1FD00435261 /* GLFactualRequestSerializer.h */,
-				F252868D1ACFA1FD00435261 /* GLFactualRequestSerializer.m */,
-				F252868E1ACFA1FD00435261 /* GLFactualResponseSerializer.h */,
-				F252868F1ACFA1FD00435261 /* GLFactualResponseSerializer.m */,
+				F2DC2FC21AD5E60A00E46D3C /* Interfaces */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -329,6 +331,39 @@
 			name = "View Presentation";
 			sourceTree = "<group>";
 		};
+		F2DC2FC21AD5E60A00E46D3C /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				F2DC2FC31AD5E61800E46D3C /* Bing */,
+				F2DC2FC41AD5E61D00E46D3C /* Factual */,
+			);
+			name = Interfaces;
+			sourceTree = "<group>";
+		};
+		F2DC2FC31AD5E61800E46D3C /* Bing */ = {
+			isa = PBXGroup;
+			children = (
+				F25286881ACFA1FD00435261 /* GLBingFetcher.h */,
+				F25286891ACFA1FD00435261 /* GLBingFetcher.m */,
+				F2DC2FBF1AD5DF8D00E46D3C /* GLBingRequestSerializer.h */,
+				F2DC2FC01AD5DF8D00E46D3C /* GLBingRequestSerializer.m */,
+			);
+			name = Bing;
+			sourceTree = "<group>";
+		};
+		F2DC2FC41AD5E61D00E46D3C /* Factual */ = {
+			isa = PBXGroup;
+			children = (
+				F252868A1ACFA1FD00435261 /* GLFactualManager.h */,
+				F252868B1ACFA1FD00435261 /* GLFactualManager.m */,
+				F252868C1ACFA1FD00435261 /* GLFactualRequestSerializer.h */,
+				F252868D1ACFA1FD00435261 /* GLFactualRequestSerializer.m */,
+				F252868E1ACFA1FD00435261 /* GLFactualResponseSerializer.h */,
+				F252868F1ACFA1FD00435261 /* GLFactualResponseSerializer.m */,
+			);
+			name = Factual;
+			sourceTree = "<group>";
+		};
 		F2E544D11A6CB55000CB52E5 = {
 			isa = PBXGroup;
 			children = (
@@ -374,6 +409,10 @@
 				F25286E71ACFA2B300435261 /* Info.plist */,
 				F25286E81ACFA2B300435261 /* main.m */,
 				F2E544EC1A6CB55100CB52E5 /* LaunchScreen.xib */,
+				F2DC2FC51AD6F53B00E46D3C /* UIImage+GLImage.h */,
+				F2DC2FC61AD6F53B00E46D3C /* UIImage+GLImage.m */,
+				F2DC2FDB1AD7216300E46D3C /* UIView+GLView.h */,
+				F2DC2FDC1AD7216300E46D3C /* UIView+GLView.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -658,6 +697,7 @@
 				F25286ED1ACFA2B300435261 /* main.m in Sources */,
 				F25286C51ACFA24F00435261 /* GLBarcodeObject.m in Sources */,
 				F25286BB1ACFA23B00435261 /* UIColor+GLColor.m in Sources */,
+				F2DC2FC11AD5DF8D00E46D3C /* GLBingRequestSerializer.m in Sources */,
 				F25286A51ACFA21D00435261 /* PFQueryTableViewController+Caching.m in Sources */,
 				F25286931ACFA1FD00435261 /* GLFactualRequestSerializer.m in Sources */,
 				F25286DF1ACFA27D00435261 /* GLCameraLayer.m in Sources */,
@@ -667,6 +707,7 @@
 				F25286B61ACFA23B00435261 /* GLAnimation.m in Sources */,
 				F25286E01ACFA27D00435261 /* GLItemConfirmationView.m in Sources */,
 				F25286CE1ACFA26300435261 /* GLBaseViewController.m in Sources */,
+				F2DC2FC71AD6F53B00E46D3C /* UIImage+GLImage.m in Sources */,
 				F25286B81ACFA23B00435261 /* GLPullToCloseTransitionManager.m in Sources */,
 				F25286921ACFA1FD00435261 /* GLFactualManager.m in Sources */,
 				F25286941ACFA1FD00435261 /* GLFactualResponseSerializer.m in Sources */,
@@ -678,6 +719,7 @@
 				F25286BA1ACFA23B00435261 /* POPSpringAnimation+GLAdditions.m in Sources */,
 				F2EC284C1AD3136B00E4DB27 /* GLPullToCloseTransitionPresentationController.m in Sources */,
 				F25286A11ACFA21D00435261 /* GLParseAnalytics.m in Sources */,
+				F2DC2FDD1AD7216300E46D3C /* UIView+GLView.m in Sources */,
 				F25286A31ACFA21D00435261 /* PFObject+GLPFObject.m in Sources */,
 				F25286901ACFA1FD00435261 /* GLBarcodeFetchManager.m in Sources */,
 				F25286C61ACFA24F00435261 /* GLListObject.m in Sources */,
@@ -743,8 +785,8 @@
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = NO;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Trond Hanesand (R4NC66U98V)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Trond Hanesand (R4NC66U98V)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -815,8 +857,8 @@
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = NO;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Trond Hanesand (R4NC66U98V)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Trond Hanesand (R4NC66U98V)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;

@@ -51,6 +51,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
         
         self.modalPresentationStyle = UIModalPresentationCustom;
         self.transitioningDelegate = self;
+        self.modalPresentationCapturesStatusBarAppearance = YES;
     }
     
     return self;
@@ -83,7 +84,6 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
             [self.confirmationView removeFromSuperview];
         }];
     };
-
 }
 
 #pragma mark - Lifecycle

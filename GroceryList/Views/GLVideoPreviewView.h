@@ -19,11 +19,13 @@
 - (instancetype)initWithPreviewLayer:(AVCaptureVideoPreviewLayer *)previewLayer;
 
 /**
- *  Pauses the video preview layer
- *
- *  @param image An image of the camera stream
+ *  Pauses the video preview layer and temporarily saves an image until the camera is started again
  */
-- (void)pauseWithImage:(UIImage *)image;
+- (void)pause;
+
+/**
+ *  Resumes the video preview layer, quickly fading from the image that was saved in pause to the current camera feed to transition smoothly
+ */
 - (void)resume;
 
 @end

@@ -39,16 +39,16 @@
     self.delegate = nil;
     
     if (self.captureSession.running) {
-        [[self captureImageFromCamera] subscribeNext:^(UIImage *image) {
-            [self.previewView pauseWithImage:image];
-        }];
+        [self.previewView pause];
     }
 }
 
 - (void)resumeWithDelegate:(id<GLBarcodeScannerDelegate>)delegate {
-    [self.previewView resume];
-    
     [self startScanningWithDelegate:delegate];
+    
+    if (!self.captureSession.running) {
+        [self.previewView resume];
+    }
 }
 
 - (void)startScanningWithDelegate:(id<GLBarcodeScannerDelegate>)delegate {
@@ -110,21 +110,6 @@
         GLBarcode *barcode = [GLBarcode barcodeWithMetadataObject:[metadataObjects firstObject]];
         [self.delegate scanner:self didRecieveBarcode:barcode];
     }
-}
-
-- (RACSignal *)captureImageFromCamera {
-    AVCaptureConnection *captureConnection = [self.imageCapture connectionWithMediaType:AVMediaTypeVideo];
-    
-    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        [self.imageCapture captureStillImageAsynchronouslyFromConnection:captureConnection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
-            NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
-            UIImage *image = [UIImage imageWithData:imageData];
-            [subscriber sendNext:image];
-            [subscriber sendCompleted];
-        }];
-        
-        return nil;
-    }] subscribeOn:[RACScheduler schedulerWithPriority:RACSchedulerPriorityHigh]];
 }
 
 @end
