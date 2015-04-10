@@ -28,34 +28,42 @@
 
 
 - (void)animatePresentationWithTransitionContext:(id<UIViewControllerContextTransitioning>)transitionContext {
-    UIViewController *viewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIView *presentedControllerView = [transitionContext viewForKey:UITransitionContextToViewKey];
     UIView *containerView = [transitionContext containerView];
     
     //position the presented view below the screen
-    presentedControllerView.frame = translateRect([transitionContext finalFrameForViewController:viewController], 0, CGRectGetHeight(containerView.bounds));
+    presentedControllerView.center = translatePoint(containerView.center, 0, CGRectGetHeight(presentedControllerView.frame));
+    
+    [containerView addSubview:presentedControllerView];
     
     //animate the presented view up to cover the screen
-    [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
-        presentedControllerView.center = translatePoint(presentedControllerView.center, 0, -CGRectGetHeight(containerView.bounds));
-    } completion:^(BOOL finished) {
-        [transitionContext completeTransition:finished];
+    POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
+    animation.toValue = @(containerView.center.y);
+    animation.springSpeed = 20;
+    animation.springBounciness = 0;
+    
+    [[animation completionSignal] subscribeCompleted:^{
+        [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
     }];
+    
+    [presentedControllerView pop_addAnimation:animation forKey:@"presentPOPModal"];
 }
 
 - (void)animateDismissalWithTransitionContext:(id<UIViewControllerContextTransitioning>)transitionContext {
-    UIView *presentedControllerView = [transitionContext viewForKey:UITransitionContextToViewKey];
+    UIView *presentedControllerView = [transitionContext viewForKey:UITransitionContextFromViewKey];
     UIView *containerView = [transitionContext containerView];
     
-    [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
-        presentedControllerView.center = translatePoint(presentedControllerView.center, 0, CGRectGetHeight(containerView.bounds));
-    } completion:^(BOOL finished) {
-        [transitionContext completeTransition:finished];
+    //animate the view offscreen by moving it downwards
+    POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
+    animation.toValue = @(translatePoint(containerView.center, 0, CGRectGetHeight(containerView.frame)).y);
+    animation.springSpeed = 20;
+    animation.springBounciness = 0;
+    
+    [[animation completionSignal] subscribeCompleted:^{
+        [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
     }];
-}
-
-static inline CGRect translateRect(CGRect rect, CGFloat dx, CGFloat dy) {
-    return CGRectMake(rect.origin.x + dx, rect.origin.y + dy, CGRectGetWidth(rect), CGRectGetHeight(rect));
+    
+    [presentedControllerView pop_addAnimation:animation forKey:@"dismissPOPModal"];
 }
 
 static inline CGPoint translatePoint(CGPoint point, CGFloat dx, CGFloat dy) {

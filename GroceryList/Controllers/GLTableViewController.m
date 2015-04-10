@@ -72,11 +72,7 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
     [self.navigationController setToolbarHidden:YES animated:NO];
 }
 
-- (void)didPressAddButton {
-    self.scanner.transitioningDelegate = self;
-    self.scanner.modalPresentationStyle = UIModalPresentationCustom;
-    self.scanner.modalPresentationCapturesStatusBarAppearance = YES;
-    
+- (void)didPressAddButton {    
     [self presentViewController:self.scanner animated:YES completion:nil];
 }
 

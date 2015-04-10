@@ -26,7 +26,7 @@
 
 + (RACSignal *)unpinAllWithSignalAndName:(NSString *)tagName {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        [PFObject unpinAllObjectsInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [PFObject unpinAllObjectsInBackgroundWithName:tagName block:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
                 [subscriber sendCompleted];
             } else {

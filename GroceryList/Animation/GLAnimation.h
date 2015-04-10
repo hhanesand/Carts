@@ -9,7 +9,7 @@
 @import Foundation;
 
 /**
- *  Stores a POPSpringAnimation
+ *  Stores a POPSpringAnimation for reuse later
  */
 @interface GLAnimation : NSObject
 

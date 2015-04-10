@@ -29,6 +29,9 @@
  */
 @property (nonatomic) id<GLBarcodeScannerDelegate> delegate;
 
+/**
+ *  A view that manages the an AVCaptureVideoPreviewLayer displaying the camera
+ */
 @property (nonatomic) GLVideoPreviewView *previewView;
 
 /**
@@ -36,17 +39,23 @@
  */
 @property (nonatomic) AVCaptureSession *captureSession;
 
+/**
+ *  Immediately stop the video feed, but remain startable at short notice
+ */
 - (void)pause;
-- (void)resumeWithDelegate:(id<GLBarcodeScannerDelegate>)delegate;
-
-- (void)startScanningWithDelegate:(id<GLBarcodeScannerDelegate>)delegate;
-
 
 /**
- *  Captures an image from the camera
+ *  Resumes the video feed quickly
  *
- *  @return A signal that will return the CGImage from the camera
+ *  @param delegate The delegate to send barcode events to
  */
-- (RACSignal *)captureImageFromCamera;
+- (void)resumeWithDelegate:(id<GLBarcodeScannerDelegate>)delegate;
+
+/**
+ *  Set up the session for barcode scanning
+ *
+ *  @param delegate The delegate to send barcode events to
+ */
+- (void)startScanningWithDelegate:(id<GLBarcodeScannerDelegate>)delegate;
 
 @end
