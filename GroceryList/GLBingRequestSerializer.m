@@ -18,21 +18,14 @@ NSString * const method = @"GET";
 @implementation GLBingRequestSerializer
 
 + (instancetype)serializer {
-    GLBingRequestSerializer *serializer = [[GLBingRequestSerializer alloc] init];
-    serializer.baseURL = @"https://api.datamarket.azure.com/Bing/Search/v1/Image";
-    serializer.parameters = @{@"format" : @"JSON",
-                              @"top" : @"1",
-                              @"adult" : @"strict"};
-    serializer.thumbnailKeyPath = @"d.results.Thumbnail.MediaUrl";
-    
-    return serializer;
+    return [[GLBingRequestSerializer alloc] init];
 }
 
-- (NSMutableURLRequest *)bingRequestWithQueryString:(NSString *)query error:(NSError *__autoreleasing *)error {
-    NSMutableDictionary *parameters = [self.parameters mutableCopy];
-    [parameters setObject:query forKey:@"query"];
+- (NSMutableURLRequest *)requestWithMethod:(NSString *)method URLString:(NSString *)URLString parameters:(id)parameters error:(NSError *__autoreleasing *)error {
+    NSMutableDictionary *combinedRequestSerializerParameters = [self.parameters mutableCopy];
+    [combinedRequestSerializerParameters addEntriesFromDictionary:parameters];
     
-    NSMutableURLRequest *request = [super requestWithMethod:method URLString:self.baseURL parameters:parameters error:error];
+    NSMutableURLRequest *request = [super requestWithMethod:method URLString:URLString parameters:combinedRequestSerializerParameters error:error];
     [request setValue:self.authorizationData forHTTPHeaderField:@"Authorization"];
     
     return request;
@@ -53,6 +46,16 @@ NSString * const method = @"GET";
     }
     
     return _authorizationData;
+}
+
+- (NSDictionary *)parameters {
+    if (!_parameters) {
+        _parameters = @{@"$Format" : @"JSON",
+                        @"$top" : @"1",
+                        @"Adult" : @"'strict'"};
+    }
+    
+    return _parameters;
 }
 
 

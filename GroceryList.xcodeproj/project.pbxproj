@@ -19,8 +19,6 @@
 		F22C8F441A6EE93600139B9D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F22C8F431A6EE93600139B9D /* libz.dylib */; };
 		F22C8F461A6EE94A00139B9D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F22C8F451A6EE94A00139B9D /* libsqlite3.dylib */; };
 		F25286901ACFA1FD00435261 /* GLBarcodeFetchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286871ACFA1FD00435261 /* GLBarcodeFetchManager.m */; };
-		F25286911ACFA1FD00435261 /* GLBingFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286891ACFA1FD00435261 /* GLBingFetcher.m */; };
-		F25286921ACFA1FD00435261 /* GLFactualManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F252868B1ACFA1FD00435261 /* GLFactualManager.m */; };
 		F25286931ACFA1FD00435261 /* GLFactualRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F252868D1ACFA1FD00435261 /* GLFactualRequestSerializer.m */; };
 		F25286941ACFA1FD00435261 /* GLFactualResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F252868F1ACFA1FD00435261 /* GLFactualResponseSerializer.m */; };
 		F25286A11ACFA21D00435261 /* GLParseAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286961ACFA21D00435261 /* GLParseAnalytics.m */; };
@@ -62,9 +60,14 @@
 		F2B4D0DA1A6DF53000A98C7A /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0D91A6DF53000A98C7A /* CoreVideo.framework */; };
 		F2B4D0DC1A6DF53900A98C7A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0DB1A6DF53900A98C7A /* QuartzCore.framework */; };
 		F2B4D0DE1A6DF54500A98C7A /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0DD1A6DF54500A98C7A /* libiconv.dylib */; };
+		F2CD0A881AD742020036D0A4 /* NSDictionary+GLCustomKVOOperators.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CD0A871AD742020036D0A4 /* NSDictionary+GLCustomKVOOperators.m */; };
+		F2CD0A8B1AD746330036D0A4 /* GLBingResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CD0A8A1AD746330036D0A4 /* GLBingResponseSerializer.m */; };
 		F2DC2FC11AD5DF8D00E46D3C /* GLBingRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DC2FC01AD5DF8D00E46D3C /* GLBingRequestSerializer.m */; };
 		F2DC2FC71AD6F53B00E46D3C /* UIImage+GLImage.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DC2FC61AD6F53B00E46D3C /* UIImage+GLImage.m */; };
 		F2DC2FDD1AD7216300E46D3C /* UIView+GLView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DC2FDC1AD7216300E46D3C /* UIView+GLView.m */; };
+		F2DC2FE31AD72A2500E46D3C /* GLFactualSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DC2FE21AD72A2500E46D3C /* GLFactualSessionManager.m */; };
+		F2DC2FE81AD72C0B00E46D3C /* GLRACSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DC2FE71AD72C0B00E46D3C /* GLRACSessionManager.m */; };
+		F2DC2FEC1AD7313E00E46D3C /* GLBingSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DC2FEB1AD7313E00E46D3C /* GLBingSessionManager.m */; };
 		F2E544EE1A6CB55100CB52E5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2E544EC1A6CB55100CB52E5 /* LaunchScreen.xib */; };
 		F2E544FA1A6CB55100CB52E5 /* GroceryListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E544F91A6CB55100CB52E5 /* GroceryListTests.m */; };
 		F2EC284C1AD3136B00E4DB27 /* GLPullToCloseTransitionPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2EC284B1AD3136B00E4DB27 /* GLPullToCloseTransitionPresentationController.m */; };
@@ -104,10 +107,6 @@
 		F22C8F451A6EE94A00139B9D /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		F25286861ACFA1FD00435261 /* GLBarcodeFetchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLBarcodeFetchManager.h; path = Networking/GLBarcodeFetchManager.h; sourceTree = "<group>"; };
 		F25286871ACFA1FD00435261 /* GLBarcodeFetchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLBarcodeFetchManager.m; path = Networking/GLBarcodeFetchManager.m; sourceTree = "<group>"; };
-		F25286881ACFA1FD00435261 /* GLBingFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLBingFetcher.h; path = Networking/GLBingFetcher.h; sourceTree = "<group>"; };
-		F25286891ACFA1FD00435261 /* GLBingFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLBingFetcher.m; path = Networking/GLBingFetcher.m; sourceTree = "<group>"; };
-		F252868A1ACFA1FD00435261 /* GLFactualManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLFactualManager.h; path = Networking/GLFactualManager.h; sourceTree = "<group>"; };
-		F252868B1ACFA1FD00435261 /* GLFactualManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLFactualManager.m; path = Networking/GLFactualManager.m; sourceTree = "<group>"; };
 		F252868C1ACFA1FD00435261 /* GLFactualRequestSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLFactualRequestSerializer.h; path = Networking/GLFactualRequestSerializer.h; sourceTree = "<group>"; };
 		F252868D1ACFA1FD00435261 /* GLFactualRequestSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLFactualRequestSerializer.m; path = Networking/GLFactualRequestSerializer.m; sourceTree = "<group>"; };
 		F252868E1ACFA1FD00435261 /* GLFactualResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLFactualResponseSerializer.h; path = Networking/GLFactualResponseSerializer.h; sourceTree = "<group>"; };
@@ -180,12 +179,22 @@
 		F2B4D0D91A6DF53000A98C7A /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		F2B4D0DB1A6DF53900A98C7A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F2B4D0DD1A6DF54500A98C7A /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		F2CD0A861AD742020036D0A4 /* NSDictionary+GLCustomKVOOperators.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+GLCustomKVOOperators.h"; sourceTree = "<group>"; };
+		F2CD0A871AD742020036D0A4 /* NSDictionary+GLCustomKVOOperators.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+GLCustomKVOOperators.m"; sourceTree = "<group>"; };
+		F2CD0A891AD746330036D0A4 /* GLBingResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLBingResponseSerializer.h; sourceTree = "<group>"; };
+		F2CD0A8A1AD746330036D0A4 /* GLBingResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBingResponseSerializer.m; sourceTree = "<group>"; };
 		F2DC2FBF1AD5DF8D00E46D3C /* GLBingRequestSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLBingRequestSerializer.h; sourceTree = "<group>"; };
 		F2DC2FC01AD5DF8D00E46D3C /* GLBingRequestSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBingRequestSerializer.m; sourceTree = "<group>"; };
 		F2DC2FC51AD6F53B00E46D3C /* UIImage+GLImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GLImage.h"; sourceTree = "<group>"; };
 		F2DC2FC61AD6F53B00E46D3C /* UIImage+GLImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GLImage.m"; sourceTree = "<group>"; };
 		F2DC2FDB1AD7216300E46D3C /* UIView+GLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+GLView.h"; sourceTree = "<group>"; };
 		F2DC2FDC1AD7216300E46D3C /* UIView+GLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GLView.m"; sourceTree = "<group>"; };
+		F2DC2FE11AD72A2500E46D3C /* GLFactualSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLFactualSessionManager.h; sourceTree = "<group>"; };
+		F2DC2FE21AD72A2500E46D3C /* GLFactualSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLFactualSessionManager.m; sourceTree = "<group>"; };
+		F2DC2FE61AD72C0B00E46D3C /* GLRACSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLRACSessionManager.h; sourceTree = "<group>"; };
+		F2DC2FE71AD72C0B00E46D3C /* GLRACSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLRACSessionManager.m; sourceTree = "<group>"; };
+		F2DC2FEA1AD7313E00E46D3C /* GLBingSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLBingSessionManager.h; sourceTree = "<group>"; };
+		F2DC2FEB1AD7313E00E46D3C /* GLBingSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBingSessionManager.m; sourceTree = "<group>"; };
 		F2E544DA1A6CB55000CB52E5 /* GroceryList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E544ED1A6CB55100CB52E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		F2E544F31A6CB55100CB52E5 /* GroceryListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GroceryListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -257,6 +266,8 @@
 			children = (
 				F25286861ACFA1FD00435261 /* GLBarcodeFetchManager.h */,
 				F25286871ACFA1FD00435261 /* GLBarcodeFetchManager.m */,
+				F2DC2FE61AD72C0B00E46D3C /* GLRACSessionManager.h */,
+				F2DC2FE71AD72C0B00E46D3C /* GLRACSessionManager.m */,
 				F2DC2FC21AD5E60A00E46D3C /* Interfaces */,
 			);
 			name = Networking;
@@ -343,10 +354,12 @@
 		F2DC2FC31AD5E61800E46D3C /* Bing */ = {
 			isa = PBXGroup;
 			children = (
-				F25286881ACFA1FD00435261 /* GLBingFetcher.h */,
-				F25286891ACFA1FD00435261 /* GLBingFetcher.m */,
+				F2DC2FEA1AD7313E00E46D3C /* GLBingSessionManager.h */,
+				F2DC2FEB1AD7313E00E46D3C /* GLBingSessionManager.m */,
 				F2DC2FBF1AD5DF8D00E46D3C /* GLBingRequestSerializer.h */,
 				F2DC2FC01AD5DF8D00E46D3C /* GLBingRequestSerializer.m */,
+				F2CD0A891AD746330036D0A4 /* GLBingResponseSerializer.h */,
+				F2CD0A8A1AD746330036D0A4 /* GLBingResponseSerializer.m */,
 			);
 			name = Bing;
 			sourceTree = "<group>";
@@ -354,8 +367,8 @@
 		F2DC2FC41AD5E61D00E46D3C /* Factual */ = {
 			isa = PBXGroup;
 			children = (
-				F252868A1ACFA1FD00435261 /* GLFactualManager.h */,
-				F252868B1ACFA1FD00435261 /* GLFactualManager.m */,
+				F2DC2FE11AD72A2500E46D3C /* GLFactualSessionManager.h */,
+				F2DC2FE21AD72A2500E46D3C /* GLFactualSessionManager.m */,
 				F252868C1ACFA1FD00435261 /* GLFactualRequestSerializer.h */,
 				F252868D1ACFA1FD00435261 /* GLFactualRequestSerializer.m */,
 				F252868E1ACFA1FD00435261 /* GLFactualResponseSerializer.h */,
@@ -413,6 +426,8 @@
 				F2DC2FC61AD6F53B00E46D3C /* UIImage+GLImage.m */,
 				F2DC2FDB1AD7216300E46D3C /* UIView+GLView.h */,
 				F2DC2FDC1AD7216300E46D3C /* UIView+GLView.m */,
+				F2CD0A861AD742020036D0A4 /* NSDictionary+GLCustomKVOOperators.h */,
+				F2CD0A871AD742020036D0A4 /* NSDictionary+GLCustomKVOOperators.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -689,12 +704,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2DC2FEC1AD7313E00E46D3C /* GLBingSessionManager.m in Sources */,
+				F2CD0A8B1AD746330036D0A4 /* GLBingResponseSerializer.m in Sources */,
 				F25286A21ACFA21D00435261 /* GLQueryTableViewController.m in Sources */,
 				F25286E21ACFA27D00435261 /* GLTableViewCell.m in Sources */,
+				F2DC2FE81AD72C0B00E46D3C /* GLRACSessionManager.m in Sources */,
+				F2DC2FE31AD72A2500E46D3C /* GLFactualSessionManager.m in Sources */,
 				F25286A91ACFA22E00435261 /* GLDismissableViewHandler.m in Sources */,
 				F25286E41ACFA27D00435261 /* GLVideoPreviewView.m in Sources */,
 				F25286A41ACFA21D00435261 /* PFQuery+GLQuery.m in Sources */,
 				F25286ED1ACFA2B300435261 /* main.m in Sources */,
+				F2CD0A881AD742020036D0A4 /* NSDictionary+GLCustomKVOOperators.m in Sources */,
 				F25286C51ACFA24F00435261 /* GLBarcodeObject.m in Sources */,
 				F25286BB1ACFA23B00435261 /* UIColor+GLColor.m in Sources */,
 				F2DC2FC11AD5DF8D00E46D3C /* GLBingRequestSerializer.m in Sources */,
@@ -709,10 +729,8 @@
 				F25286CE1ACFA26300435261 /* GLBaseViewController.m in Sources */,
 				F2DC2FC71AD6F53B00E46D3C /* UIImage+GLImage.m in Sources */,
 				F25286B81ACFA23B00435261 /* GLPullToCloseTransitionManager.m in Sources */,
-				F25286921ACFA1FD00435261 /* GLFactualManager.m in Sources */,
 				F25286941ACFA1FD00435261 /* GLFactualResponseSerializer.m in Sources */,
 				F25286CF1ACFA26300435261 /* GLScannerViewController.m in Sources */,
-				F25286911ACFA1FD00435261 /* GLBingFetcher.m in Sources */,
 				F25286B71ACFA23B00435261 /* GLAnimationStack.m in Sources */,
 				F25286EB1ACFA2B300435261 /* AppDelegate.m in Sources */,
 				F25286D11ACFA26300435261 /* GLTableViewController.m in Sources */,

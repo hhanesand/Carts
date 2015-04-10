@@ -6,8 +6,6 @@
 
 @import Foundation;
 
-#import "GLFactualManager.h"
-
 @class GLBarcode;
 @class RACSignal;
 

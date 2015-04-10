@@ -13,25 +13,17 @@
 #import "GLListObject.h"
 #import "GLBarcode.h"
 #import "GLParseAnalytics.h"
-#import "GLBingFetcher.h"
 
 #import "PFQuery+GLQuery.h"
+#import "GLFactualSessionManager.h"
+#import "GLBingSessionManager.h"
 
 @interface GLBarcodeFetchManager ()
-@property (nonatomic) GLFactualManager *factual;
-@property (nonatomic) GLBingFetcher *bing;
+@property (nonatomic) GLFactualSessionManager *factual;
+@property (nonatomic) GLBingSessionManager *bing;
 @end
 
 @implementation GLBarcodeFetchManager
-
-- (instancetype)init {
-    if (self = [super init]) {
-        self.factual = [[GLFactualManager alloc] init];
-        self.bing = [[GLBingFetcher alloc] init];
-    }
-    
-    return self;
-}
 
 - (PFQuery *)queryForBarcode:(GLBarcode *)item {
     PFQuery *query = [GLBarcodeObject query];
@@ -50,6 +42,7 @@
     return [[[[[[productQuery getFirstObjectWithRACSignal] catch:^RACSignal *(NSError *error) {
         @strongify(self);
         return [[self fetchProductInformationFromFactualForBarcode:barcode] doError:^(NSError *error) {
+            NSLog(@"Error %@", error);
             [[GLParseAnalytics shared] trackMissingBarcode:barcode.barcode];
         }];
     }] map:^GLListObject *(GLBarcodeObject *value) {
@@ -57,6 +50,7 @@
     }] deliverOnMainThread] doNext:^(id x) {
         [SVProgressHUD showSuccessWithStatus:@"Item found!"];
     }] catch:^RACSignal *(NSError *error) {
+        NSLog(@"Error %@", error);
         [SVProgressHUD showErrorWithStatus:@"Not found :("];
         return [RACSignal return:[GLListObject objectWithCurrentUser]];
     }];
@@ -65,9 +59,31 @@
 - (RACSignal *)fetchProductInformationFromFactualForBarcode:(GLBarcode *)barcode {
     return [[[self.factual queryFactualForBarcode:barcode.barcode] map:^id(NSDictionary *itemInformation) {
         return [GLBarcodeObject objectWithDictionary:itemInformation];
-    }] flattenMap:^RACStream *(GLBarcodeObject *barcode) {
-        return [self.bing fetchImageURLFromBingForBarcodeObject:barcode];
+    }] doNext:^(GLBarcodeObject *barcodeObject) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [[self.bing bingImageRequestWithBarcodeObject:barcodeObject] subscribeNext:^(NSArray *imageURLS) {
+                NSLog(@"Finished finiding image url");
+                [barcodeObject addImageURLSFromArray:imageURLS];
+                [barcodeObject saveEventually];
+            }];
+        });
     }];
+}
+
+- (GLFactualSessionManager *)factual {
+    if (!_factual) {
+        _factual = [GLFactualSessionManager manager];
+    }
+    
+    return _factual;
+}
+
+- (GLBingSessionManager *)bing {
+    if (!_bing) {
+        _bing = [GLBingSessionManager manager];
+    }
+    
+    return _bing;
 }
 
 @end

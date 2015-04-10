@@ -30,8 +30,6 @@
  *  The keypath for the image that is returned in the JSON file
  *  Default is : d.results.Thumbnail.MediaUrl
  */
-@property (nonatomic, copy) NSString *thumbnailKeyPath;
 
-- (NSMutableURLRequest *)bingRequestWithQueryString:(NSString *)query error:(NSError *__autoreleasing *)error;
 
 @end
