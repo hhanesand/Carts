@@ -19,9 +19,7 @@
             [subscriber sendError:error];
         }];
         
-        return [RACDisposable disposableWithBlock:^{
-            [self invalidateSessionCancelingTasks:YES];
-        }];
+        return nil;
     }];
 }
 
