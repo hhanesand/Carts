@@ -3,8 +3,6 @@
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/8/15.
-//
-//
 
 #import "GLBingRequestSerializer.h"
 
@@ -13,6 +11,7 @@ NSString * const method = @"GET";
 @interface GLBingRequestSerializer ()
 @property (nonatomic) NSString *bingApiKey;
 @property (nonatomic) NSString *authorizationData;
+@property (nonatomic) NSDictionary *parameters;
 @end
 
 @implementation GLBingRequestSerializer
