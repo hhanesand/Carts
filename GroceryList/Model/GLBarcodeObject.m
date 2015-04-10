@@ -65,10 +65,12 @@
 
 - (void)addImageURLSFromArray:(NSArray *)array {
     if (self.image) {
-        [self.image addObjectsFromArray:array];
+        NSMutableArray *combinedArray = [NSMutableArray arrayWithArray:array];
+        [combinedArray addObjectsFromArray:self.image];
+        
+        [self setObject:combinedArray forKey:@"image"];
     } else {
-        self.image = [NSMutableArray new];
-        [self.image addObjectsFromArray:array];
+        self.image = [NSMutableArray arrayWithArray:array];
     }
 }
 
