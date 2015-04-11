@@ -1,17 +1,40 @@
-//track whenever the user scans a barcode that is not in the database
-Parse.Cloud.define("trackMissingBarcode", function(request, response) {
-    var object = ensureUniqueObject("missingProducts", "barcode", request.params.barcode);
-    object.increment("count", 1);
-    object.set("barcode", request.params.barcode); //the ensureUnique object can return an object whose barcode has not been set
+Parse.Cloud.beforeSave("missing", function(request, response) {
+    ensureUniqueObject("missing", request.object, "barcode").then(function(object) {
+        console.log(object);
+        console.log("done finding unique object");
+        object.increment("count", 1);
+        object.barcode = request.params.barcode; //the ensureUnique object can return an object whose barcode has not been set
+    
+        if (!object.get("user")) {
+            object.set("user", request.params.user);
+            console.log("Saved new user");
+        }
 
-    object.save().then(function(object) {
-        response.success("Added or updated object.");
-    }, function(object) {
-        response.error("There was an error in trackMissingBarcode function.");
+        object.save().done(function(object) {
+            response.success("Added or updated object.");
+        });
     });
 });
 
-function ensureUniqueObject(className, checkKey, value) {
+function ensureUniqueObject(className, object, checkKey) {
+    console.log(object);
+    var query = new Parse.Query(className);
+    query.equalTo(checkKey, object.checkKey);
+
+    return query.first().then(function (returnedObject) {
+        if (object) {
+            console.log("Similar object found");
+            return returnedObject;
+        } else {
+            console.log("Object is unique");
+            return object;
+        }
+    }, function (error) {
+        console.log("Error in ensureUniqueObject");
+    });
+}
+
+function createUniqueObject(className, checkKey, value) {
     console.log("Finding object");
     var query = new Parse.Query(className);
     query.equalTo(checkKey, value);
@@ -74,9 +97,9 @@ Parse.Cloud.define("upcLookup", function(request, response) {
 
         ensureUniqueObject("pending", "barcode", request.params.barcode).then(function(object) {
             console.log("Starting update");
-            object.set("barcode", request.params.barcode);
-            object.set("name", names.join(" "));
-            object.set("sources", results_json);
+            object.barcode = request.params.barcode;
+            object.name = names.join(" ");
+            object.sources = results_json;
 
             object.save();
 
@@ -91,8 +114,6 @@ Parse.Cloud.define("upcLookup", function(request, response) {
         response.error("There was an error in networking or parsing JSON");
     });
 });
-
-
 
 function createNewParseObject (name) {
     var class_new = Parse.Object.extend(name);

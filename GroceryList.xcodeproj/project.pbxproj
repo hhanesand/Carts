@@ -50,6 +50,7 @@
 		F25286E41ACFA27D00435261 /* GLVideoPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286DE1ACFA27D00435261 /* GLVideoPreviewView.m */; };
 		F25286EB1ACFA2B300435261 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286E61ACFA2B300435261 /* AppDelegate.m */; };
 		F25286ED1ACFA2B300435261 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286E81ACFA2B300435261 /* main.m */; };
+		F282F2D31AD9CE5900216FDE /* GLVideoPreviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F282F2D21AD9CE5900216FDE /* GLVideoPreviewView.xib */; };
 		F28586BA1A744A63003B91E1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586B91A744A63003B91E1 /* Social.framework */; };
 		F28586BC1A744A6B003B91E1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586BB1A744A6B003B91E1 /* Accounts.framework */; };
 		F28586BE1A744A75003B91E1 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586BD1A744A75003B91E1 /* AdSupport.framework */; };
@@ -64,7 +65,6 @@
 		F2CD0A8B1AD746330036D0A4 /* GLBingResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CD0A8A1AD746330036D0A4 /* GLBingResponseSerializer.m */; };
 		F2DC2FC11AD5DF8D00E46D3C /* GLBingRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DC2FC01AD5DF8D00E46D3C /* GLBingRequestSerializer.m */; };
 		F2DC2FC71AD6F53B00E46D3C /* UIImage+GLImage.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DC2FC61AD6F53B00E46D3C /* UIImage+GLImage.m */; };
-		F2DC2FDD1AD7216300E46D3C /* UIView+GLView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DC2FDC1AD7216300E46D3C /* UIView+GLView.m */; };
 		F2DC2FE31AD72A2500E46D3C /* GLFactualSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DC2FE21AD72A2500E46D3C /* GLFactualSessionManager.m */; };
 		F2DC2FE81AD72C0B00E46D3C /* GLRACSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DC2FE71AD72C0B00E46D3C /* GLRACSessionManager.m */; };
 		F2DC2FEC1AD7313E00E46D3C /* GLBingSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DC2FEB1AD7313E00E46D3C /* GLBingSessionManager.m */; };
@@ -169,6 +169,7 @@
 		F25286E71ACFA2B300435261 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Supporting Files/Info.plist"; sourceTree = "<group>"; };
 		F25286E81ACFA2B300435261 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Supporting Files/main.m"; sourceTree = "<group>"; };
 		F25286EF1ACFA2FE00435261 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseCrashReporting.framework; path = Frameworks/ParseCrashReporting.framework; sourceTree = "<group>"; };
+		F282F2D21AD9CE5900216FDE /* GLVideoPreviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLVideoPreviewView.xib; sourceTree = "<group>"; };
 		F28586B91A744A63003B91E1 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		F28586BB1A744A6B003B91E1 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		F28586BD1A744A75003B91E1 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -187,8 +188,6 @@
 		F2DC2FC01AD5DF8D00E46D3C /* GLBingRequestSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLBingRequestSerializer.m; sourceTree = "<group>"; };
 		F2DC2FC51AD6F53B00E46D3C /* UIImage+GLImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GLImage.h"; sourceTree = "<group>"; };
 		F2DC2FC61AD6F53B00E46D3C /* UIImage+GLImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GLImage.m"; sourceTree = "<group>"; };
-		F2DC2FDB1AD7216300E46D3C /* UIView+GLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+GLView.h"; sourceTree = "<group>"; };
-		F2DC2FDC1AD7216300E46D3C /* UIView+GLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GLView.m"; sourceTree = "<group>"; };
 		F2DC2FE11AD72A2500E46D3C /* GLFactualSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLFactualSessionManager.h; sourceTree = "<group>"; };
 		F2DC2FE21AD72A2500E46D3C /* GLFactualSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLFactualSessionManager.m; sourceTree = "<group>"; };
 		F2DC2FE61AD72C0B00E46D3C /* GLRACSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLRACSessionManager.h; sourceTree = "<group>"; };
@@ -424,8 +423,6 @@
 				F2E544EC1A6CB55100CB52E5 /* LaunchScreen.xib */,
 				F2DC2FC51AD6F53B00E46D3C /* UIImage+GLImage.h */,
 				F2DC2FC61AD6F53B00E46D3C /* UIImage+GLImage.m */,
-				F2DC2FDB1AD7216300E46D3C /* UIView+GLView.h */,
-				F2DC2FDC1AD7216300E46D3C /* UIView+GLView.m */,
 				F2CD0A861AD742020036D0A4 /* NSDictionary+GLCustomKVOOperators.h */,
 				F2CD0A871AD742020036D0A4 /* NSDictionary+GLCustomKVOOperators.m */,
 			);
@@ -462,6 +459,7 @@
 				F25286DC1ACFA27D00435261 /* GLTableViewCell.xib */,
 				F25286DD1ACFA27D00435261 /* GLVideoPreviewView.h */,
 				F25286DE1ACFA27D00435261 /* GLVideoPreviewView.m */,
+				F282F2D21AD9CE5900216FDE /* GLVideoPreviewView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -645,6 +643,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F282F2D31AD9CE5900216FDE /* GLVideoPreviewView.xib in Resources */,
 				F2AC65FF1AD1DE3D00C0A09F /* SVProgressHUD.bundle in Resources */,
 				F25286D01ACFA26300435261 /* GLScannerViewController.xib in Resources */,
 				F2F948BA1A8ACCEB002C5177 /* Images.xcassets in Resources */,
@@ -737,7 +736,6 @@
 				F25286BA1ACFA23B00435261 /* POPSpringAnimation+GLAdditions.m in Sources */,
 				F2EC284C1AD3136B00E4DB27 /* GLPullToCloseTransitionPresentationController.m in Sources */,
 				F25286A11ACFA21D00435261 /* GLParseAnalytics.m in Sources */,
-				F2DC2FDD1AD7216300E46D3C /* UIView+GLView.m in Sources */,
 				F25286A31ACFA21D00435261 /* PFObject+GLPFObject.m in Sources */,
 				F25286901ACFA1FD00435261 /* GLBarcodeFetchManager.m in Sources */,
 				F25286C61ACFA24F00435261 /* GLListObject.m in Sources */,

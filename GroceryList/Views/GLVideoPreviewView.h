@@ -14,9 +14,9 @@
  */
 @interface GLVideoPreviewView : UIView
 
-@property (nonatomic) AVCaptureVideoPreviewLayer *previewLayer;
+@property (weak, nonatomic) IBOutlet UIButton *doneScanningItemsButton;
 
-- (instancetype)initWithPreviewLayer:(AVCaptureVideoPreviewLayer *)previewLayer;
+@property (nonatomic) AVCaptureVideoPreviewLayer *capturePreviewLayer;
 
 /**
  *  Pauses the video preview layer and temporarily saves an image until the camera is started again

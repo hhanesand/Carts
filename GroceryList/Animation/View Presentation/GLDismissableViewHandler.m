@@ -24,14 +24,14 @@
     if (self = [super init]) {
         self.dimissableView = view;
         self.initialPosition = CGRectGetMinY(self.dimissableView.frame);
-        self.enabled = NO;
+        self.enabled1 = NO;
     }
     
     return self;
 }
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
-    return self.enabled;
+    return self.enabled1;
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)pan {

@@ -38,21 +38,18 @@
     
     PFQuery *productQuery = [self queryForBarcode:barcode];
     
-    @weakify(self);
     return [[[[[[productQuery getFirstObjectWithRACSignal] catch:^RACSignal *(NSError *error) {
-        @strongify(self);
         return [[self fetchProductInformationFromFactualForBarcode:barcode] doError:^(NSError *error) {
             NSLog(@"Error %@", error);
             [[GLParseAnalytics shared] trackMissingBarcode:barcode.barcode];
         }];
     }] map:^GLListObject *(GLBarcodeObject *value) {
         return [GLListObject objectWithCurrentUserAndBarcodeItem:value];
-    }] deliverOnMainThread] doNext:^(id x) {
-        [SVProgressHUD showSuccessWithStatus:@"Item found!"];
-    }] catch:^RACSignal *(NSError *error) {
+    }] deliverOnMainThread] doNext:^(GLListObject *listObject) {
+        [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"Added %@", [listObject getName]]];
+    }] doError:^(NSError *error) {
         NSLog(@"Error %@", error);
         [SVProgressHUD showErrorWithStatus:@"Not found :("];
-        return [RACSignal return:[GLListObject objectWithCurrentUser]];
     }];
 }
 

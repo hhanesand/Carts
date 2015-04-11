@@ -29,8 +29,16 @@
 }
 
 - (void)trackMissingBarcode:(NSString *)barcode {
-    [PFCloud callFunctionInBackground:self.missingBarcodeFunctionName withParameters:@{@"barcode" : barcode} block:^(id object, NSError *error) {
-        NSLog(@"TrackMissingBarcode Result %@", object);
+    PFObject *missingObject = [PFObject objectWithClassName:@"missing"];
+    [missingObject setObject:[PFUser currentUser] forKey:@"user"];
+    [missingObject setObject:barcode forKey:@"barcode"];
+    
+    [missingObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"Saved missing barcode");
+        } else {
+            NSLog(@"Error saving missing barcode %@", error);
+        }
     }];
 }
 

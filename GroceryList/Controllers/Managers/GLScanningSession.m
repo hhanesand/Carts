@@ -18,6 +18,7 @@
 @property (nonatomic) AVCaptureMetadataOutput *metadataOutput;
 
 @property (nonatomic) AVCaptureStillImageOutput *imageCapture;
+@property (nonatomic) BOOL paused;
 @end
 
 @implementation GLScanningSession
@@ -36,27 +37,39 @@
 }
 
 - (void)pause {
-    self.delegate = nil;
-    
-    if (self.captureSession.running) {
+    if (!self.paused) {
+        self.paused = YES;
         [self.previewView pause];
+        self.previewLayer.connection.enabled = NO;
     }
 }
 
-- (void)resumeWithDelegate:(id<GLBarcodeScannerDelegate>)delegate {
-    [self startScanningWithDelegate:delegate];
-    
-    if (!self.captureSession.running) {
+- (void)resume {
+    if (self.paused) {
+        self.paused = NO;
+        self.previewLayer.connection.enabled = YES;
         [self.previewView resume];
     }
 }
 
 - (void)startScanningWithDelegate:(id<GLBarcodeScannerDelegate>)delegate {
-    self.delegate = delegate;
-    self.previewView.previewLayer.connection.enabled = YES;
-    
     if (!self.captureSession.running) {
+        self.delegate = delegate;
         [self.captureSession startRunning];
+    }
+}
+
+- (void)stop {
+    if (self.captureSession.running) {
+        self.delegate = nil;
+        [self.captureSession stopRunning];
+    }
+}
+
+- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection {
+    if (!self.paused && [[metadataObjects firstObject] isKindOfClass:[AVMetadataMachineReadableCodeObject class]]) {
+        GLBarcode *barcode = [GLBarcode barcodeWithMetadataObject:[metadataObjects firstObject]];
+        [self.delegate scanner:self didRecieveBarcode:barcode];
     }
 }
 
@@ -67,13 +80,6 @@
     
     self.captureSession = [AVCaptureSession new];
     self.captureSession.sessionPreset = AVCaptureSessionPreset640x480;
-    
-    self.imageCapture = [AVCaptureStillImageOutput new];
-    self.imageCapture.outputSettings = @{AVVideoCodecKey : AVVideoCodecJPEG, AVVideoQualityKey : @0.6};
-    
-    if ([self.captureSession canAddOutput:self.imageCapture]) {
-        [self.captureSession addOutput:self.imageCapture];
-    }
     
     self.captureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     
@@ -92,24 +98,15 @@
         NSLog(@"Error %@", error);
     }
     
-    AVCaptureVideoPreviewLayer *av_previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.captureSession];
-    av_previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-    
-    self.previewView = [[GLVideoPreviewView alloc] initWithPreviewLayer:av_previewLayer];
-    
     self.metadataOutput = [[AVCaptureMetadataOutput alloc] init];
     [self.metadataOutput setMetadataObjectsDelegate:self queue:dispatch_get_main_queue()];
     
     if ([self.captureSession canAddOutput:self.metadataOutput]) {
         [self.captureSession addOutput:self.metadataOutput];
     }
-}
-
-- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection {
-    if ([[metadataObjects firstObject] isKindOfClass:[AVMetadataMachineReadableCodeObject class]]) {
-        GLBarcode *barcode = [GLBarcode barcodeWithMetadataObject:[metadataObjects firstObject]];
-        [self.delegate scanner:self didRecieveBarcode:barcode];
-    }
+    
+    self.previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.captureSession];
+    self.previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
 }
 
 @end

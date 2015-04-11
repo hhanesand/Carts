@@ -36,11 +36,10 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
         
         self.transitionManager = [[GLPullToCloseTransitionManager alloc] init];
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
             self.scanner = [[GLScannerViewController alloc] init];
-            self.scanner.view.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds));
+            self.scanner.view.frame = CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds));
             self.scanner.delegate = self;
-        });
+        
         
         self.view.frame = [UIScreen mainScreen].bounds;
         
@@ -72,7 +71,7 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
     [self.navigationController setToolbarHidden:YES animated:NO];
 }
 
-- (void)didPressAddButton {    
+- (void)didPressAddButton {
     [self presentViewController:self.scanner animated:YES completion:nil];
 }
 

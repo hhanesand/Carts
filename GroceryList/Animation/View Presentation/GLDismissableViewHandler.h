@@ -23,7 +23,7 @@
 @interface GLDismissableViewHandler : NSObject <UIGestureRecognizerDelegate>
 
 @property (nonatomic) id<GLDismissableHandlerDelegate> delegate;
-@property (nonatomic) BOOL enabled;
+@property (nonatomic) BOOL enabled1;
 
 /**
  *  Initializes with the specified view as it's target view (the view that is draggable)

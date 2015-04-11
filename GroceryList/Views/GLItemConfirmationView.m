@@ -10,23 +10,7 @@
 #import "GLBarcodeObject.h"
 #import "GLListObject.h"
 
-@implementation GLItemConfirmationView
-
-- (instancetype)initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:frame]) {        
-        UIView *nibView = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:self options:nil] firstObject];
-        nibView.frame = CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame));
-        self.backgroundColor = [UIColor clearColor];
-        
-        if (CGRectIsEmpty(frame)) {
-            self.bounds = nibView.bounds;
-        }
-        
-        [self addSubview:nibView];
-    }
-    
-    return self;
-}
+@implementation GLItemConfirmationView 
 
 - (void)bindWithListObject:(GLListObject *)listObject {
     self.name.text = [listObject getName];
