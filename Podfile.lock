@@ -24,6 +24,7 @@ PODS:
   - AFOAuth1 (0.0.1):
     - AFNetworking (~> 2.2.0)
   - Bolts (1.1.4)
+  - JVFloatLabeledTextField (1.0.2)
   - Parse (1.7.1):
     - Bolts (~> 1.1)
   - ParseCrashReporting (1.7.1):
@@ -44,6 +45,7 @@ DEPENDENCIES:
   - AFNetworking-RACExtensions
   - AFOAuth1
   - Bolts
+  - JVFloatLabeledTextField
   - Parse
   - ParseCrashReporting
   - ParseUI
@@ -56,6 +58,7 @@ SPEC CHECKSUMS:
   AFNetworking-RACExtensions: 501ab1564f5be65e01fe3017cda7bba25764c20d
   AFOAuth1: dad9f255f58c32014fbcf784a417afd92789b7d9
   Bolts: f8e2f94edbf9fec7bb8de5ecaaa3aa6b7de6f64e
+  JVFloatLabeledTextField: 58a3a32cfb800e5b224f676987e7c13abf50a14d
   Parse: fa8ec29de6d82035635986c11946299fb1b38316
   ParseCrashReporting: 9aeff8680d500e5e833564fca5b60333f7bb7403
   ParseUI: 1a68e9cebc3bd458eed9605ce7b33d7cc082f473
