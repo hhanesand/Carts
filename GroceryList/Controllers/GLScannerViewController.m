@@ -35,7 +35,7 @@ typedef RACSignal* (^RACCommandBlock)(id);
 @property (nonatomic) GLScanningSession *barcodeScanner;
 
 @property (strong, nonatomic) IBOutlet GLVideoPreviewView *videoPreviewView;
-@property (strong, nonatomic) IBOutlet GLItemConfirmationView *itemConfirmationView;
+@property (nonatomic) GLItemConfirmationView *itemConfirmationView;
 @property (nonatomic) GLCameraLayer *targetingReticule;
 
 @property (nonatomic) GLListObject *currentListItem;
@@ -55,6 +55,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
         self.barcodeManager = [[GLBarcodeFetchManager alloc] init];
         
         [self setupRACCommands];
+        [self configureKeyboardAnimations];
     }
     
     return self;
@@ -298,13 +299,13 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
         CGRect keyboardFrame = [notif.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
         CGRect activeFieldFrame = [self.view convertRect:self.confirmationView.activeField.frame fromView:self.confirmationView];
         
-        if (CGRectIntersectsRect(keyboardFrame, activeFieldFrame)) {
+        if (CGRectGetMinY(keyboardFrame) - CGRectGetMaxY(activeFieldFrame) < 8) {
             [UIView beginAnimations:nil context:NULL];
             [UIView setAnimationDuration:[notif.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
             [UIView setAnimationCurve:[notif.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue]];
             [UIView setAnimationBeginsFromCurrentState:YES];
             
-            CGFloat intersectionDistance =  CGRectGetMaxY(activeFieldFrame) - CGRectGetMinY(keyboardFrame);
+            CGFloat intersectionDistance =  abs(CGRectGetMinY(keyboardFrame) - CGRectGetMaxY(activeFieldFrame)) + 8;
             self.confirmationView.frame = CGRectOffset(self.confirmationView.frame, 0, -intersectionDistance);
             
             [UIView commitAnimations];
