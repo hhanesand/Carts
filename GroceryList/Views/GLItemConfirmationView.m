@@ -10,7 +10,24 @@
 #import "GLBarcodeObject.h"
 #import "GLListObject.h"
 
-@implementation GLItemConfirmationView 
+@implementation GLItemConfirmationView
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        NSArray *nibFile = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:self options:nil];
+        NSAssert([nibFile count] == 1 && [[nibFile firstObject] isMemberOfClass:[self class]], @"Error in nib loading, must be one top level object with class of %@", NSStringFromClass([self class]));
+        UIView *topLevelView = [nibFile firstObject];
+        topLevelView.frame = frame;
+        
+        if (CGRectIsEmpty(frame)) {
+            self.bounds = topLevelView.bounds;
+        }
+        
+        [self addSubview:topLevelView];
+    }
+    
+    return self;
+}
 
 - (void)bindWithListObject:(GLListObject *)listObject {
     self.name.text = [listObject getName];

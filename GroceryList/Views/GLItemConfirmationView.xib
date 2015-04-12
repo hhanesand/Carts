@@ -4,14 +4,12 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GLScannerViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GLItemConfirmationView">
             <connections>
-                <outlet property="brand" destination="yN0-YK-hAx" id="895-m9-NuA"/>
-                <outlet property="category" destination="W3L-rs-s0Y" id="qek-6n-bxq"/>
-                <outlet property="confirmationView" destination="suy-K2-Xn2" id="axN-gx-21p"/>
-                <outlet property="itemConfirmationView" destination="suy-K2-Xn2" id="Lej-oR-LK1"/>
-                <outlet property="manufacturer" destination="dca-Ho-iWF" id="wmt-Mh-46f"/>
-                <outlet property="name" destination="Ppx-ir-Blj" id="f9v-6o-Qt7"/>
+                <outlet property="brand" destination="yN0-YK-hAx" id="DMs-cI-kk1"/>
+                <outlet property="category" destination="W3L-rs-s0Y" id="kya-lR-wfo"/>
+                <outlet property="manufacturer" destination="dca-Ho-iWF" id="vuc-pS-pEF"/>
+                <outlet property="name" destination="Ppx-ir-Blj" id="kfN-oW-Rgk"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -237,7 +235,7 @@
                 <outlet property="manufacturer" destination="dca-Ho-iWF" id="c8t-iI-Rn3"/>
                 <outlet property="name" destination="Ppx-ir-Blj" id="muL-Qn-XtY"/>
             </connections>
-            <point key="canvasLocation" x="-88" y="503"/>
+            <point key="canvasLocation" x="-8" y="539"/>
         </view>
     </objects>
 </document>

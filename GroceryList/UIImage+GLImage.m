@@ -54,7 +54,6 @@
 }
 
 static inline CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
-static inline CGFloat RadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};
 
 - (UIImage *)imageRotatedByDegrees:(CGFloat)degrees
 {

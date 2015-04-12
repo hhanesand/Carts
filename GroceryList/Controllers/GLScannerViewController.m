@@ -181,8 +181,8 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 
 #pragma mark - IBActions
 
-- (void)testScanning {
-    [self scanner:self.barcodeScanner didRecieveBarcode:[GLBarcode barcodeWithBarcode:@"0012000001086"]];
+- (void)testScanning {//0012000001086
+    [self scanner:self.barcodeScanner didRecieveBarcode:[GLBarcode barcodeWithBarcode:@"120182198491824142"]];
 }
 
 - (IBAction)didTapDoneButton:(UIButton *)sender {
@@ -322,8 +322,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 
 - (GLItemConfirmationView *)confirmationView {
     if (!_itemConfirmationView) {
-        [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([GLItemConfirmationView class]) owner:self options:nil];
-        _itemConfirmationView.frame = CGRectMake(0, CGRectGetHeight(self.view.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) * 0.5);
+        _itemConfirmationView = [[GLItemConfirmationView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) * 0.5)];
         _itemConfirmationView.cancel.rac_command = [[RACCommand alloc] initWithSignalBlock:self.cancelCommand];
         _itemConfirmationView.confirm.rac_command = [[RACCommand alloc] initWithSignalBlock:self.confirmCommand];
     }
