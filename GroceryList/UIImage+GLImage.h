@@ -6,10 +6,13 @@
 //
 //
 
-#import <UIKit/UIKit.h>
+@import CoreMedia;
+@import UIKit;
 
 @interface UIImage (GLImage)
 
 + (UIImage *)imageWithColor:(UIColor *)color;
+
++ (UIImage *)imageFromSampleBuffer:(CMSampleBufferRef)sampleBuffer;
 
 @end

@@ -84,9 +84,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     self.doneScanningBlock = ^RACSignal *(id input) {
         @strongify(self);
         [self.barcodeScanner resume];
-        return [[self.animationStack popAllAnimations] doCompleted:^{
-            [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-        }];
+        return [self.animationStack popAllAnimations];
     };
 }
 

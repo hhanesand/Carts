@@ -19,22 +19,24 @@
 @implementation GLVideoPreviewView
 
 - (void)resume {
+    self.pausedImageView.alpha = 1;
+    
     POPBasicAnimation *alpha = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
-    alpha.fromValue = @(1);
     alpha.toValue = @(0);
     alpha.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    alpha.duration = 0.5;
+    alpha.duration = 0.2;
     
     [self.pausedImageView pop_addAnimation:alpha forKey:@"fade"];
-    
-    [[alpha completionSignal] subscribeCompleted:^{
-        [self sendSubviewToBack:self.pausedImageView];
-    }];
 }
 
-- (void)pause {
-    self.pausedImageView.image = [self.capturePreviewLayer screenshotInGraphicsContext];
-    [self sendSubviewToBack:self.previewView];
+- (void)pauseWithImage:(UIImage *)image {
+    NSLog(@"Pausing image");
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.pausedImageView.alpha = 1;
+        self.pausedImageView.image = [image copy];
+        [self.pausedImageView setNeedsDisplay];
+    });
 }
 
 - (void)setCapturePreviewLayer:(AVCaptureVideoPreviewLayer *)capturePreviewLayer {

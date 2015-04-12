@@ -15,7 +15,7 @@
 /**
  *  Stores a scanning session that encapsulates all AVFoundation objects
  */
-@interface GLScanningSession : NSObject <AVCaptureMetadataOutputObjectsDelegate>
+@interface GLScanningSession : NSObject <AVCaptureMetadataOutputObjectsDelegate, AVCaptureVideoDataOutputSampleBufferDelegate>
 
 /**
  *  Sets up a new scanning session
