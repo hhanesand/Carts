@@ -19,24 +19,24 @@
 @implementation GLVideoPreviewView
 
 - (void)resume {
-    self.pausedImageView.alpha = 1;
+//    self.pausedImageView.alpha = 1;
+//    
+//    POPBasicAnimation *alpha = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
+//    alpha.toValue = @(0);
+//    alpha.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+//    alpha.duration = 0.2;
     
-    POPBasicAnimation *alpha = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
-    alpha.toValue = @(0);
-    alpha.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    alpha.duration = 0.2;
-    
-    [self.pausedImageView pop_addAnimation:alpha forKey:@"fade"];
+//    [self.pausedImageView pop_addAnimation:alpha forKey:@"fade"];
 }
 
 - (void)pauseWithImage:(UIImage *)image {
-    NSLog(@"Pausing image");
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.pausedImageView.alpha = 1;
-        self.pausedImageView.image = [image copy];
-        [self.pausedImageView setNeedsDisplay];
-    });
+//    NSLog(@"Pausing image");
+//    
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        self.pausedImageView.alpha = 1;
+//        self.pausedImageView.image = [image copy];
+//        [self.pausedImageView setNeedsDisplay];
+//    });
 }
 
 - (void)setCapturePreviewLayer:(AVCaptureVideoPreviewLayer *)capturePreviewLayer {

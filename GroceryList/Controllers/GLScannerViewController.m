@@ -254,6 +254,25 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     presentConfirmationView.name = @"presentManualEntryView";
     
     [self.confirmationView pop_addAnimation:presentConfirmationView forKey:@"presentManualEntryView"];
+    
+    [self setupInteractiveDismissalOfConfirmationView];
+}
+
+- (void)setupInteractiveDismissalOfConfirmationView {
+    UIPanGestureRecognizer *swipeDownToDismiss = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePullDownToDismissGestureRecognizer:)];
+    [self.view addGestureRecognizer:swipeDownToDismiss];
+    swipeDownToDismiss.delegate = self.confirmationViewDismissHandler;
+    
+    self.confirmationViewDismissHandler.delegate = self;
+    self.confirmationViewDismissHandler.enabled = YES;
+}
+
+- (void)handlePullDownToDismissGestureRecognizer:(UIPanGestureRecognizer *)pan {
+    [self.confirmationViewDismissHandler handlePan:pan];
+}
+
+- (void)willDismissViewAfterUserInteraction {
+    [self.barcodeScanner resume];
 }
 
 - (RACSignal *)dismissManualEntryView {
@@ -265,7 +284,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     
     [self.confirmationView pop_addAnimation:dismiss forKey:@"manual_confirmation_view_dismiss"];
     
-    self.confirmationViewDismissHandler.enabled1 = NO;
+    self.confirmationViewDismissHandler.enabled = NO;
     
     return [dismiss completionSignal];
 }
@@ -339,6 +358,16 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     
     return _videoPreviewView;
 }
+
+- (GLDismissableViewHandler *)confirmationViewDismissHandler
+{
+    if (!_confirmationViewDismissHandler) {
+        _confirmationViewDismissHandler = [[GLDismissableViewHandler alloc] initWithView:self.itemConfirmationView];
+    }
+    
+    return _confirmationViewDismissHandler;
+}
+
 
 
 @end

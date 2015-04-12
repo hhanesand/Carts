@@ -43,23 +43,27 @@
 }
 
 - (void)pause {
-    if (!self.paused) {
-        self.paused = YES;
-        //self.previewLayer.connection.enabled = NO;
-        
-//        [[self captureImageFromVideoOutput] subscribeNext:^(id volatil) {
-//            NSLog(@"Setting image");
-//            [self.previewView pauseWithImage:volatil];
-//        }];
-    }
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        if (!self.paused) {
+            self.paused = YES;
+            self.previewLayer.connection.enabled = NO;
+            
+            //        [[self captureImageFromVideoOutput] subscribeNext:^(id volatil) {
+            //            NSLog(@"Setting image");
+            //            [self.previewView pauseWithImage:volatil];
+            //        }];
+        }
+    });
 }
 
 - (void)resume {
-    if (self.paused) {
-        self.paused = NO;
-        //self.previewLayer.connection.enabled = YES;
-        [self.previewView resume];
-    }
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        if (self.paused) {
+            self.paused = NO;
+            self.previewLayer.connection.enabled = YES;
+            //        [self.previewView resume];
+        }
+    });
 }
 
 - (void)startScanningWithDelegate:(id<GLBarcodeScannerDelegate>)delegate {

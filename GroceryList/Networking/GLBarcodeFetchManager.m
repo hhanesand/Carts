@@ -49,7 +49,7 @@
         [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"Added %@", [listObject getName]]];
     }] doError:^(NSError *error) {
         NSLog(@"Error %@", error);
-        [SVProgressHUD showErrorWithStatus:@"Not found :("];
+        [SVProgressHUD showErrorWithStatus:@"Please enter information"];
     }];
 }
 

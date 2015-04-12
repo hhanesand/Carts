@@ -50,7 +50,7 @@
 - (void)pause;
 
 /**
- *  Resumes the video feed quickly
+ *  Asynchronously resumes the video feed
  *
  *  @param delegate The delegate to send barcode events to
  */

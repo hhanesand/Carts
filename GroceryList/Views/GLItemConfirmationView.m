@@ -14,16 +14,15 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        NSArray *nibFile = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:self options:nil];
-        NSAssert([nibFile count] == 1 && [[nibFile firstObject] isMemberOfClass:[self class]], @"Error in nib loading, must be one top level object with class of %@", NSStringFromClass([self class]));
-        UIView *topLevelView = [nibFile firstObject];
-        topLevelView.frame = frame;
+        UIView *nibView = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:self options:nil] firstObject];
+        nibView.frame = CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame));
+        self.backgroundColor = [UIColor clearColor];
         
         if (CGRectIsEmpty(frame)) {
-            self.bounds = topLevelView.bounds;
+            self.bounds = nibView.bounds;
         }
         
-        [self addSubview:topLevelView];
+        [self addSubview:nibView];
     }
     
     return self;
