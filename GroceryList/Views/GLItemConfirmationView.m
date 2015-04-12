@@ -40,21 +40,18 @@
     self.name.floatingLabelFont = font;
     self.brand.floatingLabelFont = font;
     self.category.floatingLabelFont = font;
-    self.manufacturer.floatingLabelFont = font;
     
     UIColor *gray = [UIColor grayColor];
     
     self.name.floatingLabelTextColor = gray;
     self.brand.floatingLabelTextColor = gray;
     self.category.floatingLabelTextColor = gray;
-    self.manufacturer.floatingLabelTextColor = gray;
     
     UIColor *color = [UIColor whiteColor];
     
-    self.name.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Name" attributes:@{NSForegroundColorAttributeName: color, NSFontAttributeName : [UIFont fontWithName:@"AvenirNext-Regular" size:16.0]}];
-    self.brand.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Brand" attributes:@{NSForegroundColorAttributeName: color, NSFontAttributeName : [UIFont fontWithName:@"AvenirNext-Regular" size:16.0]}];
-    self.category.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Category" attributes:@{NSForegroundColorAttributeName: color, NSFontAttributeName : [UIFont fontWithName:@"AvenirNext-Regular" size:16.0]}];
-    self.manufacturer.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Producer" attributes:@{NSForegroundColorAttributeName: color, NSFontAttributeName : [UIFont fontWithName:@"AvenirNext-Regular" size:16.0]}];
+    self.name.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Name" attributes:@{NSForegroundColorAttributeName:color, NSFontAttributeName : [UIFont fontWithName:@"AvenirNext-Regular" size:16.0]}];
+    self.brand.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Brand" attributes:@{NSForegroundColorAttributeName:color, NSFontAttributeName : [UIFont fontWithName:@"AvenirNext-Regular" size:16.0]}];
+    self.category.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Category" attributes:@{NSForegroundColorAttributeName:color, NSFontAttributeName : [UIFont fontWithName:@"AvenirNext-Regular" size:16.0]}];
 }
 
 - (void)bindWithListObject:(GLListObject *)listObject {
@@ -68,10 +65,6 @@
     
     [[self.category.rac_textSignal distinctUntilChanged] subscribeNext:^(NSString *value) {
         [listObject addUserModification:value forKey:@"category"];
-    }];
-    
-    [[self.manufacturer.rac_textSignal distinctUntilChanged] subscribeNext:^(NSString *value) {
-        [listObject addUserModification:value forKey:@"manufacturer"];
     }];
 }
 

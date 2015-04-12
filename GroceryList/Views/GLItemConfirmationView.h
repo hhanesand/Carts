@@ -18,7 +18,6 @@
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *name;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *brand;
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *category;
-@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *manufacturer;
 
 @property (weak, nonatomic) IBOutlet UIButton *cancel;
 @property (weak, nonatomic) IBOutlet UIButton *confirm;

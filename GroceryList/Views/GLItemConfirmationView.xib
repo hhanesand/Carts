@@ -10,7 +10,6 @@
                 <outlet property="cancel" destination="DTz-QQ-snc" id="l22-ds-P42"/>
                 <outlet property="category" destination="W3L-rs-s0Y" id="N2m-QJ-QFz"/>
                 <outlet property="confirm" destination="8G5-Z5-0CO" id="Qs3-Rn-fX2"/>
-                <outlet property="manufacturer" destination="dca-Ho-iWF" id="n3f-n2-iga"/>
                 <outlet property="name" destination="Ppx-ir-Blj" id="mtJ-eN-NmK"/>
                 <outletCollection property="separators" destination="cAN-mV-2qM" id="2o5-ri-dCL"/>
             </connections>
@@ -101,18 +100,6 @@
                                         <constraint firstAttribute="bottom" secondItem="8Ba-HO-Ylm" secondAttribute="bottom" constant="4" id="xml-cf-z2n"/>
                                     </constraints>
                                 </view>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="Producer" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dca-Ho-iWF" customClass="JVFloatLabeledTextField">
-                                    <rect key="frame" x="8" y="143" width="584" height="36"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="36" id="aSh-t7-ey0"/>
-                                    </constraints>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
-                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="done"/>
-                                    <connections>
-                                        <outlet property="delegate" destination="-1" id="ZLo-4G-GuR"/>
-                                    </connections>
-                                </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DTz-QQ-snc">
                                     <rect key="frame" x="276" y="210" width="48" height="30"/>
                                     <state key="normal" title="Cancel">
@@ -144,9 +131,7 @@
                                 <constraint firstItem="yN0-YK-hAx" firstAttribute="leading" secondItem="Fw6-jV-wJw" secondAttribute="leading" constant="8" id="KDk-GE-0kX"/>
                                 <constraint firstItem="Ppx-ir-Blj" firstAttribute="top" secondItem="Fw6-jV-wJw" secondAttribute="top" constant="8" id="KnU-xA-eh1"/>
                                 <constraint firstAttribute="trailing" secondItem="W3L-rs-s0Y" secondAttribute="trailing" constant="8" id="Mvf-M8-0Pd"/>
-                                <constraint firstItem="dca-Ho-iWF" firstAttribute="leading" secondItem="Fw6-jV-wJw" secondAttribute="leading" constant="8" id="P5r-Jc-s4v"/>
                                 <constraint firstItem="mzL-Ao-ra7" firstAttribute="top" secondItem="W3L-rs-s0Y" secondAttribute="bottom" id="PCg-3G-Ro3"/>
-                                <constraint firstAttribute="trailing" secondItem="dca-Ho-iWF" secondAttribute="trailing" constant="8" id="RI1-nc-xKx"/>
                                 <constraint firstAttribute="trailing" secondItem="mzL-Ao-ra7" secondAttribute="trailing" constant="8" id="V8G-jK-U8o"/>
                                 <constraint firstItem="cAN-mV-2qM" firstAttribute="top" secondItem="yN0-YK-hAx" secondAttribute="bottom" id="XQV-Ju-8DX"/>
                                 <constraint firstItem="8G5-Z5-0CO" firstAttribute="top" secondItem="DTz-QQ-snc" secondAttribute="bottom" constant="8" id="Y5b-bo-GxB"/>
@@ -154,7 +139,6 @@
                                 <constraint firstItem="W3L-rs-s0Y" firstAttribute="leading" secondItem="Fw6-jV-wJw" secondAttribute="leading" constant="8" id="a8I-6Y-P7U"/>
                                 <constraint firstItem="W3L-rs-s0Y" firstAttribute="top" secondItem="cAN-mV-2qM" secondAttribute="bottom" id="bEe-pQ-O57"/>
                                 <constraint firstItem="dn5-Yl-D1Z" firstAttribute="top" secondItem="Ppx-ir-Blj" secondAttribute="bottom" id="bHc-Yk-NHD"/>
-                                <constraint firstItem="dca-Ho-iWF" firstAttribute="top" secondItem="mzL-Ao-ra7" secondAttribute="bottom" id="blK-wk-PBx"/>
                                 <constraint firstItem="yN0-YK-hAx" firstAttribute="top" secondItem="dn5-Yl-D1Z" secondAttribute="bottom" id="eke-GV-7kM"/>
                                 <constraint firstItem="Ppx-ir-Blj" firstAttribute="leading" secondItem="Fw6-jV-wJw" secondAttribute="leading" constant="8" id="gG6-zC-cIx"/>
                                 <constraint firstItem="cAN-mV-2qM" firstAttribute="leading" secondItem="Fw6-jV-wJw" secondAttribute="leading" constant="8" id="gcP-ze-Z53"/>
