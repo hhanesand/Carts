@@ -8,16 +8,17 @@
 
 @class GLListObject;
 @class RACSubject;
+@class JVFloatLabeledTextField;
 
 /**
  *  The view that appears when the user has scanned an item, allows editing of fields
  */
 @interface GLItemConfirmationView : UIView <UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextField *name;
-@property (weak, nonatomic) IBOutlet UITextField *brand;
-@property (weak, nonatomic) IBOutlet UITextField *category;
-@property (weak, nonatomic) IBOutlet UITextField *manufacturer;
+@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *name;
+@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *brand;
+@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *category;
+@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *manufacturer;
 
 @property (weak, nonatomic) IBOutlet UIButton *cancel;
 @property (weak, nonatomic) IBOutlet UIButton *confirm;

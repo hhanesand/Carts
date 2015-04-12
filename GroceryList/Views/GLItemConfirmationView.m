@@ -5,6 +5,7 @@
 //  Created by Hakon Hanesand on 2/24/15.
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import <JVFloatLabeledTextField/JVFloatLabeledTextField.h>
 
 #import "GLItemConfirmationView.h"
 #import "GLBarcodeObject.h"
@@ -28,28 +29,27 @@
     return self;
 }
 
+- (void)awakeFromNib {
+    NSLog(@"the lord has awakened");
+}
+
 - (void)bindWithListObject:(GLListObject *)listObject {
-    self.name.text = [listObject getName];
-    self.brand.text = [listObject getBrand];
-    self.category.text = [listObject getCategory];
-    self.manufacturer.text = [listObject getManufacturer];
-    
-    [[[self.name.rac_textSignal distinctUntilChanged] skip:1] subscribeNext:^(NSString *value) {
+    [[self.name.rac_textSignal distinctUntilChanged] subscribeNext:^(NSString *value) {
         [listObject addUserModification:value forKey:@"name"];
         NSLog(@"List item's modification dict %@", listObject.userModifications);
     }];
     
-    [[[self.brand.rac_textSignal distinctUntilChanged] skip:1] subscribeNext:^(NSString *value) {
+    [[self.brand.rac_textSignal distinctUntilChanged] subscribeNext:^(NSString *value) {
         [listObject addUserModification:value forKey:@"brand"];
         NSLog(@"List item's modification dict %@", listObject.userModifications);
     }];
     
-    [[[self.category.rac_textSignal distinctUntilChanged] skip:1] subscribeNext:^(NSString *value) {
+    [[self.category.rac_textSignal distinctUntilChanged] subscribeNext:^(NSString *value) {
         [listObject addUserModification:value forKey:@"category"];
         NSLog(@"List item's modification dict %@", listObject.userModifications);
     }];
     
-    [[[self.manufacturer.rac_textSignal distinctUntilChanged] skip:1] subscribeNext:^(NSString *value) {
+    [[self.manufacturer.rac_textSignal distinctUntilChanged] subscribeNext:^(NSString *value) {
         [listObject addUserModification:value forKey:@"manufacturer"];
         NSLog(@"List item's modification dict %@", listObject.userModifications);
     }];
