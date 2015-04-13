@@ -43,8 +43,8 @@
 		F25286D11ACFA26300435261 /* GLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286CD1ACFA26300435261 /* GLTableViewController.m */; };
 		F25286D41ACFA26D00435261 /* GLScanningSession.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286D31ACFA26D00435261 /* GLScanningSession.m */; };
 		F25286DF1ACFA27D00435261 /* GLCameraLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286D61ACFA27D00435261 /* GLCameraLayer.m */; };
-		F25286E01ACFA27D00435261 /* GLItemConfirmationView.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286D81ACFA27D00435261 /* GLItemConfirmationView.m */; };
-		F25286E11ACFA27D00435261 /* GLItemConfirmationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F25286D91ACFA27D00435261 /* GLItemConfirmationView.xib */; };
+		F25286E01ACFA27D00435261 /* GLManualEntryView.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286D81ACFA27D00435261 /* GLManualEntryView.m */; };
+		F25286E11ACFA27D00435261 /* GLManualEntryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F25286D91ACFA27D00435261 /* GLManualEntryView.xib */; };
 		F25286E21ACFA27D00435261 /* GLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286DB1ACFA27D00435261 /* GLTableViewCell.m */; };
 		F25286E31ACFA27D00435261 /* GLTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F25286DC1ACFA27D00435261 /* GLTableViewCell.xib */; };
 		F25286E41ACFA27D00435261 /* GLVideoPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286DE1ACFA27D00435261 /* GLVideoPreviewView.m */; };
@@ -156,9 +156,9 @@
 		F25286D31ACFA26D00435261 /* GLScanningSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLScanningSession.m; path = Controllers/Managers/GLScanningSession.m; sourceTree = "<group>"; };
 		F25286D51ACFA27D00435261 /* GLCameraLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLCameraLayer.h; path = Views/GLCameraLayer.h; sourceTree = "<group>"; };
 		F25286D61ACFA27D00435261 /* GLCameraLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLCameraLayer.m; path = Views/GLCameraLayer.m; sourceTree = "<group>"; };
-		F25286D71ACFA27D00435261 /* GLItemConfirmationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLItemConfirmationView.h; path = Views/GLItemConfirmationView.h; sourceTree = "<group>"; };
-		F25286D81ACFA27D00435261 /* GLItemConfirmationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLItemConfirmationView.m; path = Views/GLItemConfirmationView.m; sourceTree = "<group>"; };
-		F25286D91ACFA27D00435261 /* GLItemConfirmationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GLItemConfirmationView.xib; path = Views/GLItemConfirmationView.xib; sourceTree = "<group>"; };
+		F25286D71ACFA27D00435261 /* GLManualEntryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLManualEntryView.h; path = Views/GLManualEntryView.h; sourceTree = "<group>"; };
+		F25286D81ACFA27D00435261 /* GLManualEntryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLManualEntryView.m; path = Views/GLManualEntryView.m; sourceTree = "<group>"; };
+		F25286D91ACFA27D00435261 /* GLManualEntryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GLManualEntryView.xib; path = Views/GLManualEntryView.xib; sourceTree = "<group>"; };
 		F25286DA1ACFA27D00435261 /* GLTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLTableViewCell.h; path = Views/GLTableViewCell.h; sourceTree = "<group>"; };
 		F25286DB1ACFA27D00435261 /* GLTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLTableViewCell.m; path = Views/GLTableViewCell.m; sourceTree = "<group>"; };
 		F25286DC1ACFA27D00435261 /* GLTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GLTableViewCell.xib; path = Views/GLTableViewCell.xib; sourceTree = "<group>"; };
@@ -451,9 +451,9 @@
 			children = (
 				F25286D51ACFA27D00435261 /* GLCameraLayer.h */,
 				F25286D61ACFA27D00435261 /* GLCameraLayer.m */,
-				F25286D71ACFA27D00435261 /* GLItemConfirmationView.h */,
-				F25286D81ACFA27D00435261 /* GLItemConfirmationView.m */,
-				F25286D91ACFA27D00435261 /* GLItemConfirmationView.xib */,
+				F25286D71ACFA27D00435261 /* GLManualEntryView.h */,
+				F25286D81ACFA27D00435261 /* GLManualEntryView.m */,
+				F25286D91ACFA27D00435261 /* GLManualEntryView.xib */,
 				F25286DA1ACFA27D00435261 /* GLTableViewCell.h */,
 				F25286DB1ACFA27D00435261 /* GLTableViewCell.m */,
 				F25286DC1ACFA27D00435261 /* GLTableViewCell.xib */,
@@ -650,7 +650,7 @@
 				F25286E31ACFA27D00435261 /* GLTableViewCell.xib in Resources */,
 				F2F948C51A8AD7B5002C5177 /* index.html in Resources */,
 				F2F948C41A8AD7B5002C5177 /* global.json in Resources */,
-				F25286E11ACFA27D00435261 /* GLItemConfirmationView.xib in Resources */,
+				F25286E11ACFA27D00435261 /* GLManualEntryView.xib in Resources */,
 				F2E544EE1A6CB55100CB52E5 /* LaunchScreen.xib in Resources */,
 				F2F948C31A8AD7B5002C5177 /* main.js in Resources */,
 			);
@@ -724,7 +724,7 @@
 				F25286D41ACFA26D00435261 /* GLScanningSession.m in Sources */,
 				F25286B91ACFA23B00435261 /* POPAnimation+GLAnimation.m in Sources */,
 				F25286B61ACFA23B00435261 /* GLAnimation.m in Sources */,
-				F25286E01ACFA27D00435261 /* GLItemConfirmationView.m in Sources */,
+				F25286E01ACFA27D00435261 /* GLManualEntryView.m in Sources */,
 				F25286CE1ACFA26300435261 /* GLBaseViewController.m in Sources */,
 				F2DC2FC71AD6F53B00E46D3C /* UIImage+GLImage.m in Sources */,
 				F25286B81ACFA23B00435261 /* GLPullToCloseTransitionManager.m in Sources */,

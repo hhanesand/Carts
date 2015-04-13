@@ -12,7 +12,7 @@ function makeObject(class_name) {
 }
 
 //called when a user scans a barcode that is missing from both factual and parse
-Parse.Cloud.define("missingBarcode", function(request, response) {
+Parse.Cloud.define("trackMissingBarcode", function(request, response) {
     ensureUnique("missing", "barcode", request.params.barcode).then(
         function (object) {
             object.increment("count", 1);

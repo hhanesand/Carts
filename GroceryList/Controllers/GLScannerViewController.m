@@ -9,7 +9,7 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 
 #import "GLScannerViewController.h"
-#import "GLItemConfirmationView.h"
+#import "GLManualEntryView.h"
 #import "GLScanningSession.h"
 #import "GLBarcode.h"
 #import "GLCameraLayer.h"
@@ -35,7 +35,7 @@ typedef RACSignal* (^RACCommandBlock)(id);
 @property (nonatomic) GLScanningSession *barcodeScanner;
 
 @property (strong, nonatomic) IBOutlet GLVideoPreviewView *videoPreviewView;
-@property (nonatomic) GLItemConfirmationView *itemConfirmationView;
+@property (nonatomic) GLManualEntryView *itemConfirmationView;
 @property (nonatomic) GLCameraLayer *targetingReticule;
 
 @property (nonatomic) GLListObject *currentListItem;
@@ -340,9 +340,9 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     return _transitionManager;
 }
 
-- (GLItemConfirmationView *)confirmationView {
+- (GLManualEntryView *)confirmationView {
     if (!_itemConfirmationView) {
-        _itemConfirmationView = [[GLItemConfirmationView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) * 0.5)];
+        _itemConfirmationView = [[GLManualEntryView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) * 0.5)];
         _itemConfirmationView.cancel.rac_command = [[RACCommand alloc] initWithSignalBlock:self.cancelCommand];
         _itemConfirmationView.confirm.rac_command = [[RACCommand alloc] initWithSignalBlock:self.confirmCommand];
     }

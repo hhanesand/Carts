@@ -9,7 +9,7 @@
 #import "GLBaseViewController.h"
 #import "GLDismissableViewHandler.h"
 
-@class GLItemConfirmationView;
+@class GLManualEntryView;
 @class RACSubject;
 
 /**
