@@ -6,22 +6,15 @@
 
 @import Foundation;
 
-/**
- *  Manages analytics for the app
- */
+@class GLBarcode;
+
 @interface GLParseAnalytics : NSObject
 
-@property (nonatomic, readonly) NSString *missingBarcodeFunctionName;
-
-+ (GLParseAnalytics *)shared;
-
-- (void)testCloudFunction;
-
 /**
- *  Called when the user scans a barcode that is not in Factual or Parse
+ *  Saves the barcodes that are missing from both Parse and Factual in Parse
  *
  *  @param barcode The barcode that was missing
  */
-- (void)trackMissingBarcode:(NSString *)barcode;
++  (void)trackMissingBarcode:(GLBarcode *)barcode;
 
 @end

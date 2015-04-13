@@ -10,62 +10,39 @@
 #import "GLVideoPreviewView.h"
 
 #import "POPAnimation+GLAnimation.h"
-#import "UIView+GLView.h"
 
 @interface GLVideoPreviewView ()
-@property (nonatomic) UIImageView *imageView;
-@property (nonatomic) UIView *previewView;
+@property (weak, nonatomic) IBOutlet UIView *previewView;
+@property (weak, nonatomic) IBOutlet UIImageView *pausedImageView;
 @end
 
 @implementation GLVideoPreviewView
 
-- (instancetype)initWithPreviewLayer:(AVCaptureVideoPreviewLayer *)previewLayer {
-    if (self = [super init]) {
-        self.imageView = [UIImageView new];
-        self.previewLayer = previewLayer;
-    }
-    
-    return self;
-}
-
-- (void)didMoveToSuperview {
-    [self addSubview:self.previewView];
-}
-
 - (void)resume {
-    [self insertSubview:self.previewView belowSubview:self.imageView];
+//    self.pausedImageView.alpha = 1;
+//    
+//    POPBasicAnimation *alpha = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
+//    alpha.toValue = @(0);
+//    alpha.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+//    alpha.duration = 0.2;
     
-    POPBasicAnimation *alpha = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
-    alpha.fromValue = @(1);
-    alpha.toValue = @(0);
-    alpha.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    alpha.duration = 0.5;
-    
-    [self.imageView pop_addAnimation:alpha forKey:@"fade"];
-    
-    [[alpha completionSignal] subscribeCompleted:^{
-        [self.imageView removeFromSuperview];
-    }];
+//    [self.pausedImageView pop_addAnimation:alpha forKey:@"fade"];
 }
 
-- (void)pause {
-    self.imageView = [[UIImageView alloc] initWithImage:[self.previewView screenshotInGraphicsContext]];
-    self.imageView.frame = self.bounds;
-    [self insertSubview:self.imageView aboveSubview:self.previewView];
+- (void)pauseWithImage:(UIImage *)image {
+//    NSLog(@"Pausing image");
+//    
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        self.pausedImageView.alpha = 1;
+//        self.pausedImageView.image = [image copy];
+//        [self.pausedImageView setNeedsDisplay];
+//    });
 }
 
-- (void)setFrame:(CGRect)frame {
-    self.previewLayer.frame = frame;
-    [super setFrame:frame];
-}
-
-- (UIView *)previewView {
-    if (!_previewView) {
-        _previewView = [[UIView alloc] initWithFrame:self.bounds];
-        [_previewView.layer addSublayer:self.previewLayer];
-    }
-    
-    return _previewView;
+- (void)setCapturePreviewLayer:(AVCaptureVideoPreviewLayer *)capturePreviewLayer {
+    _capturePreviewLayer = capturePreviewLayer;
+    capturePreviewLayer.frame = self.bounds;
+    [self.previewView.layer addSublayer:capturePreviewLayer];
 }
 
 @end

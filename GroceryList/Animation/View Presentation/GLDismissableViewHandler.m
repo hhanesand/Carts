@@ -11,6 +11,7 @@
 
 #import "POPSpringAnimation+GLAdditions.h"
 #import "POPAnimation+GLAnimation.h"
+#import "SVProgressHUD.h"
 
 @interface GLDismissableViewHandler ()
 @property (nonatomic, weak) UIView *dimissableView;
@@ -83,12 +84,13 @@
     
     POPSpringAnimation *down = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
     down.toValue = @(self.initialPosition + CGRectGetHeight(self.dimissableView.frame) / 2);
-    down.springBounciness = 0;
+    down.springBounciness = (abs(velocity) - 1000) * 15.0f / 6000.0f;
     down.springSpeed = 20;
     down.velocity = @(velocity);
     down.name = @"DismissInteractiveView";
     
     [self.dimissableView pop_addAnimation:down forKey:@"dismiss_interactive_view"];
+    [SVProgressHUD dismiss];
     
     if ([self.delegate respondsToSelector:@selector(didPresentViewAfterUserInteraction)]) {
         [[down completionSignal] subscribeCompleted:^{

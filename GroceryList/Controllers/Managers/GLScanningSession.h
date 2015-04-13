@@ -15,7 +15,7 @@
 /**
  *  Stores a scanning session that encapsulates all AVFoundation objects
  */
-@interface GLScanningSession : NSObject <AVCaptureMetadataOutputObjectsDelegate>
+@interface GLScanningSession : NSObject <AVCaptureMetadataOutputObjectsDelegate, AVCaptureVideoDataOutputSampleBufferDelegate>
 
 /**
  *  Sets up a new scanning session
@@ -30,7 +30,12 @@
 @property (nonatomic) id<GLBarcodeScannerDelegate> delegate;
 
 /**
- *  A view that manages the an AVCaptureVideoPreviewLayer displaying the camera
+ *  The layer that displays the camera on screen
+ */
+@property (nonatomic) AVCaptureVideoPreviewLayer *previewLayer;
+
+/**
+ *  Set this property to have the session manage the preview view
  */
 @property (nonatomic) GLVideoPreviewView *previewView;
 
@@ -45,11 +50,11 @@
 - (void)pause;
 
 /**
- *  Resumes the video feed quickly
+ *  Asynchronously resumes the video feed
  *
  *  @param delegate The delegate to send barcode events to
  */
-- (void)resumeWithDelegate:(id<GLBarcodeScannerDelegate>)delegate;
+- (void)resume;
 
 /**
  *  Set up the session for barcode scanning
@@ -57,5 +62,7 @@
  *  @param delegate The delegate to send barcode events to
  */
 - (void)startScanningWithDelegate:(id<GLBarcodeScannerDelegate>)delegate;
+
+- (void)stop;
 
 @end

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14A329r" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GLScannerViewController">
+            <connections>
+                <outlet property="videoPreviewView" destination="iN0-l3-epB" id="VA6-s9-glg"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GLVideoPreviewView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CO1-jh-RMd" userLabel="Preview View">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fFF-KR-IL3" userLabel="Paused Camera Image View">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" red="1" green="0.098099797220000007" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p8p-Zj-Ybh" userLabel="Finish Scanning Button">
+                    <rect key="frame" x="283" y="559" width="33" height="33"/>
+                    <state key="normal" image="close">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="fFF-KR-IL3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="2ic-Sa-HHG"/>
+                <constraint firstAttribute="trailing" secondItem="CO1-jh-RMd" secondAttribute="trailing" id="53S-xR-NFm"/>
+                <constraint firstItem="CO1-jh-RMd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Fnt-sK-aXd"/>
+                <constraint firstAttribute="bottom" secondItem="fFF-KR-IL3" secondAttribute="bottom" id="HMN-qs-C6G"/>
+                <constraint firstItem="CO1-jh-RMd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="IDL-Nj-SPK"/>
+                <constraint firstAttribute="centerX" secondItem="p8p-Zj-Ybh" secondAttribute="centerX" constant="0.5" id="Nba-10-VWi"/>
+                <constraint firstItem="fFF-KR-IL3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="QST-je-7vM"/>
+                <constraint firstAttribute="trailing" secondItem="fFF-KR-IL3" secondAttribute="trailing" id="RpB-LF-obv"/>
+                <constraint firstAttribute="bottom" secondItem="p8p-Zj-Ybh" secondAttribute="bottom" constant="8" id="lu8-6y-Hyf"/>
+                <constraint firstAttribute="bottom" secondItem="CO1-jh-RMd" secondAttribute="bottom" id="vRS-Wj-oam"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <connections>
+                <outlet property="doneScanningItemsButton" destination="p8p-Zj-Ybh" id="jN7-Xf-lkq"/>
+                <outlet property="pausedImageView" destination="fFF-KR-IL3" id="crY-lx-1NQ"/>
+                <outlet property="previewView" destination="CO1-jh-RMd" id="A7N-U1-uAs"/>
+            </connections>
+            <point key="canvasLocation" x="853" y="549"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="close" width="33" height="33"/>
+    </resources>
+</document>

@@ -1,5 +1,5 @@
 //
-//  GLItemConfirmationView.h
+//  GLManualEntryView.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 2/24/15.
@@ -8,16 +8,14 @@
 
 @class GLListObject;
 @class RACSubject;
+@class JVFloatLabeledTextField;
 
 /**
  *  The view that appears when the user has scanned an item, allows editing of fields
  */
-@interface GLItemConfirmationView : UIView <UITextFieldDelegate>
+@interface GLManualEntryView : UIView <UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextField *name;
-@property (weak, nonatomic) IBOutlet UITextField *brand;
-@property (weak, nonatomic) IBOutlet UITextField *category;
-@property (weak, nonatomic) IBOutlet UITextField *manufacturer;
+@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *name;
 
 @property (weak, nonatomic) IBOutlet UIButton *cancel;
 @property (weak, nonatomic) IBOutlet UIButton *confirm;
