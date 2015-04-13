@@ -41,7 +41,7 @@
     return [[[[[[productQuery getFirstObjectWithRACSignal] catch:^RACSignal *(NSError *error) {
         return [[self fetchProductInformationFromFactualForBarcode:barcode] doError:^(NSError *error) {
             NSLog(@"Error %@", error);
-            [[GLParseAnalytics shared] trackMissingBarcode:barcode.barcode];
+            [GLParseAnalytics trackMissingBarcode:barcode];
         }];
     }] map:^GLListObject *(GLBarcodeObject *value) {
         return [GLListObject objectWithCurrentUserAndBarcodeItem:value];

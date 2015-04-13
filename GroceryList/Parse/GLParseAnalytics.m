@@ -7,42 +7,18 @@
 #import <Parse/Parse.h>
 
 #import "GLParseAnalytics.h"
+#import "GLBarcode.h"
+
+static NSString *const kGLMissingBarcodeCloudFunction = @"trackMissingBarcode";
+static NSString *const kGLBarcodeCloudFunctionParameter = @"barcode";
 
 @implementation GLParseAnalytics
 
-+ (GLParseAnalytics *)shared {
-    static GLParseAnalytics *shared = nil;
-    @synchronized(self) {
-        if (shared == nil)
-            shared = [[self alloc] init];
-    }
-    
-    return shared;
++ (void)trackMissingBarcode:(GLBarcode *)barcode {
+    [PFCloud callFunctionInBackground:kGLMissingBarcodeCloudFunction withParameters:@{kGLBarcodeCloudFunctionParameter : barcode.barcode}];
 }
 
-- (instancetype)init {
-    if (self = [super init]) {
-        _missingBarcodeFunctionName = @"trackMissingBarcode";
-    }
-    
-    return self;
-}
-
-- (void)trackMissingBarcode:(NSString *)barcode {
-    PFObject *missingObject = [PFObject objectWithClassName:@"missing"];
-    [missingObject setObject:[PFUser currentUser] forKey:@"user"];
-    [missingObject setObject:barcode forKey:@"barcode"];
-    
-    [missingObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
-            NSLog(@"Saved missing barcode");
-        } else {
-            NSLog(@"Error saving missing barcode %@", error);
-        }
-    }];
-}
-
-- (void)testCloudFunction {
++ (void)testCloudFunction {
     [PFCloud callFunctionInBackground:@"upcLookup" withParameters:@{@"barcode" : @"0012000001086"} block:^(id object, NSError *error) {
         NSLog(@"Result %@", object);
     }];
