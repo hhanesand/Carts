@@ -1,5 +1,5 @@
 //
-//  GLItemConfirmationView.m
+//  GLManualEntryView.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 2/24/15.

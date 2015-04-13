@@ -29,13 +29,13 @@ typedef RACSignal* (^RACCommandBlock)(id);
 
 @property (nonatomic) GLPullToCloseTransitionManager *transitionManager;
 @property (nonatomic) GLPullToCloseTransitionPresentationController *presentationController;
-@property (nonatomic) GLDismissableViewHandler *confirmationViewDismissHandler;
+@property (nonatomic) GLDismissableViewHandler *manualEntryViewDismissHandler;
 
 @property (nonatomic) GLBarcodeFetchManager *barcodeManager;
 @property (nonatomic) GLScanningSession *barcodeScanner;
 
 @property (strong, nonatomic) IBOutlet GLVideoPreviewView *videoPreviewView;
-@property (nonatomic) GLManualEntryView *itemConfirmationView;
+@property (nonatomic) GLManualEntryView *manualEntryView;
 @property (nonatomic) GLCameraLayer *targetingReticule;
 
 @property (nonatomic) GLListObject *currentListItem;
@@ -69,7 +69,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
         [self.barcodeScanner resume];
         
         return [[self dismissManualEntryView] doCompleted:^{
-            [self.confirmationView removeFromSuperview];
+            [self.manualEntryView removeFromSuperview];
         }];
     };
     
@@ -78,7 +78,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
         [self.barcodeScanner resume];
         
         return [[self dismissManualEntryView] doCompleted:^{
-            [self.confirmationView removeFromSuperview];
+            [self.manualEntryView removeFromSuperview];
         }];
     };
     
@@ -194,7 +194,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     self.blurView.layer.contentsScale = 1;
     self.blurView.layer.opacity = 1;
     self.targetingReticule.opacity = 0;
-    [self.confirmationView removeFromSuperview];
+    [self.manualEntryView removeFromSuperview];
     
     [self.animationStack.stack removeAllObjects];
 }
@@ -244,32 +244,32 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 }
 
 - (void)displayManualEntryView:(GLListObject *)listObject {
-    [self.confirmationView bindWithListObject:listObject];
-    [self.view addSubview:self.confirmationView];
+    [self.manualEntryView bindWithListObject:listObject];
+    [self.view addSubview:self.manualEntryView];
     
-    POPSpringAnimation *presentConfirmationView = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
-    presentConfirmationView.fromValue = @(self.confirmationView.center.y);
-    presentConfirmationView.toValue = @(CGRectGetHeight(self.view.frame) - CGRectGetHeight(self.confirmationView.frame) * 0.5);
-    presentConfirmationView.springBounciness = 0;
-    presentConfirmationView.springSpeed = 20;
-    presentConfirmationView.name = @"presentManualEntryView";
+    POPSpringAnimation *presentManualEntryView = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
+    presentManualEntryView.fromValue = @(self.manualEntryView.center.y);
+    presentManualEntryView.toValue = @(CGRectGetHeight(self.view.frame) - CGRectGetHeight(self.manualEntryView.frame) * 0.5);
+    presentManualEntryView.springBounciness = 0;
+    presentManualEntryView.springSpeed = 20;
+    presentManualEntryView.name = @"presentManualEntryView";
     
-    [self.confirmationView pop_addAnimation:presentConfirmationView forKey:@"presentManualEntryView"];
+    [self.manualEntryView pop_addAnimation:presentManualEntryView forKey:@"presentManualEntryView"];
     
-    [self setupInteractiveDismissalOfConfirmationView];
+    [self setupInteractiveDismissalOfManualEntryView];
 }
 
-- (void)setupInteractiveDismissalOfConfirmationView {
+- (void)setupInteractiveDismissalOfManualEntryView {
     UIPanGestureRecognizer *swipeDownToDismiss = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePullDownToDismissGestureRecognizer:)];
     [self.view addGestureRecognizer:swipeDownToDismiss];
-    swipeDownToDismiss.delegate = self.confirmationViewDismissHandler;
+    swipeDownToDismiss.delegate = self.manualEntryViewDismissHandler;
     
-    self.confirmationViewDismissHandler.delegate = self;
-    self.confirmationViewDismissHandler.enabled = YES;
+    self.manualEntryViewDismissHandler.delegate = self;
+    self.manualEntryViewDismissHandler.enabled = YES;
 }
 
 - (void)handlePullDownToDismissGestureRecognizer:(UIPanGestureRecognizer *)pan {
-    [self.confirmationViewDismissHandler handlePan:pan];
+    [self.manualEntryViewDismissHandler handlePan:pan];
 }
 
 - (void)willDismissViewAfterUserInteraction {
@@ -278,14 +278,14 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 
 - (RACSignal *)dismissManualEntryView {
     POPSpringAnimation *dismiss = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
-    dismiss.toValue = @(CGRectGetHeight(self.view.frame) + CGRectGetHeight(self.confirmationView.frame) / 2);
+    dismiss.toValue = @(CGRectGetHeight(self.view.frame) + CGRectGetHeight(self.manualEntryView.frame) / 2);
     dismiss.springSpeed = 20;
     dismiss.springBounciness = 0;
-    dismiss.name = @"dismissConfirmationView";
+    dismiss.name = @"dismissManualEntryView";
     
-    [self.confirmationView pop_addAnimation:dismiss forKey:@"manual_confirmation_view_dismiss"];
+    [self.manualEntryView pop_addAnimation:dismiss forKey:@"dismissManualEntryView"];
     
-    self.confirmationViewDismissHandler.enabled = NO;
+    self.manualEntryViewDismissHandler.enabled = NO;
     
     return [dismiss completionSignal];
 }
@@ -297,7 +297,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
         //see http://stackoverflow.com/a/19236013/4080860
         
         CGRect keyboardFrame = [notif.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-        CGRect activeFieldFrame = [self.view convertRect:self.confirmationView.activeField.frame fromView:self.confirmationView];
+        CGRect activeFieldFrame = [self.view convertRect:self.manualEntryView.activeField.frame fromView:self.manualEntryView];
         
         if (CGRectGetMinY(keyboardFrame) - CGRectGetMaxY(activeFieldFrame) < 8) {
             [UIView beginAnimations:nil context:NULL];
@@ -306,7 +306,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
             [UIView setAnimationBeginsFromCurrentState:YES];
             
             CGFloat intersectionDistance =  abs(CGRectGetMinY(keyboardFrame) - CGRectGetMaxY(activeFieldFrame)) + 8;
-            self.confirmationView.frame = CGRectOffset(self.confirmationView.frame, 0, -intersectionDistance);
+            self.manualEntryView.frame = CGRectOffset(self.manualEntryView.frame, 0, -intersectionDistance);
             
             [UIView commitAnimations];
         }
@@ -315,7 +315,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:UIKeyboardWillHideNotification object:nil] takeUntil:self.rac_willDeallocSignal] subscribeNext:^(NSNotification *notif) {
         //see http://stackoverflow.com/a/19236013/4080860
         
-        CGFloat offset = CGRectGetHeight(self.view.frame) - CGRectGetMaxY(self.confirmationView.frame);
+        CGFloat offset = CGRectGetHeight(self.view.frame) - CGRectGetMaxY(self.manualEntryView.frame);
         
         if (roundf(offset) != 0) {
             [UIView beginAnimations:nil context:NULL];
@@ -323,7 +323,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
             [UIView setAnimationCurve:[notif.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue]];
             [UIView setAnimationBeginsFromCurrentState:YES];
             
-            self.confirmationView.frame = CGRectOffset(self.confirmationView.frame, 0, roundf(offset));
+            self.manualEntryView.frame = CGRectOffset(self.manualEntryView.frame, 0, roundf(offset));
             
             [UIView commitAnimations];
         }
@@ -340,14 +340,14 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     return _transitionManager;
 }
 
-- (GLManualEntryView *)confirmationView {
-    if (!_itemConfirmationView) {
-        _itemConfirmationView = [[GLManualEntryView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) * 0.5)];
-        _itemConfirmationView.cancel.rac_command = [[RACCommand alloc] initWithSignalBlock:self.cancelCommand];
-        _itemConfirmationView.confirm.rac_command = [[RACCommand alloc] initWithSignalBlock:self.confirmCommand];
+- (GLManualEntryView *)manualEntryView {
+    if (!_manualEntryView) {
+        _manualEntryView = [[GLManualEntryView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) * 0.5)];
+        _manualEntryView.cancel.rac_command = [[RACCommand alloc] initWithSignalBlock:self.cancelCommand];
+        _manualEntryView.confirm.rac_command = [[RACCommand alloc] initWithSignalBlock:self.confirmCommand];
     }
     
-    return _itemConfirmationView;
+    return _manualEntryView;
 }
 
 - (GLVideoPreviewView *)videoPreviewView {
@@ -360,13 +360,13 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     return _videoPreviewView;
 }
 
-- (GLDismissableViewHandler *)confirmationViewDismissHandler
+- (GLDismissableViewHandler *)manualEntryViewDismissHandler
 {
-    if (!_confirmationViewDismissHandler) {
-        _confirmationViewDismissHandler = [[GLDismissableViewHandler alloc] initWithView:self.itemConfirmationView];
+    if (!_manualEntryViewDismissHandler) {
+        _manualEntryViewDismissHandler = [[GLDismissableViewHandler alloc] initWithView:self.manualEntryView];
     }
     
-    return _confirmationViewDismissHandler;
+    return _manualEntryViewDismissHandler;
 }
 
 
