@@ -54,6 +54,9 @@
 		F28586BA1A744A63003B91E1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586B91A744A63003B91E1 /* Social.framework */; };
 		F28586BC1A744A6B003B91E1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586BB1A744A6B003B91E1 /* Accounts.framework */; };
 		F28586BE1A744A75003B91E1 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586BD1A744A75003B91E1 /* AdSupport.framework */; };
+		F28C2D9E1ADC6B2D00A74641 /* GLTransitionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F28C2D9D1ADC6B2D00A74641 /* GLTransitionDelegate.m */; };
+		F28C2DA31ADC717900A74641 /* GLKeyboardResponderAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = F28C2DA21ADC717900A74641 /* GLKeyboardResponderAnimator.m */; };
+		F28C2DA61ADC9C3F00A74641 /* GLProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F28C2DA51ADC9C3F00A74641 /* GLProgressHUD.m */; };
 		F296DA141A709862001E9D29 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F296DA131A709862001E9D29 /* libstdc++.6.dylib */; };
 		F2AC65FF1AD1DE3D00C0A09F /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F2AC65FE1AD1DE3D00C0A09F /* SVProgressHUD.bundle */; };
 		F2B4D0D61A6DF52200A98C7A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0D51A6DF52200A98C7A /* AVFoundation.framework */; };
@@ -139,10 +142,8 @@
 		F25286B51ACFA23B00435261 /* UIColor+GLColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+GLColor.m"; path = "Animation/UIColor+GLColor.m"; sourceTree = "<group>"; };
 		F25286BC1ACFA24F00435261 /* GLBarcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLBarcode.h; path = Model/GLBarcode.h; sourceTree = "<group>"; };
 		F25286BD1ACFA24F00435261 /* GLBarcode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLBarcode.m; path = Model/GLBarcode.m; sourceTree = "<group>"; };
-		F25286BE1ACFA24F00435261 /* GLBarcodeItemDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLBarcodeItemDelegate.h; path = Model/GLBarcodeItemDelegate.h; sourceTree = "<group>"; };
 		F25286BF1ACFA24F00435261 /* GLBarcodeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLBarcodeObject.h; path = Model/GLBarcodeObject.h; sourceTree = "<group>"; };
 		F25286C01ACFA24F00435261 /* GLBarcodeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLBarcodeObject.m; path = Model/GLBarcodeObject.m; sourceTree = "<group>"; };
-		F25286C11ACFA24F00435261 /* GLBarcodeScannerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLBarcodeScannerDelegate.h; path = Model/GLBarcodeScannerDelegate.h; sourceTree = "<group>"; };
 		F25286C21ACFA24F00435261 /* GLListObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLListObject.h; path = Model/GLListObject.h; sourceTree = "<group>"; };
 		F25286C31ACFA24F00435261 /* GLListObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLListObject.m; path = Model/GLListObject.m; sourceTree = "<group>"; };
 		F25286C71ACFA26300435261 /* GLBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLBaseViewController.h; path = Controllers/GLBaseViewController.h; sourceTree = "<group>"; };
@@ -173,6 +174,13 @@
 		F28586B91A744A63003B91E1 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		F28586BB1A744A6B003B91E1 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		F28586BD1A744A75003B91E1 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		F28C2D9C1ADC6B2D00A74641 /* GLTransitionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTransitionDelegate.h; sourceTree = "<group>"; };
+		F28C2D9D1ADC6B2D00A74641 /* GLTransitionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTransitionDelegate.m; sourceTree = "<group>"; };
+		F28C2D9F1ADC6D2300A74641 /* GLReversibleTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLReversibleTransition.h; sourceTree = "<group>"; };
+		F28C2DA11ADC717900A74641 /* GLKeyboardResponderAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLKeyboardResponderAnimator.h; sourceTree = "<group>"; };
+		F28C2DA21ADC717900A74641 /* GLKeyboardResponderAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLKeyboardResponderAnimator.m; sourceTree = "<group>"; };
+		F28C2DA41ADC9C3F00A74641 /* GLProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLProgressHUD.h; sourceTree = "<group>"; };
+		F28C2DA51ADC9C3F00A74641 /* GLProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLProgressHUD.m; sourceTree = "<group>"; };
 		F296DA131A709862001E9D29 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		F2AC65FE1AD1DE3D00C0A09F /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SVProgressHUD.bundle; path = Pods/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle; sourceTree = "<group>"; };
 		F2B4D0D51A6DF52200A98C7A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -279,6 +287,17 @@
 				F25286D31ACFA26D00435261 /* GLScanningSession.m */,
 			);
 			name = Managers;
+			sourceTree = "<group>";
+		};
+		F28C2DA01ADC707A00A74641 /* Delegate Objects */ = {
+			isa = PBXGroup;
+			children = (
+				F28C2D9C1ADC6B2D00A74641 /* GLTransitionDelegate.h */,
+				F28C2D9D1ADC6B2D00A74641 /* GLTransitionDelegate.m */,
+				F28C2DA11ADC717900A74641 /* GLKeyboardResponderAnimator.h */,
+				F28C2DA21ADC717900A74641 /* GLKeyboardResponderAnimator.m */,
+			);
+			name = "Delegate Objects";
 			sourceTree = "<group>";
 		};
 		F2A00A591AA8048C004B8988 /* Animation */ = {
@@ -460,6 +479,8 @@
 				F25286DD1ACFA27D00435261 /* GLVideoPreviewView.h */,
 				F25286DE1ACFA27D00435261 /* GLVideoPreviewView.m */,
 				F282F2D21AD9CE5900216FDE /* GLVideoPreviewView.xib */,
+				F28C2DA41ADC9C3F00A74641 /* GLProgressHUD.h */,
+				F28C2DA51ADC9C3F00A74641 /* GLProgressHUD.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -474,6 +495,7 @@
 				F25286CB1ACFA26300435261 /* GLScannerViewController.xib */,
 				F25286CC1ACFA26300435261 /* GLTableViewController.h */,
 				F25286CD1ACFA26300435261 /* GLTableViewController.m */,
+				F28C2DA01ADC707A00A74641 /* Delegate Objects */,
 				F26147FB1ACF1CCA002395BE /* Managers */,
 			);
 			name = Controllers;
@@ -486,6 +508,7 @@
 				F2EC284B1AD3136B00E4DB27 /* GLPullToCloseTransitionPresentationController.m */,
 				F25286AE1ACFA23B00435261 /* GLPullToCloseTransitionManager.h */,
 				F25286AF1ACFA23B00435261 /* GLPullToCloseTransitionManager.m */,
+				F28C2D9F1ADC6D2300A74641 /* GLReversibleTransition.h */,
 			);
 			name = "View Controller Presentation";
 			sourceTree = "<group>";
@@ -514,10 +537,8 @@
 			children = (
 				F25286BC1ACFA24F00435261 /* GLBarcode.h */,
 				F25286BD1ACFA24F00435261 /* GLBarcode.m */,
-				F25286BE1ACFA24F00435261 /* GLBarcodeItemDelegate.h */,
 				F25286BF1ACFA24F00435261 /* GLBarcodeObject.h */,
 				F25286C01ACFA24F00435261 /* GLBarcodeObject.m */,
-				F25286C11ACFA24F00435261 /* GLBarcodeScannerDelegate.h */,
 				F25286C21ACFA24F00435261 /* GLListObject.h */,
 				F25286C31ACFA24F00435261 /* GLListObject.m */,
 			);
@@ -707,12 +728,14 @@
 				F2CD0A8B1AD746330036D0A4 /* GLBingResponseSerializer.m in Sources */,
 				F25286A21ACFA21D00435261 /* GLQueryTableViewController.m in Sources */,
 				F25286E21ACFA27D00435261 /* GLTableViewCell.m in Sources */,
+				F28C2DA31ADC717900A74641 /* GLKeyboardResponderAnimator.m in Sources */,
 				F2DC2FE81AD72C0B00E46D3C /* GLRACSessionManager.m in Sources */,
 				F2DC2FE31AD72A2500E46D3C /* GLFactualSessionManager.m in Sources */,
 				F25286A91ACFA22E00435261 /* GLDismissableViewHandler.m in Sources */,
 				F25286E41ACFA27D00435261 /* GLVideoPreviewView.m in Sources */,
 				F25286A41ACFA21D00435261 /* PFQuery+GLQuery.m in Sources */,
 				F25286ED1ACFA2B300435261 /* main.m in Sources */,
+				F28C2DA61ADC9C3F00A74641 /* GLProgressHUD.m in Sources */,
 				F2CD0A881AD742020036D0A4 /* NSDictionary+GLCustomKVOOperators.m in Sources */,
 				F25286C51ACFA24F00435261 /* GLBarcodeObject.m in Sources */,
 				F25286BB1ACFA23B00435261 /* UIColor+GLColor.m in Sources */,
@@ -721,6 +744,7 @@
 				F25286931ACFA1FD00435261 /* GLFactualRequestSerializer.m in Sources */,
 				F25286DF1ACFA27D00435261 /* GLCameraLayer.m in Sources */,
 				F25286C41ACFA24F00435261 /* GLBarcode.m in Sources */,
+				F28C2D9E1ADC6B2D00A74641 /* GLTransitionDelegate.m in Sources */,
 				F25286D41ACFA26D00435261 /* GLScanningSession.m in Sources */,
 				F25286B91ACFA23B00435261 /* POPAnimation+GLAnimation.m in Sources */,
 				F25286B61ACFA23B00435261 /* GLAnimation.m in Sources */,

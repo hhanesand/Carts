@@ -41,8 +41,14 @@
 
 - (void)setCapturePreviewLayer:(AVCaptureVideoPreviewLayer *)capturePreviewLayer {
     _capturePreviewLayer = capturePreviewLayer;
+    NSLog(@"Bounds %@", NSStringFromCGRect(self.bounds));
     capturePreviewLayer.frame = self.bounds;
     [self.previewView.layer addSublayer:capturePreviewLayer];
+}
+
+- (void)setFrame:(CGRect)frame {
+    [super setFrame:frame];
+    self.capturePreviewLayer.frame = self.bounds;
 }
 
 @end

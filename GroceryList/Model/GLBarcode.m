@@ -21,4 +21,9 @@
     return barcode;
 }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"%@", self.barcode];
+}
+
 @end

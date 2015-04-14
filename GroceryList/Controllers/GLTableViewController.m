@@ -36,10 +36,16 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
         
         self.transitionManager = [[GLPullToCloseTransitionManager alloc] init];
         
-            self.scanner = [[GLScannerViewController alloc] init];
-            self.scanner.view.frame = CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds));
-            self.scanner.delegate = self;
+        self.scanner = [[GLScannerViewController alloc] init];
+        self.scanner.view.frame = CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds));
         
+        [[[self.scanner.listItemSignal deliverOnMainThread] flattenMap:^RACStream *(GLListObject *listObject) {
+            [listObject saveEventually];
+            return [listObject pinWithSignalAndName:@"groceryList"];
+        }] subscribeNext:^(id x) {
+            [self loadObjects];
+        }];
+
         
         self.view.frame = [UIScreen mainScreen].bounds;
         
@@ -131,9 +137,7 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 }
 
 - (void)didRecieveNewListItem:(GLListObject *)listItem {
-    [[[[listItem pinWithSignalAndName:@"groceryList"] doCompleted:^{
-        [self loadObjects];
-    }] concat:[listItem saveWithSignal]] subscribeCompleted:^{}];
+    
 }
 
 @end

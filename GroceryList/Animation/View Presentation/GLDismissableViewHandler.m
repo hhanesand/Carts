@@ -14,18 +14,29 @@
 #import "SVProgressHUD.h"
 
 @interface GLDismissableViewHandler ()
-@property (nonatomic, weak) UIView *dimissableView;
-@property (nonatomic) CGFloat initialPosition;
+@property (nonatomic, weak) UIView *dismissableView;
+
+/**
+ *  The y value of the center of the view when it is in its dismissed state
+ */
+@property (nonatomic) CGFloat dismissedPosition;
+
+/**
+ *  The threshold at which, if the center of the dismissable view is moved past or 
+ *  close enough with sufficient velocity, the view gets animated off the screen
+ */
 @property (nonatomic) CGFloat threshhold;
 @end
 
 @implementation GLDismissableViewHandler
 
-- (instancetype)initWithView:(UIView *)view {
+- (instancetype)initWithView:(UIView *)view finalPosition:(CGFloat)finalPosition {
     if (self = [super init]) {
-        self.dimissableView = view;
-        self.initialPosition = CGRectGetMinY(self.dimissableView.frame);
-        self.enabled = NO;
+        self.dismissableView = view;
+        
+        self.enabled = YES;
+        self.dismissedPosition = finalPosition;
+        self.threshhold = finalPosition + CGRectGetHeight(self.dismissableView.bounds) / 2;
     }
     
     return self;
@@ -46,84 +57,81 @@
 }
 
 - (void)userDidStartInteractionWithGestureRecognizer:(UIPanGestureRecognizer *)pan {
-    if (self.threshhold == 0) {
-        self.threshhold = CGRectGetMinY(self.dimissableView.frame);
-        [self.dimissableView pop_removeAllAnimations];
-    }
+    [self.dismissableView pop_removeAllAnimations];
 }
 
 - (void)userDidPanDismissableViewWithGestureRecognizer:(UIPanGestureRecognizer *)pan {
     CGPoint locationOfFinger = [pan locationInView:pan.view];
     
-    if (locationOfFinger.y >= self.threshhold) {
-        CGRect newFrame = CGRectApplyAffineTransform(self.dimissableView.frame, CGAffineTransformMakeTranslation(0, [pan translationInView:pan.view].y));
-        
-        if (CGRectGetMinY(newFrame) >= self.threshhold) {
-            self.dimissableView.frame = newFrame;
-        }
+    if (locationOfFinger.y >= self.threshhold + CGRectGetHeight(self.dismissableView.bounds) / 2) {
+        self.dismissableView.center = CGPointSetY(self.dismissableView.center, locationOfFinger.y);
     }
-    
-    [pan setTranslation:CGPointZero inView:pan.view];
 }
 
 - (void)userDidEndInteractionWithGestureRecognizer:(UIPanGestureRecognizer *)pan {
-    NSLog(@"Speed %f", [pan velocityInView:pan.view].y);
-    if (CGRectGetMinY(self.dimissableView.frame) - self.threshhold + [pan velocityInView:pan.view].y / 4 <= CGRectGetHeight(self.dimissableView.frame) / 2) {
-        [self presentViewWithVelocity:[pan velocityInView:pan.view].y];
+    CGFloat distancePastThreshold = [pan locationInView:self.dismissableView].y - self.threshhold;
+    CGFloat velocity = [pan velocityInView:self.dismissableView].y;
+    CGFloat velocityFactor = velocity / 100;
+    
+    if (distancePastThreshold + velocityFactor <= CGRectGetHeight(self.dismissableView.frame) / 2) {
+        if ([self.delegate respondsToSelector:@selector(willPresentViewAfterUserInteraction)]) {
+            [self.delegate willPresentViewAfterUserInteraction];
+        }
+        
+        [[self presentViewWithVelocity:velocity] subscribeCompleted:^{
+            if ([self.delegate respondsToSelector:@selector(didPresentViewAfterUserInteraction)]) {
+                [self.delegate didPresentViewAfterUserInteraction];
+            }
+        }];
     } else {
-        [self dismissViewWithVelocity:[pan velocityInView:pan.view].y];
-    }
-}
-
-- (void)dismissViewWithVelocity:(CGFloat)velocity {
-    if ([self.delegate respondsToSelector:@selector(willDismissViewAfterUserInteraction)]) {
-        [self.delegate willDismissViewAfterUserInteraction];
-    }
-    
-    [self.dimissableView pop_removeAllAnimations];
-    
-    POPSpringAnimation *down = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
-    down.toValue = @(self.initialPosition + CGRectGetHeight(self.dimissableView.frame) / 2);
-    down.springBounciness = (abs(velocity) - 1000) * 15.0f / 6000.0f;
-    down.springSpeed = 20;
-    down.velocity = @(velocity);
-    down.name = @"DismissInteractiveView";
-    
-    [self.dimissableView pop_addAnimation:down forKey:@"dismiss_interactive_view"];
-    [SVProgressHUD dismiss];
-    
-    if ([self.delegate respondsToSelector:@selector(didPresentViewAfterUserInteraction)]) {
-        [[down completionSignal] subscribeCompleted:^{
-            [self.delegate didPresentViewAfterUserInteraction];
+        if ([self.delegate respondsToSelector:@selector(willDismissViewAfterUserInteraction)]) {
+            [self.delegate willDismissViewAfterUserInteraction];
+        }
+        
+        [[self dismissViewWithVelocity:velocity] subscribeCompleted:^{
+            if ([self.delegate respondsToSelector:@selector(didDismissViewAfterUserInteraction)]) {
+                [self.delegate didDismissViewAfterUserInteraction];
+            }
         }];
     }
 }
 
-- (void)presentViewWithVelocity:(CGFloat)velocity {
-    if ([self.delegate respondsToSelector:@selector(willPresentViewAfterUserInteraction)]) {
-        [self.delegate willPresentViewAfterUserInteraction];
-    }
+- (RACSignal *)dismissViewWithVelocity:(CGFloat)velocity {
+    POPSpringAnimation *down = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
+    down.toValue = @(self.dismissedPosition);
+    down.springBounciness = GLSpringBounceForVelocity(velocity);
+    down.springSpeed = 20;
+    down.velocity = @(velocity);
+    down.name = @"DismissInteractiveView";
     
-    [self.dimissableView pop_removeAllAnimations];
+    [self.dismissableView pop_addAnimation:down forKey:@"dismiss_interactive_view"];
     
+    return [down completionSignal];
+}
+
+- (RACSignal *)presentViewWithVelocity:(CGFloat)velocity {
     POPSpringAnimation *up = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
-    up.toValue = @(self.threshhold + CGRectGetHeight(self.dimissableView.frame) / 2);
+    up.toValue = @(self.threshhold);
     up.springSpeed = 20;
     up.springBounciness = 10;
     up.velocity = @(velocity);
     up.name = @"PresentInteractiveView";
     
-    [self.dimissableView pop_addAnimation:up forKey:@"present_interactive_view"];
+    [self.dismissableView pop_addAnimation:up forKey:@"present_interactive_view"];
     
-    if ([self.delegate respondsToSelector:@selector(didDismissViewAfterUserInteraction)]) {
-        [[up completionSignal] subscribeCompleted:^{
-            [self.delegate didDismissViewAfterUserInteraction];
-        }];
-    }
+    return [up completionSignal];
 }
 
-- (void)dealloc {
-    NSLog(@"Ops");
+static inline CGPoint CGPointTranslate(CGPoint point, CGFloat dx, CGFloat dy) {
+    return CGPointMake(point.x + dx, point.y + dy);
+}
+
+static inline CGPoint CGPointSetY(CGPoint point, CGFloat y) {
+    return CGPointMake(point.x, y);
+}
+
+static inline CGFloat GLSpringBounceForVelocity(CGFloat velocity) {
+    return (abs(velocity) - 1000) * 15.0f / 6000.0f;
 }
 
 @end

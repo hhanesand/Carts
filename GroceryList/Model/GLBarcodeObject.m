@@ -45,6 +45,12 @@
     return object;
 }
 
++ (GLBarcodeObject *)objectWithName:(NSString *)name {
+    GLBarcodeObject *object = [GLBarcodeObject object];
+    object.name = name;
+    return object;
+}
+
 
 - (NSString *)getFirstBarcode {
     return [self.barcodes firstObject];

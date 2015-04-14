@@ -13,6 +13,7 @@
 
 @interface GLManualEntryView ()
 @property (weak, nonatomic) IBOutlet UIView *separator;
+@property (strong, nonatomic) IBOutlet UIVisualEffectView *nibView;
 @end
 
 @implementation GLManualEntryView
@@ -38,24 +39,16 @@
 - (void)commonInit {
     UIFont *font = [UIFont fontWithName:@"AvenirNext-Regular" size:12];
     self.name.floatingLabelFont = font;
+    self.name.floatingLabelTextColor = [UIColor grayColor];
+    self.name.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Name" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName : [UIFont fontWithName:@"AvenirNext-Regular" size:16.0]}];
     
-    UIColor *gray = [UIColor grayColor];
     
-    self.name.floatingLabelTextColor = gray;
-    
-    UIColor *color = [UIColor whiteColor];
-    
-    self.name.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Name" attributes:@{NSForegroundColorAttributeName:color, NSFontAttributeName : [UIFont fontWithName:@"AvenirNext-Regular" size:16.0]}];
-}
-
-- (void)bindWithListObject:(GLListObject *)listObject {
-    [[self.name.rac_textSignal distinctUntilChanged] subscribeNext:^(NSString *value) {
-        [listObject addUserModification:value forKey:@"name"];
-    }];
 }
 
 - (void)setFrame:(CGRect)frame {
     [super setFrame:frame];
+    
+    self.nibView.frame = CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetWidth(frame));
     
     self.separator.bounds = CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(self.separator.bounds));
         

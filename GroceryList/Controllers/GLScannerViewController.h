@@ -4,10 +4,9 @@
 //
 //  Created by Hakon Hanesand on 2/11/15.
 
-#import "GLBarcodeScannerDelegate.h"
-#import "GLBarcodeItemDelegate.h"
 #import "GLBaseViewController.h"
 #import "GLDismissableViewHandler.h"
+#import "GLKeyboardResponderAnimator.h"
 
 @class GLManualEntryView;
 @class RACSubject;
@@ -15,12 +14,15 @@
 /**
  *  The view controller that handles barcode searching, scanning and networking with Factual
  */
-@interface GLScannerViewController : GLBaseViewController <GLBarcodeScannerDelegate, GLDismissableHandlerDelegate, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate>
+@interface GLScannerViewController : GLBaseViewController <GLDismissableHandlerDelegate, GLKeyboardMovementResponderDelegate, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate>
+
+/**
+ *  A new GLListItem is sent on this signal when the user scans or entered a new item and it has been processed by the server
+ */
+@property (nonatomic) RACSignal *listItemSignal;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *searchField;
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *blurView;
-
-@property (nonatomic) id<GLBarcodeItemDelegate> delegate;
 
 @end

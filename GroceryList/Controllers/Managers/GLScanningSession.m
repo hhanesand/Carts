@@ -36,46 +36,45 @@
 - (instancetype)init {
     if (self = [super init]) {
         [self initializeCaptureSession];
+        [self setupCaptureSignal];
         [self.metadataOutput setMetadataObjectTypes:self.metadataOutput.availableMetadataObjectTypes];
     }
     
     return self;
 }
 
+- (void)setupCaptureSignal {
+    //captures barcodes from the camera and maps them to GLBarcodes
+    
+    RACSignal *barcodeSelectorSignal = [self rac_signalForSelector:@selector(captureOutput:didOutputMetadataObjects:fromConnection:) fromProtocol:@protocol(AVCaptureMetadataOutputObjectsDelegate)];
+    
+    self.barcodeSignal = [[[[[barcodeSelectorSignal filter:^BOOL(RACTuple *value) {
+        return !self.paused && [[value.second firstObject] isKindOfClass:[AVMetadataMachineReadableCodeObject class]]; //optimization
+    }] bufferWithTime:0.5 onScheduler:[RACScheduler scheduler]] map:^GLBarcode *(RACTuple *buffer) {
+        RACTuple *firstSelectorTuple = buffer.first;
+        NSArray *barcodeMetadataObjects = firstSelectorTuple.second;
+        return [GLBarcode barcodeWithMetadataObject:[barcodeMetadataObjects firstObject]];
+    }] filter:^BOOL(id value) {
+        return !self.paused; //double check that we are not paused
+    }] logAll];
+}
+
 - (void)pause {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        if (!self.paused) {
-            self.paused = YES;
-            self.previewLayer.connection.enabled = NO;
-            
-            //        [[self captureImageFromVideoOutput] subscribeNext:^(id volatil) {
-            //            NSLog(@"Setting image");
-            //            [self.previewView pauseWithImage:volatil];
-            //        }];
-        }
-    });
+    self.paused = YES;
 }
 
 - (void)resume {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        if (self.paused) {
-            self.paused = NO;
-            self.previewLayer.connection.enabled = YES;
-            //        [self.previewView resume];
-        }
-    });
+    self.paused = NO;
 }
 
-- (void)startScanningWithDelegate:(id<GLBarcodeScannerDelegate>)delegate {
+- (void)start {
     if (!self.captureSession.running) {
-        self.delegate = delegate;
         [self.captureSession startRunning];
     }
 }
 
 - (void)stop {
     if (self.captureSession.running) {
-        self.delegate = nil;
         [self.captureSession stopRunning];
     }
 }
@@ -121,9 +120,6 @@
     if ([self.captureSession canAddOutput:self.metadataOutput]) {
         [self.captureSession addOutput:self.metadataOutput];
     }
-    
-    self.previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.captureSession];
-    self.previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
 }
 
 - (RACSignal *)captureImageFromVideoOutput {
@@ -142,13 +138,6 @@
     
     //set the recieved image property so observers can fire signals
     self.recievedImage = [UIImage imageFromSampleBuffer:sampleBuffer];
-}
-
-- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection {
-    if (!self.paused && [[metadataObjects firstObject] isKindOfClass:[AVMetadataMachineReadableCodeObject class]]) {
-        GLBarcode *barcode = [GLBarcode barcodeWithMetadataObject:[metadataObjects firstObject]];
-        [self.delegate scanner:self didRecieveBarcode:barcode];
-    }
 }
 
 @end

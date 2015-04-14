@@ -20,8 +20,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *cancel;
 @property (weak, nonatomic) IBOutlet UIButton *confirm;
 
-- (void)bindWithListObject:(GLListObject *)listObject;
-
 @property (weak, nonatomic) UITextField *activeField;
 
 @end

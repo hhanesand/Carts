@@ -4,8 +4,8 @@
 //
 //  Created by Hakon Hanesand on 3/9/15.
 
-#import "GLBarcodeScannerDelegate.h"
 #import "GLVideoPreviewView.h"
+#import "GLCameraLayer.h"
 
 @import Foundation;
 @import AVFoundation;
@@ -24,20 +24,7 @@
  */
 + (GLScanningSession *)session;
 
-/**
- *  The object that responds to scanning events
- */
-@property (nonatomic) id<GLBarcodeScannerDelegate> delegate;
-
-/**
- *  The layer that displays the camera on screen
- */
-@property (nonatomic) AVCaptureVideoPreviewLayer *previewLayer;
-
-/**
- *  Set this property to have the session manage the preview view
- */
-@property (nonatomic) GLVideoPreviewView *previewView;
+@property (nonatomic) RACSignal *barcodeSignal;
 
 /**
  *  The capture session
@@ -61,8 +48,11 @@
  *
  *  @param delegate The delegate to send barcode events to
  */
-- (void)startScanningWithDelegate:(id<GLBarcodeScannerDelegate>)delegate;
+- (void)start;
 
+/**
+ *  Stops the scanning of barcodes
+ */
 - (void)stop;
 
 @end

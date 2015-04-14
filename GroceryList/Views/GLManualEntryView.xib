@@ -9,24 +9,25 @@
                 <outlet property="cancel" destination="DTz-QQ-snc" id="l22-ds-P42"/>
                 <outlet property="confirm" destination="8G5-Z5-0CO" id="Qs3-Rn-fX2"/>
                 <outlet property="name" destination="Ppx-ir-Blj" id="mtJ-eN-NmK"/>
+                <outlet property="nibView" destination="D3A-3O-fas" id="d0w-kK-cht"/>
                 <outlet property="separator" destination="dn5-Yl-D1Z" id="WrO-z5-KUe"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <visualEffectView opaque="NO" contentMode="scaleToFill" id="MI4-H4-qfr">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="195"/>
+        <visualEffectView opaque="NO" contentMode="scaleToFill" id="D3A-3O-fas">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="206"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="5Mv-Ao-3eT">
-                <rect key="frame" x="0.0" y="0.0" width="600" height="195"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="9Uw-uq-lPd">
+                <rect key="frame" x="0.0" y="0.0" width="600" height="206"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n93-GX-eN5">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="195"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="206"/>
                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Fw6-jV-wJw">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="195"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="206"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="200" verticalHuggingPriority="200" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ppx-ir-Blj" customClass="JVFloatLabeledTextField">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="200" verticalHuggingPriority="200" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="Enter Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ppx-ir-Blj" customClass="JVFloatLabeledTextField">
                                     <rect key="frame" x="8" y="8" width="584" height="36"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="36" id="e0Z-Hp-dWI"/>
@@ -55,9 +56,9 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0mI-uF-SYd">
-                                    <rect key="frame" x="218" y="127" width="165" height="60"/>
+                                    <rect key="frame" x="218" y="145" width="165" height="60"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8G5-Z5-0CO">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8G5-Z5-0CO">
                                             <rect key="frame" x="8" y="10" width="40" height="40"/>
                                             <state key="normal" image="done">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -78,29 +79,41 @@
                                         <constraint firstAttribute="centerY" secondItem="DTz-QQ-snc" secondAttribute="centerY" id="rRg-px-S5c"/>
                                     </constraints>
                                 </view>
-                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="QPF-ml-pds">
-                                    <rect key="frame" x="253" y="83" width="94" height="29"/>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="c2f-zK-d9h">
+                                    <rect key="frame" x="180" y="85" width="240" height="29"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="240" id="X9L-vy-mWZ"/>
+                                        <constraint firstAttribute="height" constant="28" id="phO-kG-Hby"/>
+                                        <constraint firstAttribute="width" constant="331" id="qGV-0Z-0ro"/>
+                                    </constraints>
+                                    <segments>
+                                        <segment title="1"/>
+                                        <segment title="2"/>
+                                        <segment title="3"/>
+                                        <segment title="4"/>
+                                        <segment title="5"/>
+                                    </segments>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </stepper>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="qGV-0Z-0ro"/>
+                                        </mask>
+                                    </variation>
+                                </segmentedControl>
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="dn5-Yl-D1Z" secondAttribute="trailing" constant="8" id="6Iu-kb-6Gr"/>
+                                <constraint firstItem="0mI-uF-SYd" firstAttribute="top" secondItem="c2f-zK-d9h" secondAttribute="bottom" constant="32" id="7dK-TF-cLc"/>
                                 <constraint firstItem="Ppx-ir-Blj" firstAttribute="top" secondItem="Fw6-jV-wJw" secondAttribute="top" constant="8" id="KnU-xA-eh1"/>
-                                <constraint firstAttribute="centerX" secondItem="QPF-ml-pds" secondAttribute="centerX" id="Suc-SN-9Mq"/>
-                                <constraint firstAttribute="bottom" secondItem="0mI-uF-SYd" secondAttribute="bottom" constant="8" id="WrV-cc-Zgk"/>
+                                <constraint firstItem="c2f-zK-d9h" firstAttribute="top" secondItem="dn5-Yl-D1Z" secondAttribute="bottom" constant="32" id="bFu-ox-UCv"/>
                                 <constraint firstItem="dn5-Yl-D1Z" firstAttribute="top" secondItem="Ppx-ir-Blj" secondAttribute="bottom" id="bHc-Yk-NHD"/>
                                 <constraint firstItem="Ppx-ir-Blj" firstAttribute="leading" secondItem="Fw6-jV-wJw" secondAttribute="leading" constant="8" id="gG6-zC-cIx"/>
-                                <constraint firstAttribute="centerY" secondItem="QPF-ml-pds" secondAttribute="centerY" id="gv6-7U-lBK"/>
                                 <constraint firstAttribute="trailing" secondItem="Ppx-ir-Blj" secondAttribute="trailing" constant="8" id="hK2-Xi-P5b"/>
                                 <constraint firstItem="dn5-Yl-D1Z" firstAttribute="leading" secondItem="Fw6-jV-wJw" secondAttribute="leading" constant="8" id="hu5-MI-hzn"/>
-                                <constraint firstAttribute="trailing" secondItem="Ppx-ir-Blj" secondAttribute="trailing" constant="8" id="mL0-6f-FKQ"/>
+                                <constraint firstAttribute="centerX" secondItem="c2f-zK-d9h" secondAttribute="centerX" id="ndZ-Go-lf5"/>
                                 <constraint firstAttribute="centerX" secondItem="0mI-uF-SYd" secondAttribute="centerX" id="vNW-NP-qqJ"/>
                             </constraints>
-                            <variation key="default">
-                                <mask key="constraints">
-                                    <exclude reference="mL0-6f-FKQ"/>
-                                </mask>
-                            </variation>
                         </view>
                         <vibrancyEffect>
                             <blurEffect style="dark"/>
@@ -108,14 +121,14 @@
                     </visualEffectView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="n93-GX-eN5" secondAttribute="trailing" id="0yW-Ln-MNG"/>
-                    <constraint firstItem="n93-GX-eN5" firstAttribute="top" secondItem="5Mv-Ao-3eT" secondAttribute="top" id="Ey6-FP-Vnp"/>
-                    <constraint firstAttribute="bottom" secondItem="n93-GX-eN5" secondAttribute="bottom" id="OM8-gs-MjN"/>
-                    <constraint firstItem="n93-GX-eN5" firstAttribute="leading" secondItem="5Mv-Ao-3eT" secondAttribute="leading" id="Zyg-WO-WF2"/>
+                    <constraint firstAttribute="trailing" secondItem="n93-GX-eN5" secondAttribute="trailing" id="7Kp-8C-CG9"/>
+                    <constraint firstItem="n93-GX-eN5" firstAttribute="leading" secondItem="9Uw-uq-lPd" secondAttribute="leading" id="7iR-Ch-ZbF"/>
+                    <constraint firstItem="n93-GX-eN5" firstAttribute="top" secondItem="9Uw-uq-lPd" secondAttribute="top" id="FGs-r2-pU7"/>
+                    <constraint firstAttribute="bottom" secondItem="n93-GX-eN5" secondAttribute="bottom" id="bEv-Wc-2Ff"/>
                 </constraints>
             </view>
             <blurEffect style="dark"/>
-            <point key="canvasLocation" x="512" y="851.5"/>
+            <point key="canvasLocation" x="1105" y="810"/>
         </visualEffectView>
     </objects>
     <resources>

@@ -4,7 +4,6 @@
 //
 //  Created by Hakon Hanesand on 1/18/15.
 
-#import "GLBarcodeItemDelegate.h"
 #import "GLQueryTableViewController.h"
 #import "GLBaseViewController.h"
 
@@ -13,6 +12,6 @@
 /**
  *  The view controller that handles the user's grocery list
  */
-@interface GLTableViewController : GLQueryTableViewController <GLBarcodeItemDelegate, UIViewControllerTransitioningDelegate>
+@interface GLTableViewController : GLQueryTableViewController
 
 @end
