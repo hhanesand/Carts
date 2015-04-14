@@ -123,7 +123,6 @@
 }
 
 - (RACSignal *)captureImageFromVideoOutput {
-    NSLog(@"Requesting image");
     self.connection.enabled = YES; //start the output of frames and after recieving one
     
     //observe the recievedImage property for changes
@@ -132,7 +131,6 @@
 
 //saves the connection to a property (so it can be resumed later), then disables the connection
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
-    NSLog(@"Recieved frame");
     self.connection = connection;
     connection.enabled = NO;
     

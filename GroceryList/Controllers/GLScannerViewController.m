@@ -130,7 +130,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 
 - (void)updateBounds {
     self.videoPreviewView.frame = self.view.bounds;
-    self.manualEntryView.frame = CGRectMake(0, CGRectGetHeight(self.view.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) * kGLManualEntryViewPositionRatio);
+    self.manualEntryView.frame = CGRectMake(0, CGRectGetHeight(self.view.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) * (1.0f - kGLManualEntryViewPositionRatio));
 }
 
 - (void)initializeCameraReticule {
@@ -232,7 +232,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 - (GLManualEntryView *)manualEntryView
 {
     if (!_manualEntryView) {
-        _manualEntryView = [[GLManualEntryView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) * (1 - kGLManualEntryViewPositionRatio))];
+        _manualEntryView = [[GLManualEntryView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) * (1.0f - kGLManualEntryViewPositionRatio))];
         
         RAC(_manualEntryView.name, enabled) = [_manualEntryView.name.rac_textSignal map:^id(NSString *value) {
             return @([value length] >= 1);
