@@ -41,8 +41,6 @@
     self.name.floatingLabelFont = font;
     self.name.floatingLabelTextColor = [UIColor grayColor];
     self.name.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Name" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName : [UIFont fontWithName:@"AvenirNext-Regular" size:16.0]}];
-    
-    
 }
 
 - (void)setFrame:(CGRect)frame {

@@ -17,7 +17,7 @@
 @property (nonatomic, weak) UIView *dismissableView;
 
 /**
- *  The y value of the center of the view when it is in its dismissed state
+ *  The y value of the top of the view when it is in its dismissed state
  */
 @property (nonatomic) CGFloat dismissedPosition;
 
@@ -26,6 +26,11 @@
  *  close enough with sufficient velocity, the view gets animated off the screen
  */
 @property (nonatomic) CGFloat threshhold;
+
+/**
+ *  The y value of the top of the view when it is presented
+ */
+@property (nonatomic) CGFloat presentedPosition;
 @end
 
 @implementation GLDismissableViewHandler
@@ -35,8 +40,8 @@
         self.dismissableView = view;
         
         self.enabled = YES;
-        self.dismissedPosition = finalPosition;
-        self.threshhold = finalPosition + CGRectGetHeight(self.dismissableView.bounds) / 2;
+        self.dismissedPosition = view.center.y;
+        self.presentedPosition = finalPosition + CGRectGetHeight(self.dismissableView.bounds) / 2;
     }
     
     return self;
@@ -69,11 +74,11 @@
 }
 
 - (void)userDidEndInteractionWithGestureRecognizer:(UIPanGestureRecognizer *)pan {
-    CGFloat distancePastThreshold = [pan locationInView:self.dismissableView].y - self.threshhold;
+    CGFloat distancePastPresentedPosition = [pan locationInView:self.dismissableView].y - self.presentedPosition;
     CGFloat velocity = [pan velocityInView:self.dismissableView].y;
     CGFloat velocityFactor = velocity / 100;
     
-    if (distancePastThreshold + velocityFactor <= CGRectGetHeight(self.dismissableView.frame) / 2) {
+    if (distancePastPresentedPosition + velocityFactor <= CGRectGetHeight(self.dismissableView.frame) / 2) {
         if ([self.delegate respondsToSelector:@selector(willPresentViewAfterUserInteraction)]) {
             [self.delegate willPresentViewAfterUserInteraction];
         }
@@ -111,7 +116,7 @@
 
 - (RACSignal *)presentViewWithVelocity:(CGFloat)velocity {
     POPSpringAnimation *up = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
-    up.toValue = @(self.threshhold);
+    up.toValue = @(self.presentedPosition);
     up.springSpeed = 20;
     up.springBounciness = 10;
     up.velocity = @(velocity);

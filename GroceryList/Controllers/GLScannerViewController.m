@@ -70,42 +70,36 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
             return [self.animationStack popAllAnimations];
         };
         
-        RACSignal *confirmSignal = [[self.manualEntryView.confirm rac_signalForControlEvents:UIControlEventTouchUpInside] map:^GLListObject *(id _) {
-            GLBarcodeObject *barcodeObject = [GLBarcodeObject objectWithName:self.manualEntryView.name.text];
-            return [GLListObject objectWithCurrentUserAndBarcodeItem:barcodeObject];
-        }];
-        
-        RACSignal *cancelSignal = [[self.manualEntryView.cancel rac_signalForControlEvents:UIControlEventTouchUpInside] map:^id(id value) {
-            return nil;
-        }];
-        
-        RACSignal *manualEntryTapButton = [RACSignal merge:@[confirmSignal, cancelSignal]];
-        
-        RACSignal *manualEntryViewSignal = [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-            [self.view addSubview:self.manualEntryView];
-            [self displayManualEntryView];
-            return nil;
-        }] flattenMap:^RACStream *(id value) {
-            return manualEntryTapButton;
-        }];
-        
-        self.listItemSignal = [[[[[[self.barcodeScanner.barcodeSignal doNext:^(id x) {
+        self.listItemSignal = [[[[self.barcodeScanner.barcodeSignal doNext:^(id x) {
             [GLProgressHUD show];
             [self.barcodeScanner pause];
         }] flattenMap:^RACStream *(GLBarcode *barcode) {
-            return [self.barcodeManager fetchProductInformationForBarcode:barcode];
+            return [[self.barcodeManager fetchProductInformationForBarcode:barcode] catch:^RACSignal *(NSError *error) {
+                [GLProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"Item not found - Please enter"]];
+                //display manual enter and return the value the user
+                [self.view addSubview:self.manualEntryView];
+                [self displayManualEntryView];
+                
+                RACSignal *confirm = [[self.manualEntryView.confirm rac_signalForControlEvents:UIControlEventTouchUpInside] map:^id(id _) {
+                    GLBarcodeObject *barcodeObject = [GLBarcodeObject objectWithName:self.manualEntryView.name.text];
+                    return [GLListObject objectWithCurrentUserAndBarcodeItem:barcodeObject];
+                }];
+                
+                RACSignal *cancel = [[self.manualEntryView.cancel rac_signalForControlEvents:UIControlEventTouchUpInside] map:^id(id value) {
+                    return nil;
+                }];
+                
+                return [[[[RACSignal merge:@[confirm, cancel]] take:1] doNext:^(id x) {
+                    [self dismissManualEntryView];
+                }] filter:^BOOL(id value) {
+                    return value;
+                }];
+            }];
         }] doNext:^(GLListObject *listObject) {
             [GLProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"Added %@", [listObject getName]]];
-        }] catch:^RACSignal *(NSError *error) {
-            [GLProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"Item not found - Please enter"]];
-            //display manual enter and return the value the user accepted
-            return manualEntryViewSignal;
-        }] filter:^BOOL(id value) {
-            return value;
-        }] doNext:^(id x) {
             [self.barcodeScanner resume];
-        }];
-}
+        }] logAll];
+    }
     
     return self;
 }
@@ -238,7 +232,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 - (GLManualEntryView *)manualEntryView
 {
     if (!_manualEntryView) {
-        _manualEntryView = [[GLManualEntryView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) * kGLManualEntryViewPositionRatio)];
+        _manualEntryView = [[GLManualEntryView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) * (1 - kGLManualEntryViewPositionRatio))];
         
         RAC(_manualEntryView.name, enabled) = [_manualEntryView.name.rac_textSignal map:^id(NSString *value) {
             return @([value length] >= 1);
@@ -264,7 +258,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 - (GLDismissableViewHandler *)manualEntryViewDismissHandler
 {
     if (!_manualEntryViewDismissHandler) {
-        _manualEntryViewDismissHandler = [[GLDismissableViewHandler alloc] initWithView:self.manualEntryView finalPosition:CGRectGetHeight(self.view.bounds) * (1 - kGLManualEntryViewPositionRatio)];
+        _manualEntryViewDismissHandler = [[GLDismissableViewHandler alloc] initWithView:self.manualEntryView finalPosition:CGRectGetHeight(self.view.bounds) * kGLManualEntryViewPositionRatio];
         
         UIPanGestureRecognizer *swipeDownToDismiss = [[UIPanGestureRecognizer alloc] initWithTarget:_manualEntryViewDismissHandler action:@selector(handlePan:)];
         [self.view addGestureRecognizer:swipeDownToDismiss];
