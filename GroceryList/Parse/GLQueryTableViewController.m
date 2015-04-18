@@ -35,7 +35,7 @@ static NSString *const kGLNetworkResponseKey = @"GLNetworkQueryResult";
     }];
     
     [[[[[RACSignal merge:@[cacheSignal, networkSignal]] take:2] doNext:^(RACTuple *resultTuple) {
-        if ([resultTuple.first isEqualToString:kGLCacheResponseKey]) {
+        if ([resultTuple.first isEqualToString:kGLCacheResponseKey] && [(NSArray *)resultTuple.second count] != 0) {
             [self performTableViewUpdateWithObjects:resultTuple.second];
         }
     }] aggregateWithStart:[[NSMutableDictionary alloc] init] reduce:^id(NSMutableDictionary *running, RACTuple *next) {
