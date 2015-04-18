@@ -95,20 +95,19 @@ static NSString *const kGLParsePinName = @"GLTableViewPin";
 - (PFQuery *)queryForTable {
     PFQuery *query = [GLListObject query];
     [query whereKey:@"user" equalTo:[PFUser currentUser]];
-    [query includeKey:@"items"];
+    [query includeKey:@"item"];
     [query orderByAscending:@"updatedAt"];
     return query;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(GLListObject *)object {
     GLTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kGLTableViewReuseIdentifier forIndexPath:indexPath];
-    GLBarcodeObject *obj = ((GLListObject *)object).item;
     
-    cell.name.text = obj.name;
-    cell.brand.text = obj.brand;
-    cell.category.text = obj.category;
+    cell.name.text = object.item.name;
+    cell.brand.text = object.item.brand;
+    cell.category.text = object.item.category;
     
-    [cell.image setImageWithURL:[NSURL URLWithString:obj.image[0]]];
+    [cell.image setImageWithURL:[NSURL URLWithString:object.item.image[0]]];
     
     return cell;
 }

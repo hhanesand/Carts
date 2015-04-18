@@ -15,14 +15,15 @@
 #import "GLBarcodeObject.h"
 #import "GLUser.h"
 
-@interface AppDelegate ()
-
-@end
+extern CFAbsoluteTime startTime;
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSLog(@"Launched in %f sec", CFAbsoluteTimeGetCurrent() - startTime);
+    });
+    
     [Parse enableLocalDatastore];
     [ParseCrashReporting enable];
     [Parse setApplicationId:@"LRHlZsMabq1sPNQ5UIu6PBS2jQ6VXLdGBCQREGmA" clientKey:@"aQRJaky1ooiD2xu7feLPvZjuwBXLNq7oDYsFdicl"];
@@ -39,7 +40,7 @@
     }
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    GLTableViewController *itemsTableViewController = [[GLTableViewController alloc] init];
+    GLTableViewController *itemsTableViewController = [[GLTableViewController alloc] initWithStyle:UITableViewStylePlain];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:itemsTableViewController];
     self.window.rootViewController = navigationController;
     

@@ -69,13 +69,18 @@
 
 - (void)start {
     if (!self.captureSession.running) {
-        [self.captureSession startRunning];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+            [self.captureSession startRunning];
+        });
     }
+    
 }
 
 - (void)stop {
     if (self.captureSession.running) {
-        [self.captureSession stopRunning];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+            [self.captureSession stopRunning];
+        });
     }
 }
 
