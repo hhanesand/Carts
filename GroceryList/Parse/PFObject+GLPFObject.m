@@ -10,9 +10,9 @@
 
 @implementation PFObject (GLPFObject)
 
-+ (RACSignal *)pinAll:(NSArray *)objects withSignalAndName:(NSString *)tagName {
++ (RACSignal *)pinAllWithSignal:(NSArray *)objects {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        [PFObject pinAllInBackground:objects withName:tagName block:^(BOOL succeeded, NSError *error) {
+        [PFObject pinAllInBackground:objects block:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
                 [subscriber sendCompleted];
             } else {
@@ -24,10 +24,20 @@
     }];
 }
 
-+ (RACSignal *)unpinAllWithSignalAndName:(NSString *)tagName {
++ (RACSignal *)unpinAllWithSignal {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        [PFObject unpinAllObjectsInBackgroundWithName:tagName block:^(BOOL succeeded, NSError *error) {
-            if (succeeded) {
+        [PFObject unpinAllObjectsInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            [subscriber sendCompleted];
+        }];
+        
+        return nil;
+    }];
+}
+
+- (RACSignal *)pinWithSignal {
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [self pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
                 [subscriber sendCompleted];
             } else {
                 [subscriber sendError:error];
@@ -52,18 +62,6 @@
     }];
 }
 
-- (RACSignal *)pinWithSignalAndName:(NSString *)name {
-    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        [self pinInBackgroundWithName:name block:^(BOOL succeeded, NSError *error) {
-            if (!error) {
-                [subscriber sendCompleted];
-            } else {
-                [subscriber sendError:error];
-            }
-        }];
-        
-        return nil;
-    }];
-}
+
 
 @end

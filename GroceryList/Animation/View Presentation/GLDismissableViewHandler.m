@@ -125,16 +125,8 @@
     return [up completionSignal];
 }
 
-static inline CGPoint CGPointTranslate(CGPoint point, CGFloat dx, CGFloat dy) {
-    return CGPointMake(point.x + dx, point.y + dy);
-}
-
 static inline CGPoint CGPointSetY(CGPoint point, CGFloat y) {
     return CGPointMake(point.x, y);
-}
-
-static inline CGFloat GLSpringBounceForVelocity(CGFloat velocity) {
-    return (abs(velocity) - 1000) * 15.0f / 6000.0f;
 }
 
 @end

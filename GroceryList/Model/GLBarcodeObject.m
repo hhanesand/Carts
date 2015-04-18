@@ -5,6 +5,7 @@
 //  Created by Hakon Hanesand on 2/9/15.
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import <Parse/PFObject+Subclass.h>
 
 #import "GLBarcodeObject.h"
 #import "GLBarcode.h"
@@ -25,10 +26,6 @@
     return @"item";
 }
 
-+ (void)load {
-    [self registerSubclass];
-}
-
 + (GLBarcodeObject *)objectWithBarcode:(GLBarcode *)item {
     GLBarcodeObject *object = [GLBarcodeObject object];
     [object setObject:[NSArray arrayWithObject:item.barcode] forKey:@"barcodes"];
@@ -38,6 +35,7 @@
 
 + (GLBarcodeObject *)objectWithDictionary:(NSDictionary *)data {
     GLBarcodeObject *object = [GLBarcodeObject object];
+    
     for (NSString *key in [data allKeys]) {
         [object setObject:data[key] forKey:key];
     }

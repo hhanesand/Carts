@@ -11,6 +11,9 @@
 #import "AppDelegate.h"
 
 #import "UIColor+GLColor.h"
+#import "GLListObject.h"
+#import "GLBarcodeObject.h"
+#import "GLUser.h"
 
 @interface AppDelegate ()
 
@@ -26,11 +29,15 @@
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
+    [GLListObject registerSubclass];
+    [GLBarcodeObject registerSubclass];
+//    [GLUser registerSubclass];
+
     if ([PFUser currentUser] == nil) {
         NSLog(@"Logging in");
         [PFUser logInWithUsername:@"lightice11" password:@"qwerty"];
     }
-
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     GLTableViewController *itemsTableViewController = [[GLTableViewController alloc] init];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:itemsTableViewController];

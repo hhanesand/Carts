@@ -16,12 +16,13 @@
 #import "PFObject+GLPFObject.h"
 #import "GLPullToCloseTransitionManager.h"
 #import "UIImageView+AFNetworking.h"
+#import "GLUser.h"
 
-static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
+static NSString *const kGLTableViewReuseIdentifier = @"GLTableViewCellIdentifier";
+static NSString *const kGLParsePinName = @"GLTableViewPin";
 
 @interface GLTableViewController ()
 @property (nonatomic) GLScannerViewController *scanner;
-@property (nonatomic) GLPullToCloseTransitionManager *transitionManager;
 @end
 
 @implementation GLTableViewController
@@ -32,24 +33,12 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
         self.pullToRefreshEnabled = YES;
         self.paginationEnabled = NO;
         self.loadingViewEnabled = NO;
-        self.localDatastoreTag = @"groceryList";
+        self.title = @"Grocery List";
         
-        self.transitionManager = [[GLPullToCloseTransitionManager alloc] init];
-        
+
         self.scanner = [[GLScannerViewController alloc] init];
         self.scanner.view.frame = CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds));
-        
-        [[[self.scanner.listItemSignal deliverOnMainThread] flattenMap:^RACStream *(GLListObject *listObject) {
-            [listObject saveEventually];
-            return [listObject pinWithSignalAndName:@"groceryList"];
-        }] subscribeNext:^(id x) {
-            [self loadObjects];
-        }];
-
-        
-        self.view.frame = [UIScreen mainScreen].bounds;
-        
-        self.title = @"Grocery List";
+  
     }
     
     return self;
@@ -61,10 +50,22 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
     [super viewDidLoad];
     
     UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(didPressAddButton)];
+    UIBarButtonItem *share = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(didPressShareButton)];
     UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    [self setToolbarItems:[NSArray arrayWithObjects:flexibleSpace, button, flexibleSpace, nil]];
+    [self setToolbarItems:[NSArray arrayWithObjects:flexibleSpace, share, flexibleSpace, button, flexibleSpace, nil]];
     
-    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([GLTableViewCell class]) bundle:nil] forCellReuseIdentifier:reuseIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([GLTableViewCell class]) bundle:nil] forCellReuseIdentifier:kGLTableViewReuseIdentifier];
+    
+    [self subscribeToScannerSignal];
+}
+
+- (void)subscribeToScannerSignal {
+    [[[self.scanner.listItemSignal takeUntil:self.rac_willDeallocSignal] deliverOnMainThread] subscribeNext:^(GLListObject *listObject) {
+        [[listObject pinWithSignal] subscribeCompleted:^{
+            [listObject saveInBackground];
+            [self loadObjects];
+        }];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -81,6 +82,10 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
     [self presentViewController:self.scanner animated:YES completion:nil];
 }
 
+- (void)didPressShareButton {
+    
+}
+
 - (BOOL)prefersStatusBarHidden {
     return NO;
 }
@@ -89,21 +94,21 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 
 - (PFQuery *)queryForTable {
     PFQuery *query = [GLListObject query];
-    [query whereKey:@"owner" equalTo:[PFUser currentUser]];
-    [query includeKey:@"item"];
+    [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    [query includeKey:@"items"];
     [query orderByAscending:@"updatedAt"];
     return query;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
-    GLTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-    GLListObject *obj = (GLListObject *)object;
+    GLTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kGLTableViewReuseIdentifier forIndexPath:indexPath];
+    GLBarcodeObject *obj = ((GLListObject *)object).item;
     
-    cell.name.text = [obj getName];
-    cell.brand.text = [obj getBrand];
-    cell.category.text = [obj getCategory];
+    cell.name.text = obj.name;
+    cell.brand.text = obj.brand;
+    cell.category.text = obj.category;
     
-    [cell.image setImageWithURL:[NSURL URLWithString:obj.item.image[0]]];
+    [cell.image setImageWithURL:[NSURL URLWithString:obj.image[0]]];
     
     return cell;
 }
@@ -134,10 +139,6 @@ static NSString *reuseIdentifier = @"GLTableViewCellIdentifier";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 71;
-}
-
-- (void)didRecieveNewListItem:(GLListObject *)listItem {
-    
 }
 
 @end

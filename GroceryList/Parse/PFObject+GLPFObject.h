@@ -13,12 +13,9 @@
  */
 @interface PFObject (GLPFObject)
 
-+ (RACSignal *)pinAll:(NSArray *)objects withSignalAndName:(NSString *)tagName;
++ (RACSignal *)unpinAllWithSignal;
++ (RACSignal *)pinAllWithSignal:(NSArray *)objects;
 
-+ (RACSignal *)unpinAllWithSignalAndName:(NSString *)tagName;
-
-- (RACSignal *)saveWithSignal;
-
-- (RACSignal *)pinWithSignalAndName:(NSString *)name;
+- (RACSignal *)pinWithSignal;
 
 @end

@@ -18,20 +18,18 @@
 #import "GLPullToCloseTransitionPresentationController.h"
 
 #import "POPAnimation+GLAnimation.h"
-#import "GLListObject.h"
 #import "JVFloatLabeledTextField.h"
 #import "GLTransitionDelegate.h"
 #import "GLKeyboardResponderAnimator.h"
 #import "GLBarcodeObject.h"
 #import "GLProgressHUD.h"
+#import "GLListObject.h"
 
 static CGFloat const kGLManualEntryViewPositionRatio = 0.6f;
 
 typedef RACSignal* (^RACCommandBlock)(id);
 
 @interface GLScannerViewController()
-@property (nonatomic, copy) RACCommandBlock confirmCommand;
-@property (nonatomic, copy) RACCommandBlock cancelCommand;
 @property (nonatomic, copy) RACCommandBlock doneScanningBlock;
 
 @property (nonatomic) GLTransitionDelegate *transitionDelegate;
@@ -45,8 +43,6 @@ typedef RACSignal* (^RACCommandBlock)(id);
 @property (strong, nonatomic) IBOutlet GLVideoPreviewView *videoPreviewView;
 @property (nonatomic) GLCameraLayer *targetingReticule;
 @property (nonatomic) GLManualEntryView *manualEntryView;
-
-@property (nonatomic) GLListObject *currentListItem;
 @end
 
 static NSString *identifier = @"GLBarcodeItemTableViewCell";
@@ -57,55 +53,17 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 
 - (instancetype)init {
     if (self = [super initWithNibName:NSStringFromClass([GLScannerViewController class]) bundle:[NSBundle mainBundle]]) {
-        self.modalPresentationStyle = UIModalPresentationCustom;
-        self.transitioningDelegate = self.transitionDelegate;
-        self.modalPresentationCapturesStatusBarAppearance = YES;
-    
-        [self configureKeyboardAnimations];
-        
-        @weakify(self);
-        self.doneScanningBlock = ^RACSignal *(id input) {
-            @strongify(self);
-            [self.barcodeScanner resume];
-            return [self.animationStack popAllAnimations];
-        };
-        
-        self.listItemSignal = [[[[self.barcodeScanner.barcodeSignal doNext:^(id x) {
-            [GLProgressHUD show];
-            [self.barcodeScanner pause];
-        }] flattenMap:^RACStream *(GLBarcode *barcode) {
-            return [[self.barcodeManager fetchProductInformationForBarcode:barcode] catch:^RACSignal *(NSError *error) {
-                [GLProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"Item not found - Please enter"]];
-                //display manual enter and return the value the user
-                [self.view addSubview:self.manualEntryView];
-                [self displayManualEntryView];
-                
-                RACSignal *confirm = [[self.manualEntryView.confirm rac_signalForControlEvents:UIControlEventTouchUpInside] map:^id(id _) {
-                    GLBarcodeObject *barcodeObject = [GLBarcodeObject objectWithName:self.manualEntryView.name.text];
-                    return [GLListObject objectWithCurrentUserAndBarcodeItem:barcodeObject];
-                }];
-                
-                RACSignal *cancel = [[self.manualEntryView.cancel rac_signalForControlEvents:UIControlEventTouchUpInside] map:^id(id value) {
-                    return nil;
-                }];
-                
-                return [[[[RACSignal merge:@[confirm, cancel]] take:1] doNext:^(id x) {
-                    [self dismissManualEntryView];
-                }] filter:^BOOL(id value) {
-                    return value;
-                }];
-            }];
-        }] doNext:^(GLListObject *listObject) {
-            [GLProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"Added %@", [listObject getName]]];
-            [self.barcodeScanner resume];
-        }] logAll];
+        [self configureModalPresentation];
+        [self.barcodeScanner start];
     }
     
     return self;
 }
 
-- (void)configureKeyboardAnimations {
-    self.responder = [[GLKeyboardResponderAnimator alloc] initWithDelegate:self];
+- (void)configureModalPresentation {
+    self.modalPresentationStyle = UIModalPresentationCustom;
+    self.transitioningDelegate = self.transitionDelegate;
+    self.modalPresentationCapturesStatusBarAppearance = YES;
 }
 
 #pragma mark - Lifecycle
@@ -113,7 +71,23 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self initializeKeyboardAnimations];
+    [self initializeRACCommandBlocks];
     [self initializeVideoPreviewLayer];
+    [self subscribeToBarcodeScannerOutput];
+}
+
+- (void)initializeKeyboardAnimations {
+    self.responder = [[GLKeyboardResponderAnimator alloc] initWithDelegate:self];
+}
+
+- (void)initializeRACCommandBlocks {
+    @weakify(self);
+    self.doneScanningBlock = ^RACSignal *(id input) {
+        @strongify(self);
+        [self.barcodeScanner resume];
+        return [self.animationStack popAllAnimations];
+    };
 }
 
 - (void)initializeVideoPreviewLayer {
@@ -121,19 +95,47 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     [self.view insertSubview:self.videoPreviewView atIndex:0];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    [self updateBounds];
-    [self initializeCameraReticule];
+- (void)subscribeToBarcodeScannerOutput {
+    self.listItemSignal = [[[[[self.barcodeScanner.barcodeSignal doNext:^(id x) {
+        [GLProgressHUD show];
+        [self.barcodeScanner pause];
+    }] flattenMap:^RACStream *(GLBarcode *barcode) {
+        return [[self.barcodeManager fetchProductInformationForBarcode:barcode] catch:^RACSignal *(NSError *error) {
+            [self displayManualEntryView];
+            
+            RACSignal *confirm = [[self.manualEntryView.confirm rac_signalForControlEvents:UIControlEventTouchUpInside] map:^id(id _) {
+                return [GLBarcodeObject objectWithName:self.manualEntryView.name.text];
+            }];
+            
+            RACSignal *cancel = [[self.manualEntryView.cancel rac_signalForControlEvents:UIControlEventTouchUpInside] map:^id(id value) {
+                return nil;
+            }];
+            
+            return [[[[RACSignal merge:@[confirm, cancel]] take:1] doNext:^(id x) {
+                [self dismissManualEntryView];
+            }] filter:^BOOL(id value) {
+                return value;
+            }];
+        }];
+    }] map:^GLListObject *(GLBarcodeObject *newObject) {
+        return [GLListObject objectWithCurrentUserAndBarcodeObject:newObject];
+    }] doNext:^(GLListObject *listObject) {
+        [GLProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"Added %@", listObject.item.name]];
+        [self.barcodeScanner resume];
+    }] logAll];
 }
 
-- (void)updateBounds {
+- (void)viewWillLayoutSubviews {
+    [self updateFrames];
+    [self updateCameraReticule];
+}
+
+- (void)updateFrames {
     self.videoPreviewView.frame = self.view.bounds;
     self.manualEntryView.frame = CGRectMake(0, CGRectGetHeight(self.view.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) * (1.0f - kGLManualEntryViewPositionRatio));
 }
 
-- (void)initializeCameraReticule {
+- (void)updateCameraReticule {
     [self.targetingReticule removeFromSuperlayer];
     
     CGRect bounds = self.view.bounds;
@@ -148,6 +150,8 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 #pragma mark - Scanning View Management
 
 - (void)displayManualEntryView {
+    [GLProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"Item not found - Please enter"]];
+    
     [self.view addSubview:self.manualEntryView];
     [self.manualEntryViewDismissHandler presentViewWithVelocity:0];
 }
@@ -229,8 +233,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 
 #pragma mark - Lazy Instantiation
 
-- (GLManualEntryView *)manualEntryView
-{
+- (GLManualEntryView *)manualEntryView {
     if (!_manualEntryView) {
         _manualEntryView = [[GLManualEntryView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) * (1.0f - kGLManualEntryViewPositionRatio))];
         
@@ -255,8 +258,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     return _videoPreviewView;
 }
 
-- (GLDismissableViewHandler *)manualEntryViewDismissHandler
-{
+- (GLDismissableViewHandler *)manualEntryViewDismissHandler {
     if (!_manualEntryViewDismissHandler) {
         _manualEntryViewDismissHandler = [[GLDismissableViewHandler alloc] initWithView:self.manualEntryView finalPosition:CGRectGetHeight(self.view.bounds) * kGLManualEntryViewPositionRatio];
         
@@ -270,16 +272,14 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     return _manualEntryViewDismissHandler;
 }
 
-- (GLScanningSession *)barcodeScanner
-{
+- (GLScanningSession *)barcodeScanner {
     if (!_barcodeScanner) {
         self.barcodeScanner = [GLScanningSession session];
     }
     return _barcodeScanner;
 }
 
-- (GLBarcodeFetchManager *)barcodeManager
-{
+- (GLBarcodeFetchManager *)barcodeManager {
     if (!_barcodeManager) {
         self.barcodeManager = [[GLBarcodeFetchManager alloc] init];
     }

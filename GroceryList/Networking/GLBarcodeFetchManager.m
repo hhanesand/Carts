@@ -34,12 +34,10 @@
 - (RACSignal *)fetchProductInformationForBarcode:(GLBarcode *)barcode {    
     PFQuery *productQuery = [self queryForBarcode:barcode];
 
-    return [[[productQuery getFirstObjectWithRACSignal] catch:^RACSignal *(NSError *error) {
+    return [[productQuery getFirstObjectWithRACSignal] catch:^RACSignal *(NSError *error) {
         return [[self fetchProductInformationFromFactualForBarcode:barcode] doError:^(NSError *error) {
             [GLParseAnalytics trackMissingBarcode:barcode];
         }];
-    }] map:^GLListObject *(GLBarcodeObject *barcodeObject) {
-        return [GLListObject objectWithCurrentUserAndBarcodeItem:barcodeObject];
     }];
 }
 

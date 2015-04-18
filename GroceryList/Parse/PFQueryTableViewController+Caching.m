@@ -15,11 +15,8 @@
 
 @implementation PFQueryTableViewController (Caching)
 
-- (void)updateInternalObjectsWithArray:(NSArray *)newValues clear:(BOOL)clear {
-    if (clear) {
-        [_mutableObjects removeAllObjects];
-    }
-    
+- (void)updateInternalObjectsWithArray:(NSArray *)newValues {
+    [_mutableObjects removeAllObjects];
     [_mutableObjects addObjectsFromArray:newValues];
 }
 
