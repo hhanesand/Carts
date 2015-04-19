@@ -11,6 +11,14 @@ function makeObject(class_name) {
     return new parse_class();
 }
 
+Parse.Cloud.afterSave(Parse.User, function(request) {
+    if (!request.original) {
+        var relation = request.object.relation("following");
+        relation.add(request.object);
+        request.object.save();
+    }
+});
+
 //called when a user scans a barcode that is missing from both factual and parse
 Parse.Cloud.define("trackMissingBarcode", function(request, response) {
     ensureUnique("missing", "barcode", request.params.barcode).then(

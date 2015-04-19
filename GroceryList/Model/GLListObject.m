@@ -10,18 +10,16 @@
 
 @implementation GLListObject
 
-@dynamic user;
-@dynamic item;
+@dynamic items;
+
++ (instancetype)object {
+    GLListObject *object = [super object];
+    object.items = [NSMutableArray new];
+    return object;
+}
 
 + (NSString *)parseClassName {
     return @"list";
-}
-
-+ (instancetype)objectWithCurrentUserAndBarcodeObject:(GLBarcodeObject *)barcodeObject {
-    GLListObject *object = [super object];
-    object.user = [PFUser currentUser];
-    object.item = barcodeObject;
-    return object;
 }
 
 @end

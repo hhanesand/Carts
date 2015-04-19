@@ -10,9 +10,6 @@
 
 @interface GLListObject : PFObject<PFSubclassing>
 
-@property (nonatomic) PFUser *user;
-@property (nonatomic) GLBarcodeObject *item;
-
-+ (instancetype)objectWithCurrentUserAndBarcodeObject:(GLBarcodeObject *)barcodeObject;
+@property (nonatomic) NSMutableArray *items;
 
 @end

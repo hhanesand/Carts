@@ -11,6 +11,21 @@
 @implementation GLUser
 
 @dynamic list;
+@dynamic following;
+
++ (PFUser *)user {
+    GLUser *user = (GLUser *)[super user];
+    user.list = [GLListObject object];
+    return user;
+}
+
++ (instancetype)object {
+    return [super object];
+}
+
++ (PFQuery *)query {
+    return [super query];
+}
 
 + (instancetype)currentUser {
     PFUser *user = [super currentUser];

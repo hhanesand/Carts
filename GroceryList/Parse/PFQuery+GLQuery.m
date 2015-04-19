@@ -44,4 +44,20 @@
     }];
 }
 
+- (RACSignal *)getObjectWithIdWithSignal:(NSString *)objectId {
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [self getObjectInBackgroundWithId:objectId block:^(PFObject *object, NSError *error) {
+            if (object && !error) {
+                [subscriber sendNext:object];
+                [subscriber sendCompleted];
+            } else {
+                NSLog(@"Error in getObjectWithIdWithSignal : %@", error);
+                [subscriber sendCompleted];
+            }
+        }];
+        
+        return nil;
+    }];
+}
+
 @end

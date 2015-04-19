@@ -14,6 +14,7 @@
 #import "PFObject+GLPFObject.h"
 #import "PFUser+GLUser.h"
 #import "GLListObject.h"
+#import "MustOverride.h"
 
 static NSString *const kGLCacheResponseKey = @"GLLocalDatastoreQueryResult";
 static NSString *const kGLNetworkResponseKey = @"GLNetworkQueryResult";
@@ -26,15 +27,15 @@ static NSString *const kGLNetworkResponseKey = @"GLNetworkQueryResult";
     self.loading = YES;
     [self objectsWillLoad];
     
-    RACSignal *cacheSignal = [[[[self queryForTable] fromLocalDatastore] findObjectsInbackgroundWithRACSignal] map:^RACTuple *(NSArray *results) {
+    RACSignal *cacheSignal = [[self cachedSignalForTable] map:^RACTuple *(NSArray *results) {
         return RACTuplePack(kGLCacheResponseKey, results);
     }];
     
-    RACSignal *networkSignal = [[[self queryForTable] findObjectsInbackgroundWithRACSignal] map:^RACTuple *(NSArray *results) {
+    RACSignal *networkSignal = [[self signalForTable] map:^RACTuple *(NSArray *results) {
         return RACTuplePack(kGLNetworkResponseKey, results);
     }];
     
-    [[[[[RACSignal merge:@[cacheSignal, networkSignal]] take:2] doNext:^(RACTuple *resultTuple) {
+    [[[[RACSignal merge:@[cacheSignal, networkSignal]] doNext:^(RACTuple *resultTuple) {
         if ([resultTuple.first isEqualToString:kGLCacheResponseKey] && [(NSArray *)resultTuple.second count] != 0) {
             [self performTableViewUpdateWithObjects:resultTuple.second];
         }
@@ -59,18 +60,24 @@ static NSString *const kGLNetworkResponseKey = @"GLNetworkQueryResult";
     return queryResult;
 }
 
+- (RACSignal *)cachedSignalForTable {
+    SUBCLASS_MUST_OVERRIDE;
+    return nil;
+}
+
+- (RACSignal *)signalForTable {
+    SUBCLASS_MUST_OVERRIDE;
+    return nil;
+}
+
 - (void)performTableViewUpdateWithObjects:(NSArray *)objects {
     [self updateInternalObjectsWithArray:objects];
     [self.tableView reloadData];
     [self objectsDidLoad:nil];
 }
 
-- (PFQuery *)cachedQueryForTable {
-    return [[self queryForTable] fromLocalDatastore];
-}
-
 - (BOOL)shouldUpdateTableViewWithCacheResponse:(NSArray *)cacheResponse andNetworkResponse:(NSArray *)networkResponse {
-    if ([cacheResponse isEqualToArray:networkResponse]) {
+    if ([cacheResponse isEqualToArray:networkResponse] || ([cacheResponse count] == 0 && [networkResponse count] == 0)) {
         return NO;
     }
     

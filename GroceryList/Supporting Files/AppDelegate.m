@@ -7,13 +7,14 @@
 #import <Parse/Parse.h>
 #import <ParseCrashReporting/ParseCrashReporting.h>
 
-#import "GLTableViewController.h"
+#import "GLListTableViewController.h"
 #import "AppDelegate.h"
 
 #import "UIColor+GLColor.h"
 #import "GLListObject.h"
 #import "GLBarcodeObject.h"
 #import "GLUser.h"
+#import "GLListItemObject.h"
 
 extern CFAbsoluteTime startTime;
 
@@ -31,16 +32,23 @@ extern CFAbsoluteTime startTime;
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     [GLListObject registerSubclass];
+    [GLListItemObject registerSubclass];
     [GLBarcodeObject registerSubclass];
-//    [GLUser registerSubclass];
+    [GLUser registerSubclass];
 
     if ([PFUser currentUser] == nil) {
         NSLog(@"Logging in");
-        [PFUser logInWithUsername:@"lightice11" password:@"qwerty"];
+//        [GLUser logInWithUsername:@"lightice11" password:@"qwerty"];
+        
+        PFUser *user = [GLUser user];
+        user.username = @"lightice11";
+        user.password = @"qwerty";
+        
+        [user signUp];
     }
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    GLTableViewController *itemsTableViewController = [[GLTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    GLListTableViewController *itemsTableViewController = [[GLListTableViewController alloc] initWithStyle:UITableViewStylePlain];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:itemsTableViewController];
     self.window.rootViewController = navigationController;
     

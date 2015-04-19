@@ -18,4 +18,7 @@ static NSString *const kGLNetworkResponseKey;
  */
 @interface GLQueryTableViewController : PFQueryTableViewController
 
+- (RACSignal *)signalForTable;
+- (RACSignal *)cachedSignalForTable;
+
 @end

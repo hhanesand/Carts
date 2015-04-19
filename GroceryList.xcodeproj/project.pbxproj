@@ -40,7 +40,7 @@
 		F25286CE1ACFA26300435261 /* GLBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286C81ACFA26300435261 /* GLBaseViewController.m */; };
 		F25286CF1ACFA26300435261 /* GLScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286CA1ACFA26300435261 /* GLScannerViewController.m */; };
 		F25286D01ACFA26300435261 /* GLScannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F25286CB1ACFA26300435261 /* GLScannerViewController.xib */; };
-		F25286D11ACFA26300435261 /* GLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286CD1ACFA26300435261 /* GLTableViewController.m */; };
+		F25286D11ACFA26300435261 /* GLListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286CD1ACFA26300435261 /* GLListTableViewController.m */; };
 		F25286D41ACFA26D00435261 /* GLScanningSession.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286D31ACFA26D00435261 /* GLScanningSession.m */; };
 		F25286DF1ACFA27D00435261 /* GLCameraLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286D61ACFA27D00435261 /* GLCameraLayer.m */; };
 		F25286E01ACFA27D00435261 /* GLManualEntryView.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286D81ACFA27D00435261 /* GLManualEntryView.m */; };
@@ -51,6 +51,10 @@
 		F25286EB1ACFA2B300435261 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286E61ACFA2B300435261 /* AppDelegate.m */; };
 		F25286ED1ACFA2B300435261 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286E81ACFA2B300435261 /* main.m */; };
 		F282DD7F1AE2ED09004DCF16 /* GLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F282DD7E1AE2ED09004DCF16 /* GLUser.m */; };
+		F282DD831AE33CF2004DCF16 /* GLListOverviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F282DD811AE33CF2004DCF16 /* GLListOverviewViewController.m */; };
+		F282DD841AE33CF2004DCF16 /* GLListOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F282DD821AE33CF2004DCF16 /* GLListOverviewViewController.xib */; };
+		F282DD871AE35C9D004DCF16 /* GLListItemObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F282DD861AE35C9D004DCF16 /* GLListItemObject.m */; };
+		F282DD8A1AE36294004DCF16 /* MustOverride.m in Sources */ = {isa = PBXBuildFile; fileRef = F282DD891AE36294004DCF16 /* MustOverride.m */; };
 		F282F2D31AD9CE5900216FDE /* GLVideoPreviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F282F2D21AD9CE5900216FDE /* GLVideoPreviewView.xib */; };
 		F28586BA1A744A63003B91E1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586B91A744A63003B91E1 /* Social.framework */; };
 		F28586BC1A744A6B003B91E1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586BB1A744A6B003B91E1 /* Accounts.framework */; };
@@ -152,8 +156,8 @@
 		F25286C91ACFA26300435261 /* GLScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLScannerViewController.h; path = Controllers/GLScannerViewController.h; sourceTree = "<group>"; };
 		F25286CA1ACFA26300435261 /* GLScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLScannerViewController.m; path = Controllers/GLScannerViewController.m; sourceTree = "<group>"; };
 		F25286CB1ACFA26300435261 /* GLScannerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GLScannerViewController.xib; path = Controllers/GLScannerViewController.xib; sourceTree = "<group>"; };
-		F25286CC1ACFA26300435261 /* GLTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLTableViewController.h; path = Controllers/GLTableViewController.h; sourceTree = "<group>"; };
-		F25286CD1ACFA26300435261 /* GLTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLTableViewController.m; path = Controllers/GLTableViewController.m; sourceTree = "<group>"; };
+		F25286CC1ACFA26300435261 /* GLListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLListTableViewController.h; path = Controllers/GLListTableViewController.h; sourceTree = "<group>"; };
+		F25286CD1ACFA26300435261 /* GLListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLListTableViewController.m; path = Controllers/GLListTableViewController.m; sourceTree = "<group>"; };
 		F25286D21ACFA26D00435261 /* GLScanningSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLScanningSession.h; path = Controllers/Managers/GLScanningSession.h; sourceTree = "<group>"; };
 		F25286D31ACFA26D00435261 /* GLScanningSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLScanningSession.m; path = Controllers/Managers/GLScanningSession.m; sourceTree = "<group>"; };
 		F25286D51ACFA27D00435261 /* GLCameraLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLCameraLayer.h; path = Views/GLCameraLayer.h; sourceTree = "<group>"; };
@@ -173,6 +177,13 @@
 		F25286EF1ACFA2FE00435261 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseCrashReporting.framework; path = Frameworks/ParseCrashReporting.framework; sourceTree = "<group>"; };
 		F282DD7D1AE2ED09004DCF16 /* GLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLUser.h; sourceTree = "<group>"; };
 		F282DD7E1AE2ED09004DCF16 /* GLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLUser.m; sourceTree = "<group>"; };
+		F282DD801AE33CF2004DCF16 /* GLListOverviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLListOverviewViewController.h; sourceTree = "<group>"; };
+		F282DD811AE33CF2004DCF16 /* GLListOverviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLListOverviewViewController.m; sourceTree = "<group>"; };
+		F282DD821AE33CF2004DCF16 /* GLListOverviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLListOverviewViewController.xib; sourceTree = "<group>"; };
+		F282DD851AE35C9D004DCF16 /* GLListItemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLListItemObject.h; sourceTree = "<group>"; };
+		F282DD861AE35C9D004DCF16 /* GLListItemObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLListItemObject.m; sourceTree = "<group>"; };
+		F282DD881AE36294004DCF16 /* MustOverride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MustOverride.h; sourceTree = "<group>"; };
+		F282DD891AE36294004DCF16 /* MustOverride.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MustOverride.m; sourceTree = "<group>"; };
 		F282F2D21AD9CE5900216FDE /* GLVideoPreviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLVideoPreviewView.xib; sourceTree = "<group>"; };
 		F28586B91A744A63003B91E1 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		F28586BB1A744A6B003B91E1 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -401,6 +412,8 @@
 		F2E544D11A6CB55000CB52E5 = {
 			isa = PBXGroup;
 			children = (
+				F282DD881AE36294004DCF16 /* MustOverride.h */,
+				F282DD891AE36294004DCF16 /* MustOverride.m */,
 				F2AC65FE1AD1DE3D00C0A09F /* SVProgressHUD.bundle */,
 				F2F948B91A8ACCEB002C5177 /* Images.xcassets */,
 				F2E544DC1A6CB55000CB52E5 /* GroceryList */,
@@ -496,8 +509,11 @@
 				F25286C91ACFA26300435261 /* GLScannerViewController.h */,
 				F25286CA1ACFA26300435261 /* GLScannerViewController.m */,
 				F25286CB1ACFA26300435261 /* GLScannerViewController.xib */,
-				F25286CC1ACFA26300435261 /* GLTableViewController.h */,
-				F25286CD1ACFA26300435261 /* GLTableViewController.m */,
+				F25286CC1ACFA26300435261 /* GLListTableViewController.h */,
+				F25286CD1ACFA26300435261 /* GLListTableViewController.m */,
+				F282DD801AE33CF2004DCF16 /* GLListOverviewViewController.h */,
+				F282DD811AE33CF2004DCF16 /* GLListOverviewViewController.m */,
+				F282DD821AE33CF2004DCF16 /* GLListOverviewViewController.xib */,
 				F28C2DA01ADC707A00A74641 /* Delegate Objects */,
 				F26147FB1ACF1CCA002395BE /* Managers */,
 			);
@@ -542,6 +558,8 @@
 				F25286BD1ACFA24F00435261 /* GLBarcode.m */,
 				F25286BF1ACFA24F00435261 /* GLBarcodeObject.h */,
 				F25286C01ACFA24F00435261 /* GLBarcodeObject.m */,
+				F282DD851AE35C9D004DCF16 /* GLListItemObject.h */,
+				F282DD861AE35C9D004DCF16 /* GLListItemObject.m */,
 				F25286C21ACFA24F00435261 /* GLListObject.h */,
 				F25286C31ACFA24F00435261 /* GLListObject.m */,
 				F282DD7D1AE2ED09004DCF16 /* GLUser.h */,
@@ -672,6 +690,7 @@
 				F282F2D31AD9CE5900216FDE /* GLVideoPreviewView.xib in Resources */,
 				F2AC65FF1AD1DE3D00C0A09F /* SVProgressHUD.bundle in Resources */,
 				F25286D01ACFA26300435261 /* GLScannerViewController.xib in Resources */,
+				F282DD841AE33CF2004DCF16 /* GLListOverviewViewController.xib in Resources */,
 				F2F948BA1A8ACCEB002C5177 /* Images.xcassets in Resources */,
 				F25286E31ACFA27D00435261 /* GLTableViewCell.xib in Resources */,
 				F2F948C51A8AD7B5002C5177 /* index.html in Resources */,
@@ -741,12 +760,14 @@
 				F25286A41ACFA21D00435261 /* PFQuery+GLQuery.m in Sources */,
 				F25286ED1ACFA2B300435261 /* main.m in Sources */,
 				F28C2DA61ADC9C3F00A74641 /* GLProgressHUD.m in Sources */,
+				F282DD831AE33CF2004DCF16 /* GLListOverviewViewController.m in Sources */,
 				F2CD0A881AD742020036D0A4 /* NSDictionary+GLCustomKVOOperators.m in Sources */,
 				F25286C51ACFA24F00435261 /* GLBarcodeObject.m in Sources */,
 				F25286BB1ACFA23B00435261 /* UIColor+GLColor.m in Sources */,
 				F2DC2FC11AD5DF8D00E46D3C /* GLBingRequestSerializer.m in Sources */,
 				F25286A51ACFA21D00435261 /* PFQueryTableViewController+Caching.m in Sources */,
 				F25286931ACFA1FD00435261 /* GLFactualRequestSerializer.m in Sources */,
+				F282DD871AE35C9D004DCF16 /* GLListItemObject.m in Sources */,
 				F25286DF1ACFA27D00435261 /* GLCameraLayer.m in Sources */,
 				F25286C41ACFA24F00435261 /* GLBarcode.m in Sources */,
 				F282DD7F1AE2ED09004DCF16 /* GLUser.m in Sources */,
@@ -762,13 +783,14 @@
 				F25286CF1ACFA26300435261 /* GLScannerViewController.m in Sources */,
 				F25286B71ACFA23B00435261 /* GLAnimationStack.m in Sources */,
 				F25286EB1ACFA2B300435261 /* AppDelegate.m in Sources */,
-				F25286D11ACFA26300435261 /* GLTableViewController.m in Sources */,
+				F25286D11ACFA26300435261 /* GLListTableViewController.m in Sources */,
 				F25286BA1ACFA23B00435261 /* POPSpringAnimation+GLAdditions.m in Sources */,
 				F2EC284C1AD3136B00E4DB27 /* GLPullToCloseTransitionPresentationController.m in Sources */,
 				F25286A11ACFA21D00435261 /* GLParseAnalytics.m in Sources */,
 				F25286A31ACFA21D00435261 /* PFObject+GLPFObject.m in Sources */,
 				F25286901ACFA1FD00435261 /* GLBarcodeFetchManager.m in Sources */,
 				F25286C61ACFA24F00435261 /* GLListObject.m in Sources */,
+				F282DD8A1AE36294004DCF16 /* MustOverride.m in Sources */,
 				F25286A61ACFA21D00435261 /* PFUser+GLUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

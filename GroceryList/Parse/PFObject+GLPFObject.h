@@ -15,7 +15,10 @@
 
 + (RACSignal *)unpinAllWithSignal;
 + (RACSignal *)pinAllWithSignal:(NSArray *)objects;
++ (RACSignal *)fetchAllWithSignal:(NSArray *)objects;
 
 - (RACSignal *)pinWithSignal;
+- (RACSignal *)fetchWithSignal;
+- (RACSignal *)fetchWithSignalFromLocalDatastore;
 
 @end

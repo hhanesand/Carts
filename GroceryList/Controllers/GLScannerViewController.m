@@ -96,7 +96,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 }
 
 - (void)subscribeToBarcodeScannerOutput {
-    self.listItemSignal = [[[[[self.barcodeScanner.barcodeSignal doNext:^(id x) {
+    self.listItemSignal = [[[[self.barcodeScanner.barcodeSignal doNext:^(id x) {
         [GLProgressHUD show];
         [self.barcodeScanner pause];
     }] flattenMap:^RACStream *(GLBarcode *barcode) {
@@ -117,10 +117,8 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
                 return value;
             }];
         }];
-    }] map:^GLListObject *(GLBarcodeObject *newObject) {
-        return [GLListObject objectWithCurrentUserAndBarcodeObject:newObject];
-    }] doNext:^(GLListObject *listObject) {
-        [GLProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"Added %@", listObject.item.name]];
+    }] doNext:^(GLBarcodeObject *barcodeObject) {
+        [GLProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"Added %@", barcodeObject.name]];
         [self.barcodeScanner resume];
     }] logAll];
 }

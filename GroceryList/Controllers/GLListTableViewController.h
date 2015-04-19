@@ -12,6 +12,6 @@
 /**
  *  The view controller that handles the user's grocery list
  */
-@interface GLTableViewController : GLQueryTableViewController
+@interface GLListTableViewController : GLQueryTableViewController
 
 @end
