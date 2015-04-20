@@ -50,9 +50,8 @@ static NSString *const kGLParsePinName = @"GLTableViewPin";
     [super viewDidLoad];
     
     UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(didPressAddButton)];
-    UIBarButtonItem *share = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(didPressShareButton)];
     UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    [self setToolbarItems:[NSArray arrayWithObjects:flexibleSpace, share, flexibleSpace, button, flexibleSpace, nil]];
+    [self setToolbarItems:@[flexibleSpace, button, flexibleSpace]];
     
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([GLTableViewCell class]) bundle:nil] forCellReuseIdentifier:kGLTableViewReuseIdentifier];
     
@@ -80,10 +79,6 @@ static NSString *const kGLParsePinName = @"GLTableViewPin";
 
 - (void)didPressAddButton {
     [self presentViewController:self.scanner animated:YES completion:nil];
-}
-
-- (void)didPressShareButton {
-    
 }
 
 - (BOOL)prefersStatusBarHidden {

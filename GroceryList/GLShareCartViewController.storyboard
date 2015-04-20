@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14A329r" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Ead-FX-P9n">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+    </dependencies>
+    <scenes>
+        <!--Share Cart View Controller-->
+        <scene sceneID="vHP-FZ-oI3">
+            <objects>
+                <viewController id="Ead-FX-P9n" userLabel="Share Cart View Controller" customClass="GLShareCartViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Mq4-qG-aBt"/>
+                        <viewControllerLayoutGuide type="bottom" id="jxn-0H-0hO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hlT-4g-8gq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share your Cart with others" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uoy-lM-atv">
+                                <rect key="frame" x="194" y="28" width="212" height="24"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="RxT-Ri-KBa">
+                                <rect key="frame" x="0.0" y="96" width="600" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="125-YH-5lr">
+                                <rect key="frame" x="0.0" y="52" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Ead-FX-P9n" id="mWC-ZV-Nwk"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="uoy-lM-atv" secondAttribute="centerX" id="3rw-Ep-RXj"/>
+                            <constraint firstItem="jxn-0H-0hO" firstAttribute="top" secondItem="RxT-Ri-KBa" secondAttribute="bottom" id="Gcf-r8-AwO"/>
+                            <constraint firstAttribute="trailing" secondItem="RxT-Ri-KBa" secondAttribute="trailing" id="IBh-1U-SlK"/>
+                            <constraint firstItem="RxT-Ri-KBa" firstAttribute="top" secondItem="125-YH-5lr" secondAttribute="bottom" id="dzr-NP-1n9"/>
+                            <constraint firstItem="uoy-lM-atv" firstAttribute="top" secondItem="Mq4-qG-aBt" secondAttribute="bottom" constant="8" id="jrj-vR-Nti"/>
+                            <constraint firstItem="125-YH-5lr" firstAttribute="top" secondItem="uoy-lM-atv" secondAttribute="bottom" id="pcA-Qb-v4x"/>
+                            <constraint firstAttribute="trailing" secondItem="125-YH-5lr" secondAttribute="trailing" id="pv2-Aa-cSL"/>
+                            <constraint firstItem="125-YH-5lr" firstAttribute="leading" secondItem="hlT-4g-8gq" secondAttribute="leading" id="qO7-uv-7lZ"/>
+                            <constraint firstItem="RxT-Ri-KBa" firstAttribute="top" secondItem="125-YH-5lr" secondAttribute="bottom" id="sgR-rm-zDN"/>
+                            <constraint firstItem="RxT-Ri-KBa" firstAttribute="leading" secondItem="hlT-4g-8gq" secondAttribute="leading" id="uWN-4d-p6b"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="moH-Az-XIU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="595" y="573"/>
+        </scene>
+    </scenes>
+</document>

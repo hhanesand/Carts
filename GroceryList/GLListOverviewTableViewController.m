@@ -10,12 +10,14 @@
 #import "PFQuery+GLQuery.h"
 #import "GLListOverviewTableViewCell.h"
 #import "GLListTableViewController.h"
+#import "GLShareCartViewController.h"
 
 static NSString *const kGLListOverviewTableViewControllerReuseIdentifier = @"GLListTableViewController";
 
 @interface GLListOverviewTableViewController ()
 @property (strong, nonatomic) IBOutlet UIView *footerView;
 @property (nonatomic) GLListTableViewController *listTableViewController;
+@property (nonatomic) GLShareCartViewController *shareCartViewController;
 @end
 
 @implementation GLListOverviewTableViewController
@@ -33,6 +35,7 @@ static NSString *const kGLListOverviewTableViewControllerReuseIdentifier = @"GLL
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
             self.listTableViewController = [[GLListTableViewController alloc] initWithStyle:UITableViewStylePlain];
+            self.shareCartViewController = [GLShareCartViewController instance];
         });
     }
     
@@ -42,17 +45,23 @@ static NSString *const kGLListOverviewTableViewControllerReuseIdentifier = @"GLL
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIBarButtonItem *footer = [[UIBarButtonItem alloc] initWithCustomView:self.footerView];
-    [self setToolbarItems:[NSArray arrayWithObject:footer] animated:NO];
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(didTapShareCartButton)];
+    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    [self setToolbarItems:@[flexibleSpace, barButton, flexibleSpace] animated:NO];
+}
+
+- (void)viewDidLayoutSubviews {
+    self.footerView.frame = self.navigationController.toolbar.bounds;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-//    self.footerView.frame = self.navigationController.toolbar.bounds;
-//    NSLog(@"footer view %@", NSStringFromCGRect(self.footerView.frame));
-    
     [self.navigationController setToolbarHidden:NO animated:NO];
+}
+
+- (void)didTapShareCartButton {
+    [self presentViewController:self.shareCartViewController animated:YES completion:nil];
 }
 
 - (RACSignal *)cachedSignalForTable {

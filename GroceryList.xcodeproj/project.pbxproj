@@ -59,6 +59,8 @@
 		F282DD941AE45D05004DCF16 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F282DD931AE45D05004DCF16 /* FBSDKCoreKit.framework */; };
 		F282DD961AE45D3B004DCF16 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F282DD951AE45D3B004DCF16 /* FBSDKLoginKit.framework */; };
 		F282DD9A1AE46F4E004DCF16 /* GLListOverviewTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F282DD991AE46F4E004DCF16 /* GLListOverviewTableViewController.storyboard */; };
+		F282DD9D1AE57784004DCF16 /* GLShareCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F282DD9C1AE57784004DCF16 /* GLShareCartViewController.m */; };
+		F282DD9F1AE57792004DCF16 /* GLShareCartViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F282DD9E1AE57792004DCF16 /* GLShareCartViewController.storyboard */; };
 		F282F2D31AD9CE5900216FDE /* GLVideoPreviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F282F2D21AD9CE5900216FDE /* GLVideoPreviewView.xib */; };
 		F28586BA1A744A63003B91E1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586B91A744A63003B91E1 /* Social.framework */; };
 		F28586BC1A744A6B003B91E1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586BB1A744A6B003B91E1 /* Accounts.framework */; };
@@ -191,6 +193,9 @@
 		F282DD931AE45D05004DCF16 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		F282DD951AE45D3B004DCF16 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		F282DD991AE46F4E004DCF16 /* GLListOverviewTableViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GLListOverviewTableViewController.storyboard; sourceTree = "<group>"; };
+		F282DD9B1AE57784004DCF16 /* GLShareCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLShareCartViewController.h; sourceTree = "<group>"; };
+		F282DD9C1AE57784004DCF16 /* GLShareCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLShareCartViewController.m; sourceTree = "<group>"; };
+		F282DD9E1AE57792004DCF16 /* GLShareCartViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GLShareCartViewController.storyboard; sourceTree = "<group>"; };
 		F282F2D21AD9CE5900216FDE /* GLVideoPreviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLVideoPreviewView.xib; sourceTree = "<group>"; };
 		F28586B91A744A63003B91E1 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		F28586BB1A744A6B003B91E1 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -536,6 +541,9 @@
 				F282DD991AE46F4E004DCF16 /* GLListOverviewTableViewController.storyboard */,
 				F28C2DA01ADC707A00A74641 /* Delegate Objects */,
 				F26147FB1ACF1CCA002395BE /* Managers */,
+				F282DD9B1AE57784004DCF16 /* GLShareCartViewController.h */,
+				F282DD9C1AE57784004DCF16 /* GLShareCartViewController.m */,
+				F282DD9E1AE57792004DCF16 /* GLShareCartViewController.storyboard */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -716,6 +724,7 @@
 				F2F948C41A8AD7B5002C5177 /* global.json in Resources */,
 				F25286E11ACFA27D00435261 /* GLManualEntryView.xib in Resources */,
 				F2E544EE1A6CB55100CB52E5 /* LaunchScreen.xib in Resources */,
+				F282DD9F1AE57792004DCF16 /* GLShareCartViewController.storyboard in Resources */,
 				F2F948C31A8AD7B5002C5177 /* main.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -793,6 +802,7 @@
 				F282DD7F1AE2ED09004DCF16 /* GLUser.m in Sources */,
 				F28C2D9E1ADC6B2D00A74641 /* GLTransitionDelegate.m in Sources */,
 				F25286D41ACFA26D00435261 /* GLScanningSession.m in Sources */,
+				F282DD9D1AE57784004DCF16 /* GLShareCartViewController.m in Sources */,
 				F25286B91ACFA23B00435261 /* POPAnimation+GLAnimation.m in Sources */,
 				F25286B61ACFA23B00435261 /* GLAnimation.m in Sources */,
 				F25286E01ACFA27D00435261 /* GLManualEntryView.m in Sources */,
