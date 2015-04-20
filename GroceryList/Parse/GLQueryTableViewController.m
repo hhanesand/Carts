@@ -50,7 +50,11 @@ static NSString *const kGLNetworkResponseKey = @"GLNetworkQueryResult";
             [self performTableViewUpdateWithObjects:responses[kGLNetworkResponseKey]];
             
             [[PFObject unpinAllWithSignal] subscribeCompleted:^{
-                [PFObject pinAllInBackground:responses[kGLNetworkResponseKey]];
+                [PFObject pinAllInBackground:responses[kGLNetworkResponseKey] block:^(BOOL succeeded, NSError *error) {
+                    if (error) {
+                        NSLog(@"Error %@", error);
+                    }
+                }];
             }];
         }
     }];

@@ -61,33 +61,21 @@ static NSString *const kGLParsePinName = @"GLTableViewPin";
 
 - (void)subscribeToScannerSignal {
     [[[self.scanner.listItemSignal takeUntil:self.rac_willDeallocSignal] deliverOnMainThread] subscribeNext:^(GLBarcodeObject *barcodeObject) {
-        GLUser *user = [GLUser currentUser];
-        
-        GLListItemObject *object = [user.list.items.rac_sequence objectPassingTest:^BOOL(GLListItemObject *object) {
+        GLListItemObject *object = [self.user.list.items.rac_sequence objectPassingTest:^BOOL(GLListItemObject *object) {
             return [object.item isEqual:barcodeObject];
         }];
         
         if (object) {
             object.quantity = [NSNumber numberWithInt:[object.quantity intValue] + 1];
         } else {
-            [user.list.items addObject:[GLListItemObject objectWithBarcodeObject:barcodeObject]];
+            [self.user.list.items addObject:[GLListItemObject objectWithBarcodeObject:barcodeObject]];
         }
         
-        [[user pinWithSignal] subscribeCompleted:^{
-            [user saveInBackground];
+        [[self.user pinWithSignal] subscribeCompleted:^{
+            [self.user saveInBackground];
             [self loadObjects];
         }];
     }];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.navigationController setToolbarHidden:NO animated:NO];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [self.navigationController setToolbarHidden:YES animated:NO];
 }
 
 - (void)didPressAddButton {
@@ -161,6 +149,11 @@ static NSString *const kGLParsePinName = @"GLTableViewPin";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 71;
+}
+
+- (void)setUser:(GLUser *)user {
+    _user = user;
+    self.title = user.username;
 }
 
 @end

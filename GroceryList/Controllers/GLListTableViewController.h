@@ -8,10 +8,16 @@
 #import "GLBaseViewController.h"
 
 @class RACSignal;
+@class GLUser;
 
 /**
  *  The view controller that handles the user's grocery list
  */
-@interface GLListTableViewController : GLQueryTableViewController
+@interface GLListTableViewController : GLQueryTableViewController <UITableViewDataSource>
+
+/**
+ *  The User's list this table view is currently displaying
+ */
+@property (nonatomic) GLUser *user;
 
 @end

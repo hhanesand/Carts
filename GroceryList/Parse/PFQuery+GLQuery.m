@@ -17,6 +17,7 @@
                 [subscriber sendNext:objects];
                 [subscriber sendCompleted];
             } else {
+                NSLog(@"Error in findObjectsInBackground %@", error);
                 [subscriber sendError:error];
             }
         }];

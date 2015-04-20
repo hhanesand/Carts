@@ -14,6 +14,7 @@
 	return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser *user, NSError *error) {
             if (error) {
+                NSLog(@"Error in logInInBackgroundWithUserName %@", error);
                 [subscriber sendError:error];
             } else {
                 [subscriber sendCompleted];

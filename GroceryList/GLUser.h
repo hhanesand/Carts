@@ -11,6 +11,8 @@
 
 @interface GLUser : PFUser<PFSubclassing>
 
++ (GLUser *)GL_currentUser;
+
 @property (nonatomic) GLListObject *list;
 @property (nonatomic, readonly) PFRelation *following;
 

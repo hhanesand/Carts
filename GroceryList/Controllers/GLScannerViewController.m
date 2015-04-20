@@ -55,6 +55,8 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     if (self = [super initWithNibName:NSStringFromClass([GLScannerViewController class]) bundle:[NSBundle mainBundle]]) {
         [self configureModalPresentation];
         [self.barcodeScanner start];
+        
+        self.tableView.dataSource = self;
     }
     
     return self;

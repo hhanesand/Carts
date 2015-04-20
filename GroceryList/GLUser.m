@@ -27,9 +27,8 @@
     return [super query];
 }
 
-+ (instancetype)currentUser {
-    PFUser *user = [super currentUser];
-    return (GLUser *)user;
++ (GLUser *)GL_currentUser {
+    return [super currentUser];
 }
 
 @end

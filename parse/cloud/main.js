@@ -13,9 +13,14 @@ function makeObject(class_name) {
 
 Parse.Cloud.afterSave(Parse.User, function(request) {
     if (!request.original) {
+        Parse.Cloud.useMasterKey();
         var relation = request.object.relation("following");
         relation.add(request.object);
-        request.object.save();
+        request.object.save().then(function (success) {
+            console.log("saved");
+        });
+    } else {
+        console.log("Not saved");
     }
 });
 

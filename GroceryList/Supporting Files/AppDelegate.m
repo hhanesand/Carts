@@ -6,6 +6,8 @@
 
 #import <Parse/Parse.h>
 #import <ParseCrashReporting/ParseCrashReporting.h>
+#import <ParseFacebookUtilsV4/PFFacebookUtils.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 #import "GLListTableViewController.h"
 #import "AppDelegate.h"
@@ -15,6 +17,7 @@
 #import "GLBarcodeObject.h"
 #import "GLUser.h"
 #import "GLListItemObject.h"
+#import "GLListOverviewTableViewController.h"
 
 extern CFAbsoluteTime startTime;
 
@@ -25,16 +28,21 @@ extern CFAbsoluteTime startTime;
         NSLog(@"Launched in %f sec", CFAbsoluteTimeGetCurrent() - startTime);
     });
     
-    [Parse enableLocalDatastore];
-    [ParseCrashReporting enable];
-    [Parse setApplicationId:@"LRHlZsMabq1sPNQ5UIu6PBS2jQ6VXLdGBCQREGmA" clientKey:@"aQRJaky1ooiD2xu7feLPvZjuwBXLNq7oDYsFdicl"];
-    
-    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-    
     [GLListObject registerSubclass];
     [GLListItemObject registerSubclass];
     [GLBarcodeObject registerSubclass];
     [GLUser registerSubclass];
+    
+    [Parse enableLocalDatastore];
+    [ParseCrashReporting enable];
+    
+    [Parse setApplicationId:@"LRHlZsMabq1sPNQ5UIu6PBS2jQ6VXLdGBCQREGmA" clientKey:@"aQRJaky1ooiD2xu7feLPvZjuwBXLNq7oDYsFdicl"];
+    
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    [PFTwitterUtils initializeWithConsumerKey:@"w7nv34kWb2UcCqurmS1SOUV4K" consumerSecret:@"q1uyBP2y42HDyuZZvIVZUqNkprcvYlzj2BqvT4wfl9heE3XV8M"];
+    [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
+    
 
     if ([PFUser currentUser] == nil) {
         NSLog(@"Logging in");
@@ -48,13 +56,21 @@ extern CFAbsoluteTime startTime;
     }
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    GLListTableViewController *itemsTableViewController = [[GLListTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:itemsTableViewController];
+    GLListOverviewTableViewController *listOverviewTableViewController = [GLListOverviewTableViewController instance];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:listOverviewTableViewController];
     self.window.rootViewController = navigationController;
     
     [self.window makeKeyAndVisible];
     
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [[FBSDKApplicationDelegate sharedInstance] application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    [FBSDKAppEvents activateApp];
 }
 
 @end

@@ -27,6 +27,10 @@
 + (RACSignal *)unpinAllWithSignal {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         [PFObject unpinAllObjectsInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (error) {
+                NSLog(@"Error in unpinAll %@", error);
+            }
+            
             [subscriber sendCompleted];
         }];
         
@@ -38,7 +42,7 @@
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         [PFObject fetchAllInBackground:objects block:^(NSArray *objects, NSError *error) {
             if (error) {
-                NSLog(@"Error %@", error);
+                NSLog(@"Error in fetchAll %@", error);
                 [subscriber sendCompleted];
             } else {
                 [subscriber sendNext:objects];
@@ -55,6 +59,7 @@
             if (!error) {
                 [subscriber sendCompleted];
             } else {
+                NSLog(@"Error in pin %@", error);
                 [subscriber sendError:error];
             }
         }];
@@ -69,6 +74,7 @@
             if (succeeded) {
                 [subscriber sendCompleted];
             } else {
+                NSLog(@"Error in saveInBackground %@", error);
                 [subscriber sendError:error];
             }
         }];
@@ -81,6 +87,7 @@
 	return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         [self fetchInBackgroundWithBlock:^(PFObject *object, NSError *error) {
             if (error) {
+                NSLog(@"Error in fetch %@", error);
                 [subscriber sendError:error];
             } else {
                 [subscriber sendNext:object];
@@ -96,7 +103,7 @@
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         [self fetchFromLocalDatastoreInBackgroundWithBlock:^(PFObject *object, NSError *error) {
             if (error) {
-                NSLog(@"Error %@", error);
+                NSLog(@"Error in lds fetch %@", error);
                 [subscriber sendCompleted];
             } else {
                 [subscriber sendNext:object];
