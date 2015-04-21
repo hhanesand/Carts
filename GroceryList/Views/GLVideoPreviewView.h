@@ -14,6 +14,8 @@
  */
 @interface GLVideoPreviewView : UIView
 
+@property (weak, nonatomic) IBOutlet UIView *previewView;
+@property (weak, nonatomic) IBOutlet UIImageView *pausedImageView;
 @property (weak, nonatomic) IBOutlet UIButton *doneScanningItemsButton;
 
 @property (nonatomic) AVCaptureVideoPreviewLayer *capturePreviewLayer;

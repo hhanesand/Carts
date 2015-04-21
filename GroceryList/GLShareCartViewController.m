@@ -59,6 +59,11 @@ static NSString *const kGLFollowUserTableViewCellReuseIdentifier = @"GLFollowUse
     self.tableView.delegate = self;
 }
 
+- (IBAction)didTapDoneView:(id)sender {
+    [self.searchBar resignFirstResponder];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidLoad];
     

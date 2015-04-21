@@ -14,8 +14,6 @@
 #import "SVProgressHUD.h"
 
 @interface GLDismissableViewHandler ()
-@property (nonatomic, weak) UIView *dismissableView;
-
 /**
  *  The y value of the top of the view when it is in its dismissed state
  */
@@ -26,19 +24,21 @@
  */
 @property (nonatomic) CGFloat presentedPosition;
 
-@property (nonatomic) CGFloat threshold;
+/**
+ *  The constain the handler should animate to move the animatable view up and down
+ */
+@property (nonatomic, weak) NSLayoutConstraint *constraint;
 @end
 
 @implementation GLDismissableViewHandler
 
-- (instancetype)initWithView:(UIView *)view finalPosition:(CGFloat)finalPosition {
+- (instancetype)initWithHeightOfAnimatableView:(CGFloat)height animatableConstraint:(NSLayoutConstraint *)constraint {
     if (self = [super init]) {
-        self.dismissableView = view;
-        
         self.enabled = YES;
-        self.dismissedPosition = view.center.y;
-        self.presentedPosition = finalPosition + CGRectGetHeight(self.dismissableView.frame) / 2;
-        self.threshold = finalPosition;
+        
+        self.constraint = constraint;
+        self.dismissedPosition = constraint.constant;
+        self.presentedPosition = constraint.constant + height;
     }
     
     return self;
@@ -59,24 +59,24 @@
 }
 
 - (void)userDidStartInteractionWithGestureRecognizer:(UIPanGestureRecognizer *)pan {
-    [self.dismissableView pop_removeAllAnimations];
+    [self.constraint pop_removeAllAnimations];
 }
 
 - (void)userDidPanDismissableViewWithGestureRecognizer:(UIPanGestureRecognizer *)pan {
     CGPoint locationOfFinger = [pan locationInView:pan.view];
     NSLog(@"Location of finger %f", locationOfFinger.y);
     
-    if (locationOfFinger.y >= self.threshold) {
-        self.dismissableView.center = CGPointSetY(self.dismissableView.center, locationOfFinger.y + CGRectGetHeight(self.dismissableView.frame) / 2);
+    if (locationOfFinger.y >= self.presentedPosition) {
+        self.constraint.constant = self.presentedPosition - locationOfFinger.y;
     }
 }
 
 - (void)userDidEndInteractionWithGestureRecognizer:(UIPanGestureRecognizer *)pan {
-    CGFloat distancePastPresentedPosition = [pan locationInView:self.dismissableView.superview].y - self.threshold;
-    CGFloat velocity = [pan velocityInView:self.dismissableView].y;
+    CGFloat distancePastPresentedPosition = [pan locationInView:pan.view].y - self.presentedPosition;
+    CGFloat velocity = [pan velocityInView:pan.view].y;
     CGFloat velocityFactor = velocity / 100;
     
-    if (distancePastPresentedPosition + velocityFactor >= CGRectGetHeight(self.dismissableView.frame) / 2) {
+    if (distancePastPresentedPosition + velocityFactor >= self.presentedPosition / 2) {
         if ([self.delegate respondsToSelector:@selector(willDismissViewAfterUserInteraction)]) {
             [self.delegate willDismissViewAfterUserInteraction];
         }
@@ -100,27 +100,27 @@
 }
 
 - (RACSignal *)dismissViewWithVelocity:(CGFloat)velocity {
-    POPSpringAnimation *down = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
+    POPSpringAnimation *down = [POPSpringAnimation animationWithPropertyNamed:kPOPLayoutConstraintConstant];
     down.toValue = @(self.dismissedPosition);
     down.springBounciness = 0;
     down.springSpeed = 20;
     down.velocity = @(velocity);
     down.name = @"DismissInteractiveView";
     
-    [self.dismissableView pop_addAnimation:down forKey:@"dismiss_interactive_view"];
+    [self.constraint pop_addAnimation:down forKey:@"dismiss_interactive_view"];
     
     return [down completionSignal];
 }
 
 - (RACSignal *)presentViewWithVelocity:(CGFloat)velocity {
-    POPSpringAnimation *up = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionY];
-    up.toValue = @(self.presentedPosition);
+    POPSpringAnimation *up = [POPSpringAnimation animationWithPropertyNamed:kPOPLayoutConstraintConstant];
+    up.toValue = @(-self.presentedPosition);
     up.springSpeed = 20;
     up.springBounciness = 10;
     up.velocity = @(velocity);
     up.name = @"PresentInteractiveView";
     
-    [self.dismissableView pop_addAnimation:up forKey:@"present_interactive_view"];
+    [self.constraint pop_addAnimation:up forKey:@"present_interactive_view"];
     
     return [up completionSignal];
 }

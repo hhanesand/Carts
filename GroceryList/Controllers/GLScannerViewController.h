@@ -14,15 +14,13 @@
 /**
  *  The view controller that handles barcode searching, scanning and networking with Factual
  */
-@interface GLScannerViewController : GLBaseViewController <GLDismissableHandlerDelegate, GLKeyboardMovementResponderDelegate, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate>
+@interface GLScannerViewController : GLBaseViewController <GLDismissableHandlerDelegate, GLKeyboardMovementResponderDelegate, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate, UITextFieldDelegate>
+
++ (instancetype)instance;
 
 /**
  *  A new GLListItem is sent on this signal when the user scans or entered a new item and it has been processed by the server
  */
 @property (nonatomic) RACSignal *listItemSignal;
-
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UITextField *searchField;
-@property (weak, nonatomic) IBOutlet UIVisualEffectView *blurView;
 
 @end

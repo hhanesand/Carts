@@ -16,10 +16,7 @@
 @interface GLManualEntryView : UIView <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *name;
-
-@property (weak, nonatomic) IBOutlet UIButton *cancel;
 @property (weak, nonatomic) IBOutlet UIButton *confirm;
-
-@property (weak, nonatomic) UITextField *activeField;
+@property (weak, nonatomic) IBOutlet UIButton *cancel;
 
 @end

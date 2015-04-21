@@ -98,11 +98,15 @@
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.13725490196078433" green="0.87058823529411766" blue="0.74901960784313726" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="centerY" secondItem="CTy-yK-pxl" secondAttribute="centerY" id="Bh7-tb-441"/>
                                     <constraint firstAttribute="height" constant="44" id="Df9-bG-SXp"/>
                                     <constraint firstAttribute="centerX" secondItem="CTy-yK-pxl" secondAttribute="centerX" id="kHj-Wj-uex"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="lP1-FS-eZa" appends="YES" id="alb-ik-HrB"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -130,6 +134,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="moH-Az-XIU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="lP1-FS-eZa" userLabel="Done Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="didTapDoneView:" destination="Ead-FX-P9n" id="Df2-23-6aO"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-213" y="846"/>
         </scene>

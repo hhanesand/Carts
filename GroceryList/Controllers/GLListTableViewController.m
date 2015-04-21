@@ -37,7 +37,7 @@ static NSString *const kGLParsePinName = @"GLTableViewPin";
         self.loadingViewEnabled = NO;
         self.title = @"Grocery List";
         
-        self.scanner = [[GLScannerViewController alloc] init];
+        self.scanner = [GLScannerViewController instance];
         self.scanner.view.frame = CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds));
     }
     

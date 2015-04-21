@@ -39,12 +39,10 @@
 		F25286C61ACFA24F00435261 /* GLListObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286C31ACFA24F00435261 /* GLListObject.m */; };
 		F25286CE1ACFA26300435261 /* GLBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286C81ACFA26300435261 /* GLBaseViewController.m */; };
 		F25286CF1ACFA26300435261 /* GLScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286CA1ACFA26300435261 /* GLScannerViewController.m */; };
-		F25286D01ACFA26300435261 /* GLScannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F25286CB1ACFA26300435261 /* GLScannerViewController.xib */; };
 		F25286D11ACFA26300435261 /* GLListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286CD1ACFA26300435261 /* GLListTableViewController.m */; };
 		F25286D41ACFA26D00435261 /* GLScanningSession.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286D31ACFA26D00435261 /* GLScanningSession.m */; };
 		F25286DF1ACFA27D00435261 /* GLCameraLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286D61ACFA27D00435261 /* GLCameraLayer.m */; };
 		F25286E01ACFA27D00435261 /* GLManualEntryView.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286D81ACFA27D00435261 /* GLManualEntryView.m */; };
-		F25286E11ACFA27D00435261 /* GLManualEntryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F25286D91ACFA27D00435261 /* GLManualEntryView.xib */; };
 		F25286E21ACFA27D00435261 /* GLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286DB1ACFA27D00435261 /* GLTableViewCell.m */; };
 		F25286E31ACFA27D00435261 /* GLTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F25286DC1ACFA27D00435261 /* GLTableViewCell.xib */; };
 		F25286E41ACFA27D00435261 /* GLVideoPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286DE1ACFA27D00435261 /* GLVideoPreviewView.m */; };
@@ -64,7 +62,6 @@
 		F282DDA21AE59BC6004DCF16 /* UISearchBar+RACAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F282DDA11AE59BC6004DCF16 /* UISearchBar+RACAdditions.m */; };
 		F282DDA51AE5AB98004DCF16 /* RACSignal+GLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F282DDA41AE5AB98004DCF16 /* RACSignal+GLAdditions.m */; };
 		F282DDAB1AE5B841004DCF16 /* GLUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F282DDAA1AE5B841004DCF16 /* GLUserTableViewCell.m */; };
-		F282F2D31AD9CE5900216FDE /* GLVideoPreviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F282F2D21AD9CE5900216FDE /* GLVideoPreviewView.xib */; };
 		F28586BA1A744A63003B91E1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586B91A744A63003B91E1 /* Social.framework */; };
 		F28586BC1A744A6B003B91E1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586BB1A744A6B003B91E1 /* Accounts.framework */; };
 		F28586BE1A744A75003B91E1 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586BD1A744A75003B91E1 /* AdSupport.framework */; };
@@ -72,6 +69,8 @@
 		F28C2DA31ADC717900A74641 /* GLKeyboardResponderAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = F28C2DA21ADC717900A74641 /* GLKeyboardResponderAnimator.m */; };
 		F28C2DA61ADC9C3F00A74641 /* GLProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F28C2DA51ADC9C3F00A74641 /* GLProgressHUD.m */; };
 		F296DA141A709862001E9D29 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F296DA131A709862001E9D29 /* libstdc++.6.dylib */; };
+		F2A29F431AE6F7DA0044C604 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F2A29F421AE6F7DA0044C604 /* SVProgressHUD.bundle */; };
+		F2A29F4A1AE6FE520044C604 /* GLScannerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2A29F491AE6FE520044C604 /* GLScannerViewController.storyboard */; };
 		F2B4D0D61A6DF52200A98C7A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0D51A6DF52200A98C7A /* AVFoundation.framework */; };
 		F2B4D0D81A6DF52A00A98C7A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0D71A6DF52A00A98C7A /* CoreMedia.framework */; };
 		F2B4D0DA1A6DF53000A98C7A /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0D91A6DF53000A98C7A /* CoreVideo.framework */; };
@@ -163,7 +162,6 @@
 		F25286C81ACFA26300435261 /* GLBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLBaseViewController.m; path = Controllers/GLBaseViewController.m; sourceTree = "<group>"; };
 		F25286C91ACFA26300435261 /* GLScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLScannerViewController.h; path = Controllers/GLScannerViewController.h; sourceTree = "<group>"; };
 		F25286CA1ACFA26300435261 /* GLScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLScannerViewController.m; path = Controllers/GLScannerViewController.m; sourceTree = "<group>"; };
-		F25286CB1ACFA26300435261 /* GLScannerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GLScannerViewController.xib; path = Controllers/GLScannerViewController.xib; sourceTree = "<group>"; };
 		F25286CC1ACFA26300435261 /* GLListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLListTableViewController.h; path = Controllers/GLListTableViewController.h; sourceTree = "<group>"; };
 		F25286CD1ACFA26300435261 /* GLListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLListTableViewController.m; path = Controllers/GLListTableViewController.m; sourceTree = "<group>"; };
 		F25286D21ACFA26D00435261 /* GLScanningSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLScanningSession.h; path = Controllers/Managers/GLScanningSession.h; sourceTree = "<group>"; };
@@ -172,7 +170,6 @@
 		F25286D61ACFA27D00435261 /* GLCameraLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLCameraLayer.m; path = Views/GLCameraLayer.m; sourceTree = "<group>"; };
 		F25286D71ACFA27D00435261 /* GLManualEntryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLManualEntryView.h; path = Views/GLManualEntryView.h; sourceTree = "<group>"; };
 		F25286D81ACFA27D00435261 /* GLManualEntryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLManualEntryView.m; path = Views/GLManualEntryView.m; sourceTree = "<group>"; };
-		F25286D91ACFA27D00435261 /* GLManualEntryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GLManualEntryView.xib; path = Views/GLManualEntryView.xib; sourceTree = "<group>"; };
 		F25286DA1ACFA27D00435261 /* GLTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLTableViewCell.h; path = Views/GLTableViewCell.h; sourceTree = "<group>"; };
 		F25286DB1ACFA27D00435261 /* GLTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLTableViewCell.m; path = Views/GLTableViewCell.m; sourceTree = "<group>"; };
 		F25286DC1ACFA27D00435261 /* GLTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GLTableViewCell.xib; path = Views/GLTableViewCell.xib; sourceTree = "<group>"; };
@@ -205,7 +202,6 @@
 		F282DDA41AE5AB98004DCF16 /* RACSignal+GLAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RACSignal+GLAdditions.m"; sourceTree = "<group>"; };
 		F282DDA91AE5B841004DCF16 /* GLUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLUserTableViewCell.h; sourceTree = "<group>"; };
 		F282DDAA1AE5B841004DCF16 /* GLUserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLUserTableViewCell.m; sourceTree = "<group>"; };
-		F282F2D21AD9CE5900216FDE /* GLVideoPreviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLVideoPreviewView.xib; sourceTree = "<group>"; };
 		F28586B91A744A63003B91E1 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		F28586BB1A744A6B003B91E1 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		F28586BD1A744A75003B91E1 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -217,6 +213,8 @@
 		F28C2DA41ADC9C3F00A74641 /* GLProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLProgressHUD.h; sourceTree = "<group>"; };
 		F28C2DA51ADC9C3F00A74641 /* GLProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLProgressHUD.m; sourceTree = "<group>"; };
 		F296DA131A709862001E9D29 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
+		F2A29F421AE6F7DA0044C604 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SVProgressHUD.bundle; path = Pods/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle; sourceTree = "<group>"; };
+		F2A29F491AE6FE520044C604 /* GLScannerViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GLScannerViewController.storyboard; sourceTree = "<group>"; };
 		F2B4D0D51A6DF52200A98C7A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F2B4D0D71A6DF52A00A98C7A /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		F2B4D0D91A6DF53000A98C7A /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -451,6 +449,7 @@
 		F2E544D11A6CB55000CB52E5 = {
 			isa = PBXGroup;
 			children = (
+				F2A29F421AE6F7DA0044C604 /* SVProgressHUD.bundle */,
 				F282DD881AE36294004DCF16 /* MustOverride.h */,
 				F282DD891AE36294004DCF16 /* MustOverride.m */,
 				F2F948B91A8ACCEB002C5177 /* Images.xcassets */,
@@ -531,10 +530,8 @@
 				F25286D61ACFA27D00435261 /* GLCameraLayer.m */,
 				F25286D71ACFA27D00435261 /* GLManualEntryView.h */,
 				F25286D81ACFA27D00435261 /* GLManualEntryView.m */,
-				F25286D91ACFA27D00435261 /* GLManualEntryView.xib */,
 				F25286DD1ACFA27D00435261 /* GLVideoPreviewView.h */,
 				F25286DE1ACFA27D00435261 /* GLVideoPreviewView.m */,
-				F282F2D21AD9CE5900216FDE /* GLVideoPreviewView.xib */,
 				F28C2DA41ADC9C3F00A74641 /* GLProgressHUD.h */,
 				F28C2DA51ADC9C3F00A74641 /* GLProgressHUD.m */,
 			);
@@ -548,7 +545,7 @@
 				F25286C81ACFA26300435261 /* GLBaseViewController.m */,
 				F25286C91ACFA26300435261 /* GLScannerViewController.h */,
 				F25286CA1ACFA26300435261 /* GLScannerViewController.m */,
-				F25286CB1ACFA26300435261 /* GLScannerViewController.xib */,
+				F2A29F491AE6FE520044C604 /* GLScannerViewController.storyboard */,
 				F25286CC1ACFA26300435261 /* GLListTableViewController.h */,
 				F25286CD1ACFA26300435261 /* GLListTableViewController.m */,
 				F282DD801AE33CF2004DCF16 /* GLListOverviewTableViewController.h */,
@@ -730,14 +727,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F282F2D31AD9CE5900216FDE /* GLVideoPreviewView.xib in Resources */,
+				F2A29F431AE6F7DA0044C604 /* SVProgressHUD.bundle in Resources */,
+				F2A29F4A1AE6FE520044C604 /* GLScannerViewController.storyboard in Resources */,
 				F282DD9A1AE46F4E004DCF16 /* GLListOverviewTableViewController.storyboard in Resources */,
-				F25286D01ACFA26300435261 /* GLScannerViewController.xib in Resources */,
 				F2F948BA1A8ACCEB002C5177 /* Images.xcassets in Resources */,
 				F25286E31ACFA27D00435261 /* GLTableViewCell.xib in Resources */,
 				F2F948C51A8AD7B5002C5177 /* index.html in Resources */,
 				F2F948C41A8AD7B5002C5177 /* global.json in Resources */,
-				F25286E11ACFA27D00435261 /* GLManualEntryView.xib in Resources */,
 				F2E544EE1A6CB55100CB52E5 /* LaunchScreen.xib in Resources */,
 				F282DD9F1AE57792004DCF16 /* GLShareCartViewController.storyboard in Resources */,
 				F2F948C31A8AD7B5002C5177 /* main.js in Resources */,

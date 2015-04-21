@@ -26,14 +26,13 @@
 @property (nonatomic) BOOL enabled;
 
 /**
- *  Initializes with the specified view as it's target view (the view that is draggable) and its final position
+ *  Initializes a draggable view hander with a layout constraint and the height of its animatable view
  *
- *  @param view The view that is draggable
- *  @param finalPosition The final center position of the view when it is presented
+ *  @param height     The  height of the animatable view
+ *  @param constraint The constraint the handler should animate to move the view up and down
  *
- *  @return A new GLDismissableViewHandler
  */
-- (instancetype)initWithView:(UIView *)view finalPosition:(CGFloat)finalPosition;
+- (instancetype)initWithHeightOfAnimatableView:(CGFloat)height animatableConstraint:(NSLayoutConstraint *)constraint;
 
 /**
  *  Call this method when the UIPanGestureRecognizer's target method is called, or provide this method as it's target

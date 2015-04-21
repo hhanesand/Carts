@@ -12,8 +12,7 @@
 #import "POPAnimation+GLAnimation.h"
 
 @interface GLVideoPreviewView ()
-@property (weak, nonatomic) IBOutlet UIView *previewView;
-@property (weak, nonatomic) IBOutlet UIImageView *pausedImageView;
+
 @end
 
 @implementation GLVideoPreviewView
