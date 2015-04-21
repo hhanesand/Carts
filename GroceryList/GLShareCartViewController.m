@@ -28,6 +28,7 @@ static NSString *const kGLFollowUserTableViewCellReuseIdentifier = @"GLFollowUse
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *footerView;
 @property (nonatomic) GLKeyboardResponderAnimator *keyboardResponder;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *footerViewLayoutConstraint;
 @end
 
 @implementation GLShareCartViewController
@@ -56,11 +57,12 @@ static NSString *const kGLFollowUserTableViewCellReuseIdentifier = @"GLFollowUse
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    self.keyboardResponder = [[GLKeyboardResponderAnimator alloc] initWithDelegate:self];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidLoad];
+    
+    self.keyboardResponder = [[GLKeyboardResponderAnimator alloc] initWithDelegate:self];
     
     [[[self.searchBar.rac_textSignal filter:^BOOL(NSString *search) {
         return [self isValidSearchString:search];
@@ -114,6 +116,10 @@ static NSString *const kGLFollowUserTableViewCellReuseIdentifier = @"GLFollowUse
 
 - (UIView *)viewToAnimateForKeyboardAdjustment {
     return self.footerView;
+}
+
+- (NSLayoutConstraint *)layoutConstraintForAnimatingView {
+    return self.footerViewLayoutConstraint;
 }
 
 - (GLTransitionDelegate *)transitionDelegate

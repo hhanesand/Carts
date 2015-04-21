@@ -21,6 +21,8 @@
  */
 - (UIView *)viewToAnimateForKeyboardAdjustment;
 
+- (NSLayoutConstraint *)layoutConstraintForAnimatingView;
+
 @end
 
 @interface GLKeyboardResponderAnimator : NSObject

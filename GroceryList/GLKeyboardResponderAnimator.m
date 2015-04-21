@@ -10,7 +10,7 @@
 
 @interface GLKeyboardResponderAnimator ()
 @property (nonatomic) id<GLKeyboardMovementResponderDelegate> delegate;
-@property (nonatomic) CGPoint position;
+@property (nonatomic) CGFloat savedConstant;
 @end
 
 @implementation GLKeyboardResponderAnimator
@@ -25,51 +25,47 @@
     return self;
 }
 
+//see http://stackoverflow.com/a/19236013/4080860
 - (void)addNotificationCenterSignalsForKeyboard {
-    [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:UIKeyboardWillShowNotification object:nil]
-        takeUntil:self.rac_willDeallocSignal]
-        subscribeNext:^(NSNotification *notif) {
-            //see http://stackoverflow.com/a/19236013/4080860
+    @weakify(self);
+    [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:UIKeyboardWillShowNotification object:nil] takeUntil:self.rac_willDeallocSignal] subscribeNext:^(NSNotification *notif) {
+        @strongify(self);
         
-            id<GLKeyboardMovementResponderDelegate> dele = self.delegate;
-            
-            UIView *inputView = [self.delegate viewForActiveUserInputElement];
-            UIView *animatedView = [self.delegate viewToAnimateForKeyboardAdjustment];
-            CGRect activeFieldFrame = inputView.frame;
-            CGRect keyboardFrame = [notif.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+        UIView *inputView = [self.delegate viewForActiveUserInputElement];
+        UIView *animatedView = [self.delegate viewToAnimateForKeyboardAdjustment];
         
-            self.position = animatedView.center;
+        CGRect activeFieldFrame = inputView.frame;
+        CGRect keyboardFrame = [notif.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
         
-            if (CGRectGetMinY(keyboardFrame) - CGRectGetMaxY(activeFieldFrame) > 0) {
-                [UIView beginAnimations:nil context:NULL];
-                [UIView setAnimationDuration:[notif.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
-                [UIView setAnimationCurve:[notif.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue]];
-                [UIView setAnimationBeginsFromCurrentState:YES];
+        CGFloat overlap = CGRectGetMaxY(activeFieldFrame) - CGRectGetMinY(keyboardFrame);
+        
+        if (overlap > 0) {
+            NSTimeInterval duration = [notif.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+            CGFloat options = [notif.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
+            NSLayoutConstraint *constraint = [self.delegate layoutConstraintForAnimatingView];
             
-                CGFloat intersectionDistance = abs(CGRectGetMinY(keyboardFrame) - CGRectGetMaxY(activeFieldFrame)) + 8;
-                [self.delegate viewToAnimateForKeyboardAdjustment].frame = CGRectOffset(inputView.frame, 0, -intersectionDistance);
+            self.savedConstant = constraint.constant;
             
-                [UIView commitAnimations];
-            }
+            [UIView animateWithDuration:duration delay:0 options:options animations:^{
+                constraint.constant = overlap;
+                [animatedView layoutIfNeeded];
+            } completion:nil];
+        }
     }];
     
-    [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:UIKeyboardWillHideNotification object:nil]
-        takeUntil:self.rac_willDeallocSignal]
-        subscribeNext:^(NSNotification *notif) {
-            //see http://stackoverflow.com/a/19236013/4080860
+    [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:UIKeyboardWillHideNotification object:nil] takeUntil:self.rac_willDeallocSignal] subscribeNext:^(NSNotification *notif) {
+        UIView *animatedView = [self.delegate viewToAnimateForKeyboardAdjustment];
+        NSLayoutConstraint *constraint = [self.delegate layoutConstraintForAnimatingView];
         
-            UIView *animatedView = [self.delegate viewToAnimateForKeyboardAdjustment];
-        
-            if (!CGPointEqualToPoint(self.position, animatedView.center)) {
-                [UIView beginAnimations:nil context:NULL];
-                [UIView setAnimationDuration:[notif.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue]];
-                [UIView setAnimationCurve:[notif.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue]];
-                [UIView setAnimationBeginsFromCurrentState:YES];
+        if (!constraint.constant == self.savedConstant) {
+            NSTimeInterval duration = [notif.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+            CGFloat options = [notif.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
             
-                animatedView.center = self.position;
-            
-                [UIView commitAnimations];
-            }
+            [UIView animateWithDuration:duration delay:0 options:options animations:^{
+                [self.delegate layoutConstraintForAnimatingView].constant = self.savedConstant;
+                [animatedView layoutIfNeeded];
+            } completion:nil];
+        }
     }];
 }
 
