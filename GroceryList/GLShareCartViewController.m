@@ -4,13 +4,30 @@
 //
 //  Created by Hakon Hanesand on 4/20/15.
 
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <Parse/Parse.h>
+
 #import "GLShareCartViewController.h"
 #import "GLTransitionDelegate.h"
 #import "GLPullToCloseTransitionManager.h"
 #import "GLPullToCloseTransitionPresentationController.h"
+#import "UISearchBar+RACAdditions.h"
+#import "RACSignal+GLAdditions.h"
+#import "GLUser.h"
+#import "PFQuery+GLQuery.h"
+#import "GLUserTableViewCell.h"
+#import "GLKeyboardResponderAnimator.h"
+
+static NSString *const kGLFollowUserTableViewCellReuseIdentifier = @"GLFollowUserTableViewIdentifier";
 
 @interface GLShareCartViewController ()
 @property (nonatomic) GLTransitionDelegate *transitionDelegate;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (nonatomic) NSString *previousSearch;
+@property (nonatomic) NSArray *searchResults;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIView *footerView;
+@property (nonatomic) GLKeyboardResponderAnimator *keyboardResponder;
 @end
 
 @implementation GLShareCartViewController
@@ -24,7 +41,7 @@
     if (self = [super initWithCoder:aDecoder]) {
         [self configureModalPresentation];
     }
-    
+        
     return self;
 }
 
@@ -34,8 +51,69 @@
     self.modalPresentationCapturesStatusBarAppearance = YES;
 }
 
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    NSLog(@"Search for %@", searchBar.text);
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    self.keyboardResponder = [[GLKeyboardResponderAnimator alloc] initWithDelegate:self];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidLoad];
+    
+    [[[self.searchBar.rac_textSignal filter:^BOOL(NSString *search) {
+        return [self isValidSearchString:search];
+    }] throttle:0.5] subscribeNext:^(NSString *search) {
+        [self performQueryWithSearchString:search];
+    }];
+}
+
+- (BOOL)isValidSearchString:(NSString *)search {
+    return search.length >= 2 && ![search isEqualToString:self.previousSearch];
+}
+
+- (void)performQueryWithSearchString:(NSString *)search {
+    self.previousSearch = search;
+    
+    PFQuery *query = [GLUser query];
+    [query whereKey:@"username_lowercase" hasPrefix:[search lowercaseString]];
+
+    [[query findObjectsInbackgroundWithRACSignal] subscribeNext:^(NSArray *result) {
+        self.searchResults = result;
+        [self.tableView reloadData];
+    }];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.searchResults count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    GLUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kGLFollowUserTableViewCellReuseIdentifier forIndexPath:indexPath];
+    cell.delegate = self;
+    [cell bindWithUser:[self objectForIndexPath:indexPath]];
+    return cell;
+}
+
+- (void)userDidTapAddFriendButtonInTableViewCell:(GLUserTableViewCell *)cell {
+    NSLog(@"Follow button tapped for user with username %@", [self objectForIndexPath:[self.tableView indexPathForCell:cell]].username);
+}
+
+- (GLUser *)objectForIndexPath:(NSIndexPath *)indexPath {
+    return self.searchResults[indexPath.row];
+}
+
+- (UIView *)viewForActiveUserInputElement {
+    return self.footerView;
+}
+
+- (UIView *)viewToAnimateForKeyboardAdjustment {
+    return self.footerView;
 }
 
 - (GLTransitionDelegate *)transitionDelegate

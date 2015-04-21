@@ -61,6 +61,9 @@
 		F282DD9A1AE46F4E004DCF16 /* GLListOverviewTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F282DD991AE46F4E004DCF16 /* GLListOverviewTableViewController.storyboard */; };
 		F282DD9D1AE57784004DCF16 /* GLShareCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F282DD9C1AE57784004DCF16 /* GLShareCartViewController.m */; };
 		F282DD9F1AE57792004DCF16 /* GLShareCartViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F282DD9E1AE57792004DCF16 /* GLShareCartViewController.storyboard */; };
+		F282DDA21AE59BC6004DCF16 /* UISearchBar+RACAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F282DDA11AE59BC6004DCF16 /* UISearchBar+RACAdditions.m */; };
+		F282DDA51AE5AB98004DCF16 /* RACSignal+GLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F282DDA41AE5AB98004DCF16 /* RACSignal+GLAdditions.m */; };
+		F282DDAB1AE5B841004DCF16 /* GLUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F282DDAA1AE5B841004DCF16 /* GLUserTableViewCell.m */; };
 		F282F2D31AD9CE5900216FDE /* GLVideoPreviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F282F2D21AD9CE5900216FDE /* GLVideoPreviewView.xib */; };
 		F28586BA1A744A63003B91E1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586B91A744A63003B91E1 /* Social.framework */; };
 		F28586BC1A744A6B003B91E1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586BB1A744A6B003B91E1 /* Accounts.framework */; };
@@ -196,6 +199,12 @@
 		F282DD9B1AE57784004DCF16 /* GLShareCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLShareCartViewController.h; sourceTree = "<group>"; };
 		F282DD9C1AE57784004DCF16 /* GLShareCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLShareCartViewController.m; sourceTree = "<group>"; };
 		F282DD9E1AE57792004DCF16 /* GLShareCartViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GLShareCartViewController.storyboard; sourceTree = "<group>"; };
+		F282DDA01AE59BC6004DCF16 /* UISearchBar+RACAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISearchBar+RACAdditions.h"; sourceTree = "<group>"; };
+		F282DDA11AE59BC6004DCF16 /* UISearchBar+RACAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISearchBar+RACAdditions.m"; sourceTree = "<group>"; };
+		F282DDA31AE5AB98004DCF16 /* RACSignal+GLAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RACSignal+GLAdditions.h"; sourceTree = "<group>"; };
+		F282DDA41AE5AB98004DCF16 /* RACSignal+GLAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RACSignal+GLAdditions.m"; sourceTree = "<group>"; };
+		F282DDA91AE5B841004DCF16 /* GLUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLUserTableViewCell.h; sourceTree = "<group>"; };
+		F282DDAA1AE5B841004DCF16 /* GLUserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLUserTableViewCell.m; sourceTree = "<group>"; };
 		F282F2D21AD9CE5900216FDE /* GLVideoPreviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLVideoPreviewView.xib; sourceTree = "<group>"; };
 		F28586B91A744A63003B91E1 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		F28586BB1A744A6B003B91E1 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -325,6 +334,8 @@
 				F25286DA1ACFA27D00435261 /* GLTableViewCell.h */,
 				F25286DB1ACFA27D00435261 /* GLTableViewCell.m */,
 				F25286DC1ACFA27D00435261 /* GLTableViewCell.xib */,
+				F282DDA91AE5B841004DCF16 /* GLUserTableViewCell.h */,
+				F282DDAA1AE5B841004DCF16 /* GLUserTableViewCell.m */,
 			);
 			name = "Table View Cells";
 			sourceTree = "<group>";
@@ -487,6 +498,10 @@
 				F2DC2FC61AD6F53B00E46D3C /* UIImage+GLImage.m */,
 				F2CD0A861AD742020036D0A4 /* NSDictionary+GLCustomKVOOperators.h */,
 				F2CD0A871AD742020036D0A4 /* NSDictionary+GLCustomKVOOperators.m */,
+				F282DDA01AE59BC6004DCF16 /* UISearchBar+RACAdditions.h */,
+				F282DDA11AE59BC6004DCF16 /* UISearchBar+RACAdditions.m */,
+				F282DDA31AE5AB98004DCF16 /* RACSignal+GLAdditions.h */,
+				F282DDA41AE5AB98004DCF16 /* RACSignal+GLAdditions.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -795,11 +810,13 @@
 				F25286BB1ACFA23B00435261 /* UIColor+GLColor.m in Sources */,
 				F2DC2FC11AD5DF8D00E46D3C /* GLBingRequestSerializer.m in Sources */,
 				F25286A51ACFA21D00435261 /* PFQueryTableViewController+Caching.m in Sources */,
+				F282DDA51AE5AB98004DCF16 /* RACSignal+GLAdditions.m in Sources */,
 				F25286931ACFA1FD00435261 /* GLFactualRequestSerializer.m in Sources */,
 				F282DD871AE35C9D004DCF16 /* GLListItemObject.m in Sources */,
 				F25286DF1ACFA27D00435261 /* GLCameraLayer.m in Sources */,
 				F25286C41ACFA24F00435261 /* GLBarcode.m in Sources */,
 				F282DD7F1AE2ED09004DCF16 /* GLUser.m in Sources */,
+				F282DDA21AE59BC6004DCF16 /* UISearchBar+RACAdditions.m in Sources */,
 				F28C2D9E1ADC6B2D00A74641 /* GLTransitionDelegate.m in Sources */,
 				F25286D41ACFA26D00435261 /* GLScanningSession.m in Sources */,
 				F282DD9D1AE57784004DCF16 /* GLShareCartViewController.m in Sources */,
@@ -807,6 +824,7 @@
 				F25286B61ACFA23B00435261 /* GLAnimation.m in Sources */,
 				F25286E01ACFA27D00435261 /* GLManualEntryView.m in Sources */,
 				F25286CE1ACFA26300435261 /* GLBaseViewController.m in Sources */,
+				F282DDAB1AE5B841004DCF16 /* GLUserTableViewCell.m in Sources */,
 				F2DC2FC71AD6F53B00E46D3C /* UIImage+GLImage.m in Sources */,
 				F25286B81ACFA23B00435261 /* GLPullToCloseTransitionManager.m in Sources */,
 				F25286941ACFA1FD00435261 /* GLFactualResponseSerializer.m in Sources */,
