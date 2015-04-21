@@ -58,7 +58,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0mI-uF-SYd">
                                     <rect key="frame" x="218" y="145" width="165" height="60"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8G5-Z5-0CO">
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8G5-Z5-0CO">
                                             <rect key="frame" x="8" y="10" width="40" height="40"/>
                                             <state key="normal" image="done">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -128,7 +128,7 @@
                 </constraints>
             </view>
             <blurEffect style="dark"/>
-            <point key="canvasLocation" x="1105" y="810"/>
+            <point key="canvasLocation" x="637" y="348"/>
         </visualEffectView>
     </objects>
     <resources>

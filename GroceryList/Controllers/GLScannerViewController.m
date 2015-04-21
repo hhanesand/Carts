@@ -80,7 +80,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 }
 
 - (void)initializeKeyboardAnimations {
-    self.responder = [[GLKeyboardResponderAnimator alloc] initWithDelegate:self];
+//    self.responder = [[GLKeyboardResponderAnimator alloc] initWithDelegate:self]; fuck...
 }
 
 - (void)initializeRACCommandBlocks {
