@@ -264,7 +264,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 
 - (GLDismissableViewHandler *)manualEntryViewDismissHandler {
     if (!_manualEntryViewDismissHandler) {
-
+        self.manualEntryViewDismissHandler = [[GLDismissableViewHandler alloc] initWithHeightOfAnimatableView:CGRectGetHeight(self.manualEntryView.frame) superViewHeight:CGRectGetHeight(self.view.frame)  animatableConstraint:self.manualLayoutBottomConstraint];
     }
     
     return _manualEntryViewDismissHandler;

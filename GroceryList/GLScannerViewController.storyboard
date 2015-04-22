@@ -319,7 +319,7 @@
                                         </variation>
                                     </visualEffectView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="wSf-Ya-ShS" firstAttribute="top" secondItem="2mM-EU-4Rf" secondAttribute="top" id="A4m-gy-V5E"/>
                                     <constraint firstItem="wSf-Ya-ShS" firstAttribute="leading" secondItem="2mM-EU-4Rf" secondAttribute="leading" id="lup-jS-AkI"/>

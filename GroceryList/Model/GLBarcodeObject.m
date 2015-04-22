@@ -56,7 +56,7 @@
 
 - (NSString *)description {
     NSMutableString *string = [NSMutableString stringWithString:self.name];
-    [string appendString:[@" barcodes " stringByAppendingString:[self.barcodes description]]];
+//    [string appendString:[@" barcodes " stringByAppendingString:[self.barcodes description]]];
     //[string appendString:[@" types " stringByAppendingString:[self.types description]]];
     
     if ([self.image count] > 0) {

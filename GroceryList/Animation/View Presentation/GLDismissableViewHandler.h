@@ -32,7 +32,7 @@
  *  @param constraint The constraint the handler should animate to move the view up and down
  *
  */
-- (instancetype)initWithHeightOfAnimatableView:(CGFloat)height animatableConstraint:(NSLayoutConstraint *)constraint;
+- (instancetype)initWithHeightOfAnimatableView:(CGFloat)height superViewHeight:(CGFloat)superHeight animatableConstraint:(NSLayoutConstraint *)constraint;
 
 /**
  *  Call this method when the UIPanGestureRecognizer's target method is called, or provide this method as it's target

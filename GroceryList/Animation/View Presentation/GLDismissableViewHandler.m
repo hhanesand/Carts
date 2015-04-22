@@ -28,17 +28,22 @@
  *  The constain the handler should animate to move the animatable view up and down
  */
 @property (nonatomic, weak) NSLayoutConstraint *constraint;
+@property (nonatomic) CGFloat superviewHeight;
+@property (nonatomic) CGFloat height;
+@property (nonatomic, getter=isOverThreshold) BOOL overThreshold;
 @end
 
 @implementation GLDismissableViewHandler
 
-- (instancetype)initWithHeightOfAnimatableView:(CGFloat)height animatableConstraint:(NSLayoutConstraint *)constraint {
+- (instancetype)initWithHeightOfAnimatableView:(CGFloat)height superViewHeight:(CGFloat)superHeight animatableConstraint:(NSLayoutConstraint *)constraint {
     if (self = [super init]) {
         self.enabled = YES;
         
         self.constraint = constraint;
+        self.height = height;
+        self.superviewHeight = superHeight;
         self.dismissedPosition = constraint.constant;
-        self.presentedPosition = constraint.constant + height;
+        self.presentedPosition =  superHeight - (constraint.constant + height);
     }
     
     return self;
@@ -67,21 +72,26 @@
     NSLog(@"Location of finger %f", locationOfFinger.y);
     
     if (locationOfFinger.y >= self.presentedPosition) {
-        self.constraint.constant = self.presentedPosition - locationOfFinger.y;
+        self.constraint.constant = locationOfFinger.y - self.superviewHeight;
     }
 }
 
 - (void)userDidEndInteractionWithGestureRecognizer:(UIPanGestureRecognizer *)pan {
     CGFloat distancePastPresentedPosition = [pan locationInView:pan.view].y - self.presentedPosition;
     CGFloat velocity = [pan velocityInView:pan.view].y;
-    CGFloat velocityFactor = velocity / 100;
+    CGFloat velocityFactor = velocity / 30;
     
-    if (distancePastPresentedPosition + velocityFactor >= self.presentedPosition / 2) {
+    NSLog(@"distancePastPresentedPosition %f", distancePastPresentedPosition);
+    NSLog(@"velocityFactor %f", velocityFactor);
+    
+    if (distancePastPresentedPosition + velocityFactor >= self.height / 2) {
         if ([self.delegate respondsToSelector:@selector(willDismissViewAfterUserInteraction)]) {
             [self.delegate willDismissViewAfterUserInteraction];
         }
         
         [[self dismissViewWithVelocity:velocity] subscribeCompleted:^{
+            self.overThreshold = NO;
+            
             if ([self.delegate respondsToSelector:@selector(didDismissViewAfterUserInteraction)]) {
                 [self.delegate didDismissViewAfterUserInteraction];
             }
@@ -92,6 +102,8 @@
         }
         
         [[self presentViewWithVelocity:velocity] subscribeCompleted:^{
+            self.overThreshold = NO;
+            
             if ([self.delegate respondsToSelector:@selector(didPresentViewAfterUserInteraction)]) {
                 [self.delegate didPresentViewAfterUserInteraction];
             }
@@ -113,20 +125,17 @@
 }
 
 - (RACSignal *)presentViewWithVelocity:(CGFloat)velocity {
+    NSLog(@"Is over threshhold %@", self.isOverThreshold ? @"YES" : @"NO");
     POPSpringAnimation *up = [POPSpringAnimation animationWithPropertyNamed:kPOPLayoutConstraintConstant];
-    up.toValue = @(-self.presentedPosition);
+    up.toValue = @(self.presentedPosition - self.superviewHeight);
     up.springSpeed = 20;
-    up.springBounciness = 10;
+    up.springBounciness = abs(velocity) / 400;
     up.velocity = @(velocity);
     up.name = @"PresentInteractiveView";
     
     [self.constraint pop_addAnimation:up forKey:@"present_interactive_view"];
     
     return [up completionSignal];
-}
-
-static inline CGPoint CGPointSetY(CGPoint point, CGFloat y) {
-    return CGPointMake(point.x, y);
 }
 
 @end
