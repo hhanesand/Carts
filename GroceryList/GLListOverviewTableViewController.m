@@ -33,9 +33,12 @@ static NSString *const kGLListOverviewTableViewControllerReuseIdentifier = @"GLL
         self.loadingViewEnabled = NO;
         self.pullToRefreshEnabled = YES;
         
+        CGFloat startTime = CACurrentMediaTime();
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+            NSLog(@"Started loading Storyboards after %f sec", CACurrentMediaTime() - startTime);
             self.listTableViewController = [[GLListTableViewController alloc] initWithStyle:UITableViewStylePlain];
             self.shareCartViewController = [GLShareCartViewController instance];
+            NSLog(@"Finished loading Storyboards after %f sec", CACurrentMediaTime() - startTime);
         });
     }
     

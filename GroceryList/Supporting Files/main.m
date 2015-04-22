@@ -9,7 +9,7 @@
 CFAbsoluteTime startTime;
 
 int main(int argc, char * argv[]) {
-    startTime = CFAbsoluteTimeGetCurrent();
+    startTime = CACurrentMediaTime();
     
     @autoreleasepool {
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));

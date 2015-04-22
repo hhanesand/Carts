@@ -19,13 +19,13 @@
 #import "GLListItemObject.h"
 #import "GLListOverviewTableViewController.h"
 
-extern CFAbsoluteTime startTime;
+extern CFTimeInterval startTime;
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     dispatch_async(dispatch_get_main_queue(), ^{
-        NSLog(@"Launched in %f sec", CFAbsoluteTimeGetCurrent() - startTime);
+        NSLog(@"Launched in %f sec", CACurrentMediaTime() - startTime);
     });
     
     [GLListObject registerSubclass];

@@ -25,8 +25,6 @@
 #import "GLProgressHUD.h"
 #import "GLListObject.h"
 
-static CGFloat const kGLManualEntryViewPositionRatio = 0.6f;
-
 typedef RACSignal* (^RACCommandBlock)(id);
 
 @interface GLScannerViewController()
@@ -80,6 +78,8 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self.view endEditing:YES];
     
     [self initializeKeyboardAnimations];
     [self initializeRACBlocks];
@@ -153,13 +153,14 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 }
 
 - (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    
     [self updateFrames];
     [self updateCameraReticule];
 }
 
 - (void)updateFrames {
     self.videoPreviewView.frame = self.view.bounds;
-    self.manualEntryView.frame = CGRectMake(0, CGRectGetHeight(self.view.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) * (1.0f - kGLManualEntryViewPositionRatio));
 }
 
 - (void)updateCameraReticule {
@@ -181,6 +182,11 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     [self.manualEntryViewDismissHandler presentViewWithVelocity:0];
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    NSLog(@"Delegate equal %d", [self.manualEntryView.name.delegate isEqual:self.manualEntryView]);
+    [super touchesBegan:touches withEvent:event];
+}
+
 - (RACSignal *)dismissManualEntryView {
     [self.barcodeScanner resume];
     
@@ -191,6 +197,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 
 - (void)willDismissViewAfterUserInteraction {
     [self.barcodeScanner resume];
+    [self.view endEditing:YES];
 }
 
 #pragma mark - Appearance
@@ -264,7 +271,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 
 - (GLDismissableViewHandler *)manualEntryViewDismissHandler {
     if (!_manualEntryViewDismissHandler) {
-        self.manualEntryViewDismissHandler = [[GLDismissableViewHandler alloc] initWithHeightOfAnimatableView:CGRectGetHeight(self.manualEntryView.frame) superViewHeight:CGRectGetHeight(self.view.frame)  animatableConstraint:self.manualLayoutBottomConstraint];
+        self.manualEntryViewDismissHandler = [[GLDismissableViewHandler alloc] initWithAnimatableView:self.manualEntryView superViewHeight:CGRectGetHeight(self.view.frame)  animatableConstraint:self.manualLayoutBottomConstraint];
     }
     
     return _manualEntryViewDismissHandler;
@@ -291,23 +298,6 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     }
     
     return _transitionDelegate;
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
-    return YES;
-}
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    self.activeField = textField;
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    self.activeField = nil;
-}
-
-- (BOOL)textFieldShouldClear:(UITextField *)textField {
-    return YES;
 }
 
 @end

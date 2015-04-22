@@ -41,12 +41,12 @@
         
         if (overlap > 0) {
             NSTimeInterval duration = [notif.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-            CGFloat options = [notif.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
+            NSUInteger options = [notif.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
             NSLayoutConstraint *constraint = [self.delegate layoutConstraintForAnimatingView];
             
             self.savedConstant = constraint.constant;
             
-            [UIView animateWithDuration:duration delay:0 options:options animations:^{
+            [UIView animateWithDuration:duration delay:0 options:options | UIViewAnimationOptionAllowUserInteraction animations:^{
                 constraint.constant = overlap;
                 [animatedView layoutIfNeeded];
             } completion:nil];
@@ -59,9 +59,9 @@
         
         if (!constraint.constant == self.savedConstant) {
             NSTimeInterval duration = [notif.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-            CGFloat options = [notif.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
+            NSUInteger options = [notif.userInfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
             
-            [UIView animateWithDuration:duration delay:0 options:options animations:^{
+            [UIView animateWithDuration:duration delay:0 options:options | UIViewAnimationOptionAllowUserInteraction animations:^{
                 [self.delegate layoutConstraintForAnimatingView].constant = self.savedConstant;
                 [animatedView layoutIfNeeded];
             } completion:nil];

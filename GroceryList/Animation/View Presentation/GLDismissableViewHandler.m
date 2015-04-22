@@ -29,21 +29,20 @@
  */
 @property (nonatomic, weak) NSLayoutConstraint *constraint;
 @property (nonatomic) CGFloat superviewHeight;
-@property (nonatomic) CGFloat height;
-@property (nonatomic, getter=isOverThreshold) BOOL overThreshold;
+@property (nonatomic) UIView *view;
 @end
 
 @implementation GLDismissableViewHandler
 
-- (instancetype)initWithHeightOfAnimatableView:(CGFloat)height superViewHeight:(CGFloat)superHeight animatableConstraint:(NSLayoutConstraint *)constraint {
+- (instancetype)initWithAnimatableView:(UIView*)animatableView superViewHeight:(CGFloat)superHeight animatableConstraint:(NSLayoutConstraint *)constraint {
     if (self = [super init]) {
         self.enabled = YES;
         
         self.constraint = constraint;
-        self.height = height;
+        self.view = animatableView;
+        
         self.superviewHeight = superHeight;
         self.dismissedPosition = constraint.constant;
-        self.presentedPosition =  superHeight - (constraint.constant + height);
     }
     
     return self;
@@ -84,14 +83,12 @@
     NSLog(@"distancePastPresentedPosition %f", distancePastPresentedPosition);
     NSLog(@"velocityFactor %f", velocityFactor);
     
-    if (distancePastPresentedPosition + velocityFactor >= self.height / 2) {
+    if (distancePastPresentedPosition + velocityFactor >= [self height] / 2) {
         if ([self.delegate respondsToSelector:@selector(willDismissViewAfterUserInteraction)]) {
             [self.delegate willDismissViewAfterUserInteraction];
         }
         
         [[self dismissViewWithVelocity:velocity] subscribeCompleted:^{
-            self.overThreshold = NO;
-            
             if ([self.delegate respondsToSelector:@selector(didDismissViewAfterUserInteraction)]) {
                 [self.delegate didDismissViewAfterUserInteraction];
             }
@@ -102,8 +99,6 @@
         }
         
         [[self presentViewWithVelocity:velocity] subscribeCompleted:^{
-            self.overThreshold = NO;
-            
             if ([self.delegate respondsToSelector:@selector(didPresentViewAfterUserInteraction)]) {
                 [self.delegate didPresentViewAfterUserInteraction];
             }
@@ -125,8 +120,8 @@
 }
 
 - (RACSignal *)presentViewWithVelocity:(CGFloat)velocity {
-    NSLog(@"Is over threshhold %@", self.isOverThreshold ? @"YES" : @"NO");
     POPSpringAnimation *up = [POPSpringAnimation animationWithPropertyNamed:kPOPLayoutConstraintConstant];
+    NSLog(@"height %f const val %f pes val %f", self.height, self.presentedPosition, self.presentedPosition - self.superviewHeight);
     up.toValue = @(self.presentedPosition - self.superviewHeight);
     up.springSpeed = 20;
     up.springBounciness = abs(velocity) / 400;
@@ -136,6 +131,14 @@
     [self.constraint pop_addAnimation:up forKey:@"present_interactive_view"];
     
     return [up completionSignal];
+}
+
+- (CGFloat)presentedPosition {
+    return self.superviewHeight - (self.dismissedPosition + CGRectGetHeight(self.view.frame));
+}
+
+- (CGFloat)height {
+    return CGRectGetHeight(self.view.frame);
 }
 
 @end
