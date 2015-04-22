@@ -100,7 +100,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
         return [self.animationStack popAllAnimations];
     };
     
-    RAC(_manualEntryView.name, enabled) = [_manualEntryView.name.rac_textSignal map:^id(NSString *value) {
+    RAC(_manualEntryView.confirm, enabled) = [_manualEntryView.name.rac_textSignal map:^id(NSString *value) {
         return @([value length] >= 1);
     }];
 }
