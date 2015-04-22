@@ -42,7 +42,7 @@ NSString * const kGLFactualURL = @"http://api.v3.factual.com/t/";
     
     for (NSString *parseDataField in self.factualToParseMapping) {
         if (factualResponse[parseDataField]) {
-            parseCompatibleDictionary[parseDataField] = factualResponse[parseDataField];
+            parseCompatibleDictionary[self.factualToParseMapping[parseDataField]] = factualResponse[parseDataField];
         }
     }
     
