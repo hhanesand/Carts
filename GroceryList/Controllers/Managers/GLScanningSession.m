@@ -54,7 +54,7 @@
         RACTuple *firstSelectorTuple = buffer.first;
         NSArray *barcodeMetadataObjects = firstSelectorTuple.second;
         return [GLBarcode barcodeWithMetadataObject:[barcodeMetadataObjects firstObject]];
-    }] logAll] filter:^BOOL(id value) {
+    }] logNext] filter:^BOOL(id value) {
         return !self.paused; //double check that we are not paused
     }];
 }

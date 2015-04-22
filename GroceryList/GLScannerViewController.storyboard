@@ -191,7 +191,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="600" height="240"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="200" verticalHuggingPriority="200" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="Enter Name" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="FrF-bA-xyD">
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="200" verticalHuggingPriority="200" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="Enter Name" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="FrF-bA-xyD" customClass="JVFloatLabeledTextField">
                                                                 <rect key="frame" x="8" y="8" width="584" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="36" id="VtJ-wK-6fx"/>

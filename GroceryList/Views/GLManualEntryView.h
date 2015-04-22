@@ -17,7 +17,7 @@
 
 @property (weak, nonatomic) UITextField *activeField;
 
-@property (weak, nonatomic) IBOutlet UITextField *name;
+@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *name;
 @property (weak, nonatomic) IBOutlet UIButton *confirm;
 @property (weak, nonatomic) IBOutlet UIButton *cancel;
 

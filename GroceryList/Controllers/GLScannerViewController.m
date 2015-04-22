@@ -149,7 +149,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     }] doNext:^(GLBarcodeObject *barcodeObject) {
         [GLProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"Added %@", barcodeObject.name]];
         [self.barcodeScanner resume];
-    }] logAll];
+    }] logNext];
 }
 
 - (void)viewWillLayoutSubviews {
@@ -260,7 +260,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 }
 
 - (UIView *)viewForActiveUserInputElement {
-    return self.activeField;
+    return self.manualEntryView.activeField;
 }
 
 - (NSLayoutConstraint *)layoutConstraintForAnimatingView {

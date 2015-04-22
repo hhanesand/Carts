@@ -10,7 +10,8 @@
 #import "GLFactualResponseSerializer.h"
 #import "GLFactualRequestSerializer.h"
 
-NSString * const kGLFactualURL = @"http://api.v3.factual.com/t/";
+static NSString * const kGLFactualURL = @"http://api.v3.factual.com/t/";
+static NSString * const kGLFactualBarcodeEndpoint = @"products-cpg";
 
 @interface GLFactualSessionManager ()
 @property (nonatomic) NSDictionary *factualToParseMapping;
@@ -32,7 +33,7 @@ NSString * const kGLFactualURL = @"http://api.v3.factual.com/t/";
 }
 
 - (RACSignal *)queryFactualForBarcode:(NSString *)barcode {
-    return [[self GET:@"products-cpg" parameters:@{@"q" : barcode}] map:^NSDictionary *(NSDictionary *factualJSONResponse) {
+    return [[self GET:kGLFactualBarcodeEndpoint parameters:@{@"q" : barcode}] map:^NSDictionary *(NSDictionary *factualJSONResponse) {
         return [self modifyFactualResponseForParseUpload:factualJSONResponse];
     }];
 }

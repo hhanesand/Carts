@@ -13,45 +13,40 @@
 
 @implementation GLManualEntryView
 
-//- (void)didMoveToSuperview {
-//    [super didMoveToSuperview];
-//    
-//    UIFont *font = [UIFont fontWithName:@"AvenirNext-Regular" size:12];
-////    self.name.floatingLabelFont = font;
-////    self.name.floatingLabelTextColor = [UIColor grayColor];
-//    self.name.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Name" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName : [UIFont fontWithName:@"AvenirNext-Regular" size:16.0]}];
-//}
+- (void)didMoveToSuperview {
+    [super didMoveToSuperview];
+    
+    UIFont *font = [UIFont fontWithName:@"AvenirNext-Regular" size:12];
+    self.name.floatingLabelFont = font;
+    self.name.floatingLabelTextColor = [UIColor grayColor];
+    self.name.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Name" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName : [UIFont fontWithName:@"AvenirNext-Regular" size:16.0]}];
+}
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-    NSLog(@"textFieldShouldBeginEditing");
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     return YES;
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField{
-    NSLog(@"textFieldDidBeginEditing");
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    self.activeField = textField;
 }
 
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
-    NSLog(@"textFieldShouldEndEditing");
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
     return YES;
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField{
-    NSLog(@"textFieldDidEndEditing");
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    self.activeField = nil;
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    NSLog(@"textField:shouldChangeCharactersInRange:replacementString:");
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     return YES;
 }
 
-- (BOOL)textFieldShouldClear:(UITextField *)textField{
-    NSLog(@"textFieldShouldClear:");
+- (BOOL)textFieldShouldClear:(UITextField *)textField {
     return YES;
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    NSLog(@"textFieldShouldReturn:");
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
 }

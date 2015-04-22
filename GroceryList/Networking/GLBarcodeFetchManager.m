@@ -47,7 +47,6 @@
     }] doNext:^(GLBarcodeObject *barcodeObject) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [[self.bing bingImageRequestWithBarcodeObject:barcodeObject] subscribeNext:^(NSArray *imageURLS) {
-                NSLog(@"Finished finiding image url");
                 [barcodeObject addImageURLSFromArray:imageURLS];
                 [barcodeObject saveEventually];
             }];

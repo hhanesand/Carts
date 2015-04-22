@@ -68,7 +68,6 @@
 
 - (void)userDidPanDismissableViewWithGestureRecognizer:(UIPanGestureRecognizer *)pan {
     CGPoint locationOfFinger = [pan locationInView:pan.view];
-    NSLog(@"Location of finger %f", locationOfFinger.y);
     
     if (locationOfFinger.y >= self.presentedPosition) {
         self.constraint.constant = locationOfFinger.y - self.superviewHeight;
@@ -80,8 +79,8 @@
     CGFloat velocity = [pan velocityInView:pan.view].y;
     CGFloat velocityFactor = velocity / 30;
     
-    NSLog(@"distancePastPresentedPosition %f", distancePastPresentedPosition);
-    NSLog(@"velocityFactor %f", velocityFactor);
+//    NSLog(@"distancePastPresentedPosition %f", distancePastPresentedPosition);
+//    NSLog(@"velocityFactor %f", velocityFactor);
     
     if (distancePastPresentedPosition + velocityFactor >= [self height] / 2) {
         if ([self.delegate respondsToSelector:@selector(willDismissViewAfterUserInteraction)]) {
@@ -121,7 +120,6 @@
 
 - (RACSignal *)presentViewWithVelocity:(CGFloat)velocity {
     POPSpringAnimation *up = [POPSpringAnimation animationWithPropertyNamed:kPOPLayoutConstraintConstant];
-    NSLog(@"height %f const val %f pes val %f", self.height, self.presentedPosition, self.presentedPosition - self.superviewHeight);
     up.toValue = @(self.presentedPosition - self.superviewHeight);
     up.springSpeed = 20;
     up.springBounciness = abs(velocity) / 400;

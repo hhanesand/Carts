@@ -28,11 +28,21 @@ extern CFTimeInterval startTime;
         NSLog(@"Launched in %f sec", CACurrentMediaTime() - startTime);
     });
     
+    [self registerParseSubclasses];
+    [self initializeParseWithLaunchOptions:launchOptions];
+    [self prepareViewHeirarchy];
+    
+    return YES;
+}
+
+- (void)registerParseSubclasses {
     [GLListObject registerSubclass];
     [GLListItemObject registerSubclass];
     [GLBarcodeObject registerSubclass];
     [GLUser registerSubclass];
-    
+}
+
+- (void)initializeParseWithLaunchOptions:(NSDictionary *)launchOptions {
     [Parse enableLocalDatastore];
     [ParseCrashReporting enable];
     
@@ -43,26 +53,16 @@ extern CFTimeInterval startTime;
     [PFTwitterUtils initializeWithConsumerKey:@"w7nv34kWb2UcCqurmS1SOUV4K" consumerSecret:@"q1uyBP2y42HDyuZZvIVZUqNkprcvYlzj2BqvT4wfl9heE3XV8M"];
     [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
     
+    [PFUser enableAutomaticUser];
+}
 
-    if ([PFUser currentUser] == nil) {
-        NSLog(@"Logging in");
-//        [GLUser logInWithUsername:@"lightice11" password:@"qwerty"];
-        
-        PFUser *user = [GLUser user];
-        user.username = @"lightice11";
-        user.password = @"qwerty";
-        
-        [user signUp];
-    }
-    
+- (void)prepareViewHeirarchy {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     GLListOverviewTableViewController *listOverviewTableViewController = [GLListOverviewTableViewController instance];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:listOverviewTableViewController];
     self.window.rootViewController = navigationController;
     
     [self.window makeKeyAndVisible];
-    
-    return YES;
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
