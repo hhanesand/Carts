@@ -28,4 +28,8 @@
  */
 + (UIImage *)imageWithColor:(UIColor *)color;
 
++ (UIColor *)facebookButtonBackgroundColor;
++ (UIColor *)twitterButtonBackgroundColor;
++ (UIColor *)blueBlackgroundColor;
+
 @end

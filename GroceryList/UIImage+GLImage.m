@@ -7,6 +7,7 @@
 //
 
 #import "UIImage+GLImage.h"
+#import "GLRect.h"
 
 @implementation UIImage (GLImage)
 
@@ -81,6 +82,27 @@ static inline CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI /
     UIGraphicsEndImageContext();
     return newImage;
     
+}
+
++ (UIImage *)imageWithColor:(UIColor *)color cornerRadius:(CGFloat)cornerRadius {
+    CGSize size = CGSizeMake(cornerRadius * 2.0f + 1.0f, cornerRadius * 2.0f + 1.0f);
+    
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0.0f);
+    
+    [color setFill];
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:GLRectMakeWithSize(size) cornerRadius:cornerRadius];
+    [path fill];
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(cornerRadius,
+                                                                cornerRadius,
+                                                                cornerRadius,
+                                                                cornerRadius)
+                                  resizingMode:UIImageResizingModeStretch];
+    
+    return image;
 }
 
 @end

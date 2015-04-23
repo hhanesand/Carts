@@ -28,4 +28,6 @@
  */
 - (RACSignal *)getFirstObjectWithRACSignal;
 
+- (RACSignal *)getObjectWithIdWithSignal:(NSString *)objectId;
+
 @end

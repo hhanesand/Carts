@@ -12,8 +12,7 @@
 #import "POPAnimation+GLAnimation.h"
 
 @interface GLVideoPreviewView ()
-@property (weak, nonatomic) IBOutlet UIView *previewView;
-@property (weak, nonatomic) IBOutlet UIImageView *pausedImageView;
+
 @end
 
 @implementation GLVideoPreviewView
@@ -41,8 +40,14 @@
 
 - (void)setCapturePreviewLayer:(AVCaptureVideoPreviewLayer *)capturePreviewLayer {
     _capturePreviewLayer = capturePreviewLayer;
+    NSLog(@"Bounds %@", NSStringFromCGRect(self.bounds));
     capturePreviewLayer.frame = self.bounds;
     [self.previewView.layer addSublayer:capturePreviewLayer];
+}
+
+- (void)setFrame:(CGRect)frame {
+    [super setFrame:frame];
+    self.capturePreviewLayer.frame = self.bounds;
 }
 
 @end

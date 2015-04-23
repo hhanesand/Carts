@@ -55,6 +55,7 @@
  */
 + (GLBarcodeObject *)objectWithBarcode:(GLBarcode *)barcode;
 + (GLBarcodeObject *)objectWithDictionary:(NSDictionary *)data;
++ (GLBarcodeObject *)objectWithName:(NSString *)barcode;
 
 - (void)addImageURLSFromArray:(NSArray *)array;
 @end

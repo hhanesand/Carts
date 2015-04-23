@@ -10,9 +10,9 @@
 
 @implementation PFObject (GLPFObject)
 
-+ (RACSignal *)pinAll:(NSArray *)objects withSignalAndName:(NSString *)tagName {
++ (RACSignal *)pinAllWithSignal:(NSArray *)objects {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        [PFObject pinAllInBackground:objects withName:tagName block:^(BOOL succeeded, NSError *error) {
+        [PFObject pinAllInBackground:objects block:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
                 [subscriber sendCompleted];
             } else {
@@ -24,12 +24,42 @@
     }];
 }
 
-+ (RACSignal *)unpinAllWithSignalAndName:(NSString *)tagName {
++ (RACSignal *)unpinAllWithSignal {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        [PFObject unpinAllObjectsInBackgroundWithName:tagName block:^(BOOL succeeded, NSError *error) {
-            if (succeeded) {
+        [PFObject unpinAllObjectsInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (error) {
+                NSLog(@"Error in unpinAll %@", error);
+            }
+            
+            [subscriber sendCompleted];
+        }];
+        
+        return nil;
+    }];
+}
+
++ (RACSignal *)fetchAllWithSignal:(NSArray *)objects {
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [PFObject fetchAllInBackground:objects block:^(NSArray *objects, NSError *error) {
+            if (error) {
+                NSLog(@"Error in fetchAll %@", error);
                 [subscriber sendCompleted];
             } else {
+                [subscriber sendNext:objects];
+            }
+        }];
+        
+        return nil;
+    }];
+}
+
+- (RACSignal *)pinWithSignal {
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [self pinInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                [subscriber sendCompleted];
+            } else {
+                NSLog(@"Error in pin %@", error);
                 [subscriber sendError:error];
             }
         }];
@@ -44,6 +74,7 @@
             if (succeeded) {
                 [subscriber sendCompleted];
             } else {
+                NSLog(@"Error in saveInBackground %@", error);
                 [subscriber sendError:error];
             }
         }];
@@ -52,18 +83,38 @@
     }];
 }
 
-- (RACSignal *)pinWithSignalAndName:(NSString *)name {
-    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        [self pinInBackgroundWithName:name block:^(BOOL succeeded, NSError *error) {
-            if (!error) {
-                [subscriber sendCompleted];
-            } else {
+- (RACSignal *)fetchWithSignal {
+	return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [self fetchInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+            if (error) {
+                NSLog(@"Error in fetch %@", error);
                 [subscriber sendError:error];
+            } else {
+                [subscriber sendNext:object];
+                [subscriber sendCompleted];
             }
         }];
         
         return nil;
     }];
 }
+
+- (RACSignal *)fetchWithSignalFromLocalDatastore {
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [self fetchFromLocalDatastoreInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+            if (error) {
+                NSLog(@"Error in lds fetch %@", error);
+                [subscriber sendCompleted];
+            } else {
+                [subscriber sendNext:object];
+                [subscriber sendCompleted];
+            }
+        }];
+        
+        return nil;
+    }];
+}
+
+
 
 @end

@@ -18,6 +18,11 @@
 		F22C8F421A6EE92D00139B9D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F22C8F411A6EE92D00139B9D /* SystemConfiguration.framework */; };
 		F22C8F441A6EE93600139B9D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F22C8F431A6EE93600139B9D /* libz.dylib */; };
 		F22C8F461A6EE94A00139B9D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F22C8F451A6EE94A00139B9D /* libsqlite3.dylib */; };
+		F248BD8B1AE85AFD00F535C5 /* GLSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F248BD8A1AE85AFD00F535C5 /* GLSignUpViewController.m */; };
+		F248BD8E1AE85B1600F535C5 /* GLLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F248BD8D1AE85B1600F535C5 /* GLLogInViewController.m */; };
+		F248BD941AE85D6A00F535C5 /* GLSignUpViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F248BD931AE85D6A00F535C5 /* GLSignUpViewController.storyboard */; };
+		F248BD9C1AE86C4B00F535C5 /* GLAuthenticationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F248BD9B1AE86C4B00F535C5 /* GLAuthenticationButton.m */; };
+		F248BD9F1AE86F0700F535C5 /* GLRect.m in Sources */ = {isa = PBXBuildFile; fileRef = F248BD9E1AE86F0700F535C5 /* GLRect.m */; };
 		F25286901ACFA1FD00435261 /* GLBarcodeFetchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286871ACFA1FD00435261 /* GLBarcodeFetchManager.m */; };
 		F25286931ACFA1FD00435261 /* GLFactualRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F252868D1ACFA1FD00435261 /* GLFactualRequestSerializer.m */; };
 		F25286941ACFA1FD00435261 /* GLFactualResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F252868F1ACFA1FD00435261 /* GLFactualResponseSerializer.m */; };
@@ -39,23 +44,38 @@
 		F25286C61ACFA24F00435261 /* GLListObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286C31ACFA24F00435261 /* GLListObject.m */; };
 		F25286CE1ACFA26300435261 /* GLBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286C81ACFA26300435261 /* GLBaseViewController.m */; };
 		F25286CF1ACFA26300435261 /* GLScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286CA1ACFA26300435261 /* GLScannerViewController.m */; };
-		F25286D01ACFA26300435261 /* GLScannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F25286CB1ACFA26300435261 /* GLScannerViewController.xib */; };
-		F25286D11ACFA26300435261 /* GLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286CD1ACFA26300435261 /* GLTableViewController.m */; };
+		F25286D11ACFA26300435261 /* GLListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286CD1ACFA26300435261 /* GLListTableViewController.m */; };
 		F25286D41ACFA26D00435261 /* GLScanningSession.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286D31ACFA26D00435261 /* GLScanningSession.m */; };
 		F25286DF1ACFA27D00435261 /* GLCameraLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286D61ACFA27D00435261 /* GLCameraLayer.m */; };
 		F25286E01ACFA27D00435261 /* GLManualEntryView.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286D81ACFA27D00435261 /* GLManualEntryView.m */; };
-		F25286E11ACFA27D00435261 /* GLManualEntryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F25286D91ACFA27D00435261 /* GLManualEntryView.xib */; };
 		F25286E21ACFA27D00435261 /* GLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286DB1ACFA27D00435261 /* GLTableViewCell.m */; };
 		F25286E31ACFA27D00435261 /* GLTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F25286DC1ACFA27D00435261 /* GLTableViewCell.xib */; };
 		F25286E41ACFA27D00435261 /* GLVideoPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286DE1ACFA27D00435261 /* GLVideoPreviewView.m */; };
 		F25286EB1ACFA2B300435261 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286E61ACFA2B300435261 /* AppDelegate.m */; };
 		F25286ED1ACFA2B300435261 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286E81ACFA2B300435261 /* main.m */; };
-		F282F2D31AD9CE5900216FDE /* GLVideoPreviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F282F2D21AD9CE5900216FDE /* GLVideoPreviewView.xib */; };
+		F282DD7F1AE2ED09004DCF16 /* GLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F282DD7E1AE2ED09004DCF16 /* GLUser.m */; };
+		F282DD831AE33CF2004DCF16 /* GLListOverviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F282DD811AE33CF2004DCF16 /* GLListOverviewTableViewController.m */; };
+		F282DD871AE35C9D004DCF16 /* GLListItemObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F282DD861AE35C9D004DCF16 /* GLListItemObject.m */; };
+		F282DD8A1AE36294004DCF16 /* MustOverride.m in Sources */ = {isa = PBXBuildFile; fileRef = F282DD891AE36294004DCF16 /* MustOverride.m */; };
+		F282DD8E1AE443BE004DCF16 /* GLListOverviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F282DD8C1AE443BE004DCF16 /* GLListOverviewTableViewCell.m */; };
+		F282DD921AE45C07004DCF16 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F282DD911AE45C07004DCF16 /* ParseFacebookUtilsV4.framework */; };
+		F282DD941AE45D05004DCF16 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F282DD931AE45D05004DCF16 /* FBSDKCoreKit.framework */; };
+		F282DD961AE45D3B004DCF16 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F282DD951AE45D3B004DCF16 /* FBSDKLoginKit.framework */; };
+		F282DD9A1AE46F4E004DCF16 /* GLListOverviewTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F282DD991AE46F4E004DCF16 /* GLListOverviewTableViewController.storyboard */; };
+		F282DD9D1AE57784004DCF16 /* GLShareCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F282DD9C1AE57784004DCF16 /* GLShareCartViewController.m */; };
+		F282DD9F1AE57792004DCF16 /* GLShareCartViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F282DD9E1AE57792004DCF16 /* GLShareCartViewController.storyboard */; };
+		F282DDA21AE59BC6004DCF16 /* UISearchBar+RACAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F282DDA11AE59BC6004DCF16 /* UISearchBar+RACAdditions.m */; };
+		F282DDA51AE5AB98004DCF16 /* RACSignal+GLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F282DDA41AE5AB98004DCF16 /* RACSignal+GLAdditions.m */; };
+		F282DDAB1AE5B841004DCF16 /* GLUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F282DDAA1AE5B841004DCF16 /* GLUserTableViewCell.m */; };
 		F28586BA1A744A63003B91E1 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586B91A744A63003B91E1 /* Social.framework */; };
 		F28586BC1A744A6B003B91E1 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586BB1A744A6B003B91E1 /* Accounts.framework */; };
 		F28586BE1A744A75003B91E1 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F28586BD1A744A75003B91E1 /* AdSupport.framework */; };
+		F28C2D9E1ADC6B2D00A74641 /* GLTransitionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F28C2D9D1ADC6B2D00A74641 /* GLTransitionDelegate.m */; };
+		F28C2DA31ADC717900A74641 /* GLKeyboardResponderAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = F28C2DA21ADC717900A74641 /* GLKeyboardResponderAnimator.m */; };
+		F28C2DA61ADC9C3F00A74641 /* GLProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F28C2DA51ADC9C3F00A74641 /* GLProgressHUD.m */; };
 		F296DA141A709862001E9D29 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F296DA131A709862001E9D29 /* libstdc++.6.dylib */; };
-		F2AC65FF1AD1DE3D00C0A09F /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F2AC65FE1AD1DE3D00C0A09F /* SVProgressHUD.bundle */; };
+		F2A29F431AE6F7DA0044C604 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F2A29F421AE6F7DA0044C604 /* SVProgressHUD.bundle */; };
+		F2A29F4A1AE6FE520044C604 /* GLScannerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2A29F491AE6FE520044C604 /* GLScannerViewController.storyboard */; };
 		F2B4D0D61A6DF52200A98C7A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0D51A6DF52200A98C7A /* AVFoundation.framework */; };
 		F2B4D0D81A6DF52A00A98C7A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0D71A6DF52A00A98C7A /* CoreMedia.framework */; };
 		F2B4D0DA1A6DF53000A98C7A /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B4D0D91A6DF53000A98C7A /* CoreVideo.framework */; };
@@ -105,6 +125,16 @@
 		F22C8F411A6EE92D00139B9D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F22C8F431A6EE93600139B9D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		F22C8F451A6EE94A00139B9D /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		F248BD891AE85AFD00F535C5 /* GLSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLSignUpViewController.h; sourceTree = "<group>"; };
+		F248BD8A1AE85AFD00F535C5 /* GLSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLSignUpViewController.m; sourceTree = "<group>"; };
+		F248BD8C1AE85B1600F535C5 /* GLLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLLogInViewController.h; sourceTree = "<group>"; };
+		F248BD8D1AE85B1600F535C5 /* GLLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLLogInViewController.m; sourceTree = "<group>"; };
+		F248BD931AE85D6A00F535C5 /* GLSignUpViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GLSignUpViewController.storyboard; sourceTree = "<group>"; };
+		F248BD9A1AE86C4B00F535C5 /* GLAuthenticationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLAuthenticationButton.h; sourceTree = "<group>"; };
+		F248BD9B1AE86C4B00F535C5 /* GLAuthenticationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLAuthenticationButton.m; sourceTree = "<group>"; };
+		F248BD9D1AE86EF400F535C5 /* GLRect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLRect.h; sourceTree = "<group>"; };
+		F248BD9E1AE86F0700F535C5 /* GLRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLRect.m; sourceTree = "<group>"; };
+		F248BDA21AE89E6F00F535C5 /* GLSignUpDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLSignUpDelegate.h; sourceTree = "<group>"; };
 		F25286861ACFA1FD00435261 /* GLBarcodeFetchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLBarcodeFetchManager.h; path = Networking/GLBarcodeFetchManager.h; sourceTree = "<group>"; };
 		F25286871ACFA1FD00435261 /* GLBarcodeFetchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLBarcodeFetchManager.m; path = Networking/GLBarcodeFetchManager.m; sourceTree = "<group>"; };
 		F252868C1ACFA1FD00435261 /* GLFactualRequestSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLFactualRequestSerializer.h; path = Networking/GLFactualRequestSerializer.h; sourceTree = "<group>"; };
@@ -139,26 +169,22 @@
 		F25286B51ACFA23B00435261 /* UIColor+GLColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+GLColor.m"; path = "Animation/UIColor+GLColor.m"; sourceTree = "<group>"; };
 		F25286BC1ACFA24F00435261 /* GLBarcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLBarcode.h; path = Model/GLBarcode.h; sourceTree = "<group>"; };
 		F25286BD1ACFA24F00435261 /* GLBarcode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLBarcode.m; path = Model/GLBarcode.m; sourceTree = "<group>"; };
-		F25286BE1ACFA24F00435261 /* GLBarcodeItemDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLBarcodeItemDelegate.h; path = Model/GLBarcodeItemDelegate.h; sourceTree = "<group>"; };
 		F25286BF1ACFA24F00435261 /* GLBarcodeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLBarcodeObject.h; path = Model/GLBarcodeObject.h; sourceTree = "<group>"; };
 		F25286C01ACFA24F00435261 /* GLBarcodeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLBarcodeObject.m; path = Model/GLBarcodeObject.m; sourceTree = "<group>"; };
-		F25286C11ACFA24F00435261 /* GLBarcodeScannerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLBarcodeScannerDelegate.h; path = Model/GLBarcodeScannerDelegate.h; sourceTree = "<group>"; };
 		F25286C21ACFA24F00435261 /* GLListObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLListObject.h; path = Model/GLListObject.h; sourceTree = "<group>"; };
 		F25286C31ACFA24F00435261 /* GLListObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLListObject.m; path = Model/GLListObject.m; sourceTree = "<group>"; };
 		F25286C71ACFA26300435261 /* GLBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLBaseViewController.h; path = Controllers/GLBaseViewController.h; sourceTree = "<group>"; };
 		F25286C81ACFA26300435261 /* GLBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLBaseViewController.m; path = Controllers/GLBaseViewController.m; sourceTree = "<group>"; };
 		F25286C91ACFA26300435261 /* GLScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLScannerViewController.h; path = Controllers/GLScannerViewController.h; sourceTree = "<group>"; };
 		F25286CA1ACFA26300435261 /* GLScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLScannerViewController.m; path = Controllers/GLScannerViewController.m; sourceTree = "<group>"; };
-		F25286CB1ACFA26300435261 /* GLScannerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GLScannerViewController.xib; path = Controllers/GLScannerViewController.xib; sourceTree = "<group>"; };
-		F25286CC1ACFA26300435261 /* GLTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLTableViewController.h; path = Controllers/GLTableViewController.h; sourceTree = "<group>"; };
-		F25286CD1ACFA26300435261 /* GLTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLTableViewController.m; path = Controllers/GLTableViewController.m; sourceTree = "<group>"; };
+		F25286CC1ACFA26300435261 /* GLListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLListTableViewController.h; path = Controllers/GLListTableViewController.h; sourceTree = "<group>"; };
+		F25286CD1ACFA26300435261 /* GLListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLListTableViewController.m; path = Controllers/GLListTableViewController.m; sourceTree = "<group>"; };
 		F25286D21ACFA26D00435261 /* GLScanningSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLScanningSession.h; path = Controllers/Managers/GLScanningSession.h; sourceTree = "<group>"; };
 		F25286D31ACFA26D00435261 /* GLScanningSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLScanningSession.m; path = Controllers/Managers/GLScanningSession.m; sourceTree = "<group>"; };
 		F25286D51ACFA27D00435261 /* GLCameraLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLCameraLayer.h; path = Views/GLCameraLayer.h; sourceTree = "<group>"; };
 		F25286D61ACFA27D00435261 /* GLCameraLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLCameraLayer.m; path = Views/GLCameraLayer.m; sourceTree = "<group>"; };
 		F25286D71ACFA27D00435261 /* GLManualEntryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLManualEntryView.h; path = Views/GLManualEntryView.h; sourceTree = "<group>"; };
 		F25286D81ACFA27D00435261 /* GLManualEntryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLManualEntryView.m; path = Views/GLManualEntryView.m; sourceTree = "<group>"; };
-		F25286D91ACFA27D00435261 /* GLManualEntryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GLManualEntryView.xib; path = Views/GLManualEntryView.xib; sourceTree = "<group>"; };
 		F25286DA1ACFA27D00435261 /* GLTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLTableViewCell.h; path = Views/GLTableViewCell.h; sourceTree = "<group>"; };
 		F25286DB1ACFA27D00435261 /* GLTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLTableViewCell.m; path = Views/GLTableViewCell.m; sourceTree = "<group>"; };
 		F25286DC1ACFA27D00435261 /* GLTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GLTableViewCell.xib; path = Views/GLTableViewCell.xib; sourceTree = "<group>"; };
@@ -168,13 +194,42 @@
 		F25286E61ACFA2B300435261 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = "Supporting Files/AppDelegate.m"; sourceTree = "<group>"; };
 		F25286E71ACFA2B300435261 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Supporting Files/Info.plist"; sourceTree = "<group>"; };
 		F25286E81ACFA2B300435261 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Supporting Files/main.m"; sourceTree = "<group>"; };
-		F25286EF1ACFA2FE00435261 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseCrashReporting.framework; path = Frameworks/ParseCrashReporting.framework; sourceTree = "<group>"; };
-		F282F2D21AD9CE5900216FDE /* GLVideoPreviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GLVideoPreviewView.xib; sourceTree = "<group>"; };
+		F282DD7D1AE2ED09004DCF16 /* GLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLUser.h; sourceTree = "<group>"; };
+		F282DD7E1AE2ED09004DCF16 /* GLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLUser.m; sourceTree = "<group>"; };
+		F282DD801AE33CF2004DCF16 /* GLListOverviewTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLListOverviewTableViewController.h; sourceTree = "<group>"; };
+		F282DD811AE33CF2004DCF16 /* GLListOverviewTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLListOverviewTableViewController.m; sourceTree = "<group>"; };
+		F282DD851AE35C9D004DCF16 /* GLListItemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLListItemObject.h; sourceTree = "<group>"; };
+		F282DD861AE35C9D004DCF16 /* GLListItemObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLListItemObject.m; sourceTree = "<group>"; };
+		F282DD881AE36294004DCF16 /* MustOverride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MustOverride.h; sourceTree = "<group>"; };
+		F282DD891AE36294004DCF16 /* MustOverride.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MustOverride.m; sourceTree = "<group>"; };
+		F282DD8B1AE443BE004DCF16 /* GLListOverviewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLListOverviewTableViewCell.h; sourceTree = "<group>"; };
+		F282DD8C1AE443BE004DCF16 /* GLListOverviewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLListOverviewTableViewCell.m; sourceTree = "<group>"; };
+		F282DD911AE45C07004DCF16 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
+		F282DD931AE45D05004DCF16 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		F282DD951AE45D3B004DCF16 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		F282DD991AE46F4E004DCF16 /* GLListOverviewTableViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GLListOverviewTableViewController.storyboard; sourceTree = "<group>"; };
+		F282DD9B1AE57784004DCF16 /* GLShareCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLShareCartViewController.h; sourceTree = "<group>"; };
+		F282DD9C1AE57784004DCF16 /* GLShareCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLShareCartViewController.m; sourceTree = "<group>"; };
+		F282DD9E1AE57792004DCF16 /* GLShareCartViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GLShareCartViewController.storyboard; sourceTree = "<group>"; };
+		F282DDA01AE59BC6004DCF16 /* UISearchBar+RACAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISearchBar+RACAdditions.h"; sourceTree = "<group>"; };
+		F282DDA11AE59BC6004DCF16 /* UISearchBar+RACAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISearchBar+RACAdditions.m"; sourceTree = "<group>"; };
+		F282DDA31AE5AB98004DCF16 /* RACSignal+GLAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RACSignal+GLAdditions.h"; sourceTree = "<group>"; };
+		F282DDA41AE5AB98004DCF16 /* RACSignal+GLAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RACSignal+GLAdditions.m"; sourceTree = "<group>"; };
+		F282DDA91AE5B841004DCF16 /* GLUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLUserTableViewCell.h; sourceTree = "<group>"; };
+		F282DDAA1AE5B841004DCF16 /* GLUserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLUserTableViewCell.m; sourceTree = "<group>"; };
 		F28586B91A744A63003B91E1 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		F28586BB1A744A6B003B91E1 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		F28586BD1A744A75003B91E1 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		F28C2D9C1ADC6B2D00A74641 /* GLTransitionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTransitionDelegate.h; sourceTree = "<group>"; };
+		F28C2D9D1ADC6B2D00A74641 /* GLTransitionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTransitionDelegate.m; sourceTree = "<group>"; };
+		F28C2D9F1ADC6D2300A74641 /* GLReversibleTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLReversibleTransition.h; sourceTree = "<group>"; };
+		F28C2DA11ADC717900A74641 /* GLKeyboardResponderAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLKeyboardResponderAnimator.h; sourceTree = "<group>"; };
+		F28C2DA21ADC717900A74641 /* GLKeyboardResponderAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLKeyboardResponderAnimator.m; sourceTree = "<group>"; };
+		F28C2DA41ADC9C3F00A74641 /* GLProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLProgressHUD.h; sourceTree = "<group>"; };
+		F28C2DA51ADC9C3F00A74641 /* GLProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLProgressHUD.m; sourceTree = "<group>"; };
 		F296DA131A709862001E9D29 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
-		F2AC65FE1AD1DE3D00C0A09F /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SVProgressHUD.bundle; path = Pods/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle; sourceTree = "<group>"; };
+		F2A29F421AE6F7DA0044C604 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SVProgressHUD.bundle; path = Pods/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle; sourceTree = "<group>"; };
+		F2A29F491AE6FE520044C604 /* GLScannerViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GLScannerViewController.storyboard; sourceTree = "<group>"; };
 		F2B4D0D51A6DF52200A98C7A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F2B4D0D71A6DF52A00A98C7A /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		F2B4D0D91A6DF53000A98C7A /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -217,6 +272,7 @@
 			files = (
 				F22C8F441A6EE93600139B9D /* libz.dylib in Frameworks */,
 				F2F948F81A8AEDE8002C5177 /* Foundation.framework in Frameworks */,
+				F282DD921AE45C07004DCF16 /* ParseFacebookUtilsV4.framework in Frameworks */,
 				F2F948F61A8AEDDF002C5177 /* UIKit.framework in Frameworks */,
 				F2B4D0DE1A6DF54500A98C7A /* libiconv.dylib in Frameworks */,
 				F2F948F41A8AEDB8002C5177 /* libc++.dylib in Frameworks */,
@@ -229,10 +285,12 @@
 				F22C8F401A6EE92500139B9D /* StoreKit.framework in Frameworks */,
 				F22C8F3E1A6EE91B00139B9D /* Security.framework in Frameworks */,
 				F2B4D0DC1A6DF53900A98C7A /* QuartzCore.framework in Frameworks */,
+				F282DD941AE45D05004DCF16 /* FBSDKCoreKit.framework in Frameworks */,
 				F22C8F3C1A6EE90A00139B9D /* MobileCoreServices.framework in Frameworks */,
 				F22C8F3A1A6EE8FD00139B9D /* CoreLocation.framework in Frameworks */,
 				F22C8F381A6EE8A100139B9D /* CoreGraphics.framework in Frameworks */,
 				F22C8F361A6EE89700139B9D /* CFNetwork.framework in Frameworks */,
+				F282DD961AE45D3B004DCF16 /* FBSDKLoginKit.framework in Frameworks */,
 				F22C8F341A6EE88D00139B9D /* AudioToolbox.framework in Frameworks */,
 				F2B4D0DA1A6DF53000A98C7A /* CoreVideo.framework in Frameworks */,
 				F2B4D0D81A6DF52A00A98C7A /* CoreMedia.framework in Frameworks */,
@@ -260,6 +318,66 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		F248BD8F1AE85B1F00F535C5 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				F248BDA21AE89E6F00F535C5 /* GLSignUpDelegate.h */,
+				F248BD891AE85AFD00F535C5 /* GLSignUpViewController.h */,
+				F248BD8A1AE85AFD00F535C5 /* GLSignUpViewController.m */,
+				F248BD931AE85D6A00F535C5 /* GLSignUpViewController.storyboard */,
+				F248BD8C1AE85B1600F535C5 /* GLLogInViewController.h */,
+				F248BD8D1AE85B1600F535C5 /* GLLogInViewController.m */,
+			);
+			name = Authentication;
+			sourceTree = "<group>";
+		};
+		F248BD901AE85B3F00F535C5 /* Scanner View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F25286C91ACFA26300435261 /* GLScannerViewController.h */,
+				F25286CA1ACFA26300435261 /* GLScannerViewController.m */,
+				F2A29F491AE6FE520044C604 /* GLScannerViewController.storyboard */,
+			);
+			name = "Scanner View Controller";
+			sourceTree = "<group>";
+		};
+		F248BD911AE85B5100F535C5 /* Carts View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F282DD801AE33CF2004DCF16 /* GLListOverviewTableViewController.h */,
+				F282DD811AE33CF2004DCF16 /* GLListOverviewTableViewController.m */,
+				F282DD991AE46F4E004DCF16 /* GLListOverviewTableViewController.storyboard */,
+			);
+			name = "Carts View Controller";
+			sourceTree = "<group>";
+		};
+		F248BD921AE85B5A00F535C5 /* Share Carts View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F282DD9B1AE57784004DCF16 /* GLShareCartViewController.h */,
+				F282DD9C1AE57784004DCF16 /* GLShareCartViewController.m */,
+				F282DD9E1AE57792004DCF16 /* GLShareCartViewController.storyboard */,
+			);
+			name = "Share Carts View Controller";
+			sourceTree = "<group>";
+		};
+		F248BD951AE86ADD00F535C5 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Vendor;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		F248BD991AE86C4000F535C5 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				F248BD9A1AE86C4B00F535C5 /* GLAuthenticationButton.h */,
+				F248BD9B1AE86C4B00F535C5 /* GLAuthenticationButton.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		F25E490F1A86B126006E1252 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,6 +397,31 @@
 				F25286D31ACFA26D00435261 /* GLScanningSession.m */,
 			);
 			name = Managers;
+			sourceTree = "<group>";
+		};
+		F282DD901AE4448F004DCF16 /* Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F282DD8B1AE443BE004DCF16 /* GLListOverviewTableViewCell.h */,
+				F282DD8C1AE443BE004DCF16 /* GLListOverviewTableViewCell.m */,
+				F25286DA1ACFA27D00435261 /* GLTableViewCell.h */,
+				F25286DB1ACFA27D00435261 /* GLTableViewCell.m */,
+				F25286DC1ACFA27D00435261 /* GLTableViewCell.xib */,
+				F282DDA91AE5B841004DCF16 /* GLUserTableViewCell.h */,
+				F282DDAA1AE5B841004DCF16 /* GLUserTableViewCell.m */,
+			);
+			name = "Table View Cells";
+			sourceTree = "<group>";
+		};
+		F28C2DA01ADC707A00A74641 /* Delegate Objects */ = {
+			isa = PBXGroup;
+			children = (
+				F28C2D9C1ADC6B2D00A74641 /* GLTransitionDelegate.h */,
+				F28C2D9D1ADC6B2D00A74641 /* GLTransitionDelegate.m */,
+				F28C2DA11ADC717900A74641 /* GLKeyboardResponderAnimator.h */,
+				F28C2DA21ADC717900A74641 /* GLKeyboardResponderAnimator.m */,
+			);
+			name = "Delegate Objects";
 			sourceTree = "<group>";
 		};
 		F2A00A591AA8048C004B8988 /* Animation */ = {
@@ -303,7 +446,9 @@
 		F2B4D0DF1A6DF54B00A98C7A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F25286EF1ACFA2FE00435261 /* ParseCrashReporting.framework */,
+				F282DD951AE45D3B004DCF16 /* FBSDKLoginKit.framework */,
+				F282DD931AE45D05004DCF16 /* FBSDKCoreKit.framework */,
+				F282DD911AE45C07004DCF16 /* ParseFacebookUtilsV4.framework */,
 				F2F948F71A8AEDE8002C5177 /* Foundation.framework */,
 				F2F948F51A8AEDDF002C5177 /* UIKit.framework */,
 				F2F948F31A8AEDB8002C5177 /* libc++.dylib */,
@@ -379,7 +524,9 @@
 		F2E544D11A6CB55000CB52E5 = {
 			isa = PBXGroup;
 			children = (
-				F2AC65FE1AD1DE3D00C0A09F /* SVProgressHUD.bundle */,
+				F2A29F421AE6F7DA0044C604 /* SVProgressHUD.bundle */,
+				F282DD881AE36294004DCF16 /* MustOverride.h */,
+				F282DD891AE36294004DCF16 /* MustOverride.m */,
 				F2F948B91A8ACCEB002C5177 /* Images.xcassets */,
 				F2E544DC1A6CB55000CB52E5 /* GroceryList */,
 				F2E544F61A6CB55100CB52E5 /* GroceryListTests */,
@@ -407,6 +554,9 @@
 				F2A00A591AA8048C004B8988 /* Animation */,
 				F2F948B01A8947A6002C5177 /* Model */,
 				F2E5450A1A6CB60A00CB52E5 /* Controllers */,
+				F248BD951AE86ADD00F535C5 /* Vendor */,
+				F26147FB1ACF1CCA002395BE /* Managers */,
+				F28C2DA01ADC707A00A74641 /* Delegate Objects */,
 				F2E545091A6CB60100CB52E5 /* Views */,
 				F2E544DD1A6CB55000CB52E5 /* Supporting Files */,
 			);
@@ -425,6 +575,12 @@
 				F2DC2FC61AD6F53B00E46D3C /* UIImage+GLImage.m */,
 				F2CD0A861AD742020036D0A4 /* NSDictionary+GLCustomKVOOperators.h */,
 				F2CD0A871AD742020036D0A4 /* NSDictionary+GLCustomKVOOperators.m */,
+				F282DDA01AE59BC6004DCF16 /* UISearchBar+RACAdditions.h */,
+				F282DDA11AE59BC6004DCF16 /* UISearchBar+RACAdditions.m */,
+				F282DDA31AE5AB98004DCF16 /* RACSignal+GLAdditions.h */,
+				F282DDA41AE5AB98004DCF16 /* RACSignal+GLAdditions.m */,
+				F248BD9D1AE86EF400F535C5 /* GLRect.h */,
+				F248BD9E1AE86F0700F535C5 /* GLRect.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -449,17 +605,16 @@
 		F2E545091A6CB60100CB52E5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F248BD991AE86C4000F535C5 /* Login */,
+				F282DD901AE4448F004DCF16 /* Table View Cells */,
 				F25286D51ACFA27D00435261 /* GLCameraLayer.h */,
 				F25286D61ACFA27D00435261 /* GLCameraLayer.m */,
 				F25286D71ACFA27D00435261 /* GLManualEntryView.h */,
 				F25286D81ACFA27D00435261 /* GLManualEntryView.m */,
-				F25286D91ACFA27D00435261 /* GLManualEntryView.xib */,
-				F25286DA1ACFA27D00435261 /* GLTableViewCell.h */,
-				F25286DB1ACFA27D00435261 /* GLTableViewCell.m */,
-				F25286DC1ACFA27D00435261 /* GLTableViewCell.xib */,
 				F25286DD1ACFA27D00435261 /* GLVideoPreviewView.h */,
 				F25286DE1ACFA27D00435261 /* GLVideoPreviewView.m */,
-				F282F2D21AD9CE5900216FDE /* GLVideoPreviewView.xib */,
+				F28C2DA41ADC9C3F00A74641 /* GLProgressHUD.h */,
+				F28C2DA51ADC9C3F00A74641 /* GLProgressHUD.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -469,12 +624,12 @@
 			children = (
 				F25286C71ACFA26300435261 /* GLBaseViewController.h */,
 				F25286C81ACFA26300435261 /* GLBaseViewController.m */,
-				F25286C91ACFA26300435261 /* GLScannerViewController.h */,
-				F25286CA1ACFA26300435261 /* GLScannerViewController.m */,
-				F25286CB1ACFA26300435261 /* GLScannerViewController.xib */,
-				F25286CC1ACFA26300435261 /* GLTableViewController.h */,
-				F25286CD1ACFA26300435261 /* GLTableViewController.m */,
-				F26147FB1ACF1CCA002395BE /* Managers */,
+				F248BD901AE85B3F00F535C5 /* Scanner View Controller */,
+				F25286CC1ACFA26300435261 /* GLListTableViewController.h */,
+				F25286CD1ACFA26300435261 /* GLListTableViewController.m */,
+				F248BD911AE85B5100F535C5 /* Carts View Controller */,
+				F248BD921AE85B5A00F535C5 /* Share Carts View Controller */,
+				F248BD8F1AE85B1F00F535C5 /* Authentication */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -486,6 +641,7 @@
 				F2EC284B1AD3136B00E4DB27 /* GLPullToCloseTransitionPresentationController.m */,
 				F25286AE1ACFA23B00435261 /* GLPullToCloseTransitionManager.h */,
 				F25286AF1ACFA23B00435261 /* GLPullToCloseTransitionManager.m */,
+				F28C2D9F1ADC6D2300A74641 /* GLReversibleTransition.h */,
 			);
 			name = "View Controller Presentation";
 			sourceTree = "<group>";
@@ -514,12 +670,14 @@
 			children = (
 				F25286BC1ACFA24F00435261 /* GLBarcode.h */,
 				F25286BD1ACFA24F00435261 /* GLBarcode.m */,
-				F25286BE1ACFA24F00435261 /* GLBarcodeItemDelegate.h */,
 				F25286BF1ACFA24F00435261 /* GLBarcodeObject.h */,
 				F25286C01ACFA24F00435261 /* GLBarcodeObject.m */,
-				F25286C11ACFA24F00435261 /* GLBarcodeScannerDelegate.h */,
+				F282DD851AE35C9D004DCF16 /* GLListItemObject.h */,
+				F282DD861AE35C9D004DCF16 /* GLListItemObject.m */,
 				F25286C21ACFA24F00435261 /* GLListObject.h */,
 				F25286C31ACFA24F00435261 /* GLListObject.m */,
+				F282DD7D1AE2ED09004DCF16 /* GLUser.h */,
+				F282DD7E1AE2ED09004DCF16 /* GLUser.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -643,15 +801,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F282F2D31AD9CE5900216FDE /* GLVideoPreviewView.xib in Resources */,
-				F2AC65FF1AD1DE3D00C0A09F /* SVProgressHUD.bundle in Resources */,
-				F25286D01ACFA26300435261 /* GLScannerViewController.xib in Resources */,
+				F248BD941AE85D6A00F535C5 /* GLSignUpViewController.storyboard in Resources */,
+				F2A29F431AE6F7DA0044C604 /* SVProgressHUD.bundle in Resources */,
+				F2A29F4A1AE6FE520044C604 /* GLScannerViewController.storyboard in Resources */,
+				F282DD9A1AE46F4E004DCF16 /* GLListOverviewTableViewController.storyboard in Resources */,
 				F2F948BA1A8ACCEB002C5177 /* Images.xcassets in Resources */,
 				F25286E31ACFA27D00435261 /* GLTableViewCell.xib in Resources */,
 				F2F948C51A8AD7B5002C5177 /* index.html in Resources */,
 				F2F948C41A8AD7B5002C5177 /* global.json in Resources */,
-				F25286E11ACFA27D00435261 /* GLManualEntryView.xib in Resources */,
 				F2E544EE1A6CB55100CB52E5 /* LaunchScreen.xib in Resources */,
+				F282DD9F1AE57792004DCF16 /* GLShareCartViewController.storyboard in Resources */,
 				F2F948C31A8AD7B5002C5177 /* main.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -704,41 +863,57 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2DC2FEC1AD7313E00E46D3C /* GLBingSessionManager.m in Sources */,
+				F248BD8B1AE85AFD00F535C5 /* GLSignUpViewController.m in Sources */,
 				F2CD0A8B1AD746330036D0A4 /* GLBingResponseSerializer.m in Sources */,
+				F282DD8E1AE443BE004DCF16 /* GLListOverviewTableViewCell.m in Sources */,
 				F25286A21ACFA21D00435261 /* GLQueryTableViewController.m in Sources */,
 				F25286E21ACFA27D00435261 /* GLTableViewCell.m in Sources */,
+				F248BD8E1AE85B1600F535C5 /* GLLogInViewController.m in Sources */,
+				F28C2DA31ADC717900A74641 /* GLKeyboardResponderAnimator.m in Sources */,
 				F2DC2FE81AD72C0B00E46D3C /* GLRACSessionManager.m in Sources */,
 				F2DC2FE31AD72A2500E46D3C /* GLFactualSessionManager.m in Sources */,
 				F25286A91ACFA22E00435261 /* GLDismissableViewHandler.m in Sources */,
 				F25286E41ACFA27D00435261 /* GLVideoPreviewView.m in Sources */,
 				F25286A41ACFA21D00435261 /* PFQuery+GLQuery.m in Sources */,
 				F25286ED1ACFA2B300435261 /* main.m in Sources */,
+				F28C2DA61ADC9C3F00A74641 /* GLProgressHUD.m in Sources */,
+				F282DD831AE33CF2004DCF16 /* GLListOverviewTableViewController.m in Sources */,
 				F2CD0A881AD742020036D0A4 /* NSDictionary+GLCustomKVOOperators.m in Sources */,
 				F25286C51ACFA24F00435261 /* GLBarcodeObject.m in Sources */,
 				F25286BB1ACFA23B00435261 /* UIColor+GLColor.m in Sources */,
 				F2DC2FC11AD5DF8D00E46D3C /* GLBingRequestSerializer.m in Sources */,
 				F25286A51ACFA21D00435261 /* PFQueryTableViewController+Caching.m in Sources */,
+				F282DDA51AE5AB98004DCF16 /* RACSignal+GLAdditions.m in Sources */,
 				F25286931ACFA1FD00435261 /* GLFactualRequestSerializer.m in Sources */,
+				F282DD871AE35C9D004DCF16 /* GLListItemObject.m in Sources */,
 				F25286DF1ACFA27D00435261 /* GLCameraLayer.m in Sources */,
 				F25286C41ACFA24F00435261 /* GLBarcode.m in Sources */,
+				F282DD7F1AE2ED09004DCF16 /* GLUser.m in Sources */,
+				F282DDA21AE59BC6004DCF16 /* UISearchBar+RACAdditions.m in Sources */,
+				F28C2D9E1ADC6B2D00A74641 /* GLTransitionDelegate.m in Sources */,
 				F25286D41ACFA26D00435261 /* GLScanningSession.m in Sources */,
+				F282DD9D1AE57784004DCF16 /* GLShareCartViewController.m in Sources */,
+				F248BD9F1AE86F0700F535C5 /* GLRect.m in Sources */,
 				F25286B91ACFA23B00435261 /* POPAnimation+GLAnimation.m in Sources */,
 				F25286B61ACFA23B00435261 /* GLAnimation.m in Sources */,
 				F25286E01ACFA27D00435261 /* GLManualEntryView.m in Sources */,
 				F25286CE1ACFA26300435261 /* GLBaseViewController.m in Sources */,
+				F282DDAB1AE5B841004DCF16 /* GLUserTableViewCell.m in Sources */,
 				F2DC2FC71AD6F53B00E46D3C /* UIImage+GLImage.m in Sources */,
 				F25286B81ACFA23B00435261 /* GLPullToCloseTransitionManager.m in Sources */,
 				F25286941ACFA1FD00435261 /* GLFactualResponseSerializer.m in Sources */,
 				F25286CF1ACFA26300435261 /* GLScannerViewController.m in Sources */,
 				F25286B71ACFA23B00435261 /* GLAnimationStack.m in Sources */,
 				F25286EB1ACFA2B300435261 /* AppDelegate.m in Sources */,
-				F25286D11ACFA26300435261 /* GLTableViewController.m in Sources */,
+				F25286D11ACFA26300435261 /* GLListTableViewController.m in Sources */,
 				F25286BA1ACFA23B00435261 /* POPSpringAnimation+GLAdditions.m in Sources */,
 				F2EC284C1AD3136B00E4DB27 /* GLPullToCloseTransitionPresentationController.m in Sources */,
 				F25286A11ACFA21D00435261 /* GLParseAnalytics.m in Sources */,
 				F25286A31ACFA21D00435261 /* PFObject+GLPFObject.m in Sources */,
+				F248BD9C1AE86C4B00F535C5 /* GLAuthenticationButton.m in Sources */,
 				F25286901ACFA1FD00435261 /* GLBarcodeFetchManager.m in Sources */,
 				F25286C61ACFA24F00435261 /* GLListObject.m in Sources */,
+				F282DD8A1AE36294004DCF16 /* MustOverride.m in Sources */,
 				F25286A61ACFA21D00435261 /* PFUser+GLUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -917,6 +1092,10 @@
 			baseConfigurationReference = 9CA8F7344B4A5BF669FC2DE8 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_WARN_PEDANTIC = NO;
 				HEADER_SEARCH_PATHS = (
@@ -942,6 +1121,10 @@
 			baseConfigurationReference = 254AFE9F5A4C9859E25FAB80 /* Pods.release.xcconfig */;
 			buildSettings = {
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_WARN_PEDANTIC = NO;
 				HEADER_SEARCH_PATHS = (

@@ -15,4 +15,6 @@
 
 + (UIImage *)imageFromSampleBuffer:(CMSampleBufferRef)sampleBuffer;
 
++ (UIImage *)imageWithColor:(UIColor *)color cornerRadius:(CGFloat)cornerRadius;
+
 @end

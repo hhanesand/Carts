@@ -15,8 +15,7 @@
  *  Updates the objects the PFQueryTableViewController uses for its tableView
  *
  *  @param newValues The new list of PFObjects to use for the tableView datasource
- *  @param clear     If yes, remove all previous PFObjects from the internal objects array
  */
-- (void)updateInternalObjectsWithArray:(NSArray *)newValues clear:(BOOL)clear;
+- (void)updateInternalObjectsWithArray:(NSArray *)newValues;
 
 @end
