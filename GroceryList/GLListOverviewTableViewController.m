@@ -11,6 +11,7 @@
 #import "GLListOverviewTableViewCell.h"
 #import "GLListTableViewController.h"
 #import "GLShareCartViewController.h"
+#import "GLSignUpViewController.h"
 
 static NSString *const kGLListOverviewTableViewControllerReuseIdentifier = @"GLListTableViewController";
 
@@ -64,7 +65,16 @@ static NSString *const kGLListOverviewTableViewControllerReuseIdentifier = @"GLL
 }
 
 - (void)didTapShareCartButton {
-    [self presentViewController:self.shareCartViewController animated:YES completion:nil];
+    GLSignUpViewController *signUp = [GLSignUpViewController instance];
+    [self presentViewController:signUp animated:YES completion:nil];
+    
+//    if ([GLUser isLoggedIn]) {
+//        NSLog(@"Logged in");
+//    } else {
+//        NSLog(@"Not logged in");
+//    }
+//    
+//    [self presentViewController:self.shareCartViewController animated:YES completion:nil];
 }
 
 - (RACSignal *)cachedSignalForTable {

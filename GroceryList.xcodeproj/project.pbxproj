@@ -18,6 +18,11 @@
 		F22C8F421A6EE92D00139B9D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F22C8F411A6EE92D00139B9D /* SystemConfiguration.framework */; };
 		F22C8F441A6EE93600139B9D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F22C8F431A6EE93600139B9D /* libz.dylib */; };
 		F22C8F461A6EE94A00139B9D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F22C8F451A6EE94A00139B9D /* libsqlite3.dylib */; };
+		F248BD8B1AE85AFD00F535C5 /* GLSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F248BD8A1AE85AFD00F535C5 /* GLSignUpViewController.m */; };
+		F248BD8E1AE85B1600F535C5 /* GLLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F248BD8D1AE85B1600F535C5 /* GLLogInViewController.m */; };
+		F248BD941AE85D6A00F535C5 /* GLSignUpViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F248BD931AE85D6A00F535C5 /* GLSignUpViewController.storyboard */; };
+		F248BD9C1AE86C4B00F535C5 /* GLAuthenticationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F248BD9B1AE86C4B00F535C5 /* GLAuthenticationButton.m */; };
+		F248BD9F1AE86F0700F535C5 /* GLRect.m in Sources */ = {isa = PBXBuildFile; fileRef = F248BD9E1AE86F0700F535C5 /* GLRect.m */; };
 		F25286901ACFA1FD00435261 /* GLBarcodeFetchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286871ACFA1FD00435261 /* GLBarcodeFetchManager.m */; };
 		F25286931ACFA1FD00435261 /* GLFactualRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F252868D1ACFA1FD00435261 /* GLFactualRequestSerializer.m */; };
 		F25286941ACFA1FD00435261 /* GLFactualResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F252868F1ACFA1FD00435261 /* GLFactualResponseSerializer.m */; };
@@ -120,6 +125,16 @@
 		F22C8F411A6EE92D00139B9D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F22C8F431A6EE93600139B9D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		F22C8F451A6EE94A00139B9D /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		F248BD891AE85AFD00F535C5 /* GLSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLSignUpViewController.h; sourceTree = "<group>"; };
+		F248BD8A1AE85AFD00F535C5 /* GLSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLSignUpViewController.m; sourceTree = "<group>"; };
+		F248BD8C1AE85B1600F535C5 /* GLLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLLogInViewController.h; sourceTree = "<group>"; };
+		F248BD8D1AE85B1600F535C5 /* GLLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLLogInViewController.m; sourceTree = "<group>"; };
+		F248BD931AE85D6A00F535C5 /* GLSignUpViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GLSignUpViewController.storyboard; sourceTree = "<group>"; };
+		F248BD9A1AE86C4B00F535C5 /* GLAuthenticationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLAuthenticationButton.h; sourceTree = "<group>"; };
+		F248BD9B1AE86C4B00F535C5 /* GLAuthenticationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLAuthenticationButton.m; sourceTree = "<group>"; };
+		F248BD9D1AE86EF400F535C5 /* GLRect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLRect.h; sourceTree = "<group>"; };
+		F248BD9E1AE86F0700F535C5 /* GLRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLRect.m; sourceTree = "<group>"; };
+		F248BDA21AE89E6F00F535C5 /* GLSignUpDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLSignUpDelegate.h; sourceTree = "<group>"; };
 		F25286861ACFA1FD00435261 /* GLBarcodeFetchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLBarcodeFetchManager.h; path = Networking/GLBarcodeFetchManager.h; sourceTree = "<group>"; };
 		F25286871ACFA1FD00435261 /* GLBarcodeFetchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLBarcodeFetchManager.m; path = Networking/GLBarcodeFetchManager.m; sourceTree = "<group>"; };
 		F252868C1ACFA1FD00435261 /* GLFactualRequestSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLFactualRequestSerializer.h; path = Networking/GLFactualRequestSerializer.h; sourceTree = "<group>"; };
@@ -303,6 +318,66 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		F248BD8F1AE85B1F00F535C5 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				F248BDA21AE89E6F00F535C5 /* GLSignUpDelegate.h */,
+				F248BD891AE85AFD00F535C5 /* GLSignUpViewController.h */,
+				F248BD8A1AE85AFD00F535C5 /* GLSignUpViewController.m */,
+				F248BD931AE85D6A00F535C5 /* GLSignUpViewController.storyboard */,
+				F248BD8C1AE85B1600F535C5 /* GLLogInViewController.h */,
+				F248BD8D1AE85B1600F535C5 /* GLLogInViewController.m */,
+			);
+			name = Authentication;
+			sourceTree = "<group>";
+		};
+		F248BD901AE85B3F00F535C5 /* Scanner View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F25286C91ACFA26300435261 /* GLScannerViewController.h */,
+				F25286CA1ACFA26300435261 /* GLScannerViewController.m */,
+				F2A29F491AE6FE520044C604 /* GLScannerViewController.storyboard */,
+			);
+			name = "Scanner View Controller";
+			sourceTree = "<group>";
+		};
+		F248BD911AE85B5100F535C5 /* Carts View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F282DD801AE33CF2004DCF16 /* GLListOverviewTableViewController.h */,
+				F282DD811AE33CF2004DCF16 /* GLListOverviewTableViewController.m */,
+				F282DD991AE46F4E004DCF16 /* GLListOverviewTableViewController.storyboard */,
+			);
+			name = "Carts View Controller";
+			sourceTree = "<group>";
+		};
+		F248BD921AE85B5A00F535C5 /* Share Carts View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F282DD9B1AE57784004DCF16 /* GLShareCartViewController.h */,
+				F282DD9C1AE57784004DCF16 /* GLShareCartViewController.m */,
+				F282DD9E1AE57792004DCF16 /* GLShareCartViewController.storyboard */,
+			);
+			name = "Share Carts View Controller";
+			sourceTree = "<group>";
+		};
+		F248BD951AE86ADD00F535C5 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Vendor;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		F248BD991AE86C4000F535C5 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				F248BD9A1AE86C4B00F535C5 /* GLAuthenticationButton.h */,
+				F248BD9B1AE86C4B00F535C5 /* GLAuthenticationButton.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		F25E490F1A86B126006E1252 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -479,6 +554,9 @@
 				F2A00A591AA8048C004B8988 /* Animation */,
 				F2F948B01A8947A6002C5177 /* Model */,
 				F2E5450A1A6CB60A00CB52E5 /* Controllers */,
+				F248BD951AE86ADD00F535C5 /* Vendor */,
+				F26147FB1ACF1CCA002395BE /* Managers */,
+				F28C2DA01ADC707A00A74641 /* Delegate Objects */,
 				F2E545091A6CB60100CB52E5 /* Views */,
 				F2E544DD1A6CB55000CB52E5 /* Supporting Files */,
 			);
@@ -501,6 +579,8 @@
 				F282DDA11AE59BC6004DCF16 /* UISearchBar+RACAdditions.m */,
 				F282DDA31AE5AB98004DCF16 /* RACSignal+GLAdditions.h */,
 				F282DDA41AE5AB98004DCF16 /* RACSignal+GLAdditions.m */,
+				F248BD9D1AE86EF400F535C5 /* GLRect.h */,
+				F248BD9E1AE86F0700F535C5 /* GLRect.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -525,6 +605,7 @@
 		F2E545091A6CB60100CB52E5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F248BD991AE86C4000F535C5 /* Login */,
 				F282DD901AE4448F004DCF16 /* Table View Cells */,
 				F25286D51ACFA27D00435261 /* GLCameraLayer.h */,
 				F25286D61ACFA27D00435261 /* GLCameraLayer.m */,
@@ -543,19 +624,12 @@
 			children = (
 				F25286C71ACFA26300435261 /* GLBaseViewController.h */,
 				F25286C81ACFA26300435261 /* GLBaseViewController.m */,
-				F25286C91ACFA26300435261 /* GLScannerViewController.h */,
-				F25286CA1ACFA26300435261 /* GLScannerViewController.m */,
-				F2A29F491AE6FE520044C604 /* GLScannerViewController.storyboard */,
+				F248BD901AE85B3F00F535C5 /* Scanner View Controller */,
 				F25286CC1ACFA26300435261 /* GLListTableViewController.h */,
 				F25286CD1ACFA26300435261 /* GLListTableViewController.m */,
-				F282DD801AE33CF2004DCF16 /* GLListOverviewTableViewController.h */,
-				F282DD811AE33CF2004DCF16 /* GLListOverviewTableViewController.m */,
-				F282DD991AE46F4E004DCF16 /* GLListOverviewTableViewController.storyboard */,
-				F28C2DA01ADC707A00A74641 /* Delegate Objects */,
-				F26147FB1ACF1CCA002395BE /* Managers */,
-				F282DD9B1AE57784004DCF16 /* GLShareCartViewController.h */,
-				F282DD9C1AE57784004DCF16 /* GLShareCartViewController.m */,
-				F282DD9E1AE57792004DCF16 /* GLShareCartViewController.storyboard */,
+				F248BD911AE85B5100F535C5 /* Carts View Controller */,
+				F248BD921AE85B5A00F535C5 /* Share Carts View Controller */,
+				F248BD8F1AE85B1F00F535C5 /* Authentication */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -727,6 +801,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F248BD941AE85D6A00F535C5 /* GLSignUpViewController.storyboard in Resources */,
 				F2A29F431AE6F7DA0044C604 /* SVProgressHUD.bundle in Resources */,
 				F2A29F4A1AE6FE520044C604 /* GLScannerViewController.storyboard in Resources */,
 				F282DD9A1AE46F4E004DCF16 /* GLListOverviewTableViewController.storyboard in Resources */,
@@ -788,10 +863,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2DC2FEC1AD7313E00E46D3C /* GLBingSessionManager.m in Sources */,
+				F248BD8B1AE85AFD00F535C5 /* GLSignUpViewController.m in Sources */,
 				F2CD0A8B1AD746330036D0A4 /* GLBingResponseSerializer.m in Sources */,
 				F282DD8E1AE443BE004DCF16 /* GLListOverviewTableViewCell.m in Sources */,
 				F25286A21ACFA21D00435261 /* GLQueryTableViewController.m in Sources */,
 				F25286E21ACFA27D00435261 /* GLTableViewCell.m in Sources */,
+				F248BD8E1AE85B1600F535C5 /* GLLogInViewController.m in Sources */,
 				F28C2DA31ADC717900A74641 /* GLKeyboardResponderAnimator.m in Sources */,
 				F2DC2FE81AD72C0B00E46D3C /* GLRACSessionManager.m in Sources */,
 				F2DC2FE31AD72A2500E46D3C /* GLFactualSessionManager.m in Sources */,
@@ -816,6 +893,7 @@
 				F28C2D9E1ADC6B2D00A74641 /* GLTransitionDelegate.m in Sources */,
 				F25286D41ACFA26D00435261 /* GLScanningSession.m in Sources */,
 				F282DD9D1AE57784004DCF16 /* GLShareCartViewController.m in Sources */,
+				F248BD9F1AE86F0700F535C5 /* GLRect.m in Sources */,
 				F25286B91ACFA23B00435261 /* POPAnimation+GLAnimation.m in Sources */,
 				F25286B61ACFA23B00435261 /* GLAnimation.m in Sources */,
 				F25286E01ACFA27D00435261 /* GLManualEntryView.m in Sources */,
@@ -832,6 +910,7 @@
 				F2EC284C1AD3136B00E4DB27 /* GLPullToCloseTransitionPresentationController.m in Sources */,
 				F25286A11ACFA21D00435261 /* GLParseAnalytics.m in Sources */,
 				F25286A31ACFA21D00435261 /* PFObject+GLPFObject.m in Sources */,
+				F248BD9C1AE86C4B00F535C5 /* GLAuthenticationButton.m in Sources */,
 				F25286901ACFA1FD00435261 /* GLBarcodeFetchManager.m in Sources */,
 				F25286C61ACFA24F00435261 /* GLListObject.m in Sources */,
 				F282DD8A1AE36294004DCF16 /* MustOverride.m in Sources */,

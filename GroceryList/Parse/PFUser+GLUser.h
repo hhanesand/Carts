@@ -15,4 +15,6 @@
 
 + (RACSignal *)logInInBackgroundWithUsername:(NSString *)username password:(NSString *)password;
 
+- (RACSignal *)signUpInBackgroundWithSignal;
+
 @end

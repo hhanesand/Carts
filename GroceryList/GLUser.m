@@ -31,4 +31,8 @@
     return [super currentUser];
 }
 
++ (BOOL)isLoggedIn {
+    return ![PFAnonymousUtils isLinkedWithUser:[super currentUser]];
+}
+
 @end
