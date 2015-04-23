@@ -8,8 +8,4 @@
 
 @implementation GLListOverviewTableViewCell
 
-- (void)setCartText:(NSString *)text {
-    self.cart.text = [text stringByAppendingString:@"'s Cart"];
-}
-
 @end

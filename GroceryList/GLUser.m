@@ -35,4 +35,12 @@
     return ![PFAnonymousUtils isLinkedWithUser:[super currentUser]];
 }
 
+- (NSString *)bestName {
+    if([GLUser GL_currentUser] == self) {
+        return @"Your Cart";
+    } else {
+        return [self.username stringByAppendingString:@"'s Cart"];
+    }
+}
+
 @end

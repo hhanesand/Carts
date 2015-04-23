@@ -10,5 +10,4 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *cart;
 
-- (void)setCartText:(NSString *)text;
 @end

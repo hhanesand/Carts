@@ -89,45 +89,33 @@ static NSString *const kGLListOverviewTableViewControllerReuseIdentifier = @"GLL
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(GLUser *)object {
     GLListOverviewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kGLListOverviewTableViewControllerReuseIdentifier forIndexPath:indexPath];
     
-    [cell setCartText:object.username];
+    cell.cart.text = [object bestName];
     
     return cell;
 }
 
 - (PFObject *)objectAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section >= 1) {
-        return [super objectAtIndexPath:indexPath];
-    } else {
+    if (indexPath.row == 0) {
         return [GLUser currentUser];
+    } else {
+        return [super objectAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row - 1 inSection:indexPath.section]];
     }
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    switch (section) {
-        case 0:
-            return @"Your Cart";
-            break;
-            
-        default:
-            return @"Followed Carts";
-            break;
-    }
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
-}
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+//    switch (section) {
+//        case 0:
+//            return @"Your Cart";
+//            break;
+//            
+//        default:
+//            return @"Followed Carts";
+//            break;
+//    }
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    switch (section) {
-        case 0:
-            return 1;
-            break;
-            
-        default:
-            return [super tableView:tableView numberOfRowsInSection:section];
-            break;
-    }
+    return [super tableView:tableView numberOfRowsInSection:section] + 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -15,4 +15,6 @@
 @property (nonatomic) GLListObject *list;
 @property (nonatomic, readonly) PFRelation *following;
 
+- (NSString *)bestName;
+
 @end
