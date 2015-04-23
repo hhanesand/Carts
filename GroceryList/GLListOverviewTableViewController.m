@@ -82,6 +82,11 @@ static NSString *const kGLListOverviewTableViewControllerReuseIdentifier = @"GLL
 }
 
 - (RACSignal *)signalForTable {
+    if ([PFAnonymousUtils isLinkedWithUser:[GLUser GL_currentUser]]) {
+        //fix for wierd parse behavior see http://samwize.com/2014/07/15/pitfall-with-using-anonymous-user-in-parse/
+        return [RACSignal empty];
+    }
+    
     return [[[GLUser GL_currentUser].following query] findObjectsInbackgroundWithRACSignal];
 }
 
