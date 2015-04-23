@@ -65,16 +65,12 @@ static NSString *const kGLListOverviewTableViewControllerReuseIdentifier = @"GLL
 }
 
 - (void)didTapShareCartButton {
-    GLSignUpViewController *signUp = [GLSignUpViewController instance];
-    [self presentViewController:signUp animated:YES completion:nil];
-    
-//    if ([GLUser isLoggedIn]) {
-//        NSLog(@"Logged in");
-//    } else {
-//        NSLog(@"Not logged in");
-//    }
-//    
-//    [self presentViewController:self.shareCartViewController animated:YES completion:nil];
+    if ([GLUser isLoggedIn]) {
+        [self presentViewController:self.shareCartViewController animated:YES completion:nil];
+    } else {
+        GLSignUpViewController *signUp = [GLSignUpViewController instance];
+        [self presentViewController:signUp animated:YES completion:nil];
+    }
 }
 
 - (RACSignal *)cachedSignalForTable {
@@ -96,6 +92,42 @@ static NSString *const kGLListOverviewTableViewControllerReuseIdentifier = @"GLL
     [cell setCartText:object.username];
     
     return cell;
+}
+
+- (PFObject *)objectAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section >= 1) {
+        return [super objectAtIndexPath:indexPath];
+    } else {
+        return [GLUser currentUser];
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    switch (section) {
+        case 0:
+            return @"Your Cart";
+            break;
+            
+        default:
+            return @"Followed Carts";
+            break;
+    }
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    switch (section) {
+        case 0:
+            return 1;
+            break;
+            
+        default:
+            return [super tableView:tableView numberOfRowsInSection:section];
+            break;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

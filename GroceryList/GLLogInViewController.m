@@ -41,6 +41,10 @@
     self.modalPresentationCapturesStatusBarAppearance = YES;
 }
 
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
 - (void)viewDidLoad {
     self.logIn.frame = self.logInContainer.bounds;
     [self.logInContainer addSubview:self.logIn];

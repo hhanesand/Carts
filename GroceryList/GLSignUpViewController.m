@@ -59,6 +59,10 @@
     self.modalPresentationCapturesStatusBarAppearance = YES;
 }
 
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
 - (void)viewDidLoad {
     self.facebook.frame = self.facebookContainer.bounds;
     self.twitter.frame = self.twitterContainer.bounds;
