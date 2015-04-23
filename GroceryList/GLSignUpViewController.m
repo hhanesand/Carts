@@ -87,7 +87,7 @@
         return user;
     }] flattenMap:^RACStream *(GLUser *user) {
         return [user signUpInBackgroundWithSignal];
-    }] subscribeNext:^(id x) {
+    }] subscribeCompleted:^{
         NSLog(@"sign up in background complete!");
     }];
 }

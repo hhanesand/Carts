@@ -624,9 +624,9 @@
 			children = (
 				F25286C71ACFA26300435261 /* GLBaseViewController.h */,
 				F25286C81ACFA26300435261 /* GLBaseViewController.m */,
-				F248BD901AE85B3F00F535C5 /* Scanner View Controller */,
 				F25286CC1ACFA26300435261 /* GLListTableViewController.h */,
 				F25286CD1ACFA26300435261 /* GLListTableViewController.m */,
+				F248BD901AE85B3F00F535C5 /* Scanner View Controller */,
 				F248BD911AE85B5100F535C5 /* Carts View Controller */,
 				F248BD921AE85B5A00F535C5 /* Share Carts View Controller */,
 				F248BD8F1AE85B1F00F535C5 /* Authentication */,

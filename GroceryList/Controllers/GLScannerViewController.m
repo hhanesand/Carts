@@ -82,7 +82,6 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     [self.view endEditing:YES];
     
     [self initializeKeyboardAnimations];
-    [self initializeRACBlocks];
     [self initializeVideoPreviewLayer];
     [self initializeManualEntryView];
     [self subscribeToBarcodeScannerOutput];
@@ -92,31 +91,26 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     self.responder = [[GLKeyboardResponderAnimator alloc] initWithDelegate:self];
 }
 
-- (void)initializeRACBlocks {
+- (void)initializeVideoPreviewLayer {
     @weakify(self);
-    self.doneScanningBlock = ^RACSignal *(id input) {
+    self.videoPreviewView.doneScanningItemsButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         @strongify(self);
         [self.barcodeScanner resume];
-        return [self.animationStack popAllAnimations];
-    };
-    
-    RAC(_manualEntryView.confirm, enabled) = [_manualEntryView.name.rac_textSignal map:^id(NSString *value) {
-        return @([value length] >= 1);
+        return [[self.animationStack popAllAnimations] doCompleted:^{
+            NSLog(@"Completed");
+        }];
     }];
-}
-
-- (void)initializeVideoPreviewLayer {
-    self.videoPreviewView.doneScanningItemsButton.rac_command = [[RACCommand alloc] initWithSignalBlock:self.doneScanningBlock];
     
     AVCaptureVideoPreviewLayer *layer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.barcodeScanner.captureSession];
     layer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     self.videoPreviewView.capturePreviewLayer = layer;
-    
-    [self.barcodeScanner start];
-    [self.view insertSubview:self.videoPreviewView atIndex:0];
 }
 
 - (void)initializeManualEntryView {
+    RAC(_manualEntryView.confirm, enabled) = [_manualEntryView.name.rac_textSignal map:^id(NSString *value) {
+        return @([value length] >= 1);
+    }];
+    
     UIPanGestureRecognizer *swipeDownToDismiss = [[UIPanGestureRecognizer alloc] initWithTarget:self.manualEntryViewDismissHandler action:@selector(handlePan:)];
     [self.view addGestureRecognizer:swipeDownToDismiss];
     swipeDownToDismiss.delegate = self.manualEntryViewDismissHandler;
@@ -155,12 +149,7 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     
-    [self updateFrames];
     [self updateCameraReticule];
-}
-
-- (void)updateFrames {
-    self.videoPreviewView.frame = self.view.bounds;
 }
 
 - (void)updateCameraReticule {
@@ -180,11 +169,6 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
 - (void)displayManualEntryView {
     [GLProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"Item not found - Please enter"]];
     [self.manualEntryViewDismissHandler presentViewWithVelocity:0];
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    NSLog(@"Delegate equal %d", [self.manualEntryView.name.delegate isEqual:self.manualEntryView]);
-    [super touchesBegan:touches withEvent:event];
 }
 
 - (RACSignal *)dismissManualEntryView {
