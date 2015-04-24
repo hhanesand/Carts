@@ -23,6 +23,8 @@
 		F248BD941AE85D6A00F535C5 /* GLSignUpViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F248BD931AE85D6A00F535C5 /* GLSignUpViewController.storyboard */; };
 		F248BD9C1AE86C4B00F535C5 /* GLAuthenticationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F248BD9B1AE86C4B00F535C5 /* GLAuthenticationButton.m */; };
 		F248BD9F1AE86F0700F535C5 /* GLRect.m in Sources */ = {isa = PBXBuildFile; fileRef = F248BD9E1AE86F0700F535C5 /* GLRect.m */; };
+		F248BDAE1AE9E8A800F535C5 /* UIView+GLView.m in Sources */ = {isa = PBXBuildFile; fileRef = F248BDAD1AE9E8A800F535C5 /* UIView+GLView.m */; };
+		F248BDB11AE9F6D700F535C5 /* GLToggleAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = F248BDB01AE9F6D700F535C5 /* GLToggleAnimator.m */; };
 		F25286901ACFA1FD00435261 /* GLBarcodeFetchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286871ACFA1FD00435261 /* GLBarcodeFetchManager.m */; };
 		F25286931ACFA1FD00435261 /* GLFactualRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F252868D1ACFA1FD00435261 /* GLFactualRequestSerializer.m */; };
 		F25286941ACFA1FD00435261 /* GLFactualResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F252868F1ACFA1FD00435261 /* GLFactualResponseSerializer.m */; };
@@ -135,6 +137,10 @@
 		F248BD9D1AE86EF400F535C5 /* GLRect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLRect.h; sourceTree = "<group>"; };
 		F248BD9E1AE86F0700F535C5 /* GLRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLRect.m; sourceTree = "<group>"; };
 		F248BDA21AE89E6F00F535C5 /* GLSignUpDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLSignUpDelegate.h; sourceTree = "<group>"; };
+		F248BDAC1AE9E8A800F535C5 /* UIView+GLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+GLView.h"; sourceTree = "<group>"; };
+		F248BDAD1AE9E8A800F535C5 /* UIView+GLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GLView.m"; sourceTree = "<group>"; };
+		F248BDAF1AE9F6D700F535C5 /* GLToggleAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLToggleAnimator.h; sourceTree = "<group>"; };
+		F248BDB01AE9F6D700F535C5 /* GLToggleAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLToggleAnimator.m; sourceTree = "<group>"; };
 		F25286861ACFA1FD00435261 /* GLBarcodeFetchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLBarcodeFetchManager.h; path = Networking/GLBarcodeFetchManager.h; sourceTree = "<group>"; };
 		F25286871ACFA1FD00435261 /* GLBarcodeFetchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLBarcodeFetchManager.m; path = Networking/GLBarcodeFetchManager.m; sourceTree = "<group>"; };
 		F252868C1ACFA1FD00435261 /* GLFactualRequestSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLFactualRequestSerializer.h; path = Networking/GLFactualRequestSerializer.h; sourceTree = "<group>"; };
@@ -327,6 +333,8 @@
 				F248BD931AE85D6A00F535C5 /* GLSignUpViewController.storyboard */,
 				F248BD8C1AE85B1600F535C5 /* GLLogInViewController.h */,
 				F248BD8D1AE85B1600F535C5 /* GLLogInViewController.m */,
+				F248BDAF1AE9F6D700F535C5 /* GLToggleAnimator.h */,
+				F248BDB01AE9F6D700F535C5 /* GLToggleAnimator.m */,
 			);
 			name = Authentication;
 			sourceTree = "<group>";
@@ -615,6 +623,8 @@
 				F25286DE1ACFA27D00435261 /* GLVideoPreviewView.m */,
 				F28C2DA41ADC9C3F00A74641 /* GLProgressHUD.h */,
 				F28C2DA51ADC9C3F00A74641 /* GLProgressHUD.m */,
+				F248BDAC1AE9E8A800F535C5 /* UIView+GLView.h */,
+				F248BDAD1AE9E8A800F535C5 /* UIView+GLView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -888,11 +898,13 @@
 				F282DD871AE35C9D004DCF16 /* GLListItemObject.m in Sources */,
 				F25286DF1ACFA27D00435261 /* GLCameraLayer.m in Sources */,
 				F25286C41ACFA24F00435261 /* GLBarcode.m in Sources */,
+				F248BDAE1AE9E8A800F535C5 /* UIView+GLView.m in Sources */,
 				F282DD7F1AE2ED09004DCF16 /* GLUser.m in Sources */,
 				F282DDA21AE59BC6004DCF16 /* UISearchBar+RACAdditions.m in Sources */,
 				F28C2D9E1ADC6B2D00A74641 /* GLTransitionDelegate.m in Sources */,
 				F25286D41ACFA26D00435261 /* GLScanningSession.m in Sources */,
 				F282DD9D1AE57784004DCF16 /* GLShareCartViewController.m in Sources */,
+				F248BDB11AE9F6D700F535C5 /* GLToggleAnimator.m in Sources */,
 				F248BD9F1AE86F0700F535C5 /* GLRect.m in Sources */,
 				F25286B91ACFA23B00435261 /* POPAnimation+GLAnimation.m in Sources */,
 				F25286B61ACFA23B00435261 /* GLAnimation.m in Sources */,

@@ -32,6 +32,7 @@
                 NSLog(@"Error in signUpInBackgroundWithSignal %@", error);
                 [subscriber sendError:error];
             } else {
+                [subscriber sendNext:[RACUnit defaultUnit]];
                 [subscriber sendCompleted];
             }
         }];

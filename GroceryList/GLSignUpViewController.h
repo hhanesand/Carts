@@ -7,7 +7,7 @@
 #import "PFSignUpViewController.h"
 #import "GLSignUpDelegate.h"
 
-@interface GLSignUpViewController : UIViewController
+@interface GLSignUpViewController : UIViewController <UITextFieldDelegate>
 
 + (instancetype)instance;
 

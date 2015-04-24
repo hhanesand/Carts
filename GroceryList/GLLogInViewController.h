@@ -7,7 +7,7 @@
 #import "PFLogInViewController.h"
 #import "GLSignUpDelegate.h"
 
-@interface GLLogInViewController : UIViewController
+@interface GLLogInViewController : UIViewController <UITextFieldDelegate>
 
 @property (nonatomic) id<GLSignUpDelegate> delegate;
 

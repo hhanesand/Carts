@@ -28,6 +28,8 @@
  */
 + (GLAnimation *)animationWithSpring:(POPSpringAnimation *)animation description:(NSString *)description targetObject:(id)targetObject;
 
++ (GLAnimation *)animationWithTargetObject:(id)targetObject property:(NSString *)property;
+
 /**
  *  Adds the stored Spring Animation to the stored target object
  */
