@@ -35,7 +35,6 @@ static NSString *const kGLParsePinName = @"GLTableViewPin";
         self.pullToRefreshEnabled = YES;
         self.paginationEnabled = NO;
         self.loadingViewEnabled = NO;
-        self.title = @"Grocery List";
         
         self.scanner = [GLScannerViewController instance];
         self.scanner.view.frame = CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds));
@@ -148,7 +147,7 @@ static NSString *const kGLParsePinName = @"GLTableViewPin";
 
 - (void)setUser:(PFUser *)user {
     _user = user;
-    self.title = user.username;
+    self.title = [self.user bestName];
 }
 
 @end

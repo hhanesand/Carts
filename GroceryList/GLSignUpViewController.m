@@ -19,6 +19,11 @@
 #import "UIView+GLView.h"
 #import "PFFacebookUtils+GLFacebookUtils.h"
 
+#import <FBSDKCoreKit/FBSDKGraphRequest.h>
+#import "PFTwitterUtils+GLTwitterUtils.h"
+#import <AFNetworking/AFNetworking.h>
+#import "GLTwitterSessionManager.h"
+
 @interface GLSignUpViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *username;
 @property (weak, nonatomic) IBOutlet UITextField *password;
@@ -70,12 +75,57 @@
         [self.signUp setNeedsDisplay];
     }];
     
-    [[[[self.facebook rac_signalForControlEvents:UIControlEventTouchUpInside] doNext:^(id x) {
+    [[[[[self.facebook rac_signalForControlEvents:UIControlEventTouchUpInside] doNext:^(id x) {
         NSLog(@"Pressed facebook button");
     }] flattenMap:^RACStream *(id value) {
         return [PFFacebookUtils logInWithSignalWithReadPermissions:@[@"public_profile", @"user_friends", @"email"]];
+    }] catch:^RACSignal *(NSError *error) {
+        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            NSLog(@"There was an error signing up...");
+            [self.facebook animateError];
+            [subscriber sendCompleted];
+            return nil;
+        }];
     }] subscribeNext:^(PFUser *user) {
         NSLog(@"Logged in user with name %@", user);
+        
+        [self.facebook animateSuccess];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self didTapDismissButton:nil];
+        });
+        
+        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"/me" parameters:nil] startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+            [user bindWithFacebookGraphRequest:result];
+            [user saveInBackground];
+        }];
+    }];
+    
+    [[[[[self.twitter rac_signalForControlEvents:UIControlEventTouchUpInside] doNext:^(id x) {
+        NSLog(@"Pressed twitter button");
+    }] flattenMap:^RACStream *(id value) {
+        return [PFTwitterUtils logInWithSignal];
+    }] catch:^RACSignal *(NSError *error) {
+        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            NSLog(@"There was an error signing up...");
+            [self.twitter animateError];
+            [subscriber sendCompleted];
+            return nil;
+        }];
+    }] subscribeNext:^(PFUser *user) {
+        NSLog(@"Successful! Username %@", user.username);
+        [self.twitter animateSuccess];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self didTapDismissButton:nil];
+        });
+        
+        GLTwitterSessionManager *sess = [GLTwitterSessionManager manager];
+        
+        [[sess requestTwitterUserWithID:[PFTwitterUtils twitter].userId] subscribeNext:^(id x) {
+            [user bindWithTwitterResponse:x];
+            [user saveInBackground];
+        }];
     }];
     
     [[[[[[self.signUp rac_signalForControlEvents:UIControlEventTouchUpInside] doNext:^(id x) {

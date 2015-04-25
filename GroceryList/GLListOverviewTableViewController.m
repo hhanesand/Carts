@@ -15,6 +15,8 @@
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 #import "PFUser+GLUser.h"
 
+#import <FBSDKCoreKit/FBSDKGraphRequest.h>
+
 static NSString *const kGLListOverviewTableViewControllerReuseIdentifier = @"GLListTableViewController";
 
 @interface GLListOverviewTableViewController ()
@@ -64,6 +66,10 @@ static NSString *const kGLListOverviewTableViewControllerReuseIdentifier = @"GLL
     [super viewWillAppear:animated];
     
     [self.navigationController setToolbarHidden:NO animated:NO];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
 }
 
 - (void)didTapShareCartButton {

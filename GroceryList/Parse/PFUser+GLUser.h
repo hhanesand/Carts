@@ -22,4 +22,7 @@
 - (NSString *)bestName;
 - (GLListObject *)list;
 
+- (void)bindWithFacebookGraphRequest:(NSDictionary *)request;
+- (void)bindWithTwitterResponse:(NSDictionary *)response;
+
 @end

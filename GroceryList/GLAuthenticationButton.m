@@ -18,6 +18,7 @@
 @property (nonatomic) GLToggleAnimator *fadeToggleAnimator;
 
 @property (nonatomic) NSString *savedTitle;
+@property (nonatomic) UIImage *savedImage;
 @property (nonatomic) UIImage *image;
 @end
 
@@ -30,6 +31,7 @@
         self.isExtended = YES;
         [self setMaskToRoundedCorners:UIRectCornerAllCorners withRadii:4.0];
         self.savedTitle = [self titleForState:UIControlStateNormal];
+        self.savedImage = [self imageForState:UIControlStateNormal];
         
         self.image =  [UIImage imageNamed:@"done"];
     }
@@ -41,7 +43,6 @@
     [super layoutSubviews];
   
     [self setMaskToRoundedCorners:UIRectCornerAllCorners withRadii:4.0];
-//    [self.widthToggleAnimator adjustParametersToStartValue:@(self.buttonLayoutConstraint.constant) endValue:@(CGRectGetWidth(self.activityIndicatorView.bounds) + 16)];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -64,12 +65,14 @@
         self.fadeToggleAnimator.forwardsAction = ^{
             @strongify(self);
             [self setTitle:@"" forState:UIControlStateNormal];
+            [self setImage:nil forState:UIControlStateNormal];
             [self.activityIndicatorView startAnimating];
         };
         
         self.fadeToggleAnimator.backwardsAction = ^{
             @strongify(self);
             [self setTitle:self.savedTitle forState:UIControlStateNormal];
+            [self setImage:self.savedImage forState:UIControlStateNormal];
             [self.activityIndicatorView stopAnimating];
         };
     }

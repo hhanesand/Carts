@@ -49,20 +49,76 @@
 }
 
 + (BOOL)isLoggedIn {
-    return [self currentUser] == self;
+    return ![PFAnonymousUtils isLinkedWithUser:[self currentUser]];
 }
 
 - (NSString *)bestName {
     if([PFUser currentUser] == self) {
         return @"Your Cart";
     } else {
-        return [self.username stringByAppendingString:@"'s Cart"];
+        return [[self objectForKey:@"name"] stringByAppendingString:@"'s Cart"];
     }
 
 }
 
 - (GLListObject *)list {
     return [self objectForKey:@"list"];
+}
+
+- (void)bindWithFacebookGraphRequest:(NSDictionary *)request {
+    if (request[@"email"]) {
+        self[@"email"] = request[@"email"];
+    }
+    
+    if (request[@"name"]) {
+        self[@"name"] = request[@"name"];
+        self[@"searchableID"] = self[@"name"];
+    }
+    
+    if (request[@"first_name"]) {
+        self[@"firstName"] = request[@"first_name"];
+    }
+    
+    if (request[@"last_name"]) {
+        self[@"lastName"] = request[@"last_name"];
+    }
+    
+    if (!self[@"searchableID"]) {
+        if (self[@"firstName"]) {
+            self[@"searchableID"] = self[@"firstName"];
+        }
+        
+        if (self[@"lastName"]) {
+            self[@"searchableID"] = [self[@"searchableID"] stringByAppendingString:self[@"lastName"]];
+        }
+    }
+    
+    if (request[@"gender"]) {
+        self[@"gender"] = request[@"gender"];
+    }
+    
+    if (request[@"locale"]) {
+        self[@"locale"] = request[@"locale"];
+    }
+}
+
+- (void)bindWithTwitterResponse:(NSDictionary *)response {
+    if (response[@"name"]) {
+        NSString *name = response[@"name"];
+        NSArray *list = [name componentsSeparatedByString:@" "];
+        
+        self[@"firstName"] = [[list subarrayWithRange:NSMakeRange(0, list.count - 1)] componentsJoinedByString:@" "];
+        self[@"lastName"] = [list lastObject];
+        
+        self[@"name"] = name;
+        self[@"searchableID"] = name;
+    }
+    
+    if (response[@"location"]) {
+        self[@"locale"] = response[@"location"];
+    } else if (response[@"lang"]) {
+        self[@"location"] = response[@"lang"];
+    }
 }
 
 @end

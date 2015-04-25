@@ -96,8 +96,11 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="shouldAnimate" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="shouldAnimate" value="YES"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="activityIndicatorView" destination="lMh-be-5qz" id="CZR-6y-Mdx"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hux-W2-6N8" userLabel="Log in Button" customClass="GLAuthenticationButton">
                                         <rect key="frame" x="158" y="0.0" width="150" height="44"/>
@@ -111,8 +114,11 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="shouldAnimate" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="shouldAnimate" value="YES"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="activityIndicatorView" destination="oIT-hH-Fzy" id="Uhu-fZ-sTE"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We'll never post or tweet anything" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abZ-gI-ymg">
                                         <rect key="frame" x="57" y="52" width="195" height="18"/>
@@ -120,6 +126,24 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lMh-be-5qz" customClass="MRActivityIndicatorView">
+                                        <rect key="frame" x="60" y="7" width="30" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="lYh-MB-QfM"/>
+                                            <constraint firstAttribute="width" constant="30" id="lcg-eS-mf3"/>
+                                        </constraints>
+                                    </view>
+                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oIT-hH-Fzy" customClass="MRActivityIndicatorView">
+                                        <rect key="frame" x="218" y="7" width="30" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="7wK-gC-TEY"/>
+                                            <constraint firstAttribute="width" constant="30" id="fW7-Nm-MMx"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -127,6 +151,8 @@
                                     <constraint firstAttribute="trailing" secondItem="Hux-W2-6N8" secondAttribute="trailing" id="Buz-hJ-vaJ"/>
                                     <constraint firstItem="YgY-jC-MMU" firstAttribute="top" secondItem="Lw1-UF-nZw" secondAttribute="top" id="KRu-N5-VYt"/>
                                     <constraint firstItem="Hux-W2-6N8" firstAttribute="top" secondItem="Lw1-UF-nZw" secondAttribute="top" id="PBN-vd-kzp"/>
+                                    <constraint firstItem="Hux-W2-6N8" firstAttribute="centerX" secondItem="oIT-hH-Fzy" secondAttribute="centerX" id="PFm-x8-4g9"/>
+                                    <constraint firstItem="lMh-be-5qz" firstAttribute="centerX" secondItem="YgY-jC-MMU" secondAttribute="centerX" id="Rjf-vH-cxv"/>
                                     <constraint firstItem="abZ-gI-ymg" firstAttribute="top" secondItem="YgY-jC-MMU" secondAttribute="bottom" constant="8" id="VCW-or-nCh"/>
                                     <constraint firstItem="Hux-W2-6N8" firstAttribute="top" secondItem="Lw1-UF-nZw" secondAttribute="top" id="Xgh-9r-dlJ"/>
                                     <constraint firstAttribute="centerX" secondItem="abZ-gI-ymg" secondAttribute="centerX" id="aaL-4n-lDY"/>
@@ -134,6 +160,8 @@
                                     <constraint firstItem="YgY-jC-MMU" firstAttribute="leading" secondItem="Lw1-UF-nZw" secondAttribute="leading" id="ga9-B6-Uw7"/>
                                     <constraint firstItem="YgY-jC-MMU" firstAttribute="leading" secondItem="Lw1-UF-nZw" secondAttribute="leading" id="nWT-z0-Iuu"/>
                                     <constraint firstAttribute="height" constant="70" id="oF7-fY-lhP"/>
+                                    <constraint firstItem="Hux-W2-6N8" firstAttribute="centerY" secondItem="oIT-hH-Fzy" secondAttribute="centerY" id="p1y-WX-Uxc"/>
+                                    <constraint firstItem="lMh-be-5qz" firstAttribute="centerY" secondItem="YgY-jC-MMU" secondAttribute="centerY" id="rux-NO-ud2"/>
                                     <constraint firstAttribute="trailing" secondItem="Hux-W2-6N8" secondAttribute="trailing" id="xdi-t8-h88"/>
                                 </constraints>
                             </view>
