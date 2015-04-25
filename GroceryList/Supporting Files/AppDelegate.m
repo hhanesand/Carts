@@ -26,13 +26,14 @@ extern CFTimeInterval startTime;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     dispatch_async(dispatch_get_main_queue(), ^{
         NSLog(@"Launched in %f sec", CACurrentMediaTime() - startTime);
+        NSLog(@"Bundle Identifier %@", [[NSBundle mainBundle] bundleIdentifier]);
     });
     
     [self registerParseSubclasses];
     [self initializeParseWithLaunchOptions:launchOptions];
     [self prepareViewHeirarchy];
     
-    return YES;
+    return [[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];;
 }
 
 - (void)registerParseSubclasses {

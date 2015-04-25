@@ -26,11 +26,15 @@
     return user;
 }
 
++ (NSString *)parseClassName {
+    return @"_User";
+}
+
 + (PFQuery *)query {
     return [super query];
 }
 
-+ (GLUser *)GL_currentUser {
++ (instancetype)currentUser {
     GLUser *cur = [super currentUser];
     
     if (!cur.list) { //fix for automatic user not running +object method
@@ -45,7 +49,7 @@
 }
 
 - (NSString *)bestName {
-    if([GLUser GL_currentUser] == self) {
+    if([GLUser currentUser] == self) {
         return @"Your Cart";
     } else {
         return [self.username stringByAppendingString:@"'s Cart"];

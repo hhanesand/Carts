@@ -12,6 +12,9 @@
 #import "GLListTableViewController.h"
 #import "GLShareCartViewController.h"
 #import "GLSignUpViewController.h"
+#import <Parse/Parse.h>
+#import <ParseFacebookUtilsV4/PFFacebookUtils.h>
+#import "PFUser+GLUser.h"
 
 static NSString *const kGLListOverviewTableViewControllerReuseIdentifier = @"GLListTableViewController";
 
@@ -74,16 +77,16 @@ static NSString *const kGLListOverviewTableViewControllerReuseIdentifier = @"GLL
 }
 
 - (RACSignal *)cachedSignalForTable {
-    return [[[[GLUser GL_currentUser].following query] fromLocalDatastore] findObjectsInbackgroundWithRACSignal];
+    return [[[[GLUser currentUser].following query] fromLocalDatastore] findObjectsInbackgroundWithRACSignal];
 }
 
 - (RACSignal *)signalForTable {
-    if ([PFAnonymousUtils isLinkedWithUser:[GLUser GL_currentUser]]) {
+    if ([PFAnonymousUtils isLinkedWithUser:[GLUser currentUser]]) {
         //fix for wierd parse behavior see http://samwize.com/2014/07/15/pitfall-with-using-anonymous-user-in-parse/
         return [RACSignal empty];
     }
     
-    return [[[GLUser GL_currentUser].following query] findObjectsInbackgroundWithRACSignal];
+    return [[[GLUser currentUser].following query] findObjectsInbackgroundWithRACSignal];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(GLUser *)object {
@@ -102,17 +105,6 @@ static NSString *const kGLListOverviewTableViewControllerReuseIdentifier = @"GLL
     }
 }
 
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-//    switch (section) {
-//        case 0:
-//            return @"Your Cart";
-//            break;
-//            
-//        default:
-//            return @"Followed Carts";
-//            break;
-//    }
-//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [super tableView:tableView numberOfRowsInSection:section] + 1;

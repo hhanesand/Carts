@@ -18,6 +18,7 @@
 #import "GLUser.h"
 #import "PFUser+GLUser.h"
 #import "UIView+GLView.h"
+#import "PFFacebookUtils+GLFacebookUtils.h"
 
 @interface GLSignUpViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *username;
@@ -70,14 +71,18 @@
         [self.signUp setNeedsDisplay];
     }];
     
-//    [[[self.facebook rac_signalForControlEvents:UIControlEventTouchUpInside] doNext:^(id x) {
-//        NSLog(@"Pressed facebook button");
-//    }] ];
+    [[[[self.facebook rac_signalForControlEvents:UIControlEventTouchUpInside] doNext:^(id x) {
+        NSLog(@"Pressed facebook button");
+    }] flattenMap:^RACStream *(id value) {
+        return [PFFacebookUtils logInWithSignalWithReadPermissions:@[@"public_profile", @"user_friends", @"email"]];
+    }] subscribeNext:^(GLUser *user) {
+        NSLog(@"Logged in user with name %@", user);
+    }];
     
     [[[[[[self.signUp rac_signalForControlEvents:UIControlEventTouchUpInside] doNext:^(id x) {
         [self.view endEditing:YES];
     }] map:^id(id value) {
-        GLUser *user = [GLUser GL_currentUser];
+        GLUser *user = [GLUser currentUser];
         user.username = self.username.text;
         user.password = self.password.text;
         return user;

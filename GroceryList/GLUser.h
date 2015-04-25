@@ -10,7 +10,6 @@
 
 @interface GLUser : PFUser<PFSubclassing>
 
-+ (GLUser *)GL_currentUser;
 + (BOOL)isLoggedIn;
 
 @property (nonatomic) GLListObject *list;

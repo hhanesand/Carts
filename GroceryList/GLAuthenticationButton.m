@@ -14,10 +14,11 @@
 @interface GLAuthenticationButton ()
 @property (nonatomic) BOOL isExtended;
 
-@property (nonatomic) GLToggleAnimator *widthToggleAnimator;
+@property (nonatomic) GLAnimation *shake;
 @property (nonatomic) GLToggleAnimator *fadeToggleAnimator;
 
 @property (nonatomic) NSString *savedTitle;
+@property (nonatomic) UIImage *image;
 @end
 
 @implementation GLAuthenticationButton
@@ -29,6 +30,8 @@
         self.isExtended = YES;
         [self setMaskToRoundedCorners:UIRectCornerAllCorners withRadii:4.0];
         self.savedTitle = [self titleForState:UIControlStateNormal];
+        
+        self.image =  [UIImage imageNamed:@"done"];
     }
     
     return self;
@@ -44,7 +47,6 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     [super touchesEnded:touches withEvent:event];
 
-    [self.widthToggleAnimator toggleAnimation];
     [self.fadeToggleAnimator toggleAnimation];
 }
 
@@ -58,26 +60,42 @@
     if (self.shouldAnimate) {
         self.fadeToggleAnimator = [GLToggleAnimator animatorWithTarget:self.activityIndicatorView.layer property:kPOPLayerOpacity startValue:@(0) endValue:@(1)];
         
-        [self.fadeToggleAnimator performAlongsideForwardAnimation:^{
+        @weakify(self);
+        self.fadeToggleAnimator.forwardsAction = ^{
+            @strongify(self);
             [self setTitle:@"" forState:UIControlStateNormal];
             [self.activityIndicatorView startAnimating];
-        }];
+        };
         
-        [self.fadeToggleAnimator performAlongsideBackwardAnimation:^{
+        self.fadeToggleAnimator.backwardsAction = ^{
+            @strongify(self);
             [self setTitle:self.savedTitle forState:UIControlStateNormal];
             [self.activityIndicatorView stopAnimating];
-        }];
+        };
     }
 }
 
-- (void)setButtonLayoutConstraint:(NSLayoutConstraint *)buttonLayoutConstraint {
-    _buttonLayoutConstraint = buttonLayoutConstraint;
+- (void)animateError {
+    POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionX];
+    animation.velocity = @2000;
+    animation.springBounciness = 20;
+    animation.springSpeed = 20;
     
-    if (self.shouldAnimate) {
-        self.widthToggleAnimator = [GLToggleAnimator animatorWithTarget:self.buttonLayoutConstraint property:kPOPLayoutConstraintConstant startValue:@(self.buttonLayoutConstraint.constant) endValue:@(44)];
+    POPSpringAnimation *ani = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionX];
+    ani.velocity = @2000;
+    ani.springBounciness = 20;
+    ani.springSpeed = 20;
     
-        self.widthToggleAnimator.forwards.animation.springBounciness = 1;
-    }
+    [self.activityIndicatorView.layer pop_addAnimation:animation forKey:@"ani"];
+    [self.layer pop_addAnimation:ani forKey:@"aani"];
+    
+    [self.fadeToggleAnimator toggleAnimation];
+}
+
+- (void)animateSuccess {
+    [self.activityIndicatorView stopAnimating];
+    [self setTitle:@"" forState:UIControlStateNormal];
+    [self setImage:self.image forState:UIControlStateNormal];
 }
 
 @end
