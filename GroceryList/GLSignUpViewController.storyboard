@@ -70,7 +70,7 @@
                                     <constraint firstAttribute="width" constant="150" id="2VQ-QX-mWd"/>
                                     <constraint firstAttribute="height" constant="44" id="N4h-IY-ZRG"/>
                                 </constraints>
-                                <state key="normal" title="Log In">
+                                <state key="normal" title="Sign Up">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -79,7 +79,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="activityIndicatorView" destination="Wn2-5W-cG4" id="KLW-mU-1eD"/>
-                                    <outlet property="buttonLayoutConstraint" destination="2VQ-QX-mWd" id="jxE-8m-IDu"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lw1-UF-nZw" userLabel="Facebook and Twitter Container">
@@ -164,8 +163,22 @@
                                     <constraint firstAttribute="height" constant="30" id="cS9-O5-uid"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K6l-nW-PIV">
+                                <rect key="frame" x="16" y="16" width="27" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="27" id="fUD-ya-kcd"/>
+                                    <constraint firstAttribute="height" constant="27" id="xgP-HR-7yd"/>
+                                </constraints>
+                                <state key="normal" image="down">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapDismissButton:" destination="UL8-yt-Uaw" eventType="touchUpInside" id="i9V-wz-N8R"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="ecO-gq-bmu" secondAttribute="centerX" id="1Cu-Th-3eD"/>
                             <constraint firstItem="8K2-NN-dTR" firstAttribute="trailing" secondItem="rf7-x1-l1n" secondAttribute="trailingMargin" id="1aa-nW-bCz"/>
@@ -180,6 +193,7 @@
                             <constraint firstItem="8K2-NN-dTR" firstAttribute="leading" secondItem="rf7-x1-l1n" secondAttribute="leadingMargin" id="Ok9-7G-yLu"/>
                             <constraint firstItem="3ZL-of-65v" firstAttribute="top" secondItem="X0J-Nf-vGF" secondAttribute="bottom" constant="8" id="Pb8-tR-AtJ"/>
                             <constraint firstAttribute="centerX" secondItem="Lw1-UF-nZw" secondAttribute="centerX" id="QwT-6B-KrF"/>
+                            <constraint firstItem="K6l-nW-PIV" firstAttribute="leading" secondItem="rf7-x1-l1n" secondAttribute="leadingMargin" id="UxF-5Q-YEP"/>
                             <constraint firstItem="hq5-ls-gMy" firstAttribute="centerY" secondItem="Wn2-5W-cG4" secondAttribute="centerY" id="VRR-Df-h1b"/>
                             <constraint firstItem="ecO-gq-bmu" firstAttribute="top" secondItem="rRf-d7-6N5" secondAttribute="bottom" id="XG0-KI-TzS"/>
                             <constraint firstAttribute="trailing" secondItem="2Yf-Qu-Nxc" secondAttribute="trailing" constant="8" id="ZJ7-Mx-WuS"/>
@@ -187,10 +201,14 @@
                             <constraint firstItem="Lw1-UF-nZw" firstAttribute="centerY" secondItem="rRf-d7-6N5" secondAttribute="centerY" id="dns-0X-Nh4"/>
                             <constraint firstItem="8K2-NN-dTR" firstAttribute="top" secondItem="3ZL-of-65v" secondAttribute="bottom" constant="8" id="kf3-hm-Quu"/>
                             <constraint firstItem="2Yf-Qu-Nxc" firstAttribute="leading" secondItem="rf7-x1-l1n" secondAttribute="leading" constant="8" id="n0S-Zz-cf8"/>
+                            <constraint firstItem="K6l-nW-PIV" firstAttribute="top" secondItem="3ZL-of-65v" secondAttribute="top" constant="8" id="oeG-hL-aR7"/>
                             <constraint firstItem="58q-1q-dUB" firstAttribute="top" secondItem="2Yf-Qu-Nxc" secondAttribute="bottom" constant="1" id="pCg-uM-lhK"/>
                             <constraint firstItem="rRf-d7-6N5" firstAttribute="leading" secondItem="rf7-x1-l1n" secondAttribute="leading" id="pVo-87-Q6G"/>
                             <constraint firstAttribute="centerX" secondItem="hq5-ls-gMy" secondAttribute="centerX" id="u8j-5y-omL"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="erA-0B-b3c" appends="YES" id="F1D-oK-NBR"/>
+                        </connections>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
@@ -204,8 +222,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5gA-1x-DZ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="erA-0B-b3c" userLabel="Tap In Background Gesture Recognizer">
+                    <connections>
+                        <action selector="didTapInBackground:" destination="UL8-yt-Uaw" id="aSP-Iz-Mz0"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-79" y="749"/>
+            <point key="canvasLocation" x="-357" y="749"/>
         </scene>
         <!--Log In View Controller-->
         <scene sceneID="D1y-QE-Mx6">
@@ -264,21 +287,6 @@
                                 <color key="textColor" red="0.13725490200000001" green="0.87058823529999996" blue="0.74901960779999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZRU-qC-MaE" customClass="GLAuthenticationButton">
-                                <rect key="frame" x="225" y="241" width="150" height="44"/>
-                                <color key="backgroundColor" red="0.13725490200000001" green="0.87058823529999996" blue="0.74901960779999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="HPZ-50-Xgx"/>
-                                    <constraint firstAttribute="width" constant="150" id="Lxe-fG-oCP"/>
-                                </constraints>
-                                <state key="normal" title="Log In">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <outlet property="buttonLayoutConstraint" destination="Lxe-fG-oCP" id="aFA-gT-SHZ"/>
-                                </connections>
-                            </button>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bhs-H0-5Fl" customClass="MRActivityIndicatorView">
                                 <rect key="frame" x="285" y="248" width="30" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -294,8 +302,34 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0D-hz-57R">
+                                <rect key="frame" x="16" y="16" width="27" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="7mo-ZE-vQ6"/>
+                                    <constraint firstAttribute="width" constant="27" id="Tqa-aH-Zcn"/>
+                                </constraints>
+                                <state key="normal" image="down">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapDismissButton:" destination="Nhe-VN-wb3" eventType="touchUpInside" id="SOy-68-zyR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZRU-qC-MaE" customClass="GLAuthenticationButton">
+                                <rect key="frame" x="225" y="241" width="150" height="44"/>
+                                <color key="backgroundColor" red="0.13725490200000001" green="0.87058823529999996" blue="0.74901960779999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="HPZ-50-Xgx"/>
+                                    <constraint firstAttribute="width" constant="150" id="Lxe-fG-oCP"/>
+                                </constraints>
+                                <state key="normal" title="Log In">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="ZRU-qC-MaE" firstAttribute="top" secondItem="9Qr-9J-2Po" secondAttribute="bottom" constant="8" id="2ED-bj-xiX"/>
                             <constraint firstItem="9Qr-9J-2Po" firstAttribute="top" secondItem="Hh5-Jh-5T1" secondAttribute="bottom" constant="1" id="2sN-mZ-bVc"/>
@@ -307,8 +341,10 @@
                             <constraint firstItem="ICc-bS-Nga" firstAttribute="top" secondItem="gvS-3W-170" secondAttribute="bottom" constant="8" id="cMs-cI-UE5"/>
                             <constraint firstItem="9Qr-9J-2Po" firstAttribute="leading" secondItem="XYJ-Ma-2OV" secondAttribute="leading" constant="8" id="hYm-Sy-Mu7"/>
                             <constraint firstAttribute="trailing" secondItem="9Qr-9J-2Po" secondAttribute="trailing" constant="8" id="hj1-Yj-CA3"/>
+                            <constraint firstItem="g0D-hz-57R" firstAttribute="top" secondItem="gvS-3W-170" secondAttribute="top" constant="8" id="jge-fr-ric"/>
                             <constraint firstItem="ZRU-qC-MaE" firstAttribute="centerY" secondItem="bhs-H0-5Fl" secondAttribute="centerY" id="k2l-FO-qo8"/>
                             <constraint firstAttribute="centerX" secondItem="ZRU-qC-MaE" secondAttribute="centerX" id="lv7-OV-d6a"/>
+                            <constraint firstItem="g0D-hz-57R" firstAttribute="leading" secondItem="XYJ-Ma-2OV" secondAttribute="leadingMargin" id="r3g-1n-UV5"/>
                             <constraint firstAttribute="centerX" secondItem="ICc-bS-Nga" secondAttribute="centerX" id="rAa-he-1AD"/>
                             <constraint firstItem="gvS-3W-170" firstAttribute="top" secondItem="NVg-B7-ec4" secondAttribute="bottom" constant="-20" id="rBq-P8-OJm"/>
                             <constraint firstAttribute="trailing" secondItem="Hh5-Jh-5T1" secondAttribute="trailing" constant="8" id="rt2-lc-3EN"/>
@@ -318,19 +354,29 @@
                                 <exclude reference="rBq-P8-OJm"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="yFD-aD-X1x" appends="YES" id="GAU-yl-Ew8"/>
+                        </connections>
                     </view>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="bhs-H0-5Fl" id="glr-lh-E94"/>
                         <outlet property="logIn" destination="ZRU-qC-MaE" id="OLT-sE-idr"/>
                         <outlet property="password" destination="9Qr-9J-2Po" id="JeG-fe-H4W"/>
                         <outlet property="username" destination="Hh5-Jh-5T1" id="IYE-Me-e5t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cTu-PD-pi4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="yFD-aD-X1x" userLabel="Tap In Background Gesture Recognizer">
+                    <connections>
+                        <action selector="didTapInBackground:" destination="Nhe-VN-wb3" id="Erj-tV-TLW"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="614" y="749"/>
+            <point key="canvasLocation" x="285" y="749"/>
         </scene>
     </scenes>
     <resources>
+        <image name="down" width="33" height="33"/>
         <image name="facebook" width="22" height="22"/>
         <image name="twitter" width="22" height="18"/>
     </resources>

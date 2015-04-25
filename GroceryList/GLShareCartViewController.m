@@ -11,19 +11,20 @@
 #import "GLTransitionDelegate.h"
 #import "GLPullToCloseTransitionManager.h"
 #import "GLPullToCloseTransitionPresentationController.h"
-#import "UISearchBar+RACAdditions.h"
 #import "RACSignal+GLAdditions.h"
 #import "GLUser.h"
 #import "PFQuery+GLQuery.h"
 #import "GLUserTableViewCell.h"
 #import "GLKeyboardResponderAnimator.h"
+#import "UIView+GLView.h"
 
 static NSString *const kGLFollowUserTableViewCellReuseIdentifier = @"GLFollowUserTableViewIdentifier";
 
 @interface GLShareCartViewController ()
 @property (nonatomic) GLTransitionDelegate *transitionDelegate;
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UITextField *searchBar;
 @property (nonatomic) NSString *previousSearch;
+@property (weak, nonatomic) IBOutlet UIView *searchContainer;
 @property (nonatomic) NSArray *searchResults;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *footerView;
@@ -52,6 +53,10 @@ static NSString *const kGLFollowUserTableViewCellReuseIdentifier = @"GLFollowUse
     self.modalPresentationCapturesStatusBarAppearance = YES;
 }
 
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -64,6 +69,10 @@ static NSString *const kGLFollowUserTableViewCellReuseIdentifier = @"GLFollowUse
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (IBAction)didTapSearchView:(id)sender {
+    [self.searchBar becomeFirstResponder];
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidLoad];
     
@@ -74,6 +83,10 @@ static NSString *const kGLFollowUserTableViewCellReuseIdentifier = @"GLFollowUse
     }] throttle:0.5] subscribeNext:^(NSString *search) {
         [self performQueryWithSearchString:search];
     }];
+}
+
+- (void)viewDidLayoutSubviews {
+    [self.searchContainer setMaskToRoundedCorners:UIRectEdgeAll withRadii:4.0];
 }
 
 - (BOOL)isValidSearchString:(NSString *)search {

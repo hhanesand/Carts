@@ -10,9 +10,6 @@
 
 @interface GLToggleAnimator ()
 @property (nonatomic, getter=isNextAnimationForwards) BOOL nextAnimationForwards;
-
-@property (nonatomic, copy) void (^forwardsAction)();
-@property (nonatomic, copy) void (^backwardsAction)();
 @end
 
 @implementation GLToggleAnimator
@@ -42,14 +39,6 @@
 //    self.forwards.animation.fromValue = start;
 //    self.forwards.animation.toValue = end;
 //}
-
-- (void)performAlongsideForwardAnimation:(void (^)())action {
-    self.forwardsAction = action;
-}
-
-- (void)performAlongsideBackwardAnimation:(void (^)())action {
-    self.backwardsAction = action;
-}
 
 - (void)toggleAnimation {
     if (self.isNextAnimationForwards) {

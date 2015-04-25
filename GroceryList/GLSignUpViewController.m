@@ -61,7 +61,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.signUp.enabled = NO;
+    self.signUp.enabled = YES;
     
     RAC(self.signUp, enabled) = [[[self.username.rac_textSignal zipWith:self.password.rac_textSignal] reduceEach:^id(NSString *username, NSString *password) {
         return @(username.length > 4 && password.length > 4);
@@ -69,6 +69,10 @@
         self.signUp.alpha = [x boolValue] ? 1 : 0.5;
         [self.signUp setNeedsDisplay];
     }];
+    
+//    [[[self.facebook rac_signalForControlEvents:UIControlEventTouchUpInside] doNext:^(id x) {
+//        NSLog(@"Pressed facebook button");
+//    }] ];
     
     [[[[[[self.signUp rac_signalForControlEvents:UIControlEventTouchUpInside] doNext:^(id x) {
         [self.view endEditing:YES];
@@ -82,10 +86,18 @@
     }] catch:^RACSignal *(NSError *error) {
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             NSLog(@"There was an error signing up...");
+            [self.signUp animateError];
             [subscriber sendCompleted];
             return nil;
         }];
-    }] subscribeNext:^(id x) {
+    }] subscribeNext:^(GLUser *x) {
+        [x saveInBackground];
+        [self.signUp animateSuccess];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self didTapDismissButton:nil];
+        });
+        
         NSLog(@"Successful signup");
     }];
 }
@@ -108,10 +120,16 @@
     return NO;
 }
 
+- (IBAction)didTapInBackground:(id)sender {
+    [self.view endEditing:YES];
+}
+
+- (IBAction)didTapDismissButton:(id)sender {
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     [super touchesEnded:touches withEvent:event];
-    
-   
 }
 
 - (IBAction)didTapAlreadyHaveAccountButton:(id)sender {

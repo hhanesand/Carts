@@ -57,9 +57,9 @@
     
     self.logIn.enabled = NO;
     
-    RAC(self.logIn, enabled) = [[self.username.rac_textSignal zipWith:self.password.rac_textSignal] reduceEach:^id(NSString *username, NSString *password) {
+    RAC(self.logIn, enabled) = [[[self.username.rac_textSignal zipWith:self.password.rac_textSignal] reduceEach:^id(NSString *username, NSString *password) {
         return @(username.length > 4 && password.length > 4);
-    }];
+    }] logAll];
     
     [[[[self.logIn rac_signalForControlEvents:UIControlEventTouchUpInside] flattenMap:^RACStream *(id value) {
         return [GLUser logInInBackgroundWithUsername:self.username.text password:self.password.text];
@@ -91,6 +91,15 @@
     }
     
     return NO;
+}
+
+- (IBAction)didTapInBackground:(id)sender {
+    [self.view endEditing:YES];
+}
+
+- (IBAction)didTapDismissButton:(id)sender {
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (GLTransitionDelegate *)transitionDelegate {

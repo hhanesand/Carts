@@ -34,10 +34,9 @@
         UIView *inputView = [self.delegate viewForActiveUserInputElement];
         UIView *animatedView = [self.delegate viewToAnimateForKeyboardAdjustment];
         
-        CGRect activeFieldFrame = [inputView convertRect:inputView.frame toView:animatedView.superview];
         CGRect keyboardFrame = [notif.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
         
-        CGFloat overlap = CGRectGetMaxY(activeFieldFrame) - CGRectGetMinY(keyboardFrame);
+        CGFloat overlap = CGRectGetMaxY(animatedView.frame) - CGRectGetMinY(keyboardFrame);
         
         if (overlap > 0) {
             NSTimeInterval duration = [notif.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
@@ -47,7 +46,7 @@
             self.savedConstant = constraint.constant;
             
             [UIView animateWithDuration:duration delay:0 options:options | UIViewAnimationOptionAllowUserInteraction animations:^{
-                constraint.constant -= overlap;
+                constraint.constant += overlap;
                 [animatedView layoutIfNeeded];
             } completion:nil];
         }

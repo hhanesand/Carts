@@ -141,6 +141,7 @@
 		F248BDAD1AE9E8A800F535C5 /* UIView+GLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GLView.m"; sourceTree = "<group>"; };
 		F248BDAF1AE9F6D700F535C5 /* GLToggleAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLToggleAnimator.h; sourceTree = "<group>"; };
 		F248BDB01AE9F6D700F535C5 /* GLToggleAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLToggleAnimator.m; sourceTree = "<group>"; };
+		F248BDB51AEB23B900F535C5 /* GLCompanionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCompanionAnimator.h; sourceTree = "<group>"; };
 		F25286861ACFA1FD00435261 /* GLBarcodeFetchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLBarcodeFetchManager.h; path = Networking/GLBarcodeFetchManager.h; sourceTree = "<group>"; };
 		F25286871ACFA1FD00435261 /* GLBarcodeFetchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLBarcodeFetchManager.m; path = Networking/GLBarcodeFetchManager.m; sourceTree = "<group>"; };
 		F252868C1ACFA1FD00435261 /* GLFactualRequestSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLFactualRequestSerializer.h; path = Networking/GLFactualRequestSerializer.h; sourceTree = "<group>"; };
@@ -333,8 +334,6 @@
 				F248BD931AE85D6A00F535C5 /* GLSignUpViewController.storyboard */,
 				F248BD8C1AE85B1600F535C5 /* GLLogInViewController.h */,
 				F248BD8D1AE85B1600F535C5 /* GLLogInViewController.m */,
-				F248BDAF1AE9F6D700F535C5 /* GLToggleAnimator.h */,
-				F248BDB01AE9F6D700F535C5 /* GLToggleAnimator.m */,
 			);
 			name = Authentication;
 			sourceTree = "<group>";
@@ -447,6 +446,9 @@
 				F25286B31ACFA23B00435261 /* POPSpringAnimation+GLAdditions.m */,
 				F25286B41ACFA23B00435261 /* UIColor+GLColor.h */,
 				F25286B51ACFA23B00435261 /* UIColor+GLColor.m */,
+				F248BDB51AEB23B900F535C5 /* GLCompanionAnimator.h */,
+				F248BDAF1AE9F6D700F535C5 /* GLToggleAnimator.h */,
+				F248BDB01AE9F6D700F535C5 /* GLToggleAnimator.m */,
 			);
 			name = Animation;
 			sourceTree = "<group>";

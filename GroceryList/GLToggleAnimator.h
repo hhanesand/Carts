@@ -6,19 +6,20 @@
 
 #import <Foundation/Foundation.h>
 #import "GLAnimation.h"
+#import "GLCompanionAnimator.h"
 @import QuartzCore;
 
-@interface GLToggleAnimator : NSObject
+@interface GLToggleAnimator : NSObject <GLCompanionAnimator>
 
 @property (nonatomic) GLAnimation *backwards;
 @property (nonatomic) GLAnimation *forwards;
 
+@property (nonatomic, copy) void (^forwardsAction)();
+@property (nonatomic, copy) void (^backwardsAction)();
+
 + (instancetype)animatorWithTarget:(id)target property:(NSString *)property startValue:(id)start endValue:(id)end;
 
 //- (void)adjustParametersToStartValue:(id)startValue endValue:(id)endValue;
-
-- (void)performAlongsideForwardAnimation:(void (^)())action;
-- (void)performAlongsideBackwardAnimation:(void (^)())action;
 
 - (void)toggleAnimation;
 
