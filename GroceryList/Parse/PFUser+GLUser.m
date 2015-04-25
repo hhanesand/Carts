@@ -32,7 +32,15 @@
                 NSLog(@"Error in signUpInBackgroundWithSignal %@", error);
                 [subscriber sendError:error];
             } else {
-                [subscriber sendCompleted];
+                [PFUser logInWithUsernameInBackground:self.username password:self.password block:^(PFUser *user, NSError *error) {
+                    if (error) {
+                        NSLog(@"error in login inside sign up %@", error);
+                        [subscriber sendError:error];
+                    }
+                    
+                    [subscriber sendNext:self];
+                    [subscriber sendCompleted];
+                }];
             }
         }];
         

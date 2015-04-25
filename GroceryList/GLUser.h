@@ -6,13 +6,14 @@
 
 #import <Parse/Parse.h>
 #import "GLListObject.h"
+#import <Parse/PFObject+Subclass.h>
 
 @interface GLUser : PFUser<PFSubclassing>
 
-+ (GLUser *)GL_currentUser;
 + (BOOL)isLoggedIn;
 
 @property (nonatomic) GLListObject *list;
+@property (nonatomic) NSString *username_lowercase;
 @property (nonatomic, readonly) PFRelation *following;
 
 - (NSString *)bestName;

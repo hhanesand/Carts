@@ -226,15 +226,27 @@ static NSString *identifier = @"GLBarcodeItemTableViewCell";
     fade.name = @"fadeSearchViewLayer";
     
     POPSpringAnimation *show = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerOpacity];
-    show.fromValue = @0;
-    show.toValue = @1;
-    fade.springSpeed = 10;
-    fade.springBounciness = 0;
+    show.fromValue = @(0.0);
+    show.toValue = @(1.0);
+    show.springSpeed = 10;
+    show.springBounciness = 0;
     show.name = @"showTargetingReticule";
+    
+    POPSpringAnimation *show1 = [POPSpringAnimation animationWithPropertyNamed:kPOPViewAlpha];
+    show1.fromValue = @(0.0);
+    show1.toValue = @(1.0);
+    show1.springSpeed = 10;
+    show1.springBounciness = 0;
+    show1.name = @"showButton";
     
     [self.animationStack pushAnimation:scale withTargetObject:self.searchView.layer andDescription:@"scale"];
     [self.animationStack pushAnimation:fade withTargetObject:self.searchView.layer andDescription:@"fade"];
     [self.animationStack pushAnimation:show withTargetObject:self.targetingReticule andDescription:@"show"];
+    [self.animationStack pushAnimation:show1 withTargetObject:self.videoPreviewView.doneScanningItemsButton andDescription:@"show1"];
+}
+
+- (void)pop_animationDidApply:(POPAnimation *)anim {
+    NSLog(@"Animaion did apply");
 }
 
 #pragma mark - Keyboard Responder Delegate

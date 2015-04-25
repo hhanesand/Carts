@@ -6,6 +6,8 @@
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <Parse/Parse.h>
+#import <MRProgress/MRActivityIndicatorView.h>
+#import <pop/POP.h>
 
 #import "GLSignUpViewController.h"
 #import "GLAuthenticationButton.h"
@@ -15,20 +17,19 @@
 #import "GLLogInViewController.h"
 #import "GLUser.h"
 #import "PFUser+GLUser.h"
+#import "UIView+GLView.h"
+#import "PFFacebookUtils+GLFacebookUtils.h"
 
 @interface GLSignUpViewController ()
-@property (weak, nonatomic) IBOutlet UIView *facebookContainer;
-@property (weak, nonatomic) IBOutlet UIView *twitterContainer;
-@property (weak, nonatomic) IBOutlet UIView *signUpContainer;
-@property (weak, nonatomic) IBOutlet UIView *logInContainer;
-
 @property (weak, nonatomic) IBOutlet UITextField *username;
 @property (weak, nonatomic) IBOutlet UITextField *password;
 
-@property (nonatomic) GLAuthenticationButton *facebook;
-@property (nonatomic) GLAuthenticationButton *twitter;
-@property (nonatomic) GLAuthenticationButton *logIn;
-@property (nonatomic) GLAuthenticationButton *signUp;
+@property (weak, nonatomic) IBOutlet GLAuthenticationButton *facebook;
+@property (weak, nonatomic) IBOutlet GLAuthenticationButton *twitter;
+@property (weak, nonatomic) IBOutlet GLAuthenticationButton *signUp;
+
+@property (weak, nonatomic) IBOutlet MRActivityIndicatorView *activityIndicatorView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *signInButtonLayoutConstraint;
 
 @property (nonatomic) GLTransitionDelegate *transitionDelegate;
 @end
@@ -42,11 +43,6 @@
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
-        self.facebook = [[GLAuthenticationButton alloc] initWithMethod:GLAuthenticationMethodFacebook];
-        self.twitter = [[GLAuthenticationButton alloc] initWithMethod:GLAuthenticationMethodTwitter];
-        self.logIn = [[GLAuthenticationButton alloc] initWithMethod:GLAuthenticationMethodLogInPrompt];
-        self.signUp = [[GLAuthenticationButton alloc] initWithMethod:GLAuthenticationMethodSignUp];
-        
         [self configureModalPresentation];
     }
     
@@ -64,35 +60,84 @@
 }
 
 - (void)viewDidLoad {
-    self.facebook.frame = self.facebookContainer.bounds;
-    self.twitter.frame = self.twitterContainer.bounds;
-    self.logIn.frame = self.logInContainer.bounds;
-    self.signUp.frame = self.signUpContainer.bounds;
+    [super viewDidLoad];
     
-    [self.facebookContainer addSubview:self.facebook];
-    [self.twitterContainer addSubview:self.twitter];
-    [self.logInContainer addSubview:self.logIn];
-    [self.signUpContainer addSubview:self.signUp];
+    self.signUp.enabled = YES;
     
-    [self.logIn addTarget:self action:@selector(presentLogInViewController) forControlEvents:UIControlEventTouchUpInside];
-    
-    RAC(self.signUp, enabled) = [[RACSignal merge:@[self.username.rac_textSignal, self.password.rac_textSignal]] map:^id(NSString *text) {
-        return @(text.length >= 5);
+    RAC(self.signUp, enabled) = [[[self.username.rac_textSignal zipWith:self.password.rac_textSignal] reduceEach:^id(NSString *username, NSString *password) {
+        return @(username.length > 4 && password.length > 4);
+    }] doNext:^(id x) {
+        self.signUp.alpha = [x boolValue] ? 1 : 0.5;
+        [self.signUp setNeedsDisplay];
     }];
     
-    [[[[self.signUp rac_signalForControlEvents:UIControlEventTouchUpInside] map:^id(id value) {
-        GLUser *user = [GLUser GL_currentUser];
+    [[[[self.facebook rac_signalForControlEvents:UIControlEventTouchUpInside] doNext:^(id x) {
+        NSLog(@"Pressed facebook button");
+    }] flattenMap:^RACStream *(id value) {
+        return [PFFacebookUtils logInWithSignalWithReadPermissions:@[@"public_profile", @"user_friends", @"email"]];
+    }] subscribeNext:^(GLUser *user) {
+        NSLog(@"Logged in user with name %@", user);
+    }];
+    
+    [[[[[[self.signUp rac_signalForControlEvents:UIControlEventTouchUpInside] doNext:^(id x) {
+        [self.view endEditing:YES];
+    }] map:^id(id value) {
+        GLUser *user = [GLUser currentUser];
         user.username = self.username.text;
         user.password = self.password.text;
         return user;
     }] flattenMap:^RACStream *(GLUser *user) {
         return [user signUpInBackgroundWithSignal];
-    }] subscribeCompleted:^{
-        NSLog(@"sign up in background complete!");
+    }] catch:^RACSignal *(NSError *error) {
+        return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            NSLog(@"There was an error signing up...");
+            [self.signUp animateError];
+            [subscriber sendCompleted];
+            return nil;
+        }];
+    }] subscribeNext:^(GLUser *x) {
+        [x saveInBackground];
+        [self.signUp animateSuccess];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self didTapDismissButton:nil];
+        });
+        
+        NSLog(@"Successful signup");
     }];
 }
 
-- (void)presentLogInViewController {
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    
+    [self.username setMaskToRoundedCorners:(UIRectCornerTopRight | UIRectCornerTopLeft) withRadii:4.0];
+    [self.password setMaskToRoundedCorners:(UIRectCornerBottomRight | UIRectCornerBottomLeft) withRadii:4.0];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.username) {
+        [self.password becomeFirstResponder];
+    } else if (textField == self.password) {
+        [textField resignFirstResponder];
+        [self.signUp sendActionsForControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    return NO;
+}
+
+- (IBAction)didTapInBackground:(id)sender {
+    [self.view endEditing:YES];
+}
+
+- (IBAction)didTapDismissButton:(id)sender {
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    [super touchesEnded:touches withEvent:event];
+}
+
+- (IBAction)didTapAlreadyHaveAccountButton:(id)sender {
     GLLogInViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"GLLogInViewController"];
     vc.delegate = self.delegate;
     [self presentViewController:vc animated:YES completion:nil];
