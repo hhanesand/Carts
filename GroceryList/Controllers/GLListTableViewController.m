@@ -16,10 +16,10 @@
 #import "PFObject+GLPFObject.h"
 #import "GLPullToCloseTransitionManager.h"
 #import "UIImageView+AFNetworking.h"
-#import "GLUser.h"
 #import "GLListItemObject.h"
 #import "RACUnit.h"
 #import "PFQuery+GLQuery.h"
+#import "PFUser+GLUser.h"
 
 static NSString *const kGLTableViewReuseIdentifier = @"GLTableViewCellIdentifier";
 static NSString *const kGLParsePinName = @"GLTableViewPin";
@@ -91,7 +91,7 @@ static NSString *const kGLParsePinName = @"GLTableViewPin";
     PFQuery *query = [GLListObject query];
     [query includeKey:@"items.item"];
     
-    return [[query getObjectWithIdWithSignal:[GLUser currentUser].list.objectId] map:^NSArray *(GLListObject *listObject) {
+    return [[query getObjectWithIdWithSignal:[PFUser currentUser].list.objectId] map:^NSArray *(GLListObject *listObject) {
         return listObject.items;
     }];
 }
@@ -101,7 +101,7 @@ static NSString *const kGLParsePinName = @"GLTableViewPin";
     [query includeKey:@"items.item"];
     [query fromLocalDatastore];
     
-    return [[query getObjectWithIdWithSignal:[GLUser currentUser].list.objectId] map:^NSArray *(GLListObject *listObject) {
+    return [[query getObjectWithIdWithSignal:[PFUser currentUser].list.objectId] map:^NSArray *(GLListObject *listObject) {
         return listObject.items;
     }];
 }
@@ -146,7 +146,7 @@ static NSString *const kGLParsePinName = @"GLTableViewPin";
     return 71;
 }
 
-- (void)setUser:(GLUser *)user {
+- (void)setUser:(PFUser *)user {
     _user = user;
     self.title = user.username;
 }

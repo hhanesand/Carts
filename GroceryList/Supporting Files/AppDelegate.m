@@ -15,7 +15,6 @@
 #import "UIColor+GLColor.h"
 #import "GLListObject.h"
 #import "GLBarcodeObject.h"
-#import "GLUser.h"
 #import "GLListItemObject.h"
 #import "GLListOverviewTableViewController.h"
 
@@ -40,7 +39,6 @@ extern CFTimeInterval startTime;
     [GLListObject registerSubclass];
     [GLListItemObject registerSubclass];
     [GLBarcodeObject registerSubclass];
-    [GLUser registerSubclass];
 }
 
 - (void)initializeParseWithLaunchOptions:(NSDictionary *)launchOptions {

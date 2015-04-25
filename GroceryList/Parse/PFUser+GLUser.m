@@ -48,4 +48,21 @@
     }];
 }
 
++ (BOOL)isLoggedIn {
+    return [self currentUser] == self;
+}
+
+- (NSString *)bestName {
+    if([PFUser currentUser] == self) {
+        return @"Your Cart";
+    } else {
+        return [self.username stringByAppendingString:@"'s Cart"];
+    }
+
+}
+
+- (GLListObject *)list {
+    return [self objectForKey:@"list"];
+}
+
 @end

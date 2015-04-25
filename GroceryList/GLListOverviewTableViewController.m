@@ -6,7 +6,6 @@
 
 #import "GLListOverviewTableViewController.h"
 #import "GLListObject.h"
-#import "GLUser.h"
 #import "PFQuery+GLQuery.h"
 #import "GLListOverviewTableViewCell.h"
 #import "GLListTableViewController.h"
@@ -68,7 +67,7 @@ static NSString *const kGLListOverviewTableViewControllerReuseIdentifier = @"GLL
 }
 
 - (void)didTapShareCartButton {
-    if ([GLUser isLoggedIn]) {
+    if ([PFUser isLoggedIn]) {
         [self presentViewController:self.shareCartViewController animated:YES completion:nil];
     } else {
         GLSignUpViewController *signUp = [GLSignUpViewController instance];
@@ -77,19 +76,19 @@ static NSString *const kGLListOverviewTableViewControllerReuseIdentifier = @"GLL
 }
 
 - (RACSignal *)cachedSignalForTable {
-    return [[[[GLUser currentUser].following query] fromLocalDatastore] findObjectsInbackgroundWithRACSignal];
+    return [[[[[PFUser currentUser] relationForKey:@"following"] query] fromLocalDatastore] findObjectsInbackgroundWithRACSignal];
 }
 
 - (RACSignal *)signalForTable {
-    if ([PFAnonymousUtils isLinkedWithUser:[GLUser currentUser]]) {
+    if ([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
         //fix for wierd parse behavior see http://samwize.com/2014/07/15/pitfall-with-using-anonymous-user-in-parse/
         return [RACSignal empty];
     }
     
-    return [[[GLUser currentUser].following query] findObjectsInbackgroundWithRACSignal];
+    return [[[[PFUser currentUser] relationForKey:@"following"] query] findObjectsInbackgroundWithRACSignal];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(GLUser *)object {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFUser *)object {
     GLListOverviewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kGLListOverviewTableViewControllerReuseIdentifier forIndexPath:indexPath];
     
     cell.cart.text = [object bestName];
@@ -99,7 +98,7 @@ static NSString *const kGLListOverviewTableViewControllerReuseIdentifier = @"GLL
 
 - (PFObject *)objectAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
-        return [GLUser currentUser];
+        return [PFUser currentUser];
     } else {
         return [super objectAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row - 1 inSection:indexPath.section]];
     }
@@ -116,7 +115,7 @@ static NSString *const kGLListOverviewTableViewControllerReuseIdentifier = @"GLL
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    self.listTableViewController.user = (GLUser *)[self objectAtIndexPath:indexPath];
+    self.listTableViewController.user = (PFUser *)[self objectAtIndexPath:indexPath];
     [self.navigationController pushViewController:self.listTableViewController animated:YES];
 }
 

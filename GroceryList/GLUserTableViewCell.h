@@ -5,9 +5,10 @@
 //  Created by Hakon Hanesand on 4/20/15.
 
 #import <UIKit/UIKit.h>
-#import "GLUser.h"
 
+@class PFUser;
 @class GLUserTableViewCell;
+
 @protocol GLUserTableViewCellDelegate <NSObject>
 @optional
 - (void)userDidTapAddFriendButtonInTableViewCell:(GLUserTableViewCell *)cell ;
@@ -17,6 +18,6 @@
 
 @property (nonatomic) id<GLUserTableViewCellDelegate> delegate;
 
-- (void)bindWithUser:(GLUser *)user;
+- (void)bindWithUser:(PFUser *)user;
 
 @end

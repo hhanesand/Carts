@@ -8,7 +8,7 @@
 #import "GLBaseViewController.h"
 
 @class RACSignal;
-@class GLUser;
+@class PFUser;
 
 /**
  *  The view controller that handles the user's grocery list
@@ -18,6 +18,6 @@
 /**
  *  The User's list this table view is currently displaying
  */
-@property (nonatomic) GLUser *user;
+@property (nonatomic) PFUser *user;
 
 @end

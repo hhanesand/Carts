@@ -12,7 +12,6 @@
 #import "PFQuery+GLQuery.h"
 #import "PFQueryTableViewController+Caching.h"
 #import "PFObject+GLPFObject.h"
-#import "PFUser+GLUser.h"
 #import "GLListObject.h"
 #import "MustOverride.h"
 

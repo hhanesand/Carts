@@ -15,7 +15,6 @@
 #import "GLPullToCloseTransitionManager.h"
 #import "GLPullToCloseTransitionPresentationController.h"
 #import "GLLogInViewController.h"
-#import "GLUser.h"
 #import "PFUser+GLUser.h"
 #import "UIView+GLView.h"
 #import "PFFacebookUtils+GLFacebookUtils.h"
@@ -75,18 +74,18 @@
         NSLog(@"Pressed facebook button");
     }] flattenMap:^RACStream *(id value) {
         return [PFFacebookUtils logInWithSignalWithReadPermissions:@[@"public_profile", @"user_friends", @"email"]];
-    }] subscribeNext:^(GLUser *user) {
+    }] subscribeNext:^(PFUser *user) {
         NSLog(@"Logged in user with name %@", user);
     }];
     
     [[[[[[self.signUp rac_signalForControlEvents:UIControlEventTouchUpInside] doNext:^(id x) {
         [self.view endEditing:YES];
     }] map:^id(id value) {
-        GLUser *user = [GLUser currentUser];
+        PFUser *user = [PFUser currentUser];
         user.username = self.username.text;
         user.password = self.password.text;
         return user;
-    }] flattenMap:^RACStream *(GLUser *user) {
+    }] flattenMap:^RACStream *(PFUser *user) {
         return [user signUpInBackgroundWithSignal];
     }] catch:^RACSignal *(NSError *error) {
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
@@ -95,7 +94,7 @@
             [subscriber sendCompleted];
             return nil;
         }];
-    }] subscribeNext:^(GLUser *x) {
+    }] subscribeNext:^(PFUser *x) {
         [x saveInBackground];
         [self.signUp animateSuccess];
         

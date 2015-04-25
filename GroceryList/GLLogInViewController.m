@@ -13,7 +13,6 @@
 #import "GLTransitionDelegate.h"
 #import "GLPullToCloseTransitionManager.h"
 #import "GLPullToCloseTransitionPresentationController.h"
-#import "GLUser.h"
 #import "PFUser+GLUser.h"
 #import "UIView+GLView.h"
 
@@ -62,7 +61,7 @@
     }] logAll];
     
     [[[[self.logIn rac_signalForControlEvents:UIControlEventTouchUpInside] flattenMap:^RACStream *(id value) {
-        return [GLUser logInInBackgroundWithUsername:self.username.text password:self.password.text];
+        return [PFUser logInInBackgroundWithUsername:self.username.text password:self.password.text];
     }] catch:^RACSignal *(NSError *error) {
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             //animate button and let user know his wrongs

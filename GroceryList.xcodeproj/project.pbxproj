@@ -26,7 +26,6 @@
 		F248BDAE1AE9E8A800F535C5 /* UIView+GLView.m in Sources */ = {isa = PBXBuildFile; fileRef = F248BDAD1AE9E8A800F535C5 /* UIView+GLView.m */; };
 		F248BDB11AE9F6D700F535C5 /* GLToggleAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = F248BDB01AE9F6D700F535C5 /* GLToggleAnimator.m */; };
 		F248BDB81AEB45D200F535C5 /* PFFacebookUtils+GLFacebookUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F248BDB71AEB45D200F535C5 /* PFFacebookUtils+GLFacebookUtils.m */; };
-		F248BDBB1AEBF33E00F535C5 /* GLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F248BDBA1AEBF33E00F535C5 /* GLUser.m */; };
 		F25286901ACFA1FD00435261 /* GLBarcodeFetchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F25286871ACFA1FD00435261 /* GLBarcodeFetchManager.m */; };
 		F25286931ACFA1FD00435261 /* GLFactualRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F252868D1ACFA1FD00435261 /* GLFactualRequestSerializer.m */; };
 		F25286941ACFA1FD00435261 /* GLFactualResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F252868F1ACFA1FD00435261 /* GLFactualResponseSerializer.m */; };
@@ -145,8 +144,6 @@
 		F248BDB51AEB23B900F535C5 /* GLCompanionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLCompanionAnimator.h; sourceTree = "<group>"; };
 		F248BDB61AEB45D200F535C5 /* PFFacebookUtils+GLFacebookUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFFacebookUtils+GLFacebookUtils.h"; sourceTree = "<group>"; };
 		F248BDB71AEB45D200F535C5 /* PFFacebookUtils+GLFacebookUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFFacebookUtils+GLFacebookUtils.m"; sourceTree = "<group>"; };
-		F248BDB91AEBF33E00F535C5 /* GLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLUser.h; sourceTree = "<group>"; };
-		F248BDBA1AEBF33E00F535C5 /* GLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLUser.m; sourceTree = "<group>"; };
 		F25286861ACFA1FD00435261 /* GLBarcodeFetchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLBarcodeFetchManager.h; path = Networking/GLBarcodeFetchManager.h; sourceTree = "<group>"; };
 		F25286871ACFA1FD00435261 /* GLBarcodeFetchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLBarcodeFetchManager.m; path = Networking/GLBarcodeFetchManager.m; sourceTree = "<group>"; };
 		F252868C1ACFA1FD00435261 /* GLFactualRequestSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLFactualRequestSerializer.h; path = Networking/GLFactualRequestSerializer.h; sourceTree = "<group>"; };
@@ -678,8 +675,6 @@
 				F25286A01ACFA21D00435261 /* PFUser+GLUser.m */,
 				F248BDB61AEB45D200F535C5 /* PFFacebookUtils+GLFacebookUtils.h */,
 				F248BDB71AEB45D200F535C5 /* PFFacebookUtils+GLFacebookUtils.m */,
-				F248BDB91AEBF33E00F535C5 /* GLUser.h */,
-				F248BDBA1AEBF33E00F535C5 /* GLUser.m */,
 			);
 			name = Parse;
 			sourceTree = "<group>";
@@ -900,7 +895,6 @@
 				F248BDB81AEB45D200F535C5 /* PFFacebookUtils+GLFacebookUtils.m in Sources */,
 				F25286BB1ACFA23B00435261 /* UIColor+GLColor.m in Sources */,
 				F2DC2FC11AD5DF8D00E46D3C /* GLBingRequestSerializer.m in Sources */,
-				F248BDBB1AEBF33E00F535C5 /* GLUser.m in Sources */,
 				F25286A51ACFA21D00435261 /* PFQueryTableViewController+Caching.m in Sources */,
 				F282DDA51AE5AB98004DCF16 /* RACSignal+GLAdditions.m in Sources */,
 				F25286931ACFA1FD00435261 /* GLFactualRequestSerializer.m in Sources */,

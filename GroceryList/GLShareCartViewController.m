@@ -12,7 +12,6 @@
 #import "GLPullToCloseTransitionManager.h"
 #import "GLPullToCloseTransitionPresentationController.h"
 #import "RACSignal+GLAdditions.h"
-#import "GLUser.h"
 #import "PFQuery+GLQuery.h"
 #import "GLUserTableViewCell.h"
 #import "GLKeyboardResponderAnimator.h"
@@ -96,7 +95,7 @@ static NSString *const kGLFollowUserTableViewCellReuseIdentifier = @"GLFollowUse
 - (void)performQueryWithSearchString:(NSString *)search {
     self.previousSearch = search;
     
-    PFQuery *query = [GLUser query];
+    PFQuery *query = [PFUser query];
     [query whereKey:@"username_lowercase" hasPrefix:[search lowercaseString]];
 
     [[query findObjectsInbackgroundWithRACSignal] subscribeNext:^(NSArray *result) {
@@ -124,7 +123,7 @@ static NSString *const kGLFollowUserTableViewCellReuseIdentifier = @"GLFollowUse
     NSLog(@"Follow button tapped for user with username %@", [self objectForIndexPath:[self.tableView indexPathForCell:cell]].username);
 }
 
-- (GLUser *)objectForIndexPath:(NSIndexPath *)indexPath {
+- (PFUser *)objectForIndexPath:(NSIndexPath *)indexPath {
     return self.searchResults[indexPath.row];
 }
 

@@ -5,6 +5,7 @@
 //  Created by Hakon Hanesand on 4/20/15.
 
 #import "GLUserTableViewCell.h"
+#import <Parse/Parse.h>
 
 @interface GLUserTableViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *username;
@@ -12,7 +13,7 @@
 
 @implementation GLUserTableViewCell
 
-- (void)bindWithUser:(GLUser *)user {
+- (void)bindWithUser:(PFUser *)user {
     self.username.text = user.username;
 }
 

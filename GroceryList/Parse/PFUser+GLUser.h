@@ -6,6 +6,7 @@
 
 #import <Parse/Parse.h>
 
+@class GLListObject;
 @class RACSignal;
 
 /**
@@ -16,5 +17,9 @@
 + (RACSignal *)logInInBackgroundWithUsername:(NSString *)username password:(NSString *)password;
 
 - (RACSignal *)signUpInBackgroundWithSignal;
+
++ (BOOL)isLoggedIn;
+- (NSString *)bestName;
+- (GLListObject *)list;
 
 @end
