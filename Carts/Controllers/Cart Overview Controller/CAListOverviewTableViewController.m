@@ -65,8 +65,8 @@ static NSString *const kCAListOverviewTableViewControllerReuseIdentifier = @"CAL
     nav.tintColor = [UIColor whiteColor];
     
     self.navigationItem.titleView = self.navigationBarLabel;
-    [nav setNeedsLayout];
-    [nav setNeedsDisplay];
+
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:self.navigationItem.backBarButtonItem.style target:nil action:nil];
 }
 
 - (void)viewDidLayoutSubviews {

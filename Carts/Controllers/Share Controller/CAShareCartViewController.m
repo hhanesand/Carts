@@ -75,6 +75,8 @@ static NSString *const kCAFollowUserTableViewCellReuseIdentifier = @"CAFollowUse
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidLoad];
     
+    [self.searchBar becomeFirstResponder];
+    
     self.keyboardResponder = [[CAKeyboardResponderAnimator alloc] initWithDelegate:self];
     
     [[[self.searchBar.rac_textSignal filter:^BOOL(NSString *search) {
