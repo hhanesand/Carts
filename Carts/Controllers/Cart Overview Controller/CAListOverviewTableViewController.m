@@ -64,12 +64,14 @@ static NSString *const kCAListOverviewTableViewControllerReuseIdentifier = @"CAL
     nav.barStyle = UIBarStyleBlack;
     nav.tintColor = [UIColor whiteColor];
     
-    self.navigationController.navigationItem.titleView = self.navigationBarLabel;
+    self.navigationItem.titleView = self.navigationBarLabel;
     [nav setNeedsLayout];
     [nav setNeedsDisplay];
 }
 
 - (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
     self.footerView.frame = self.navigationController.toolbar.bounds;
 }
 

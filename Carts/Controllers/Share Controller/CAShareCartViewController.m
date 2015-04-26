@@ -85,6 +85,8 @@ static NSString *const kCAFollowUserTableViewCellReuseIdentifier = @"CAFollowUse
 }
 
 - (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
     [self.searchContainer setMaskToRoundedCorners:UIRectCornerAllCorners withRadii:4.0];
 }
 
