@@ -1,14 +1,14 @@
 //
-//  PFQuery+GLQuery.m
+//  PFQuery+CAQuery.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/10/15.
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-#import "PFQuery+GLQuery.h"
+#import "PFQuery+CAQuery.h"
 
-@implementation PFQuery (GLQuery)
+@implementation PFQuery (CAQuery)
 
 - (RACSignal *)findObjectsInbackgroundWithRACSignal {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {

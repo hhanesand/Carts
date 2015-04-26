@@ -1,5 +1,5 @@
 //
-//  POPAnimation+GLAnimation.h
+//  POPAnimation+CAAnimation.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/3/15.
@@ -8,7 +8,7 @@
 
 @class RACSignal;
 
-@interface POPAnimation (GLAnimation)
+@interface POPAnimation (CAAnimation)
 
 /**
  *  Overwrites the completion handler with one that returns a signal when the animation is done

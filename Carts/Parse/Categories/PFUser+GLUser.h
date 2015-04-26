@@ -1,18 +1,18 @@
 //
-//  PFUser+GLUser.h
+//  PFUser+CAUser.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/2/15.]
 
 #import <Parse/Parse.h>
 
-@class GLListObject;
+@class CAListObject;
 @class RACSignal;
 
 /**
  *  Reactive Cocoa extensions for the Parse API
  */
-@interface PFUser (GLUser)
+@interface PFUser (CAUser)
 
 + (RACSignal *)logInInBackgroundWithUsername:(NSString *)username password:(NSString *)password;
 
@@ -20,7 +20,7 @@
 
 + (BOOL)isLoggedIn;
 - (NSString *)bestName;
-- (GLListObject *)list;
+- (CAListObject *)list;
 
 - (void)bindWithFacebookGraphRequest:(NSDictionary *)request;
 - (void)bindWithTwitterResponse:(NSDictionary *)response;

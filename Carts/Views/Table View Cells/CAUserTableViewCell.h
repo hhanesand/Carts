@@ -1,5 +1,5 @@
 //
-//  GLUserTableViewCell.h
+//  CAUserTableViewCell.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/20/15.
@@ -7,16 +7,16 @@
 #import <UIKit/UIKit.h>
 
 @class PFUser;
-@class GLUserTableViewCell;
+@class CAUserTableViewCell;
 
-@protocol GLUserTableViewCellDelegate <NSObject>
+@protocol CAUserTableViewCellDelegate <NSObject>
 @optional
-- (void)userDidTapAddFriendButtonInTableViewCell:(GLUserTableViewCell *)cell ;
+- (void)userDidTapAddFriendButtonInTableViewCell:(CAUserTableViewCell *)cell ;
 @end
 
-@interface GLUserTableViewCell : UITableViewCell
+@interface CAUserTableViewCell : UITableViewCell
 
-@property (nonatomic) id<GLUserTableViewCellDelegate> delegate;
+@property (nonatomic) id<CAUserTableViewCellDelegate> delegate;
 
 - (void)bindWithUser:(PFUser *)user;
 

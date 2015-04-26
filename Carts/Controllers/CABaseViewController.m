@@ -1,16 +1,16 @@
 //
-//  GLBaseViewController.m
+//  CABaseViewController.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/4/15.
 
-#import "GLBaseViewController.h"
+#import "CABaseViewController.h"
 
-@implementation GLBaseViewController
+@implementation CABaseViewController
 
-- (GLAnimationStack *)animationStack {
+- (CAAnimationStack *)animationStack {
     if (!_animationStack) {
-        _animationStack = [[GLAnimationStack alloc] init];
+        _animationStack = [[CAAnimationStack alloc] init];
     }
     
     return _animationStack;

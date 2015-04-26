@@ -1,12 +1,12 @@
 //
-//  GLTwitterSessionManager.h
+//  CATwitterSessionManager.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/25/15.
 
-#import "GLRACSessionManager.h"
+#import "CARACSessionManager.h"
 
-@interface GLTwitterSessionManager : GLRACSessionManager
+@interface CATwitterSessionManager : CARACSessionManager
 
 - (RACSignal *)requestTwitterUserWithID:(NSString *)userID;
 

@@ -1,14 +1,14 @@
 //
-//  UIColor+GLColor.m
+//  UIColor+CAColor.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/4/15.
 
-#import "UIColor+GLColor.h"
+#import "UIColor+CAColor.h"
 
 @import QuartzCore;
 
-@implementation UIColor (GLColor)
+@implementation UIColor (CAColor)
 
 + (UIColor *)colorWithRed:(float)red green:(float)green blue:(float)blue {
     return [UIColor colorWithRed:red/255.0f green:green/255.0f blue:blue/255.0f alpha:1];

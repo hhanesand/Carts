@@ -1,14 +1,14 @@
 //
-//  PFObject+GLPFObject.m
+//  PFObject+CAPFObject.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/11/15.
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-#import "PFObject+GLPFObject.h"
+#import "PFObject+CAPFObject.h"
 
-@implementation PFObject (GLPFObject)
+@implementation PFObject (CAPFObject)
 
 + (RACSignal *)pinAllWithSignal:(NSArray *)objects {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {

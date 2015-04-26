@@ -1,18 +1,18 @@
 //
-//  GLFactualSessionManager.h
+//  CAFactualSessionManager.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/9/15.
 
 #import "AFHTTPSessionManager.h"
-#import "GLRACSessionManager.h"
+#import "CARACSessionManager.h"
 
 @class RACSignal;
 
 /**
- *  Manages the Factual Global Products API.
+ *  Manages the Factual CAobal Products API.
  */
-@interface GLFactualSessionManager : GLRACSessionManager
+@interface CAFactualSessionManager : CARACSessionManager
 
 /**
  *  Queries Factual for information about this barcode

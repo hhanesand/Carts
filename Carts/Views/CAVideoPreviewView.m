@@ -1,5 +1,5 @@
 //
-//  GLVideoPreviewView.m
+//  CAVideoPreviewView.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/3/15.
@@ -7,15 +7,15 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <POP/POP.h>
 
-#import "GLVideoPreviewView.h"
+#import "CAVideoPreviewView.h"
 
-#import "POPAnimation+GLAnimation.h"
+#import "POPAnimation+CAAnimation.h"
 
-@interface GLVideoPreviewView ()
+@interface CAVideoPreviewView ()
 
 @end
 
-@implementation GLVideoPreviewView
+@implementation CAVideoPreviewView
 
 - (void)resume {
 //    self.pausedImageView.alpha = 1;

@@ -1,25 +1,25 @@
 //
-//  GLScannerViewController.h
+//  CAScannerViewController.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 2/11/15.
 
-#import "GLBaseViewController.h"
-#import "GLDismissableViewHandler.h"
-#import "GLKeyboardResponderAnimator.h"
+#import "CABaseViewController.h"
+#import "CADismissableViewHandler.h"
+#import "CAKeyboardResponderAnimator.h"
 
-@class GLManualEntryView;
+@class CAManualEntryView;
 @class RACSubject;
 
 /**
  *  The view controller that handles barcode searching, scanning and networking with Factual
  */
-@interface GLScannerViewController : GLBaseViewController <GLDismissableHandlerDelegate, GLKeyboardMovementResponderDelegate, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate, UITextFieldDelegate>
+@interface CAScannerViewController : CABaseViewController <CADismissableHandlerDelegate, CAKeyboardMovementResponderDelegate, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate, UITextFieldDelegate>
 
 + (instancetype)instance;
 
 /**
- *  A new GLListItem is sent on this signal when the user scans or entered a new item and it has been processed by the server
+ *  A new CAListItem is sent on this signal when the user scans or entered a new item and it has been processed by the server
  */
 @property (nonatomic) RACSignal *listItemSignal;
 

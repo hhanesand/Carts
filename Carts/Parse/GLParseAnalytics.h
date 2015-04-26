@@ -1,20 +1,20 @@
 //
-//  GLParseAnalytics.h
+//  CAParseAnalytics.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 2/14/15.
 
 @import Foundation;
 
-@class GLBarcode;
+@class CABarcode;
 
-@interface GLParseAnalytics : NSObject
+@interface CAParseAnalytics : NSObject
 
 /**
  *  Saves the barcodes that are missing from both Parse and Factual in Parse
  *
  *  @param barcode The barcode that was missing
  */
-+  (void)trackMissingBarcode:(GLBarcode *)barcode;
++  (void)trackMissingBarcode:(CABarcode *)barcode;
 
 @end

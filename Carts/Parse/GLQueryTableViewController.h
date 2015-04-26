@@ -1,5 +1,5 @@
 //
-//  GLQueryTableViewController.h
+//  CAQueryTableViewController.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/11/15.
@@ -10,13 +10,13 @@
 
 @import Foundation;
 
-static NSString *const kGLCacheResponseKey;
-static NSString *const kGLNetworkResponseKey;
+static NSString *const kCACacheResponseKey;
+static NSString *const kCANetworkResponseKey;
 
 /**
  *  Overrides the PFQueryTableViewController's loadObjects:clear: method to use Local Datastore
  */
-@interface GLQueryTableViewController : PFQueryTableViewController
+@interface CAQueryTableViewController : PFQueryTableViewController
 
 - (RACSignal *)signalForTable;
 - (RACSignal *)cachedSignalForTable;

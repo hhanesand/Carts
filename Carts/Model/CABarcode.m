@@ -1,21 +1,21 @@
 //
-//  GLBarcode.m
+//  CABarcode.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/10/15.
 
-#import "GLBarcode.h"
+#import "CABarcode.h"
 
-@implementation GLBarcode
+@implementation CABarcode
 
-+ (GLBarcode *)barcodeWithBarcode:(NSString *)barcode {
-    GLBarcode *item = [[GLBarcode alloc] init];
++ (CABarcode *)barcodeWithBarcode:(NSString *)barcode {
+    CABarcode *item = [[CABarcode alloc] init];
     item.barcode = barcode;
     return item;
 }
 
-+ (GLBarcode *)barcodeWithMetadataObject:(AVMetadataMachineReadableCodeObject *)object {
-    GLBarcode *barcode = [[GLBarcode alloc] init];
++ (CABarcode *)barcodeWithMetadataObject:(AVMetadataMachineReadableCodeObject *)object {
+    CABarcode *barcode = [[CABarcode alloc] init];
     barcode.barcode = object.stringValue;
     barcode.type = object.type;
     return barcode;

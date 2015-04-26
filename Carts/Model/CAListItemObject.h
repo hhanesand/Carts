@@ -1,17 +1,17 @@
 //
-//  GLListItem.h
+//  CAListItem.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/18/15.
 
 #import <Parse/Parse.h>
-#import "GLBarcodeObject.h"
+#import "CABarcodeObject.h"
 
-@interface GLListItemObject : PFObject<PFSubclassing>
+@interface CAListItemObject : PFObject<PFSubclassing>
 
-@property (nonatomic) GLBarcodeObject *item;
+@property (nonatomic) CABarcodeObject *item;
 @property (nonatomic) NSNumber *quantity;
 
-+ (instancetype)objectWithBarcodeObject:(GLBarcodeObject *)barcodeObject;
++ (instancetype)objectWithBarcodeObject:(CABarcodeObject *)barcodeObject;
 
 @end

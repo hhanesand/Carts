@@ -1,34 +1,34 @@
 //
-//  GLTableViewController.m
+//  CATableViewController.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 1/18/15.
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-#import "GLListTableViewController.h"
-#import "GLTableViewCell.h"
-#import "GLScannerViewController.h"
-#import "GLListObject.h"
-#import "GLBarcodeObject.h"
+#import "CAListTableViewController.h"
+#import "CATableViewCell.h"
+#import "CAScannerViewController.h"
+#import "CAListObject.h"
+#import "CABarcodeObject.h"
 
 #import "PFQueryTableViewController+Caching.h"
-#import "PFObject+GLPFObject.h"
-#import "GLPullToCloseTransitionManager.h"
+#import "PFObject+CAPFObject.h"
+#import "CAPullToCloseTransitionManager.h"
 #import "UIImageView+AFNetworking.h"
-#import "GLListItemObject.h"
+#import "CAListItemObject.h"
 #import "RACUnit.h"
-#import "PFQuery+GLQuery.h"
-#import "PFUser+GLUser.h"
+#import "PFQuery+CAQuery.h"
+#import "PFUser+CAUser.h"
 
-static NSString *const kGLTableViewReuseIdentifier = @"GLTableViewCellIdentifier";
-static NSString *const kGLParsePinName = @"GLTableViewPin";
+static NSString *const kCATableViewReuseIdentifier = @"CATableViewCellIdentifier";
+static NSString *const kCAParsePinName = @"CATableViewPin";
 
-@interface GLListTableViewController ()
-@property (nonatomic) GLScannerViewController *scanner;
+@interface CAListTableViewController ()
+@property (nonatomic) CAScannerViewController *scanner;
 @end
 
-@implementation GLListTableViewController
+@implementation CAListTableViewController
 
 - (instancetype)initWithStyle:(UITableViewStyle)style {
     if (self = [super initWithStyle:style]) {
@@ -36,7 +36,7 @@ static NSString *const kGLParsePinName = @"GLTableViewPin";
         self.paginationEnabled = NO;
         self.loadingViewEnabled = NO;
         
-        self.scanner = [GLScannerViewController instance];
+        self.scanner = [CAScannerViewController instance];
         self.scanner.view.frame = CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), CGRectGetHeight([UIScreen mainScreen].bounds));
     }
     
@@ -52,21 +52,21 @@ static NSString *const kGLParsePinName = @"GLTableViewPin";
     UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     [self setToolbarItems:@[flexibleSpace, button, flexibleSpace]];
     
-    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([GLTableViewCell class]) bundle:nil] forCellReuseIdentifier:kGLTableViewReuseIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([CATableViewCell class]) bundle:nil] forCellReuseIdentifier:kCATableViewReuseIdentifier];
     
     [self subscribeToScannerSignal];
 }
 
 - (void)subscribeToScannerSignal {
-    [[[self.scanner.listItemSignal takeUntil:self.rac_willDeallocSignal] deliverOnMainThread] subscribeNext:^(GLBarcodeObject *barcodeObject) {
-        GLListItemObject *object = [self.user.list.items.rac_sequence objectPassingTest:^BOOL(GLListItemObject *object) {
+    [[[self.scanner.listItemSignal takeUntil:self.rac_willDeallocSignal] deliverOnMainThread] subscribeNext:^(CABarcodeObject *barcodeObject) {
+        CAListItemObject *object = [self.user.list.items.rac_sequence objectPassingTest:^BOOL(CAListItemObject *object) {
             return [object.item isEqual:barcodeObject];
         }];
         
         if (object) {
             object.quantity = [NSNumber numberWithInt:[object.quantity intValue] + 1];
         } else {
-            [self.user.list.items addObject:[GLListItemObject objectWithBarcodeObject:barcodeObject]];
+            [self.user.list.items addObject:[CAListItemObject objectWithBarcodeObject:barcodeObject]];
         }
         
         [[self.user pinWithSignal] subscribeCompleted:^{
@@ -87,26 +87,26 @@ static NSString *const kGLParsePinName = @"GLTableViewPin";
 #pragma mark - Parse
 
 - (RACSignal *)signalForTable {
-    PFQuery *query = [GLListObject query];
+    PFQuery *query = [CAListObject query];
     [query includeKey:@"items.item"];
     
-    return [[query getObjectWithIdWithSignal:[PFUser currentUser].list.objectId] map:^NSArray *(GLListObject *listObject) {
+    return [[query getObjectWithIdWithSignal:[PFUser currentUser].list.objectId] map:^NSArray *(CAListObject *listObject) {
         return listObject.items;
     }];
 }
 
 - (RACSignal *)cachedSignalForTable {
-    PFQuery *query = [GLListObject query];
+    PFQuery *query = [CAListObject query];
     [query includeKey:@"items.item"];
     [query fromLocalDatastore];
     
-    return [[query getObjectWithIdWithSignal:[PFUser currentUser].list.objectId] map:^NSArray *(GLListObject *listObject) {
+    return [[query getObjectWithIdWithSignal:[PFUser currentUser].list.objectId] map:^NSArray *(CAListObject *listObject) {
         return listObject.items;
     }];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(GLListItemObject *)object {
-    GLTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kGLTableViewReuseIdentifier forIndexPath:indexPath];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(CAListItemObject *)object {
+    CATableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCATableViewReuseIdentifier forIndexPath:indexPath];
     
     cell.name.text = object.item.name;
     cell.brand.text = object.item.brand;
@@ -136,7 +136,7 @@ static NSString *const kGLParsePinName = @"GLTableViewPin";
         return 0;
     } else {
         self.tableView.backgroundView = nil;
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSinCAeLine;
         return 1;
     }
 }

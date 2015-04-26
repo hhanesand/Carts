@@ -1,31 +1,31 @@
 //
-//  GLListOverviewViewController.m
+//  CAListOverviewViewController.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/18/15.
 
-#import "GLListOverviewTableViewController.h"
-#import "GLListObject.h"
-#import "PFQuery+GLQuery.h"
-#import "GLListOverviewTableViewCell.h"
-#import "GLListTableViewController.h"
-#import "GLShareCartViewController.h"
-#import "GLSignUpViewController.h"
+#import "CAListOverviewTableViewController.h"
+#import "CAListObject.h"
+#import "PFQuery+CAQuery.h"
+#import "CAListOverviewTableViewCell.h"
+#import "CAListTableViewController.h"
+#import "CAShareCartViewController.h"
+#import "CASignUpViewController.h"
 #import <Parse/Parse.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
-#import "PFUser+GLUser.h"
+#import "PFUser+CAUser.h"
 
 #import <FBSDKCoreKit/FBSDKGraphRequest.h>
 
-static NSString *const kGLListOverviewTableViewControllerReuseIdentifier = @"GLListTableViewController";
+static NSString *const kCAListOverviewTableViewControllerReuseIdentifier = @"CAListTableViewController";
 
-@interface GLListOverviewTableViewController ()
+@interface CAListOverviewTableViewController ()
 @property (strong, nonatomic) IBOutlet UIView *footerView;
-@property (nonatomic) GLListTableViewController *listTableViewController;
-@property (nonatomic) GLShareCartViewController *shareCartViewController;
+@property (nonatomic) CAListTableViewController *listTableViewController;
+@property (nonatomic) CAShareCartViewController *shareCartViewController;
 @end
 
-@implementation GLListOverviewTableViewController
+@implementation CAListOverviewTableViewController
 
 + (instancetype)instance {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:NSStringFromClass([self class]) bundle:nil];
@@ -39,10 +39,10 @@ static NSString *const kGLListOverviewTableViewControllerReuseIdentifier = @"GLL
         self.pullToRefreshEnabled = YES;
         
         CGFloat startTime = CACurrentMediaTime();
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        dispatch_async(dispatch_get_CAobal_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
             NSLog(@"Started loading Storyboards after %f sec", CACurrentMediaTime() - startTime);
-            self.listTableViewController = [[GLListTableViewController alloc] initWithStyle:UITableViewStylePlain];
-            self.shareCartViewController = [GLShareCartViewController instance];
+            self.listTableViewController = [[CAListTableViewController alloc] initWithStyle:UITableViewStylePlain];
+            self.shareCartViewController = [CAShareCartViewController instance];
             NSLog(@"Finished loading Storyboards after %f sec", CACurrentMediaTime() - startTime);
         });
     }
@@ -76,7 +76,7 @@ static NSString *const kGLListOverviewTableViewControllerReuseIdentifier = @"GLL
     if ([PFUser isLoggedIn]) {
         [self presentViewController:self.shareCartViewController animated:YES completion:nil];
     } else {
-        GLSignUpViewController *signUp = [GLSignUpViewController instance];
+        CASignUpViewController *signUp = [CASignUpViewController instance];
         [self presentViewController:signUp animated:YES completion:nil];
     }
 }
@@ -95,7 +95,7 @@ static NSString *const kGLListOverviewTableViewControllerReuseIdentifier = @"GLL
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFUser *)object {
-    GLListOverviewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kGLListOverviewTableViewControllerReuseIdentifier forIndexPath:indexPath];
+    CAListOverviewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCAListOverviewTableViewControllerReuseIdentifier forIndexPath:indexPath];
     
     cell.cart.text = [object bestName];
     

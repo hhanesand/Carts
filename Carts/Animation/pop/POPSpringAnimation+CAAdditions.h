@@ -1,5 +1,5 @@
 //
-//  POPPropertyAnimation+GLReverse.h
+//  POPPropertyAnimation+CAReverse.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/4/15.

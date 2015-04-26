@@ -1,5 +1,5 @@
 //
-//  GLSignUpViewController.m
+//  CASignUpViewController.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/22/15.
@@ -9,36 +9,36 @@
 #import <MRProgress/MRActivityIndicatorView.h>
 #import <pop/POP.h>
 
-#import "GLSignUpViewController.h"
-#import "GLAuthenticationButton.h"
-#import "GLTransitionDelegate.h"
-#import "GLPullToCloseTransitionManager.h"
-#import "GLPullToCloseTransitionPresentationController.h"
-#import "GLLogInViewController.h"
-#import "PFUser+GLUser.h"
-#import "UIView+GLView.h"
-#import "PFFacebookUtils+GLFacebookUtils.h"
+#import "CASignUpViewController.h"
+#import "CAAuthenticationButton.h"
+#import "CATransitionDelegate.h"
+#import "CAPullToCloseTransitionManager.h"
+#import "CAPullToCloseTransitionPresentationController.h"
+#import "CALogInViewController.h"
+#import "PFUser+CAUser.h"
+#import "UIView+CAView.h"
+#import "PFFacebookUtils+CAFacebookUtils.h"
 
 #import <FBSDKCoreKit/FBSDKGraphRequest.h>
-#import "PFTwitterUtils+GLTwitterUtils.h"
+#import "PFTwitterUtils+CATwitterUtils.h"
 #import <AFNetworking/AFNetworking.h>
-#import "GLTwitterSessionManager.h"
+#import "CATwitterSessionManager.h"
 
-@interface GLSignUpViewController ()
+@interface CASignUpViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *username;
 @property (weak, nonatomic) IBOutlet UITextField *password;
 
-@property (weak, nonatomic) IBOutlet GLAuthenticationButton *facebook;
-@property (weak, nonatomic) IBOutlet GLAuthenticationButton *twitter;
-@property (weak, nonatomic) IBOutlet GLAuthenticationButton *signUp;
+@property (weak, nonatomic) IBOutlet CAAuthenticationButton *facebook;
+@property (weak, nonatomic) IBOutlet CAAuthenticationButton *twitter;
+@property (weak, nonatomic) IBOutlet CAAuthenticationButton *signUp;
 
 @property (weak, nonatomic) IBOutlet MRActivityIndicatorView *activityIndicatorView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *signInButtonLayoutConstraint;
 
-@property (nonatomic) GLTransitionDelegate *transitionDelegate;
+@property (nonatomic) CATransitionDelegate *transitionDelegate;
 @end
 
-@implementation GLSignUpViewController
+@implementation CASignUpViewController
 
 + (instancetype)instance {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:NSStringFromClass([self class]) bundle:nil];
@@ -120,7 +120,7 @@
             [self didTapDismissButton:nil];
         });
         
-        GLTwitterSessionManager *sess = [GLTwitterSessionManager manager];
+        CATwitterSessionManager *sess = [CATwitterSessionManager manager];
         
         [[sess requestTwitterUserWithID:[PFTwitterUtils twitter].userId] subscribeNext:^(id x) {
             [user bindWithTwitterResponse:x];
@@ -187,15 +187,15 @@
 }
 
 - (IBAction)didTapAlreadyHaveAccountButton:(id)sender {
-    GLLogInViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"GLLogInViewController"];
+    CALogInViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"CALogInViewController"];
     vc.delegate = self.delegate;
     [self presentViewController:vc animated:YES completion:nil];
 }
 
-- (GLTransitionDelegate *)transitionDelegate
+- (CATransitionDelegate *)transitionDelegate
 {
     if (!_transitionDelegate) {
-        _transitionDelegate = [[GLTransitionDelegate alloc] initWithController:self presentationController:[GLPullToCloseTransitionPresentationController class] transitionManager:[GLPullToCloseTransitionManager class]];
+        _transitionDelegate = [[CATransitionDelegate alloc] initWithController:self presentationController:[CAPullToCloseTransitionPresentationController class] transitionManager:[CAPullToCloseTransitionManager class]];
     }
     
     return _transitionDelegate;

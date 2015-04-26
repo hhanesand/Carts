@@ -1,5 +1,5 @@
 //
-//  GLRACSessionManager.h
+//  CARACSessionManager.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/9/15.
@@ -11,7 +11,7 @@
 /**
  *  Wrapper around AFHTTPSessionManager that returns values on signals instead of blocks
  */
-@interface GLRACSessionManager : AFHTTPSessionManager
+@interface CARACSessionManager : AFHTTPSessionManager
 
 /**
  *  Issues a GET request by using -GET:parameters:success:failure: on AFHTTPSessionManager

@@ -1,12 +1,12 @@
 //
-//  UIColor+GLColor.h
+//  UIColor+CAColor.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/4/15.
 
 @import UIKit;
 
-@interface UIColor (GLColor)
+@interface UIColor (CAColor)
 
 /**
  *  Creates a color with the given components, specified from 0..255

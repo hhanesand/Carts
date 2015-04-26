@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14A329r" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UL8-yt-Uaw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14A329r" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UL8-yt-Uaw">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -9,7 +9,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="XK6-OM-crg">
             <objects>
-                <viewController id="UL8-yt-Uaw" customClass="GLSignUpViewController" sceneMemberID="viewController">
+                <viewController id="UL8-yt-Uaw" customClass="CASignUpViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="X0J-Nf-vGF"/>
                         <viewControllerLayoutGuide type="bottom" id="oFM-Zf-xc1"/>
@@ -63,7 +63,7 @@
                                     <outlet property="delegate" destination="UL8-yt-Uaw" id="bpH-11-19P"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hq5-ls-gMy" customClass="GLAuthenticationButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hq5-ls-gMy" customClass="CAAuthenticationButton">
                                 <rect key="frame" x="225" y="241" width="150" height="44"/>
                                 <color key="backgroundColor" red="0.13725490200000001" green="0.87058823529999996" blue="0.74901960779999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -84,7 +84,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lw1-UF-nZw" userLabel="Facebook and Twitter Container">
                                 <rect key="frame" x="146" y="381" width="308" height="70"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YgY-jC-MMU" userLabel="Log in Button" customClass="GLAuthenticationButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YgY-jC-MMU" userLabel="Log in Button" customClass="CAAuthenticationButton">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="44"/>
                                         <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59607843137254901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -102,7 +102,7 @@
                                             <outlet property="activityIndicatorView" destination="lMh-be-5qz" id="CZR-6y-Mdx"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hux-W2-6N8" userLabel="Log in Button" customClass="GLAuthenticationButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hux-W2-6N8" userLabel="Log in Button" customClass="CAAuthenticationButton">
                                         <rect key="frame" x="158" y="0.0" width="150" height="44"/>
                                         <color key="backgroundColor" red="0.11372549019607843" green="0.792156862745098" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -261,7 +261,7 @@
         <!--Log In View Controller-->
         <scene sceneID="D1y-QE-Mx6">
             <objects>
-                <viewController storyboardIdentifier="GLLogInViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Nhe-VN-wb3" customClass="GLLogInViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CALogInViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Nhe-VN-wb3" customClass="CALogInViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NVg-B7-ec4"/>
                         <viewControllerLayoutGuide type="bottom" id="Ltb-Se-H5E"/>
@@ -343,7 +343,7 @@
                                     <action selector="didTapDismissButton:" destination="Nhe-VN-wb3" eventType="touchUpInside" id="SOy-68-zyR"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZRU-qC-MaE" customClass="GLAuthenticationButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZRU-qC-MaE" customClass="CAAuthenticationButton">
                                 <rect key="frame" x="225" y="241" width="150" height="44"/>
                                 <color key="backgroundColor" red="0.13725490200000001" green="0.87058823529999996" blue="0.74901960779999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>

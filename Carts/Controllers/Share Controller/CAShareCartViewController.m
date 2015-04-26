@@ -1,5 +1,5 @@
 //
-//  GLShareTableViewController.m
+//  CAShareTableViewController.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/20/15.
@@ -7,31 +7,31 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <Parse/Parse.h>
 
-#import "GLShareCartViewController.h"
-#import "GLTransitionDelegate.h"
-#import "GLPullToCloseTransitionManager.h"
-#import "GLPullToCloseTransitionPresentationController.h"
-#import "RACSignal+GLAdditions.h"
-#import "PFQuery+GLQuery.h"
-#import "GLUserTableViewCell.h"
-#import "GLKeyboardResponderAnimator.h"
-#import "UIView+GLView.h"
+#import "CAShareCartViewController.h"
+#import "CATransitionDelegate.h"
+#import "CAPullToCloseTransitionManager.h"
+#import "CAPullToCloseTransitionPresentationController.h"
+#import "RACSignal+CAAdditions.h"
+#import "PFQuery+CAQuery.h"
+#import "CAUserTableViewCell.h"
+#import "CAKeyboardResponderAnimator.h"
+#import "UIView+CAView.h"
 
-static NSString *const kGLFollowUserTableViewCellReuseIdentifier = @"GLFollowUserTableViewIdentifier";
+static NSString *const kCAFollowUserTableViewCellReuseIdentifier = @"CAFollowUserTableViewIdentifier";
 
-@interface GLShareCartViewController ()
-@property (nonatomic) GLTransitionDelegate *transitionDelegate;
+@interface CAShareCartViewController ()
+@property (nonatomic) CATransitionDelegate *transitionDelegate;
 @property (weak, nonatomic) IBOutlet UITextField *searchBar;
 @property (nonatomic) NSString *previousSearch;
 @property (weak, nonatomic) IBOutlet UIView *searchContainer;
 @property (nonatomic) NSArray *searchResults;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *footerView;
-@property (nonatomic) GLKeyboardResponderAnimator *keyboardResponder;
+@property (nonatomic) CAKeyboardResponderAnimator *keyboardResponder;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *footerViewLayoutConstraint;
 @end
 
-@implementation GLShareCartViewController
+@implementation CAShareCartViewController
 
 + (instancetype)instance {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:NSStringFromClass([self class]) bundle:nil];
@@ -75,7 +75,7 @@ static NSString *const kGLFollowUserTableViewCellReuseIdentifier = @"GLFollowUse
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidLoad];
     
-    self.keyboardResponder = [[GLKeyboardResponderAnimator alloc] initWithDelegate:self];
+    self.keyboardResponder = [[CAKeyboardResponderAnimator alloc] initWithDelegate:self];
     
     [[[self.searchBar.rac_textSignal filter:^BOOL(NSString *search) {
         return [self isValidSearchString:search];
@@ -113,13 +113,13 @@ static NSString *const kGLFollowUserTableViewCellReuseIdentifier = @"GLFollowUse
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    GLUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kGLFollowUserTableViewCellReuseIdentifier forIndexPath:indexPath];
+    CAUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCAFollowUserTableViewCellReuseIdentifier forIndexPath:indexPath];
     cell.delegate = self;
     [cell bindWithUser:[self objectForIndexPath:indexPath]];
     return cell;
 }
 
-- (void)userDidTapAddFriendButtonInTableViewCell:(GLUserTableViewCell *)cell {
+- (void)userDidTapAddFriendButtonInTableViewCell:(CAUserTableViewCell *)cell {
     NSLog(@"Follow button tapped for user with username %@", [self objectForIndexPath:[self.tableView indexPathForCell:cell]].username);
 }
 
@@ -139,10 +139,10 @@ static NSString *const kGLFollowUserTableViewCellReuseIdentifier = @"GLFollowUse
     return self.footerViewLayoutConstraint;
 }
 
-- (GLTransitionDelegate *)transitionDelegate
+- (CATransitionDelegate *)transitionDelegate
 {
     if (!_transitionDelegate) {
-        _transitionDelegate = [[GLTransitionDelegate alloc] initWithController:self presentationController:[GLPullToCloseTransitionPresentationController class] transitionManager:[GLPullToCloseTransitionManager class]];
+        _transitionDelegate = [[CATransitionDelegate alloc] initWithController:self presentationController:[CAPullToCloseTransitionPresentationController class] transitionManager:[CAPullToCloseTransitionManager class]];
     }
     
     return _transitionDelegate;

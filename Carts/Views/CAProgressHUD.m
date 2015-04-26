@@ -1,12 +1,12 @@
 //
-//  GLProgressHUD.m
+//  CAProgressHUD.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/13/15.
 
-#import "GLProgressHUD.h"
+#import "CAProgressHUD.h"
 
-@implementation GLProgressHUD
+@implementation CAProgressHUD
 
 + (void)show {
     dispatch_async(dispatch_get_main_queue(), ^{

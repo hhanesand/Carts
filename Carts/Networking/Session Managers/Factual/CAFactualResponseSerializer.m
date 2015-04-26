@@ -1,28 +1,28 @@
 //
-//  GLFactualResponseSerializer.m
+//  CAFactualResponseSerializer.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 2/20/15.
 
-#import "GLFactualResponseSerializer.h"
+#import "CAFactualResponseSerializer.h"
 
-#import "NSDictionary+GLCustomKVOOperators.h"
+#import "NSDictionary+CACustomKVOOperators.h"
 
-NSString * const kGLFactualNetworkingErrorDomain = @"GroceryListErrorDomain";
-NSString * const kGLFactualDataKeypath = @"@first.response.data";
-NSString * const kGLFactualDataValidation = @"response.included_rows";
+NSString * const kCAFactualNetworkingErrorDomain = @"GroceryListErrorDomain";
+NSString * const kCAFactualDataKeypath = @"@first.response.data";
+NSString * const kCAFactualDataValidation = @"response.included_rows";
 
-@implementation GLFactualResponseSerializer
+@implementation CAFactualResponseSerializer
 
 - (id)responseObjectForResponse:(NSURLResponse *)response data:(NSData *)data error:(NSError *__autoreleasing *)error {
     NSDictionary *responseObject = [super responseObjectForResponse:response data:data error:error];
     
-    if ([[responseObject valueForKeyPath:kGLFactualDataValidation] intValue] == 0) {
-        *error = [NSError errorWithDomain:kGLFactualNetworkingErrorDomain code:NSURLErrorFileDoesNotExist userInfo:nil];
+    if ([[responseObject valueForKeyPath:kCAFactualDataValidation] intValue] == 0) {
+        *error = [NSError errorWithDomain:kCAFactualNetworkingErrorDomain code:NSURLErrorFileDoesNotExist userInfo:nil];
         return nil;
     }
     
-    return [responseObject valueForKeyPath:kGLFactualDataKeypath];
+    return [responseObject valueForKeyPath:kCAFactualDataKeypath];
 }
 
 @end

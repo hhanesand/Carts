@@ -1,19 +1,19 @@
 //
-//  GLListItem.m
+//  CAListItem.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 2/19/15.
 
-#import "GLListObject.h"
-#import "GLBarcodeObject.h"
+#import "CAListObject.h"
+#import "CABarcodeObject.h"
 #import <Parse/PFObject+Subclass.h>
 
-@implementation GLListObject
+@implementation CAListObject
 
 @dynamic items;
 
 + (instancetype)object {
-    GLListObject *object = [super object];
+    CAListObject *object = [super object];
     object.items = [NSMutableArray new];
     return object;
 }

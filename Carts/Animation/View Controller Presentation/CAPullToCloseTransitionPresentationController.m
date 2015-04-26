@@ -1,12 +1,12 @@
 //
-//  GLPullToCloseTransitionPresentationController.m
+//  CAPullToCloseTransitionPresentationController.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/6/15.
 
-#import "GLPullToCloseTransitionPresentationController.h"
+#import "CAPullToCloseTransitionPresentationController.h"
 
-@implementation GLPullToCloseTransitionPresentationController
+@implementation CAPullToCloseTransitionPresentationController
 
 - (void)presentationTransitionWillBegin {
     //add the presented view to the heirarchy

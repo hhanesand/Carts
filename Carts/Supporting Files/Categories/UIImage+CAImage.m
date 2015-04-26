@@ -1,15 +1,15 @@
 //
-//  UIImage+GLImage.m
+//  UIImage+CAImage.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/9/15.
 //
 //
 
-#import "UIImage+GLImage.h"
-#import "GLRect.h"
+#import "UIImage+CAImage.h"
+#import "CARect.h"
 
-@implementation UIImage (GLImage)
+@implementation UIImage (CAImage)
 
 + (UIImage *)imageWithColor:(UIColor *)color {
     CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
@@ -90,7 +90,7 @@ static inline CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI /
     UIGraphicsBeginImageContextWithOptions(size, NO, 0.0f);
     
     [color setFill];
-    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:GLRectMakeWithSize(size) cornerRadius:cornerRadius];
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CARectMakeWithSize(size) cornerRadius:cornerRadius];
     [path fill];
     
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();

@@ -1,21 +1,21 @@
 //
-//  GLParseAnalytics.m
+//  CAParseAnalytics.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 2/14/15.
 
 #import <Parse/Parse.h>
 
-#import "GLParseAnalytics.h"
-#import "GLBarcode.h"
+#import "CAParseAnalytics.h"
+#import "CABarcode.h"
 
-static NSString *const kGLMissingBarcodeCloudFunction = @"trackMissingBarcode";
-static NSString *const kGLBarcodeCloudFunctionParameter = @"barcode";
+static NSString *const kCAMissingBarcodeCloudFunction = @"trackMissingBarcode";
+static NSString *const kCABarcodeCloudFunctionParameter = @"barcode";
 
-@implementation GLParseAnalytics
+@implementation CAParseAnalytics
 
-+ (void)trackMissingBarcode:(GLBarcode *)barcode {
-    [PFCloud callFunctionInBackground:kGLMissingBarcodeCloudFunction withParameters:@{kGLBarcodeCloudFunctionParameter : barcode.barcode}];
++ (void)trackMissingBarcode:(CABarcode *)barcode {
+    [PFCloud callFunctionInBackground:kCAMissingBarcodeCloudFunction withParameters:@{kCABarcodeCloudFunctionParameter : barcode.barcode}];
 }
 
 + (void)testCloudFunction {

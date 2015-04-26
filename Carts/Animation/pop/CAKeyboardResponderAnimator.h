@@ -1,5 +1,5 @@
 //
-//  GLKeyboardResponderAnimator.h
+//  CAKeyboardResponderAnimator.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/13/15.
@@ -7,7 +7,7 @@
 @import Foundation;
 @import UIKit;
 
-@protocol GLKeyboardMovementResponderDelegate <NSObject>
+@protocol CAKeyboardMovementResponderDelegate <NSObject>
 
 /**
  *  Return the frame for the UI Element that is being interacted with by the user (usually a UITextField or UITextView)
@@ -25,8 +25,8 @@
 
 @end
 
-@interface GLKeyboardResponderAnimator : NSObject
+@interface CAKeyboardResponderAnimator : NSObject
 
-- (instancetype)initWithDelegate:(id<GLKeyboardMovementResponderDelegate>)delegate;
+- (instancetype)initWithDelegate:(id<CAKeyboardMovementResponderDelegate>)delegate;
 
 @end

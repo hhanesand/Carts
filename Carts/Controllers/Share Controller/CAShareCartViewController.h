@@ -1,14 +1,14 @@
 //
-//  GLShareTableViewController.h
+//  CAShareTableViewController.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/20/15.
 
 #import <UIKit/UIKit.h>
-#import "GLUserTableViewCell.h"
-#import "GLKeyboardResponderAnimator.h"
+#import "CAUserTableViewCell.h"
+#import "CAKeyboardResponderAnimator.h"
 
-@interface GLShareCartViewController : UIViewController <UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, GLUserTableViewCellDelegate, GLKeyboardMovementResponderDelegate>
+@interface CAShareCartViewController : UIViewController <UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, CAUserTableViewCellDelegate, CAKeyboardMovementResponderDelegate>
 
 + (instancetype)instance;
 

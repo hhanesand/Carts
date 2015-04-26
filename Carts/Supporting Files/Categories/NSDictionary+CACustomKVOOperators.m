@@ -1,14 +1,14 @@
 //
-//  NSDictionary+GLCustomKVOOperators.m
+//  NSDictionary+CACustomKVOOperators.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/9/15.
 //
 //
 
-#import "NSDictionary+GLCustomKVOOperators.h"
+#import "NSDictionary+CACustomKVOOperators.h"
 
-@implementation NSDictionary (GLCustomKVOOperators)
+@implementation NSDictionary (CACustomKVOOperators)
 
 - (id)_firstForKeyPath:(NSString *)keypath {
     id array = [self valueForKeyPath:keypath];

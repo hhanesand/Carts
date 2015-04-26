@@ -1,14 +1,14 @@
 //
-//  PFUser+GLUser.m
+//  PFUser+CAUser.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/2/15.
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-#import "PFUser+GLUser.h"
+#import "PFUser+CAUser.h"
 
-@implementation PFUser (GLUser)
+@implementation PFUser (CAUser)
 
 + (RACSignal *)logInInBackgroundWithUsername:(NSString *)username password:(NSString *)password {
 	return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
@@ -61,7 +61,7 @@
 
 }
 
-- (GLListObject *)list {
+- (CAListObject *)list {
     return [self objectForKey:@"list"];
 }
 

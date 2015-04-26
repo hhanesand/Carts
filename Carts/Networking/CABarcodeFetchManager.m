@@ -1,5 +1,5 @@
 //
-//  GLBarcodeFetchManager.m
+//  CABarcodeFetchManager.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/2/15.
@@ -8,44 +8,44 @@
 #import <Parse/Parse.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 
-#import "GLBarcodeFetchManager.h"
-#import "GLBarcodeObject.h"
-#import "GLListObject.h"
-#import "GLBarcode.h"
-#import "GLParseAnalytics.h"
+#import "CABarcodeFetchManager.h"
+#import "CABarcodeObject.h"
+#import "CAListObject.h"
+#import "CABarcode.h"
+#import "CAParseAnalytics.h"
 
-#import "PFQuery+GLQuery.h"
-#import "GLFactualSessionManager.h"
-#import "GLBingSessionManager.h"
+#import "PFQuery+CAQuery.h"
+#import "CAFactualSessionManager.h"
+#import "CABingSessionManager.h"
 
-@interface GLBarcodeFetchManager ()
-@property (nonatomic) GLFactualSessionManager *factual;
-@property (nonatomic) GLBingSessionManager *bing;
+@interface CABarcodeFetchManager ()
+@property (nonatomic) CAFactualSessionManager *factual;
+@property (nonatomic) CABingSessionManager *bing;
 @end
 
-@implementation GLBarcodeFetchManager
+@implementation CABarcodeFetchManager
 
-- (PFQuery *)queryForBarcode:(GLBarcode *)item {
-    PFQuery *query = [GLBarcodeObject query];
+- (PFQuery *)queryForBarcode:(CABarcode *)item {
+    PFQuery *query = [CABarcodeObject query];
     [query whereKey:@"barcodes" equalTo:item.barcode];
     return query;
 }
 
-- (RACSignal *)fetchProductInformationForBarcode:(GLBarcode *)barcode {    
+- (RACSignal *)fetchProductInformationForBarcode:(CABarcode *)barcode {    
     PFQuery *productQuery = [self queryForBarcode:barcode];
 
     return [[productQuery getFirstObjectWithRACSignal] catch:^RACSignal *(NSError *error) {
         return [[self fetchProductInformationFromFactualForBarcode:barcode] doError:^(NSError *error) {
-            [GLParseAnalytics trackMissingBarcode:barcode];
+            [CAParseAnalytics trackMissingBarcode:barcode];
         }];
     }];
 }
 
-- (RACSignal *)fetchProductInformationFromFactualForBarcode:(GLBarcode *)barcode {
+- (RACSignal *)fetchProductInformationFromFactualForBarcode:(CABarcode *)barcode {
     return [[[self.factual queryFactualForBarcode:barcode.barcode] map:^id(NSDictionary *itemInformation) {
-        return [GLBarcodeObject objectWithDictionary:itemInformation];
-    }] doNext:^(GLBarcodeObject *barcodeObject) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        return [CABarcodeObject objectWithDictionary:itemInformation];
+    }] doNext:^(CABarcodeObject *barcodeObject) {
+        dispatch_async(dispatch_get_CAobal_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [[self.bing bingImageRequestWithBarcodeObject:barcodeObject] subscribeNext:^(NSArray *imageURLS) {
                 [barcodeObject addImageURLSFromArray:imageURLS];
                 [barcodeObject saveEventually];
@@ -54,17 +54,17 @@
     }];
 }
 
-- (GLFactualSessionManager *)factual {
+- (CAFactualSessionManager *)factual {
     if (!_factual) {
-        _factual = [GLFactualSessionManager manager];
+        _factual = [CAFactualSessionManager manager];
     }
     
     return _factual;
 }
 
-- (GLBingSessionManager *)bing {
+- (CABingSessionManager *)bing {
     if (!_bing) {
-        _bing = [GLBingSessionManager manager];
+        _bing = [CABingSessionManager manager];
     }
     
     return _bing;

@@ -1,5 +1,5 @@
 //
-//  GLQueryTableViewController.m
+//  CAQueryTableViewController.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/11/15.
@@ -7,35 +7,35 @@
 #import <Parse/Parse.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-#import "GLQueryTableViewController.h"
+#import "CAQueryTableViewController.h"
 
-#import "PFQuery+GLQuery.h"
+#import "PFQuery+CAQuery.h"
 #import "PFQueryTableViewController+Caching.h"
-#import "PFObject+GLPFObject.h"
-#import "GLListObject.h"
+#import "PFObject+CAPFObject.h"
+#import "CAListObject.h"
 #import "MustOverride.h"
 
-static NSString *const kGLCacheResponseKey = @"GLLocalDatastoreQueryResult";
-static NSString *const kGLNetworkResponseKey = @"GLNetworkQueryResult";
+static NSString *const kCACacheResponseKey = @"CALocalDatastoreQueryResult";
+static NSString *const kCANetworkResponseKey = @"CANetworkQueryResult";
 
-@implementation GLQueryTableViewController
+@implementation CAQueryTableViewController
 
 - (void)loadObjects:(NSInteger)page clear:(BOOL)clear {
-    NSAssert(!self.paginationEnabled, @"GLQueryTableViewController can not be used with pagination enabled.");
+    NSAssert(!self.paginationEnabled, @"CAQueryTableViewController can not be used with pagination enabled.");
     
     self.loading = YES;
     [self objectsWillLoad];
     
     RACSignal *cacheSignal = [[self cachedSignalForTable] map:^RACTuple *(NSArray *results) {
-        return RACTuplePack(kGLCacheResponseKey, results);
+        return RACTuplePack(kCACacheResponseKey, results);
     }];
     
     RACSignal *networkSignal = [[self signalForTable] map:^RACTuple *(NSArray *results) {
-        return RACTuplePack(kGLNetworkResponseKey, results);
+        return RACTuplePack(kCANetworkResponseKey, results);
     }];
     
     [[[[RACSignal merge:@[cacheSignal, networkSignal]] doNext:^(RACTuple *resultTuple) {
-        if ([resultTuple.first isEqualToString:kGLCacheResponseKey] && [(NSArray *)resultTuple.second count] != 0) {
+        if ([resultTuple.first isEqualToString:kCACacheResponseKey] && [(NSArray *)resultTuple.second count] != 0) {
             [self performTableViewUpdateWithObjects:resultTuple.second];
         }
     }] aggregateWithStart:[[NSMutableDictionary alloc] init] reduce:^id(NSMutableDictionary *running, RACTuple *next) {
@@ -45,11 +45,11 @@ static NSString *const kGLNetworkResponseKey = @"GLNetworkQueryResult";
         [self.refreshControl endRefreshing];
         self.loading = NO;
         
-        if ([self shouldUpdateTableViewWithCacheResponse:responses[kGLCacheResponseKey] andNetworkResponse:responses[kGLNetworkResponseKey]]) {
-            [self performTableViewUpdateWithObjects:responses[kGLNetworkResponseKey]];
+        if ([self shouldUpdateTableViewWithCacheResponse:responses[kCACacheResponseKey] andNetworkResponse:responses[kCANetworkResponseKey]]) {
+            [self performTableViewUpdateWithObjects:responses[kCANetworkResponseKey]];
             
             [[PFObject unpinAllWithSignal] subscribeCompleted:^{
-                [PFObject pinAllInBackground:responses[kGLNetworkResponseKey] block:^(BOOL succeeded, NSError *error) {
+                [PFObject pinAllInBackground:responses[kCANetworkResponseKey] block:^(BOOL succeeded, NSError *error) {
                     if (error) {
                         NSLog(@"Error %@", error);
                     }

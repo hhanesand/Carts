@@ -1,11 +1,11 @@
 //
-//  GLTableViewCell.m
+//  CATableViewCell.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 1/18/15.
 
-#import "GLTableViewCell.h"
+#import "CATableViewCell.h"
 
-@implementation GLTableViewCell
+@implementation CATableViewCell
 
 @end

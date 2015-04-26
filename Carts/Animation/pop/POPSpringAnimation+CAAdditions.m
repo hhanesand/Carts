@@ -1,14 +1,14 @@
 //
-//  POPPropertyAnimation+GLReverse.m
+//  POPPropertyAnimation+CAReverse.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/4/15.
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-#import "POPSpringAnimation+GLAdditions.h"
+#import "POPSpringAnimation+CAAdditions.h"
 
-@implementation POPSpringAnimation (GLAdditions)
+@implementation POPSpringAnimation (CAAdditions)
 
 - (POPSpringAnimation *)reverse {
     POPSpringAnimation *reversed = [POPSpringAnimation animationWithPropertyNamed:self.property.name];

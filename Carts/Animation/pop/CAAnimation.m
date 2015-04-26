@@ -1,22 +1,22 @@
 //
-//  GLAnimation.m
+//  CAAnimation.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/28/15.
 
-#import "GLAnimation.h"
+#import "CAAnimation.h"
 
-@implementation GLAnimation
+@implementation CAAnimation
 
-+ (GLAnimation *)animationWithSpring:(POPSpringAnimation *)ani description:(NSString *)description targetObject:(id)targetObject {
-    GLAnimation *animation = [[GLAnimation alloc] init];
++ (CAAnimation *)animationWithSpring:(POPSpringAnimation *)ani description:(NSString *)description targetObject:(id)targetObject {
+    CAAnimation *animation = [[CAAnimation alloc] init];
     animation.animation = ani;
     animation.identifier = description;
     animation.targetObject = targetObject;
     return animation;
 }
 
-+ (GLAnimation *)animationWithTargetObject:(id)targetObject property:(NSString *)property {
++ (CAAnimation *)animationWithTargetObject:(id)targetObject property:(NSString *)property {
     return [self animationWithSpring:[self defaultSpringWithProperty:property] description:@"" targetObject:targetObject];
 }
 

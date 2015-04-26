@@ -1,5 +1,5 @@
 //
-//  GLAnimationStack.m
+//  CAAnimationStack.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/28/15.
@@ -7,31 +7,31 @@
 #import <pop/POP.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-#import "GLAnimationStack.h"
-#import "GLAnimation.h"
+#import "CAAnimationStack.h"
+#import "CAAnimation.h"
 
-#import "POPSpringAnimation+GLAdditions.h"
-#import "POPAnimation+GLAnimation.h"
+#import "POPSpringAnimation+CAAdditions.h"
+#import "POPAnimation+CAAnimation.h"
 
-@implementation GLAnimationStack
+@implementation CAAnimationStack
 
 - (void)pushAnimation:(POPSpringAnimation *)animation withTargetObject:(id)target andDescription:(NSString *)description {
     [target pop_addAnimation:animation forKey:description];
-    GLAnimation *reversedAnimation = [GLAnimation animationWithSpring:[animation reverse] description:description targetObject:target];
+    CAAnimation *reversedAnimation = [CAAnimation animationWithSpring:[animation reverse] description:description targetObject:target];
     [self.stack addObject:reversedAnimation];
 }
 
 - (RACSignal *)popAnimation {
-    GLAnimation *topAnimation = [self.stack lastObject];
+    CAAnimation *topAnimation = [self.stack lastObject];
     [self.stack removeLastObject];
     [topAnimation startAnimation];
     return [topAnimation.animation completionSignal];
 }
 
 - (RACSignal *)popAllAnimations {
-    return [[[self.stack.rac_sequence.signal doNext:^(GLAnimation *animation) {
+    return [[[self.stack.rac_sequence.signal doNext:^(CAAnimation *animation) {
         [animation startAnimation];
-    }] flattenMap:^RACStream *(GLAnimation *animation) {
+    }] flattenMap:^RACStream *(CAAnimation *animation) {
         return [animation.animation completionSignal];
     }] doCompleted:^{
         [self.stack removeAllObjects];
@@ -39,12 +39,12 @@
 }
 
 - (RACSignal *)popAnimationWithTargetObject:(id)target {
-    return [[[self.stack.rac_sequence.signal filter:^BOOL(GLAnimation *animation) {
+    return [[[self.stack.rac_sequence.signal filter:^BOOL(CAAnimation *animation) {
         return [animation.targetObject isEqual:target];
-    }] doNext:^(GLAnimation *animation) {
+    }] doNext:^(CAAnimation *animation) {
         [animation startAnimation];
         [self.stack removeObject:animation];
-    }] flattenMap:^RACStream *(GLAnimation *animation) {
+    }] flattenMap:^RACStream *(CAAnimation *animation) {
         return [animation.animation completionSignal];
     }];
 }

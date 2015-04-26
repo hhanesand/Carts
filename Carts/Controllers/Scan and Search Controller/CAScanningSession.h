@@ -1,11 +1,11 @@
 //
-//  GLScanningSession.h
+//  CAScanningSession.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/9/15.
 
-#import "GLVideoPreviewView.h"
-#import "GLCameraLayer.h"
+#import "CAVideoPreviewView.h"
+#import "CACameraLayer.h"
 
 @import Foundation;
 @import AVFoundation;
@@ -15,14 +15,14 @@
 /**
  *  Stores a scanning session that encapsulates all AVFoundation objects
  */
-@interface GLScanningSession : NSObject <AVCaptureMetadataOutputObjectsDelegate, AVCaptureVideoDataOutputSampleBufferDelegate>
+@interface CAScanningSession : NSObject <AVCaptureMetadataOutputObjectsDelegate, AVCaptureVideoDataOutputSampleBufferDelegate>
 
 /**
  *  Sets up a new scanning session
  *
  *  @return An object encapsulting the scanning session
  */
-+ (GLScanningSession *)session;
++ (CAScanningSession *)session;
 
 @property (nonatomic) RACSignal *barcodeSignal;
 

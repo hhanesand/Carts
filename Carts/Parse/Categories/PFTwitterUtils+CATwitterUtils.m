@@ -1,13 +1,13 @@
 //
-//  PFTwitterUtils+GLTwitterUtils.m
+//  PFTwitterUtils+CATwitterUtils.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/25/15.
 
-#import "PFTwitterUtils+GLTwitterUtils.h"
+#import "PFTwitterUtils+CATwitterUtils.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-@implementation PFTwitterUtils (GLTwitterUtils)
+@implementation PFTwitterUtils (CATwitterUtils)
 
 + (RACSignal *)logInWithSignal {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {

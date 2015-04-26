@@ -1,5 +1,5 @@
 //
-//  GLFactualRequestSerializer.h
+//  CAFactualRequestSerializer.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 2/19/15.
@@ -9,6 +9,6 @@
 /**
  *  Serialize requests made to Factual so they conform with their OAuth specifications (http://developer.factual.com/throttling-limits/)
  */
-@interface GLFactualRequestSerializer : KDHTTPRequestSerializer
+@interface CAFactualRequestSerializer : KDHTTPRequestSerializer
 
 @end

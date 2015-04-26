@@ -1,5 +1,5 @@
 //
-//  GLDismissableViewHandler.h
+//  CADismissableViewHandler.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/2/15.
@@ -7,7 +7,7 @@
 @import Foundation;
 @import UIKit;
 
-@protocol GLDismissableHandlerDelegate <NSObject>
+@protocol CADismissableHandlerDelegate <NSObject>
 
 @optional
 - (void)didPresentViewAfterUserInteraction;
@@ -20,9 +20,9 @@
 /**
  *  Handles a view that can be dismissed by pulling downwards. (mimics the control center)
  */
-@interface GLDismissableViewHandler : NSObject <UIGestureRecognizerDelegate>
+@interface CADismissableViewHandler : NSObject <UIGestureRecognizerDelegate>
 
-@property (nonatomic) id<GLDismissableHandlerDelegate> delegate;
+@property (nonatomic) id<CADismissableHandlerDelegate> delegate;
 @property (nonatomic) BOOL enabled;
 
 /**

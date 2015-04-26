@@ -1,12 +1,12 @@
 //
-//  PFFacebookUtils+GLFacebookUtils.m
+//  PFFacebookUtils+CAFacebookUtils.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/24/15.
 
-#import "PFFacebookUtils+GLFacebookUtils.h"
+#import "PFFacebookUtils+CAFacebookUtils.h"
 
-@implementation PFFacebookUtils (GLFacebookUtils)
+@implementation PFFacebookUtils (CAFacebookUtils)
 
 + (RACSignal *)logInWithSignalWithReadPermissions:(PF_NULLABLE NSArray *)permissions {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {

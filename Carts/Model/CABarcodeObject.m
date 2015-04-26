@@ -1,5 +1,5 @@
 //
-//  GLBarcodeItem.m
+//  CABarcodeItem.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 2/9/15.
@@ -7,12 +7,12 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <Parse/PFObject+Subclass.h>
 
-#import "GLBarcodeObject.h"
-#import "GLBarcode.h"
+#import "CABarcodeObject.h"
+#import "CABarcode.h"
 
 @import AVFoundation;
 
-@implementation GLBarcodeObject
+@implementation CABarcodeObject
 
 @dynamic name;
 @dynamic barcodes;
@@ -26,15 +26,15 @@
     return @"item";
 }
 
-+ (GLBarcodeObject *)objectWithBarcode:(GLBarcode *)item {
-    GLBarcodeObject *object = [GLBarcodeObject object];
++ (CABarcodeObject *)objectWithBarcode:(CABarcode *)item {
+    CABarcodeObject *object = [CABarcodeObject object];
     [object setObject:[NSArray arrayWithObject:item.barcode] forKey:@"barcodes"];
     [object setObject:[NSArray arrayWithObject:item.type] forKey:@"types"];
     return object;
 }
 
-+ (GLBarcodeObject *)objectWithDictionary:(NSDictionary *)data {
-    GLBarcodeObject *object = [GLBarcodeObject object];
++ (CABarcodeObject *)objectWithDictionary:(NSDictionary *)data {
+    CABarcodeObject *object = [CABarcodeObject object];
     
     for (NSString *key in [data allKeys]) {
         [object setObject:data[key] forKey:key];
@@ -43,8 +43,8 @@
     return object;
 }
 
-+ (GLBarcodeObject *)objectWithName:(NSString *)name {
-    GLBarcodeObject *object = [GLBarcodeObject object];
++ (CABarcodeObject *)objectWithName:(NSString *)name {
+    CABarcodeObject *object = [CABarcodeObject object];
     object.name = name;
     return object;
 }

@@ -9,14 +9,14 @@
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
-#import "GLListTableViewController.h"
+#import "CAListTableViewController.h"
 #import "AppDelegate.h"
 
-#import "UIColor+GLColor.h"
-#import "GLListObject.h"
-#import "GLBarcodeObject.h"
-#import "GLListItemObject.h"
-#import "GLListOverviewTableViewController.h"
+#import "UIColor+CAColor.h"
+#import "CAListObject.h"
+#import "CABarcodeObject.h"
+#import "CAListItemObject.h"
+#import "CAListOverviewTableViewController.h"
 
 extern CFTimeInterval startTime;
 
@@ -36,9 +36,9 @@ extern CFTimeInterval startTime;
 }
 
 - (void)registerParseSubclasses {
-    [GLListObject registerSubclass];
-    [GLListItemObject registerSubclass];
-    [GLBarcodeObject registerSubclass];
+    [CAListObject registerSubclass];
+    [CAListItemObject registerSubclass];
+    [CABarcodeObject registerSubclass];
 }
 
 - (void)initializeParseWithLaunchOptions:(NSDictionary *)launchOptions {
@@ -57,7 +57,7 @@ extern CFTimeInterval startTime;
 
 - (void)prepareViewHeirarchy {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    GLListOverviewTableViewController *listOverviewTableViewController = [GLListOverviewTableViewController instance];
+    CAListOverviewTableViewController *listOverviewTableViewController = [CAListOverviewTableViewController instance];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:listOverviewTableViewController];
     self.window.rootViewController = navigationController;
     

@@ -1,5 +1,5 @@
 //
-//  UIView+GLView.h
+//  UIView+CAView.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/23/15.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIView (GLView)
+@interface UIView (CAView)
 
 - (void)setMaskToRoundedCorners:(UIRectCorner)corners withRadii:(CGFloat)radius;
 

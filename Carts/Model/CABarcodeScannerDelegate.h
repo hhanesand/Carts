@@ -1,20 +1,20 @@
 //
-//  GLBarcodeScannerDelegate.h
+//  CABarcodeScannerDelegate.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 2/26/15.
 
 @import Foundation;
 
-@class GLScanningSession;
-@class GLBarcode;
+@class CAScanningSession;
+@class CABarcode;
 
 /**
  *  Delegate for the barcode scanner
  */
-@protocol GLBarcodeScannerDelegate <NSObject>
+@protocol CABarcodeScannerDelegate <NSObject>
 
 @required
-- (void)scanner:(GLScanningSession *)scanner didRecieveBarcode:(GLBarcode *)barcode;
+- (void)scanner:(CAScanningSession *)scanner didRecieveBarcode:(CABarcode *)barcode;
 
 @end

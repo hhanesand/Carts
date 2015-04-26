@@ -1,14 +1,14 @@
 //
-//  GLRACSessionManager.m
+//  CARACSessionManager.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/9/15.
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-#import "GLRACSessionManager.h"
+#import "CARACSessionManager.h"
 
-@implementation GLRACSessionManager
+@implementation CARACSessionManager
 
 - (RACSignal *)GET:(NSString *)path parameters:(id)parameters {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {

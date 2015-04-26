@@ -1,5 +1,5 @@
 //
-//  GLBarcode.h
+//  CABarcode.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/10/15.
@@ -10,7 +10,7 @@
 /**
  *  Light wrapper class that extracts data from AVFoundation
  */
-@interface GLBarcode : NSObject
+@interface CABarcode : NSObject
 
 /**
  *  Construct a barcode object with a barcode
@@ -19,7 +19,7 @@
  *
  *  @return A new barcode object
  */
-+ (GLBarcode *)barcodeWithBarcode:(NSString *)barcode;
++ (CABarcode *)barcodeWithBarcode:(NSString *)barcode;
 
 /**
  *  Construct a barcode object with an AVMetadataMachineReadableCodeObject
@@ -28,7 +28,7 @@
  *
  *  @return An new barcode object
  */
-+ (GLBarcode *)barcodeWithMetadataObject:(AVMetadataMachineReadableCodeObject *)object;
++ (CABarcode *)barcodeWithMetadataObject:(AVMetadataMachineReadableCodeObject *)object;
 
 /**
  *  The barcode of the item

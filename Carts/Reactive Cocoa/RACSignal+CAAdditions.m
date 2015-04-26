@@ -1,12 +1,12 @@
 //
-//  RACSignal+GLAdditions.m
+//  RACSignal+CAAdditions.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/20/15.
 
-#import "RACSignal+GLAdditions.h"
+#import "RACSignal+CAAdditions.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-@implementation RACSignal (GLAdditions)
+@implementation RACSignal (CAAdditions)
 
 @end

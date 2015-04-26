@@ -1,14 +1,14 @@
 //
-//  POPAnimation+GLAnimation.m
+//  POPAnimation+CAAnimation.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/3/15.
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-#import "POPAnimation+GLAnimation.h"
+#import "POPAnimation+CAAnimation.h"
 
-@implementation POPAnimation (GLAnimation)
+@implementation POPAnimation (CAAnimation)
 
 - (RACSignal *)completionSignal {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {

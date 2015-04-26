@@ -1,47 +1,47 @@
 //
-//  GLBingSessionManager.m
+//  CABingSessionManager.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/9/15.
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-#import "GLBingSessionManager.h"
-#import "GLBarcodeObject.h"
-#import "GLBingRequestSerializer.h"
-#import "GLBingResponseSerializer.h"
+#import "CABingSessionManager.h"
+#import "CABarcodeObject.h"
+#import "CABingRequestSerializer.h"
+#import "CABingResponseSerializer.h"
 
-NSString * const kGLBingURL = @"https://api.datamarket.azure.com/Bing/Search/v1/";
+NSString * const kCABingURL = @"https://api.datamarket.azure.com/Bing/Search/v1/";
 
-@interface GLBingSessionManager ()
+@interface CABingSessionManager ()
 @property (nonatomic) NSString *thumbnailKeyPath;
 @end
 
-@implementation GLBingSessionManager
+@implementation CABingSessionManager
 
 + (instancetype)manager {
-    return [[GLBingSessionManager alloc] init];
+    return [[CABingSessionManager alloc] init];
 }
 
 - (instancetype)init {
-    if (self = [super initWithBaseURL:[NSURL URLWithString:kGLBingURL]]) {
-        self.requestSerializer = [GLBingRequestSerializer serializer];
-        self.responseSerializer = [GLBingResponseSerializer serializer];
+    if (self = [super initWithBaseURL:[NSURL URLWithString:kCABingURL]]) {
+        self.requestSerializer = [CABingRequestSerializer serializer];
+        self.responseSerializer = [CABingResponseSerializer serializer];
     }
     
     return self;
 }
 
 - (instancetype)initWithBaseURL:(NSURL *)url {
-    NSAssert(NO, @"Use either +manager or -init to instantiate a GLFactualSessionManager");
+    NSAssert(NO, @"Use either +manager or -init to instantiate a CAFactualSessionManager");
     return nil;
 }
 
-- (RACSignal *)bingImageRequestWithBarcodeObject:(GLBarcodeObject *)barcodeObject {
+- (RACSignal *)bingImageRequestWithBarcodeObject:(CABarcodeObject *)barcodeObject {
     return [self GET:@"Image" parameters:@{@"Query" : [self buildQueryStringWithBarcodeObject:barcodeObject]}];
 }
 
-- (NSString *)buildQueryStringWithBarcodeObject:(GLBarcodeObject *)barcodeObject {
+- (NSString *)buildQueryStringWithBarcodeObject:(CABarcodeObject *)barcodeObject {
     return [NSString stringWithFormat:@"'%@ %@'", barcodeObject.name, barcodeObject.brand];
 }
 

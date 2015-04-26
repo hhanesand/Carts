@@ -1,21 +1,21 @@
 //
-//  GLKeyboardResponderAnimator.m
+//  CAKeyboardResponderAnimator.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/13/15.
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-#import "GLKeyboardResponderAnimator.h"
+#import "CAKeyboardResponderAnimator.h"
 
-@interface GLKeyboardResponderAnimator ()
-@property (nonatomic) id<GLKeyboardMovementResponderDelegate> delegate;
+@interface CAKeyboardResponderAnimator ()
+@property (nonatomic) id<CAKeyboardMovementResponderDelegate> delegate;
 @property (nonatomic) CGFloat savedConstant;
 @end
 
-@implementation GLKeyboardResponderAnimator
+@implementation CAKeyboardResponderAnimator
 
-- (instancetype)initWithDelegate:(id<GLKeyboardMovementResponderDelegate>)delegate
+- (instancetype)initWithDelegate:(id<CAKeyboardMovementResponderDelegate>)delegate
 {
     if (self = [super init]) {
         self.delegate = delegate;

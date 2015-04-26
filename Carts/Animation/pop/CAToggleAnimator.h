@@ -1,18 +1,18 @@
 //
-//  GLToggleAnimator.h
+//  CATogCAeAnimator.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/23/15.
 
 #import <Foundation/Foundation.h>
-#import "GLAnimation.h"
-#import "GLCompanionAnimator.h"
+#import "CAAnimation.h"
+#import "CACompanionAnimator.h"
 @import QuartzCore;
 
-@interface GLToggleAnimator : NSObject <GLCompanionAnimator>
+@interface CATogCAeAnimator : NSObject <CACompanionAnimator>
 
-@property (nonatomic) GLAnimation *backwards;
-@property (nonatomic) GLAnimation *forwards;
+@property (nonatomic) CAAnimation *backwards;
+@property (nonatomic) CAAnimation *forwards;
 
 @property (nonatomic, copy) void (^forwardsAction)();
 @property (nonatomic, copy) void (^backwardsAction)();
@@ -21,6 +21,6 @@
 
 //- (void)adjustParametersToStartValue:(id)startValue endValue:(id)endValue;
 
-- (void)toggleAnimation;
+- (void)togCAeAnimation;
 
 @end

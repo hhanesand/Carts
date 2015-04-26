@@ -1,5 +1,5 @@
 //
-//  GLPullToCloseTransitionManager.m
+//  CAPullToCloseTransitionManager.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/29/15.
@@ -7,12 +7,12 @@
 #import <pop/POP.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-#import "GLPullToCloseTransitionManager.h"
+#import "CAPullToCloseTransitionManager.h"
 
-#import "POPSpringAnimation+GLAdditions.h"
-#import "POPAnimation+GLAnimation.h"
+#import "POPSpringAnimation+CAAdditions.h"
+#import "POPAnimation+CAAnimation.h"
 
-@implementation GLPullToCloseTransitionManager
+@implementation CAPullToCloseTransitionManager
 
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext {
     return 1.0;

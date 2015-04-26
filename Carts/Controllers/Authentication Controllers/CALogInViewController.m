@@ -1,5 +1,5 @@
 //
-//  GLLogInViewController.m
+//  CALogInViewController.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/22/15.
@@ -8,26 +8,26 @@
 #import <Parse/Parse.h>
 #import <MRProgress/MRActivityIndicatorView.h>
 
-#import "GLLogInViewController.h"
-#import "GLAuthenticationButton.h"
-#import "GLTransitionDelegate.h"
-#import "GLPullToCloseTransitionManager.h"
-#import "GLPullToCloseTransitionPresentationController.h"
-#import "PFUser+GLUser.h"
-#import "UIView+GLView.h"
+#import "CALogInViewController.h"
+#import "CAAuthenticationButton.h"
+#import "CATransitionDelegate.h"
+#import "CAPullToCloseTransitionManager.h"
+#import "CAPullToCloseTransitionPresentationController.h"
+#import "PFUser+CAUser.h"
+#import "UIView+CAView.h"
 
-@interface GLLogInViewController ()
+@interface CALogInViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *username;
 @property (weak, nonatomic) IBOutlet UITextField *password;
 
-@property (weak, nonatomic) IBOutlet GLAuthenticationButton *logIn;
+@property (weak, nonatomic) IBOutlet CAAuthenticationButton *logIn;
 @property (weak, nonatomic) IBOutlet MRActivityIndicatorView *activityIndicatorView;
 
 
-@property (nonatomic) GLTransitionDelegate *transitionDelegate;
+@property (nonatomic) CATransitionDelegate *transitionDelegate;
 @end
 
-@implementation GLLogInViewController
+@implementation CALogInViewController
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
@@ -101,9 +101,9 @@
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (GLTransitionDelegate *)transitionDelegate {
+- (CATransitionDelegate *)transitionDelegate {
     if (!_transitionDelegate) {
-        _transitionDelegate = [[GLTransitionDelegate alloc] initWithController:self presentationController:[GLPullToCloseTransitionPresentationController class] transitionManager:[GLPullToCloseTransitionManager class]];
+        _transitionDelegate = [[CATransitionDelegate alloc] initWithController:self presentationController:[CAPullToCloseTransitionPresentationController class] transitionManager:[CAPullToCloseTransitionManager class]];
     }
     
     return _transitionDelegate;

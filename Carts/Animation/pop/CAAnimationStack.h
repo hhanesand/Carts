@@ -1,5 +1,5 @@
 //
-//  GLAnimationStack.h
+//  CAAnimationStack.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/28/15.
@@ -16,7 +16,7 @@
  *
  *  Note that by using this class, all completion blocks from the animations that are added will be overriden.
  */
-@interface GLAnimationStack : NSObject
+@interface CAAnimationStack : NSObject
 
 @property (nonatomic) NSMutableArray *stack;
 

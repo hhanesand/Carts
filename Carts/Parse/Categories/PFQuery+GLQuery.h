@@ -1,5 +1,5 @@
 //
-//  PFQuery+GLQuery.h
+//  PFQuery+CAQuery.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/10/15.
@@ -11,7 +11,7 @@
 /**
  *  ReactiveCocoa extensions for the Parse API
  */
-@interface PFQuery (GLQuery)
+@interface PFQuery (CAQuery)
 
 /**
  *  Calls findObjects to perform the query when the returned signal is subscribed to

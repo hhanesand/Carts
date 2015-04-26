@@ -1,19 +1,19 @@
 //
-//  GLBarcodeItem.h
+//  CABarcodeItem.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 2/9/15.
 
 #import <Parse/Parse.h>
 
-#import "GLBarcodeScannerDelegate.h"
+#import "CABarcodeScannerDelegate.h"
 
 @class AVMetadataMachineReadableCodeObject;
 
 /**
  *  A Parse object subclass that stores information about a barcode object
  */
-@interface GLBarcodeObject : PFObject<PFSubclassing>
+@interface CABarcodeObject : PFObject<PFSubclassing>
 
 /**
  *  The name of the item
@@ -53,9 +53,9 @@
 /**
  *  Initializers
  */
-+ (GLBarcodeObject *)objectWithBarcode:(GLBarcode *)barcode;
-+ (GLBarcodeObject *)objectWithDictionary:(NSDictionary *)data;
-+ (GLBarcodeObject *)objectWithName:(NSString *)barcode;
++ (CABarcodeObject *)objectWithBarcode:(CABarcode *)barcode;
++ (CABarcodeObject *)objectWithDictionary:(NSDictionary *)data;
++ (CABarcodeObject *)objectWithName:(NSString *)barcode;
 
 - (void)addImageURLSFromArray:(NSArray *)array;
 @end

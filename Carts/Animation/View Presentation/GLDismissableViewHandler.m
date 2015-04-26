@@ -1,5 +1,5 @@
 //
-//  GLDismissableViewHandler.m
+//  CADismissableViewHandler.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/2/15.
@@ -7,13 +7,13 @@
 #import <POP/POP.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-#import "GLDismissableViewHandler.h"
+#import "CADismissableViewHandler.h"
 
-#import "POPSpringAnimation+GLAdditions.h"
-#import "POPAnimation+GLAnimation.h"
+#import "POPSpringAnimation+CAAdditions.h"
+#import "POPAnimation+CAAnimation.h"
 #import "SVProgressHUD.h"
 
-@interface GLDismissableViewHandler ()
+@interface CADismissableViewHandler ()
 /**
  *  The y value of the top of the view when it is in its dismissed state
  */
@@ -32,7 +32,7 @@
 @property (nonatomic) UIView *view;
 @end
 
-@implementation GLDismissableViewHandler
+@implementation CADismissableViewHandler
 
 - (instancetype)initWithAnimatableView:(UIView*)animatableView superViewHeight:(CGFloat)superHeight animatableConstraint:(NSLayoutConstraint *)constraint {
     if (self = [super init]) {

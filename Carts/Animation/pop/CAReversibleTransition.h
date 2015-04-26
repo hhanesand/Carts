@@ -1,5 +1,5 @@
 //
-//  GLReversibleTransition.h
+//  CAReversibleTransition.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/13/15.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol GLReversibleTransition <NSObject>
+@protocol CAReversibleTransition <NSObject>
 
 @property (nonatomic) BOOL presenting;
 

@@ -1,14 +1,14 @@
 //
-//  GLCameraLayer.m
+//  CACameraLayer.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/26/15.
 
-#import "GLCameraLayer.h"
+#import "CACameraLayer.h"
 
 @import UIKit;
 
-@interface GLCameraLayer ()
+@interface CACameraLayer ()
 @property (nonatomic) CGFloat lineLength;
 @property (nonatomic) CGFloat cornerRadius;
 @end
@@ -16,10 +16,10 @@
 /**
  *  Draws a rounded "targeting" reticule on the screen for the user to position the barcode in
  */
-@implementation GLCameraLayer
+@implementation CACameraLayer
 
 + (instancetype)layer {
-    return [GLCameraLayer init];
+    return [CACameraLayer init];
 }
 
 - (instancetype)initWithBounds:(CGRect)bounds cornerRadius:(CGFloat)radius lineLength:(CGFloat)length {

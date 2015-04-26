@@ -1,5 +1,5 @@
 //
-//  PFTwitterUtils+GLTwitterUtils.h
+//  PFTwitterUtils+CATwitterUtils.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/25/15.
@@ -8,7 +8,7 @@
 
 @class RACSignal;
 
-@interface PFTwitterUtils (GLTwitterUtils)
+@interface PFTwitterUtils (CATwitterUtils)
 
 + (RACSignal *)logInWithSignal;
 

@@ -2,27 +2,27 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <MRProgress/MRActivityIndicatorView.h>
 
-#import "GLAuthenticationButton.h"
+#import "CAAuthenticationButton.h"
 
-#import "UIImage+GLImage.h"
-#import "GLRect.h"
-#import "UIColor+GLColor.h"
-#import "POPAnimation+GLAnimation.h"
-#import "UIView+GLView.h"
-#import "GLToggleAnimator.h"
+#import "UIImage+CAImage.h"
+#import "CARect.h"
+#import "UIColor+CAColor.h"
+#import "POPAnimation+CAAnimation.h"
+#import "UIView+CAView.h"
+#import "CATogCAeAnimator.h"
 
-@interface GLAuthenticationButton ()
+@interface CAAuthenticationButton ()
 @property (nonatomic) BOOL isExtended;
 
-@property (nonatomic) GLAnimation *shake;
-@property (nonatomic) GLToggleAnimator *fadeToggleAnimator;
+@property (nonatomic) CAAnimation *shake;
+@property (nonatomic) CATogCAeAnimator *fadeTogCAeAnimator;
 
 @property (nonatomic) NSString *savedTitle;
 @property (nonatomic) UIImage *savedImage;
 @property (nonatomic) UIImage *image;
 @end
 
-@implementation GLAuthenticationButton
+@implementation CAAuthenticationButton
 
 #pragma mark - Init
 
@@ -48,7 +48,7 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     [super touchesEnded:touches withEvent:event];
 
-    [self.fadeToggleAnimator toggleAnimation];
+    [self.fadeTogCAeAnimator togCAeAnimation];
 }
 
 - (void)setActivityIndicatorView:(MRActivityIndicatorView *)activityIndicatorView {
@@ -59,17 +59,17 @@
     self.activityIndicatorView.hidden = YES;
     
     if (self.shouldAnimate) {
-        self.fadeToggleAnimator = [GLToggleAnimator animatorWithTarget:self.activityIndicatorView.layer property:kPOPLayerOpacity startValue:@(0) endValue:@(1)];
+        self.fadeTogCAeAnimator = [CATogCAeAnimator animatorWithTarget:self.activityIndicatorView.layer property:kPOPLayerOpacity startValue:@(0) endValue:@(1)];
         
         @weakify(self);
-        self.fadeToggleAnimator.forwardsAction = ^{
+        self.fadeTogCAeAnimator.forwardsAction = ^{
             @strongify(self);
             [self setTitle:@"" forState:UIControlStateNormal];
             [self setImage:nil forState:UIControlStateNormal];
             [self.activityIndicatorView startAnimating];
         };
         
-        self.fadeToggleAnimator.backwardsAction = ^{
+        self.fadeTogCAeAnimator.backwardsAction = ^{
             @strongify(self);
             [self setTitle:self.savedTitle forState:UIControlStateNormal];
             [self setImage:self.savedImage forState:UIControlStateNormal];
@@ -92,7 +92,7 @@
     [self.activityIndicatorView.layer pop_addAnimation:animation forKey:@"ani"];
     [self.layer pop_addAnimation:ani forKey:@"aani"];
     
-    [self.fadeToggleAnimator toggleAnimation];
+    [self.fadeTogCAeAnimator togCAeAnimation];
 }
 
 - (void)animateSuccess {

@@ -1,5 +1,5 @@
 //
-//  UIImage+GLImage.h
+//  UIImage+CAImage.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/9/15.
@@ -9,7 +9,7 @@
 @import CoreMedia;
 @import UIKit;
 
-@interface UIImage (GLImage)
+@interface UIImage (CAImage)
 
 + (UIImage *)imageWithColor:(UIColor *)color;
 

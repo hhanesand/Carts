@@ -1,17 +1,17 @@
 //
-//  GLListOverviewViewController.h
+//  CAListOverviewViewController.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/18/15.
 
-#import "GLQueryTableViewController.h"
+#import "CAQueryTableViewController.h"
 
-@interface GLListOverviewTableViewController : GLQueryTableViewController <UITableViewDataSource, UINavigationControllerDelegate>
+@interface CAListOverviewTableViewController : CAQueryTableViewController <UITableViewDataSource, UINavigationControllerDelegate>
 
 /**
- *  Creates and returns a new GLListOverviewTableViewController from its storyboard
+ *  Creates and returns a new CAListOverviewTableViewController from its storyboard
  *
- *  @return The new GLListOverviewTableViewController
+ *  @return The new CAListOverviewTableViewController
  */
 + (instancetype)instance;
 

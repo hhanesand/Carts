@@ -1,5 +1,5 @@
 //
-//  PFObject+GLPFObject.h
+//  PFObject+CAPFObject.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 3/11/15.
@@ -11,7 +11,7 @@
 /**
  *  Reactive Cococa extensions for the Parse API
  */
-@interface PFObject (GLPFObject)
+@interface PFObject (CAPFObject)
 
 + (RACSignal *)unpinAllWithSignal;
 + (RACSignal *)pinAllWithSignal:(NSArray *)objects;

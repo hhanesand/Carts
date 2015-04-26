@@ -1,23 +1,23 @@
 //
-//  GLBingRequestSerializer.m
+//  CABingRequestSerializer.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/8/15.
 
-#import "GLBingRequestSerializer.h"
+#import "CABingRequestSerializer.h"
 
 NSString * const method = @"GET";
 
-@interface GLBingRequestSerializer ()
+@interface CABingRequestSerializer ()
 @property (nonatomic) NSString *bingApiKey;
 @property (nonatomic) NSString *authorizationData;
 @property (nonatomic) NSDictionary *parameters;
 @end
 
-@implementation GLBingRequestSerializer
+@implementation CABingRequestSerializer
 
 + (instancetype)serializer {
-    return [[GLBingRequestSerializer alloc] init];
+    return [[CABingRequestSerializer alloc] init];
 }
 
 - (NSMutableURLRequest *)requestWithMethod:(NSString *)method URLString:(NSString *)URLString parameters:(id)parameters error:(NSError *__autoreleasing *)error {

@@ -1,39 +1,39 @@
 //
-//  GLFactualSessionManager.m
+//  CAFactualSessionManager.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/9/15.
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-#import "GLFactualSessionManager.h"
-#import "GLFactualResponseSerializer.h"
-#import "GLFactualRequestSerializer.h"
+#import "CAFactualSessionManager.h"
+#import "CAFactualResponseSerializer.h"
+#import "CAFactualRequestSerializer.h"
 
-static NSString * const kGLFactualURL = @"http://api.v3.factual.com/t/";
-static NSString * const kGLFactualBarcodeEndpoint = @"products-cpg";
+static NSString * const kCAFactualURL = @"http://api.v3.factual.com/t/";
+static NSString * const kCAFactualBarcodeEndpoint = @"products-cpg";
 
-@interface GLFactualSessionManager ()
+@interface CAFactualSessionManager ()
 @property (nonatomic) NSDictionary *factualToParseMapping;
 @end
 
-@implementation GLFactualSessionManager
+@implementation CAFactualSessionManager
 
 + (instancetype)manager {
-    return [[GLFactualSessionManager alloc] init];
+    return [[CAFactualSessionManager alloc] init];
 }
 
 - (instancetype)init {
-    if (self = [super initWithBaseURL:[NSURL URLWithString:kGLFactualURL]]) {
-        self.responseSerializer = [GLFactualResponseSerializer serializer];
-        self.requestSerializer = [GLFactualRequestSerializer serializer];
+    if (self = [super initWithBaseURL:[NSURL URLWithString:kCAFactualURL]]) {
+        self.responseSerializer = [CAFactualResponseSerializer serializer];
+        self.requestSerializer = [CAFactualRequestSerializer serializer];
     }
     
     return self;
 }
 
 - (RACSignal *)queryFactualForBarcode:(NSString *)barcode {
-    return [[self GET:kGLFactualBarcodeEndpoint parameters:@{@"q" : barcode}] map:^NSDictionary *(NSDictionary *factualJSONResponse) {
+    return [[self GET:kCAFactualBarcodeEndpoint parameters:@{@"q" : barcode}] map:^NSDictionary *(NSDictionary *factualJSONResponse) {
         return [self modifyFactualResponseForParseUpload:factualJSONResponse];
     }];
 }

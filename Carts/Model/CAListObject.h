@@ -1,14 +1,14 @@
 //
-//  GLListItem.h
+//  CAListItem.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 2/19/15.
 
 #import <Parse/Parse.h>
 
-@class GLBarcodeObject;
+@class CABarcodeObject;
 
-@interface GLListObject : PFObject<PFSubclassing>
+@interface CAListObject : PFObject<PFSubclassing>
 
 @property (nonatomic) NSMutableArray *items;
 

@@ -1,12 +1,12 @@
 //
-//  UIView+GLView.m
+//  UIView+CAView.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/23/15.
 
-#import "UIView+GLView.h"
+#import "UIView+CAView.h"
 
-@implementation UIView (GLView)
+@implementation UIView (CAView)
 
 - (void)setMaskToRoundedCorners:(UIRectCorner)corners withRadii:(CGFloat)radius {
     UIBezierPath *rounded = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:corners cornerRadii:CGSizeMake(radius, radius)];

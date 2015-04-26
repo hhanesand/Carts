@@ -1,12 +1,12 @@
 //
-//  NSDictionary+GLCustomKVOOperators.h
+//  NSDictionary+CACustomKVOOperators.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/9/15.
 
 @import Foundation;
 
-@interface NSDictionary (GLCustomKVOOperators)
+@interface NSDictionary (CACustomKVOOperators)
 
 /**
  *  Defines a custom KVO path using a bit of trickery. Allows the use of @first inside a valueForKeyPath: call on a dictionary to extract the first item in an array at the keypath

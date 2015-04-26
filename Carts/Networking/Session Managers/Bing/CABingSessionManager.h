@@ -1,15 +1,15 @@
 //
-//  GLBingSessionManager.h
+//  CABingSessionManager.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/9/15.
 
-@class GLBarcodeObject;
+@class CABarcodeObject;
 @class RACSignal;
 
-#import "GLRACSessionManager.h"
+#import "CARACSessionManager.h"
 
-@interface GLBingSessionManager : GLRACSessionManager
+@interface CABingSessionManager : CARACSessionManager
 
 /**
  *  Searches bing for images of a particular barcode object
@@ -18,6 +18,6 @@
  *
  *  @return A signal that will return the image url found on Bing and then complete and then return
  */
-- (RACSignal *)bingImageRequestWithBarcodeObject:(GLBarcodeObject *)barcodeObject;
+- (RACSignal *)bingImageRequestWithBarcodeObject:(CABarcodeObject *)barcodeObject;
 
 @end

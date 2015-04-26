@@ -1,11 +1,11 @@
 //
-//  GLListOverviewTableViewCell.m
+//  CAListOverviewTableViewCell.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/19/15.
 
-#import "GLListOverviewTableViewCell.h"
+#import "CAListOverviewTableViewCell.h"
 
-@implementation GLListOverviewTableViewCell
+@implementation CAListOverviewTableViewCell
 
 @end

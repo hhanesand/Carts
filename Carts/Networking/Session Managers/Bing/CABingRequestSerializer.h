@@ -1,5 +1,5 @@
 //
-//  GLBingRequestSerializer.h
+//  CABingRequestSerializer.h
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/8/15.
@@ -9,5 +9,5 @@
 /**
  *  Serializes requests to the Bing Search API by applying the required Authentication Headers
  */
-@interface GLBingRequestSerializer : AFHTTPRequestSerializer
+@interface CABingRequestSerializer : AFHTTPRequestSerializer
 @end

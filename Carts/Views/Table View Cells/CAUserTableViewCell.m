@@ -1,17 +1,17 @@
 //
-//  GLUserTableViewCell.m
+//  CAUserTableViewCell.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/20/15.
 
-#import "GLUserTableViewCell.h"
+#import "CAUserTableViewCell.h"
 #import <Parse/Parse.h>
 
-@interface GLUserTableViewCell ()
+@interface CAUserTableViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *username;
 @end
 
-@implementation GLUserTableViewCell
+@implementation CAUserTableViewCell
 
 - (void)bindWithUser:(PFUser *)user {
     self.username.text = user.username;

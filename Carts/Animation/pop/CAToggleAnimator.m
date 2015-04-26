@@ -1,35 +1,35 @@
 //
-//  GLToggleAnimator.m
+//  CATogCAeAnimator.m
 //  GroceryList
 //
 //  Created by Hakon Hanesand on 4/23/15.
 
-#import "GLToggleAnimator.h"
+#import "CATogCAeAnimator.h"
 #import <pop/POP.h>
-#import "GLAnimation.h"
+#import "CAAnimation.h"
 
-@interface GLToggleAnimator ()
+@interface CATogCAeAnimator ()
 @property (nonatomic, getter=isNextAnimationForwards) BOOL nextAnimationForwards;
 @end
 
-@implementation GLToggleAnimator
+@implementation CATogCAeAnimator
 
 + (instancetype)animatorWithTarget:(id)target property:(NSString *)property startValue:(id)start endValue:(id)end {
-    GLToggleAnimator *toggle = [GLToggleAnimator new];
+    CATogCAeAnimator *togCAe = [CATogCAeAnimator new];
 
-    toggle.backwards = [GLAnimation animationWithTargetObject:target property:property];
-    toggle.backwards.animation.fromValue = end;
-    toggle.backwards.animation.toValue = start;
+    togCAe.backwards = [CAAnimation animationWithTargetObject:target property:property];
+    togCAe.backwards.animation.fromValue = end;
+    togCAe.backwards.animation.toValue = start;
     
-    toggle.forwards = [GLAnimation animationWithTargetObject:target property:property];
-    toggle.forwards.animation.fromValue = start;
-    toggle.forwards.animation.toValue = end;
+    togCAe.forwards = [CAAnimation animationWithTargetObject:target property:property];
+    togCAe.forwards.animation.fromValue = start;
+    togCAe.forwards.animation.toValue = end;
     
     NSLog(@"From value %@, to value %@", start, end);
     
-    toggle.nextAnimationForwards = YES;
+    togCAe.nextAnimationForwards = YES;
     
-    return toggle;
+    return togCAe;
 }
 
 //- (void)adjustParametersToStartValue:(id)start endValue:(id)end {
@@ -40,7 +40,7 @@
 //    self.forwards.animation.toValue = end;
 //}
 
-- (void)toggleAnimation {
+- (void)togCAeAnimation {
     if (self.isNextAnimationForwards) {
         if (self.forwardsAction) {
             self.forwardsAction();
