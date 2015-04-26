@@ -11,10 +11,10 @@
 #import <objc/runtime.h>
 
 void SEViewAlertForUnsafeBackgroundCalls() {
-    NSLog(@"----------------------------------------------------------------------------------");
-    NSLog(@"Background call to setAnimationsEnabled: detected. This method is not thread safe.");
-    NSLog(@"Set a breakpoint at SEUIViewDidSetAnimationsOffMainThread to inspect this call.");
-    NSLog(@"----------------------------------------------------------------------------------");
+//    NSLog(@"----------------------------------------------------------------------------------");
+//    NSLog(@"Background call to setAnimationsEnabled: detected. This method is not thread safe.");
+//    NSLog(@"Set a breakpoint at SEUIViewDidSetAnimationsOffMainThread to inspect this call.");
+//    NSLog(@"----------------------------------------------------------------------------------");
 }
 
 @implementation UIView (BadView)

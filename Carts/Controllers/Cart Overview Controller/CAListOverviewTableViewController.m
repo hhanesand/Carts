@@ -21,6 +21,7 @@ static NSString *const kCAListOverviewTableViewControllerReuseIdentifier = @"CAL
 
 @interface CAListOverviewTableViewController ()
 @property (strong, nonatomic) IBOutlet UIView *footerView;
+@property (strong, nonatomic) IBOutlet UILabel *navigationBarLabel;
 @property (nonatomic) CAListTableViewController *listTableViewController;
 @property (nonatomic) CAShareCartViewController *shareCartViewController;
 @end
@@ -56,6 +57,15 @@ static NSString *const kCAListOverviewTableViewControllerReuseIdentifier = @"CAL
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(didTapShareCartButton)];
     UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     [self setToolbarItems:@[flexibleSpace, barButton, flexibleSpace] animated:NO];
+
+    UINavigationBar *nav = self.navigationController.navigationBar;
+    nav.barTintColor = [UIColor colorWithRed:0.000 green:0.843 blue:0.699 alpha:1];
+    nav.barStyle = UIBarStyleBlack;
+    nav.tintColor = [UIColor whiteColor];
+    
+    self.navigationController.navigationItem.titleView = self.navigationBarLabel;
+    [nav setNeedsLayout];
+    [nav setNeedsDisplay];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -65,11 +75,9 @@ static NSString *const kCAListOverviewTableViewControllerReuseIdentifier = @"CAL
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    self.navigationController.navigationItem.titleView = self.navigationBarLabel;
+    
     [self.navigationController setToolbarHidden:NO animated:NO];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
 }
 
 - (void)didTapShareCartButton {

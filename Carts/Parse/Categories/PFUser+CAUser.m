@@ -72,7 +72,7 @@
     
     if (request[@"name"]) {
         self[@"name"] = request[@"name"];
-        self[@"searchableID"] = self[@"name"];
+        self[@"searchableID"] = [self[@"name"] lowercaseString];
     }
     
     if (request[@"first_name"]) {
@@ -90,6 +90,7 @@
         
         if (self[@"lastName"]) {
             self[@"searchableID"] = [self[@"searchableID"] stringByAppendingString:self[@"lastName"]];
+            self[@"searchableID"] = [self[@"searchableID"] lowercaseString];
         }
     }
     
@@ -118,6 +119,10 @@
         self[@"locale"] = response[@"location"];
     } else if (response[@"lang"]) {
         self[@"location"] = response[@"lang"];
+    }
+    
+    if (response[@"profile_image_url"]) {
+        self[@"picture"] = response[@"profile_image_url"];
     }
 }
 

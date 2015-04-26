@@ -95,10 +95,34 @@
             [self didTapDismissButton:nil];
         });
         
-        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"/me" parameters:nil] startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
-            [user bindWithFacebookGraphRequest:result];
-            [user saveInBackground];
+        FBSDKGraphRequestConnection *connection = [[FBSDKGraphRequestConnection alloc] init];
+        
+        FBSDKGraphRequest *picture = [[FBSDKGraphRequest alloc] initWithGraphPath:@"me/picture" parameters:@{@"redirect" : @"false"}];
+        FBSDKGraphRequest *profile = [[FBSDKGraphRequest alloc] initWithGraphPath:@"me/" parameters:nil];
+        
+        __block BOOL done = NO;
+        
+        [connection addRequest:picture completionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+            user[@"picture"] = [result valueForKeyPath:@"data.url"];
+            
+            if (done) {
+                [user saveInBackground];
+            } else {
+                done = YES;
+            }
         }];
+        
+        [connection addRequest:profile completionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+            [user bindWithFacebookGraphRequest:result];
+            
+            if (done) {
+                [user saveInBackground];
+            } else {
+                done = YES;
+            }
+        }];
+        
+        [connection start];
     }];
     
     [[[[[self.twitter rac_signalForControlEvents:UIControlEventTouchUpInside] doNext:^(id x) {
