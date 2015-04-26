@@ -96,7 +96,7 @@ static NSString *const kCAFollowUserTableViewCellReuseIdentifier = @"CAFollowUse
     self.previousSearch = search;
     
     PFQuery *query = [PFUser query];
-    [query whereKey:@"username_lowercase" hasPrefix:[search lowercaseString]];
+    [query whereKey:@"searchableID" hasPrefix:[search lowercaseString]];
 
     [[query findObjectsInbackgroundWithRACSignal] subscribeNext:^(NSArray *result) {
         self.searchResults = result;

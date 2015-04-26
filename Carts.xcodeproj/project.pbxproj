@@ -238,7 +238,7 @@
 		F2E9FECA1AEC8014003D5F2D /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		F2E9FECC1AEC8022003D5F2D /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		F2E9FECE1AEC8027003D5F2D /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		F2E9FED21AEC80B8003D5F2D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F2E9FED21AEC80B8003D5F2D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Carts/Images.xcassets; sourceTree = "<group>"; };
 		F2E9FED41AEC815A003D5F2D /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		F2E9FED51AEC815A003D5F2D /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		F2E9FED61AEC815A003D5F2D /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
@@ -314,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				F2E9FDB81AEC77FC003D5F2D /* Carts */,
+				F2E9FED21AEC80B8003D5F2D /* Images.xcassets */,
 				F2E9FDCE1AEC77FC003D5F2D /* CartsTests */,
 				F2E9FDB71AEC77FC003D5F2D /* Products */,
 				94A75E302241F18FDA70ED5B /* Pods */,
@@ -347,7 +348,6 @@
 		F2E9FDB91AEC77FC003D5F2D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F2E9FED21AEC80B8003D5F2D /* Images.xcassets */,
 				F2E9FE7F1AEC7CAA003D5F2D /* AppDelegate.h */,
 				F2E9FE801AEC7CAA003D5F2D /* AppDelegate.m */,
 				F2E9FE811AEC7CAA003D5F2D /* Info.plist */,

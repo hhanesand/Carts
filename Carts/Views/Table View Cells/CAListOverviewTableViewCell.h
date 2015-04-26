@@ -9,5 +9,6 @@
 @interface CAListOverviewTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *cart;
+@property (weak, nonatomic) IBOutlet UIImageView *image;
 
 @end

@@ -16,6 +16,7 @@
 #import "PFUser+CAUser.h"
 
 #import <FBSDKCoreKit/FBSDKGraphRequest.h>
+#import "UIImageView+AFNetworking.h"
 
 static NSString *const kCAListOverviewTableViewControllerReuseIdentifier = @"CAListTableViewController";
 
@@ -106,6 +107,14 @@ static NSString *const kCAListOverviewTableViewControllerReuseIdentifier = @"CAL
     CAListOverviewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCAListOverviewTableViewControllerReuseIdentifier forIndexPath:indexPath];
     
     cell.cart.text = [object bestName];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:object[@"picture"]]];
+    [request addValue:@"image/*" forHTTPHeaderField:@"Accept"];
+    
+    [cell.image setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        cell.image.image = image;
+        [cell.image setNeedsDisplay];
+    } failure:nil];
     
     return cell;
 }
