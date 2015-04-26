@@ -45,7 +45,7 @@
     return [[[self.factual queryFactualForBarcode:barcode.barcode] map:^id(NSDictionary *itemInformation) {
         return [CABarcodeObject objectWithDictionary:itemInformation];
     }] doNext:^(CABarcodeObject *barcodeObject) {
-        dispatch_async(dispatch_get_CAobal_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [[self.bing bingImageRequestWithBarcodeObject:barcodeObject] subscribeNext:^(NSArray *imageURLS) {
                 [barcodeObject addImageURLSFromArray:imageURLS];
                 [barcodeObject saveEventually];

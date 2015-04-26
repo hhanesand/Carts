@@ -137,7 +137,7 @@ static NSString *identifier = @"CABarcodeItemTableViewCell";
             return [[[[RACSignal merge:@[confirm, cancel]] take:1] doNext:^(id x) {
                 [self dismissManualEntryView];
             }] filter:^BOOL(id value) {
-                return value;
+                return (BOOL)value;
             }];
         }];
     }] doNext:^(CABarcodeObject *barcodeObject) {

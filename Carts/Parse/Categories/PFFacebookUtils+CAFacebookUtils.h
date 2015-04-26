@@ -9,6 +9,6 @@
 
 @interface PFFacebookUtils (CAFacebookUtils)
 
-+ (RACSignal *)logInWithSignalWithReadPermissions:(PF_NULLABLE NSArray *)permissions;
++ (RACSignal *)logInWithSignalWithReadPermissions:(NSArray *)permissions;
 
 @end

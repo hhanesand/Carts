@@ -17,8 +17,8 @@
     [super didMoveToSuperview];
     
     UIFont *font = [UIFont fontWithName:@"AvenirNext-Regular" size:12];
-    self.name.floatinCAabelFont = font;
-    self.name.floatinCAabelTextColor = [UIColor grayColor];
+    self.name.floatingLabelFont = font;
+    self.name.floatingLabelTextColor = [UIColor grayColor];
     self.name.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Name" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName : [UIFont fontWithName:@"AvenirNext-Regular" size:16.0]}];
 }
 

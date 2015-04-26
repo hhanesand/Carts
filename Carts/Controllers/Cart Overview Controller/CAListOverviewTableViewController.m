@@ -39,7 +39,7 @@ static NSString *const kCAListOverviewTableViewControllerReuseIdentifier = @"CAL
         self.pullToRefreshEnabled = YES;
         
         CGFloat startTime = CACurrentMediaTime();
-        dispatch_async(dispatch_get_CAobal_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
             NSLog(@"Started loading Storyboards after %f sec", CACurrentMediaTime() - startTime);
             self.listTableViewController = [[CAListTableViewController alloc] initWithStyle:UITableViewStylePlain];
             self.shareCartViewController = [CAShareCartViewController instance];

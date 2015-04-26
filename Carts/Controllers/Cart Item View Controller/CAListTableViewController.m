@@ -136,7 +136,7 @@ static NSString *const kCAParsePinName = @"CATableViewPin";
         return 0;
     } else {
         self.tableView.backgroundView = nil;
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSinCAeLine;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         return 1;
     }
 }

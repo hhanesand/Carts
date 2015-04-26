@@ -5,14 +5,14 @@
 //  Created by Hakon Hanesand on 4/23/15.
 
 #import <Foundation/Foundation.h>
-#import "CAAnimation.h"
+#import "CAStoredAnimation.h"
 #import "CACompanionAnimator.h"
 @import QuartzCore;
 
 @interface CATogCAeAnimator : NSObject <CACompanionAnimator>
 
-@property (nonatomic) CAAnimation *backwards;
-@property (nonatomic) CAAnimation *forwards;
+@property (nonatomic) CAStoredAnimation *backwards;
+@property (nonatomic) CAStoredAnimation *forwards;
 
 @property (nonatomic, copy) void (^forwardsAction)();
 @property (nonatomic, copy) void (^backwardsAction)();

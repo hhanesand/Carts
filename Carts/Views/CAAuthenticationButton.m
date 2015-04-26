@@ -9,12 +9,12 @@
 #import "UIColor+CAColor.h"
 #import "POPAnimation+CAAnimation.h"
 #import "UIView+CAView.h"
-#import "CATogCAeAnimator.h"
+#import "CAToggleAnimator.h"
 
 @interface CAAuthenticationButton ()
 @property (nonatomic) BOOL isExtended;
 
-@property (nonatomic) CAAnimation *shake;
+@property (nonatomic) CAStoredAnimation *shake;
 @property (nonatomic) CATogCAeAnimator *fadeTogCAeAnimator;
 
 @property (nonatomic) NSString *savedTitle;

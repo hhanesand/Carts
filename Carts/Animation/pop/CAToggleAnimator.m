@@ -4,9 +4,9 @@
 //
 //  Created by Hakon Hanesand on 4/23/15.
 
-#import "CATogCAeAnimator.h"
+#import "CAToggleAnimator.h"
 #import <pop/POP.h>
-#import "CAAnimation.h"
+#import "CAStoredAnimation.h"
 
 @interface CATogCAeAnimator ()
 @property (nonatomic, getter=isNextAnimationForwards) BOOL nextAnimationForwards;
@@ -17,11 +17,11 @@
 + (instancetype)animatorWithTarget:(id)target property:(NSString *)property startValue:(id)start endValue:(id)end {
     CATogCAeAnimator *togCAe = [CATogCAeAnimator new];
 
-    togCAe.backwards = [CAAnimation animationWithTargetObject:target property:property];
+    togCAe.backwards = [CAStoredAnimation animationWithTargetObject:target property:property];
     togCAe.backwards.animation.fromValue = end;
     togCAe.backwards.animation.toValue = start;
     
-    togCAe.forwards = [CAAnimation animationWithTargetObject:target property:property];
+    togCAe.forwards = [CAStoredAnimation animationWithTargetObject:target property:property];
     togCAe.forwards.animation.fromValue = start;
     togCAe.forwards.animation.toValue = end;
     

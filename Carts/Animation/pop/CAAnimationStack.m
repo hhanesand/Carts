@@ -8,7 +8,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import "CAAnimationStack.h"
-#import "CAAnimation.h"
+#import "CAStoredAnimation.h"
 
 #import "POPSpringAnimation+CAAdditions.h"
 #import "POPAnimation+CAAnimation.h"
@@ -17,21 +17,21 @@
 
 - (void)pushAnimation:(POPSpringAnimation *)animation withTargetObject:(id)target andDescription:(NSString *)description {
     [target pop_addAnimation:animation forKey:description];
-    CAAnimation *reversedAnimation = [CAAnimation animationWithSpring:[animation reverse] description:description targetObject:target];
+    CAStoredAnimation *reversedAnimation = [CAStoredAnimation animationWithSpring:[animation reverse] description:description targetObject:target];
     [self.stack addObject:reversedAnimation];
 }
 
 - (RACSignal *)popAnimation {
-    CAAnimation *topAnimation = [self.stack lastObject];
+    CAStoredAnimation *topAnimation = [self.stack lastObject];
     [self.stack removeLastObject];
     [topAnimation startAnimation];
     return [topAnimation.animation completionSignal];
 }
 
 - (RACSignal *)popAllAnimations {
-    return [[[self.stack.rac_sequence.signal doNext:^(CAAnimation *animation) {
+    return [[[self.stack.rac_sequence.signal doNext:^(CAStoredAnimation *animation) {
         [animation startAnimation];
-    }] flattenMap:^RACStream *(CAAnimation *animation) {
+    }] flattenMap:^RACStream *(CAStoredAnimation *animation) {
         return [animation.animation completionSignal];
     }] doCompleted:^{
         [self.stack removeAllObjects];
@@ -39,12 +39,12 @@
 }
 
 - (RACSignal *)popAnimationWithTargetObject:(id)target {
-    return [[[self.stack.rac_sequence.signal filter:^BOOL(CAAnimation *animation) {
+    return [[[self.stack.rac_sequence.signal filter:^BOOL(CAStoredAnimation *animation) {
         return [animation.targetObject isEqual:target];
-    }] doNext:^(CAAnimation *animation) {
+    }] doNext:^(CAStoredAnimation *animation) {
         [animation startAnimation];
         [self.stack removeObject:animation];
-    }] flattenMap:^RACStream *(CAAnimation *animation) {
+    }] flattenMap:^RACStream *(CAStoredAnimation *animation) {
         return [animation.animation completionSignal];
     }];
 }

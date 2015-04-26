@@ -10,7 +10,7 @@
 
 @interface CACameraLayer ()
 @property (nonatomic) CGFloat lineLength;
-@property (nonatomic) CGFloat cornerRadius;
+@property (nonatomic) CGFloat reticuleCornerRadius;
 @end
 
 /**
@@ -25,7 +25,7 @@
 - (instancetype)initWithBounds:(CGRect)bounds cornerRadius:(CGFloat)radius lineLength:(CGFloat)length {
     if (self = [super init]) {
         self.lineLength = length;
-        self.cornerRadius = radius;
+        self.reticuleCornerRadius = radius;
         [self configureWithBounds:bounds];
     }
     
@@ -45,7 +45,7 @@
 }
 
 - (UIBezierPath *)buildPathWithBounds:(CGRect)bounds {
-    return [UIBezierPath bezierPathWithRoundedRect:bounds cornerRadius:self.cornerRadius];
+    return [UIBezierPath bezierPathWithRoundedRect:bounds cornerRadius:self.reticuleCornerRadius];
 }
 
 @end
