@@ -71,10 +71,10 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="k17-jF-gL3">
-                                                                <rect key="frame" x="8" y="15" width="40" height="40"/>
+                                                                <rect key="frame" x="8" y="19" width="33" height="33"/>
                                                             </imageView>
                                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JAN-KU-Q7v">
-                                                                <rect key="frame" x="56" y="8" width="536" height="50"/>
+                                                                <rect key="frame" x="49" y="8" width="543" height="50"/>
                                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="23"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
@@ -352,15 +352,15 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
-                        <outlet property="manualEntryView" destination="2mM-EU-4Rf" id="ndY-Nx-Enh"/>
-                        <outlet property="manualLayoutBottomConstraint" destination="iU6-xi-ati" id="PSI-hx-6dg"/>
-                        <outlet property="searchView" destination="8g3-hI-vMa" id="rup-pg-LkZ"/>
-                        <outlet property="videoPreviewView" destination="ocO-O8-6eb" id="UAg-jx-RzO"/>
+                        <outlet property="manualEntryView" destination="2mM-EU-4Rf" id="bOf-qi-G3p"/>
+                        <outlet property="manualLayoutBottomConstraint" destination="A4m-gy-V5E" id="7f9-0l-Bg1"/>
+                        <outlet property="searchView" destination="8g3-hI-vMa" id="du7-sC-qHW"/>
+                        <outlet property="videoPreviewView" destination="ocO-O8-6eb" id="l9a-46-aXQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2j9-Of-u3x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52" y="828"/>
+            <point key="canvasLocation" x="310" y="479"/>
         </scene>
     </scenes>
     <resources>
@@ -368,6 +368,6 @@
         <image name="close" width="33" height="33"/>
         <image name="done" width="40" height="40"/>
         <image name="scan" width="60" height="60"/>
-        <image name="search" width="40" height="40"/>
+        <image name="search" width="33" height="33"/>
     </resources>
 </document>

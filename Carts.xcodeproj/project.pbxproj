@@ -8,28 +8,39 @@
 
 /* Begin PBXBuildFile section */
 		36D9E0CC30A4ACDE4AB5B4E9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A8976A000843313D7E45B8B /* libPods.a */; };
-		F2E9FDED1AEC7B14003D5F2D /* CAStoredAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FDDE1AEC7B14003D5F2D /* CAStoredAnimation.m */; };
-		F2E9FDEE1AEC7B14003D5F2D /* CAAnimationStack.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FDE01AEC7B14003D5F2D /* CAAnimationStack.m */; };
-		F2E9FDEF1AEC7B14003D5F2D /* CAKeyboardResponderAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FDE31AEC7B14003D5F2D /* CAKeyboardResponderAnimator.m */; };
-		F2E9FDF01AEC7B14003D5F2D /* CAToggleAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FDE61AEC7B14003D5F2D /* CAToggleAnimator.m */; };
-		F2E9FDF11AEC7B14003D5F2D /* CATransitionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FDE81AEC7B14003D5F2D /* CATransitionDelegate.m */; };
+		F2BDAEFF1AED4D0D00481490 /* AppDelgate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BDAEFE1AED4D0D00481490 /* AppDelgate.swift */; };
+		F2BDAF011AED51D000481490 /* CAListOverviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BDAF001AED51D000481490 /* CAListOverviewTableViewController.swift */; };
+		F2BDAF051AED56F700481490 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2BDAF021AED56F700481490 /* FBSDKCoreKit.framework */; };
+		F2BDAF061AED56F700481490 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2BDAF031AED56F700481490 /* FBSDKLoginKit.framework */; };
+		F2BDAF071AED56F700481490 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2BDAF041AED56F700481490 /* FBSDKShareKit.framework */; };
+		F2BDAF0B1AED6CF400481490 /* CABaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BDAF0A1AED6CF400481490 /* CABaseViewController.swift */; };
+		F2BDAF0F1AED6DC400481490 /* CAShareCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BDAF0E1AED6DC400481490 /* CAShareCartViewController.swift */; };
+		F2BDAF141AED773900481490 /* CAScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BDAF131AED773900481490 /* CAScannerViewController.swift */; };
+		F2BDAF161AED803A00481490 /* CAScanningSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BDAF151AED803A00481490 /* CAScanningSession.swift */; };
+		F2BDAF181AED872D00481490 /* CAListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BDAF171AED872D00481490 /* CAListTableViewController.swift */; };
+		F2BDAF1A1AED93AB00481490 /* CADismissableViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BDAF191AED93AB00481490 /* CADismissableViewHandler.swift */; };
+		F2BDAF1C1AED9AC400481490 /* CAPullToCloseTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BDAF1B1AED9AC400481490 /* CAPullToCloseTransitionManager.swift */; };
+		F2BDAF1E1AED9AE500481490 /* CAPullToCloseTransitionPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BDAF1D1AED9AE500481490 /* CAPullToCloseTransitionPresentationController.swift */; };
+		F2BDAF201AED9F0900481490 /* CAStoredAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BDAF1F1AED9F0900481490 /* CAStoredAnimation.swift */; };
+		F2BDAF221AEDA13F00481490 /* CAAnimationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BDAF211AEDA13F00481490 /* CAAnimationStack.swift */; };
+		F2BDAF241AEDA61B00481490 /* CACompanionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BDAF231AEDA61B00481490 /* CACompanionAnimator.swift */; };
+		F2BDAF261AEDA6B100481490 /* CAKeyboardResponderAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BDAF251AEDA6B100481490 /* CAKeyboardResponderAnimator.swift */; };
+		F2BDAF281AEDB07600481490 /* CAReversibleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BDAF271AEDB07600481490 /* CAReversibleTransition.swift */; };
+		F2BDAF2A1AEDB0C100481490 /* CAToggleAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BDAF291AEDB0C100481490 /* CAToggleAnimator.swift */; };
+		F2BDAF2C1AEDB27300481490 /* CATransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BDAF2B1AEDB27300481490 /* CATransitionDelegate.swift */; };
+		F2BDAF2E1AEDB75800481490 /* CALogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BDAF2D1AEDB75800481490 /* CALogInViewController.swift */; };
+		F2BDAF301AEDB78500481490 /* CASignUpDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BDAF2F1AEDB78500481490 /* CASignUpDelegate.swift */; };
+		F2BDAF321AEDB9E300481490 /* CASignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BDAF311AEDB9E300481490 /* CASignUpViewController.swift */; };
+		F2BDAF341AEDBC7500481490 /* CAAuthenticationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BDAF331AEDBC7500481490 /* CAAuthenticationButton.swift */; };
+		F2BDAF361AEDC18700481490 /* CACameraLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BDAF351AEDC18700481490 /* CACameraLayer.swift */; };
+		F2BDAF381AEDC43F00481490 /* CAManualEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BDAF371AEDC43F00481490 /* CAManualEntryView.swift */; };
+		F2BDAF3A1AEDCD3C00481490 /* CABarcodeFetchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BDAF391AEDCD3C00481490 /* CABarcodeFetchManager.swift */; };
 		F2E9FDF21AEC7B14003D5F2D /* POPAnimation+CAAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FDEA1AEC7B14003D5F2D /* POPAnimation+CAAnimation.m */; };
 		F2E9FDF31AEC7B14003D5F2D /* POPSpringAnimation+CAAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FDEC1AEC7B14003D5F2D /* POPSpringAnimation+CAAdditions.m */; };
-		F2E9FDFC1AEC7B3D003D5F2D /* CAPullToCloseTransitionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FDF91AEC7B3D003D5F2D /* CAPullToCloseTransitionManager.m */; };
-		F2E9FDFD1AEC7B3D003D5F2D /* CAPullToCloseTransitionPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FDFB1AEC7B3D003D5F2D /* CAPullToCloseTransitionPresentationController.m */; };
-		F2E9FE011AEC7B54003D5F2D /* CADismissableViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE001AEC7B54003D5F2D /* CADismissableViewHandler.m */; };
 		F2E9FE051AEC7B6C003D5F2D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2E9FE031AEC7B6C003D5F2D /* LaunchScreen.xib */; };
-		F2E9FE121AEC7BEC003D5F2D /* CALogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE0D1AEC7BEC003D5F2D /* CALogInViewController.m */; };
-		F2E9FE131AEC7BEC003D5F2D /* CASignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE101AEC7BEC003D5F2D /* CASignUpViewController.m */; };
 		F2E9FE141AEC7BEC003D5F2D /* CASignUpViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2E9FE111AEC7BEC003D5F2D /* CASignUpViewController.storyboard */; };
-		F2E9FE171AEC7BF5003D5F2D /* CAListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE161AEC7BF5003D5F2D /* CAListTableViewController.m */; };
-		F2E9FE1A1AEC7BFB003D5F2D /* CABaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE191AEC7BFB003D5F2D /* CABaseViewController.m */; };
-		F2E9FE1E1AEC7C04003D5F2D /* CAListOverviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE1C1AEC7C04003D5F2D /* CAListOverviewTableViewController.m */; };
 		F2E9FE1F1AEC7C04003D5F2D /* CAListOverviewTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2E9FE1D1AEC7C04003D5F2D /* CAListOverviewTableViewController.storyboard */; };
-		F2E9FE251AEC7C0B003D5F2D /* CAScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE211AEC7C0B003D5F2D /* CAScannerViewController.m */; };
 		F2E9FE261AEC7C0B003D5F2D /* CAScannerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2E9FE221AEC7C0B003D5F2D /* CAScannerViewController.storyboard */; };
-		F2E9FE271AEC7C0B003D5F2D /* CAScanningSession.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE241AEC7C0B003D5F2D /* CAScanningSession.m */; };
-		F2E9FE2B1AEC7C13003D5F2D /* CAShareCartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE291AEC7C13003D5F2D /* CAShareCartViewController.m */; };
 		F2E9FE2C1AEC7C13003D5F2D /* CAShareCartViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2E9FE2A1AEC7C13003D5F2D /* CAShareCartViewController.storyboard */; };
 		F2E9FE371AEC7C25003D5F2D /* CABarcode.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE2F1AEC7C25003D5F2D /* CABarcode.m */; };
 		F2E9FE381AEC7C25003D5F2D /* CABarcodeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE311AEC7C25003D5F2D /* CABarcodeObject.m */; };
@@ -44,7 +55,6 @@
 		F2E9FE561AEC7C5E003D5F2D /* CATwitterRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE531AEC7C5E003D5F2D /* CATwitterRequestSerializer.m */; };
 		F2E9FE571AEC7C5E003D5F2D /* CATwitterSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE551AEC7C5E003D5F2D /* CATwitterSessionManager.m */; };
 		F2E9FE5A1AEC7C64003D5F2D /* CARACSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE591AEC7C64003D5F2D /* CARACSessionManager.m */; };
-		F2E9FE5D1AEC7C6F003D5F2D /* CABarcodeFetchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE5C1AEC7C6F003D5F2D /* CABarcodeFetchManager.m */; };
 		F2E9FE641AEC7C83003D5F2D /* CAParseAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE611AEC7C83003D5F2D /* CAParseAnalytics.m */; };
 		F2E9FE651AEC7C83003D5F2D /* CAQueryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE631AEC7C83003D5F2D /* CAQueryTableViewController.m */; };
 		F2E9FE721AEC7C8D003D5F2D /* PFFacebookUtils+CAFacebookUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE671AEC7C8D003D5F2D /* PFFacebookUtils+CAFacebookUtils.m */; };
@@ -55,16 +65,11 @@
 		F2E9FE771AEC7C8D003D5F2D /* PFUser+CAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE711AEC7C8D003D5F2D /* PFUser+CAUser.m */; };
 		F2E9FE7D1AEC7C9D003D5F2D /* RACSignal+CAAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE7A1AEC7C9D003D5F2D /* RACSignal+CAAdditions.m */; };
 		F2E9FE7E1AEC7C9D003D5F2D /* UISearchBar+RACAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE7C1AEC7C9D003D5F2D /* UISearchBar+RACAdditions.m */; };
-		F2E9FE831AEC7CAA003D5F2D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE801AEC7CAA003D5F2D /* AppDelegate.m */; };
-		F2E9FE851AEC7CAA003D5F2D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE821AEC7CAA003D5F2D /* main.m */; };
 		F2E9FE911AEC7CB8003D5F2D /* NSDictionary+CACustomKVOOperators.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE881AEC7CB8003D5F2D /* NSDictionary+CACustomKVOOperators.m */; };
 		F2E9FE921AEC7CB8003D5F2D /* UIColor+CAColor.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE8A1AEC7CB8003D5F2D /* UIColor+CAColor.m */; };
 		F2E9FE931AEC7CB8003D5F2D /* UIImage+CAImage.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE8C1AEC7CB8003D5F2D /* UIImage+CAImage.m */; };
 		F2E9FE941AEC7CB8003D5F2D /* UIView+BadView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE8E1AEC7CB8003D5F2D /* UIView+BadView.m */; };
 		F2E9FE951AEC7CB8003D5F2D /* UIView+CAView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE901AEC7CB8003D5F2D /* UIView+CAView.m */; };
-		F2E9FEA51AEC7CD4003D5F2D /* CAAuthenticationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE9A1AEC7CD4003D5F2D /* CAAuthenticationButton.m */; };
-		F2E9FEA61AEC7CD4003D5F2D /* CACameraLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE9C1AEC7CD4003D5F2D /* CACameraLayer.m */; };
-		F2E9FEA71AEC7CD4003D5F2D /* CAManualEntryView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE9E1AEC7CD4003D5F2D /* CAManualEntryView.m */; };
 		F2E9FEA81AEC7CD4003D5F2D /* CAProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FEA01AEC7CD4003D5F2D /* CAProgressHUD.m */; };
 		F2E9FEA91AEC7CD4003D5F2D /* CARect.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FEA21AEC7CD4003D5F2D /* CARect.m */; };
 		F2E9FEAA1AEC7CD4003D5F2D /* CAVideoPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FEA41AEC7CD4003D5F2D /* CAVideoPreviewView.m */; };
@@ -86,9 +91,6 @@
 		F2E9FECD1AEC8022003D5F2D /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2E9FECC1AEC8022003D5F2D /* Accounts.framework */; };
 		F2E9FECF1AEC8027003D5F2D /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2E9FECE1AEC8027003D5F2D /* Social.framework */; };
 		F2E9FED31AEC80B9003D5F2D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2E9FED21AEC80B8003D5F2D /* Images.xcassets */; };
-		F2E9FED71AEC815A003D5F2D /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2E9FED41AEC815A003D5F2D /* FBSDKCoreKit.framework */; };
-		F2E9FED81AEC815A003D5F2D /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2E9FED51AEC815A003D5F2D /* FBSDKLoginKit.framework */; };
-		F2E9FED91AEC815A003D5F2D /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2E9FED61AEC815A003D5F2D /* FBSDKShareKit.framework */; };
 		F2E9FEDB1AEC81FC003D5F2D /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2E9FEDA1AEC81FC003D5F2D /* ParseFacebookUtilsV4.framework */; };
 		F2E9FEDF1AEC8377003D5F2D /* MustOverride.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FEDE1AEC8377003D5F2D /* MustOverride.m */; };
 /* End PBXBuildFile section */
@@ -97,51 +99,44 @@
 		6D584CAE9CDAC928CBCA8551 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		8A8976A000843313D7E45B8B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B37AE999C59955AC7121D00B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		F2BDAEFD1AED4D0C00481490 /* Carts-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Carts-Bridging-Header.h"; sourceTree = "<group>"; };
+		F2BDAEFE1AED4D0D00481490 /* AppDelgate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelgate.swift; sourceTree = "<group>"; };
+		F2BDAF001AED51D000481490 /* CAListOverviewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAListOverviewTableViewController.swift; sourceTree = "<group>"; };
+		F2BDAF021AED56F700481490 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		F2BDAF031AED56F700481490 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		F2BDAF041AED56F700481490 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		F2BDAF0A1AED6CF400481490 /* CABaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CABaseViewController.swift; path = Controllers/CABaseViewController.swift; sourceTree = "<group>"; };
+		F2BDAF0E1AED6DC400481490 /* CAShareCartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CAShareCartViewController.swift; path = "Controllers/Share Controller/CAShareCartViewController.swift"; sourceTree = "<group>"; };
+		F2BDAF131AED773900481490 /* CAScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CAScannerViewController.swift; path = "Controllers/Scan and Search Controller/CAScannerViewController.swift"; sourceTree = "<group>"; };
+		F2BDAF151AED803A00481490 /* CAScanningSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CAScanningSession.swift; path = "Controllers/Scan and Search Controller/CAScanningSession.swift"; sourceTree = "<group>"; };
+		F2BDAF171AED872D00481490 /* CAListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CAListTableViewController.swift; path = "Controllers/Cart Item View Controller/CAListTableViewController.swift"; sourceTree = "<group>"; };
+		F2BDAF191AED93AB00481490 /* CADismissableViewHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CADismissableViewHandler.swift; sourceTree = "<group>"; };
+		F2BDAF1B1AED9AC400481490 /* CAPullToCloseTransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CAPullToCloseTransitionManager.swift; path = "Animation/View Controller Presentation/CAPullToCloseTransitionManager.swift"; sourceTree = "<group>"; };
+		F2BDAF1D1AED9AE500481490 /* CAPullToCloseTransitionPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CAPullToCloseTransitionPresentationController.swift; path = "Animation/View Controller Presentation/CAPullToCloseTransitionPresentationController.swift"; sourceTree = "<group>"; };
+		F2BDAF1F1AED9F0900481490 /* CAStoredAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CAStoredAnimation.swift; path = Animation/pop/CAStoredAnimation.swift; sourceTree = "<group>"; };
+		F2BDAF211AEDA13F00481490 /* CAAnimationStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CAAnimationStack.swift; path = Animation/pop/CAAnimationStack.swift; sourceTree = "<group>"; };
+		F2BDAF231AEDA61B00481490 /* CACompanionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CACompanionAnimator.swift; sourceTree = "<group>"; };
+		F2BDAF251AEDA6B100481490 /* CAKeyboardResponderAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CAKeyboardResponderAnimator.swift; path = Animation/pop/CAKeyboardResponderAnimator.swift; sourceTree = "<group>"; };
+		F2BDAF271AEDB07600481490 /* CAReversibleTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAReversibleTransition.swift; sourceTree = "<group>"; };
+		F2BDAF291AEDB0C100481490 /* CAToggleAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAToggleAnimator.swift; sourceTree = "<group>"; };
+		F2BDAF2B1AEDB27300481490 /* CATransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CATransitionDelegate.swift; sourceTree = "<group>"; };
+		F2BDAF2D1AEDB75800481490 /* CALogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CALogInViewController.swift; sourceTree = "<group>"; };
+		F2BDAF2F1AEDB78500481490 /* CASignUpDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CASignUpDelegate.swift; sourceTree = "<group>"; };
+		F2BDAF311AEDB9E300481490 /* CASignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CASignUpViewController.swift; sourceTree = "<group>"; };
+		F2BDAF331AEDBC7500481490 /* CAAuthenticationButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CAAuthenticationButton.swift; path = Views/CAAuthenticationButton.swift; sourceTree = "<group>"; };
+		F2BDAF351AEDC18700481490 /* CACameraLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CACameraLayer.swift; sourceTree = "<group>"; };
+		F2BDAF371AEDC43F00481490 /* CAManualEntryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAManualEntryView.swift; sourceTree = "<group>"; };
+		F2BDAF391AEDCD3C00481490 /* CABarcodeFetchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CABarcodeFetchManager.swift; sourceTree = "<group>"; };
 		F2E9FDB61AEC77FC003D5F2D /* Carts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Carts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E9FDD01AEC77FC003D5F2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F2E9FDDD1AEC7B14003D5F2D /* CAStoredAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = CAStoredAnimation.h; path = Animation/pop/CAStoredAnimation.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		F2E9FDDE1AEC7B14003D5F2D /* CAStoredAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = CAStoredAnimation.m; path = Animation/pop/CAStoredAnimation.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		F2E9FDDF1AEC7B14003D5F2D /* CAAnimationStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = CAAnimationStack.h; path = Animation/pop/CAAnimationStack.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		F2E9FDE01AEC7B14003D5F2D /* CAAnimationStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = CAAnimationStack.m; path = Animation/pop/CAAnimationStack.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		F2E9FDE11AEC7B14003D5F2D /* CACompanionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CACompanionAnimator.h; path = Animation/pop/CACompanionAnimator.h; sourceTree = "<group>"; };
-		F2E9FDE21AEC7B14003D5F2D /* CAKeyboardResponderAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAKeyboardResponderAnimator.h; path = Animation/pop/CAKeyboardResponderAnimator.h; sourceTree = "<group>"; };
-		F2E9FDE31AEC7B14003D5F2D /* CAKeyboardResponderAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAKeyboardResponderAnimator.m; path = Animation/pop/CAKeyboardResponderAnimator.m; sourceTree = "<group>"; };
-		F2E9FDE41AEC7B14003D5F2D /* CAReversibleTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAReversibleTransition.h; path = Animation/pop/CAReversibleTransition.h; sourceTree = "<group>"; };
-		F2E9FDE51AEC7B14003D5F2D /* CAToggleAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAToggleAnimator.h; path = Animation/pop/CAToggleAnimator.h; sourceTree = "<group>"; };
-		F2E9FDE61AEC7B14003D5F2D /* CAToggleAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAToggleAnimator.m; path = Animation/pop/CAToggleAnimator.m; sourceTree = "<group>"; };
-		F2E9FDE71AEC7B14003D5F2D /* CATransitionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CATransitionDelegate.h; path = Animation/pop/CATransitionDelegate.h; sourceTree = "<group>"; };
-		F2E9FDE81AEC7B14003D5F2D /* CATransitionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CATransitionDelegate.m; path = Animation/pop/CATransitionDelegate.m; sourceTree = "<group>"; };
 		F2E9FDE91AEC7B14003D5F2D /* POPAnimation+CAAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "POPAnimation+CAAnimation.h"; path = "Animation/pop/POPAnimation+CAAnimation.h"; sourceTree = "<group>"; };
 		F2E9FDEA1AEC7B14003D5F2D /* POPAnimation+CAAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "POPAnimation+CAAnimation.m"; path = "Animation/pop/POPAnimation+CAAnimation.m"; sourceTree = "<group>"; };
 		F2E9FDEB1AEC7B14003D5F2D /* POPSpringAnimation+CAAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "POPSpringAnimation+CAAdditions.h"; path = "Animation/pop/POPSpringAnimation+CAAdditions.h"; sourceTree = "<group>"; };
 		F2E9FDEC1AEC7B14003D5F2D /* POPSpringAnimation+CAAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "POPSpringAnimation+CAAdditions.m"; path = "Animation/pop/POPSpringAnimation+CAAdditions.m"; sourceTree = "<group>"; };
-		F2E9FDF81AEC7B3D003D5F2D /* CAPullToCloseTransitionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAPullToCloseTransitionManager.h; path = "Animation/View Controller Presentation/CAPullToCloseTransitionManager.h"; sourceTree = "<group>"; };
-		F2E9FDF91AEC7B3D003D5F2D /* CAPullToCloseTransitionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAPullToCloseTransitionManager.m; path = "Animation/View Controller Presentation/CAPullToCloseTransitionManager.m"; sourceTree = "<group>"; };
-		F2E9FDFA1AEC7B3D003D5F2D /* CAPullToCloseTransitionPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAPullToCloseTransitionPresentationController.h; path = "Animation/View Controller Presentation/CAPullToCloseTransitionPresentationController.h"; sourceTree = "<group>"; };
-		F2E9FDFB1AEC7B3D003D5F2D /* CAPullToCloseTransitionPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAPullToCloseTransitionPresentationController.m; path = "Animation/View Controller Presentation/CAPullToCloseTransitionPresentationController.m"; sourceTree = "<group>"; };
-		F2E9FDFF1AEC7B54003D5F2D /* CADismissableViewHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CADismissableViewHandler.h; path = "Animation/View Presentation/CADismissableViewHandler.h"; sourceTree = "<group>"; };
-		F2E9FE001AEC7B54003D5F2D /* CADismissableViewHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CADismissableViewHandler.m; path = "Animation/View Presentation/CADismissableViewHandler.m"; sourceTree = "<group>"; };
 		F2E9FE041AEC7B6C003D5F2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		F2E9FE0C1AEC7BEC003D5F2D /* CALogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CALogInViewController.h; path = "Controllers/Authentication Controllers/CALogInViewController.h"; sourceTree = "<group>"; };
-		F2E9FE0D1AEC7BEC003D5F2D /* CALogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CALogInViewController.m; path = "Controllers/Authentication Controllers/CALogInViewController.m"; sourceTree = "<group>"; };
-		F2E9FE0E1AEC7BEC003D5F2D /* CASignUpDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CASignUpDelegate.h; path = "Controllers/Authentication Controllers/CASignUpDelegate.h"; sourceTree = "<group>"; };
-		F2E9FE0F1AEC7BEC003D5F2D /* CASignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CASignUpViewController.h; path = "Controllers/Authentication Controllers/CASignUpViewController.h"; sourceTree = "<group>"; };
-		F2E9FE101AEC7BEC003D5F2D /* CASignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CASignUpViewController.m; path = "Controllers/Authentication Controllers/CASignUpViewController.m"; sourceTree = "<group>"; };
 		F2E9FE111AEC7BEC003D5F2D /* CASignUpViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CASignUpViewController.storyboard; path = "Controllers/Authentication Controllers/CASignUpViewController.storyboard"; sourceTree = "<group>"; };
-		F2E9FE151AEC7BF5003D5F2D /* CAListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAListTableViewController.h; path = "Controllers/Cart Item View Controller/CAListTableViewController.h"; sourceTree = "<group>"; };
-		F2E9FE161AEC7BF5003D5F2D /* CAListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAListTableViewController.m; path = "Controllers/Cart Item View Controller/CAListTableViewController.m"; sourceTree = "<group>"; };
-		F2E9FE181AEC7BFB003D5F2D /* CABaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CABaseViewController.h; path = Controllers/CABaseViewController.h; sourceTree = "<group>"; };
-		F2E9FE191AEC7BFB003D5F2D /* CABaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CABaseViewController.m; path = Controllers/CABaseViewController.m; sourceTree = "<group>"; };
-		F2E9FE1B1AEC7C04003D5F2D /* CAListOverviewTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAListOverviewTableViewController.h; path = "Controllers/Cart Overview Controller/CAListOverviewTableViewController.h"; sourceTree = "<group>"; };
-		F2E9FE1C1AEC7C04003D5F2D /* CAListOverviewTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAListOverviewTableViewController.m; path = "Controllers/Cart Overview Controller/CAListOverviewTableViewController.m"; sourceTree = "<group>"; };
 		F2E9FE1D1AEC7C04003D5F2D /* CAListOverviewTableViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CAListOverviewTableViewController.storyboard; path = "Controllers/Cart Overview Controller/CAListOverviewTableViewController.storyboard"; sourceTree = "<group>"; };
-		F2E9FE201AEC7C0B003D5F2D /* CAScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAScannerViewController.h; path = "Controllers/Scan and Search Controller/CAScannerViewController.h"; sourceTree = "<group>"; };
-		F2E9FE211AEC7C0B003D5F2D /* CAScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAScannerViewController.m; path = "Controllers/Scan and Search Controller/CAScannerViewController.m"; sourceTree = "<group>"; };
 		F2E9FE221AEC7C0B003D5F2D /* CAScannerViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CAScannerViewController.storyboard; path = "Controllers/Scan and Search Controller/CAScannerViewController.storyboard"; sourceTree = "<group>"; };
-		F2E9FE231AEC7C0B003D5F2D /* CAScanningSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAScanningSession.h; path = "Controllers/Scan and Search Controller/CAScanningSession.h"; sourceTree = "<group>"; };
-		F2E9FE241AEC7C0B003D5F2D /* CAScanningSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAScanningSession.m; path = "Controllers/Scan and Search Controller/CAScanningSession.m"; sourceTree = "<group>"; };
-		F2E9FE281AEC7C13003D5F2D /* CAShareCartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAShareCartViewController.h; path = "Controllers/Share Controller/CAShareCartViewController.h"; sourceTree = "<group>"; };
-		F2E9FE291AEC7C13003D5F2D /* CAShareCartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAShareCartViewController.m; path = "Controllers/Share Controller/CAShareCartViewController.m"; sourceTree = "<group>"; };
 		F2E9FE2A1AEC7C13003D5F2D /* CAShareCartViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CAShareCartViewController.storyboard; path = "Controllers/Share Controller/CAShareCartViewController.storyboard"; sourceTree = "<group>"; };
 		F2E9FE2E1AEC7C25003D5F2D /* CABarcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = CABarcode.h; path = Model/CABarcode.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		F2E9FE2F1AEC7C25003D5F2D /* CABarcode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = CABarcode.m; path = Model/CABarcode.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -170,8 +165,6 @@
 		F2E9FE551AEC7C5E003D5F2D /* CATwitterSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CATwitterSessionManager.m; path = "Networking/Session Managers/Twitter/CATwitterSessionManager.m"; sourceTree = "<group>"; };
 		F2E9FE581AEC7C64003D5F2D /* CARACSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CARACSessionManager.h; path = "Networking/Session Managers/CARACSessionManager.h"; sourceTree = "<group>"; };
 		F2E9FE591AEC7C64003D5F2D /* CARACSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CARACSessionManager.m; path = "Networking/Session Managers/CARACSessionManager.m"; sourceTree = "<group>"; };
-		F2E9FE5B1AEC7C6F003D5F2D /* CABarcodeFetchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = CABarcodeFetchManager.h; path = Networking/CABarcodeFetchManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		F2E9FE5C1AEC7C6F003D5F2D /* CABarcodeFetchManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = CABarcodeFetchManager.m; path = Networking/CABarcodeFetchManager.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F2E9FE601AEC7C83003D5F2D /* CAParseAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAParseAnalytics.h; path = Parse/CAParseAnalytics.h; sourceTree = "<group>"; };
 		F2E9FE611AEC7C83003D5F2D /* CAParseAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAParseAnalytics.m; path = Parse/CAParseAnalytics.m; sourceTree = "<group>"; };
 		F2E9FE621AEC7C83003D5F2D /* CAQueryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAQueryTableViewController.h; path = Parse/CAQueryTableViewController.h; sourceTree = "<group>"; };
@@ -192,10 +185,7 @@
 		F2E9FE7A1AEC7C9D003D5F2D /* RACSignal+CAAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "RACSignal+CAAdditions.m"; path = "Reactive Cocoa/RACSignal+CAAdditions.m"; sourceTree = "<group>"; };
 		F2E9FE7B1AEC7C9D003D5F2D /* UISearchBar+RACAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UISearchBar+RACAdditions.h"; path = "Reactive Cocoa/UISearchBar+RACAdditions.h"; sourceTree = "<group>"; };
 		F2E9FE7C1AEC7C9D003D5F2D /* UISearchBar+RACAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UISearchBar+RACAdditions.m"; path = "Reactive Cocoa/UISearchBar+RACAdditions.m"; sourceTree = "<group>"; };
-		F2E9FE7F1AEC7CAA003D5F2D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "Supporting Files/AppDelegate.h"; sourceTree = "<group>"; };
-		F2E9FE801AEC7CAA003D5F2D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = AppDelegate.m; path = "Supporting Files/AppDelegate.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		F2E9FE811AEC7CAA003D5F2D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Supporting Files/Info.plist"; sourceTree = "<group>"; };
-		F2E9FE821AEC7CAA003D5F2D /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Supporting Files/main.m"; sourceTree = "<group>"; };
 		F2E9FE871AEC7CB8003D5F2D /* NSDictionary+CACustomKVOOperators.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+CACustomKVOOperators.h"; path = "Supporting Files/Categories/NSDictionary+CACustomKVOOperators.h"; sourceTree = "<group>"; };
 		F2E9FE881AEC7CB8003D5F2D /* NSDictionary+CACustomKVOOperators.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+CACustomKVOOperators.m"; path = "Supporting Files/Categories/NSDictionary+CACustomKVOOperators.m"; sourceTree = "<group>"; };
 		F2E9FE891AEC7CB8003D5F2D /* UIColor+CAColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+CAColor.h"; path = "Supporting Files/Categories/UIColor+CAColor.h"; sourceTree = "<group>"; };
@@ -206,12 +196,6 @@
 		F2E9FE8E1AEC7CB8003D5F2D /* UIView+BadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+BadView.m"; path = "Supporting Files/Categories/UIView+BadView.m"; sourceTree = "<group>"; };
 		F2E9FE8F1AEC7CB8003D5F2D /* UIView+CAView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+CAView.h"; path = "Supporting Files/Categories/UIView+CAView.h"; sourceTree = "<group>"; };
 		F2E9FE901AEC7CB8003D5F2D /* UIView+CAView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+CAView.m"; path = "Supporting Files/Categories/UIView+CAView.m"; sourceTree = "<group>"; };
-		F2E9FE991AEC7CD4003D5F2D /* CAAuthenticationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = CAAuthenticationButton.h; path = Views/CAAuthenticationButton.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		F2E9FE9A1AEC7CD4003D5F2D /* CAAuthenticationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = CAAuthenticationButton.m; path = Views/CAAuthenticationButton.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		F2E9FE9B1AEC7CD4003D5F2D /* CACameraLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CACameraLayer.h; path = Views/CACameraLayer.h; sourceTree = "<group>"; };
-		F2E9FE9C1AEC7CD4003D5F2D /* CACameraLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CACameraLayer.m; path = Views/CACameraLayer.m; sourceTree = "<group>"; };
-		F2E9FE9D1AEC7CD4003D5F2D /* CAManualEntryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAManualEntryView.h; path = Views/CAManualEntryView.h; sourceTree = "<group>"; };
-		F2E9FE9E1AEC7CD4003D5F2D /* CAManualEntryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAManualEntryView.m; path = Views/CAManualEntryView.m; sourceTree = "<group>"; };
 		F2E9FE9F1AEC7CD4003D5F2D /* CAProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAProgressHUD.h; path = Views/CAProgressHUD.h; sourceTree = "<group>"; };
 		F2E9FEA01AEC7CD4003D5F2D /* CAProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAProgressHUD.m; path = Views/CAProgressHUD.m; sourceTree = "<group>"; };
 		F2E9FEA11AEC7CD4003D5F2D /* CARect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CARect.h; path = Views/CARect.h; sourceTree = "<group>"; };
@@ -239,9 +223,6 @@
 		F2E9FECC1AEC8022003D5F2D /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		F2E9FECE1AEC8027003D5F2D /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		F2E9FED21AEC80B8003D5F2D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		F2E9FED41AEC815A003D5F2D /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		F2E9FED51AEC815A003D5F2D /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		F2E9FED61AEC815A003D5F2D /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		F2E9FEDA1AEC81FC003D5F2D /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		F2E9FEDD1AEC8377003D5F2D /* MustOverride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MustOverride.h; sourceTree = "<group>"; };
 		F2E9FEDE1AEC8377003D5F2D /* MustOverride.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MustOverride.m; sourceTree = "<group>"; };
@@ -252,10 +233,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2BDAF061AED56F700481490 /* FBSDKLoginKit.framework in Frameworks */,
 				F2E9FEDB1AEC81FC003D5F2D /* ParseFacebookUtilsV4.framework in Frameworks */,
-				F2E9FED71AEC815A003D5F2D /* FBSDKCoreKit.framework in Frameworks */,
-				F2E9FED81AEC815A003D5F2D /* FBSDKLoginKit.framework in Frameworks */,
-				F2E9FED91AEC815A003D5F2D /* FBSDKShareKit.framework in Frameworks */,
 				F2E9FECF1AEC8027003D5F2D /* Social.framework in Frameworks */,
 				F2E9FECD1AEC8022003D5F2D /* Accounts.framework in Frameworks */,
 				F2E9FECB1AEC8014003D5F2D /* libsqlite3.dylib in Frameworks */,
@@ -268,6 +247,8 @@
 				F2E9FEBD1AEC7FDA003D5F2D /* CoreLocation.framework in Frameworks */,
 				F2E9FEBB1AEC7FD2003D5F2D /* CoreGraphics.framework in Frameworks */,
 				F2E9FEB91AEC7FCB003D5F2D /* CFNetwork.framework in Frameworks */,
+				F2BDAF071AED56F700481490 /* FBSDKShareKit.framework in Frameworks */,
+				F2BDAF051AED56F700481490 /* FBSDKCoreKit.framework in Frameworks */,
 				F2E9FEB71AEC7FC4003D5F2D /* AudioToolbox.framework in Frameworks */,
 				36D9E0CC30A4ACDE4AB5B4E9 /* libPods.a in Frameworks */,
 			);
@@ -279,10 +260,10 @@
 		5046E564F4FC3400280A09B2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F2BDAF021AED56F700481490 /* FBSDKCoreKit.framework */,
+				F2BDAF031AED56F700481490 /* FBSDKLoginKit.framework */,
+				F2BDAF041AED56F700481490 /* FBSDKShareKit.framework */,
 				F2E9FEDA1AEC81FC003D5F2D /* ParseFacebookUtilsV4.framework */,
-				F2E9FED41AEC815A003D5F2D /* FBSDKCoreKit.framework */,
-				F2E9FED51AEC815A003D5F2D /* FBSDKLoginKit.framework */,
-				F2E9FED61AEC815A003D5F2D /* FBSDKShareKit.framework */,
 				F2E9FECE1AEC8027003D5F2D /* Social.framework */,
 				F2E9FECC1AEC8022003D5F2D /* Accounts.framework */,
 				F2E9FECA1AEC8014003D5F2D /* libsqlite3.dylib */,
@@ -348,13 +329,12 @@
 		F2E9FDB91AEC77FC003D5F2D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F2E9FE7F1AEC7CAA003D5F2D /* AppDelegate.h */,
-				F2E9FE801AEC7CAA003D5F2D /* AppDelegate.m */,
 				F2E9FE811AEC7CAA003D5F2D /* Info.plist */,
-				F2E9FE821AEC7CAA003D5F2D /* main.m */,
 				F2E9FE031AEC7B6C003D5F2D /* LaunchScreen.xib */,
 				F2E9FEDC1AEC8367003D5F2D /* Vendor */,
 				F2E9FE861AEC7CB2003D5F2D /* Categories */,
+				F2BDAEFE1AED4D0D00481490 /* AppDelgate.swift */,
+				F2BDAEFD1AED4D0C00481490 /* Carts-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -388,18 +368,13 @@
 		F2E9FDDC1AEC7B08003D5F2D /* pop */ = {
 			isa = PBXGroup;
 			children = (
-				F2E9FDDD1AEC7B14003D5F2D /* CAStoredAnimation.h */,
-				F2E9FDDE1AEC7B14003D5F2D /* CAStoredAnimation.m */,
-				F2E9FDDF1AEC7B14003D5F2D /* CAAnimationStack.h */,
-				F2E9FDE01AEC7B14003D5F2D /* CAAnimationStack.m */,
-				F2E9FDE11AEC7B14003D5F2D /* CACompanionAnimator.h */,
-				F2E9FDE21AEC7B14003D5F2D /* CAKeyboardResponderAnimator.h */,
-				F2E9FDE31AEC7B14003D5F2D /* CAKeyboardResponderAnimator.m */,
-				F2E9FDE41AEC7B14003D5F2D /* CAReversibleTransition.h */,
-				F2E9FDE51AEC7B14003D5F2D /* CAToggleAnimator.h */,
-				F2E9FDE61AEC7B14003D5F2D /* CAToggleAnimator.m */,
-				F2E9FDE71AEC7B14003D5F2D /* CATransitionDelegate.h */,
-				F2E9FDE81AEC7B14003D5F2D /* CATransitionDelegate.m */,
+				F2BDAF1F1AED9F0900481490 /* CAStoredAnimation.swift */,
+				F2BDAF211AEDA13F00481490 /* CAAnimationStack.swift */,
+				F2BDAF231AEDA61B00481490 /* CACompanionAnimator.swift */,
+				F2BDAF251AEDA6B100481490 /* CAKeyboardResponderAnimator.swift */,
+				F2BDAF271AEDB07600481490 /* CAReversibleTransition.swift */,
+				F2BDAF291AEDB0C100481490 /* CAToggleAnimator.swift */,
+				F2BDAF2B1AEDB27300481490 /* CATransitionDelegate.swift */,
 				F2E9FDE91AEC7B14003D5F2D /* POPAnimation+CAAnimation.h */,
 				F2E9FDEA1AEC7B14003D5F2D /* POPAnimation+CAAnimation.m */,
 				F2E9FDEB1AEC7B14003D5F2D /* POPSpringAnimation+CAAdditions.h */,
@@ -411,10 +386,8 @@
 		F2E9FDFE1AEC7B41003D5F2D /* View Controller Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				F2E9FDF81AEC7B3D003D5F2D /* CAPullToCloseTransitionManager.h */,
-				F2E9FDF91AEC7B3D003D5F2D /* CAPullToCloseTransitionManager.m */,
-				F2E9FDFA1AEC7B3D003D5F2D /* CAPullToCloseTransitionPresentationController.h */,
-				F2E9FDFB1AEC7B3D003D5F2D /* CAPullToCloseTransitionPresentationController.m */,
+				F2BDAF1B1AED9AC400481490 /* CAPullToCloseTransitionManager.swift */,
+				F2BDAF1D1AED9AE500481490 /* CAPullToCloseTransitionPresentationController.swift */,
 			);
 			name = "View Controller Presentation";
 			sourceTree = "<group>";
@@ -422,8 +395,7 @@
 		F2E9FE021AEC7B56003D5F2D /* View Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				F2E9FDFF1AEC7B54003D5F2D /* CADismissableViewHandler.h */,
-				F2E9FE001AEC7B54003D5F2D /* CADismissableViewHandler.m */,
+				F2BDAF191AED93AB00481490 /* CADismissableViewHandler.swift */,
 			);
 			name = "View Presentation";
 			sourceTree = "<group>";
@@ -431,8 +403,7 @@
 		F2E9FE061AEC7B72003D5F2D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F2E9FE181AEC7BFB003D5F2D /* CABaseViewController.h */,
-				F2E9FE191AEC7BFB003D5F2D /* CABaseViewController.m */,
+				F2BDAF0A1AED6CF400481490 /* CABaseViewController.swift */,
 				F2E9FE0B1AEC7BCF003D5F2D /* Share Controller */,
 				F2E9FE0A1AEC7BC5003D5F2D /* Scan and Search Controller */,
 				F2E9FE091AEC7BBD003D5F2D /* Cart Overview Controller */,
@@ -445,11 +416,9 @@
 		F2E9FE071AEC7B96003D5F2D /* Authentication Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F2E9FE0C1AEC7BEC003D5F2D /* CALogInViewController.h */,
-				F2E9FE0D1AEC7BEC003D5F2D /* CALogInViewController.m */,
-				F2E9FE0E1AEC7BEC003D5F2D /* CASignUpDelegate.h */,
-				F2E9FE0F1AEC7BEC003D5F2D /* CASignUpViewController.h */,
-				F2E9FE101AEC7BEC003D5F2D /* CASignUpViewController.m */,
+				F2BDAF2F1AEDB78500481490 /* CASignUpDelegate.swift */,
+				F2BDAF2D1AEDB75800481490 /* CALogInViewController.swift */,
+				F2BDAF311AEDB9E300481490 /* CASignUpViewController.swift */,
 				F2E9FE111AEC7BEC003D5F2D /* CASignUpViewController.storyboard */,
 			);
 			name = "Authentication Controllers";
@@ -458,8 +427,7 @@
 		F2E9FE081AEC7BB3003D5F2D /* Cart Item View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				F2E9FE151AEC7BF5003D5F2D /* CAListTableViewController.h */,
-				F2E9FE161AEC7BF5003D5F2D /* CAListTableViewController.m */,
+				F2BDAF171AED872D00481490 /* CAListTableViewController.swift */,
 			);
 			name = "Cart Item View Controller";
 			sourceTree = "<group>";
@@ -467,9 +435,8 @@
 		F2E9FE091AEC7BBD003D5F2D /* Cart Overview Controller */ = {
 			isa = PBXGroup;
 			children = (
-				F2E9FE1B1AEC7C04003D5F2D /* CAListOverviewTableViewController.h */,
-				F2E9FE1C1AEC7C04003D5F2D /* CAListOverviewTableViewController.m */,
 				F2E9FE1D1AEC7C04003D5F2D /* CAListOverviewTableViewController.storyboard */,
+				F2BDAF001AED51D000481490 /* CAListOverviewTableViewController.swift */,
 			);
 			name = "Cart Overview Controller";
 			sourceTree = "<group>";
@@ -477,11 +444,9 @@
 		F2E9FE0A1AEC7BC5003D5F2D /* Scan and Search Controller */ = {
 			isa = PBXGroup;
 			children = (
-				F2E9FE201AEC7C0B003D5F2D /* CAScannerViewController.h */,
-				F2E9FE211AEC7C0B003D5F2D /* CAScannerViewController.m */,
+				F2BDAF131AED773900481490 /* CAScannerViewController.swift */,
 				F2E9FE221AEC7C0B003D5F2D /* CAScannerViewController.storyboard */,
-				F2E9FE231AEC7C0B003D5F2D /* CAScanningSession.h */,
-				F2E9FE241AEC7C0B003D5F2D /* CAScanningSession.m */,
+				F2BDAF151AED803A00481490 /* CAScanningSession.swift */,
 			);
 			name = "Scan and Search Controller";
 			sourceTree = "<group>";
@@ -489,9 +454,8 @@
 		F2E9FE0B1AEC7BCF003D5F2D /* Share Controller */ = {
 			isa = PBXGroup;
 			children = (
-				F2E9FE281AEC7C13003D5F2D /* CAShareCartViewController.h */,
-				F2E9FE291AEC7C13003D5F2D /* CAShareCartViewController.m */,
 				F2E9FE2A1AEC7C13003D5F2D /* CAShareCartViewController.storyboard */,
+				F2BDAF0E1AED6DC400481490 /* CAShareCartViewController.swift */,
 			);
 			name = "Share Controller";
 			sourceTree = "<group>";
@@ -515,8 +479,6 @@
 		F2E9FE3B1AEC7C28003D5F2D /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				F2E9FE5B1AEC7C6F003D5F2D /* CABarcodeFetchManager.h */,
-				F2E9FE5C1AEC7C6F003D5F2D /* CABarcodeFetchManager.m */,
 				F2E9FE3C1AEC7C35003D5F2D /* Session Managers */,
 			);
 			name = Networking;
@@ -525,6 +487,7 @@
 		F2E9FE3C1AEC7C35003D5F2D /* Session Managers */ = {
 			isa = PBXGroup;
 			children = (
+				F2BDAF391AEDCD3C00481490 /* CABarcodeFetchManager.swift */,
 				F2E9FE581AEC7C64003D5F2D /* CARACSessionManager.h */,
 				F2E9FE591AEC7C64003D5F2D /* CARACSessionManager.m */,
 				F2E9FE3F1AEC7C3E003D5F2D /* Factual */,
@@ -633,12 +596,8 @@
 		F2E9FE971AEC7CC4003D5F2D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F2E9FE991AEC7CD4003D5F2D /* CAAuthenticationButton.h */,
-				F2E9FE9A1AEC7CD4003D5F2D /* CAAuthenticationButton.m */,
-				F2E9FE9B1AEC7CD4003D5F2D /* CACameraLayer.h */,
-				F2E9FE9C1AEC7CD4003D5F2D /* CACameraLayer.m */,
-				F2E9FE9D1AEC7CD4003D5F2D /* CAManualEntryView.h */,
-				F2E9FE9E1AEC7CD4003D5F2D /* CAManualEntryView.m */,
+				F2BDAF331AEDBC7500481490 /* CAAuthenticationButton.swift */,
+				F2BDAF351AEDC18700481490 /* CACameraLayer.swift */,
 				F2E9FE9F1AEC7CD4003D5F2D /* CAProgressHUD.h */,
 				F2E9FEA01AEC7CD4003D5F2D /* CAProgressHUD.m */,
 				F2E9FEA11AEC7CD4003D5F2D /* CARect.h */,
@@ -646,6 +605,7 @@
 				F2E9FEA31AEC7CD4003D5F2D /* CAVideoPreviewView.h */,
 				F2E9FEA41AEC7CD4003D5F2D /* CAVideoPreviewView.m */,
 				F2E9FE981AEC7CC8003D5F2D /* Table View Cells */,
+				F2BDAF371AEDC43F00481490 /* CAManualEntryView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -784,63 +744,65 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2E9FE3A1AEC7C25003D5F2D /* CAListObject.m in Sources */,
-				F2E9FEA61AEC7CD4003D5F2D /* CACameraLayer.m in Sources */,
+				F2BDAF2A1AEDB0C100481490 /* CAToggleAnimator.swift in Sources */,
+				F2BDAF181AED872D00481490 /* CAListTableViewController.swift in Sources */,
+				F2BDAF321AEDB9E300481490 /* CASignUpViewController.swift in Sources */,
+				F2BDAF1A1AED93AB00481490 /* CADismissableViewHandler.swift in Sources */,
+				F2BDAF0F1AED6DC400481490 /* CAShareCartViewController.swift in Sources */,
 				F2E9FEB21AEC7CDF003D5F2D /* CAListOverviewTableViewCell.m in Sources */,
 				F2E9FE941AEC7CB8003D5F2D /* UIView+BadView.m in Sources */,
-				F2E9FE121AEC7BEC003D5F2D /* CALogInViewController.m in Sources */,
-				F2E9FE251AEC7C0B003D5F2D /* CAScannerViewController.m in Sources */,
-				F2E9FE1A1AEC7BFB003D5F2D /* CABaseViewController.m in Sources */,
 				F2E9FDF31AEC7B14003D5F2D /* POPSpringAnimation+CAAdditions.m in Sources */,
 				F2E9FE741AEC7C8D003D5F2D /* PFQuery+CAQuery.m in Sources */,
-				F2E9FE011AEC7B54003D5F2D /* CADismissableViewHandler.m in Sources */,
-				F2E9FEA71AEC7CD4003D5F2D /* CAManualEntryView.m in Sources */,
+				F2BDAF201AED9F0900481490 /* CAStoredAnimation.swift in Sources */,
 				F2E9FE561AEC7C5E003D5F2D /* CATwitterRequestSerializer.m in Sources */,
+				F2BDAF281AEDB07600481490 /* CAReversibleTransition.swift in Sources */,
 				F2E9FE371AEC7C25003D5F2D /* CABarcode.m in Sources */,
+				F2BDAF1C1AED9AC400481490 /* CAPullToCloseTransitionManager.swift in Sources */,
+				F2BDAF2E1AEDB75800481490 /* CALogInViewController.swift in Sources */,
+				F2BDAF301AEDB78500481490 /* CASignUpDelegate.swift in Sources */,
 				F2E9FEAA1AEC7CD4003D5F2D /* CAVideoPreviewView.m in Sources */,
 				F2E9FE511AEC7C57003D5F2D /* CAFactualSessionManager.m in Sources */,
-				F2E9FDF11AEC7B14003D5F2D /* CATransitionDelegate.m in Sources */,
+				F2BDAF261AEDA6B100481490 /* CAKeyboardResponderAnimator.swift in Sources */,
 				F2E9FE571AEC7C5E003D5F2D /* CATwitterSessionManager.m in Sources */,
-				F2E9FEA51AEC7CD4003D5F2D /* CAAuthenticationButton.m in Sources */,
+				F2BDAF3A1AEDCD3C00481490 /* CABarcodeFetchManager.swift in Sources */,
+				F2BDAF221AEDA13F00481490 /* CAAnimationStack.swift in Sources */,
+				F2BDAF241AEDA61B00481490 /* CACompanionAnimator.swift in Sources */,
 				F2E9FEB31AEC7CDF003D5F2D /* CATableViewCell.m in Sources */,
-				F2E9FE5D1AEC7C6F003D5F2D /* CABarcodeFetchManager.m in Sources */,
+				F2BDAF2C1AEDB27300481490 /* CATransitionDelegate.swift in Sources */,
 				F2E9FE381AEC7C25003D5F2D /* CABarcodeObject.m in Sources */,
-				F2E9FE2B1AEC7C13003D5F2D /* CAShareCartViewController.m in Sources */,
+				F2BDAF0B1AED6CF400481490 /* CABaseViewController.swift in Sources */,
+				F2BDAF381AEDC43F00481490 /* CAManualEntryView.swift in Sources */,
+				F2BDAF361AEDC18700481490 /* CACameraLayer.swift in Sources */,
 				F2E9FE721AEC7C8D003D5F2D /* PFFacebookUtils+CAFacebookUtils.m in Sources */,
 				F2E9FE761AEC7C8D003D5F2D /* PFTwitterUtils+CATwitterUtils.m in Sources */,
+				F2BDAF161AED803A00481490 /* CAScanningSession.swift in Sources */,
 				F2E9FE751AEC7C8D003D5F2D /* PFQueryTableViewController+Caching.m in Sources */,
-				F2E9FE131AEC7BEC003D5F2D /* CASignUpViewController.m in Sources */,
+				F2BDAF1E1AED9AE500481490 /* CAPullToCloseTransitionPresentationController.swift in Sources */,
 				F2E9FE651AEC7C83003D5F2D /* CAQueryTableViewController.m in Sources */,
 				F2E9FE911AEC7CB8003D5F2D /* NSDictionary+CACustomKVOOperators.m in Sources */,
-				F2E9FDEF1AEC7B14003D5F2D /* CAKeyboardResponderAnimator.m in Sources */,
+				F2BDAF141AED773900481490 /* CAScannerViewController.swift in Sources */,
 				F2E9FE481AEC7C50003D5F2D /* CABingSessionManager.m in Sources */,
+				F2BDAEFF1AED4D0D00481490 /* AppDelgate.swift in Sources */,
 				F2E9FE921AEC7CB8003D5F2D /* UIColor+CAColor.m in Sources */,
-				F2E9FE271AEC7C0B003D5F2D /* CAScanningSession.m in Sources */,
-				F2E9FE831AEC7CAA003D5F2D /* AppDelegate.m in Sources */,
+				F2BDAF011AED51D000481490 /* CAListOverviewTableViewController.swift in Sources */,
 				F2E9FE951AEC7CB8003D5F2D /* UIView+CAView.m in Sources */,
-				F2E9FDED1AEC7B14003D5F2D /* CAStoredAnimation.m in Sources */,
 				F2E9FE5A1AEC7C64003D5F2D /* CARACSessionManager.m in Sources */,
 				F2E9FEA91AEC7CD4003D5F2D /* CARect.m in Sources */,
 				F2E9FE931AEC7CB8003D5F2D /* UIImage+CAImage.m in Sources */,
 				F2E9FEB51AEC7CDF003D5F2D /* CAUserTableViewCell.m in Sources */,
-				F2E9FDFD1AEC7B3D003D5F2D /* CAPullToCloseTransitionPresentationController.m in Sources */,
 				F2E9FEA81AEC7CD4003D5F2D /* CAProgressHUD.m in Sources */,
 				F2E9FE4F1AEC7C57003D5F2D /* CAFactualRequestSerializer.m in Sources */,
 				F2E9FE641AEC7C83003D5F2D /* CAParseAnalytics.m in Sources */,
 				F2E9FE771AEC7C8D003D5F2D /* PFUser+CAUser.m in Sources */,
-				F2E9FDF01AEC7B14003D5F2D /* CAToggleAnimator.m in Sources */,
 				F2E9FE7D1AEC7C9D003D5F2D /* RACSignal+CAAdditions.m in Sources */,
 				F2E9FEDF1AEC8377003D5F2D /* MustOverride.m in Sources */,
 				F2E9FE461AEC7C50003D5F2D /* CABingRequestSerializer.m in Sources */,
-				F2E9FDEE1AEC7B14003D5F2D /* CAAnimationStack.m in Sources */,
 				F2E9FE731AEC7C8D003D5F2D /* PFObject+CAPFObject.m in Sources */,
 				F2E9FE471AEC7C50003D5F2D /* CABingResponseSerializer.m in Sources */,
 				F2E9FE501AEC7C57003D5F2D /* CAFactualResponseSerializer.m in Sources */,
-				F2E9FDFC1AEC7B3D003D5F2D /* CAPullToCloseTransitionManager.m in Sources */,
-				F2E9FE171AEC7BF5003D5F2D /* CAListTableViewController.m in Sources */,
 				F2E9FE391AEC7C25003D5F2D /* CAListItemObject.m in Sources */,
-				F2E9FE1E1AEC7C04003D5F2D /* CAListOverviewTableViewController.m in Sources */,
+				F2BDAF341AEDBC7500481490 /* CAAuthenticationButton.swift in Sources */,
 				F2E9FE7E1AEC7C9D003D5F2D /* UISearchBar+RACAdditions.m in Sources */,
-				F2E9FE851AEC7CAA003D5F2D /* main.m in Sources */,
 				F2E9FDF21AEC7B14003D5F2D /* POPAnimation+CAAnimation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -880,6 +842,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -925,6 +888,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -948,6 +912,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -957,6 +922,8 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Carts/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Carts/Carts-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -966,6 +933,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -975,6 +943,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Carts/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Carts/Carts-Bridging-Header.h";
 			};
 			name = Release;
 		};

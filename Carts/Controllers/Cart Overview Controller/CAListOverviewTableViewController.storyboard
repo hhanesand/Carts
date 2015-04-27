@@ -134,8 +134,8 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="footerView" destination="Ps8-ZQ-MId" id="7vS-nw-Dt6"/>
-                        <outlet property="navigationBarLabel" destination="oWW-1m-GbU" id="baA-XV-myi"/>
+                        <outlet property="footerView" destination="Ps8-ZQ-MId" id="U4c-sL-JOG"/>
+                        <outlet property="navigationBarLabel" destination="oWW-1m-GbU" id="bth-0M-848"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5dx-Q1-3aG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -173,7 +173,7 @@
                     </variation>
                 </label>
             </objects>
-            <point key="canvasLocation" x="494" y="510"/>
+            <point key="canvasLocation" x="769" y="514"/>
         </scene>
     </scenes>
     <resources>

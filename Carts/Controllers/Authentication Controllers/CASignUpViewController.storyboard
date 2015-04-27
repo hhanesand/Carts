@@ -78,6 +78,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="shouldAnimate" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <outlet property="activityIndicator" destination="Wn2-5W-cG4" id="v8c-xm-6Oo"/>
                                     <outlet property="activityIndicatorView" destination="Wn2-5W-cG4" id="KLW-mU-1eD"/>
                                 </connections>
                             </button>
@@ -99,6 +100,7 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="shouldAnimate" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <outlet property="activityIndicator" destination="oIT-hH-Fzy" id="TVn-9T-LnT"/>
                                             <outlet property="activityIndicatorView" destination="lMh-be-5qz" id="CZR-6y-Mdx"/>
                                         </connections>
                                     </button>
@@ -117,6 +119,7 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="shouldAnimate" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <outlet property="activityIndicator" destination="lMh-be-5qz" id="n2n-lc-itm"/>
                                             <outlet property="activityIndicatorView" destination="oIT-hH-Fzy" id="Uhu-fZ-sTE"/>
                                         </connections>
                                     </button>
@@ -178,8 +181,18 @@
                                 <state key="normal" title="Already have an account?">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K6l-nW-PIV">
+                                <rect key="frame" x="16" y="16" width="27" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="27" id="fUD-ya-kcd"/>
+                                    <constraint firstAttribute="height" constant="27" id="xgP-HR-7yd"/>
+                                </constraints>
+                                <state key="normal" image="down">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
-                                    <action selector="didTapAlreadyHaveAccountButton:" destination="UL8-yt-Uaw" eventType="touchUpInside" id="2SW-Nv-F29"/>
+                                    <action selector="didTapDismissButton:" destination="UL8-yt-Uaw" eventType="touchUpInside" id="MLD-lo-4EL"/>
                                 </connections>
                             </button>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wn2-5W-cG4" customClass="MRActivityIndicatorView">
@@ -191,19 +204,6 @@
                                     <constraint firstAttribute="height" constant="30" id="cS9-O5-uid"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K6l-nW-PIV">
-                                <rect key="frame" x="16" y="16" width="27" height="27"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="27" id="fUD-ya-kcd"/>
-                                    <constraint firstAttribute="height" constant="27" id="xgP-HR-7yd"/>
-                                </constraints>
-                                <state key="normal" image="down">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="didTapDismissButton:" destination="UL8-yt-Uaw" eventType="touchUpInside" id="i9V-wz-N8R"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
@@ -240,23 +240,22 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
-                        <outlet property="activityIndicatorView" destination="Wn2-5W-cG4" id="6cb-c4-sWf"/>
-                        <outlet property="facebook" destination="YgY-jC-MMU" id="wpE-2v-Hoy"/>
-                        <outlet property="password" destination="58q-1q-dUB" id="h0z-9o-jeE"/>
+                        <outlet property="facebook" destination="YgY-jC-MMU" id="oa5-uN-guQ"/>
+                        <outlet property="password" destination="58q-1q-dUB" id="2R0-t5-IZo"/>
                         <outlet property="signInButtonLayoutConstraint" destination="2VQ-QX-mWd" id="2ha-no-lE2"/>
-                        <outlet property="signUp" destination="hq5-ls-gMy" id="VZQ-Og-S2K"/>
-                        <outlet property="twitter" destination="Hux-W2-6N8" id="vOR-sJ-qwY"/>
-                        <outlet property="username" destination="2Yf-Qu-Nxc" id="beI-ee-A7C"/>
+                        <outlet property="signUp" destination="hq5-ls-gMy" id="aNh-P5-JXy"/>
+                        <outlet property="twitter" destination="Hux-W2-6N8" id="7h9-xN-J8k"/>
+                        <outlet property="username" destination="2Yf-Qu-Nxc" id="tki-m7-5Te"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5gA-1x-DZ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="erA-0B-b3c" userLabel="Tap In Background Gesture Recognizer">
                     <connections>
-                        <action selector="didTapInBackground:" destination="UL8-yt-Uaw" id="aSP-Iz-Mz0"/>
+                        <action selector="didTapInBackground:" destination="UL8-yt-Uaw" id="Fpf-2e-Xll"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-357" y="749"/>
+            <point key="canvasLocation" x="-672" y="621"/>
         </scene>
         <!--Log In View Controller-->
         <scene sceneID="D1y-QE-Mx6">
@@ -315,6 +314,34 @@
                                 <color key="textColor" red="0.13725490200000001" green="0.87058823529999996" blue="0.74901960779999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0D-hz-57R">
+                                <rect key="frame" x="16" y="16" width="27" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="7mo-ZE-vQ6"/>
+                                    <constraint firstAttribute="width" constant="27" id="Tqa-aH-Zcn"/>
+                                </constraints>
+                                <state key="normal" image="down">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapDismissButton:" destination="Nhe-VN-wb3" eventType="touchUpInside" id="Xmd-GR-GFd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZRU-qC-MaE" customClass="CAAuthenticationButton">
+                                <rect key="frame" x="225" y="241" width="150" height="44"/>
+                                <color key="backgroundColor" red="0.13725490200000001" green="0.87058823529999996" blue="0.74901960779999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="HPZ-50-Xgx"/>
+                                    <constraint firstAttribute="width" constant="150" id="Lxe-fG-oCP"/>
+                                </constraints>
+                                <state key="normal" title="Log In">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shouldAnimate" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bhs-H0-5Fl" customClass="MRActivityIndicatorView">
                                 <rect key="frame" x="285" y="248" width="30" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -330,31 +357,6 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0D-hz-57R">
-                                <rect key="frame" x="16" y="16" width="27" height="27"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="27" id="7mo-ZE-vQ6"/>
-                                    <constraint firstAttribute="width" constant="27" id="Tqa-aH-Zcn"/>
-                                </constraints>
-                                <state key="normal" image="down">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="didTapDismissButton:" destination="Nhe-VN-wb3" eventType="touchUpInside" id="SOy-68-zyR"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZRU-qC-MaE" customClass="CAAuthenticationButton">
-                                <rect key="frame" x="225" y="241" width="150" height="44"/>
-                                <color key="backgroundColor" red="0.13725490200000001" green="0.87058823529999996" blue="0.74901960779999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="HPZ-50-Xgx"/>
-                                    <constraint firstAttribute="width" constant="150" id="Lxe-fG-oCP"/>
-                                </constraints>
-                                <state key="normal" title="Log In">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -387,20 +389,19 @@
                         </connections>
                     </view>
                     <connections>
-                        <outlet property="activityIndicatorView" destination="bhs-H0-5Fl" id="glr-lh-E94"/>
-                        <outlet property="logIn" destination="ZRU-qC-MaE" id="OLT-sE-idr"/>
-                        <outlet property="password" destination="9Qr-9J-2Po" id="JeG-fe-H4W"/>
-                        <outlet property="username" destination="Hh5-Jh-5T1" id="IYE-Me-e5t"/>
+                        <outlet property="logIn" destination="ZRU-qC-MaE" id="qAT-3w-8Ni"/>
+                        <outlet property="password" destination="9Qr-9J-2Po" id="b2s-TC-139"/>
+                        <outlet property="username" destination="Hh5-Jh-5T1" id="Cyb-v6-nhE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cTu-PD-pi4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="yFD-aD-X1x" userLabel="Tap In Background Gesture Recognizer">
                     <connections>
-                        <action selector="didTapInBackground:" destination="Nhe-VN-wb3" id="Erj-tV-TLW"/>
+                        <action selector="didTapInBackgound:" destination="Nhe-VN-wb3" id="QDO-00-lPX"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="285" y="749"/>
+            <point key="canvasLocation" x="-28" y="621"/>
         </scene>
     </scenes>
     <resources>

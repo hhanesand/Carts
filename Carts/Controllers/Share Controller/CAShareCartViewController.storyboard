@@ -120,7 +120,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="vC6-tX-Q6p" firstAttribute="top" secondItem="Mq4-qG-aBt" secondAttribute="bottom" id="Dpx-8j-gsZ"/>
                             <constraint firstItem="jxn-0H-0hO" firstAttribute="top" secondItem="RxT-Ri-KBa" secondAttribute="bottom" id="Gcf-r8-AwO"/>
                             <constraint firstAttribute="trailing" secondItem="RxT-Ri-KBa" secondAttribute="trailing" id="IBh-1U-SlK"/>
                             <constraint firstItem="WPh-wU-gsl" firstAttribute="top" secondItem="vC6-tX-Q6p" secondAttribute="bottom" id="LrD-Ap-IMu"/>
@@ -137,17 +136,14 @@
                             <constraint firstAttribute="trailingMargin" secondItem="vC6-tX-Q6p" secondAttribute="trailing" constant="8" id="ubE-Bm-qYS"/>
                             <constraint firstItem="vC6-tX-Q6p" firstAttribute="top" secondItem="Mq4-qG-aBt" secondAttribute="bottom" constant="8" id="yYC-Vk-dwk"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="Dpx-8j-gsZ"/>
-                            </mask>
-                        </variation>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
-                        <outlet property="footerView" destination="Tg8-hR-B50" id="qy7-3e-ZzV"/>
+                        <outlet property="animatableKeyboardContstaint" destination="YjF-kC-ZTB" id="aS6-Dp-Y2Q"/>
+                        <outlet property="footerView" destination="Tg8-hR-B50" id="bLL-xT-mmM"/>
                         <outlet property="footerViewLayoutConstraint" destination="YjF-kC-ZTB" id="aKa-oZ-cPH"/>
-                        <outlet property="tableView" destination="RxT-Ri-KBa" id="xHL-gO-sMU"/>
+                        <outlet property="searchBar" destination="WPh-wU-gsl" id="Lls-On-xKO"/>
+                        <outlet property="tableView" destination="RxT-Ri-KBa" id="BKu-GH-MCA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="moH-Az-XIU" userLabel="First Responder" sceneMemberID="firstResponder"/>
