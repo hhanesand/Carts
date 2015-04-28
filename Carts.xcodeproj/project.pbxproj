@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		36D9E0CC30A4ACDE4AB5B4E9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A8976A000843313D7E45B8B /* libPods.a */; };
+		B8C9690A15BE3D7F6A88B9D7 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4FD82C73980DB0E19CD7A38 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		F20F8F861AEED58700C2CD47 /* CAQueryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20F8F851AEED58700C2CD47 /* CAQueryTableViewController.swift */; };
 		F2BDAEFF1AED4D0D00481490 /* AppDelgate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BDAEFE1AED4D0D00481490 /* AppDelgate.swift */; };
 		F2BDAF011AED51D000481490 /* CAListOverviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BDAF001AED51D000481490 /* CAListOverviewTableViewController.swift */; };
 		F2BDAF051AED56F700481490 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2BDAF021AED56F700481490 /* FBSDKCoreKit.framework */; };
@@ -97,8 +98,9 @@
 
 /* Begin PBXFileReference section */
 		6D584CAE9CDAC928CBCA8551 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		8A8976A000843313D7E45B8B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4FD82C73980DB0E19CD7A38 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B37AE999C59955AC7121D00B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		F20F8F851AEED58700C2CD47 /* CAQueryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAQueryTableViewController.swift; sourceTree = "<group>"; };
 		F2BDAEFD1AED4D0C00481490 /* Carts-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Carts-Bridging-Header.h"; sourceTree = "<group>"; };
 		F2BDAEFE1AED4D0D00481490 /* AppDelgate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelgate.swift; sourceTree = "<group>"; };
 		F2BDAF001AED51D000481490 /* CAListOverviewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAListOverviewTableViewController.swift; sourceTree = "<group>"; };
@@ -250,7 +252,7 @@
 				F2BDAF071AED56F700481490 /* FBSDKShareKit.framework in Frameworks */,
 				F2BDAF051AED56F700481490 /* FBSDKCoreKit.framework in Frameworks */,
 				F2E9FEB71AEC7FC4003D5F2D /* AudioToolbox.framework in Frameworks */,
-				36D9E0CC30A4ACDE4AB5B4E9 /* libPods.a in Frameworks */,
+				B8C9690A15BE3D7F6A88B9D7 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +279,7 @@
 				F2E9FEBA1AEC7FD2003D5F2D /* CoreGraphics.framework */,
 				F2E9FEB81AEC7FCB003D5F2D /* CFNetwork.framework */,
 				F2E9FEB61AEC7FC4003D5F2D /* AudioToolbox.framework */,
-				8A8976A000843313D7E45B8B /* libPods.a */,
+				A4FD82C73980DB0E19CD7A38 /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -542,6 +544,7 @@
 				F2E9FE621AEC7C83003D5F2D /* CAQueryTableViewController.h */,
 				F2E9FE631AEC7C83003D5F2D /* CAQueryTableViewController.m */,
 				F2E9FE5F1AEC7C78003D5F2D /* Categories */,
+				F20F8F851AEED58700C2CD47 /* CAQueryTableViewController.swift */,
 			);
 			name = Parse;
 			sourceTree = "<group>";
@@ -645,6 +648,7 @@
 				F2E9FDB31AEC77FC003D5F2D /* Frameworks */,
 				F2E9FDB41AEC77FC003D5F2D /* Resources */,
 				286EA3082DCE088AA40F8970 /* Copy Pods Resources */,
+				CC774610155CD2A7D9186C10 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -736,6 +740,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		CC774610155CD2A7D9186C10 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -779,6 +798,7 @@
 				F2E9FE751AEC7C8D003D5F2D /* PFQueryTableViewController+Caching.m in Sources */,
 				F2BDAF1E1AED9AE500481490 /* CAPullToCloseTransitionPresentationController.swift in Sources */,
 				F2E9FE651AEC7C83003D5F2D /* CAQueryTableViewController.m in Sources */,
+				F20F8F861AEED58700C2CD47 /* CAQueryTableViewController.swift in Sources */,
 				F2E9FE911AEC7CB8003D5F2D /* NSDictionary+CACustomKVOOperators.m in Sources */,
 				F2BDAF141AED773900481490 /* CAScannerViewController.swift in Sources */,
 				F2E9FE481AEC7C50003D5F2D /* CABingSessionManager.m in Sources */,

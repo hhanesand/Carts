@@ -11,7 +11,6 @@ import Foundation
 class CAListOverviewTableViewController: CAQueryTableViewController {
     
     @IBOutlet var navigationBarLabel: UILabel!
-    @IBOutlet var footerView: UIView!
     var listTableViewController : CAListTableViewController?
     var shareTableViewController : CAShareCartViewController?
     
@@ -59,7 +58,6 @@ class CAListOverviewTableViewController: CAQueryTableViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.navigationController?.setToolbarHidden(false, animated: false)
-        self.footerView.frame = self.navigationController!.toolbar.bounds;
     }
     
     func test() -> Bool {
