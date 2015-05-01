@@ -21,7 +21,7 @@
 {
     if ([self isUseOAuth]) {
         [request signRequestWithClientIdentifier:@"n5md5zTCv67RV2ctEQKrhK2cAzggCqs3khynDhKT" secret:@"Utn7HYXJ77lW3fTYMFiB9Zvu0GjT1AInnjeqYFct" tokenIdentifier:nil secret:nil usingMethod:OAuthHMAC_SHA1SignatureMethod];
-    }else {
+    } else {
         [self clearAuthorizationHeader];
     }
 }

@@ -25,7 +25,7 @@ class CAQueryTableViewController: PFQueryTableViewController {
         }
         
         let networkSignal = signalForTable().map {
-            RACTuple(object $0 as! [AnyObject])
+            RACTuple(objectsFromArray: $0 as! [AnyObject])
         }
         
         RACSignal.merge([cacheSignal, networkSignal]).doNext {

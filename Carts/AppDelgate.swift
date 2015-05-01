@@ -84,12 +84,15 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
     }
     
     func prepareViewHeirarchy() {
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        let listOverviewTableViewController = CAListOverviewTableViewController.instance()
-        let navigationController = UINavigationController(rootViewController: listOverviewTableViewController)
-        self.window?.rootViewController = navigationController
+//        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+//        let listOverviewTableViewController = CAListOverviewTableViewController.instance()
+//        let navigationController = UINavigationController(rootViewController: listOverviewTableViewController)
+//        self.window?.rootViewController = navigationController
+//        
+//        self.window?.makeKeyAndVisible()
         
-        self.window?.makeKeyAndVisible()
+        let manager = CAFactualSessionManager()
+        manager.qu
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {

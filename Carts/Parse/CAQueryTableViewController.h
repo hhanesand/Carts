@@ -6,7 +6,7 @@
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-#import "PFQueryTableViewController.h"
+#import <ParseUI/PFQueryTableViewController.h>
 
 @import Foundation;
 

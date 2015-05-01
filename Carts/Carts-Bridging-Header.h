@@ -12,7 +12,6 @@
 
 #import "CAQueryTableViewController.h"
 #import "CAListOverviewTableViewCell.h"
-#import "UIImageView+AFNetworking.h"
 #import "PFUser+CAUser.h"
 #import "PFQuery+CAQuery.h"
 #import "PFObject+CAPFObject.h"
@@ -29,10 +28,10 @@
 #import <MRProgress/MRActivityIndicatorView.h>
 #import <JVFloatLabeledTextField/JVFloatLabeledTextField.h>
 #import "CABarcode.h"
-#import "CAFactualSessionManager.h"
-#import "CABingSessionManager.h"
+//#import "CAFactualSessionManager.h"
+//#import "CABingSessionManager.h"
 #import "CAParseAnalytics.h"
 #import "UIView+CAView.h"
 #import "PFFacebookUtils+CAFacebookUtils.h"
 #import "PFTwitterUtils+CATwitterUtils.h"
-#import "CATwitterSessionManager.h"
+//#import "CATwitterSessionManager.h"

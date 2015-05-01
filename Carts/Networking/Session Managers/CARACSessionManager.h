@@ -4,7 +4,7 @@
 //
 //  Created by Hakon Hanesand on 4/9/15.
 
-#import "AFHTTPSessionManager.h"
+#import <AFNetworking/AFHTTPSessionManager.h>
 
 @class RACSignal;
 
