@@ -73,7 +73,7 @@ class CAListTableViewController: CAQueryTableViewController, UITableViewDelegate
         return false
     }
     
-    override func signalForTable() -> RACSignal! {
+    override func signalForTable() -> RACSignal {
         let query = CAListObject.query()!
         query.includeKey("items.item")
         
@@ -86,7 +86,7 @@ class CAListTableViewController: CAQueryTableViewController, UITableViewDelegate
         }
     }
     
-    override func cachedSignalForTable() -> RACSignal! {
+    override func cachedSignalForTable() -> RACSignal {
         let query = CAListObject.query()!.includeKey("items.item").fromLocalDatastore()
         
         return query.getObjectWithIdWithSignal(PFUser.currentUser()!.list().objectId!).map {
@@ -109,10 +109,10 @@ class CAListTableViewController: CAQueryTableViewController, UITableViewDelegate
             let url = NSURL(string: listItem.item.image[0] as! String)!
             let request = NSMutableURLRequest(URL: url)
             
-            cell.image.setImageWithURLRequest(request, placeholderImage: nil, success: { (request, response, image) -> Void in
-                cell.image.image = image;
-                cell.image.setNeedsDisplay()
-                }, failure: nil)
+//            cell.image.setImageWithURLRequest(request, placeholderImage: nil, success: { (request, response, image) -> Void in
+//                cell.image.image = image;
+//                cell.image.setNeedsDisplay()
+//                }, failure: nil)
         }
         
         return cell

@@ -41,11 +41,6 @@
 @property (nonatomic) NSMutableArray *barcodes;
 
 /**
- *  A parallel array with the barcodes array. Stores the type of barcode scanned in NSStrings
- */
-@property (nonatomic) NSMutableArray *types;
-
-/**
  *  A list of URLs to images from bing or factual (NSStrings)
  */
 @property (nonatomic) NSMutableArray *image;

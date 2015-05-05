@@ -7,8 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B8C9690A15BE3D7F6A88B9D7 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4FD82C73980DB0E19CD7A38 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		F20F8F861AEED58700C2CD47 /* CAQueryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20F8F851AEED58700C2CD47 /* CAQueryTableViewController.swift */; };
+		F23146AB1AF85A0A00527B32 /* AlamofireOAuth1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F23146AA1AF85A0A00527B32 /* AlamofireOAuth1.framework */; };
+		F23146AD1AF85A0E00527B32 /* CommonCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F23146AC1AF85A0E00527B32 /* CommonCrypto.framework */; };
+		F23146AF1AF85A2200527B32 /* Factual.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23146AE1AF85A2200527B32 /* Factual.swift */; };
+		F26E37B01AF6A2120058328F /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26E37AF1AF6A2120058328F /* pop.framework */; };
+		F2BB46FD1AF6AA71008B73E0 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2BB46FC1AF6AA71008B73E0 /* Alamofire.framework */; };
+		F2BB47011AF6AABA008B73E0 /* Bing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BB47001AF6AABA008B73E0 /* Bing.swift */; };
+		F2BB47031AF6AD02008B73E0 /* Twitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BB47021AF6AD02008B73E0 /* Twitter.swift */; };
+		F2BB47051AF6D0FE008B73E0 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2BB47041AF6D0FE008B73E0 /* SwiftyJSON.framework */; };
 		F2BDAEFF1AED4D0D00481490 /* AppDelgate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BDAEFE1AED4D0D00481490 /* AppDelgate.swift */; };
 		F2BDAF011AED51D000481490 /* CAListOverviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BDAF001AED51D000481490 /* CAListOverviewTableViewController.swift */; };
 		F2BDAF051AED56F700481490 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2BDAF021AED56F700481490 /* FBSDKCoreKit.framework */; };
@@ -47,15 +54,6 @@
 		F2E9FE381AEC7C25003D5F2D /* CABarcodeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE311AEC7C25003D5F2D /* CABarcodeObject.m */; };
 		F2E9FE391AEC7C25003D5F2D /* CAListItemObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE341AEC7C25003D5F2D /* CAListItemObject.m */; };
 		F2E9FE3A1AEC7C25003D5F2D /* CAListObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE361AEC7C25003D5F2D /* CAListObject.m */; };
-		F2E9FE461AEC7C50003D5F2D /* CABingRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE411AEC7C50003D5F2D /* CABingRequestSerializer.m */; };
-		F2E9FE471AEC7C50003D5F2D /* CABingResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE431AEC7C50003D5F2D /* CABingResponseSerializer.m */; };
-		F2E9FE481AEC7C50003D5F2D /* CABingSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE451AEC7C50003D5F2D /* CABingSessionManager.m */; };
-		F2E9FE4F1AEC7C57003D5F2D /* CAFactualRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE4A1AEC7C57003D5F2D /* CAFactualRequestSerializer.m */; };
-		F2E9FE501AEC7C57003D5F2D /* CAFactualResponseSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE4C1AEC7C57003D5F2D /* CAFactualResponseSerializer.m */; };
-		F2E9FE511AEC7C57003D5F2D /* CAFactualSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE4E1AEC7C57003D5F2D /* CAFactualSessionManager.m */; };
-		F2E9FE561AEC7C5E003D5F2D /* CATwitterRequestSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE531AEC7C5E003D5F2D /* CATwitterRequestSerializer.m */; };
-		F2E9FE571AEC7C5E003D5F2D /* CATwitterSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE551AEC7C5E003D5F2D /* CATwitterSessionManager.m */; };
-		F2E9FE5A1AEC7C64003D5F2D /* CARACSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE591AEC7C64003D5F2D /* CARACSessionManager.m */; };
 		F2E9FE641AEC7C83003D5F2D /* CAParseAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE611AEC7C83003D5F2D /* CAParseAnalytics.m */; };
 		F2E9FE651AEC7C83003D5F2D /* CAQueryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE631AEC7C83003D5F2D /* CAQueryTableViewController.m */; };
 		F2E9FE721AEC7C8D003D5F2D /* PFFacebookUtils+CAFacebookUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE671AEC7C8D003D5F2D /* PFFacebookUtils+CAFacebookUtils.m */; };
@@ -96,13 +94,22 @@
 		F2E9FEDF1AEC8377003D5F2D /* MustOverride.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FEDE1AEC8377003D5F2D /* MustOverride.m */; };
 		F2EAEF2A1AEF23690054F9A9 /* LlamaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2EAEF281AEF23690054F9A9 /* LlamaKit.framework */; };
 		F2EAEF2B1AEF23690054F9A9 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2EAEF291AEF23690054F9A9 /* ReactiveCocoa.framework */; };
+		F2F7ACE21AF82EC70019E009 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F7ACE11AF82EC70019E009 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6D584CAE9CDAC928CBCA8551 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		A4FD82C73980DB0E19CD7A38 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DD4E8B56701685AF581D891 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B37AE999C59955AC7121D00B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F20F8F851AEED58700C2CD47 /* CAQueryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAQueryTableViewController.swift; sourceTree = "<group>"; };
+		F23146AA1AF85A0A00527B32 /* AlamofireOAuth1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireOAuth1.framework; path = Carthage/Build/iOS/AlamofireOAuth1.framework; sourceTree = "<group>"; };
+		F23146AC1AF85A0E00527B32 /* CommonCrypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CommonCrypto.framework; path = Carthage/Build/iOS/CommonCrypto.framework; sourceTree = "<group>"; };
+		F23146AE1AF85A2200527B32 /* Factual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Factual.swift; sourceTree = "<group>"; };
+		F26E37AF1AF6A2120058328F /* pop.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = pop.framework; path = Carthage/Build/iOS/pop.framework; sourceTree = "<group>"; };
+		F2BB46FC1AF6AA71008B73E0 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		F2BB47001AF6AABA008B73E0 /* Bing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bing.swift; sourceTree = "<group>"; };
+		F2BB47021AF6AD02008B73E0 /* Twitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Twitter.swift; sourceTree = "<group>"; };
+		F2BB47041AF6D0FE008B73E0 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		F2BDAEFD1AED4D0C00481490 /* Carts-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Carts-Bridging-Header.h"; sourceTree = "<group>"; };
 		F2BDAEFE1AED4D0D00481490 /* AppDelgate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelgate.swift; sourceTree = "<group>"; };
 		F2BDAF001AED51D000481490 /* CAListOverviewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAListOverviewTableViewController.swift; sourceTree = "<group>"; };
@@ -151,24 +158,6 @@
 		F2E9FE341AEC7C25003D5F2D /* CAListItemObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAListItemObject.m; path = Model/CAListItemObject.m; sourceTree = "<group>"; };
 		F2E9FE351AEC7C25003D5F2D /* CAListObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAListObject.h; path = Model/CAListObject.h; sourceTree = "<group>"; };
 		F2E9FE361AEC7C25003D5F2D /* CAListObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAListObject.m; path = Model/CAListObject.m; sourceTree = "<group>"; };
-		F2E9FE401AEC7C50003D5F2D /* CABingRequestSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CABingRequestSerializer.h; path = "Networking/Session Managers/Bing/CABingRequestSerializer.h"; sourceTree = "<group>"; };
-		F2E9FE411AEC7C50003D5F2D /* CABingRequestSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CABingRequestSerializer.m; path = "Networking/Session Managers/Bing/CABingRequestSerializer.m"; sourceTree = "<group>"; };
-		F2E9FE421AEC7C50003D5F2D /* CABingResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CABingResponseSerializer.h; path = "Networking/Session Managers/Bing/CABingResponseSerializer.h"; sourceTree = "<group>"; };
-		F2E9FE431AEC7C50003D5F2D /* CABingResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CABingResponseSerializer.m; path = "Networking/Session Managers/Bing/CABingResponseSerializer.m"; sourceTree = "<group>"; };
-		F2E9FE441AEC7C50003D5F2D /* CABingSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CABingSessionManager.h; path = "Networking/Session Managers/Bing/CABingSessionManager.h"; sourceTree = "<group>"; };
-		F2E9FE451AEC7C50003D5F2D /* CABingSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CABingSessionManager.m; path = "Networking/Session Managers/Bing/CABingSessionManager.m"; sourceTree = "<group>"; };
-		F2E9FE491AEC7C57003D5F2D /* CAFactualRequestSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAFactualRequestSerializer.h; path = "Networking/Session Managers/Factual/CAFactualRequestSerializer.h"; sourceTree = "<group>"; };
-		F2E9FE4A1AEC7C57003D5F2D /* CAFactualRequestSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAFactualRequestSerializer.m; path = "Networking/Session Managers/Factual/CAFactualRequestSerializer.m"; sourceTree = "<group>"; };
-		F2E9FE4B1AEC7C57003D5F2D /* CAFactualResponseSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAFactualResponseSerializer.h; path = "Networking/Session Managers/Factual/CAFactualResponseSerializer.h"; sourceTree = "<group>"; };
-		F2E9FE4C1AEC7C57003D5F2D /* CAFactualResponseSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAFactualResponseSerializer.m; path = "Networking/Session Managers/Factual/CAFactualResponseSerializer.m"; sourceTree = "<group>"; };
-		F2E9FE4D1AEC7C57003D5F2D /* CAFactualSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAFactualSessionManager.h; path = "Networking/Session Managers/Factual/CAFactualSessionManager.h"; sourceTree = "<group>"; };
-		F2E9FE4E1AEC7C57003D5F2D /* CAFactualSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAFactualSessionManager.m; path = "Networking/Session Managers/Factual/CAFactualSessionManager.m"; sourceTree = "<group>"; };
-		F2E9FE521AEC7C5E003D5F2D /* CATwitterRequestSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CATwitterRequestSerializer.h; path = "Networking/Session Managers/Twitter/CATwitterRequestSerializer.h"; sourceTree = "<group>"; };
-		F2E9FE531AEC7C5E003D5F2D /* CATwitterRequestSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CATwitterRequestSerializer.m; path = "Networking/Session Managers/Twitter/CATwitterRequestSerializer.m"; sourceTree = "<group>"; };
-		F2E9FE541AEC7C5E003D5F2D /* CATwitterSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CATwitterSessionManager.h; path = "Networking/Session Managers/Twitter/CATwitterSessionManager.h"; sourceTree = "<group>"; };
-		F2E9FE551AEC7C5E003D5F2D /* CATwitterSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CATwitterSessionManager.m; path = "Networking/Session Managers/Twitter/CATwitterSessionManager.m"; sourceTree = "<group>"; };
-		F2E9FE581AEC7C64003D5F2D /* CARACSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CARACSessionManager.h; path = "Networking/Session Managers/CARACSessionManager.h"; sourceTree = "<group>"; };
-		F2E9FE591AEC7C64003D5F2D /* CARACSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CARACSessionManager.m; path = "Networking/Session Managers/CARACSessionManager.m"; sourceTree = "<group>"; };
 		F2E9FE601AEC7C83003D5F2D /* CAParseAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAParseAnalytics.h; path = Parse/CAParseAnalytics.h; sourceTree = "<group>"; };
 		F2E9FE611AEC7C83003D5F2D /* CAParseAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAParseAnalytics.m; path = Parse/CAParseAnalytics.m; sourceTree = "<group>"; };
 		F2E9FE621AEC7C83003D5F2D /* CAQueryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAQueryTableViewController.h; path = Parse/CAQueryTableViewController.h; sourceTree = "<group>"; };
@@ -232,6 +221,7 @@
 		F2E9FEDE1AEC8377003D5F2D /* MustOverride.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MustOverride.m; sourceTree = "<group>"; };
 		F2EAEF281AEF23690054F9A9 /* LlamaKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LlamaKit.framework; path = Carthage/Build/iOS/LlamaKit.framework; sourceTree = "<group>"; };
 		F2EAEF291AEF23690054F9A9 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
+		F2F7ACE11AF82EC70019E009 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,15 +229,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2F7ACE21AF82EC70019E009 /* libPods.a in Frameworks */,
+				F26E37B01AF6A2120058328F /* pop.framework in Frameworks */,
 				F2BDAF061AED56F700481490 /* FBSDKLoginKit.framework in Frameworks */,
 				F2EAEF2A1AEF23690054F9A9 /* LlamaKit.framework in Frameworks */,
+				F2BB46FD1AF6AA71008B73E0 /* Alamofire.framework in Frameworks */,
 				F2E9FEDB1AEC81FC003D5F2D /* ParseFacebookUtilsV4.framework in Frameworks */,
 				F2E9FECF1AEC8027003D5F2D /* Social.framework in Frameworks */,
 				F2E9FECD1AEC8022003D5F2D /* Accounts.framework in Frameworks */,
 				F2E9FECB1AEC8014003D5F2D /* libsqlite3.dylib in Frameworks */,
+				F23146AB1AF85A0A00527B32 /* AlamofireOAuth1.framework in Frameworks */,
 				F2E9FEC91AEC800B003D5F2D /* libz.dylib in Frameworks */,
 				F2E9FEC71AEC8003003D5F2D /* SystemConfiguration.framework in Frameworks */,
+				F2BB47051AF6D0FE008B73E0 /* SwiftyJSON.framework in Frameworks */,
 				F2E9FEC51AEC7FFB003D5F2D /* StoreKit.framework in Frameworks */,
+				F23146AD1AF85A0E00527B32 /* CommonCrypto.framework in Frameworks */,
 				F2E9FEC31AEC7FEE003D5F2D /* Security.framework in Frameworks */,
 				F2E9FEC11AEC7FE9003D5F2D /* QuartzCore.framework in Frameworks */,
 				F2E9FEBF1AEC7FE3003D5F2D /* MobileCoreServices.framework in Frameworks */,
@@ -257,7 +253,6 @@
 				F2BDAF071AED56F700481490 /* FBSDKShareKit.framework in Frameworks */,
 				F2BDAF051AED56F700481490 /* FBSDKCoreKit.framework in Frameworks */,
 				F2E9FEB71AEC7FC4003D5F2D /* AudioToolbox.framework in Frameworks */,
-				B8C9690A15BE3D7F6A88B9D7 /* Pods.framework in Frameworks */,
 				F2EAEF2B1AEF23690054F9A9 /* ReactiveCocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,6 +263,12 @@
 		5046E564F4FC3400280A09B2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F23146AC1AF85A0E00527B32 /* CommonCrypto.framework */,
+				F23146AA1AF85A0A00527B32 /* AlamofireOAuth1.framework */,
+				F2F7ACE11AF82EC70019E009 /* libPods.a */,
+				F2BB47041AF6D0FE008B73E0 /* SwiftyJSON.framework */,
+				F2BB46FC1AF6AA71008B73E0 /* Alamofire.framework */,
+				F26E37AF1AF6A2120058328F /* pop.framework */,
 				F2BDAF021AED56F700481490 /* FBSDKCoreKit.framework */,
 				F2BDAF031AED56F700481490 /* FBSDKLoginKit.framework */,
 				F2BDAF041AED56F700481490 /* FBSDKShareKit.framework */,
@@ -285,9 +286,9 @@
 				F2E9FEBA1AEC7FD2003D5F2D /* CoreGraphics.framework */,
 				F2E9FEB81AEC7FCB003D5F2D /* CFNetwork.framework */,
 				F2E9FEB61AEC7FC4003D5F2D /* AudioToolbox.framework */,
-				A4FD82C73980DB0E19CD7A38 /* Pods.framework */,
 				F2EAEF281AEF23690054F9A9 /* LlamaKit.framework */,
 				F2EAEF291AEF23690054F9A9 /* ReactiveCocoa.framework */,
+				6DD4E8B56701685AF581D891 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -331,7 +332,6 @@
 				F2E9FE781AEC7C92003D5F2D /* Reactive Cocoa */,
 				F2E9FE2D1AEC7C1C003D5F2D /* Model */,
 				F2E9FDB91AEC77FC003D5F2D /* Supporting Files */,
-				F2E9FED21AEC80B8003D5F2D /* Images.xcassets */,
 			);
 			path = Carts;
 			sourceTree = "<group>";
@@ -339,6 +339,7 @@
 		F2E9FDB91AEC77FC003D5F2D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F2E9FED21AEC80B8003D5F2D /* Images.xcassets */,
 				F2E9FE811AEC7CAA003D5F2D /* Info.plist */,
 				F2E9FE031AEC7B6C003D5F2D /* LaunchScreen.xib */,
 				F2E9FEDC1AEC8367003D5F2D /* Vendor */,
@@ -498,50 +499,11 @@
 			isa = PBXGroup;
 			children = (
 				F2BDAF391AEDCD3C00481490 /* CABarcodeFetchManager.swift */,
-				F2E9FE581AEC7C64003D5F2D /* CARACSessionManager.h */,
-				F2E9FE591AEC7C64003D5F2D /* CARACSessionManager.m */,
-				F2E9FE3F1AEC7C3E003D5F2D /* Factual */,
-				F2E9FE3E1AEC7C3D003D5F2D /* Bing */,
-				F2E9FE3D1AEC7C3A003D5F2D /* Twitter */,
+				F23146AE1AF85A2200527B32 /* Factual.swift */,
+				F2BB47001AF6AABA008B73E0 /* Bing.swift */,
+				F2BB47021AF6AD02008B73E0 /* Twitter.swift */,
 			);
 			name = "Session Managers";
-			sourceTree = "<group>";
-		};
-		F2E9FE3D1AEC7C3A003D5F2D /* Twitter */ = {
-			isa = PBXGroup;
-			children = (
-				F2E9FE521AEC7C5E003D5F2D /* CATwitterRequestSerializer.h */,
-				F2E9FE531AEC7C5E003D5F2D /* CATwitterRequestSerializer.m */,
-				F2E9FE541AEC7C5E003D5F2D /* CATwitterSessionManager.h */,
-				F2E9FE551AEC7C5E003D5F2D /* CATwitterSessionManager.m */,
-			);
-			name = Twitter;
-			sourceTree = "<group>";
-		};
-		F2E9FE3E1AEC7C3D003D5F2D /* Bing */ = {
-			isa = PBXGroup;
-			children = (
-				F2E9FE401AEC7C50003D5F2D /* CABingRequestSerializer.h */,
-				F2E9FE411AEC7C50003D5F2D /* CABingRequestSerializer.m */,
-				F2E9FE421AEC7C50003D5F2D /* CABingResponseSerializer.h */,
-				F2E9FE431AEC7C50003D5F2D /* CABingResponseSerializer.m */,
-				F2E9FE441AEC7C50003D5F2D /* CABingSessionManager.h */,
-				F2E9FE451AEC7C50003D5F2D /* CABingSessionManager.m */,
-			);
-			name = Bing;
-			sourceTree = "<group>";
-		};
-		F2E9FE3F1AEC7C3E003D5F2D /* Factual */ = {
-			isa = PBXGroup;
-			children = (
-				F2E9FE491AEC7C57003D5F2D /* CAFactualRequestSerializer.h */,
-				F2E9FE4A1AEC7C57003D5F2D /* CAFactualRequestSerializer.m */,
-				F2E9FE4B1AEC7C57003D5F2D /* CAFactualResponseSerializer.h */,
-				F2E9FE4C1AEC7C57003D5F2D /* CAFactualResponseSerializer.m */,
-				F2E9FE4D1AEC7C57003D5F2D /* CAFactualSessionManager.h */,
-				F2E9FE4E1AEC7C57003D5F2D /* CAFactualSessionManager.m */,
-			);
-			name = Factual;
 			sourceTree = "<group>";
 		};
 		F2E9FE5E1AEC7C74003D5F2D /* Parse */ = {
@@ -656,7 +618,6 @@
 				F2E9FDB31AEC77FC003D5F2D /* Frameworks */,
 				F2E9FDB41AEC77FC003D5F2D /* Resources */,
 				286EA3082DCE088AA40F8970 /* Copy Pods Resources */,
-				CC774610155CD2A7D9186C10 /* Embed Pods Frameworks */,
 				F2EAEF2C1AEF25E40054F9A9 /* ShellScript */,
 			);
 			buildRules = (
@@ -749,27 +710,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		CC774610155CD2A7D9186C10 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		F2EAEF2C1AEF25E40054F9A9 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/LlamaKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/pop.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CommonCrypto.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AlamofireOAuth1.framework",
 			);
 			outputPaths = (
 			);
@@ -795,22 +748,20 @@
 				F2E9FDF31AEC7B14003D5F2D /* POPSpringAnimation+CAAdditions.m in Sources */,
 				F2E9FE741AEC7C8D003D5F2D /* PFQuery+CAQuery.m in Sources */,
 				F2BDAF201AED9F0900481490 /* CAStoredAnimation.swift in Sources */,
-				F2E9FE561AEC7C5E003D5F2D /* CATwitterRequestSerializer.m in Sources */,
 				F2BDAF281AEDB07600481490 /* CAReversibleTransition.swift in Sources */,
 				F2E9FE371AEC7C25003D5F2D /* CABarcode.m in Sources */,
 				F2BDAF1C1AED9AC400481490 /* CAPullToCloseTransitionManager.swift in Sources */,
 				F2BDAF2E1AEDB75800481490 /* CALogInViewController.swift in Sources */,
 				F2BDAF301AEDB78500481490 /* CASignUpDelegate.swift in Sources */,
 				F2E9FEAA1AEC7CD4003D5F2D /* CAVideoPreviewView.m in Sources */,
-				F2E9FE511AEC7C57003D5F2D /* CAFactualSessionManager.m in Sources */,
 				F2BDAF261AEDA6B100481490 /* CAKeyboardResponderAnimator.swift in Sources */,
-				F2E9FE571AEC7C5E003D5F2D /* CATwitterSessionManager.m in Sources */,
 				F2BDAF3A1AEDCD3C00481490 /* CABarcodeFetchManager.swift in Sources */,
 				F2BDAF221AEDA13F00481490 /* CAAnimationStack.swift in Sources */,
 				F2BDAF241AEDA61B00481490 /* CACompanionAnimator.swift in Sources */,
 				F2E9FEB31AEC7CDF003D5F2D /* CATableViewCell.m in Sources */,
 				F2BDAF2C1AEDB27300481490 /* CATransitionDelegate.swift in Sources */,
 				F2E9FE381AEC7C25003D5F2D /* CABarcodeObject.m in Sources */,
+				F2BB47031AF6AD02008B73E0 /* Twitter.swift in Sources */,
 				F2BDAF0B1AED6CF400481490 /* CABaseViewController.swift in Sources */,
 				F2BDAF381AEDC43F00481490 /* CAManualEntryView.swift in Sources */,
 				F2BDAF361AEDC18700481490 /* CACameraLayer.swift in Sources */,
@@ -823,25 +774,21 @@
 				F20F8F861AEED58700C2CD47 /* CAQueryTableViewController.swift in Sources */,
 				F2E9FE911AEC7CB8003D5F2D /* NSDictionary+CACustomKVOOperators.m in Sources */,
 				F2BDAF141AED773900481490 /* CAScannerViewController.swift in Sources */,
-				F2E9FE481AEC7C50003D5F2D /* CABingSessionManager.m in Sources */,
 				F2BDAEFF1AED4D0D00481490 /* AppDelgate.swift in Sources */,
 				F2E9FE921AEC7CB8003D5F2D /* UIColor+CAColor.m in Sources */,
 				F2BDAF011AED51D000481490 /* CAListOverviewTableViewController.swift in Sources */,
 				F2E9FE951AEC7CB8003D5F2D /* UIView+CAView.m in Sources */,
-				F2E9FE5A1AEC7C64003D5F2D /* CARACSessionManager.m in Sources */,
 				F2E9FEA91AEC7CD4003D5F2D /* CARect.m in Sources */,
 				F2E9FE931AEC7CB8003D5F2D /* UIImage+CAImage.m in Sources */,
 				F2E9FEB51AEC7CDF003D5F2D /* CAUserTableViewCell.m in Sources */,
 				F2E9FEA81AEC7CD4003D5F2D /* CAProgressHUD.m in Sources */,
-				F2E9FE4F1AEC7C57003D5F2D /* CAFactualRequestSerializer.m in Sources */,
+				F23146AF1AF85A2200527B32 /* Factual.swift in Sources */,
 				F2E9FE641AEC7C83003D5F2D /* CAParseAnalytics.m in Sources */,
 				F2E9FE771AEC7C8D003D5F2D /* PFUser+CAUser.m in Sources */,
+				F2BB47011AF6AABA008B73E0 /* Bing.swift in Sources */,
 				F2E9FE7D1AEC7C9D003D5F2D /* RACSignal+CAAdditions.m in Sources */,
 				F2E9FEDF1AEC8377003D5F2D /* MustOverride.m in Sources */,
-				F2E9FE461AEC7C50003D5F2D /* CABingRequestSerializer.m in Sources */,
 				F2E9FE731AEC7C8D003D5F2D /* PFObject+CAPFObject.m in Sources */,
-				F2E9FE471AEC7C50003D5F2D /* CABingResponseSerializer.m in Sources */,
-				F2E9FE501AEC7C57003D5F2D /* CAFactualResponseSerializer.m in Sources */,
 				F2E9FE391AEC7C25003D5F2D /* CAListItemObject.m in Sources */,
 				F2BDAF341AEDBC7500481490 /* CAAuthenticationButton.swift in Sources */,
 				F2E9FE7E1AEC7C9D003D5F2D /* UISearchBar+RACAdditions.m in Sources */,
@@ -964,6 +911,10 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Carts/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Carts/Carts-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -986,6 +937,10 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Carts/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Carts/Carts-Bridging-Header.h";
 			};

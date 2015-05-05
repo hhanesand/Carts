@@ -1,6 +1,5 @@
 //
 //  Use this file to import your target's public headers that you would like to expose to Swift.
-//
 
 #import <Parse/Parse.h>
 #import <ParseCrashReporting/ParseCrashReporting.h>
@@ -28,10 +27,7 @@
 #import <MRProgress/MRActivityIndicatorView.h>
 #import <JVFloatLabeledTextField/JVFloatLabeledTextField.h>
 #import "CABarcode.h"
-//#import "CAFactualSessionManager.h"
-//#import "CABingSessionManager.h"
 #import "CAParseAnalytics.h"
 #import "UIView+CAView.h"
 #import "PFFacebookUtils+CAFacebookUtils.h"
 #import "PFTwitterUtils+CATwitterUtils.h"
-//#import "CATwitterSessionManager.h"
