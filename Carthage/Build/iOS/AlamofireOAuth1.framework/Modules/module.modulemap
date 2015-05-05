@@ -1,0 +1,10 @@
+framework module AlamofireOAuth1 {
+  umbrella header "AlamofireOAuth1.h"
+
+  export *
+  module * { export * }
+}
+
+module AlamofireOAuth1.Swift {
+    header "AlamofireOAuth1-Swift.h"
+}

@@ -1,3 +1,6 @@
 github "Alamofire/Alamofire" "9faceeafaa675ec0a4e2c8001a641157844b9973"
 github "LlamaKit/LlamaKit" "v0.6.0"
+github "Facebook/POP" "038f29b2de47db3fce803c5a180eee604ebe1977"
+github "SwiftyJSON/SwiftyJSON" "86fcd57a8d4ec37f168bf5aa32e78c025061e075"
+github "hhanesand/AlamofireOAuth1" "c8be2c607f4750dca8cd28b03ea09470a767c70c"
 github "ReactiveCocoa/ReactiveCocoa" "233a3c01e32b44610fdcd648d6a8603d7befa626"
