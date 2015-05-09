@@ -107,12 +107,6 @@ public enum Factual: URLRequestConvertible {
     }
 }
 
-public extension NSMutableURLRequest {
-    
-    
-}
-
-
 public class OAuth {
     
     private struct Variables { //class vars not supported yet

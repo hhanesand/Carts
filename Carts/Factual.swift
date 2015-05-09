@@ -41,23 +41,32 @@ enum Factual: URLRequestConvertible {
 }
 
 extension Request {
-    func reponseBarcode(completionHandler: (NSURLRequest, NSHTTPURLResponse?, [String : AnyObject]?, NSError?) -> Void) -> Self {
-        let serializer: Serializer = { (request, reponse, data) in
-            let json = JSON(data: data!, options: .AllowFragments)
-            
-            if let itemInformation = json[0]["response"]["data"].dictionary {
-                return (self.processFactualItemInformation(itemInformation), nil)
-            } else {
-                return (nil, json[0]["response"]["data"].error)
-            }
-        }
+    
+    
+    //Alamofire.request(Factual.searchBarcode("12312312123").validate().responseBarcode()
+    
+    public func barcodeSerializer(request: NSURLRequest, response: NSHTTPURLResponse?, data: NSData?) -> Serializer {
+        return
+    }
+    
+    //possibly a solution?
+    let barcodeSerializer: Serializer = { (request, reponse, data) in
+        let json = JSON(data: data!, options: .AllowFragments)
         
-        return response(serializer: serializer) { (request, response, object, error) -> Void in
-            completionHandler(request, response, object as? [String : AnyObject], error)
+        if let itemInformation = json[0]["response"]["data"].dictionary {
+            return (Request.processFactualItemInformation(itemInformation), nil)
+        } else {
+            return (nil, json[0]["response"]["data"].error)
         }
     }
     
-    private func processFactualItemInformation(json: [String : JSON]) -> CABarcodeObject {
+    public func responseBarcode(completionHandler: (NSURLRequest, NSHTTPURLResponse?, CABarcodeObject?, NSError?) -> Void) -> Self {
+        return response(serializer: Request.barcodeSerializer) { (request, response, object, error) -> Void in
+            completionHandler(request, response, object as? CABarcodeObject, error)
+        }
+    }
+    
+    private static func processFactualItemInformation(json: [String : JSON]) -> CABarcodeObject {
         let barcodeObject = CABarcodeObject()
         barcodeObject.brand = json["brand"]?.string
 //        barcodeObject.barcodes = make list that ignores nils here ("ean13", "upc", "upc_13")

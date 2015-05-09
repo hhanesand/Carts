@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class CASignUpViewController: UIViewController, UITextFieldDelegate {
 
@@ -114,9 +115,8 @@ class CASignUpViewController: UIViewController, UITextFieldDelegate {
                     
                 }
                 
-                let sess = CATwitterSessionManager()
-                sess.requestTwitterUserWithID(PFTwitterUtils.twitter()!.userId).subscribeNext({ (next: AnyObject!) -> Void in
-                    user.bindWithTwitterResponse(next as! [NSObject : AnyObject])
+                Alamofire.request(Twitter.UserLookup(id: PFTwitterUtils.twitter()!.userId!)).validate().responseJSON(options: .AllowFragments, completionHandler: { (_, _, userInfo, _) -> Void in
+                    user.bindWithTwitterResponse(userInfo as! [String : AnyObject])
                     user.saveInBackground()
                 })
         }

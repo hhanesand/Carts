@@ -1,0 +1,350 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 47;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F25F37D81AFD801E00819F21 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F25F37D41AFD801E00819F21 /* Alamofire.framework */; };
+		F25F37D91AFD801E00819F21 /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F25F37D51AFD801E00819F21 /* Box.framework */; };
+		F25F37DA1AFD801E00819F21 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F25F37D61AFD801E00819F21 /* ReactiveCocoa.framework */; };
+		F25F37DB1AFD801E00819F21 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F25F37D71AFD801E00819F21 /* Result.framework */; };
+		F2DBC9B01AFAF7D100A2FAB6 /* RACAlamofire.h in Headers */ = {isa = PBXBuildFile; fileRef = F2DBC9AF1AFAF7D100A2FAB6 /* RACAlamofire.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F2DBC9C71AFAF7F500A2FAB6 /* RACAlamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBC9C61AFAF7F500A2FAB6 /* RACAlamofire.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F25F37D41AFD801E00819F21 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		F25F37D51AFD801E00819F21 /* Box.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Box.framework; path = Carthage/Build/iOS/Box.framework; sourceTree = "<group>"; };
+		F25F37D61AFD801E00819F21 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
+		F25F37D71AFD801E00819F21 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		F2DBC9AA1AFAF7D100A2FAB6 /* RACAlamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RACAlamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2DBC9AE1AFAF7D100A2FAB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2DBC9AF1AFAF7D100A2FAB6 /* RACAlamofire.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RACAlamofire.h; sourceTree = "<group>"; };
+		F2DBC9C61AFAF7F500A2FAB6 /* RACAlamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACAlamofire.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F2DBC9A61AFAF7D100A2FAB6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F25F37D81AFD801E00819F21 /* Alamofire.framework in Frameworks */,
+				F25F37D91AFD801E00819F21 /* Box.framework in Frameworks */,
+				F25F37DA1AFD801E00819F21 /* ReactiveCocoa.framework in Frameworks */,
+				F25F37DB1AFD801E00819F21 /* Result.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F25F37DD1AFE602700819F21 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F25F37D41AFD801E00819F21 /* Alamofire.framework */,
+				F25F37D51AFD801E00819F21 /* Box.framework */,
+				F25F37D61AFD801E00819F21 /* ReactiveCocoa.framework */,
+				F25F37D71AFD801E00819F21 /* Result.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F2DBC9A01AFAF7D100A2FAB6 = {
+			isa = PBXGroup;
+			children = (
+				F2DBC9AC1AFAF7D100A2FAB6 /* RACAlamofire */,
+				F2DBC9AB1AFAF7D100A2FAB6 /* Products */,
+				F25F37DD1AFE602700819F21 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F2DBC9AB1AFAF7D100A2FAB6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F2DBC9AA1AFAF7D100A2FAB6 /* RACAlamofire.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F2DBC9AC1AFAF7D100A2FAB6 /* RACAlamofire */ = {
+			isa = PBXGroup;
+			children = (
+				F2DBC9AF1AFAF7D100A2FAB6 /* RACAlamofire.h */,
+				F2DBC9AD1AFAF7D100A2FAB6 /* Supporting Files */,
+				F2DBC9C61AFAF7F500A2FAB6 /* RACAlamofire.swift */,
+			);
+			path = RACAlamofire;
+			sourceTree = "<group>";
+		};
+		F2DBC9AD1AFAF7D100A2FAB6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F2DBC9AE1AFAF7D100A2FAB6 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		F2DBC9A71AFAF7D100A2FAB6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2DBC9B01AFAF7D100A2FAB6 /* RACAlamofire.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		F2DBC9A91AFAF7D100A2FAB6 /* RACAlamofire */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F2DBC9C01AFAF7D100A2FAB6 /* Build configuration list for PBXNativeTarget "RACAlamofire" */;
+			buildPhases = (
+				F2DBC9A51AFAF7D100A2FAB6 /* Sources */,
+				F2DBC9A61AFAF7D100A2FAB6 /* Frameworks */,
+				F2DBC9A71AFAF7D100A2FAB6 /* Headers */,
+				F2DBC9A81AFAF7D100A2FAB6 /* Resources */,
+				F25F37DC1AFD802700819F21 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RACAlamofire;
+			productName = RACAlamofire;
+			productReference = F2DBC9AA1AFAF7D100A2FAB6 /* RACAlamofire.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F2DBC9A11AFAF7D100A2FAB6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Hakon Hanesand";
+				TargetAttributes = {
+					F2DBC9A91AFAF7D100A2FAB6 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+				};
+			};
+			buildConfigurationList = F2DBC9A41AFAF7D100A2FAB6 /* Build configuration list for PBXProject "RACAlamofire" */;
+			compatibilityVersion = "Xcode 6.3";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F2DBC9A01AFAF7D100A2FAB6;
+			productRefGroup = F2DBC9AB1AFAF7D100A2FAB6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F2DBC9A91AFAF7D100A2FAB6 /* RACAlamofire */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F2DBC9A81AFAF7D100A2FAB6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F25F37DC1AFD802700819F21 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Box.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F2DBC9A51AFAF7D100A2FAB6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2DBC9C71AFAF7F500A2FAB6 /* RACAlamofire.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		F2DBC9BE1AFAF7D100A2FAB6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F2DBC9BF1AFAF7D100A2FAB6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F2DBC9C11AFAF7D100A2FAB6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = RACAlamofire/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F2DBC9C21AFAF7D100A2FAB6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = RACAlamofire/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F2DBC9A41AFAF7D100A2FAB6 /* Build configuration list for PBXProject "RACAlamofire" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2DBC9BE1AFAF7D100A2FAB6 /* Debug */,
+				F2DBC9BF1AFAF7D100A2FAB6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2DBC9C01AFAF7D100A2FAB6 /* Build configuration list for PBXNativeTarget "RACAlamofire" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2DBC9C11AFAF7D100A2FAB6 /* Debug */,
+				F2DBC9C21AFAF7D100A2FAB6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F2DBC9A11AFAF7D100A2FAB6 /* Project object */;
+}

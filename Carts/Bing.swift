@@ -46,8 +46,9 @@ enum Bing: URLRequestConvertible {
 }
 
 extension Request {
-    func reponseBingImageThumbnail(completionHandler: (NSURLRequest, NSHTTPURLResponse?, String?, NSError?) -> Void) -> Self {
-        let serializer: Serializer = { (request, response, data) in
+    
+    class func BingResponseSerializer() -> Serializer {
+        return { (request, response, data) in
             let json = JSON(data: data!, options: .AllowFragments)
             
             if let url = json[Bing.thumbnailPictureJSONKeypath].string {
@@ -56,8 +57,10 @@ extension Request {
                 return (nil, json[Bing.thumbnailPictureJSONKeypath].error)
             }
         }
-        
-        return response(serializer: serializer) { (request, response, object, error) -> Void in
+    }
+    
+    public func reponseBingImageThumbnail(completionHandler: (NSURLRequest, NSHTTPURLResponse?, String?, NSError?) -> Void) -> Self {
+        return response(serializer: Request.BingResponseSerializer()) { (request, response, object, error) -> Void in
             completionHandler(request, response, object as? String, error)
         }
     }

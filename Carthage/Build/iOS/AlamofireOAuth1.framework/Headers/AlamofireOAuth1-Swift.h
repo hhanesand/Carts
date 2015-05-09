@@ -83,13 +83,8 @@ typedef struct _NSZone NSZone;
 #  define SWIFT_NULLABILITY(X)
 #endif
 #if defined(__has_feature) && __has_feature(modules)
-@import Foundation;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
 #pragma clang diagnostic ignored "-Wduplicate-method-arg"
-
-@interface NSMutableURLRequest (SWIFT_EXTENSION(AlamofireOAuth1))
-@end
-
 #pragma clang diagnostic pop

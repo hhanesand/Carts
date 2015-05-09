@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D0F60B14B4E15F307A50501D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D5B2F78BB34AD8339127DD /* libPods.a */; };
 		F20F8F861AEED58700C2CD47 /* CAQueryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20F8F851AEED58700C2CD47 /* CAQueryTableViewController.swift */; };
 		F23146AB1AF85A0A00527B32 /* AlamofireOAuth1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F23146AA1AF85A0A00527B32 /* AlamofireOAuth1.framework */; };
 		F23146AD1AF85A0E00527B32 /* CommonCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F23146AC1AF85A0E00527B32 /* CommonCrypto.framework */; };
 		F23146AF1AF85A2200527B32 /* Factual.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23146AE1AF85A2200527B32 /* Factual.swift */; };
+		F2567A591AF93CAC001F4C41 /* RACAlamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2567A581AF93CAC001F4C41 /* RACAlamofire.swift */; };
 		F26E37B01AF6A2120058328F /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26E37AF1AF6A2120058328F /* pop.framework */; };
 		F2BB46FD1AF6AA71008B73E0 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2BB46FC1AF6AA71008B73E0 /* Alamofire.framework */; };
 		F2BB47011AF6AABA008B73E0 /* Bing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BB47001AF6AABA008B73E0 /* Bing.swift */; };
@@ -92,19 +94,18 @@
 		F2E9FED31AEC80B9003D5F2D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2E9FED21AEC80B8003D5F2D /* Images.xcassets */; };
 		F2E9FEDB1AEC81FC003D5F2D /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2E9FEDA1AEC81FC003D5F2D /* ParseFacebookUtilsV4.framework */; };
 		F2E9FEDF1AEC8377003D5F2D /* MustOverride.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FEDE1AEC8377003D5F2D /* MustOverride.m */; };
-		F2EAEF2A1AEF23690054F9A9 /* LlamaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2EAEF281AEF23690054F9A9 /* LlamaKit.framework */; };
 		F2EAEF2B1AEF23690054F9A9 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2EAEF291AEF23690054F9A9 /* ReactiveCocoa.framework */; };
-		F2F7ACE21AF82EC70019E009 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F7ACE11AF82EC70019E009 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6D584CAE9CDAC928CBCA8551 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		6DD4E8B56701685AF581D891 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B37AE999C59955AC7121D00B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		D6D5B2F78BB34AD8339127DD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F20F8F851AEED58700C2CD47 /* CAQueryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAQueryTableViewController.swift; sourceTree = "<group>"; };
 		F23146AA1AF85A0A00527B32 /* AlamofireOAuth1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireOAuth1.framework; path = Carthage/Build/iOS/AlamofireOAuth1.framework; sourceTree = "<group>"; };
 		F23146AC1AF85A0E00527B32 /* CommonCrypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CommonCrypto.framework; path = Carthage/Build/iOS/CommonCrypto.framework; sourceTree = "<group>"; };
 		F23146AE1AF85A2200527B32 /* Factual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Factual.swift; sourceTree = "<group>"; };
+		F2567A581AF93CAC001F4C41 /* RACAlamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACAlamofire.swift; sourceTree = "<group>"; };
 		F26E37AF1AF6A2120058328F /* pop.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = pop.framework; path = Carthage/Build/iOS/pop.framework; sourceTree = "<group>"; };
 		F2BB46FC1AF6AA71008B73E0 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		F2BB47001AF6AABA008B73E0 /* Bing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bing.swift; sourceTree = "<group>"; };
@@ -219,9 +220,7 @@
 		F2E9FEDA1AEC81FC003D5F2D /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		F2E9FEDD1AEC8377003D5F2D /* MustOverride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MustOverride.h; sourceTree = "<group>"; };
 		F2E9FEDE1AEC8377003D5F2D /* MustOverride.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MustOverride.m; sourceTree = "<group>"; };
-		F2EAEF281AEF23690054F9A9 /* LlamaKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LlamaKit.framework; path = Carthage/Build/iOS/LlamaKit.framework; sourceTree = "<group>"; };
 		F2EAEF291AEF23690054F9A9 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
-		F2F7ACE11AF82EC70019E009 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,19 +228,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2F7ACE21AF82EC70019E009 /* libPods.a in Frameworks */,
-				F26E37B01AF6A2120058328F /* pop.framework in Frameworks */,
-				F2BDAF061AED56F700481490 /* FBSDKLoginKit.framework in Frameworks */,
-				F2EAEF2A1AEF23690054F9A9 /* LlamaKit.framework in Frameworks */,
 				F2BB46FD1AF6AA71008B73E0 /* Alamofire.framework in Frameworks */,
+				F2EAEF2B1AEF23690054F9A9 /* ReactiveCocoa.framework in Frameworks */,
+				F23146AB1AF85A0A00527B32 /* AlamofireOAuth1.framework in Frameworks */,
+				F2BB47051AF6D0FE008B73E0 /* SwiftyJSON.framework in Frameworks */,
 				F2E9FEDB1AEC81FC003D5F2D /* ParseFacebookUtilsV4.framework in Frameworks */,
+				F26E37B01AF6A2120058328F /* pop.framework in Frameworks */,
+				F2BDAF051AED56F700481490 /* FBSDKCoreKit.framework in Frameworks */,
+				F2BDAF061AED56F700481490 /* FBSDKLoginKit.framework in Frameworks */,
+				F2BDAF071AED56F700481490 /* FBSDKShareKit.framework in Frameworks */,
 				F2E9FECF1AEC8027003D5F2D /* Social.framework in Frameworks */,
 				F2E9FECD1AEC8022003D5F2D /* Accounts.framework in Frameworks */,
-				F2E9FECB1AEC8014003D5F2D /* libsqlite3.dylib in Frameworks */,
-				F23146AB1AF85A0A00527B32 /* AlamofireOAuth1.framework in Frameworks */,
-				F2E9FEC91AEC800B003D5F2D /* libz.dylib in Frameworks */,
 				F2E9FEC71AEC8003003D5F2D /* SystemConfiguration.framework in Frameworks */,
-				F2BB47051AF6D0FE008B73E0 /* SwiftyJSON.framework in Frameworks */,
 				F2E9FEC51AEC7FFB003D5F2D /* StoreKit.framework in Frameworks */,
 				F23146AD1AF85A0E00527B32 /* CommonCrypto.framework in Frameworks */,
 				F2E9FEC31AEC7FEE003D5F2D /* Security.framework in Frameworks */,
@@ -250,10 +248,10 @@
 				F2E9FEBD1AEC7FDA003D5F2D /* CoreLocation.framework in Frameworks */,
 				F2E9FEBB1AEC7FD2003D5F2D /* CoreGraphics.framework in Frameworks */,
 				F2E9FEB91AEC7FCB003D5F2D /* CFNetwork.framework in Frameworks */,
-				F2BDAF071AED56F700481490 /* FBSDKShareKit.framework in Frameworks */,
-				F2BDAF051AED56F700481490 /* FBSDKCoreKit.framework in Frameworks */,
 				F2E9FEB71AEC7FC4003D5F2D /* AudioToolbox.framework in Frameworks */,
-				F2EAEF2B1AEF23690054F9A9 /* ReactiveCocoa.framework in Frameworks */,
+				F2E9FECB1AEC8014003D5F2D /* libsqlite3.dylib in Frameworks */,
+				F2E9FEC91AEC800B003D5F2D /* libz.dylib in Frameworks */,
+				D0F60B14B4E15F307A50501D /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,7 +263,6 @@
 			children = (
 				F23146AC1AF85A0E00527B32 /* CommonCrypto.framework */,
 				F23146AA1AF85A0A00527B32 /* AlamofireOAuth1.framework */,
-				F2F7ACE11AF82EC70019E009 /* libPods.a */,
 				F2BB47041AF6D0FE008B73E0 /* SwiftyJSON.framework */,
 				F2BB46FC1AF6AA71008B73E0 /* Alamofire.framework */,
 				F26E37AF1AF6A2120058328F /* pop.framework */,
@@ -286,9 +283,8 @@
 				F2E9FEBA1AEC7FD2003D5F2D /* CoreGraphics.framework */,
 				F2E9FEB81AEC7FCB003D5F2D /* CFNetwork.framework */,
 				F2E9FEB61AEC7FC4003D5F2D /* AudioToolbox.framework */,
-				F2EAEF281AEF23690054F9A9 /* LlamaKit.framework */,
 				F2EAEF291AEF23690054F9A9 /* ReactiveCocoa.framework */,
-				6DD4E8B56701685AF581D891 /* libPods.a */,
+				D6D5B2F78BB34AD8339127DD /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -502,6 +498,7 @@
 				F23146AE1AF85A2200527B32 /* Factual.swift */,
 				F2BB47001AF6AABA008B73E0 /* Bing.swift */,
 				F2BB47021AF6AD02008B73E0 /* Twitter.swift */,
+				F2567A581AF93CAC001F4C41 /* RACAlamofire.swift */,
 			);
 			name = "Session Managers";
 			sourceTree = "<group>";
@@ -744,6 +741,7 @@
 				F2BDAF1A1AED93AB00481490 /* CADismissableViewHandler.swift in Sources */,
 				F2BDAF0F1AED6DC400481490 /* CAShareCartViewController.swift in Sources */,
 				F2E9FEB21AEC7CDF003D5F2D /* CAListOverviewTableViewCell.m in Sources */,
+				F2567A591AF93CAC001F4C41 /* RACAlamofire.swift in Sources */,
 				F2E9FE941AEC7CB8003D5F2D /* UIView+BadView.m in Sources */,
 				F2E9FDF31AEC7B14003D5F2D /* POPSpringAnimation+CAAdditions.m in Sources */,
 				F2E9FE741AEC7C8D003D5F2D /* PFQuery+CAQuery.m in Sources */,

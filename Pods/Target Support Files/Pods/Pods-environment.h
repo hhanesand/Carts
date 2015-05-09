@@ -28,7 +28,7 @@
 #define COCOAPODS_POD_AVAILABLE_JVFloatLabeledTextField
 #define COCOAPODS_VERSION_MAJOR_JVFloatLabeledTextField 1
 #define COCOAPODS_VERSION_MINOR_JVFloatLabeledTextField 0
-#define COCOAPODS_VERSION_PATCH_JVFloatLabeledTextField 2
+#define COCOAPODS_VERSION_PATCH_JVFloatLabeledTextField 3
 
 // MRProgress
 #define COCOAPODS_POD_AVAILABLE_MRProgress
@@ -95,14 +95,14 @@
 // This library does not follow semantic-versioning,
 // so we were not able to define version macros.
 // Please contact the author.
-// Version: 1.7.2.1.
+// Version: 1.7.2.2.
 
 // ParseCrashReporting
 #define COCOAPODS_POD_AVAILABLE_ParseCrashReporting
 // This library does not follow semantic-versioning,
 // so we were not able to define version macros.
 // Please contact the author.
-// Version: 1.7.2.1.
+// Version: 1.7.2.2.
 
 // ParseUI
 #define COCOAPODS_POD_AVAILABLE_ParseUI

@@ -28,8 +28,8 @@
 #import "JVFloatLabeledTextView.h"
 #import "NSString+TextDirectionality.h"
 
-#define kFloatingLabelShowAnimationDuration 0.3f
-#define kFloatingLabelHideAnimationDuration 0.3f
+static CGFloat const kFloatingLabelShowAnimationDuration = 0.3f;
+static CGFloat const kFloatingLabelHideAnimationDuration = 0.3f;
 
 @interface JVFloatLabeledTextView ()
 
@@ -65,7 +65,7 @@
 - (void)commonInit
 {
     self.startingTextContainerInsetTop = self.textContainerInset.top;
-    self.floatingLabelShouldLockToTop = 1;
+    self.floatingLabelShouldLockToTop = YES;
     self.textContainer.lineFragmentPadding = 0;
     
     _placeholderLabel = [[UILabel alloc] initWithFrame:self.frame];
@@ -88,7 +88,7 @@
     _floatingLabel.font = _floatingLabelFont;
     _floatingLabelTextColor = [UIColor grayColor];
     _floatingLabel.textColor = _floatingLabelTextColor;
-    _animateEvenIfNotFirstResponder = 0;
+    _animateEvenIfNotFirstResponder = NO;
     _floatingLabelShowAnimationDuration = kFloatingLabelShowAnimationDuration;
     _floatingLabelHideAnimationDuration = kFloatingLabelHideAnimationDuration;
 
@@ -151,19 +151,20 @@
     [super layoutSubviews];
     [self adjustTextContainerInsetTop];
     
-    [_placeholderLabel sizeToFit];
-    [_floatingLabel sizeToFit];
+    CGSize floatingLabelSize = [_floatingLabel sizeThatFits:_floatingLabel.superview.bounds.size];
     
     _floatingLabel.frame = CGRectMake(_floatingLabel.frame.origin.x,
                                       _floatingLabel.frame.origin.y,
-                                      self.frame.size.width,
-                                      _floatingLabel.bounds.size.height);
+                                      floatingLabelSize.width,
+                                      floatingLabelSize.height);
+    
+    CGSize placeholderLabelSize = [_placeholderLabel sizeThatFits:_placeholderLabel.superview.bounds.size];
     
     CGRect textRect = [self textRect];
     
     _placeholderLabel.alpha = [self.text length] > 0 ? 0.0f : 1.0f;
     _placeholderLabel.frame = CGRectMake(textRect.origin.x, textRect.origin.y,
-                                         _placeholderLabel.frame.size.width, _placeholderLabel.frame.size.height);
+                                         placeholderLabelSize.width, placeholderLabelSize.height);
     
     [self setLabelOriginForTextAlignment];
     
@@ -275,7 +276,7 @@
         }
     }
     
-    _floatingLabel.frame = CGRectMake(floatingLabelOriginX, _floatingLabel.frame.origin.y,
+    _floatingLabel.frame = CGRectMake(floatingLabelOriginX + _floatingLabelXPadding, _floatingLabel.frame.origin.y,
                                       _floatingLabel.frame.size.width, _floatingLabel.frame.size.height);
     
     _placeholderLabel.frame = CGRectMake(placeholderLabelOriginX, _placeholderLabel.frame.origin.y,
