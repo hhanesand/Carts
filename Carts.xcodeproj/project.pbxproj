@@ -8,11 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		D0F60B14B4E15F307A50501D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D5B2F78BB34AD8339127DD /* libPods.a */; };
-		F20F8F861AEED58700C2CD47 /* CAQueryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20F8F851AEED58700C2CD47 /* CAQueryTableViewController.swift */; };
+		F20F8F861AEED58700C2CD47 /* QueryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20F8F851AEED58700C2CD47 /* QueryTableViewController.swift */; };
 		F23146AB1AF85A0A00527B32 /* AlamofireOAuth1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F23146AA1AF85A0A00527B32 /* AlamofireOAuth1.framework */; };
 		F23146AD1AF85A0E00527B32 /* CommonCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F23146AC1AF85A0E00527B32 /* CommonCrypto.framework */; };
 		F23146AF1AF85A2200527B32 /* Factual.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23146AE1AF85A2200527B32 /* Factual.swift */; };
 		F2567A591AF93CAC001F4C41 /* RACAlamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2567A581AF93CAC001F4C41 /* RACAlamofire.swift */; };
+		F25F38391AFEAF5300819F21 /* ReversibleSpringAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25F38381AFEAF5300819F21 /* ReversibleSpringAnimation.swift */; };
+		F25F383B1AFEB0B600819F21 /* RACAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25F383A1AFEB0B600819F21 /* RACAnimation.swift */; };
+		F25F383D1AFEB46C00819F21 /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25F383C1AFEB46C00819F21 /* ProgressHUD.swift */; };
+		F25F383F1AFEB52500819F21 /* Rect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25F383E1AFEB52500819F21 /* Rect.swift */; };
+		F25F38411AFEBA3800819F21 /* VideoPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25F38401AFEBA3800819F21 /* VideoPreviewView.swift */; };
+		F25F38431AFEBD0400819F21 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25F38421AFEBD0400819F21 /* ListTableViewCell.swift */; };
+		F25F38451AFEBD2E00819F21 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25F38441AFEBD2E00819F21 /* ItemTableViewCell.swift */; };
+		F25F38471AFEBDB400819F21 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25F38461AFEBDB400819F21 /* UserTableViewCell.swift */; };
+		F25F384B1AFEC00F00819F21 /* Barcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25F384A1AFEC00F00819F21 /* Barcode.swift */; };
+		F25F384D1AFEC0FE00819F21 /* BarcodeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25F384C1AFEC0FE00819F21 /* BarcodeObject.swift */; };
+		F25F384F1AFEC3FC00819F21 /* BarcodeScannerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25F384E1AFEC3FC00819F21 /* BarcodeScannerDelegate.swift */; };
+		F25F38511AFEC47C00819F21 /* ListItemObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25F38501AFEC47C00819F21 /* ListItemObject.swift */; };
+		F25F38531AFEC51400819F21 /* ListObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25F38521AFEC51400819F21 /* ListObject.swift */; };
+		F25F38551AFEC5B500819F21 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25F38541AFEC5B500819F21 /* Analytics.swift */; };
+		F25F38591AFEC70900819F21 /* FacebookUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25F38581AFEC70900819F21 /* FacebookUtils.swift */; };
 		F26E37B01AF6A2120058328F /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26E37AF1AF6A2120058328F /* pop.framework */; };
 		F2BB46FD1AF6AA71008B73E0 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2BB46FC1AF6AA71008B73E0 /* Alamofire.framework */; };
 		F2BB47011AF6AABA008B73E0 /* Bing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BB47001AF6AABA008B73E0 /* Bing.swift */; };
@@ -45,39 +60,24 @@
 		F2BDAF361AEDC18700481490 /* CACameraLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BDAF351AEDC18700481490 /* CACameraLayer.swift */; };
 		F2BDAF381AEDC43F00481490 /* CAManualEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BDAF371AEDC43F00481490 /* CAManualEntryView.swift */; };
 		F2BDAF3A1AEDCD3C00481490 /* CABarcodeFetchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BDAF391AEDCD3C00481490 /* CABarcodeFetchManager.swift */; };
-		F2E9FDF21AEC7B14003D5F2D /* POPAnimation+CAAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FDEA1AEC7B14003D5F2D /* POPAnimation+CAAnimation.m */; };
-		F2E9FDF31AEC7B14003D5F2D /* POPSpringAnimation+CAAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FDEC1AEC7B14003D5F2D /* POPSpringAnimation+CAAdditions.m */; };
 		F2E9FE051AEC7B6C003D5F2D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2E9FE031AEC7B6C003D5F2D /* LaunchScreen.xib */; };
 		F2E9FE141AEC7BEC003D5F2D /* CASignUpViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2E9FE111AEC7BEC003D5F2D /* CASignUpViewController.storyboard */; };
 		F2E9FE1F1AEC7C04003D5F2D /* CAListOverviewTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2E9FE1D1AEC7C04003D5F2D /* CAListOverviewTableViewController.storyboard */; };
 		F2E9FE261AEC7C0B003D5F2D /* CAScannerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2E9FE221AEC7C0B003D5F2D /* CAScannerViewController.storyboard */; };
 		F2E9FE2C1AEC7C13003D5F2D /* CAShareCartViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2E9FE2A1AEC7C13003D5F2D /* CAShareCartViewController.storyboard */; };
-		F2E9FE371AEC7C25003D5F2D /* CABarcode.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE2F1AEC7C25003D5F2D /* CABarcode.m */; };
-		F2E9FE381AEC7C25003D5F2D /* CABarcodeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE311AEC7C25003D5F2D /* CABarcodeObject.m */; };
-		F2E9FE391AEC7C25003D5F2D /* CAListItemObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE341AEC7C25003D5F2D /* CAListItemObject.m */; };
-		F2E9FE3A1AEC7C25003D5F2D /* CAListObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE361AEC7C25003D5F2D /* CAListObject.m */; };
-		F2E9FE641AEC7C83003D5F2D /* CAParseAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE611AEC7C83003D5F2D /* CAParseAnalytics.m */; };
-		F2E9FE651AEC7C83003D5F2D /* CAQueryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE631AEC7C83003D5F2D /* CAQueryTableViewController.m */; };
 		F2E9FE721AEC7C8D003D5F2D /* PFFacebookUtils+CAFacebookUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE671AEC7C8D003D5F2D /* PFFacebookUtils+CAFacebookUtils.m */; };
 		F2E9FE731AEC7C8D003D5F2D /* PFObject+CAPFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE691AEC7C8D003D5F2D /* PFObject+CAPFObject.m */; };
 		F2E9FE741AEC7C8D003D5F2D /* PFQuery+CAQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE6B1AEC7C8D003D5F2D /* PFQuery+CAQuery.m */; };
 		F2E9FE751AEC7C8D003D5F2D /* PFQueryTableViewController+Caching.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE6D1AEC7C8D003D5F2D /* PFQueryTableViewController+Caching.m */; };
 		F2E9FE761AEC7C8D003D5F2D /* PFTwitterUtils+CATwitterUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE6F1AEC7C8D003D5F2D /* PFTwitterUtils+CATwitterUtils.m */; };
 		F2E9FE771AEC7C8D003D5F2D /* PFUser+CAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE711AEC7C8D003D5F2D /* PFUser+CAUser.m */; };
-		F2E9FE7D1AEC7C9D003D5F2D /* RACSignal+CAAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE7A1AEC7C9D003D5F2D /* RACSignal+CAAdditions.m */; };
 		F2E9FE7E1AEC7C9D003D5F2D /* UISearchBar+RACAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE7C1AEC7C9D003D5F2D /* UISearchBar+RACAdditions.m */; };
 		F2E9FE911AEC7CB8003D5F2D /* NSDictionary+CACustomKVOOperators.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE881AEC7CB8003D5F2D /* NSDictionary+CACustomKVOOperators.m */; };
 		F2E9FE921AEC7CB8003D5F2D /* UIColor+CAColor.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE8A1AEC7CB8003D5F2D /* UIColor+CAColor.m */; };
 		F2E9FE931AEC7CB8003D5F2D /* UIImage+CAImage.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE8C1AEC7CB8003D5F2D /* UIImage+CAImage.m */; };
 		F2E9FE941AEC7CB8003D5F2D /* UIView+BadView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE8E1AEC7CB8003D5F2D /* UIView+BadView.m */; };
 		F2E9FE951AEC7CB8003D5F2D /* UIView+CAView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE901AEC7CB8003D5F2D /* UIView+CAView.m */; };
-		F2E9FEA81AEC7CD4003D5F2D /* CAProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FEA01AEC7CD4003D5F2D /* CAProgressHUD.m */; };
-		F2E9FEA91AEC7CD4003D5F2D /* CARect.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FEA21AEC7CD4003D5F2D /* CARect.m */; };
-		F2E9FEAA1AEC7CD4003D5F2D /* CAVideoPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FEA41AEC7CD4003D5F2D /* CAVideoPreviewView.m */; };
-		F2E9FEB21AEC7CDF003D5F2D /* CAListOverviewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FEAC1AEC7CDF003D5F2D /* CAListOverviewTableViewCell.m */; };
-		F2E9FEB31AEC7CDF003D5F2D /* CATableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FEAE1AEC7CDF003D5F2D /* CATableViewCell.m */; };
-		F2E9FEB41AEC7CDF003D5F2D /* CATableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2E9FEAF1AEC7CDF003D5F2D /* CATableViewCell.xib */; };
-		F2E9FEB51AEC7CDF003D5F2D /* CAUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FEB11AEC7CDF003D5F2D /* CAUserTableViewCell.m */; };
+		F2E9FEB41AEC7CDF003D5F2D /* ItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2E9FEAF1AEC7CDF003D5F2D /* ItemTableViewCell.xib */; };
 		F2E9FEB71AEC7FC4003D5F2D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2E9FEB61AEC7FC4003D5F2D /* AudioToolbox.framework */; };
 		F2E9FEB91AEC7FCB003D5F2D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2E9FEB81AEC7FCB003D5F2D /* CFNetwork.framework */; };
 		F2E9FEBB1AEC7FD2003D5F2D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2E9FEBA1AEC7FD2003D5F2D /* CoreGraphics.framework */; };
@@ -101,11 +101,26 @@
 		6D584CAE9CDAC928CBCA8551 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B37AE999C59955AC7121D00B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D6D5B2F78BB34AD8339127DD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		F20F8F851AEED58700C2CD47 /* CAQueryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAQueryTableViewController.swift; sourceTree = "<group>"; };
+		F20F8F851AEED58700C2CD47 /* QueryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryTableViewController.swift; sourceTree = "<group>"; };
 		F23146AA1AF85A0A00527B32 /* AlamofireOAuth1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireOAuth1.framework; path = Carthage/Build/iOS/AlamofireOAuth1.framework; sourceTree = "<group>"; };
 		F23146AC1AF85A0E00527B32 /* CommonCrypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CommonCrypto.framework; path = Carthage/Build/iOS/CommonCrypto.framework; sourceTree = "<group>"; };
 		F23146AE1AF85A2200527B32 /* Factual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Factual.swift; sourceTree = "<group>"; };
 		F2567A581AF93CAC001F4C41 /* RACAlamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACAlamofire.swift; sourceTree = "<group>"; };
+		F25F38381AFEAF5300819F21 /* ReversibleSpringAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReversibleSpringAnimation.swift; sourceTree = "<group>"; };
+		F25F383A1AFEB0B600819F21 /* RACAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RACAnimation.swift; path = Animation/pop/RACAnimation.swift; sourceTree = "<group>"; };
+		F25F383C1AFEB46C00819F21 /* ProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
+		F25F383E1AFEB52500819F21 /* Rect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rect.swift; sourceTree = "<group>"; };
+		F25F38401AFEBA3800819F21 /* VideoPreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoPreviewView.swift; path = Views/VideoPreviewView.swift; sourceTree = "<group>"; };
+		F25F38421AFEBD0400819F21 /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		F25F38441AFEBD2E00819F21 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		F25F38461AFEBDB400819F21 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		F25F384A1AFEC00F00819F21 /* Barcode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Barcode.swift; sourceTree = "<group>"; };
+		F25F384C1AFEC0FE00819F21 /* BarcodeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeObject.swift; sourceTree = "<group>"; };
+		F25F384E1AFEC3FC00819F21 /* BarcodeScannerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScannerDelegate.swift; sourceTree = "<group>"; };
+		F25F38501AFEC47C00819F21 /* ListItemObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItemObject.swift; sourceTree = "<group>"; };
+		F25F38521AFEC51400819F21 /* ListObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListObject.swift; sourceTree = "<group>"; };
+		F25F38541AFEC5B500819F21 /* Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
+		F25F38581AFEC70900819F21 /* FacebookUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookUtils.swift; sourceTree = "<group>"; };
 		F26E37AF1AF6A2120058328F /* pop.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = pop.framework; path = Carthage/Build/iOS/pop.framework; sourceTree = "<group>"; };
 		F2BB46FC1AF6AA71008B73E0 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		F2BB47001AF6AABA008B73E0 /* Bing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bing.swift; sourceTree = "<group>"; };
@@ -141,28 +156,11 @@
 		F2BDAF391AEDCD3C00481490 /* CABarcodeFetchManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CABarcodeFetchManager.swift; sourceTree = "<group>"; };
 		F2E9FDB61AEC77FC003D5F2D /* Carts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Carts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2E9FDD01AEC77FC003D5F2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F2E9FDE91AEC7B14003D5F2D /* POPAnimation+CAAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "POPAnimation+CAAnimation.h"; path = "Animation/pop/POPAnimation+CAAnimation.h"; sourceTree = "<group>"; };
-		F2E9FDEA1AEC7B14003D5F2D /* POPAnimation+CAAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "POPAnimation+CAAnimation.m"; path = "Animation/pop/POPAnimation+CAAnimation.m"; sourceTree = "<group>"; };
-		F2E9FDEB1AEC7B14003D5F2D /* POPSpringAnimation+CAAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "POPSpringAnimation+CAAdditions.h"; path = "Animation/pop/POPSpringAnimation+CAAdditions.h"; sourceTree = "<group>"; };
-		F2E9FDEC1AEC7B14003D5F2D /* POPSpringAnimation+CAAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "POPSpringAnimation+CAAdditions.m"; path = "Animation/pop/POPSpringAnimation+CAAdditions.m"; sourceTree = "<group>"; };
 		F2E9FE041AEC7B6C003D5F2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		F2E9FE111AEC7BEC003D5F2D /* CASignUpViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CASignUpViewController.storyboard; path = "Controllers/Authentication Controllers/CASignUpViewController.storyboard"; sourceTree = "<group>"; };
 		F2E9FE1D1AEC7C04003D5F2D /* CAListOverviewTableViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CAListOverviewTableViewController.storyboard; path = "Controllers/Cart Overview Controller/CAListOverviewTableViewController.storyboard"; sourceTree = "<group>"; };
 		F2E9FE221AEC7C0B003D5F2D /* CAScannerViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CAScannerViewController.storyboard; path = "Controllers/Scan and Search Controller/CAScannerViewController.storyboard"; sourceTree = "<group>"; };
 		F2E9FE2A1AEC7C13003D5F2D /* CAShareCartViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CAShareCartViewController.storyboard; path = "Controllers/Share Controller/CAShareCartViewController.storyboard"; sourceTree = "<group>"; };
-		F2E9FE2E1AEC7C25003D5F2D /* CABarcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = CABarcode.h; path = Model/CABarcode.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		F2E9FE2F1AEC7C25003D5F2D /* CABarcode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = CABarcode.m; path = Model/CABarcode.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		F2E9FE301AEC7C25003D5F2D /* CABarcodeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = CABarcodeObject.h; path = Model/CABarcodeObject.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		F2E9FE311AEC7C25003D5F2D /* CABarcodeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = CABarcodeObject.m; path = Model/CABarcodeObject.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		F2E9FE321AEC7C25003D5F2D /* CABarcodeScannerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = CABarcodeScannerDelegate.h; path = Model/CABarcodeScannerDelegate.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		F2E9FE331AEC7C25003D5F2D /* CAListItemObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAListItemObject.h; path = Model/CAListItemObject.h; sourceTree = "<group>"; };
-		F2E9FE341AEC7C25003D5F2D /* CAListItemObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAListItemObject.m; path = Model/CAListItemObject.m; sourceTree = "<group>"; };
-		F2E9FE351AEC7C25003D5F2D /* CAListObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAListObject.h; path = Model/CAListObject.h; sourceTree = "<group>"; };
-		F2E9FE361AEC7C25003D5F2D /* CAListObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAListObject.m; path = Model/CAListObject.m; sourceTree = "<group>"; };
-		F2E9FE601AEC7C83003D5F2D /* CAParseAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAParseAnalytics.h; path = Parse/CAParseAnalytics.h; sourceTree = "<group>"; };
-		F2E9FE611AEC7C83003D5F2D /* CAParseAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAParseAnalytics.m; path = Parse/CAParseAnalytics.m; sourceTree = "<group>"; };
-		F2E9FE621AEC7C83003D5F2D /* CAQueryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAQueryTableViewController.h; path = Parse/CAQueryTableViewController.h; sourceTree = "<group>"; };
-		F2E9FE631AEC7C83003D5F2D /* CAQueryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAQueryTableViewController.m; path = Parse/CAQueryTableViewController.m; sourceTree = "<group>"; };
 		F2E9FE661AEC7C8D003D5F2D /* PFFacebookUtils+CAFacebookUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PFFacebookUtils+CAFacebookUtils.h"; path = "Parse/Categories/PFFacebookUtils+CAFacebookUtils.h"; sourceTree = "<group>"; };
 		F2E9FE671AEC7C8D003D5F2D /* PFFacebookUtils+CAFacebookUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PFFacebookUtils+CAFacebookUtils.m"; path = "Parse/Categories/PFFacebookUtils+CAFacebookUtils.m"; sourceTree = "<group>"; };
 		F2E9FE681AEC7C8D003D5F2D /* PFObject+CAPFObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PFObject+CAPFObject.h"; path = "Parse/Categories/PFObject+CAPFObject.h"; sourceTree = "<group>"; };
@@ -175,8 +173,6 @@
 		F2E9FE6F1AEC7C8D003D5F2D /* PFTwitterUtils+CATwitterUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PFTwitterUtils+CATwitterUtils.m"; path = "Parse/Categories/PFTwitterUtils+CATwitterUtils.m"; sourceTree = "<group>"; };
 		F2E9FE701AEC7C8D003D5F2D /* PFUser+CAUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PFUser+CAUser.h"; path = "Parse/Categories/PFUser+CAUser.h"; sourceTree = "<group>"; };
 		F2E9FE711AEC7C8D003D5F2D /* PFUser+CAUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PFUser+CAUser.m"; path = "Parse/Categories/PFUser+CAUser.m"; sourceTree = "<group>"; };
-		F2E9FE791AEC7C9C003D5F2D /* RACSignal+CAAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "RACSignal+CAAdditions.h"; path = "Reactive Cocoa/RACSignal+CAAdditions.h"; sourceTree = "<group>"; };
-		F2E9FE7A1AEC7C9D003D5F2D /* RACSignal+CAAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "RACSignal+CAAdditions.m"; path = "Reactive Cocoa/RACSignal+CAAdditions.m"; sourceTree = "<group>"; };
 		F2E9FE7B1AEC7C9D003D5F2D /* UISearchBar+RACAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UISearchBar+RACAdditions.h"; path = "Reactive Cocoa/UISearchBar+RACAdditions.h"; sourceTree = "<group>"; };
 		F2E9FE7C1AEC7C9D003D5F2D /* UISearchBar+RACAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UISearchBar+RACAdditions.m"; path = "Reactive Cocoa/UISearchBar+RACAdditions.m"; sourceTree = "<group>"; };
 		F2E9FE811AEC7CAA003D5F2D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Supporting Files/Info.plist"; sourceTree = "<group>"; };
@@ -190,19 +186,7 @@
 		F2E9FE8E1AEC7CB8003D5F2D /* UIView+BadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+BadView.m"; path = "Supporting Files/Categories/UIView+BadView.m"; sourceTree = "<group>"; };
 		F2E9FE8F1AEC7CB8003D5F2D /* UIView+CAView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+CAView.h"; path = "Supporting Files/Categories/UIView+CAView.h"; sourceTree = "<group>"; };
 		F2E9FE901AEC7CB8003D5F2D /* UIView+CAView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+CAView.m"; path = "Supporting Files/Categories/UIView+CAView.m"; sourceTree = "<group>"; };
-		F2E9FE9F1AEC7CD4003D5F2D /* CAProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAProgressHUD.h; path = Views/CAProgressHUD.h; sourceTree = "<group>"; };
-		F2E9FEA01AEC7CD4003D5F2D /* CAProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAProgressHUD.m; path = Views/CAProgressHUD.m; sourceTree = "<group>"; };
-		F2E9FEA11AEC7CD4003D5F2D /* CARect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CARect.h; path = Views/CARect.h; sourceTree = "<group>"; };
-		F2E9FEA21AEC7CD4003D5F2D /* CARect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CARect.m; path = Views/CARect.m; sourceTree = "<group>"; };
-		F2E9FEA31AEC7CD4003D5F2D /* CAVideoPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAVideoPreviewView.h; path = Views/CAVideoPreviewView.h; sourceTree = "<group>"; };
-		F2E9FEA41AEC7CD4003D5F2D /* CAVideoPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAVideoPreviewView.m; path = Views/CAVideoPreviewView.m; sourceTree = "<group>"; };
-		F2E9FEAB1AEC7CDF003D5F2D /* CAListOverviewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAListOverviewTableViewCell.h; path = "Views/Table View Cells/CAListOverviewTableViewCell.h"; sourceTree = "<group>"; };
-		F2E9FEAC1AEC7CDF003D5F2D /* CAListOverviewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAListOverviewTableViewCell.m; path = "Views/Table View Cells/CAListOverviewTableViewCell.m"; sourceTree = "<group>"; };
-		F2E9FEAD1AEC7CDF003D5F2D /* CATableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CATableViewCell.h; path = "Views/Table View Cells/CATableViewCell.h"; sourceTree = "<group>"; };
-		F2E9FEAE1AEC7CDF003D5F2D /* CATableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CATableViewCell.m; path = "Views/Table View Cells/CATableViewCell.m"; sourceTree = "<group>"; };
-		F2E9FEAF1AEC7CDF003D5F2D /* CATableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CATableViewCell.xib; path = "Views/Table View Cells/CATableViewCell.xib"; sourceTree = "<group>"; };
-		F2E9FEB01AEC7CDF003D5F2D /* CAUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAUserTableViewCell.h; path = "Views/Table View Cells/CAUserTableViewCell.h"; sourceTree = "<group>"; };
-		F2E9FEB11AEC7CDF003D5F2D /* CAUserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAUserTableViewCell.m; path = "Views/Table View Cells/CAUserTableViewCell.m"; sourceTree = "<group>"; };
+		F2E9FEAF1AEC7CDF003D5F2D /* ItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ItemTableViewCell.xib; path = "Views/Table View Cells/ItemTableViewCell.xib"; sourceTree = "<group>"; };
 		F2E9FEB61AEC7FC4003D5F2D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		F2E9FEB81AEC7FCB003D5F2D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		F2E9FEBA1AEC7FD2003D5F2D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -382,10 +366,8 @@
 				F2BDAF271AEDB07600481490 /* CAReversibleTransition.swift */,
 				F2BDAF291AEDB0C100481490 /* CAToggleAnimator.swift */,
 				F2BDAF2B1AEDB27300481490 /* CATransitionDelegate.swift */,
-				F2E9FDE91AEC7B14003D5F2D /* POPAnimation+CAAnimation.h */,
-				F2E9FDEA1AEC7B14003D5F2D /* POPAnimation+CAAnimation.m */,
-				F2E9FDEB1AEC7B14003D5F2D /* POPSpringAnimation+CAAdditions.h */,
-				F2E9FDEC1AEC7B14003D5F2D /* POPSpringAnimation+CAAdditions.m */,
+				F25F383A1AFEB0B600819F21 /* RACAnimation.swift */,
+				F25F38381AFEAF5300819F21 /* ReversibleSpringAnimation.swift */,
 			);
 			name = pop;
 			sourceTree = "<group>";
@@ -470,15 +452,11 @@
 		F2E9FE2D1AEC7C1C003D5F2D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F2E9FE2E1AEC7C25003D5F2D /* CABarcode.h */,
-				F2E9FE2F1AEC7C25003D5F2D /* CABarcode.m */,
-				F2E9FE301AEC7C25003D5F2D /* CABarcodeObject.h */,
-				F2E9FE311AEC7C25003D5F2D /* CABarcodeObject.m */,
-				F2E9FE321AEC7C25003D5F2D /* CABarcodeScannerDelegate.h */,
-				F2E9FE331AEC7C25003D5F2D /* CAListItemObject.h */,
-				F2E9FE341AEC7C25003D5F2D /* CAListItemObject.m */,
-				F2E9FE351AEC7C25003D5F2D /* CAListObject.h */,
-				F2E9FE361AEC7C25003D5F2D /* CAListObject.m */,
+				F25F384A1AFEC00F00819F21 /* Barcode.swift */,
+				F25F384C1AFEC0FE00819F21 /* BarcodeObject.swift */,
+				F25F384E1AFEC3FC00819F21 /* BarcodeScannerDelegate.swift */,
+				F25F38501AFEC47C00819F21 /* ListItemObject.swift */,
+				F25F38521AFEC51400819F21 /* ListObject.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -506,12 +484,9 @@
 		F2E9FE5E1AEC7C74003D5F2D /* Parse */ = {
 			isa = PBXGroup;
 			children = (
-				F2E9FE601AEC7C83003D5F2D /* CAParseAnalytics.h */,
-				F2E9FE611AEC7C83003D5F2D /* CAParseAnalytics.m */,
-				F2E9FE621AEC7C83003D5F2D /* CAQueryTableViewController.h */,
-				F2E9FE631AEC7C83003D5F2D /* CAQueryTableViewController.m */,
+				F25F38541AFEC5B500819F21 /* Analytics.swift */,
+				F20F8F851AEED58700C2CD47 /* QueryTableViewController.swift */,
 				F2E9FE5F1AEC7C78003D5F2D /* Categories */,
-				F20F8F851AEED58700C2CD47 /* CAQueryTableViewController.swift */,
 			);
 			name = Parse;
 			sourceTree = "<group>";
@@ -519,6 +494,7 @@
 		F2E9FE5F1AEC7C78003D5F2D /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				F25F38581AFEC70900819F21 /* FacebookUtils.swift */,
 				F2E9FE661AEC7C8D003D5F2D /* PFFacebookUtils+CAFacebookUtils.h */,
 				F2E9FE671AEC7C8D003D5F2D /* PFFacebookUtils+CAFacebookUtils.m */,
 				F2E9FE681AEC7C8D003D5F2D /* PFObject+CAPFObject.h */,
@@ -538,8 +514,6 @@
 		F2E9FE781AEC7C92003D5F2D /* Reactive Cocoa */ = {
 			isa = PBXGroup;
 			children = (
-				F2E9FE791AEC7C9C003D5F2D /* RACSignal+CAAdditions.h */,
-				F2E9FE7A1AEC7C9D003D5F2D /* RACSignal+CAAdditions.m */,
 				F2E9FE7B1AEC7C9D003D5F2D /* UISearchBar+RACAdditions.h */,
 				F2E9FE7C1AEC7C9D003D5F2D /* UISearchBar+RACAdditions.m */,
 			);
@@ -568,14 +542,11 @@
 			children = (
 				F2BDAF331AEDBC7500481490 /* CAAuthenticationButton.swift */,
 				F2BDAF351AEDC18700481490 /* CACameraLayer.swift */,
-				F2E9FE9F1AEC7CD4003D5F2D /* CAProgressHUD.h */,
-				F2E9FEA01AEC7CD4003D5F2D /* CAProgressHUD.m */,
-				F2E9FEA11AEC7CD4003D5F2D /* CARect.h */,
-				F2E9FEA21AEC7CD4003D5F2D /* CARect.m */,
-				F2E9FEA31AEC7CD4003D5F2D /* CAVideoPreviewView.h */,
-				F2E9FEA41AEC7CD4003D5F2D /* CAVideoPreviewView.m */,
-				F2E9FE981AEC7CC8003D5F2D /* Table View Cells */,
+				F25F383C1AFEB46C00819F21 /* ProgressHUD.swift */,
+				F25F383E1AFEB52500819F21 /* Rect.swift */,
+				F25F38401AFEBA3800819F21 /* VideoPreviewView.swift */,
 				F2BDAF371AEDC43F00481490 /* CAManualEntryView.swift */,
+				F2E9FE981AEC7CC8003D5F2D /* Table View Cells */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -583,13 +554,10 @@
 		F2E9FE981AEC7CC8003D5F2D /* Table View Cells */ = {
 			isa = PBXGroup;
 			children = (
-				F2E9FEAB1AEC7CDF003D5F2D /* CAListOverviewTableViewCell.h */,
-				F2E9FEAC1AEC7CDF003D5F2D /* CAListOverviewTableViewCell.m */,
-				F2E9FEAD1AEC7CDF003D5F2D /* CATableViewCell.h */,
-				F2E9FEAE1AEC7CDF003D5F2D /* CATableViewCell.m */,
-				F2E9FEAF1AEC7CDF003D5F2D /* CATableViewCell.xib */,
-				F2E9FEB01AEC7CDF003D5F2D /* CAUserTableViewCell.h */,
-				F2E9FEB11AEC7CDF003D5F2D /* CAUserTableViewCell.m */,
+				F25F38421AFEBD0400819F21 /* ListTableViewCell.swift */,
+				F25F38441AFEBD2E00819F21 /* ItemTableViewCell.swift */,
+				F2E9FEAF1AEC7CDF003D5F2D /* ItemTableViewCell.xib */,
+				F25F38461AFEBDB400819F21 /* UserTableViewCell.swift */,
 			);
 			name = "Table View Cells";
 			sourceTree = "<group>";
@@ -667,7 +635,7 @@
 				F2E9FE051AEC7B6C003D5F2D /* LaunchScreen.xib in Resources */,
 				F2E9FED31AEC80B9003D5F2D /* Images.xcassets in Resources */,
 				F2E9FE2C1AEC7C13003D5F2D /* CAShareCartViewController.storyboard in Resources */,
-				F2E9FEB41AEC7CDF003D5F2D /* CATableViewCell.xib in Resources */,
+				F2E9FEB41AEC7CDF003D5F2D /* ItemTableViewCell.xib in Resources */,
 				F2E9FE141AEC7BEC003D5F2D /* CASignUpViewController.storyboard in Resources */,
 				F2E9FE261AEC7C0B003D5F2D /* CAScannerViewController.storyboard in Resources */,
 				F2E9FE1F1AEC7C04003D5F2D /* CAListOverviewTableViewController.storyboard in Resources */,
@@ -714,12 +682,12 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/LlamaKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/pop.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CommonCrypto.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/AlamofireOAuth1.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RACAlamofire.framework",
 			);
 			outputPaths = (
 			);
@@ -734,63 +702,63 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2E9FE3A1AEC7C25003D5F2D /* CAListObject.m in Sources */,
 				F2BDAF2A1AEDB0C100481490 /* CAToggleAnimator.swift in Sources */,
+				F25F383D1AFEB46C00819F21 /* ProgressHUD.swift in Sources */,
 				F2BDAF181AED872D00481490 /* CAListTableViewController.swift in Sources */,
 				F2BDAF321AEDB9E300481490 /* CASignUpViewController.swift in Sources */,
 				F2BDAF1A1AED93AB00481490 /* CADismissableViewHandler.swift in Sources */,
 				F2BDAF0F1AED6DC400481490 /* CAShareCartViewController.swift in Sources */,
-				F2E9FEB21AEC7CDF003D5F2D /* CAListOverviewTableViewCell.m in Sources */,
 				F2567A591AF93CAC001F4C41 /* RACAlamofire.swift in Sources */,
+				F25F384B1AFEC00F00819F21 /* Barcode.swift in Sources */,
 				F2E9FE941AEC7CB8003D5F2D /* UIView+BadView.m in Sources */,
-				F2E9FDF31AEC7B14003D5F2D /* POPSpringAnimation+CAAdditions.m in Sources */,
 				F2E9FE741AEC7C8D003D5F2D /* PFQuery+CAQuery.m in Sources */,
 				F2BDAF201AED9F0900481490 /* CAStoredAnimation.swift in Sources */,
 				F2BDAF281AEDB07600481490 /* CAReversibleTransition.swift in Sources */,
-				F2E9FE371AEC7C25003D5F2D /* CABarcode.m in Sources */,
+				F25F38391AFEAF5300819F21 /* ReversibleSpringAnimation.swift in Sources */,
 				F2BDAF1C1AED9AC400481490 /* CAPullToCloseTransitionManager.swift in Sources */,
 				F2BDAF2E1AEDB75800481490 /* CALogInViewController.swift in Sources */,
+				F25F383F1AFEB52500819F21 /* Rect.swift in Sources */,
 				F2BDAF301AEDB78500481490 /* CASignUpDelegate.swift in Sources */,
-				F2E9FEAA1AEC7CD4003D5F2D /* CAVideoPreviewView.m in Sources */,
 				F2BDAF261AEDA6B100481490 /* CAKeyboardResponderAnimator.swift in Sources */,
+				F25F38511AFEC47C00819F21 /* ListItemObject.swift in Sources */,
 				F2BDAF3A1AEDCD3C00481490 /* CABarcodeFetchManager.swift in Sources */,
+				F25F38471AFEBDB400819F21 /* UserTableViewCell.swift in Sources */,
 				F2BDAF221AEDA13F00481490 /* CAAnimationStack.swift in Sources */,
 				F2BDAF241AEDA61B00481490 /* CACompanionAnimator.swift in Sources */,
-				F2E9FEB31AEC7CDF003D5F2D /* CATableViewCell.m in Sources */,
 				F2BDAF2C1AEDB27300481490 /* CATransitionDelegate.swift in Sources */,
-				F2E9FE381AEC7C25003D5F2D /* CABarcodeObject.m in Sources */,
 				F2BB47031AF6AD02008B73E0 /* Twitter.swift in Sources */,
 				F2BDAF0B1AED6CF400481490 /* CABaseViewController.swift in Sources */,
 				F2BDAF381AEDC43F00481490 /* CAManualEntryView.swift in Sources */,
+				F25F38451AFEBD2E00819F21 /* ItemTableViewCell.swift in Sources */,
 				F2BDAF361AEDC18700481490 /* CACameraLayer.swift in Sources */,
 				F2E9FE721AEC7C8D003D5F2D /* PFFacebookUtils+CAFacebookUtils.m in Sources */,
 				F2E9FE761AEC7C8D003D5F2D /* PFTwitterUtils+CATwitterUtils.m in Sources */,
+				F25F38411AFEBA3800819F21 /* VideoPreviewView.swift in Sources */,
 				F2BDAF161AED803A00481490 /* CAScanningSession.swift in Sources */,
+				F25F384D1AFEC0FE00819F21 /* BarcodeObject.swift in Sources */,
 				F2E9FE751AEC7C8D003D5F2D /* PFQueryTableViewController+Caching.m in Sources */,
 				F2BDAF1E1AED9AE500481490 /* CAPullToCloseTransitionPresentationController.swift in Sources */,
-				F2E9FE651AEC7C83003D5F2D /* CAQueryTableViewController.m in Sources */,
-				F20F8F861AEED58700C2CD47 /* CAQueryTableViewController.swift in Sources */,
+				F20F8F861AEED58700C2CD47 /* QueryTableViewController.swift in Sources */,
+				F25F38551AFEC5B500819F21 /* Analytics.swift in Sources */,
 				F2E9FE911AEC7CB8003D5F2D /* NSDictionary+CACustomKVOOperators.m in Sources */,
 				F2BDAF141AED773900481490 /* CAScannerViewController.swift in Sources */,
 				F2BDAEFF1AED4D0D00481490 /* AppDelgate.swift in Sources */,
+				F25F383B1AFEB0B600819F21 /* RACAnimation.swift in Sources */,
 				F2E9FE921AEC7CB8003D5F2D /* UIColor+CAColor.m in Sources */,
 				F2BDAF011AED51D000481490 /* CAListOverviewTableViewController.swift in Sources */,
 				F2E9FE951AEC7CB8003D5F2D /* UIView+CAView.m in Sources */,
-				F2E9FEA91AEC7CD4003D5F2D /* CARect.m in Sources */,
 				F2E9FE931AEC7CB8003D5F2D /* UIImage+CAImage.m in Sources */,
-				F2E9FEB51AEC7CDF003D5F2D /* CAUserTableViewCell.m in Sources */,
-				F2E9FEA81AEC7CD4003D5F2D /* CAProgressHUD.m in Sources */,
+				F25F384F1AFEC3FC00819F21 /* BarcodeScannerDelegate.swift in Sources */,
 				F23146AF1AF85A2200527B32 /* Factual.swift in Sources */,
-				F2E9FE641AEC7C83003D5F2D /* CAParseAnalytics.m in Sources */,
 				F2E9FE771AEC7C8D003D5F2D /* PFUser+CAUser.m in Sources */,
+				F25F38591AFEC70900819F21 /* FacebookUtils.swift in Sources */,
+				F25F38431AFEBD0400819F21 /* ListTableViewCell.swift in Sources */,
+				F25F38531AFEC51400819F21 /* ListObject.swift in Sources */,
 				F2BB47011AF6AABA008B73E0 /* Bing.swift in Sources */,
-				F2E9FE7D1AEC7C9D003D5F2D /* RACSignal+CAAdditions.m in Sources */,
 				F2E9FEDF1AEC8377003D5F2D /* MustOverride.m in Sources */,
 				F2E9FE731AEC7C8D003D5F2D /* PFObject+CAPFObject.m in Sources */,
-				F2E9FE391AEC7C25003D5F2D /* CAListItemObject.m in Sources */,
 				F2BDAF341AEDBC7500481490 /* CAAuthenticationButton.swift in Sources */,
 				F2E9FE7E1AEC7C9D003D5F2D /* UISearchBar+RACAdditions.m in Sources */,
-				F2E9FDF21AEC7B14003D5F2D /* POPAnimation+CAAnimation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

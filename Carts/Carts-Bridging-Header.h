@@ -8,6 +8,7 @@
 #import <ParseUI/ParseUI.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <pop/POP.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 #import "CAQueryTableViewController.h"
 #import "CAListOverviewTableViewCell.h"
@@ -20,10 +21,7 @@
 #import "UISearchBar+RACAdditions.h"
 #import "CAVideoPreviewView.h"
 #import "CATableViewCell.h"
-#import "CAProgressHUD.h"
 #import "CAUserTableViewCell.h"
-#import "POPAnimation+CAAnimation.h"
-#import "POPSpringAnimation+CAAdditions.h"
 #import <MRProgress/MRActivityIndicatorView.h>
 #import <JVFloatLabeledTextField/JVFloatLabeledTextField.h>
 #import "CABarcode.h"
@@ -31,3 +29,5 @@
 #import "UIView+CAView.h"
 #import "PFFacebookUtils+CAFacebookUtils.h"
 #import "PFTwitterUtils+CATwitterUtils.h"
+
+#import <Parse/PFObject+Subclass.h>
