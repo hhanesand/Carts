@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D0F60B14B4E15F307A50501D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6D5B2F78BB34AD8339127DD /* libPods.a */; };
-		F20F8F861AEED58700C2CD47 /* QueryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20F8F851AEED58700C2CD47 /* QueryTableViewController.swift */; };
+		BFBBD6AE548BE6D463746747 /* Pods_Carts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71532D81D1AB2D47D21EE220 /* Pods_Carts.framework */; };
 		F23146AB1AF85A0A00527B32 /* AlamofireOAuth1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F23146AA1AF85A0A00527B32 /* AlamofireOAuth1.framework */; };
 		F23146AD1AF85A0E00527B32 /* CommonCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F23146AC1AF85A0E00527B32 /* CommonCrypto.framework */; };
 		F23146AF1AF85A2200527B32 /* Factual.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23146AE1AF85A2200527B32 /* Factual.swift */; };
@@ -26,8 +25,6 @@
 		F25F384F1AFEC3FC00819F21 /* BarcodeScannerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25F384E1AFEC3FC00819F21 /* BarcodeScannerDelegate.swift */; };
 		F25F38511AFEC47C00819F21 /* ListItemObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25F38501AFEC47C00819F21 /* ListItemObject.swift */; };
 		F25F38531AFEC51400819F21 /* ListObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25F38521AFEC51400819F21 /* ListObject.swift */; };
-		F25F38551AFEC5B500819F21 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25F38541AFEC5B500819F21 /* Analytics.swift */; };
-		F25F38591AFEC70900819F21 /* FacebookUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25F38581AFEC70900819F21 /* FacebookUtils.swift */; };
 		F26E37B01AF6A2120058328F /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26E37AF1AF6A2120058328F /* pop.framework */; };
 		F2BB46FD1AF6AA71008B73E0 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2BB46FC1AF6AA71008B73E0 /* Alamofire.framework */; };
 		F2BB47011AF6AABA008B73E0 /* Bing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BB47001AF6AABA008B73E0 /* Bing.swift */; };
@@ -65,12 +62,6 @@
 		F2E9FE1F1AEC7C04003D5F2D /* CAListOverviewTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2E9FE1D1AEC7C04003D5F2D /* CAListOverviewTableViewController.storyboard */; };
 		F2E9FE261AEC7C0B003D5F2D /* CAScannerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2E9FE221AEC7C0B003D5F2D /* CAScannerViewController.storyboard */; };
 		F2E9FE2C1AEC7C13003D5F2D /* CAShareCartViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2E9FE2A1AEC7C13003D5F2D /* CAShareCartViewController.storyboard */; };
-		F2E9FE721AEC7C8D003D5F2D /* PFFacebookUtils+CAFacebookUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE671AEC7C8D003D5F2D /* PFFacebookUtils+CAFacebookUtils.m */; };
-		F2E9FE731AEC7C8D003D5F2D /* PFObject+CAPFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE691AEC7C8D003D5F2D /* PFObject+CAPFObject.m */; };
-		F2E9FE741AEC7C8D003D5F2D /* PFQuery+CAQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE6B1AEC7C8D003D5F2D /* PFQuery+CAQuery.m */; };
-		F2E9FE751AEC7C8D003D5F2D /* PFQueryTableViewController+Caching.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE6D1AEC7C8D003D5F2D /* PFQueryTableViewController+Caching.m */; };
-		F2E9FE761AEC7C8D003D5F2D /* PFTwitterUtils+CATwitterUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE6F1AEC7C8D003D5F2D /* PFTwitterUtils+CATwitterUtils.m */; };
-		F2E9FE771AEC7C8D003D5F2D /* PFUser+CAUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE711AEC7C8D003D5F2D /* PFUser+CAUser.m */; };
 		F2E9FE7E1AEC7C9D003D5F2D /* UISearchBar+RACAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE7C1AEC7C9D003D5F2D /* UISearchBar+RACAdditions.m */; };
 		F2E9FE911AEC7CB8003D5F2D /* NSDictionary+CACustomKVOOperators.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE881AEC7CB8003D5F2D /* NSDictionary+CACustomKVOOperators.m */; };
 		F2E9FE921AEC7CB8003D5F2D /* UIColor+CAColor.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E9FE8A1AEC7CB8003D5F2D /* UIColor+CAColor.m */; };
@@ -98,10 +89,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6D584CAE9CDAC928CBCA8551 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		B37AE999C59955AC7121D00B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		D6D5B2F78BB34AD8339127DD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		F20F8F851AEED58700C2CD47 /* QueryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueryTableViewController.swift; sourceTree = "<group>"; };
+		642A9FC4AADCEF547CF69946 /* Pods-Carts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Carts/Pods-Carts.debug.xcconfig"; sourceTree = "<group>"; };
+		71532D81D1AB2D47D21EE220 /* Pods_Carts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Carts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3E2B02A7F63FC89485A630F /* Pods-Carts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Carts/Pods-Carts.release.xcconfig"; sourceTree = "<group>"; };
 		F23146AA1AF85A0A00527B32 /* AlamofireOAuth1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireOAuth1.framework; path = Carthage/Build/iOS/AlamofireOAuth1.framework; sourceTree = "<group>"; };
 		F23146AC1AF85A0E00527B32 /* CommonCrypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CommonCrypto.framework; path = Carthage/Build/iOS/CommonCrypto.framework; sourceTree = "<group>"; };
 		F23146AE1AF85A2200527B32 /* Factual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Factual.swift; sourceTree = "<group>"; };
@@ -119,8 +109,6 @@
 		F25F384E1AFEC3FC00819F21 /* BarcodeScannerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScannerDelegate.swift; sourceTree = "<group>"; };
 		F25F38501AFEC47C00819F21 /* ListItemObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItemObject.swift; sourceTree = "<group>"; };
 		F25F38521AFEC51400819F21 /* ListObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListObject.swift; sourceTree = "<group>"; };
-		F25F38541AFEC5B500819F21 /* Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
-		F25F38581AFEC70900819F21 /* FacebookUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookUtils.swift; sourceTree = "<group>"; };
 		F26E37AF1AF6A2120058328F /* pop.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = pop.framework; path = Carthage/Build/iOS/pop.framework; sourceTree = "<group>"; };
 		F2BB46FC1AF6AA71008B73E0 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		F2BB47001AF6AABA008B73E0 /* Bing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bing.swift; sourceTree = "<group>"; };
@@ -161,18 +149,6 @@
 		F2E9FE1D1AEC7C04003D5F2D /* CAListOverviewTableViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CAListOverviewTableViewController.storyboard; path = "Controllers/Cart Overview Controller/CAListOverviewTableViewController.storyboard"; sourceTree = "<group>"; };
 		F2E9FE221AEC7C0B003D5F2D /* CAScannerViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CAScannerViewController.storyboard; path = "Controllers/Scan and Search Controller/CAScannerViewController.storyboard"; sourceTree = "<group>"; };
 		F2E9FE2A1AEC7C13003D5F2D /* CAShareCartViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CAShareCartViewController.storyboard; path = "Controllers/Share Controller/CAShareCartViewController.storyboard"; sourceTree = "<group>"; };
-		F2E9FE661AEC7C8D003D5F2D /* PFFacebookUtils+CAFacebookUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PFFacebookUtils+CAFacebookUtils.h"; path = "Parse/Categories/PFFacebookUtils+CAFacebookUtils.h"; sourceTree = "<group>"; };
-		F2E9FE671AEC7C8D003D5F2D /* PFFacebookUtils+CAFacebookUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PFFacebookUtils+CAFacebookUtils.m"; path = "Parse/Categories/PFFacebookUtils+CAFacebookUtils.m"; sourceTree = "<group>"; };
-		F2E9FE681AEC7C8D003D5F2D /* PFObject+CAPFObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PFObject+CAPFObject.h"; path = "Parse/Categories/PFObject+CAPFObject.h"; sourceTree = "<group>"; };
-		F2E9FE691AEC7C8D003D5F2D /* PFObject+CAPFObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PFObject+CAPFObject.m"; path = "Parse/Categories/PFObject+CAPFObject.m"; sourceTree = "<group>"; };
-		F2E9FE6A1AEC7C8D003D5F2D /* PFQuery+CAQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PFQuery+CAQuery.h"; path = "Parse/Categories/PFQuery+CAQuery.h"; sourceTree = "<group>"; };
-		F2E9FE6B1AEC7C8D003D5F2D /* PFQuery+CAQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PFQuery+CAQuery.m"; path = "Parse/Categories/PFQuery+CAQuery.m"; sourceTree = "<group>"; };
-		F2E9FE6C1AEC7C8D003D5F2D /* PFQueryTableViewController+Caching.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PFQueryTableViewController+Caching.h"; path = "Parse/Categories/PFQueryTableViewController+Caching.h"; sourceTree = "<group>"; };
-		F2E9FE6D1AEC7C8D003D5F2D /* PFQueryTableViewController+Caching.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PFQueryTableViewController+Caching.m"; path = "Parse/Categories/PFQueryTableViewController+Caching.m"; sourceTree = "<group>"; };
-		F2E9FE6E1AEC7C8D003D5F2D /* PFTwitterUtils+CATwitterUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PFTwitterUtils+CATwitterUtils.h"; path = "Parse/Categories/PFTwitterUtils+CATwitterUtils.h"; sourceTree = "<group>"; };
-		F2E9FE6F1AEC7C8D003D5F2D /* PFTwitterUtils+CATwitterUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PFTwitterUtils+CATwitterUtils.m"; path = "Parse/Categories/PFTwitterUtils+CATwitterUtils.m"; sourceTree = "<group>"; };
-		F2E9FE701AEC7C8D003D5F2D /* PFUser+CAUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PFUser+CAUser.h"; path = "Parse/Categories/PFUser+CAUser.h"; sourceTree = "<group>"; };
-		F2E9FE711AEC7C8D003D5F2D /* PFUser+CAUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PFUser+CAUser.m"; path = "Parse/Categories/PFUser+CAUser.m"; sourceTree = "<group>"; };
 		F2E9FE7B1AEC7C9D003D5F2D /* UISearchBar+RACAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UISearchBar+RACAdditions.h"; path = "Reactive Cocoa/UISearchBar+RACAdditions.h"; sourceTree = "<group>"; };
 		F2E9FE7C1AEC7C9D003D5F2D /* UISearchBar+RACAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UISearchBar+RACAdditions.m"; path = "Reactive Cocoa/UISearchBar+RACAdditions.m"; sourceTree = "<group>"; };
 		F2E9FE811AEC7CAA003D5F2D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Supporting Files/Info.plist"; sourceTree = "<group>"; };
@@ -235,13 +211,22 @@
 				F2E9FEB71AEC7FC4003D5F2D /* AudioToolbox.framework in Frameworks */,
 				F2E9FECB1AEC8014003D5F2D /* libsqlite3.dylib in Frameworks */,
 				F2E9FEC91AEC800B003D5F2D /* libz.dylib in Frameworks */,
-				D0F60B14B4E15F307A50501D /* libPods.a in Frameworks */,
+				BFBBD6AE548BE6D463746747 /* Pods_Carts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04C2E384AB86380523F37FF7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				642A9FC4AADCEF547CF69946 /* Pods-Carts.debug.xcconfig */,
+				A3E2B02A7F63FC89485A630F /* Pods-Carts.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		5046E564F4FC3400280A09B2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -268,18 +253,9 @@
 				F2E9FEB81AEC7FCB003D5F2D /* CFNetwork.framework */,
 				F2E9FEB61AEC7FC4003D5F2D /* AudioToolbox.framework */,
 				F2EAEF291AEF23690054F9A9 /* ReactiveCocoa.framework */,
-				D6D5B2F78BB34AD8339127DD /* libPods.a */,
+				71532D81D1AB2D47D21EE220 /* Pods_Carts.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		94A75E302241F18FDA70ED5B /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				B37AE999C59955AC7121D00B /* Pods.debug.xcconfig */,
-				6D584CAE9CDAC928CBCA8551 /* Pods.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		F2E9FDAD1AEC77FC003D5F2D = {
@@ -288,8 +264,8 @@
 				F2E9FDB81AEC77FC003D5F2D /* Carts */,
 				F2E9FDCE1AEC77FC003D5F2D /* CartsTests */,
 				F2E9FDB71AEC77FC003D5F2D /* Products */,
-				94A75E302241F18FDA70ED5B /* Pods */,
 				5046E564F4FC3400280A09B2 /* Frameworks */,
+				04C2E384AB86380523F37FF7 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -484,31 +460,8 @@
 		F2E9FE5E1AEC7C74003D5F2D /* Parse */ = {
 			isa = PBXGroup;
 			children = (
-				F25F38541AFEC5B500819F21 /* Analytics.swift */,
-				F20F8F851AEED58700C2CD47 /* QueryTableViewController.swift */,
-				F2E9FE5F1AEC7C78003D5F2D /* Categories */,
 			);
 			name = Parse;
-			sourceTree = "<group>";
-		};
-		F2E9FE5F1AEC7C78003D5F2D /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				F25F38581AFEC70900819F21 /* FacebookUtils.swift */,
-				F2E9FE661AEC7C8D003D5F2D /* PFFacebookUtils+CAFacebookUtils.h */,
-				F2E9FE671AEC7C8D003D5F2D /* PFFacebookUtils+CAFacebookUtils.m */,
-				F2E9FE681AEC7C8D003D5F2D /* PFObject+CAPFObject.h */,
-				F2E9FE691AEC7C8D003D5F2D /* PFObject+CAPFObject.m */,
-				F2E9FE6A1AEC7C8D003D5F2D /* PFQuery+CAQuery.h */,
-				F2E9FE6B1AEC7C8D003D5F2D /* PFQuery+CAQuery.m */,
-				F2E9FE6C1AEC7C8D003D5F2D /* PFQueryTableViewController+Caching.h */,
-				F2E9FE6D1AEC7C8D003D5F2D /* PFQueryTableViewController+Caching.m */,
-				F2E9FE6E1AEC7C8D003D5F2D /* PFTwitterUtils+CATwitterUtils.h */,
-				F2E9FE6F1AEC7C8D003D5F2D /* PFTwitterUtils+CATwitterUtils.m */,
-				F2E9FE701AEC7C8D003D5F2D /* PFUser+CAUser.h */,
-				F2E9FE711AEC7C8D003D5F2D /* PFUser+CAUser.m */,
-			);
-			name = Categories;
 			sourceTree = "<group>";
 		};
 		F2E9FE781AEC7C92003D5F2D /* Reactive Cocoa */ = {
@@ -578,12 +531,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F2E9FDD51AEC77FC003D5F2D /* Build configuration list for PBXNativeTarget "Carts" */;
 			buildPhases = (
-				55219218EB860A21BC3A4673 /* Check Pods Manifest.lock */,
+				F3FE370AE10C94743AAB4255 /* [CP] Check Pods Manifest.lock */,
 				F2E9FDB21AEC77FC003D5F2D /* Sources */,
 				F2E9FDB31AEC77FC003D5F2D /* Frameworks */,
 				F2E9FDB41AEC77FC003D5F2D /* Resources */,
-				286EA3082DCE088AA40F8970 /* Copy Pods Resources */,
 				F2EAEF2C1AEF25E40054F9A9 /* ShellScript */,
+				9707026157AA8C1A3DB2EAAE /* [CP] Embed Pods Frameworks */,
+				A021D53D5EB99C22263242D4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -600,7 +554,8 @@
 		F2E9FDAE1AEC77FC003D5F2D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Hakon Hanesand";
 				TargetAttributes = {
 					F2E9FDB51AEC77FC003D5F2D = {
@@ -645,34 +600,34 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		286EA3082DCE088AA40F8970 /* Copy Pods Resources */ = {
+		9707026157AA8C1A3DB2EAAE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Carts/Pods-Carts-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		55219218EB860A21BC3A4673 /* Check Pods Manifest.lock */ = {
+		A021D53D5EB99C22263242D4 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Carts/Pods-Carts-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F2EAEF2C1AEF25E40054F9A9 /* ShellScript */ = {
@@ -695,6 +650,21 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
+		F3FE370AE10C94743AAB4255 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -711,7 +681,6 @@
 				F2567A591AF93CAC001F4C41 /* RACAlamofire.swift in Sources */,
 				F25F384B1AFEC00F00819F21 /* Barcode.swift in Sources */,
 				F2E9FE941AEC7CB8003D5F2D /* UIView+BadView.m in Sources */,
-				F2E9FE741AEC7C8D003D5F2D /* PFQuery+CAQuery.m in Sources */,
 				F2BDAF201AED9F0900481490 /* CAStoredAnimation.swift in Sources */,
 				F2BDAF281AEDB07600481490 /* CAReversibleTransition.swift in Sources */,
 				F25F38391AFEAF5300819F21 /* ReversibleSpringAnimation.swift in Sources */,
@@ -731,15 +700,10 @@
 				F2BDAF381AEDC43F00481490 /* CAManualEntryView.swift in Sources */,
 				F25F38451AFEBD2E00819F21 /* ItemTableViewCell.swift in Sources */,
 				F2BDAF361AEDC18700481490 /* CACameraLayer.swift in Sources */,
-				F2E9FE721AEC7C8D003D5F2D /* PFFacebookUtils+CAFacebookUtils.m in Sources */,
-				F2E9FE761AEC7C8D003D5F2D /* PFTwitterUtils+CATwitterUtils.m in Sources */,
 				F25F38411AFEBA3800819F21 /* VideoPreviewView.swift in Sources */,
 				F2BDAF161AED803A00481490 /* CAScanningSession.swift in Sources */,
 				F25F384D1AFEC0FE00819F21 /* BarcodeObject.swift in Sources */,
-				F2E9FE751AEC7C8D003D5F2D /* PFQueryTableViewController+Caching.m in Sources */,
 				F2BDAF1E1AED9AE500481490 /* CAPullToCloseTransitionPresentationController.swift in Sources */,
-				F20F8F861AEED58700C2CD47 /* QueryTableViewController.swift in Sources */,
-				F25F38551AFEC5B500819F21 /* Analytics.swift in Sources */,
 				F2E9FE911AEC7CB8003D5F2D /* NSDictionary+CACustomKVOOperators.m in Sources */,
 				F2BDAF141AED773900481490 /* CAScannerViewController.swift in Sources */,
 				F2BDAEFF1AED4D0D00481490 /* AppDelgate.swift in Sources */,
@@ -750,13 +714,10 @@
 				F2E9FE931AEC7CB8003D5F2D /* UIImage+CAImage.m in Sources */,
 				F25F384F1AFEC3FC00819F21 /* BarcodeScannerDelegate.swift in Sources */,
 				F23146AF1AF85A2200527B32 /* Factual.swift in Sources */,
-				F2E9FE771AEC7C8D003D5F2D /* PFUser+CAUser.m in Sources */,
-				F25F38591AFEC70900819F21 /* FacebookUtils.swift in Sources */,
 				F25F38431AFEBD0400819F21 /* ListTableViewCell.swift in Sources */,
 				F25F38531AFEC51400819F21 /* ListObject.swift in Sources */,
 				F2BB47011AF6AABA008B73E0 /* Bing.swift in Sources */,
 				F2E9FEDF1AEC8377003D5F2D /* MustOverride.m in Sources */,
-				F2E9FE731AEC7C8D003D5F2D /* PFObject+CAPFObject.m in Sources */,
 				F2BDAF341AEDBC7500481490 /* CAAuthenticationButton.swift in Sources */,
 				F2E9FE7E1AEC7C9D003D5F2D /* UISearchBar+RACAdditions.m in Sources */,
 			);
@@ -799,6 +760,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -814,7 +776,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -854,7 +816,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -863,7 +825,7 @@
 		};
 		F2E9FDD61AEC77FC003D5F2D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B37AE999C59955AC7121D00B /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 642A9FC4AADCEF547CF69946 /* Pods-Carts.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -881,6 +843,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.lightice11.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Carts/Carts-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -889,7 +852,7 @@
 		};
 		F2E9FDD71AEC77FC003D5F2D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6D584CAE9CDAC928CBCA8551 /* Pods.release.xcconfig */;
+			baseConfigurationReference = A3E2B02A7F63FC89485A630F /* Pods-Carts.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -907,6 +870,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.lightice11.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Carts/Carts-Bridging-Header.h";
 			};

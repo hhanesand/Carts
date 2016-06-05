@@ -1,11 +1,11 @@
-platform :ios, '8.1'
+platform :ios, '9.4'
+use_frameworks!
 
-inhibit_all_warnings!
+target 'Carts' do
 
-pod 'SVProgressHUD'
-pod 'ParseUI'
-pod 'ParseCrashReporting'
-pod 'Bolts'
-pod 'Parse'
-pod 'JVFloatLabeledTextField'
-pod 'MRProgress'
+	pod 'SVProgressHUD'
+	pod 'Bolts'
+	pod 'JVFloatLabeledTextField'
+	pod 'MRProgress'
+
+end

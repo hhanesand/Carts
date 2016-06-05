@@ -1,11 +1,6 @@
-##link against the latest reactive cocoa beta release (3.0-beta.4)
-github "ReactiveCocoa/ReactiveCocoa" "1c8b18751c4af1f3c6003077ff57bed80e184c3a"
+github "ReactiveCocoa/ReactiveCocoa"
 
-##use latest pop and swiftyjson
 github "Facebook/POP" "master"
 github "SwiftyJSON/SwiftyJSON" "master"
 
 github "Alamofire/Alamofire"
-
-github "hhanesand/AlamofireOAuth1" "0.0.2"
-github "hhanesand/RACAlamofire" "0.0.2"
