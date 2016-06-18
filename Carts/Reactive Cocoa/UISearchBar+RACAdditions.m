@@ -6,7 +6,6 @@
 
 #import <objc/runtime.h>
 #import "UISearchBar+RACAdditions.h"
-#import "NSObject+RACDescription.h"
 #import "RACDelegateProxy.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 

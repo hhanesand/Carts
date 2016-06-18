@@ -1,2 +1,2 @@
-github "ReactiveCocoa/ReactiveCocoa" "RAC5"
 github "Alamofire/Alamofire" "swift3"
+github "realm/realm-cocoa" "jp-az-swift3-work"

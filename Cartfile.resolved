@@ -1,3 +1,2 @@
 github "Alamofire/Alamofire" "e891699312a5215ad0da9f8322c5da949f90db35"
-github "antitypical/Result" "2.1.0"
-github "ReactiveCocoa/ReactiveCocoa" "02de81946c260de9f628c5b702e50d1175895875"
+github "realm/realm-cocoa" "34eedb2e7e0a1c0693773daf8129f8132aaee556"

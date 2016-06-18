@@ -2,13 +2,8 @@
 //  Use this file to import your target's public headers that you would like to expose to Swift.
 //
 
-#import <Parse/Parse.h>
-#import <ParseCrashReporting/ParseCrashReporting.h>
-#import <ParseFacebookUtilsV4/PFFacebookUtils.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import <ParseUI/ParseUI.h>
-#import <ReactiveCocoa/ReactiveCocoa.h>
-#import <pop/POP.h>
+//#import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import "CAQueryTableViewController.h"
 #import "CAListOverviewTableViewCell.h"
