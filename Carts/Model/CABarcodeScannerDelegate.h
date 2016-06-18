@@ -1,6 +1,6 @@
 //
 //  CABarcodeScannerDelegate.h
-//  GroceryList
+//  Carts
 //
 //  Created by Hakon Hanesand on 2/26/15.
 

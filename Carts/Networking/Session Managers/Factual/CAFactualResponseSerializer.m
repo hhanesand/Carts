@@ -1,6 +1,6 @@
 //
 //  CAFactualResponseSerializer.m
-//  GroceryList
+//  Carts
 //
 //  Created by Hakon Hanesand on 2/20/15.
 
@@ -8,7 +8,7 @@
 
 #import "NSDictionary+CACustomKVOOperators.h"
 
-NSString * const kCAFactualNetworkingErrorDomain = @"GroceryListErrorDomain";
+NSString * const kCAFactualNetworkingErrorDomain = @"CartsErrorDomain";
 NSString * const kCAFactualDataKeypath = @"@first.response.data";
 NSString * const kCAFactualDataValidation = @"response.included_rows";
 

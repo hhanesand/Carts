@@ -1,6 +1,6 @@
 //
 //  CABingResponseSerializer.m
-//  GroceryList
+//  Carts
 //
 //  Created by Hakon Hanesand on 4/9/15.
 //
@@ -8,7 +8,7 @@
 
 #import "CABingResponseSerializer.h"
 
-NSString * const kCABingNetworkingErrorDomain = @"GroceryListErrorDomain";
+NSString * const kCABingNetworkingErrorDomain = @"CartsErrorDomain";
 NSString * const kCABingDataKeypath = @"d.results.Thumbnail.MediaUrl";
 NSString * const kCABingValidationKeypath = @"d.results.Thumbnail.MediaUrl";
 

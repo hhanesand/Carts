@@ -1,14 +1,19 @@
-platform :ios, '8.1'
+#!/ ruby
 
-inhibit_all_warnings!
+platform :ios, '10.0'
+
 use_frameworks!
 
-pod 'SVProgressHUD'
-pod 'ParseUI'
-pod 'pop'
-pod 'ParseCrashReporting'
-pod 'Bolts'
-pod 'Parse'
-pod 'JVFloatLabeledTextField'
-pod 'MRProgress'
-pod 'PubNub'
+target 'Carts' do 
+
+	pod 'SVProgressHUD'
+	pod 'ParseUI'
+	pod 'pop'
+	pod 'ParseCrashReporting'
+	pod 'Bolts'
+	pod 'Parse'
+	pod 'JVFloatLabeledTextField'
+	pod 'MRProgress'
+	pod 'PubNub'
+
+end
