@@ -16,7 +16,7 @@ class CAPullToCloseTransitionManager: NSObject, UIViewControllerAnimatedTransiti
         super.init()
     }
     
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
+    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return 1
     }
     

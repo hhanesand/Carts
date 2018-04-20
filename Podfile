@@ -7,5 +7,8 @@ target 'Carts' do
 	pod 'Bolts'
 	pod 'JVFloatLabeledTextField'
 	pod 'MRProgress'
+    
+    pod 'Firebase'
+    pod 'Firebase/Database'
 
 end

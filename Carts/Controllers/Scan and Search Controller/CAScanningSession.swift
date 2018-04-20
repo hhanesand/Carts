@@ -9,6 +9,13 @@
 import UIKit
 import AVFoundation
 
+extension Array {
+    
+    private func all(matching: Element -> Bool) -> Bool {
+        return self.map(matching).reduce(true) { $0 && $1 }
+    }
+}
+
 class CAScanningSession: NSObject, AVCaptureMetadataOutputObjectsDelegate, AVCaptureVideoDataOutputSampleBufferDelegate {
 //    var captureDevice: AVCaptureDevice?
     
@@ -17,9 +24,9 @@ class CAScanningSession: NSObject, AVCaptureMetadataOutputObjectsDelegate, AVCap
     
     var recievedImage: UIImage?
     
-    var barcodeSignal: RACSignal?
+    var barcodeSignal: SignalProducer<String, NSError>
     
-    var captureSession: AVCaptureSession?
+    var captureSession: AVCaptureSession!
     
     class func session() -> CAScanningSession {
         return CAScanningSession()
@@ -30,33 +37,21 @@ class CAScanningSession: NSObject, AVCaptureMetadataOutputObjectsDelegate, AVCap
         
         super.init()
         
-        self.setupBarcodeSignal()
-        self.initializeCaptureSession()
+        setupBarcodeSignal()
+        initializeCaptureSession()
     }
     
     func setupBarcodeSignal() {
-        let barcodeSelectorSignal = self.rac_signalForSelector(Selector("captureOutput:didOutputMetadataObjects:fromConnection:"), fromProtocol: "AVCaptureMetadataOutputObjectsDelegate" as! Protocol)
+        let barcodeSelectorSignal = self.rac_signalForSelector(#selector(AVCaptureMetadataOutputObjectsDelegate.captureOutput(_:didOutputMetadataObjects:fromConnection:)), fromProtocol: "AVCaptureMetadataOutputObjectsDelegate" as! Protocol).toSignalProducer().map { return $0 as! RACTuple }
         
-        self.barcodeSignal = barcodeSelectorSignal.filter({ (next: AnyObject!) -> Bool in
-            let value = next as! RACTuple
-            let array = value.second as! Array<AVMetadataMachineReadableCodeObject>
-            return !self.paused && array[0].isKindOfClass(AVMetadataMachineReadableCodeObject)
-        }).bufferWithTime(0.5, onScheduler: RACScheduler.currentScheduler()).map({ (next: AnyObject!) -> AnyObject! in
-            let buffer = next as! RACTuple
-            let firstSelectorTuple = buffer.first as! RACTuple
-            let barcodeMetadataObjects = firstSelectorTuple.second as! Array<AVMetadataMachineReadableCodeObject>
-            return CABarcode(metadataObject: barcodeMetadataObjects[0])
-        }).logNext().filter({ (next: AnyObject!) -> Bool in
-            return !self.paused
-        })
-    }
-    
-    func resume() {
-        self.paused = true
-    }
-    
-    func pause() {
-        self.paused = false
+        barcodeSignal = barcodeSelectorSignal.filter {
+            let metadataObjects = $0.second as! [AVMetadataObject]
+            let barcodeMetadataObjects = metadataObjects.filter { $0.isKindOfClass(AVMetadataMachineReadableCodeObject) }
+            return !self.paused && barcodeMetadataObjects.count > 0
+        }.logEvents().map { test in
+            // TODO - Return barcode created from AVMetadataMachineReadableCodeObject
+            return ""
+        }
     }
     
     func start() {
@@ -77,25 +72,27 @@ class CAScanningSession: NSObject, AVCaptureMetadataOutputObjectsDelegate, AVCap
     
     private func initializeCaptureSession() {        
         self.captureSession = AVCaptureSession()
-        self.captureSession!.sessionPreset = AVCaptureSessionPresetPhoto
+        self.captureSession.sessionPreset = AVCaptureSessionPresetPhoto
+    
+        let captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
         
-        var error = NSError?()
-        
-        if let captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo),
-                videoInput = AVCaptureDeviceInput(device: captureDevice, error: &error) {
-                    self.captureSession?.addInput(videoInput)
-                    let videoOutput = AVCaptureVideoDataOutput()
-                    self.captureSession?.addOutput(videoOutput)
-                    
-                    videoOutput.videoSettings = [kCVPixelFormatType_32BGRA : kCVPixelBufferPixelFormatTypeKey]
-                    videoOutput.setSampleBufferDelegate(self, queue: dispatch_queue_create("dispatch", 0))
+        if let videoInput = try? AVCaptureDeviceInput(device: captureDevice) {
+            self.captureSession.addInput(videoInput)
+            let videoOutput = AVCaptureVideoDataOutput()
+            self.captureSession.addOutput(videoOutput)
             
-                    let metadataOutput = AVCaptureMetadataOutput()
-                    metadataOutput.setMetadataObjectsDelegate(self, queue: dispatch_get_main_queue())
-                    self.captureSession?.addOutput(metadataOutput)
-                    
-                    metadataOutput.metadataObjectTypes = metadataOutput.availableMetadataObjectTypes
+            videoOutput.videoSettings = [Int(kCVPixelFormatType_32BGRA) : kCVPixelBufferPixelFormatTypeKey]
+            videoOutput.setSampleBufferDelegate(self, queue: dispatch_queue_create("dispatch"))
+            
+            let metadataOutput = AVCaptureMetadataOutput()
+            metadataOutput.setMetadataObjectsDelegate(self, queue: dispatch_get_main_queue())
+            self.captureSession?.addOutput(metadataOutput)
+            
+            metadataOutput.metadataObjectTypes = metadataOutput.availableMetadataObjectTypes
+        } else {
+            fatalError("Failed to initialize video.")
         }
+        
     }
     
     func captureImageFromVideoOutput() {

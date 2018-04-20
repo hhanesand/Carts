@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import ReactiveCocoa
+import AVFoundation
 
 class CAScannerViewController: CABaseViewController, CADismissableHandlerDelegate, CAKeyboardMovementResponderDelegate, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate, UITextFieldDelegate {
 
@@ -91,7 +93,7 @@ class CAScannerViewController: CABaseViewController, CADismissableHandlerDelegat
             CAProgressHUD.show()
             self.barcodeScanner.pause()
         }).flattenMap({ (next: AnyObject!) -> RACStream! in
-            return self.barcodeManager.fetchProductInformationForBarcode(next as! CABarcode).catch({ (error: NSError!) -> RACSignal! in
+            return self.barcodeManager.fetchProductInformationForBarcode(next as! CABarcode).`catch`({ (error: NSError!) -> RACSignal! in
                 self.displayManualEntryView()
                 
                 let confirm = self.manualEntryView.confirm?.rac_signalForControlEvents(.TouchUpInside).map({ (next: AnyObject!) -> AnyObject! in
@@ -128,7 +130,7 @@ class CAScannerViewController: CABaseViewController, CADismissableHandlerDelegat
         let cameraRect = CGRectMake(CGRectGetMidX(bounds) - sideLength * 0.5, CGRectGetMidY(bounds) - sideLength * 0.5, sideLength, sideLength)
         
         self.targetingReticule = CACameraLayer(bounds: cameraRect, cornerRadius: 10, lineLength: 4)
-        self.view.layer.addSublayer(self.targetingReticule)
+        self.view.layer.addSublayer(self.targetingReticule!)
         self.targetingReticule?.opacity = 0
     }
     
@@ -163,7 +165,7 @@ class CAScannerViewController: CABaseViewController, CADismissableHandlerDelegat
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCellWithIdentifier("SearchItem", forIndexPath: indexPath) as! UITableViewCell
+        return tableView.dequeueReusableCellWithIdentifier("SearchItem", forIndexPath: indexPath) 
     }
     
     @IBAction func didTapDoneButton(sender: UIButton) {

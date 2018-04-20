@@ -28,8 +28,8 @@ class CACameraLayer: CAShapeLayer {
     
     func configure(bounds: CGRect) {
         self.lineLength = 2
-        self.fillColor = UIColor.clearColor().CGColor!
-        self.strokeColor = UIColor.whiteColor().CGColor!
+        self.fillColor = UIColor.clearColor().CGColor
+        self.strokeColor = UIColor.whiteColor().CGColor
         self.lineCap = kCALineJoinRound
         self.opacity = 0.3
         

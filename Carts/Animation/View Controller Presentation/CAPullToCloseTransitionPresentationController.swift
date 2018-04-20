@@ -12,7 +12,7 @@ class CAPullToCloseTransitionPresentationController: UIPresentationController {
 
     override func presentationTransitionWillBegin() {
         super.presentationTransitionWillBegin()
-        self.containerView.addSubview(self.presentedView())
+        self.containerView!.addSubview(self.presentedView()!)
     }
     
     override func presentationTransitionDidEnd(completed: Bool) {
@@ -28,6 +28,6 @@ class CAPullToCloseTransitionPresentationController: UIPresentationController {
     }
     
     override func frameOfPresentedViewInContainerView() -> CGRect {
-        return self.containerView.bounds
+        return self.containerView!.bounds
     }
 }

@@ -47,16 +47,16 @@ class CALogInViewController: UIViewController, UITextFieldDelegate {
 //            
 //        }
         
-        self.logIn.rac_signalForControlEvents(.TouchUpInside).flattenMap { (next: AnyObject!) -> RACStream! in
-            return PFUser.logInInBackgroundWithUsername(self.username.text, password: self.password.text)
-            }.catch { (error: NSError!) -> RACSignal! in
-                return RACSignal.createSignal({ (subscriber: RACSubscriber!) -> RACDisposable! in
-                    subscriber.sendCompleted()
-                    return nil
-                })
-        }.subscribeCompleted { () -> Void in
-            println("Successful signup")
-        }
+//        self.logIn.rac_signalForControlEvents(.TouchUpInside).flattenMap { (next: AnyObject!) -> RACStream! in
+//            return PFUser.logInInBackgroundWithUsername(self.username.text, password: self.password.text)
+//            }.catch { (error: NSError!) -> RACSignal! in
+//                return RACSignal.createSignal({ (subscriber: RACSubscriber!) -> RACDisposable! in
+//                    subscriber.sendCompleted()
+//                    return nil
+//                })
+//        }.subscribeCompleted { () -> Void in
+//            println("Successful signup")
+//        }
     }
     
     override func viewWillLayoutSubviews() {

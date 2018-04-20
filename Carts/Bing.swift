@@ -5,10 +5,11 @@
 //  Created by Hakon Hanesand on 5/3/15.
 //  Copyright (c) 2015 Hakon Hanesand. All rights reserved.
 
+import Result
 import Alamofire
 import SwiftyJSON
 
-enum Bing: URLRequestConvertible {
+enum BingRouter: URLRequestConvertible {
     
     case ImageSearch(query: String)
     
@@ -23,29 +24,43 @@ enum Bing: URLRequestConvertible {
         }
     }
     
-    var URLRequest: NSURLRequest {
-        let (path: String, parameters: [String : AnyObject]) = {
+    var URLRequest: NSMutableURLRequest {
+        let result: (path: String, parameters: [String : AnyObject]) = {
             switch self {
             case ImageSearch(let query):
                 return ("Image", ["q" : query, "$Format" : "JSON", "$top" : "1", "Adult" : "strict"])
             }
         }()
         
-        let URL = NSURL(string: Bing.baseURL)!
-        let bingRequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(path))
+        let URL = NSURL(string: BingRouter.baseURL)!
+        let bingRequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(result.path))
         bingRequest.HTTPMethod = method.rawValue
         
-        let inputAuthString = "\(Bing.bingAPIKey):\(Bing.bingAPIKey)"
+        let inputAuthString = "\(BingRouter.bingAPIKey):\(BingRouter.bingAPIKey)"
         let authData = inputAuthString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
         let outputAuthString = "Basic \(authData.base64EncodedStringWithOptions(nil))"
         
         bingRequest.setValue(outputAuthString, forHTTPHeaderField: "Authorization")
         
-        return Alamofire.ParameterEncoding.URL.encode(bingRequest, parameters: parameters).0
+        return Alamofire.ParameterEncoding.URL.encode(bingRequest, parameters: result.parameters).0
     }
 }
 
 extension Request {
+    
+    public static func BingResponseSerializer() -> ResponseSerializer<NSURL, NSError> {
+        return ResponseSerializer { request, response, data, error in
+            guard error != nil else { return .Failure(error!) }
+            
+            materialize {
+                let json = data.map { JSON(data: $0) }
+            }.map {
+                if let urlString = $0 {
+                    NSURL(string: urlString)
+                }
+            }
+        }
+    }
     
     class func BingResponseSerializer() -> Serializer {
         return { (request, response, data) in

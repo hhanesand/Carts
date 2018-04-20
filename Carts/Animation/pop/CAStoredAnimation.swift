@@ -22,7 +22,7 @@ class CAStoredAnimation: NSObject {
     }
     
     convenience init(targetObject: AnyObject, property: String) {
-        self.init(spring: CAStoredAnimation.defaultSpring(property), description: "", targetObject: targetObject)
+        self.dynamicType.init(spring: CAStoredAnimation.defaultSpring(property), description: "", targetObject: targetObject)
     }
     
     class func defaultSpring(property: String) -> POPSpringAnimation {

@@ -1,6 +1,7 @@
 github "ReactiveCocoa/ReactiveCocoa"
 
 github "Facebook/POP" "master"
-github "SwiftyJSON/SwiftyJSON" "master"
+
+github "thoughtbot/Argo"
 
 github "Alamofire/Alamofire"

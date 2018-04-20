@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BFBBD6AE548BE6D463746747 /* Pods_Carts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71532D81D1AB2D47D21EE220 /* Pods_Carts.framework */; };
+		6E3FA7751D109373003168FA /* ResultBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3FA7741D109373003168FA /* ResultBridge.swift */; };
+		6E4EA6711D0E56CD0088AE40 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E4EA6701D0E56CD0088AE40 /* GoogleService-Info.plist */; };
+		DD7953A33D41B5C253FC52AF /* Pods_Carts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88432A46AB0755FCA5A75B55 /* Pods_Carts.framework */; };
 		F23146AB1AF85A0A00527B32 /* AlamofireOAuth1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F23146AA1AF85A0A00527B32 /* AlamofireOAuth1.framework */; };
 		F23146AD1AF85A0E00527B32 /* CommonCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F23146AC1AF85A0E00527B32 /* CommonCrypto.framework */; };
 		F23146AF1AF85A2200527B32 /* Factual.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23146AE1AF85A2200527B32 /* Factual.swift */; };
@@ -89,9 +91,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		642A9FC4AADCEF547CF69946 /* Pods-Carts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Carts/Pods-Carts.debug.xcconfig"; sourceTree = "<group>"; };
-		71532D81D1AB2D47D21EE220 /* Pods_Carts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Carts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A3E2B02A7F63FC89485A630F /* Pods-Carts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Carts/Pods-Carts.release.xcconfig"; sourceTree = "<group>"; };
+		2EA309227D598607C2472CB6 /* Pods-Carts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Carts/Pods-Carts.release.xcconfig"; sourceTree = "<group>"; };
+		6E3FA7741D109373003168FA /* ResultBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultBridge.swift; sourceTree = "<group>"; };
+		6E4EA6701D0E56CD0088AE40 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		88432A46AB0755FCA5A75B55 /* Pods_Carts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Carts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE09035CABAEF118780ACCAF /* Pods-Carts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Carts/Pods-Carts.debug.xcconfig"; sourceTree = "<group>"; };
 		F23146AA1AF85A0A00527B32 /* AlamofireOAuth1.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireOAuth1.framework; path = Carthage/Build/iOS/AlamofireOAuth1.framework; sourceTree = "<group>"; };
 		F23146AC1AF85A0E00527B32 /* CommonCrypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CommonCrypto.framework; path = Carthage/Build/iOS/CommonCrypto.framework; sourceTree = "<group>"; };
 		F23146AE1AF85A2200527B32 /* Factual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Factual.swift; sourceTree = "<group>"; };
@@ -211,18 +215,18 @@
 				F2E9FEB71AEC7FC4003D5F2D /* AudioToolbox.framework in Frameworks */,
 				F2E9FECB1AEC8014003D5F2D /* libsqlite3.dylib in Frameworks */,
 				F2E9FEC91AEC800B003D5F2D /* libz.dylib in Frameworks */,
-				BFBBD6AE548BE6D463746747 /* Pods_Carts.framework in Frameworks */,
+				DD7953A33D41B5C253FC52AF /* Pods_Carts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		04C2E384AB86380523F37FF7 /* Pods */ = {
+		0E2AF59FD24A536A9D0F7DFA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				642A9FC4AADCEF547CF69946 /* Pods-Carts.debug.xcconfig */,
-				A3E2B02A7F63FC89485A630F /* Pods-Carts.release.xcconfig */,
+				BE09035CABAEF118780ACCAF /* Pods-Carts.debug.xcconfig */,
+				2EA309227D598607C2472CB6 /* Pods-Carts.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -253,7 +257,7 @@
 				F2E9FEB81AEC7FCB003D5F2D /* CFNetwork.framework */,
 				F2E9FEB61AEC7FC4003D5F2D /* AudioToolbox.framework */,
 				F2EAEF291AEF23690054F9A9 /* ReactiveCocoa.framework */,
-				71532D81D1AB2D47D21EE220 /* Pods_Carts.framework */,
+				88432A46AB0755FCA5A75B55 /* Pods_Carts.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -265,7 +269,7 @@
 				F2E9FDCE1AEC77FC003D5F2D /* CartsTests */,
 				F2E9FDB71AEC77FC003D5F2D /* Products */,
 				5046E564F4FC3400280A09B2 /* Frameworks */,
-				04C2E384AB86380523F37FF7 /* Pods */,
+				0E2AF59FD24A536A9D0F7DFA /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -280,6 +284,7 @@
 		F2E9FDB81AEC77FC003D5F2D /* Carts */ = {
 			isa = PBXGroup;
 			children = (
+				F2BDAEFE1AED4D0D00481490 /* AppDelgate.swift */,
 				F2E9FDDB1AEC7AF5003D5F2D /* Animation */,
 				F2E9FE3B1AEC7C28003D5F2D /* Networking */,
 				F2E9FE061AEC7B72003D5F2D /* Controllers */,
@@ -295,13 +300,14 @@
 		F2E9FDB91AEC77FC003D5F2D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6E4EA6701D0E56CD0088AE40 /* GoogleService-Info.plist */,
 				F2E9FED21AEC80B8003D5F2D /* Images.xcassets */,
 				F2E9FE811AEC7CAA003D5F2D /* Info.plist */,
 				F2E9FE031AEC7B6C003D5F2D /* LaunchScreen.xib */,
 				F2E9FEDC1AEC8367003D5F2D /* Vendor */,
 				F2E9FE861AEC7CB2003D5F2D /* Categories */,
-				F2BDAEFE1AED4D0D00481490 /* AppDelgate.swift */,
 				F2BDAEFD1AED4D0C00481490 /* Carts-Bridging-Header.h */,
+				6E3FA7741D109373003168FA /* ResultBridge.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -555,12 +561,14 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Hakon Hanesand";
 				TargetAttributes = {
 					F2E9FDB51AEC77FC003D5F2D = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = M7Z4JP773F;
+						DevelopmentTeam = XY9C7NEN6S;
+						DevelopmentTeamName = "abello AS";
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -588,6 +596,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2E9FE051AEC7B6C003D5F2D /* LaunchScreen.xib in Resources */,
+				6E4EA6711D0E56CD0088AE40 /* GoogleService-Info.plist in Resources */,
 				F2E9FED31AEC80B9003D5F2D /* Images.xcassets in Resources */,
 				F2E9FE2C1AEC7C13003D5F2D /* CAShareCartViewController.storyboard in Resources */,
 				F2E9FEB41AEC7CDF003D5F2D /* ItemTableViewCell.xib in Resources */,
@@ -675,6 +684,7 @@
 				F2BDAF2A1AEDB0C100481490 /* CAToggleAnimator.swift in Sources */,
 				F25F383D1AFEB46C00819F21 /* ProgressHUD.swift in Sources */,
 				F2BDAF181AED872D00481490 /* CAListTableViewController.swift in Sources */,
+				6E3FA7751D109373003168FA /* ResultBridge.swift in Sources */,
 				F2BDAF321AEDB9E300481490 /* CASignUpViewController.swift in Sources */,
 				F2BDAF1A1AED93AB00481490 /* CADismissableViewHandler.swift in Sources */,
 				F2BDAF0F1AED6DC400481490 /* CAShareCartViewController.swift in Sources */,
@@ -781,6 +791,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -819,13 +830,14 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		F2E9FDD61AEC77FC003D5F2D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 642A9FC4AADCEF547CF69946 /* Pods-Carts.debug.xcconfig */;
+			baseConfigurationReference = BE09035CABAEF118780ACCAF /* Pods-Carts.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -838,12 +850,13 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Carts/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.github.lightice11.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hhanesand.Carts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Carts/Carts-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -852,7 +865,7 @@
 		};
 		F2E9FDD71AEC77FC003D5F2D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A3E2B02A7F63FC89485A630F /* Pods-Carts.release.xcconfig */;
+			baseConfigurationReference = 2EA309227D598607C2472CB6 /* Pods-Carts.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -865,14 +878,16 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Carts/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.github.lightice11.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hhanesand.Carts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Carts/Carts-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};

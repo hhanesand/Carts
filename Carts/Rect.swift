@@ -4,7 +4,7 @@
 //  Created by Hakon Hanesand on 5/9/15.
 //  Copyright (c) 2015 Hakon Hanesand. All rights reserved.
 
-func makeRectWithOrigin(origin: CGPoint, #size: CGSize) -> CGRect {
+func makeRectWithOrigin(origin: CGPoint, size: CGSize) -> CGRect {
     return CGRect(x: origin.x, y: origin.y, width: size.width, height: size.height)
 }
 

@@ -5,6 +5,8 @@
 //  Created by Hakon Hanesand on 5/9/15.
 //  Copyright (c) 2015 Hakon Hanesand. All rights reserved.
 
+import SVProgressHUD
+
 class ProgressHUD: SVProgressHUD {
     
     override class func show() {

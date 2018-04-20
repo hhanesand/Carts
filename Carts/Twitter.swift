@@ -20,8 +20,8 @@ enum Twitter: URLRequestConvertible {
         }
     }
     
-    var URLRequest: NSURLRequest {
-        let (path: String, parameters: [String : AnyObject]) = {
+    var URLRequest: NSMutableURLRequest {
+        let result: (path: String, parameters: [String : AnyObject]) = {
             switch self {
             case UserLookup(let id):
                 return ("users/show.json", ["user_id" : id])
@@ -29,11 +29,11 @@ enum Twitter: URLRequestConvertible {
         }()
         
         let URL = NSURL(string: Twitter.baseURL)!
-        let twitterURLRequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(path))
+        let twitterURLRequest = NSMutableURLRequest(URL: URL.URLByAppendingPathComponent(result.path))
         twitterURLRequest.HTTPMethod = method.rawValue
         
-        PFTwitterUtils.twitter()?.signRequest(twitterURLRequest)
+//        PFTwitterUtils.twitter()?.signRequest(twitterURLRequest)
         
-        return Alamofire.ParameterEncoding.URL.encode(twitterURLRequest, parameters: parameters).0
+        return Alamofire.ParameterEncoding.URL.encode(twitterURLRequest, parameters: result.parameters).0
     }
 }

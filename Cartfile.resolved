@@ -1,5 +1,5 @@
-github "Alamofire/Alamofire" "3.4.0"
+github "Alamofire/Alamofire" "3.4.1"
+github "thoughtbot/Argo" "v3.0.1"
 github "Facebook/POP" "b30efd828111e4dfd1651635c8586f859d1fd3c2"
-github "antitypical/Result" "2.0.0"
-github "SwiftyJSON/SwiftyJSON" "2a5b70f06001316d4fb54501edc70b4084705da0"
+github "antitypical/Result" "2.1.0"
 github "ReactiveCocoa/ReactiveCocoa" "v4.2.0"

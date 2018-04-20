@@ -15,7 +15,7 @@ class BarcodeObject: PFObject, PFSubclassing {
     @NSManaged var image: [String]?
     
     var firstBarcode: String? {
-        return barcodes[0]
+        return barcodes![0]
     }
 
     override class func parseClassName() -> String {
@@ -33,7 +33,7 @@ class BarcodeObject: PFObject, PFSubclassing {
     }
     
     convenience init(name: String) {
-        self.init(["name" : name])
+        self.init(dictionary: ["name" : name])
     }
     
     func addImageURLsFrom(Array array: [String]) {
